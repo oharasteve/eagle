@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<EagleProgram Created="Sat Oct 03 13:20:45 EDT 2015" Elapsed="49" Language="PHP" Steps="15742" Tokens="252">
+  <T EC="0" EL="38" File="" SC="1" SL="1" TT=".PHP.PHP_Program">
+    <T EC="0" EL="38" N="entry" SC="1" SL="1" TT="List">
+      <T EC="0" EL="4" SC="1" SL="1" TT=".PHP.PHP_Program$PHP_Entry">
+        <T EC="0" EL="4" File="" SC="1" SL="1" TT=".HTML.HTML_Program">
+          <T EC="0" EL="4" N="elements" SC="1" SL="1" TT="List">
+            <T EC="0" EL="2" SC="1" SL="1" TT=".HTML.HTML_Program$HTML_Element">
+              <T EC="0" EL="2" SC="1" SL="1" TT=".HTML.HTML_Tag">
+                <T EC="1" EL="1" N="startTag" SC="1" SL="1" TT=".HTML.Terminals.HTML_Punctuation" V="&lt;"/>
+                <T EC="5" EL="1" N="tag" SC="2" SL="1" TT=".HTML.Terminals.HTML_Identifier" V="html"/>
+                <T EC="6" EL="1" N="closer" SC="6" SL="1" TT=".HTML.Terminals.HTML_PunctuationChoice" V="&gt;"/>
+              </T>
+            </T>
+            <T EC="0" EL="4" SC="1" SL="2" TT=".HTML.HTML_Program$HTML_Element">
+              <T EC="0" EL="4" SC="1" SL="2" TT=".HTML.HTML_Tag">
+                <T EC="1" EL="2" N="startTag" SC="1" SL="2" TT=".HTML.Terminals.HTML_Punctuation" V="&lt;"/>
+                <T EC="5" EL="2" N="tag" SC="2" SL="2" TT=".HTML.Terminals.HTML_Identifier" V="body"/>
+                <T EC="6" EL="2" N="closer" SC="6" SL="2" TT=".HTML.Terminals.HTML_PunctuationChoice" V="&gt;"/>
+              </T>
+            </T>
+          </T>
+        </T>
+      </T>
+      <T EC="0" EL="35" SC="1" SL="4" TT=".PHP.PHP_Program$PHP_Entry">
+        <T EC="0" EL="35" SC="1" SL="4" TT=".PHP.PHP_Program$PHP_Section">
+          <T EC="3" EL="5" N="startTag" SC="1" SL="4" TT=".PHP.PHP_Program$PHP_StartTag">
+            <T EC="2" EL="4" N="startTag" SC="1" SL="4" TT=".HTML.Terminals.HTML_Punctuation" V="&lt;?"/>
+            <T EC="5" EL="4" N="php" SC="3" SL="4" TT=".HTML.Terminals.HTML_Keyword" V="php"/>
+          </T>
+          <T EC="0" EL="35" N="body" SC="4" SL="5" TT=".PHP.PHP_Program$PHP_Section$PHP_Body">
+            <T EC="0" EL="35" SC="4" SL="5" TT=".PHP.PHP_Program$PHP_Section$PHP_Body$PHP_NormalEnd">
+              <T EC="0" EL="35" N="elements" SC="4" SL="5" TT="List">
+                <T EC="3" EL="7" SC="4" SL="5" TT=".PHP.PHP_Program$PHP_Section$PHP_Element">
+                  <T EC="3" EL="7" SC="4" SL="5" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                    <T EC="3" EL="7" SC="4" SL="5" TT=".Perl.Perl_Statement">
+                      <T EC="3" EL="7" SC="4" SL="5" TT=".Perl.Perl_Include">
+                        <T EC="10" EL="5" N="INCLUDE" SC="4" SL="5" TT=".Perl.Terminals.Perl_Keyword" V="include"/>
+                        <T EC="11" EL="5" N="leftParen" SC="11" SL="5" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                        <T EC="22" EL="5" N="fileName" SC="12" SL="5" TT=".Perl.Terminals.Perl_Literal" V="&quot;../db.php&quot;"/>
+                        <T EC="23" EL="5" N="rightParen" SC="23" SL="5" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                        <T EC="24" EL="5" N="semicolon" SC="24" SL="5" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                      </T>
+                    </T>
+                  </T>
+                </T>
+                <T EC="3" EL="8" SC="4" SL="7" TT=".PHP.PHP_Program$PHP_Section$PHP_Element">
+                  <T EC="3" EL="8" SC="4" SL="7" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                    <T EC="3" EL="8" SC="4" SL="7" TT=".Perl.Perl_Statement">
+                      <T EC="3" EL="8" SC="4" SL="7" TT=".Perl.Perl_Statement$Perl_ExpressionCallStatement">
+                        <T EC="169" EL="7" N="expr" SC="4" SL="7" TT=".Perl.Perl_Expression">
+                          <T EC="169" EL="7" SC="4" SL="7" TT=".Perl.Perl_Expression$Perl_AssignmentExpression">
+                            <T EC="10" EL="7" N="var" SC="4" SL="7" TT=".Perl.Perl_Expression">
+                              <T EC="10" EL="7" SC="4" SL="7" TT=".Perl.Perl_Variable">
+                                <T EC="10" EL="7" SC="4" SL="7" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                  <T EC="4" EL="7" N="dollar" SC="4" SL="7" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                  <T EC="9" EL="7" N="id" SC="5" SL="7" TT=".Perl.Symbols.Perl_Identifier_Reference" V="query"/>
+                                </T>
+                              </T>
+                            </T>
+                            <T EC="11" EL="7" N="operator" SC="11" SL="7" TT=".Perl.Terminals.Perl_PunctuationChoice" V="="/>
+                            <T EC="169" EL="7" N="expr" SC="13" SL="7" TT=".Perl.Perl_Expression">
+                              <T EC="169" EL="7" SC="13" SL="7" TT=".Perl.Terminals.Perl_Literal" V="&quot;LOAD DATA LOCAL INFILE '../utilities/photos.csv' INTO TABLE Photos FIELDS TERMINATED BY ';' ENCLOSED BY '\&quot;' ESCAPED BY '\\\\' LINES TERMINATED BY '\\r\\n'&quot;"/>
+                            </T>
+                          </T>
+                        </T>
+                        <T EC="170" EL="7" N="semicolon" SC="170" SL="7" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                      </T>
+                    </T>
+                  </T>
+                </T>
+                <T EC="3" EL="9" SC="4" SL="8" TT=".PHP.PHP_Program$PHP_Section$PHP_Element">
+                  <T EC="3" EL="9" SC="4" SL="8" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                    <T EC="3" EL="9" SC="4" SL="8" TT=".Perl.Perl_Statement">
+                      <T EC="3" EL="9" SC="4" SL="8" TT=".Perl.Perl_Statement$Perl_ExpressionCallStatement">
+                        <T EC="32" EL="8" N="expr" SC="4" SL="8" TT=".Perl.Perl_Expression">
+                          <T EC="32" EL="8" SC="4" SL="8" TT=".Perl.Perl_Expression$Perl_AssignmentExpression">
+                            <T EC="11" EL="8" N="var" SC="4" SL="8" TT=".Perl.Perl_Expression">
+                              <T EC="11" EL="8" SC="4" SL="8" TT=".Perl.Perl_Variable">
+                                <T EC="11" EL="8" SC="4" SL="8" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                  <T EC="4" EL="8" N="dollar" SC="4" SL="8" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                  <T EC="10" EL="8" N="id" SC="5" SL="8" TT=".Perl.Symbols.Perl_Identifier_Reference" V="result"/>
+                                </T>
+                              </T>
+                            </T>
+                            <T EC="12" EL="8" N="operator" SC="12" SL="8" TT=".Perl.Terminals.Perl_PunctuationChoice" V="="/>
+                            <T EC="32" EL="8" N="expr" SC="14" SL="8" TT=".Perl.Perl_Expression">
+                              <T EC="32" EL="8" SC="14" SL="8" TT=".Perl.Perl_Expression$Perl_MethodInvocation">
+                                <T EC="24" EL="8" N="methodName" SC="14" SL="8" TT=".Perl.Perl_Variable">
+                                  <T EC="24" EL="8" SC="14" SL="8" TT=".Perl.Symbols.Perl_Identifier_Reference" V="mysql_query"/>
+                                </T>
+                                <T EC="25" EL="8" N="leftParen" SC="25" SL="8" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                <T EC="31" EL="8" N="argList" SC="26" SL="8" TT=".Perl.Perl_Expression$Perl_ArgumentList">
+                                  <T EC="31" EL="8" N="arg" SC="26" SL="8" TT=".Perl.Perl_Expression">
+                                    <T EC="31" EL="8" SC="26" SL="8" TT=".Perl.Perl_Variable">
+                                      <T EC="31" EL="8" SC="26" SL="8" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                        <T EC="26" EL="8" N="dollar" SC="26" SL="8" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                        <T EC="31" EL="8" N="id" SC="27" SL="8" TT=".Perl.Symbols.Perl_Identifier_Reference" V="query"/>
+                                      </T>
+                                    </T>
+                                  </T>
+                                </T>
+                                <T EC="32" EL="8" N="rightParen" SC="32" SL="8" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                              </T>
+                            </T>
+                          </T>
+                        </T>
+                        <T EC="33" EL="8" N="semicolon" SC="33" SL="8" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                      </T>
+                    </T>
+                  </T>
+                </T>
+                <T EC="3" EL="11" SC="4" SL="9" TT=".PHP.PHP_Program$PHP_Section$PHP_Element">
+                  <T EC="3" EL="11" SC="4" SL="9" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                    <T EC="3" EL="11" SC="4" SL="9" TT=".Perl.Perl_Statement">
+                      <T EC="3" EL="11" SC="4" SL="9" TT=".Perl.Perl_Statement$Perl_SimpleStatement">
+                        <T EC="54" EL="9" N="statement" SC="4" SL="9" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementList">
+                          <T EC="54" EL="9" SC="4" SL="9" TT=".Perl.Statements.Perl_PrintStatement">
+                            <T EC="8" EL="9" N="PRINT" SC="4" SL="9" TT=".Perl.Terminals.Perl_KeywordChoice" V="print"/>
+                            <T EC="54" EL="9" N="value" SC="10" SL="9" TT=".Perl.Perl_Expression">
+                              <T EC="54" EL="9" SC="10" SL="9" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                <T EC="34" EL="9" N="left" SC="10" SL="9" TT=".Perl.Perl_Expression">
+                                  <T EC="34" EL="9" SC="10" SL="9" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                    <T EC="23" EL="9" N="left" SC="10" SL="9" TT=".Perl.Perl_Expression">
+                                      <T EC="23" EL="9" SC="10" SL="9" TT=".Perl.Terminals.Perl_Literal" V="&quot;&lt;p&gt;Result = &quot;"/>
+                                    </T>
+                                    <T EC="25" EL="9" N="dot" SC="25" SL="9" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
+                                    <T EC="34" EL="9" N="right" SC="27" SL="9" TT=".Perl.Perl_Expression">
+                                      <T EC="34" EL="9" SC="27" SL="9" TT=".Perl.Perl_Variable">
+                                        <T EC="34" EL="9" SC="27" SL="9" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                          <T EC="27" EL="9" N="dollar" SC="27" SL="9" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                          <T EC="33" EL="9" N="id" SC="28" SL="9" TT=".Perl.Symbols.Perl_Identifier_Reference" V="result"/>
+                                        </T>
+                                      </T>
+                                    </T>
+                                  </T>
+                                </T>
+                                <T EC="35" EL="9" N="dot" SC="35" SL="9" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
+                                <T EC="54" EL="9" N="right" SC="37" SL="9" TT=".Perl.Perl_Expression">
+                                  <T EC="54" EL="9" SC="37" SL="9" TT=".Perl.Terminals.Perl_Literal" V="&quot; (1 is good)&lt;/p&gt;&quot;"/>
+                                </T>
+                              </T>
+                            </T>
+                          </T>
+                        </T>
+                        <T EC="55" EL="9" N="semicolon" SC="55" SL="9" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                      </T>
+                    </T>
+                  </T>
+                </T>
+                <T EC="38" EL="11" SC="4" SL="11" TT=".PHP.PHP_Program$PHP_Section$PHP_Element">
+                  <T EC="38" EL="11" SC="4" SL="11" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                    <T EC="38" EL="11" SC="4" SL="11" TT=".Perl.Terminals.Perl_Comment" V="# Look for errors and warnings ..."/>
+                  </T>
+                </T>
+                <T EC="3" EL="13" SC="4" SL="12" TT=".PHP.PHP_Program$PHP_Section$PHP_Element">
+                  <T EC="3" EL="13" SC="4" SL="12" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                    <T EC="3" EL="13" SC="4" SL="12" TT=".Perl.Perl_Statement">
+                      <T EC="3" EL="13" SC="4" SL="12" TT=".Perl.Perl_Statement$Perl_ExpressionCallStatement">
+                        <T EC="62" EL="12" N="expr" SC="4" SL="12" TT=".Perl.Perl_Expression">
+                          <T EC="62" EL="12" SC="4" SL="12" TT=".Perl.Perl_Expression$Perl_AssignmentExpression">
+                            <T EC="23" EL="12" N="var" SC="4" SL="12" TT=".Perl.Perl_Expression">
+                              <T EC="23" EL="12" SC="4" SL="12" TT=".Perl.Perl_Variable">
+                                <T EC="23" EL="12" SC="4" SL="12" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                  <T EC="4" EL="12" N="dollar" SC="4" SL="12" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                  <T EC="22" EL="12" N="id" SC="5" SL="12" TT=".Perl.Symbols.Perl_Identifier_Reference" V="warningCountResult"/>
+                                </T>
+                              </T>
+                            </T>
+                            <T EC="24" EL="12" N="operator" SC="24" SL="12" TT=".Perl.Terminals.Perl_PunctuationChoice" V="="/>
+                            <T EC="62" EL="12" N="expr" SC="26" SL="12" TT=".Perl.Perl_Expression">
+                              <T EC="62" EL="12" SC="26" SL="12" TT=".Perl.Perl_Expression$Perl_MethodInvocation">
+                                <T EC="36" EL="12" N="methodName" SC="26" SL="12" TT=".Perl.Perl_Variable">
+                                  <T EC="36" EL="12" SC="26" SL="12" TT=".Perl.Symbols.Perl_Identifier_Reference" V="mysql_query"/>
+                                </T>
+                                <T EC="37" EL="12" N="leftParen" SC="37" SL="12" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                <T EC="61" EL="12" N="argList" SC="38" SL="12" TT=".Perl.Perl_Expression$Perl_ArgumentList">
+                                  <T EC="61" EL="12" N="arg" SC="38" SL="12" TT=".Perl.Perl_Expression">
+                                    <T EC="61" EL="12" SC="38" SL="12" TT=".Perl.Terminals.Perl_Literal" V="&quot;SELECT @@warning_count&quot;"/>
+                                  </T>
+                                </T>
+                                <T EC="62" EL="12" N="rightParen" SC="62" SL="12" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                              </T>
+                            </T>
+                          </T>
+                        </T>
+                        <T EC="63" EL="12" N="semicolon" SC="63" SL="12" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                      </T>
+                    </T>
+                  </T>
+                </T>
+                <T EC="3" EL="32" SC="4" SL="13" TT=".PHP.PHP_Program$PHP_Section$PHP_Element">
+                  <T EC="3" EL="32" SC="4" SL="13" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                    <T EC="3" EL="32" SC="4" SL="13" TT=".Perl.Perl_Statement">
+                      <T EC="3" EL="32" SC="4" SL="13" TT=".Perl.Perl_Statement$Perl_CompundStatement">
+                        <T EC="3" EL="32" SC="4" SL="13" TT=".Perl.Statements.Perl_IfStatement">
+                          <T EC="5" EL="13" N="IF" SC="4" SL="13" TT=".Perl.Terminals.Perl_Keyword" V="if"/>
+                          <T EC="7" EL="13" N="leftParen" SC="7" SL="13" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                          <T EC="26" EL="13" N="condition" SC="8" SL="13" TT=".Perl.Statements.Perl_IfStatement$Perl_IfWhat">
+                            <T EC="26" EL="13" SC="8" SL="13" TT=".Perl.Perl_Expression">
+                              <T EC="26" EL="13" SC="8" SL="13" TT=".Perl.Perl_Variable">
+                                <T EC="26" EL="13" SC="8" SL="13" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                  <T EC="8" EL="13" N="dollar" SC="8" SL="13" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                  <T EC="26" EL="13" N="id" SC="9" SL="13" TT=".Perl.Symbols.Perl_Identifier_Reference" V="warningCountResult"/>
+                                </T>
+                              </T>
+                            </T>
+                          </T>
+                          <T EC="27" EL="13" N="rightParen" SC="27" SL="13" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                          <T EC="3" EL="32" N="thenStatement" SC="4" SL="14" TT=".Perl.Perl_Statement">
+                            <T EC="3" EL="32" SC="4" SL="14" TT=".Perl.Perl_Statement$Perl_StatementBlock">
+                              <T EC="4" EL="14" N="leftBrace" SC="4" SL="14" TT=".Perl.Terminals.Perl_Punctuation" V="{"/>
+                              <T EC="3" EL="32" N="statements" SC="4" SL="14" TT="List">
+                                <T EC="3" EL="16" SC="7" SL="15" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                                  <T EC="3" EL="16" SC="7" SL="15" TT=".Perl.Perl_Statement">
+                                    <T EC="3" EL="16" SC="7" SL="15" TT=".Perl.Perl_Statement$Perl_ExpressionCallStatement">
+                                      <T EC="58" EL="15" N="expr" SC="7" SL="15" TT=".Perl.Perl_Expression">
+                                        <T EC="58" EL="15" SC="7" SL="15" TT=".Perl.Perl_Expression$Perl_AssignmentExpression">
+                                          <T EC="20" EL="15" N="var" SC="7" SL="15" TT=".Perl.Perl_Expression">
+                                            <T EC="20" EL="15" SC="7" SL="15" TT=".Perl.Perl_Variable">
+                                              <T EC="20" EL="15" SC="7" SL="15" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                <T EC="7" EL="15" N="dollar" SC="7" SL="15" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                <T EC="19" EL="15" N="id" SC="8" SL="15" TT=".Perl.Symbols.Perl_Identifier_Reference" V="warningCount"/>
+                                              </T>
+                                            </T>
+                                          </T>
+                                          <T EC="21" EL="15" N="operator" SC="21" SL="15" TT=".Perl.Terminals.Perl_PunctuationChoice" V="="/>
+                                          <T EC="58" EL="15" N="expr" SC="23" SL="15" TT=".Perl.Perl_Expression">
+                                            <T EC="58" EL="15" SC="23" SL="15" TT=".Perl.Perl_Expression$Perl_MethodInvocation">
+                                              <T EC="37" EL="15" N="methodName" SC="23" SL="15" TT=".Perl.Perl_Variable">
+                                                <T EC="37" EL="15" SC="23" SL="15" TT=".Perl.Symbols.Perl_Identifier_Reference" V="mysql_fetch_row"/>
+                                              </T>
+                                              <T EC="38" EL="15" N="leftParen" SC="38" SL="15" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                              <T EC="57" EL="15" N="argList" SC="39" SL="15" TT=".Perl.Perl_Expression$Perl_ArgumentList">
+                                                <T EC="57" EL="15" N="arg" SC="39" SL="15" TT=".Perl.Perl_Expression">
+                                                  <T EC="57" EL="15" SC="39" SL="15" TT=".Perl.Perl_Variable">
+                                                    <T EC="57" EL="15" SC="39" SL="15" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                      <T EC="39" EL="15" N="dollar" SC="39" SL="15" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                      <T EC="57" EL="15" N="id" SC="40" SL="15" TT=".Perl.Symbols.Perl_Identifier_Reference" V="warningCountResult"/>
+                                                    </T>
+                                                  </T>
+                                                </T>
+                                              </T>
+                                              <T EC="58" EL="15" N="rightParen" SC="58" SL="15" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                                            </T>
+                                          </T>
+                                        </T>
+                                      </T>
+                                      <T EC="59" EL="15" N="semicolon" SC="59" SL="15" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                    </T>
+                                  </T>
+                                </T>
+                                <T EC="3" EL="30" SC="4" SL="16" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                                  <T EC="3" EL="30" SC="4" SL="16" TT=".Perl.Perl_Statement">
+                                    <T EC="3" EL="30" SC="4" SL="16" TT=".Perl.Perl_Statement$Perl_CompundStatement">
+                                      <T EC="3" EL="30" SC="4" SL="16" TT=".Perl.Statements.Perl_IfStatement">
+                                        <T EC="5" EL="16" N="IF" SC="4" SL="16" TT=".Perl.Terminals.Perl_Keyword" V="if"/>
+                                        <T EC="7" EL="16" N="leftParen" SC="7" SL="16" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                        <T EC="27" EL="16" N="condition" SC="8" SL="16" TT=".Perl.Statements.Perl_IfStatement$Perl_IfWhat">
+                                          <T EC="27" EL="16" SC="8" SL="16" TT=".Perl.Perl_Expression">
+                                            <T EC="27" EL="16" SC="8" SL="16" TT=".Perl.Perl_Expression$Perl_RelationalExpression">
+                                              <T EC="24" EL="16" N="left" SC="8" SL="16" TT=".Perl.Perl_Expression">
+                                                <T EC="24" EL="16" SC="8" SL="16" TT=".Perl.Perl_Variable">
+                                                  <T EC="24" EL="16" SC="8" SL="16" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                    <T EC="8" EL="16" N="dollar" SC="8" SL="16" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                    <T EC="20" EL="16" N="id" SC="9" SL="16" TT=".Perl.Symbols.Perl_Identifier_Reference" V="warningCount"/>
+                                                    <T EC="24" EL="16" N="subscript" SC="8" SL="16" TT="List">
+                                                      <T EC="24" EL="16" SC="21" SL="16" TT=".Perl.Perl_Subscript">
+                                                        <T EC="21" EL="16" N="leftBracket" SC="21" SL="16" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                                        <T EC="22" EL="16" N="expr" SC="22" SL="16" TT=".Perl.Perl_Expression">
+                                                          <T EC="22" EL="16" SC="22" SL="16" TT=".Perl.Terminals.Perl_Number" V="0"/>
+                                                        </T>
+                                                        <T EC="23" EL="16" N="rightBracket" SC="23" SL="16" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                                      </T>
+                                                    </T>
+                                                  </T>
+                                                </T>
+                                              </T>
+                                              <T EC="25" EL="16" N="operator" SC="25" SL="16" TT=".Perl.Terminals.Perl_PunctuationChoice" V="&gt;"/>
+                                              <T EC="27" EL="16" N="right" SC="27" SL="16" TT=".Perl.Perl_Expression">
+                                                <T EC="27" EL="16" SC="27" SL="16" TT=".Perl.Terminals.Perl_Number" V="0"/>
+                                              </T>
+                                            </T>
+                                          </T>
+                                        </T>
+                                        <T EC="28" EL="16" N="rightParen" SC="28" SL="16" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                                        <T EC="7" EL="29" N="thenStatement" SC="4" SL="17" TT=".Perl.Perl_Statement">
+                                          <T EC="7" EL="29" SC="4" SL="17" TT=".Perl.Perl_Statement$Perl_StatementBlock">
+                                            <T EC="4" EL="17" N="leftBrace" SC="4" SL="17" TT=".Perl.Terminals.Perl_Punctuation" V="{"/>
+                                            <T EC="7" EL="29" N="statements" SC="4" SL="17" TT="List">
+                                              <T EC="76" EL="18" SC="10" SL="18" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                                                <T EC="76" EL="18" SC="10" SL="18" TT=".Perl.Terminals.Perl_Comment" V="// Have warnings. Just so happens that there is one warning per row"/>
+                                              </T>
+                                              <T EC="63" EL="19" SC="4" SL="19" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                                                <T EC="63" EL="19" SC="4" SL="19" TT=".Perl.Terminals.Perl_Comment" V="// Warning 1261: Row 1 doesn't contain data for all columns "/>
+                                              </T>
+                                              <T EC="3" EL="22" SC="4" SL="20" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                                                <T EC="3" EL="22" SC="4" SL="20" TT=".Perl.Perl_Statement">
+                                                  <T EC="3" EL="22" SC="4" SL="20" TT=".Perl.Perl_Statement$Perl_SimpleStatement">
+                                                    <T EC="40" EL="20" N="statement" SC="4" SL="20" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementList">
+                                                      <T EC="40" EL="20" SC="4" SL="20" TT=".Perl.Statements.Perl_PrintStatement">
+                                                        <T EC="8" EL="20" N="PRINT" SC="4" SL="20" TT=".Perl.Terminals.Perl_KeywordChoice" V="print"/>
+                                                        <T EC="40" EL="20" N="value" SC="10" SL="20" TT=".Perl.Perl_Expression">
+                                                          <T EC="40" EL="20" SC="10" SL="20" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                            <T EC="21" EL="20" N="left" SC="10" SL="20" TT=".Perl.Perl_Expression">
+                                                              <T EC="21" EL="20" SC="10" SL="20" TT=".Perl.Terminals.Perl_Literal" V="&quot;&lt;p&gt;Rows = &quot;"/>
+                                                            </T>
+                                                            <T EC="23" EL="20" N="dot" SC="23" SL="20" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
+                                                            <T EC="40" EL="20" N="right" SC="25" SL="20" TT=".Perl.Perl_Expression">
+                                                              <T EC="40" EL="20" SC="25" SL="20" TT=".Perl.Perl_Variable">
+                                                                <T EC="40" EL="20" SC="25" SL="20" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                                  <T EC="25" EL="20" N="dollar" SC="25" SL="20" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                                  <T EC="37" EL="20" N="id" SC="26" SL="20" TT=".Perl.Symbols.Perl_Identifier_Reference" V="warningCount"/>
+                                                                  <T EC="40" EL="20" N="subscript" SC="25" SL="20" TT="List">
+                                                                    <T EC="40" EL="20" SC="38" SL="20" TT=".Perl.Perl_Subscript">
+                                                                      <T EC="38" EL="20" N="leftBracket" SC="38" SL="20" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                                                      <T EC="39" EL="20" N="expr" SC="39" SL="20" TT=".Perl.Perl_Expression">
+                                                                        <T EC="39" EL="20" SC="39" SL="20" TT=".Perl.Terminals.Perl_Number" V="0"/>
+                                                                      </T>
+                                                                      <T EC="40" EL="20" N="rightBracket" SC="40" SL="20" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                                                    </T>
+                                                                  </T>
+                                                                </T>
+                                                              </T>
+                                                            </T>
+                                                          </T>
+                                                        </T>
+                                                      </T>
+                                                    </T>
+                                                    <T EC="41" EL="20" N="semicolon" SC="41" SL="20" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                                  </T>
+                                                </T>
+                                              </T>
+                                              <T EC="71" EL="22" SC="4" SL="22" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                                                <T EC="71" EL="22" SC="4" SL="22" TT=".Perl.Terminals.Perl_Comment" V="// Following is useless. Should also be a &quot;while&quot; instead of an &quot;if&quot;"/>
+                                              </T>
+                                              <T EC="63" EL="23" SC="10" SL="23" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                                                <T EC="63" EL="23" SC="10" SL="23" TT=".Perl.Terminals.Perl_Comment" V="//$warningDetailResult = mysql_query(&quot;SHOW WARNINGS&quot;);"/>
+                                              </T>
+                                              <T EC="36" EL="24" SC="10" SL="24" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                                                <T EC="36" EL="24" SC="10" SL="24" TT=".Perl.Terminals.Perl_Comment" V="//if ($warningDetailResult)"/>
+                                              </T>
+                                              <T EC="6" EL="25" SC="4" SL="25" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                                                <T EC="6" EL="25" SC="4" SL="25" TT=".Perl.Terminals.Perl_Comment" V="//{"/>
+                                              </T>
+                                              <T EC="63" EL="26" SC="10" SL="26" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                                                <T EC="63" EL="26" SC="10" SL="26" TT=".Perl.Terminals.Perl_Comment" V="//   $warning = mysql_fetch_row($warningDetailResult);"/>
+                                              </T>
+                                              <T EC="82" EL="27" SC="10" SL="27" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                                                <T EC="82" EL="27" SC="10" SL="27" TT=".Perl.Terminals.Perl_Comment" V="//   print &quot;&lt;li&gt;&quot; . $warning[0] . &quot; &quot; . $warning[1] . &quot;: &quot; . $warning[2];"/>
+                                              </T>
+                                              <T EC="12" EL="28" SC="10" SL="28" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                                                <T EC="12" EL="28" SC="10" SL="28" TT=".Perl.Terminals.Perl_Comment" V="//}"/>
+                                              </T>
+                                            </T>
+                                            <T EC="7" EL="29" N="rightBrace" SC="7" SL="29" TT=".Perl.Terminals.Perl_Punctuation" V="}"/>
+                                          </T>
+                                        </T>
+                                        <T EC="3" EL="30" N="comments3" SC="4" SL="16" TT="List">
+                                          <T EC="25" EL="29" SC="8" SL="29" TT=".Perl.Terminals.Perl_Comment" V="//Else no warnings"/>
+                                        </T>
+                                      </T>
+                                    </T>
+                                  </T>
+                                </T>
+                              </T>
+                              <T EC="4" EL="30" N="rightBrace" SC="4" SL="30" TT=".Perl.Terminals.Perl_Punctuation" V="}"/>
+                            </T>
+                          </T>
+                        </T>
+                      </T>
+                    </T>
+                  </T>
+                </T>
+                <T EC="0" EL="33" SC="4" SL="32" TT=".PHP.PHP_Program$PHP_Section$PHP_Element">
+                  <T EC="0" EL="33" SC="4" SL="32" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
+                    <T EC="0" EL="33" SC="4" SL="32" TT=".Perl.Perl_Statement">
+                      <T EC="0" EL="33" SC="4" SL="32" TT=".Perl.Perl_Statement$Perl_ExpressionCallStatement">
+                        <T EC="13" EL="32" N="expr" SC="4" SL="32" TT=".Perl.Perl_Expression">
+                          <T EC="13" EL="32" SC="4" SL="32" TT=".Perl.Perl_Expression$Perl_MethodInvocation">
+                            <T EC="11" EL="32" N="methodName" SC="4" SL="32" TT=".Perl.Perl_Variable">
+                              <T EC="11" EL="32" SC="4" SL="32" TT=".Perl.Symbols.Perl_Identifier_Reference" V="db_close"/>
+                            </T>
+                            <T EC="12" EL="32" N="leftParen" SC="12" SL="32" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                            <T EC="13" EL="32" N="rightParen" SC="13" SL="32" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                          </T>
+                        </T>
+                        <T EC="14" EL="32" N="semicolon" SC="14" SL="32" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                      </T>
+                    </T>
+                  </T>
+                </T>
+              </T>
+              <T EC="0" EL="35" N="endTag" SC="1" SL="33" TT=".PHP.PHP_Program$PHP_EndTag">
+                <T EC="2" EL="33" N="endTag" SC="1" SL="33" TT=".HTML.Terminals.HTML_Punctuation" V="?&gt;"/>
+              </T>
+            </T>
+          </T>
+        </T>
+      </T>
+      <T EC="0" EL="38" SC="1" SL="35" TT=".PHP.PHP_Program$PHP_Entry">
+        <T EC="0" EL="38" File="" SC="1" SL="35" TT=".HTML.HTML_Program">
+          <T EC="0" EL="38" N="elements" SC="1" SL="35" TT="List">
+            <T EC="0" EL="36" SC="1" SL="35" TT=".HTML.HTML_Program$HTML_Element">
+              <T EC="0" EL="36" SC="1" SL="35" TT=".HTML.HTML_Tag$HTML_EndTag">
+                <T EC="2" EL="35" N="startTag" SC="1" SL="35" TT=".HTML.Terminals.HTML_Punctuation" V="&lt;/"/>
+                <T EC="6" EL="35" N="tag" SC="3" SL="35" TT=".HTML.Terminals.HTML_Identifier" V="body"/>
+                <T EC="7" EL="35" N="endTag" SC="7" SL="35" TT=".HTML.Terminals.HTML_Punctuation" V="&gt;"/>
+              </T>
+            </T>
+            <T EC="0" EL="38" SC="1" SL="36" TT=".HTML.HTML_Program$HTML_Element">
+              <T EC="0" EL="38" SC="1" SL="36" TT=".HTML.HTML_Tag$HTML_EndTag">
+                <T EC="2" EL="36" N="startTag" SC="1" SL="36" TT=".HTML.Terminals.HTML_Punctuation" V="&lt;/"/>
+                <T EC="6" EL="36" N="tag" SC="3" SL="36" TT=".HTML.Terminals.HTML_Identifier" V="html"/>
+                <T EC="7" EL="36" N="endTag" SC="7" SL="36" TT=".HTML.Terminals.HTML_Punctuation" V="&gt;"/>
+              </T>
+            </T>
+          </T>
+        </T>
+      </T>
+    </T>
+  </T>
+</EagleProgram>

@@ -11,9 +11,9 @@ import com.eagle.programmar.CMD.Terminals.CMD_Literal;
 import com.eagle.programmar.CMD.Terminals.CMD_Number;
 import com.eagle.programmar.CMD.Terminals.CMD_PercentVariable;
 import com.eagle.programmar.CMD.Terminals.CMD_Punctuation;
-import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
+import com.eagle.tokens.TokenSequence;
 
 public class CMD_For_Statement extends TokenSequence
 {

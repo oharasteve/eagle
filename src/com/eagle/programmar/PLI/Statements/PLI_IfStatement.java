@@ -8,8 +8,8 @@ import com.eagle.programmar.PLI.PLI_Label;
 import com.eagle.programmar.PLI.PLI_Statement;
 import com.eagle.programmar.PLI.Terminals.PLI_Comment;
 import com.eagle.programmar.PLI.Terminals.PLI_Keyword;
-import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.TokenList;
+import com.eagle.tokens.TokenSequence;
 
 public class PLI_IfStatement extends TokenSequence
 {

@@ -81,7 +81,7 @@ public class Java_Tests extends EagleTests
 		pgm.add("}");
 		Java_Program lang = new Java_Program();
 		ParserManager parser = new ParserManager();
-		parser.parseLines(pgm, lang, null, lang.getSyntax());
+		parser.parseLines(pgm, lang);
 		
 		// Now, run the program
 		PrintStream saveOut = System.out;

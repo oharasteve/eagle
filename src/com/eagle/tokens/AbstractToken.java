@@ -176,7 +176,7 @@ public abstract class AbstractToken
 	}
 	
 	// Set the source for this token and all its children
-	public void setSource(AbstractToken sourceToken) throws Exception
+	public void setSource(AbstractToken sourceToken)
 	{
 		if (_fileName != null) return;	// Already set somehow
 		
@@ -206,20 +206,27 @@ public abstract class AbstractToken
 				// Ignore all private fields
 				if ((fld.getModifiers() & Modifier.PUBLIC) == 0) continue;	// Skip internal stuff
 				
-				Object obj = fld.get(this);
-				if (obj instanceof TokenList<?>)
+				try
 				{
-					@SuppressWarnings("unchecked")
-					TokenList<TokenSequence> items = (TokenList<TokenSequence>) obj;
-					for (AbstractToken child : items._elements)
+					Object obj = fld.get(this);
+					if (obj instanceof TokenList<?>)
 					{
+						@SuppressWarnings("unchecked")
+						TokenList<TokenSequence> items = (TokenList<TokenSequence>) obj;
+						for (AbstractToken child : items._elements)
+						{
+							child.setSource(sourceToken);
+						}
+					}
+					else if (obj instanceof TokenSequence)
+					{
+						TokenSequence child = (TokenSequence) obj;
 						child.setSource(sourceToken);
 					}
 				}
-				else if (obj instanceof TokenSequence)
+				catch (IllegalAccessException ex)
 				{
-					TokenSequence child = (TokenSequence) obj;
-					child.setSource(sourceToken);
+					throw new RuntimeException("Problem getting " + fld.getName(), ex);
 				}
 			}
 		}

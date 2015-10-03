@@ -6,9 +6,9 @@ package com.eagle.programmar.CMD.Statements;
 import com.eagle.programmar.CMD.Terminals.CMD_Argument;
 import com.eagle.programmar.CMD.Terminals.CMD_Keyword;
 import com.eagle.programmar.CMD.Terminals.CMD_Punctuation;
-import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
+import com.eagle.tokens.TokenSequence;
 
 public class CMD_NMake_Statement extends TokenSequence
 {

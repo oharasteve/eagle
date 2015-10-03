@@ -6,8 +6,8 @@ package com.eagle.programmar.Delphi.Statements;
 import com.eagle.programmar.Delphi.Delphi_Expression;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Keyword;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Punctuation;
-import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.TokenList;
+import com.eagle.tokens.TokenSequence;
 
 public class Delphi_Writeln_Statement extends TokenSequence
 {

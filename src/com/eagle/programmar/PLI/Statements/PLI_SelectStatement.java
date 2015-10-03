@@ -8,8 +8,8 @@ import com.eagle.programmar.PLI.PLI_Statement;
 import com.eagle.programmar.PLI.Terminals.PLI_Keyword;
 import com.eagle.programmar.PLI.Terminals.PLI_Literal;
 import com.eagle.programmar.PLI.Terminals.PLI_Punctuation;
-import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.TokenList;
+import com.eagle.tokens.TokenSequence;
 
 public class PLI_SelectStatement extends TokenSequence
 {

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<EagleProgram Created="Sat Oct 03 13:20:46 EDT 2015" Elapsed="0" Language="CMD" Steps="121" Tokens="21">
+  <T EC="0" EL="3" File="" SC="1" SL="1" TT=".CMD.CMD_Program">
+    <T EC="0" EL="3" N="commands" SC="1" SL="1" TT="List">
+      <T EC="0" EL="2" SC="1" SL="1" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
+        <T EC="0" EL="2" SC="1" SL="1" TT=".CMD.CMD_Command">
+          <T EC="1" EL="1" N="at" SC="1" SL="1" TT=".CMD.Terminals.CMD_Punctuation" V="@"/>
+          <T EC="14" EL="1" N="command" SC="2" SL="1" TT=".CMD.CMD_Command$CMD_Statement">
+            <T EC="14" EL="1" SC="2" SL="1" TT=".CMD.Statements.CMD_Set_Statement">
+              <T EC="4" EL="1" N="SET" SC="2" SL="1" TT=".CMD.Terminals.CMD_Keyword" V="set"/>
+              <T EC="14" EL="1" N="setWhat" SC="5" SL="1" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What">
+                <T EC="14" EL="1" SC="5" SL="1" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What$CMS_Set_Regular">
+                  <T EC="9" EL="1" N="var" SC="6" SL="1" TT=".CMD.Symbols.CMD_Variable_Definition" V="Blah"/>
+                  <T EC="10" EL="1" N="equals" SC="10" SL="1" TT=".CMD.Terminals.CMD_Punctuation" V="="/>
+                  <T EC="14" EL="1" N="value" SC="11" SL="1" TT=".CMD.Terminals.CMD_RestOfLine" V="%~1"/>
+                </T>
+              </T>
+            </T>
+          </T>
+          <T EC="0" EL="2" N="eoln2" SC="1" SL="1" TT="List">
+            <T EC="0" EL="2" SC="15" SL="1" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
+          </T>
+        </T>
+      </T>
+      <T EC="0" EL="3" SC="1" SL="2" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
+        <T EC="0" EL="3" SC="1" SL="2" TT=".CMD.CMD_Command">
+          <T EC="1" EL="2" N="at" SC="1" SL="2" TT=".CMD.Terminals.CMD_Punctuation" V="@"/>
+          <T EC="35" EL="2" N="command" SC="2" SL="2" TT=".CMD.CMD_Command$CMD_Statement">
+            <T EC="35" EL="2" SC="2" SL="2" TT=".CMD.Statements.CMD_Echo_Statement">
+              <T EC="5" EL="2" N="ECHO" SC="2" SL="2" TT=".CMD.Terminals.CMD_Keyword" V="echo"/>
+              <T EC="35" EL="2" N="line" SC="6" SL="2" TT=".CMD.Terminals.CMD_RestOfLine" V=" move &quot;%~1&quot; &quot;2007%Blah:~-12%&quot;"/>
+            </T>
+          </T>
+          <T EC="0" EL="3" N="eoln2" SC="1" SL="2" TT="List">
+            <T EC="0" EL="3" SC="36" SL="2" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
+          </T>
+        </T>
+      </T>
+    </T>
+  </T>
+</EagleProgram>

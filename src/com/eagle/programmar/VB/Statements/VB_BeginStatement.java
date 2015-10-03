@@ -6,8 +6,8 @@ package com.eagle.programmar.VB.Statements;
 import com.eagle.programmar.VB.VB_Statement;
 import com.eagle.programmar.VB.Terminals.VB_EndOfLine;
 import com.eagle.programmar.VB.Terminals.VB_Keyword;
-import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.TokenList;
+import com.eagle.tokens.TokenSequence;
 
 public class VB_BeginStatement extends TokenSequence
 {

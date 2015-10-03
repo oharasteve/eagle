@@ -84,7 +84,7 @@ public class COBOL_Tests extends EagleTests
 		pgm.add(_proc);
 		COBOL_Program_Complete lang = new COBOL_Program_Free_Format();
 		ParserManager parser = new ParserManager();
-		parser.parseLines(pgm, lang, null, lang.getSyntax());
+		parser.parseLines(pgm, lang);
 		
 		// Now, run the program
 		PrintStream saveOut = System.out;

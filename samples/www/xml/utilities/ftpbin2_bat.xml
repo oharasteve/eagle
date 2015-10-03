@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<EagleProgram Created="Sat Oct 03 13:20:42 EDT 2015" Elapsed="1" Language="CMD" Steps="52" Tokens="15">
+  <T EC="0" EL="2" File="" SC="1" SL="1" TT=".CMD.CMD_Program">
+    <T EC="0" EL="2" N="commands" SC="1" SL="1" TT="List">
+      <T EC="0" EL="2" SC="1" SL="1" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
+        <T EC="0" EL="2" SC="1" SL="1" TT=".CMD.CMD_Command">
+          <T EC="1" EL="1" N="at" SC="1" SL="1" TT=".CMD.Terminals.CMD_Punctuation" V="@"/>
+          <T EC="21" EL="1" N="command" SC="2" SL="1" TT=".CMD.CMD_Command$CMD_Statement">
+            <T EC="21" EL="1" SC="2" SL="1" TT=".CMD.Statements.CMD_Call_Statement">
+              <T EC="5" EL="1" N="CALL" SC="2" SL="1" TT=".CMD.Terminals.CMD_Keyword" V="call"/>
+              <T EC="18" EL="1" N="what" SC="6" SL="1" TT=".CMD.Terminals.CMD_Argument">
+                <T EC="18" EL="1" N="wrapper" SC="6" SL="1" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper">
+                  <T EC="18" EL="1" SC="7" SL="1" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="ftpbin.bat"/>
+                </T>
+              </T>
+              <T EC="21" EL="1" N="args" SC="2" SL="1" TT="List">
+                <T EC="21" EL="1" SC="19" SL="1" TT=".CMD.Statements.CMD_Call_Statement$CMD_Call_Parameter">
+                  <T EC="21" EL="1" SC="19" SL="1" TT=".CMD.Terminals.CMD_Argument">
+                    <T EC="21" EL="1" N="wrapper" SC="19" SL="1" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper">
+                      <T EC="21" EL="1" SC="20" SL="1" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="%*"/>
+                    </T>
+                  </T>
+                </T>
+              </T>
+            </T>
+          </T>
+          <T EC="0" EL="2" N="eoln2" SC="1" SL="1" TT="List">
+            <T EC="0" EL="2" SC="22" SL="1" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
+          </T>
+        </T>
+      </T>
+    </T>
+  </T>
+</EagleProgram>

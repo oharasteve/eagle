@@ -8,9 +8,9 @@ import com.eagle.programmar.PLI.PLI_Signal;
 import com.eagle.programmar.PLI.PLI_Statement;
 import com.eagle.programmar.PLI.Terminals.PLI_Keyword;
 import com.eagle.programmar.PLI.Terminals.PLI_Punctuation;
-import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
+import com.eagle.tokens.TokenSequence;
 
 public class PLI_OnStatement extends TokenSequence
 {

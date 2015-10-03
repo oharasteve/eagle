@@ -9,8 +9,8 @@ import com.eagle.programmar.CSharp.CSharp_Type;
 import com.eagle.programmar.CSharp.CSharp_Variable;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Keyword;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Punctuation;
-import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.TokenChooser;
+import com.eagle.tokens.TokenSequence;
 
 public class CSharp_ForStatement extends TokenSequence
 {

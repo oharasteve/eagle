@@ -6,8 +6,8 @@ package com.eagle.programmar.Perl.Statements;
 import com.eagle.programmar.Perl.Perl_Variable;
 import com.eagle.programmar.Perl.Terminals.Perl_Keyword;
 import com.eagle.programmar.Perl.Terminals.Perl_Punctuation;
-import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.TokenList;
+import com.eagle.tokens.TokenSequence;
 
 public class Perl_GlobalStatement extends TokenSequence
 {

@@ -8,8 +8,8 @@ import com.eagle.programmar.IBMASM.Terminals.IBMASM_Keyword;
 import com.eagle.programmar.IBMASM.Terminals.IBMASM_Punctuation;
 import com.eagle.programmar.IBMASM.Terminals.IBMASM_Remark;
 import com.eagle.programmar.IBMASM.Terminals.IBMASM_Spaces;
-import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.TokenChooser;
+import com.eagle.tokens.TokenSequence;
 
 public class IBMASM_WTO_Macro extends TokenSequence
 {
