@@ -1,0 +1,1 @@
+@"java" -classpath ThumbNailer FixSize %*
