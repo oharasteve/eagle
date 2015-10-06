@@ -33,7 +33,7 @@
 )
 
 @%ECHOREM% Copying src\com\eagle\project
-@for %%i in ( EagleProject ProjectEntry RepairFile ) do @(
+@for %%i in ( EagleProject ProgramEntry ProjectEntry RepairFile ) do @(
     @xcopy %XOPTS% "%SVN%\Tools\src\com\eagle\project\%%i.java" "%GIT%\src\com\eagle\project\" | %FILTER%
 )
 

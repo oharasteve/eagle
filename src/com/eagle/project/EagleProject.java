@@ -17,8 +17,6 @@ import com.eagle.parsers.EagleParser;
 import com.eagle.parsers.ParserManager;
 import com.eagle.programmar.EagleLanguage;
 import com.eagle.programmar.EagleLanguageLookup;
-import com.eagle.project.ProjectEntry.ProgramEntry;
-import com.eagle.project.ProjectEntry.TextEntry;
 import com.eagle.utils.EagleFile;
 import com.eagle.utils.EaglePath;
 
@@ -125,30 +123,21 @@ public abstract class EagleProject
 					// Might want to exclude some files
 					if (rejectEntry(sourceDir, fname)) continue;
 					
-					if (languageName.equalsIgnoreCase("TXT"))
-					{
-						TextEntry entry = new TextEntry();
-						entry.sourceFile = EaglePath.combinePaths(sourceDir, fname);
-						_entries.add(entry);
-					}
-					else
-					{
-						ProgramEntry entry = new ProgramEntry();
-						entry.languageName = languageName;
-		
-						entry.sourceFile = EaglePath.combinePaths(sourceDir, fname);
-						EagleFile ef = new EagleFile(entry);
-						
-						String baseNameAndPath = EaglePath.combinePaths(ef.getPath(), ef.getBaseName() + "_" + ef.getExtension());
-						
-						entry.parsedFile = EaglePath.combinePaths("PARSED", baseNameAndPath + ".xml");
-						entry.parseFailedFile = EaglePath.combinePaths("PARSED", baseNameAndPath + "_failed.html");
-		
-						entry.programView = EaglePath.combinePaths("VIEWER", baseNameAndPath + ".html"); 
-						entry.symbolTable = EaglePath.combinePaths("SYMBOLS", baseNameAndPath + ".html");
+					ProgramEntry entry = new ProgramEntry();
+					entry.languageName = languageName;
 	
-						_entries.add(entry);
-					}
+					entry.sourceFile = EaglePath.combinePaths(sourceDir, fname);
+					EagleFile ef = new EagleFile(entry);
+					
+					String baseNameAndPath = EaglePath.combinePaths(ef.getPath(), ef.getBaseName() + "_" + ef.getExtension());
+					
+					entry.parsedFile = EaglePath.combinePaths("PARSED", baseNameAndPath + ".xml");
+					entry.parseFailedFile = EaglePath.combinePaths("PARSED", baseNameAndPath + "_failed.html");
+	
+					entry.programView = EaglePath.combinePaths("VIEWER", baseNameAndPath + ".html"); 
+					entry.symbolTable = EaglePath.combinePaths("SYMBOLS", baseNameAndPath + ".html");
+
+					_entries.add(entry);
 				}
 				else
 				{
