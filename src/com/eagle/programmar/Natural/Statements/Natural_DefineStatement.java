@@ -14,6 +14,8 @@ import com.eagle.programmar.Natural.Terminals.Natural_Literal;
 import com.eagle.programmar.Natural.Terminals.Natural_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Natural_DefineStatement extends TokenSequence
 {
@@ -43,9 +45,9 @@ public class Natural_DefineStatement extends TokenSequence
 		
 		public static class Natural_DataDeclaration extends TokenSequence
 		{
-			public Natural_Punctuation leftParen = new Natural_Punctuation('(');
+			public PunctuationLeftParen leftParen;
 			public Natural_DataType dataType;
-			public Natural_Punctuation rightParen = new Natural_Punctuation(')');
+			public PunctuationRightParen rightParen;
 		}
 		
 		public static class Natural_DataInitialization extends TokenSequence

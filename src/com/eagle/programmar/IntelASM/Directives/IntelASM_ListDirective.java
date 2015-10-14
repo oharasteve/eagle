@@ -4,12 +4,12 @@
 package com.eagle.programmar.IntelASM.Directives;
 
 import com.eagle.programmar.IntelASM.Terminals.IntelASM_KeywordChoice;
-import com.eagle.programmar.IntelASM.Terminals.IntelASM_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
 
 public class IntelASM_ListDirective extends TokenSequence
 {
-	public IntelASM_Punctuation dot = new IntelASM_Punctuation('.');
+	public PunctuationPeriod dot;
 	public IntelASM_KeywordChoice directive = new IntelASM_KeywordChoice(
 			"list",
 			"xlist"

@@ -10,6 +10,10 @@ import com.eagle.programmar.IBMASM.Terminals.IBMASM_Number;
 import com.eagle.programmar.IBMASM.Terminals.IBMASM_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class IBMASM_Address extends TokenSequence
 {
@@ -21,11 +25,11 @@ public class IBMASM_Address extends TokenSequence
 	{
 		public IBMASM_Label label;
 		public IBMASM_Number number;
-		public IBMASM_Punctuation star = new IBMASM_Punctuation('*');
+		public PunctuationStar star;
 		
 		public static class IBMASM_Address_Equals extends TokenSequence
 		{
-			public IBMASM_Punctuation equals = new IBMASM_Punctuation('=');
+			public PunctuationEquals equals;
 			public IBMASM_Keyword X = new IBMASM_Keyword("X");
 			public IBMASM_Literal literal;
 		}
@@ -39,8 +43,8 @@ public class IBMASM_Address extends TokenSequence
 	
 	public static class IBMASM_AddressSize extends TokenSequence
 	{
-		public IBMASM_Punctuation leftParen = new IBMASM_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public IBMASM_Number size;
-		public IBMASM_Punctuation rightParen = new IBMASM_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 }

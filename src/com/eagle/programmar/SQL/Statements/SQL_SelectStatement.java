@@ -7,21 +7,22 @@ import com.eagle.programmar.SQL.SQL_Expression;
 import com.eagle.programmar.SQL.Symbols.SQL_Identifier_Reference;
 import com.eagle.programmar.SQL.Symbols.SQL_Table_Definition;
 import com.eagle.programmar.SQL.Terminals.SQL_Keyword;
-import com.eagle.programmar.SQL.Terminals.SQL_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class SQL_SelectStatement extends TokenSequence
 {
 	public @DOC("sql_select.asp") SQL_Keyword SELECT = new SQL_Keyword("SELECT");
-	public SQL_SelectWhat what;
-	public @OPT TokenList<SQL_MoreFields> moreFields;
+	public SeparatedList<SQL_SelectWhat,PunctuationComma> what;
 	public @OPT SQL_SelectInto into;
 	public SQL_SelectFrom from;
 	public @OPT SQL_SelectWhere where;
 	public @OPT SQL_SelectReadOnly readOnly;
-	public SQL_Punctuation semicolon = new SQL_Punctuation(';');
+	public PunctuationSemicolon semicolon;
 	
 	public static class SQL_SelectWhat extends TokenChooser
 	{
@@ -40,12 +41,6 @@ public class SQL_SelectStatement extends TokenSequence
 		public SQL_Identifier_Reference table;
 	}
 	
-	public static class SQL_MoreFields extends TokenSequence
-	{
-		public SQL_Punctuation comma = new SQL_Punctuation(',');
-		public SQL_SelectWhat what;
-	}
-
 	public static class SQL_SelectFrom extends TokenSequence
 	{
 		public SQL_Keyword FROM = new SQL_Keyword("FROM");
@@ -55,7 +50,7 @@ public class SQL_SelectStatement extends TokenSequence
 		
 		public static class SQL_SelectFromMore extends TokenSequence
 		{
-			public SQL_Punctuation comma = new SQL_Punctuation(',');
+			public PunctuationComma comma;
 			public SQL_Identifier_Reference table;
 			public @OPT SQL_Table_Definition tableName;
 		}

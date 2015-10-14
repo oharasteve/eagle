@@ -7,16 +7,17 @@ import com.eagle.programmar.Python.Python_Expression;
 import com.eagle.programmar.Python.Python_Statement;
 import com.eagle.programmar.Python.Terminals.Python_EndOfLine;
 import com.eagle.programmar.Python.Terminals.Python_Keyword;
-import com.eagle.programmar.Python.Terminals.Python_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class Python_WithStatement extends TokenSequence
 {
 	public Python_Keyword WITH = new Python_Keyword("with");
-	public Python_WithItem withItem;
-	public @OPT TokenList<Python_WithMoreItems> moreItems;
-	public Python_Punctuation colon = new Python_Punctuation(':');
+	public SeparatedList<Python_WithItem,PunctuationComma> withItems;
+	public PunctuationColon colon;
 	public TokenList<Python_EndOfLine> eoln;
 	public TokenList<Python_Statement> statements;
 	
@@ -30,11 +31,5 @@ public class Python_WithStatement extends TokenSequence
 			public Python_Keyword AS = new Python_Keyword("as");
 			public Python_Expression expression;
 		}
-	}
-	
-	public static class Python_WithMoreItems extends TokenSequence
-	{
-		public Python_Punctuation comma = new Python_Punctuation(',');
-		public Python_WithItem withItem;
 	}
 }

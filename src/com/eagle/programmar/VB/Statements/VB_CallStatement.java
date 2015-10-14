@@ -6,9 +6,11 @@ package com.eagle.programmar.VB.Statements;
 import com.eagle.programmar.VB.VB_Expression;
 import com.eagle.programmar.VB.Symbols.VB_Identifier_Reference;
 import com.eagle.programmar.VB.Terminals.VB_Keyword;
-import com.eagle.programmar.VB.Terminals.VB_Punctuation;
-import com.eagle.tokens.TokenList;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class VB_CallStatement extends TokenSequence
 {
@@ -18,15 +20,8 @@ public class VB_CallStatement extends TokenSequence
 	
 	public static class VB_CallParameters extends TokenSequence
 	{
-		public VB_Punctuation leftParen = new VB_Punctuation('(');
-		public @OPT VB_Expression param;
-		public @OPT TokenList<VB_MoreCallParameters> moreParams;
-		public VB_Punctuation rightParen = new VB_Punctuation(')');
-		
-		public static class VB_MoreCallParameters extends TokenSequence
-		{
-			public VB_Punctuation comma = new VB_Punctuation(',');
-			public VB_Expression param;
-		}
+		public PunctuationLeftParen leftParen;
+		public @OPT SeparatedList<VB_Expression,PunctuationComma> params;
+		public PunctuationRightParen rightParen;
 	}
 }

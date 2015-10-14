@@ -27,6 +27,11 @@ import com.eagle.tokens.EagleScope.EagleScopeInterface;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Java_Statement extends TokenChooser
 {
@@ -34,7 +39,7 @@ public class Java_Statement extends TokenChooser
 	public Java_Class jclass;
 	public Java_Enum jenum;
 	
-	public @CURIOUS("Empty statement") Java_Punctuation emptyStatement = new Java_Punctuation(';');
+	public @CURIOUS("Empty statement") PunctuationSemicolon emptyStatement;
 	
 	public static class Java_AnnotationDefinition extends TokenSequence
 	{
@@ -43,18 +48,18 @@ public class Java_Statement extends TokenChooser
 		public Java_Punctuation atSign = new Java_Punctuation('@');
 		public Java_Keyword INTERFACE = new Java_Keyword("interface");
 		public Java_Identifier id;
-		public Java_Punctuation leftBrace = new Java_Punctuation('{');
+		public PunctuationLeftBrace leftBrace;
 		public @OPT TokenList<Java_Comment> comments;
 		public @OPT Java_AnnotationParameter parameter;
-		public Java_Punctuation rightBrace = new Java_Punctuation('}');
+		public PunctuationRightBrace rightBrace;
 		
 		public static class Java_AnnotationParameter extends TokenSequence
 		{
 			public Java_Type type;
 			public Java_Identifier id;
-			public Java_Punctuation leftParen = new Java_Punctuation('(');
-			public Java_Punctuation rightParen = new Java_Punctuation(')');
-			public Java_Punctuation semicolon = new Java_Punctuation(';');
+			public PunctuationLeftParen leftParen;
+			public PunctuationRightParen rightParen;
+			public PunctuationSemicolon semicolon;
 		}
 	}
 
@@ -62,9 +67,9 @@ public class Java_Statement extends TokenChooser
 	{
 		private EagleScope _scope = new EagleScope(Java_Syntax.isCaseSensitive);
 		
-		public @INDENT Java_Punctuation leftBrace = new Java_Punctuation('{');
+		public @INDENT PunctuationLeftBrace leftBrace;
 		public @OPT TokenList<Java_StatementOrComment> statements;
-		public @OUTDENT Java_Punctuation rightBrace = new Java_Punctuation('}');
+		public @OUTDENT PunctuationRightBrace rightBrace;
 		
 		public static class Java_StatementOrComment extends TokenChooser
 		{

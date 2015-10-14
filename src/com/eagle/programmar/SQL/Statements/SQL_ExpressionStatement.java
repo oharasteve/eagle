@@ -4,11 +4,11 @@
 package com.eagle.programmar.SQL.Statements;
 
 import com.eagle.programmar.SQL.SQL_Expression;
-import com.eagle.programmar.SQL.Terminals.SQL_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class SQL_ExpressionStatement extends TokenSequence
 {
 	public SQL_Expression expr;
-	public SQL_Punctuation semicolon = new SQL_Punctuation(';');
+	public PunctuationSemicolon semicolon;
 }

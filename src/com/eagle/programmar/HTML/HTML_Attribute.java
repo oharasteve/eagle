@@ -12,6 +12,9 @@ import com.eagle.programmar.HTML.Terminals.HTML_Punctuation;
 import com.eagle.programmar.HTML.Terminals.HTML_PunctuationChoice;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
 
 public class HTML_Attribute extends TokenSequence
 {
@@ -20,7 +23,7 @@ public class HTML_Attribute extends TokenSequence
 	
 	public static class HTML_AttributeValue extends TokenSequence
 	{
-		public @NOSPACE HTML_Punctuation equals = new HTML_Punctuation('=');
+		public @NOSPACE PunctuationEquals equals;
 		public @NOSPACE HTML_Value value;
 	}
 	
@@ -32,7 +35,7 @@ public class HTML_Attribute extends TokenSequence
 		public static class HTML_Namespace extends TokenSequence
 		{
 			public HTML_Identifier id1;
-			public HTML_Punctuation colon = new HTML_Punctuation(':');
+			public PunctuationColon colon;
 			public HTML_Identifier id2;
 		}
 	}
@@ -64,7 +67,7 @@ public class HTML_Attribute extends TokenSequence
 		public static class HTML_Strange_Number extends TokenSequence
 		{
 			public HTML_Punctuation plus = new HTML_Punctuation('+');
-			public HTML_Punctuation point = new HTML_Punctuation('.');
+			public PunctuationPeriod point;
 			public HTML_Number number;
 		}
 	}

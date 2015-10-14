@@ -5,11 +5,11 @@ package com.eagle.programmar.Gupta;
 
 import com.eagle.programmar.Gupta.Terminals.Gupta_Keyword;
 import com.eagle.programmar.Gupta.Terminals.Gupta_KeywordChoice;
-import com.eagle.programmar.Gupta.Terminals.Gupta_Punctuation;
 import com.eagle.programmar.Gupta.Terminals.Gupta_PunctuationChoice;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
 
 public class Gupta_Condition extends TokenSequence
 {
@@ -40,7 +40,7 @@ public class Gupta_Condition extends TokenSequence
 				public static class Gupta_Not_Equals extends TokenSequence
 				{
 					public Gupta_Keyword NOT = new Gupta_Keyword("NOT");
-					public Gupta_Punctuation equals = new Gupta_Punctuation('=');
+					public PunctuationEquals equals;
 				}
 
 				public static class Gupta_Less_Than extends TokenSequence

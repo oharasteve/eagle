@@ -6,17 +6,19 @@ package com.eagle.programmar.Lisp.Functions;
 import com.eagle.programmar.Lisp.Lisp_SExpr;
 import com.eagle.programmar.Lisp.Symbols.Lisp_Function_Definition;
 import com.eagle.programmar.Lisp.Terminals.Lisp_Keyword;
-import com.eagle.programmar.Lisp.Terminals.Lisp_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Lisp_DefunFunction extends TokenSequence
 {
-	public Lisp_Punctuation leftParen = new Lisp_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public @DOC("m_defun.htm") Lisp_Keyword DEFUN = new Lisp_Keyword("defun");
-	public @OPT Lisp_Punctuation comma = new Lisp_Punctuation(',');
+	public @OPT PunctuationComma comma;
 	public Lisp_Function_Definition name;
 	public Lisp_SExpr arguments;
 	public TokenList<Lisp_SExpr> body;
-	public Lisp_Punctuation rightParen = new Lisp_Punctuation(')');
+	public PunctuationRightParen rightParen;
 }

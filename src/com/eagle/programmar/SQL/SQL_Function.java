@@ -7,17 +7,21 @@ import com.eagle.programmar.SQL.Symbols.SQL_Identifier_Reference;
 import com.eagle.programmar.SQL.Terminals.SQL_Keyword;
 import com.eagle.programmar.SQL.Terminals.SQL_KeywordChoice;
 import com.eagle.programmar.SQL.Terminals.SQL_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
-import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class SQL_Function extends TokenSequence
 {
 	public SQL_Variable funcName;
-	public SQL_Punctuation leftParen = new SQL_Punctuation('(');
-	public @OPT SQL_FunctionParam param;
-	public @OPT TokenList<SQL_ConcatMore> more;
-	public SQL_Punctuation rightParen = new SQL_Punctuation(')');
+	public PunctuationLeftParen leftParen;
+	public @OPT SeparatedList<SQL_FunctionParam,PunctuationComma> params;
+	public PunctuationRightParen rightParen;
 	
 	public static class SQL_FunctionParam extends TokenChooser
 	{
@@ -25,7 +29,7 @@ public class SQL_Function extends TokenSequence
 		
 		public static class SQL_FunctionColonParam extends TokenSequence
 		{
-			public SQL_Punctuation colon = new SQL_Punctuation(':');
+			public PunctuationColon colon;
 			public SQL_Expression arg;
 		}
 		
@@ -35,12 +39,6 @@ public class SQL_Function extends TokenSequence
 			public SQL_Punctuation equalsGreater = new SQL_Punctuation("=>");
 			public SQL_Expression arg;
 		}
-	}
-	
-	public static class SQL_ConcatMore extends TokenSequence
-	{
-		public SQL_Punctuation comma = new SQL_Punctuation(',');
-		public SQL_FunctionParam param;
 	}
 	
 	public static class SQL_FunctionName extends TokenChooser
@@ -58,21 +56,21 @@ public class SQL_Function extends TokenSequence
 		public static class SQL_FunctionSCHEDULER extends TokenSequence
 		{
 			public SQL_Keyword DBMSSCHEDULER = new SQL_Keyword("DBMS_SCHEDULER");
-			public SQL_Punctuation dot = new SQL_Punctuation('.');
+			public PunctuationPeriod dot;
 			public SQL_KeywordChoice DROPJOB = new SQL_KeywordChoice("CREATE_JOB", "DROP_JOB");
 		}
 		
 		public static class SQL_FunctionLOB extends TokenSequence
 		{
 			public SQL_Keyword DBMSLOB = new SQL_Keyword("DBMS_LOB");
-			public SQL_Punctuation dot = new SQL_Punctuation('.');
+			public PunctuationPeriod dot;
 			public SQL_Keyword GETLENGTH = new SQL_Keyword("GETLENGTH");
 		}
 		
 		public static class SQL_FunctionJOB extends TokenSequence
 		{
 			public SQL_Keyword DBMSJOB = new SQL_Keyword("DBMS_JOB");
-			public SQL_Punctuation dot = new SQL_Punctuation('.');
+			public PunctuationPeriod dot;
 			public SQL_Keyword REMOVE = new SQL_Keyword("REMOVE");
 		}
 	}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<EagleProgram Created="Sat Oct 03 13:20:42 EDT 2015" Elapsed="170" Language="PHP" Steps="56046" Tokens="1190">
+<EagleProgram Created="Wed Oct 14 13:46:32 EDT 2015" Elapsed="174" Language="PHP" Steps="56034" Tokens="1190">
   <T EC="0" EL="73" File="" SC="1" SL="1" TT=".PHP.PHP_Program">
     <T EC="0" EL="73" N="entry" SC="1" SL="1" TT="List">
       <T EC="0" EL="73" SC="1" SL="1" TT=".PHP.PHP_Program$PHP_Entry">
@@ -16,10 +16,10 @@
                     <T EC="3" EL="4" SC="4" SL="2" TT=".Perl.Perl_Statement">
                       <T EC="3" EL="4" SC="4" SL="2" TT=".Perl.Perl_Include">
                         <T EC="10" EL="2" N="INCLUDE" SC="4" SL="2" TT=".Perl.Terminals.Perl_Keyword" V="include"/>
-                        <T EC="11" EL="2" N="leftParen" SC="11" SL="2" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                        <T EC="11" EL="2" N="leftParen" SC="11" SL="2" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                         <T EC="22" EL="2" N="fileName" SC="12" SL="2" TT=".Perl.Terminals.Perl_Literal" V="&quot;../db.php&quot;"/>
-                        <T EC="23" EL="2" N="rightParen" SC="23" SL="2" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
-                        <T EC="24" EL="2" N="semicolon" SC="24" SL="2" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="23" EL="2" N="rightParen" SC="23" SL="2" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
+                        <T EC="24" EL="2" N="semicolon" SC="24" SL="2" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>
@@ -44,7 +44,7 @@
                             </T>
                           </T>
                         </T>
-                        <T EC="26" EL="4" N="semicolon" SC="26" SL="4" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="26" EL="4" N="semicolon" SC="26" SL="4" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>
@@ -58,16 +58,16 @@
                             <T EC="10" EL="5" N="methodName" SC="5" SL="5" TT=".Perl.Perl_Variable">
                               <T EC="10" EL="5" SC="5" SL="5" TT=".Perl.Symbols.Perl_Identifier_Reference" V="header"/>
                             </T>
-                            <T EC="11" EL="5" N="leftParen" SC="11" SL="5" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                            <T EC="11" EL="5" N="leftParen" SC="11" SL="5" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                             <T EC="51" EL="5" N="argList" SC="12" SL="5" TT=".Perl.Perl_Expression$Perl_ArgumentList">
                               <T EC="51" EL="5" N="arg" SC="12" SL="5" TT=".Perl.Perl_Expression">
                                 <T EC="51" EL="5" SC="12" SL="5" TT=".Perl.Terminals.Perl_Literal" V="&quot;Content-type: application/octet-stream&quot;"/>
                               </T>
                             </T>
-                            <T EC="52" EL="5" N="rightParen" SC="52" SL="5" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                            <T EC="52" EL="5" N="rightParen" SC="52" SL="5" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                           </T>
                         </T>
-                        <T EC="53" EL="5" N="semicolon" SC="53" SL="5" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="53" EL="5" N="semicolon" SC="53" SL="5" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>
@@ -81,7 +81,7 @@
                             <T EC="10" EL="6" N="methodName" SC="5" SL="6" TT=".Perl.Perl_Variable">
                               <T EC="10" EL="6" SC="5" SL="6" TT=".Perl.Symbols.Perl_Identifier_Reference" V="header"/>
                             </T>
-                            <T EC="11" EL="6" N="leftParen" SC="11" SL="6" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                            <T EC="11" EL="6" N="leftParen" SC="11" SL="6" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                             <T EC="71" EL="6" N="argList" SC="12" SL="6" TT=".Perl.Perl_Expression$Perl_ArgumentList">
                               <T EC="71" EL="6" N="arg" SC="12" SL="6" TT=".Perl.Perl_Expression">
                                 <T EC="71" EL="6" SC="12" SL="6" TT=".Perl.Perl_Expression$Perl_DotExpression">
@@ -90,7 +90,7 @@
                                       <T EC="57" EL="6" N="left" SC="12" SL="6" TT=".Perl.Perl_Expression">
                                         <T EC="57" EL="6" SC="12" SL="6" TT=".Perl.Terminals.Perl_Literal" V="&quot;Content-Disposition: attachment; filename=\&quot;&quot;"/>
                                       </T>
-                                      <T EC="59" EL="6" N="dot" SC="59" SL="6" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
+                                      <T EC="59" EL="6" N="dot" SC="59" SL="6" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
                                       <T EC="65" EL="6" N="right" SC="61" SL="6" TT=".Perl.Perl_Expression">
                                         <T EC="65" EL="6" SC="61" SL="6" TT=".Perl.Perl_Variable">
                                           <T EC="65" EL="6" SC="61" SL="6" TT=".Perl.Perl_Variable$Perl_UserVariable">
@@ -101,17 +101,17 @@
                                       </T>
                                     </T>
                                   </T>
-                                  <T EC="66" EL="6" N="dot" SC="66" SL="6" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
+                                  <T EC="66" EL="6" N="dot" SC="66" SL="6" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
                                   <T EC="71" EL="6" N="right" SC="68" SL="6" TT=".Perl.Perl_Expression">
                                     <T EC="71" EL="6" SC="68" SL="6" TT=".Perl.Terminals.Perl_Literal" V="&quot;\&quot;&quot;"/>
                                   </T>
                                 </T>
                               </T>
                             </T>
-                            <T EC="72" EL="6" N="rightParen" SC="72" SL="6" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                            <T EC="72" EL="6" N="rightParen" SC="72" SL="6" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                           </T>
                         </T>
-                        <T EC="73" EL="6" N="semicolon" SC="73" SL="6" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="73" EL="6" N="semicolon" SC="73" SL="6" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>
@@ -125,16 +125,16 @@
                             <T EC="10" EL="7" N="methodName" SC="5" SL="7" TT=".Perl.Perl_Variable">
                               <T EC="10" EL="7" SC="5" SL="7" TT=".Perl.Symbols.Perl_Identifier_Reference" V="header"/>
                             </T>
-                            <T EC="11" EL="7" N="leftParen" SC="11" SL="7" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                            <T EC="11" EL="7" N="leftParen" SC="11" SL="7" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                             <T EC="46" EL="7" N="argList" SC="12" SL="7" TT=".Perl.Perl_Expression$Perl_ArgumentList">
                               <T EC="46" EL="7" N="arg" SC="12" SL="7" TT=".Perl.Perl_Expression">
                                 <T EC="46" EL="7" SC="12" SL="7" TT=".Perl.Terminals.Perl_Literal" V="&quot;Content-Transfer-Encoding: binary&quot;"/>
                               </T>
                             </T>
-                            <T EC="47" EL="7" N="rightParen" SC="47" SL="7" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                            <T EC="47" EL="7" N="rightParen" SC="47" SL="7" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                           </T>
                         </T>
-                        <T EC="48" EL="7" N="semicolon" SC="48" SL="7" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="48" EL="7" N="semicolon" SC="48" SL="7" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>
@@ -145,14 +145,14 @@
                       <T EC="3" EL="14" SC="5" SL="8" TT=".Perl.Perl_Statement$Perl_CompundStatement">
                         <T EC="3" EL="14" SC="5" SL="8" TT=".Perl.Statements.Perl_IfStatement">
                           <T EC="6" EL="8" N="IF" SC="5" SL="8" TT=".Perl.Terminals.Perl_Keyword" V="if"/>
-                          <T EC="8" EL="8" N="leftParen" SC="8" SL="8" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                          <T EC="8" EL="8" N="leftParen" SC="8" SL="8" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                           <T EC="51" EL="8" N="condition" SC="9" SL="8" TT=".Perl.Statements.Perl_IfStatement$Perl_IfWhat">
                             <T EC="51" EL="8" SC="9" SL="8" TT=".Perl.Perl_Expression">
                               <T EC="51" EL="8" SC="9" SL="8" TT=".Perl.Perl_Expression$Perl_MethodInvocation">
                                 <T EC="14" EL="8" N="methodName" SC="9" SL="8" TT=".Perl.Perl_Variable">
                                   <T EC="14" EL="8" SC="9" SL="8" TT=".Perl.Symbols.Perl_Identifier_Reference" V="strpos"/>
                                 </T>
-                                <T EC="15" EL="8" N="leftParen" SC="15" SL="8" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                <T EC="15" EL="8" N="leftParen" SC="15" SL="8" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                                 <T EC="50" EL="8" N="argList" SC="16" SL="8" TT=".Perl.Perl_Expression$Perl_ArgumentList">
                                   <T EC="42" EL="8" N="arg" SC="16" SL="8" TT=".Perl.Perl_Expression">
                                     <T EC="42" EL="8" SC="16" SL="8" TT=".Perl.Perl_Variable">
@@ -161,11 +161,11 @@
                                         <T EC="23" EL="8" N="id" SC="17" SL="8" TT=".Perl.Symbols.Perl_Identifier_Reference" V="_SERVER"/>
                                         <T EC="42" EL="8" N="subscript" SC="16" SL="8" TT="List">
                                           <T EC="42" EL="8" SC="24" SL="8" TT=".Perl.Perl_Subscript">
-                                            <T EC="24" EL="8" N="leftBracket" SC="24" SL="8" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                            <T EC="24" EL="8" N="leftBracket" SC="24" SL="8" TT="com.eagle.tokens.punctuation.PunctuationLeftBracket" V="["/>
                                             <T EC="41" EL="8" N="expr" SC="25" SL="8" TT=".Perl.Perl_Expression">
                                               <T EC="41" EL="8" SC="25" SL="8" TT=".Perl.Terminals.Perl_Literal" V="'HTTP_USER_AGENT'"/>
                                             </T>
-                                            <T EC="42" EL="8" N="rightBracket" SC="42" SL="8" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                            <T EC="42" EL="8" N="rightBracket" SC="42" SL="8" TT="com.eagle.tokens.punctuation.PunctuationRightBracket" V="]"/>
                                           </T>
                                         </T>
                                       </T>
@@ -173,21 +173,21 @@
                                   </T>
                                   <T EC="50" EL="8" N="moreArgs" SC="16" SL="8" TT="List">
                                     <T EC="50" EL="8" SC="43" SL="8" TT=".Perl.Perl_Expression$Perl_ArgumentList$Perl_MoreArguments">
-                                      <T EC="43" EL="8" N="comma" SC="43" SL="8" TT=".Perl.Terminals.Perl_Punctuation" V=","/>
+                                      <T EC="43" EL="8" N="comma" SC="43" SL="8" TT="com.eagle.tokens.punctuation.PunctuationComma" V=","/>
                                       <T EC="50" EL="8" N="arg" SC="45" SL="8" TT=".Perl.Perl_Expression">
                                         <T EC="50" EL="8" SC="45" SL="8" TT=".Perl.Terminals.Perl_Literal" V="'MSIE'"/>
                                       </T>
                                     </T>
                                   </T>
                                 </T>
-                                <T EC="51" EL="8" N="rightParen" SC="51" SL="8" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                                <T EC="51" EL="8" N="rightParen" SC="51" SL="8" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                               </T>
                             </T>
                           </T>
-                          <T EC="52" EL="8" N="rightParen" SC="52" SL="8" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                          <T EC="52" EL="8" N="rightParen" SC="52" SL="8" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                           <T EC="3" EL="14" N="thenStatement" SC="5" SL="9" TT=".Perl.Perl_Statement">
                             <T EC="3" EL="14" SC="5" SL="9" TT=".Perl.Perl_Statement$Perl_StatementBlock">
-                              <T EC="5" EL="9" N="leftBrace" SC="5" SL="9" TT=".Perl.Terminals.Perl_Punctuation" V="{"/>
+                              <T EC="5" EL="9" N="leftBrace" SC="5" SL="9" TT="com.eagle.tokens.punctuation.PunctuationLeftBrace" V="{"/>
                               <T EC="3" EL="14" N="statements" SC="5" SL="9" TT="List">
                                 <T EC="59" EL="10" SC="9" SL="10" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
                                   <T EC="59" EL="10" SC="9" SL="10" TT=".Perl.Terminals.Perl_Comment" V="// IE cannot download from sessions without a cache"/>
@@ -200,21 +200,21 @@
                                           <T EC="14" EL="11" N="methodName" SC="9" SL="11" TT=".Perl.Perl_Variable">
                                             <T EC="14" EL="11" SC="9" SL="11" TT=".Perl.Symbols.Perl_Identifier_Reference" V="header"/>
                                           </T>
-                                          <T EC="15" EL="11" N="leftParen" SC="15" SL="11" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                          <T EC="15" EL="11" N="leftParen" SC="15" SL="11" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                                           <T EC="38" EL="11" N="argList" SC="16" SL="11" TT=".Perl.Perl_Expression$Perl_ArgumentList">
                                             <T EC="38" EL="11" N="arg" SC="16" SL="11" TT=".Perl.Perl_Expression">
                                               <T EC="38" EL="11" SC="16" SL="11" TT=".Perl.Terminals.Perl_Literal" V="'Cache-Control: public'"/>
                                             </T>
                                           </T>
-                                          <T EC="39" EL="11" N="rightParen" SC="39" SL="11" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                                          <T EC="39" EL="11" N="rightParen" SC="39" SL="11" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                                         </T>
                                       </T>
-                                      <T EC="40" EL="11" N="semicolon" SC="40" SL="11" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="40" EL="11" N="semicolon" SC="40" SL="11" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
                               </T>
-                              <T EC="5" EL="12" N="rightBrace" SC="5" SL="12" TT=".Perl.Terminals.Perl_Punctuation" V="}"/>
+                              <T EC="5" EL="12" N="rightBrace" SC="5" SL="12" TT="com.eagle.tokens.punctuation.PunctuationRightBrace" V="}"/>
                             </T>
                           </T>
                         </T>
@@ -242,7 +242,7 @@
                             </T>
                           </T>
                         </T>
-                        <T EC="36" EL="14" N="semicolon" SC="36" SL="14" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="36" EL="14" N="semicolon" SC="36" SL="14" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>
@@ -267,7 +267,7 @@
                                 <T EC="25" EL="15" N="methodName" SC="15" SL="15" TT=".Perl.Perl_Variable">
                                   <T EC="25" EL="15" SC="15" SL="15" TT=".Perl.Symbols.Perl_Identifier_Reference" V="mysql_query"/>
                                 </T>
-                                <T EC="26" EL="15" N="leftParen" SC="26" SL="15" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                <T EC="26" EL="15" N="leftParen" SC="26" SL="15" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                                 <T EC="32" EL="15" N="argList" SC="27" SL="15" TT=".Perl.Perl_Expression$Perl_ArgumentList">
                                   <T EC="32" EL="15" N="arg" SC="27" SL="15" TT=".Perl.Perl_Expression">
                                     <T EC="32" EL="15" SC="27" SL="15" TT=".Perl.Perl_Variable">
@@ -278,12 +278,12 @@
                                     </T>
                                   </T>
                                 </T>
-                                <T EC="33" EL="15" N="rightParen" SC="33" SL="15" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                                <T EC="33" EL="15" N="rightParen" SC="33" SL="15" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                               </T>
                             </T>
                           </T>
                         </T>
-                        <T EC="34" EL="15" N="semicolon" SC="34" SL="15" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="34" EL="15" N="semicolon" SC="34" SL="15" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>
@@ -294,7 +294,7 @@
                       <T EC="3" EL="24" SC="4" SL="16" TT=".Perl.Perl_Statement$Perl_CompundStatement">
                         <T EC="3" EL="24" SC="4" SL="16" TT=".Perl.Statements.Perl_WhileStatement">
                           <T EC="8" EL="16" N="WHILE" SC="4" SL="16" TT=".Perl.Terminals.Perl_Keyword" V="while"/>
-                          <T EC="10" EL="16" N="leftParen" SC="10" SL="16" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                          <T EC="10" EL="16" N="leftParen" SC="10" SL="16" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                           <T EC="44" EL="16" N="condition" SC="11" SL="16" TT=".Perl.Perl_Expression">
                             <T EC="44" EL="16" SC="11" SL="16" TT=".Perl.Perl_Expression$Perl_AssignmentExpression">
                               <T EC="15" EL="16" N="var" SC="11" SL="16" TT=".Perl.Perl_Expression">
@@ -311,7 +311,7 @@
                                   <T EC="34" EL="16" N="methodName" SC="18" SL="16" TT=".Perl.Perl_Variable">
                                     <T EC="34" EL="16" SC="18" SL="16" TT=".Perl.Symbols.Perl_Identifier_Reference" V="mysql_fetch_array"/>
                                   </T>
-                                  <T EC="35" EL="16" N="leftParen" SC="35" SL="16" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                  <T EC="35" EL="16" N="leftParen" SC="35" SL="16" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                                   <T EC="43" EL="16" N="argList" SC="36" SL="16" TT=".Perl.Perl_Expression$Perl_ArgumentList">
                                     <T EC="43" EL="16" N="arg" SC="36" SL="16" TT=".Perl.Perl_Expression">
                                       <T EC="43" EL="16" SC="36" SL="16" TT=".Perl.Perl_Variable">
@@ -322,15 +322,15 @@
                                       </T>
                                     </T>
                                   </T>
-                                  <T EC="44" EL="16" N="rightParen" SC="44" SL="16" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                                  <T EC="44" EL="16" N="rightParen" SC="44" SL="16" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                                 </T>
                               </T>
                             </T>
                           </T>
-                          <T EC="45" EL="16" N="rightParen" SC="45" SL="16" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                          <T EC="45" EL="16" N="rightParen" SC="45" SL="16" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                           <T EC="3" EL="24" N="stmt" SC="4" SL="17" TT=".Perl.Perl_Statement">
                             <T EC="3" EL="24" SC="4" SL="17" TT=".Perl.Perl_Statement$Perl_StatementBlock">
-                              <T EC="4" EL="17" N="leftBrace" SC="4" SL="17" TT=".Perl.Terminals.Perl_Punctuation" V="{"/>
+                              <T EC="4" EL="17" N="leftBrace" SC="4" SL="17" TT="com.eagle.tokens.punctuation.PunctuationLeftBrace" V="{"/>
                               <T EC="3" EL="24" N="statements" SC="4" SL="17" TT="List">
                                 <T EC="6" EL="19" SC="7" SL="18" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
                                   <T EC="6" EL="19" SC="7" SL="18" TT=".Perl.Perl_Statement">
@@ -353,11 +353,11 @@
                                                 <T EC="17" EL="18" N="id" SC="15" SL="18" TT=".Perl.Symbols.Perl_Identifier_Reference" V="row"/>
                                                 <T EC="28" EL="18" N="subscript" SC="14" SL="18" TT="List">
                                                   <T EC="28" EL="18" SC="18" SL="18" TT=".Perl.Perl_Subscript">
-                                                    <T EC="18" EL="18" N="leftBracket" SC="18" SL="18" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                                    <T EC="18" EL="18" N="leftBracket" SC="18" SL="18" TT="com.eagle.tokens.punctuation.PunctuationLeftBracket" V="["/>
                                                     <T EC="27" EL="18" N="expr" SC="19" SL="18" TT=".Perl.Perl_Expression">
                                                       <T EC="27" EL="18" SC="19" SL="18" TT=".Perl.Terminals.Perl_Literal" V="&quot;KeyName&quot;"/>
                                                     </T>
-                                                    <T EC="28" EL="18" N="rightBracket" SC="28" SL="18" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                                    <T EC="28" EL="18" N="rightBracket" SC="28" SL="18" TT="com.eagle.tokens.punctuation.PunctuationRightBracket" V="]"/>
                                                   </T>
                                                 </T>
                                               </T>
@@ -365,7 +365,7 @@
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="29" EL="18" N="semicolon" SC="29" SL="18" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="29" EL="18" N="semicolon" SC="29" SL="18" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
@@ -390,11 +390,11 @@
                                                 <T EC="20" EL="19" N="id" SC="18" SL="19" TT=".Perl.Symbols.Perl_Identifier_Reference" V="row"/>
                                                 <T EC="33" EL="19" N="subscript" SC="17" SL="19" TT="List">
                                                   <T EC="33" EL="19" SC="21" SL="19" TT=".Perl.Perl_Subscript">
-                                                    <T EC="21" EL="19" N="leftBracket" SC="21" SL="19" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                                    <T EC="21" EL="19" N="leftBracket" SC="21" SL="19" TT="com.eagle.tokens.punctuation.PunctuationLeftBracket" V="["/>
                                                     <T EC="32" EL="19" N="expr" SC="22" SL="19" TT=".Perl.Perl_Expression">
                                                       <T EC="32" EL="19" SC="22" SL="19" TT=".Perl.Terminals.Perl_Literal" V="&quot;MotherKey&quot;"/>
                                                     </T>
-                                                    <T EC="33" EL="19" N="rightBracket" SC="33" SL="19" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                                    <T EC="33" EL="19" N="rightBracket" SC="33" SL="19" TT="com.eagle.tokens.punctuation.PunctuationRightBracket" V="]"/>
                                                   </T>
                                                 </T>
                                               </T>
@@ -402,7 +402,7 @@
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="34" EL="19" N="semicolon" SC="34" SL="19" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="34" EL="19" N="semicolon" SC="34" SL="19" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
@@ -427,11 +427,11 @@
                                                 <T EC="20" EL="20" N="id" SC="18" SL="20" TT=".Perl.Symbols.Perl_Identifier_Reference" V="row"/>
                                                 <T EC="33" EL="20" N="subscript" SC="17" SL="20" TT="List">
                                                   <T EC="33" EL="20" SC="21" SL="20" TT=".Perl.Perl_Subscript">
-                                                    <T EC="21" EL="20" N="leftBracket" SC="21" SL="20" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                                    <T EC="21" EL="20" N="leftBracket" SC="21" SL="20" TT="com.eagle.tokens.punctuation.PunctuationLeftBracket" V="["/>
                                                     <T EC="32" EL="20" N="expr" SC="22" SL="20" TT=".Perl.Perl_Expression">
                                                       <T EC="32" EL="20" SC="22" SL="20" TT=".Perl.Terminals.Perl_Literal" V="&quot;FatherKey&quot;"/>
                                                     </T>
-                                                    <T EC="33" EL="20" N="rightBracket" SC="33" SL="20" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                                    <T EC="33" EL="20" N="rightBracket" SC="33" SL="20" TT="com.eagle.tokens.punctuation.PunctuationRightBracket" V="]"/>
                                                   </T>
                                                 </T>
                                               </T>
@@ -439,7 +439,7 @@
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="34" EL="20" N="semicolon" SC="34" SL="20" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="34" EL="20" N="semicolon" SC="34" SL="20" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
@@ -449,88 +449,90 @@
                                       <T EC="68" EL="21" N="statement" SC="4" SL="21" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementList">
                                         <T EC="68" EL="21" SC="4" SL="21" TT=".Perl.Statements.Perl_EchoStatement">
                                           <T EC="7" EL="21" N="ECHO" SC="4" SL="21" TT=".Perl.Terminals.Perl_Keyword" V="echo"/>
-                                          <T EC="68" EL="21" N="expr" SC="9" SL="21" TT=".Perl.Perl_Expression">
-                                            <T EC="68" EL="21" SC="9" SL="21" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                              <T EC="62" EL="21" N="left" SC="9" SL="21" TT=".Perl.Perl_Expression">
-                                                <T EC="62" EL="21" SC="9" SL="21" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                  <T EC="52" EL="21" N="left" SC="9" SL="21" TT=".Perl.Perl_Expression">
-                                                    <T EC="52" EL="21" SC="9" SL="21" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                      <T EC="46" EL="21" N="left" SC="9" SL="21" TT=".Perl.Perl_Expression">
-                                                        <T EC="46" EL="21" SC="9" SL="21" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                          <T EC="36" EL="21" N="left" SC="9" SL="21" TT=".Perl.Perl_Expression">
-                                                            <T EC="36" EL="21" SC="9" SL="21" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                              <T EC="30" EL="21" N="left" SC="9" SL="21" TT=".Perl.Perl_Expression">
-                                                                <T EC="30" EL="21" SC="9" SL="21" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                                  <T EC="23" EL="21" N="left" SC="9" SL="21" TT=".Perl.Perl_Expression">
-                                                                    <T EC="23" EL="21" SC="9" SL="21" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                                      <T EC="16" EL="21" N="left" SC="9" SL="21" TT=".Perl.Perl_Expression">
-                                                                        <T EC="16" EL="21" SC="9" SL="21" TT=".Perl.Terminals.Perl_Literal" V="&quot;Person&quot;"/>
-                                                                      </T>
-                                                                      <T EC="18" EL="21" N="dot" SC="18" SL="21" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                                      <T EC="22" EL="21" N="right" SC="20" SL="21" TT=".Perl.Perl_Expression">
-                                                                        <T EC="22" EL="21" SC="20" SL="21" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                          <T EC="68" EL="21" N="exprs" SC="4" SL="21" TT="List">
+                                            <T EC="68" EL="21" SC="9" SL="21" TT=".Perl.Perl_Expression">
+                                              <T EC="68" EL="21" SC="9" SL="21" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                <T EC="62" EL="21" N="left" SC="9" SL="21" TT=".Perl.Perl_Expression">
+                                                  <T EC="62" EL="21" SC="9" SL="21" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                    <T EC="52" EL="21" N="left" SC="9" SL="21" TT=".Perl.Perl_Expression">
+                                                      <T EC="52" EL="21" SC="9" SL="21" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                        <T EC="46" EL="21" N="left" SC="9" SL="21" TT=".Perl.Perl_Expression">
+                                                          <T EC="46" EL="21" SC="9" SL="21" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                            <T EC="36" EL="21" N="left" SC="9" SL="21" TT=".Perl.Perl_Expression">
+                                                              <T EC="36" EL="21" SC="9" SL="21" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                                <T EC="30" EL="21" N="left" SC="9" SL="21" TT=".Perl.Perl_Expression">
+                                                                  <T EC="30" EL="21" SC="9" SL="21" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                                    <T EC="23" EL="21" N="left" SC="9" SL="21" TT=".Perl.Perl_Expression">
+                                                                      <T EC="23" EL="21" SC="9" SL="21" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                                        <T EC="16" EL="21" N="left" SC="9" SL="21" TT=".Perl.Perl_Expression">
+                                                                          <T EC="16" EL="21" SC="9" SL="21" TT=".Perl.Terminals.Perl_Literal" V="&quot;Person&quot;"/>
+                                                                        </T>
+                                                                        <T EC="18" EL="21" N="dot" SC="18" SL="21" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                                        <T EC="22" EL="21" N="right" SC="20" SL="21" TT=".Perl.Perl_Expression">
+                                                                          <T EC="22" EL="21" SC="20" SL="21" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                                        </T>
                                                                       </T>
                                                                     </T>
-                                                                  </T>
-                                                                  <T EC="24" EL="21" N="dot" SC="24" SL="21" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                                  <T EC="30" EL="21" N="right" SC="26" SL="21" TT=".Perl.Perl_Expression">
-                                                                    <T EC="30" EL="21" SC="26" SL="21" TT=".Perl.Perl_Variable">
-                                                                      <T EC="30" EL="21" SC="26" SL="21" TT=".Perl.Perl_Variable$Perl_UserVariable">
-                                                                        <T EC="26" EL="21" N="dollar" SC="26" SL="21" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
-                                                                        <T EC="29" EL="21" N="id" SC="27" SL="21" TT=".Perl.Symbols.Perl_Identifier_Reference" V="key"/>
+                                                                    <T EC="24" EL="21" N="dot" SC="24" SL="21" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                                    <T EC="30" EL="21" N="right" SC="26" SL="21" TT=".Perl.Perl_Expression">
+                                                                      <T EC="30" EL="21" SC="26" SL="21" TT=".Perl.Perl_Variable">
+                                                                        <T EC="30" EL="21" SC="26" SL="21" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                                          <T EC="26" EL="21" N="dollar" SC="26" SL="21" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                                          <T EC="29" EL="21" N="id" SC="27" SL="21" TT=".Perl.Symbols.Perl_Identifier_Reference" V="key"/>
+                                                                        </T>
                                                                       </T>
                                                                     </T>
                                                                   </T>
                                                                 </T>
-                                                              </T>
-                                                              <T EC="31" EL="21" N="dot" SC="31" SL="21" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                              <T EC="35" EL="21" N="right" SC="33" SL="21" TT=".Perl.Perl_Expression">
-                                                                <T EC="35" EL="21" SC="33" SL="21" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                                <T EC="31" EL="21" N="dot" SC="31" SL="21" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                                <T EC="35" EL="21" N="right" SC="33" SL="21" TT=".Perl.Perl_Expression">
+                                                                  <T EC="35" EL="21" SC="33" SL="21" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                                </T>
                                                               </T>
                                                             </T>
-                                                          </T>
-                                                          <T EC="37" EL="21" N="dot" SC="37" SL="21" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                          <T EC="46" EL="21" N="right" SC="39" SL="21" TT=".Perl.Perl_Expression">
-                                                            <T EC="46" EL="21" SC="39" SL="21" TT=".Perl.Perl_Variable">
-                                                              <T EC="46" EL="21" SC="39" SL="21" TT=".Perl.Perl_Variable$Perl_UserVariable">
-                                                                <T EC="39" EL="21" N="dollar" SC="39" SL="21" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
-                                                                <T EC="45" EL="21" N="id" SC="40" SL="21" TT=".Perl.Symbols.Perl_Identifier_Reference" V="mother"/>
+                                                            <T EC="37" EL="21" N="dot" SC="37" SL="21" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                            <T EC="46" EL="21" N="right" SC="39" SL="21" TT=".Perl.Perl_Expression">
+                                                              <T EC="46" EL="21" SC="39" SL="21" TT=".Perl.Perl_Variable">
+                                                                <T EC="46" EL="21" SC="39" SL="21" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                                  <T EC="39" EL="21" N="dollar" SC="39" SL="21" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                                  <T EC="45" EL="21" N="id" SC="40" SL="21" TT=".Perl.Symbols.Perl_Identifier_Reference" V="mother"/>
+                                                                </T>
                                                               </T>
                                                             </T>
                                                           </T>
                                                         </T>
-                                                      </T>
-                                                      <T EC="47" EL="21" N="dot" SC="47" SL="21" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                      <T EC="51" EL="21" N="right" SC="49" SL="21" TT=".Perl.Perl_Expression">
-                                                        <T EC="51" EL="21" SC="49" SL="21" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                        <T EC="47" EL="21" N="dot" SC="47" SL="21" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                        <T EC="51" EL="21" N="right" SC="49" SL="21" TT=".Perl.Perl_Expression">
+                                                          <T EC="51" EL="21" SC="49" SL="21" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                        </T>
                                                       </T>
                                                     </T>
-                                                  </T>
-                                                  <T EC="53" EL="21" N="dot" SC="53" SL="21" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                  <T EC="62" EL="21" N="right" SC="55" SL="21" TT=".Perl.Perl_Expression">
-                                                    <T EC="62" EL="21" SC="55" SL="21" TT=".Perl.Perl_Variable">
-                                                      <T EC="62" EL="21" SC="55" SL="21" TT=".Perl.Perl_Variable$Perl_UserVariable">
-                                                        <T EC="55" EL="21" N="dollar" SC="55" SL="21" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
-                                                        <T EC="61" EL="21" N="id" SC="56" SL="21" TT=".Perl.Symbols.Perl_Identifier_Reference" V="father"/>
+                                                    <T EC="53" EL="21" N="dot" SC="53" SL="21" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                    <T EC="62" EL="21" N="right" SC="55" SL="21" TT=".Perl.Perl_Expression">
+                                                      <T EC="62" EL="21" SC="55" SL="21" TT=".Perl.Perl_Variable">
+                                                        <T EC="62" EL="21" SC="55" SL="21" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                          <T EC="55" EL="21" N="dollar" SC="55" SL="21" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                          <T EC="61" EL="21" N="id" SC="56" SL="21" TT=".Perl.Symbols.Perl_Identifier_Reference" V="father"/>
+                                                        </T>
                                                       </T>
                                                     </T>
                                                   </T>
                                                 </T>
-                                              </T>
-                                              <T EC="63" EL="21" N="dot" SC="63" SL="21" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                              <T EC="68" EL="21" N="right" SC="65" SL="21" TT=".Perl.Perl_Expression">
-                                                <T EC="68" EL="21" SC="65" SL="21" TT=".Perl.Terminals.Perl_Literal" V="&quot;\n&quot;"/>
+                                                <T EC="63" EL="21" N="dot" SC="63" SL="21" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                <T EC="68" EL="21" N="right" SC="65" SL="21" TT=".Perl.Perl_Expression">
+                                                  <T EC="68" EL="21" SC="65" SL="21" TT=".Perl.Terminals.Perl_Literal" V="&quot;\n&quot;"/>
+                                                </T>
                                               </T>
                                             </T>
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="69" EL="21" N="semicolon" SC="69" SL="21" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="69" EL="21" N="semicolon" SC="69" SL="21" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
                               </T>
-                              <T EC="4" EL="22" N="rightBrace" SC="4" SL="22" TT=".Perl.Terminals.Perl_Punctuation" V="}"/>
+                              <T EC="4" EL="22" N="rightBrace" SC="4" SL="22" TT="com.eagle.tokens.punctuation.PunctuationRightBrace" V="}"/>
                             </T>
                           </T>
                         </T>
@@ -558,7 +560,7 @@
                             </T>
                           </T>
                         </T>
-                        <T EC="37" EL="24" N="semicolon" SC="37" SL="24" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="37" EL="24" N="semicolon" SC="37" SL="24" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>
@@ -583,7 +585,7 @@
                                 <T EC="25" EL="25" N="methodName" SC="15" SL="25" TT=".Perl.Perl_Variable">
                                   <T EC="25" EL="25" SC="15" SL="25" TT=".Perl.Symbols.Perl_Identifier_Reference" V="mysql_query"/>
                                 </T>
-                                <T EC="26" EL="25" N="leftParen" SC="26" SL="25" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                <T EC="26" EL="25" N="leftParen" SC="26" SL="25" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                                 <T EC="32" EL="25" N="argList" SC="27" SL="25" TT=".Perl.Perl_Expression$Perl_ArgumentList">
                                   <T EC="32" EL="25" N="arg" SC="27" SL="25" TT=".Perl.Perl_Expression">
                                     <T EC="32" EL="25" SC="27" SL="25" TT=".Perl.Perl_Variable">
@@ -594,12 +596,12 @@
                                     </T>
                                   </T>
                                 </T>
-                                <T EC="33" EL="25" N="rightParen" SC="33" SL="25" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                                <T EC="33" EL="25" N="rightParen" SC="33" SL="25" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                               </T>
                             </T>
                           </T>
                         </T>
-                        <T EC="34" EL="25" N="semicolon" SC="34" SL="25" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="34" EL="25" N="semicolon" SC="34" SL="25" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>
@@ -610,7 +612,7 @@
                       <T EC="3" EL="32" SC="4" SL="26" TT=".Perl.Perl_Statement$Perl_CompundStatement">
                         <T EC="3" EL="32" SC="4" SL="26" TT=".Perl.Statements.Perl_WhileStatement">
                           <T EC="8" EL="26" N="WHILE" SC="4" SL="26" TT=".Perl.Terminals.Perl_Keyword" V="while"/>
-                          <T EC="10" EL="26" N="leftParen" SC="10" SL="26" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                          <T EC="10" EL="26" N="leftParen" SC="10" SL="26" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                           <T EC="44" EL="26" N="condition" SC="11" SL="26" TT=".Perl.Perl_Expression">
                             <T EC="44" EL="26" SC="11" SL="26" TT=".Perl.Perl_Expression$Perl_AssignmentExpression">
                               <T EC="15" EL="26" N="var" SC="11" SL="26" TT=".Perl.Perl_Expression">
@@ -627,7 +629,7 @@
                                   <T EC="34" EL="26" N="methodName" SC="18" SL="26" TT=".Perl.Perl_Variable">
                                     <T EC="34" EL="26" SC="18" SL="26" TT=".Perl.Symbols.Perl_Identifier_Reference" V="mysql_fetch_array"/>
                                   </T>
-                                  <T EC="35" EL="26" N="leftParen" SC="35" SL="26" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                  <T EC="35" EL="26" N="leftParen" SC="35" SL="26" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                                   <T EC="43" EL="26" N="argList" SC="36" SL="26" TT=".Perl.Perl_Expression$Perl_ArgumentList">
                                     <T EC="43" EL="26" N="arg" SC="36" SL="26" TT=".Perl.Perl_Expression">
                                       <T EC="43" EL="26" SC="36" SL="26" TT=".Perl.Perl_Variable">
@@ -638,15 +640,15 @@
                                       </T>
                                     </T>
                                   </T>
-                                  <T EC="44" EL="26" N="rightParen" SC="44" SL="26" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                                  <T EC="44" EL="26" N="rightParen" SC="44" SL="26" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                                 </T>
                               </T>
                             </T>
                           </T>
-                          <T EC="45" EL="26" N="rightParen" SC="45" SL="26" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                          <T EC="45" EL="26" N="rightParen" SC="45" SL="26" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                           <T EC="3" EL="32" N="stmt" SC="4" SL="27" TT=".Perl.Perl_Statement">
                             <T EC="3" EL="32" SC="4" SL="27" TT=".Perl.Perl_Statement$Perl_StatementBlock">
-                              <T EC="4" EL="27" N="leftBrace" SC="4" SL="27" TT=".Perl.Terminals.Perl_Punctuation" V="{"/>
+                              <T EC="4" EL="27" N="leftBrace" SC="4" SL="27" TT="com.eagle.tokens.punctuation.PunctuationLeftBrace" V="{"/>
                               <T EC="3" EL="32" N="statements" SC="4" SL="27" TT="List">
                                 <T EC="3" EL="29" SC="7" SL="28" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
                                   <T EC="3" EL="29" SC="7" SL="28" TT=".Perl.Perl_Statement">
@@ -669,11 +671,11 @@
                                                 <T EC="17" EL="28" N="id" SC="15" SL="28" TT=".Perl.Symbols.Perl_Identifier_Reference" V="row"/>
                                                 <T EC="28" EL="28" N="subscript" SC="14" SL="28" TT="List">
                                                   <T EC="28" EL="28" SC="18" SL="28" TT=".Perl.Perl_Subscript">
-                                                    <T EC="18" EL="28" N="leftBracket" SC="18" SL="28" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                                    <T EC="18" EL="28" N="leftBracket" SC="18" SL="28" TT="com.eagle.tokens.punctuation.PunctuationLeftBracket" V="["/>
                                                     <T EC="27" EL="28" N="expr" SC="19" SL="28" TT=".Perl.Perl_Expression">
                                                       <T EC="27" EL="28" SC="19" SL="28" TT=".Perl.Terminals.Perl_Literal" V="&quot;KeyName&quot;"/>
                                                     </T>
-                                                    <T EC="28" EL="28" N="rightBracket" SC="28" SL="28" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                                    <T EC="28" EL="28" N="rightBracket" SC="28" SL="28" TT="com.eagle.tokens.punctuation.PunctuationRightBracket" V="]"/>
                                                   </T>
                                                 </T>
                                               </T>
@@ -681,7 +683,7 @@
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="29" EL="28" N="semicolon" SC="29" SL="28" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="29" EL="28" N="semicolon" SC="29" SL="28" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
@@ -691,46 +693,48 @@
                                       <T EC="36" EL="29" N="statement" SC="4" SL="29" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementList">
                                         <T EC="36" EL="29" SC="4" SL="29" TT=".Perl.Statements.Perl_EchoStatement">
                                           <T EC="7" EL="29" N="ECHO" SC="4" SL="29" TT=".Perl.Terminals.Perl_Keyword" V="echo"/>
-                                          <T EC="36" EL="29" N="expr" SC="9" SL="29" TT=".Perl.Perl_Expression">
-                                            <T EC="36" EL="29" SC="9" SL="29" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                              <T EC="30" EL="29" N="left" SC="9" SL="29" TT=".Perl.Perl_Expression">
-                                                <T EC="30" EL="29" SC="9" SL="29" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                  <T EC="23" EL="29" N="left" SC="9" SL="29" TT=".Perl.Perl_Expression">
-                                                    <T EC="23" EL="29" SC="9" SL="29" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                      <T EC="16" EL="29" N="left" SC="9" SL="29" TT=".Perl.Perl_Expression">
-                                                        <T EC="16" EL="29" SC="9" SL="29" TT=".Perl.Terminals.Perl_Literal" V="&quot;Detail&quot;"/>
-                                                      </T>
-                                                      <T EC="18" EL="29" N="dot" SC="18" SL="29" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                      <T EC="22" EL="29" N="right" SC="20" SL="29" TT=".Perl.Perl_Expression">
-                                                        <T EC="22" EL="29" SC="20" SL="29" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                          <T EC="36" EL="29" N="exprs" SC="4" SL="29" TT="List">
+                                            <T EC="36" EL="29" SC="9" SL="29" TT=".Perl.Perl_Expression">
+                                              <T EC="36" EL="29" SC="9" SL="29" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                <T EC="30" EL="29" N="left" SC="9" SL="29" TT=".Perl.Perl_Expression">
+                                                  <T EC="30" EL="29" SC="9" SL="29" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                    <T EC="23" EL="29" N="left" SC="9" SL="29" TT=".Perl.Perl_Expression">
+                                                      <T EC="23" EL="29" SC="9" SL="29" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                        <T EC="16" EL="29" N="left" SC="9" SL="29" TT=".Perl.Perl_Expression">
+                                                          <T EC="16" EL="29" SC="9" SL="29" TT=".Perl.Terminals.Perl_Literal" V="&quot;Detail&quot;"/>
+                                                        </T>
+                                                        <T EC="18" EL="29" N="dot" SC="18" SL="29" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                        <T EC="22" EL="29" N="right" SC="20" SL="29" TT=".Perl.Perl_Expression">
+                                                          <T EC="22" EL="29" SC="20" SL="29" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                        </T>
                                                       </T>
                                                     </T>
-                                                  </T>
-                                                  <T EC="24" EL="29" N="dot" SC="24" SL="29" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                  <T EC="30" EL="29" N="right" SC="26" SL="29" TT=".Perl.Perl_Expression">
-                                                    <T EC="30" EL="29" SC="26" SL="29" TT=".Perl.Perl_Variable">
-                                                      <T EC="30" EL="29" SC="26" SL="29" TT=".Perl.Perl_Variable$Perl_UserVariable">
-                                                        <T EC="26" EL="29" N="dollar" SC="26" SL="29" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
-                                                        <T EC="29" EL="29" N="id" SC="27" SL="29" TT=".Perl.Symbols.Perl_Identifier_Reference" V="key"/>
+                                                    <T EC="24" EL="29" N="dot" SC="24" SL="29" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                    <T EC="30" EL="29" N="right" SC="26" SL="29" TT=".Perl.Perl_Expression">
+                                                      <T EC="30" EL="29" SC="26" SL="29" TT=".Perl.Perl_Variable">
+                                                        <T EC="30" EL="29" SC="26" SL="29" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                          <T EC="26" EL="29" N="dollar" SC="26" SL="29" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                          <T EC="29" EL="29" N="id" SC="27" SL="29" TT=".Perl.Symbols.Perl_Identifier_Reference" V="key"/>
+                                                        </T>
                                                       </T>
                                                     </T>
                                                   </T>
                                                 </T>
-                                              </T>
-                                              <T EC="31" EL="29" N="dot" SC="31" SL="29" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                              <T EC="36" EL="29" N="right" SC="33" SL="29" TT=".Perl.Perl_Expression">
-                                                <T EC="36" EL="29" SC="33" SL="29" TT=".Perl.Terminals.Perl_Literal" V="&quot;\n&quot;"/>
+                                                <T EC="31" EL="29" N="dot" SC="31" SL="29" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                <T EC="36" EL="29" N="right" SC="33" SL="29" TT=".Perl.Perl_Expression">
+                                                  <T EC="36" EL="29" SC="33" SL="29" TT=".Perl.Terminals.Perl_Literal" V="&quot;\n&quot;"/>
+                                                </T>
                                               </T>
                                             </T>
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="37" EL="29" N="semicolon" SC="37" SL="29" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="37" EL="29" N="semicolon" SC="37" SL="29" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
                               </T>
-                              <T EC="4" EL="30" N="rightBrace" SC="4" SL="30" TT=".Perl.Terminals.Perl_Punctuation" V="}"/>
+                              <T EC="4" EL="30" N="rightBrace" SC="4" SL="30" TT="com.eagle.tokens.punctuation.PunctuationRightBrace" V="}"/>
                             </T>
                           </T>
                         </T>
@@ -758,7 +762,7 @@
                             </T>
                           </T>
                         </T>
-                        <T EC="39" EL="32" N="semicolon" SC="39" SL="32" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="39" EL="32" N="semicolon" SC="39" SL="32" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>
@@ -783,7 +787,7 @@
                                 <T EC="25" EL="33" N="methodName" SC="15" SL="33" TT=".Perl.Perl_Variable">
                                   <T EC="25" EL="33" SC="15" SL="33" TT=".Perl.Symbols.Perl_Identifier_Reference" V="mysql_query"/>
                                 </T>
-                                <T EC="26" EL="33" N="leftParen" SC="26" SL="33" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                <T EC="26" EL="33" N="leftParen" SC="26" SL="33" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                                 <T EC="32" EL="33" N="argList" SC="27" SL="33" TT=".Perl.Perl_Expression$Perl_ArgumentList">
                                   <T EC="32" EL="33" N="arg" SC="27" SL="33" TT=".Perl.Perl_Expression">
                                     <T EC="32" EL="33" SC="27" SL="33" TT=".Perl.Perl_Variable">
@@ -794,12 +798,12 @@
                                     </T>
                                   </T>
                                 </T>
-                                <T EC="33" EL="33" N="rightParen" SC="33" SL="33" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                                <T EC="33" EL="33" N="rightParen" SC="33" SL="33" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                               </T>
                             </T>
                           </T>
                         </T>
-                        <T EC="34" EL="33" N="semicolon" SC="34" SL="33" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="34" EL="33" N="semicolon" SC="34" SL="33" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>
@@ -810,7 +814,7 @@
                       <T EC="3" EL="41" SC="4" SL="34" TT=".Perl.Perl_Statement$Perl_CompundStatement">
                         <T EC="3" EL="41" SC="4" SL="34" TT=".Perl.Statements.Perl_WhileStatement">
                           <T EC="8" EL="34" N="WHILE" SC="4" SL="34" TT=".Perl.Terminals.Perl_Keyword" V="while"/>
-                          <T EC="10" EL="34" N="leftParen" SC="10" SL="34" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                          <T EC="10" EL="34" N="leftParen" SC="10" SL="34" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                           <T EC="44" EL="34" N="condition" SC="11" SL="34" TT=".Perl.Perl_Expression">
                             <T EC="44" EL="34" SC="11" SL="34" TT=".Perl.Perl_Expression$Perl_AssignmentExpression">
                               <T EC="15" EL="34" N="var" SC="11" SL="34" TT=".Perl.Perl_Expression">
@@ -827,7 +831,7 @@
                                   <T EC="34" EL="34" N="methodName" SC="18" SL="34" TT=".Perl.Perl_Variable">
                                     <T EC="34" EL="34" SC="18" SL="34" TT=".Perl.Symbols.Perl_Identifier_Reference" V="mysql_fetch_array"/>
                                   </T>
-                                  <T EC="35" EL="34" N="leftParen" SC="35" SL="34" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                  <T EC="35" EL="34" N="leftParen" SC="35" SL="34" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                                   <T EC="43" EL="34" N="argList" SC="36" SL="34" TT=".Perl.Perl_Expression$Perl_ArgumentList">
                                     <T EC="43" EL="34" N="arg" SC="36" SL="34" TT=".Perl.Perl_Expression">
                                       <T EC="43" EL="34" SC="36" SL="34" TT=".Perl.Perl_Variable">
@@ -838,15 +842,15 @@
                                       </T>
                                     </T>
                                   </T>
-                                  <T EC="44" EL="34" N="rightParen" SC="44" SL="34" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                                  <T EC="44" EL="34" N="rightParen" SC="44" SL="34" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                                 </T>
                               </T>
                             </T>
                           </T>
-                          <T EC="45" EL="34" N="rightParen" SC="45" SL="34" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                          <T EC="45" EL="34" N="rightParen" SC="45" SL="34" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                           <T EC="3" EL="41" N="stmt" SC="4" SL="35" TT=".Perl.Perl_Statement">
                             <T EC="3" EL="41" SC="4" SL="35" TT=".Perl.Perl_Statement$Perl_StatementBlock">
-                              <T EC="4" EL="35" N="leftBrace" SC="4" SL="35" TT=".Perl.Terminals.Perl_Punctuation" V="{"/>
+                              <T EC="4" EL="35" N="leftBrace" SC="4" SL="35" TT="com.eagle.tokens.punctuation.PunctuationLeftBrace" V="{"/>
                               <T EC="3" EL="41" N="statements" SC="4" SL="35" TT="List">
                                 <T EC="3" EL="37" SC="7" SL="36" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
                                   <T EC="3" EL="37" SC="7" SL="36" TT=".Perl.Perl_Statement">
@@ -869,11 +873,11 @@
                                                 <T EC="21" EL="36" N="id" SC="19" SL="36" TT=".Perl.Symbols.Perl_Identifier_Reference" V="row"/>
                                                 <T EC="35" EL="36" N="subscript" SC="18" SL="36" TT="List">
                                                   <T EC="35" EL="36" SC="22" SL="36" TT=".Perl.Perl_Subscript">
-                                                    <T EC="22" EL="36" N="leftBracket" SC="22" SL="36" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                                    <T EC="22" EL="36" N="leftBracket" SC="22" SL="36" TT="com.eagle.tokens.punctuation.PunctuationLeftBracket" V="["/>
                                                     <T EC="34" EL="36" N="expr" SC="23" SL="36" TT=".Perl.Perl_Expression">
                                                       <T EC="34" EL="36" SC="23" SL="36" TT=".Perl.Terminals.Perl_Literal" V="&quot;HusbandKey&quot;"/>
                                                     </T>
-                                                    <T EC="35" EL="36" N="rightBracket" SC="35" SL="36" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                                    <T EC="35" EL="36" N="rightBracket" SC="35" SL="36" TT="com.eagle.tokens.punctuation.PunctuationRightBracket" V="]"/>
                                                   </T>
                                                 </T>
                                               </T>
@@ -881,7 +885,7 @@
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="36" EL="36" N="semicolon" SC="36" SL="36" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="36" EL="36" N="semicolon" SC="36" SL="36" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
@@ -906,11 +910,11 @@
                                                 <T EC="15" EL="37" N="id" SC="13" SL="37" TT=".Perl.Symbols.Perl_Identifier_Reference" V="row"/>
                                                 <T EC="26" EL="37" N="subscript" SC="12" SL="37" TT="List">
                                                   <T EC="26" EL="37" SC="16" SL="37" TT=".Perl.Perl_Subscript">
-                                                    <T EC="16" EL="37" N="leftBracket" SC="16" SL="37" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                                    <T EC="16" EL="37" N="leftBracket" SC="16" SL="37" TT="com.eagle.tokens.punctuation.PunctuationLeftBracket" V="["/>
                                                     <T EC="25" EL="37" N="expr" SC="17" SL="37" TT=".Perl.Perl_Expression">
                                                       <T EC="25" EL="37" SC="17" SL="37" TT=".Perl.Terminals.Perl_Literal" V="&quot;WifeKey&quot;"/>
                                                     </T>
-                                                    <T EC="26" EL="37" N="rightBracket" SC="26" SL="37" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                                    <T EC="26" EL="37" N="rightBracket" SC="26" SL="37" TT="com.eagle.tokens.punctuation.PunctuationRightBracket" V="]"/>
                                                   </T>
                                                 </T>
                                               </T>
@@ -918,7 +922,7 @@
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="27" EL="37" N="semicolon" SC="27" SL="37" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="27" EL="37" N="semicolon" SC="27" SL="37" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
@@ -928,67 +932,69 @@
                                       <T EC="56" EL="38" N="statement" SC="4" SL="38" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementList">
                                         <T EC="56" EL="38" SC="4" SL="38" TT=".Perl.Statements.Perl_EchoStatement">
                                           <T EC="7" EL="38" N="ECHO" SC="4" SL="38" TT=".Perl.Terminals.Perl_Keyword" V="echo"/>
-                                          <T EC="56" EL="38" N="expr" SC="9" SL="38" TT=".Perl.Perl_Expression">
-                                            <T EC="56" EL="38" SC="9" SL="38" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                              <T EC="50" EL="38" N="left" SC="9" SL="38" TT=".Perl.Perl_Expression">
-                                                <T EC="50" EL="38" SC="9" SL="38" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                  <T EC="42" EL="38" N="left" SC="9" SL="38" TT=".Perl.Perl_Expression">
-                                                    <T EC="42" EL="38" SC="9" SL="38" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                      <T EC="36" EL="38" N="left" SC="9" SL="38" TT=".Perl.Perl_Expression">
-                                                        <T EC="36" EL="38" SC="9" SL="38" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                          <T EC="25" EL="38" N="left" SC="9" SL="38" TT=".Perl.Perl_Expression">
-                                                            <T EC="25" EL="38" SC="9" SL="38" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                              <T EC="18" EL="38" N="left" SC="9" SL="38" TT=".Perl.Perl_Expression">
-                                                                <T EC="18" EL="38" SC="9" SL="38" TT=".Perl.Terminals.Perl_Literal" V="&quot;Marriage&quot;"/>
-                                                              </T>
-                                                              <T EC="20" EL="38" N="dot" SC="20" SL="38" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                              <T EC="24" EL="38" N="right" SC="22" SL="38" TT=".Perl.Perl_Expression">
-                                                                <T EC="24" EL="38" SC="22" SL="38" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                          <T EC="56" EL="38" N="exprs" SC="4" SL="38" TT="List">
+                                            <T EC="56" EL="38" SC="9" SL="38" TT=".Perl.Perl_Expression">
+                                              <T EC="56" EL="38" SC="9" SL="38" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                <T EC="50" EL="38" N="left" SC="9" SL="38" TT=".Perl.Perl_Expression">
+                                                  <T EC="50" EL="38" SC="9" SL="38" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                    <T EC="42" EL="38" N="left" SC="9" SL="38" TT=".Perl.Perl_Expression">
+                                                      <T EC="42" EL="38" SC="9" SL="38" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                        <T EC="36" EL="38" N="left" SC="9" SL="38" TT=".Perl.Perl_Expression">
+                                                          <T EC="36" EL="38" SC="9" SL="38" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                            <T EC="25" EL="38" N="left" SC="9" SL="38" TT=".Perl.Perl_Expression">
+                                                              <T EC="25" EL="38" SC="9" SL="38" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                                <T EC="18" EL="38" N="left" SC="9" SL="38" TT=".Perl.Perl_Expression">
+                                                                  <T EC="18" EL="38" SC="9" SL="38" TT=".Perl.Terminals.Perl_Literal" V="&quot;Marriage&quot;"/>
+                                                                </T>
+                                                                <T EC="20" EL="38" N="dot" SC="20" SL="38" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                                <T EC="24" EL="38" N="right" SC="22" SL="38" TT=".Perl.Perl_Expression">
+                                                                  <T EC="24" EL="38" SC="22" SL="38" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                                </T>
                                                               </T>
                                                             </T>
-                                                          </T>
-                                                          <T EC="26" EL="38" N="dot" SC="26" SL="38" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                          <T EC="36" EL="38" N="right" SC="28" SL="38" TT=".Perl.Perl_Expression">
-                                                            <T EC="36" EL="38" SC="28" SL="38" TT=".Perl.Perl_Variable">
-                                                              <T EC="36" EL="38" SC="28" SL="38" TT=".Perl.Perl_Variable$Perl_UserVariable">
-                                                                <T EC="28" EL="38" N="dollar" SC="28" SL="38" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
-                                                                <T EC="35" EL="38" N="id" SC="29" SL="38" TT=".Perl.Symbols.Perl_Identifier_Reference" V="husband"/>
+                                                            <T EC="26" EL="38" N="dot" SC="26" SL="38" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                            <T EC="36" EL="38" N="right" SC="28" SL="38" TT=".Perl.Perl_Expression">
+                                                              <T EC="36" EL="38" SC="28" SL="38" TT=".Perl.Perl_Variable">
+                                                                <T EC="36" EL="38" SC="28" SL="38" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                                  <T EC="28" EL="38" N="dollar" SC="28" SL="38" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                                  <T EC="35" EL="38" N="id" SC="29" SL="38" TT=".Perl.Symbols.Perl_Identifier_Reference" V="husband"/>
+                                                                </T>
                                                               </T>
                                                             </T>
                                                           </T>
                                                         </T>
-                                                      </T>
-                                                      <T EC="37" EL="38" N="dot" SC="37" SL="38" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                      <T EC="41" EL="38" N="right" SC="39" SL="38" TT=".Perl.Perl_Expression">
-                                                        <T EC="41" EL="38" SC="39" SL="38" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                        <T EC="37" EL="38" N="dot" SC="37" SL="38" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                        <T EC="41" EL="38" N="right" SC="39" SL="38" TT=".Perl.Perl_Expression">
+                                                          <T EC="41" EL="38" SC="39" SL="38" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                        </T>
                                                       </T>
                                                     </T>
-                                                  </T>
-                                                  <T EC="43" EL="38" N="dot" SC="43" SL="38" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                  <T EC="50" EL="38" N="right" SC="45" SL="38" TT=".Perl.Perl_Expression">
-                                                    <T EC="50" EL="38" SC="45" SL="38" TT=".Perl.Perl_Variable">
-                                                      <T EC="50" EL="38" SC="45" SL="38" TT=".Perl.Perl_Variable$Perl_UserVariable">
-                                                        <T EC="45" EL="38" N="dollar" SC="45" SL="38" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
-                                                        <T EC="49" EL="38" N="id" SC="46" SL="38" TT=".Perl.Symbols.Perl_Identifier_Reference" V="wife"/>
+                                                    <T EC="43" EL="38" N="dot" SC="43" SL="38" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                    <T EC="50" EL="38" N="right" SC="45" SL="38" TT=".Perl.Perl_Expression">
+                                                      <T EC="50" EL="38" SC="45" SL="38" TT=".Perl.Perl_Variable">
+                                                        <T EC="50" EL="38" SC="45" SL="38" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                          <T EC="45" EL="38" N="dollar" SC="45" SL="38" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                          <T EC="49" EL="38" N="id" SC="46" SL="38" TT=".Perl.Symbols.Perl_Identifier_Reference" V="wife"/>
+                                                        </T>
                                                       </T>
                                                     </T>
                                                   </T>
                                                 </T>
-                                              </T>
-                                              <T EC="51" EL="38" N="dot" SC="51" SL="38" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                              <T EC="56" EL="38" N="right" SC="53" SL="38" TT=".Perl.Perl_Expression">
-                                                <T EC="56" EL="38" SC="53" SL="38" TT=".Perl.Terminals.Perl_Literal" V="&quot;\n&quot;"/>
+                                                <T EC="51" EL="38" N="dot" SC="51" SL="38" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                <T EC="56" EL="38" N="right" SC="53" SL="38" TT=".Perl.Perl_Expression">
+                                                  <T EC="56" EL="38" SC="53" SL="38" TT=".Perl.Terminals.Perl_Literal" V="&quot;\n&quot;"/>
+                                                </T>
                                               </T>
                                             </T>
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="57" EL="38" N="semicolon" SC="57" SL="38" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="57" EL="38" N="semicolon" SC="57" SL="38" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
                               </T>
-                              <T EC="4" EL="39" N="rightBrace" SC="4" SL="39" TT=".Perl.Terminals.Perl_Punctuation" V="}"/>
+                              <T EC="4" EL="39" N="rightBrace" SC="4" SL="39" TT="com.eagle.tokens.punctuation.PunctuationRightBrace" V="}"/>
                             </T>
                           </T>
                         </T>
@@ -1016,7 +1022,7 @@
                             </T>
                           </T>
                         </T>
-                        <T EC="36" EL="41" N="semicolon" SC="36" SL="41" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="36" EL="41" N="semicolon" SC="36" SL="41" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>
@@ -1041,7 +1047,7 @@
                                 <T EC="25" EL="42" N="methodName" SC="15" SL="42" TT=".Perl.Perl_Variable">
                                   <T EC="25" EL="42" SC="15" SL="42" TT=".Perl.Symbols.Perl_Identifier_Reference" V="mysql_query"/>
                                 </T>
-                                <T EC="26" EL="42" N="leftParen" SC="26" SL="42" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                <T EC="26" EL="42" N="leftParen" SC="26" SL="42" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                                 <T EC="32" EL="42" N="argList" SC="27" SL="42" TT=".Perl.Perl_Expression$Perl_ArgumentList">
                                   <T EC="32" EL="42" N="arg" SC="27" SL="42" TT=".Perl.Perl_Expression">
                                     <T EC="32" EL="42" SC="27" SL="42" TT=".Perl.Perl_Variable">
@@ -1052,12 +1058,12 @@
                                     </T>
                                   </T>
                                 </T>
-                                <T EC="33" EL="42" N="rightParen" SC="33" SL="42" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                                <T EC="33" EL="42" N="rightParen" SC="33" SL="42" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                               </T>
                             </T>
                           </T>
                         </T>
-                        <T EC="34" EL="42" N="semicolon" SC="34" SL="42" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="34" EL="42" N="semicolon" SC="34" SL="42" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>
@@ -1068,7 +1074,7 @@
                       <T EC="3" EL="52" SC="4" SL="43" TT=".Perl.Perl_Statement$Perl_CompundStatement">
                         <T EC="3" EL="52" SC="4" SL="43" TT=".Perl.Statements.Perl_WhileStatement">
                           <T EC="8" EL="43" N="WHILE" SC="4" SL="43" TT=".Perl.Terminals.Perl_Keyword" V="while"/>
-                          <T EC="10" EL="43" N="leftParen" SC="10" SL="43" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                          <T EC="10" EL="43" N="leftParen" SC="10" SL="43" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                           <T EC="44" EL="43" N="condition" SC="11" SL="43" TT=".Perl.Perl_Expression">
                             <T EC="44" EL="43" SC="11" SL="43" TT=".Perl.Perl_Expression$Perl_AssignmentExpression">
                               <T EC="15" EL="43" N="var" SC="11" SL="43" TT=".Perl.Perl_Expression">
@@ -1085,7 +1091,7 @@
                                   <T EC="34" EL="43" N="methodName" SC="18" SL="43" TT=".Perl.Perl_Variable">
                                     <T EC="34" EL="43" SC="18" SL="43" TT=".Perl.Symbols.Perl_Identifier_Reference" V="mysql_fetch_array"/>
                                   </T>
-                                  <T EC="35" EL="43" N="leftParen" SC="35" SL="43" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                  <T EC="35" EL="43" N="leftParen" SC="35" SL="43" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                                   <T EC="43" EL="43" N="argList" SC="36" SL="43" TT=".Perl.Perl_Expression$Perl_ArgumentList">
                                     <T EC="43" EL="43" N="arg" SC="36" SL="43" TT=".Perl.Perl_Expression">
                                       <T EC="43" EL="43" SC="36" SL="43" TT=".Perl.Perl_Variable">
@@ -1096,15 +1102,15 @@
                                       </T>
                                     </T>
                                   </T>
-                                  <T EC="44" EL="43" N="rightParen" SC="44" SL="43" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                                  <T EC="44" EL="43" N="rightParen" SC="44" SL="43" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                                 </T>
                               </T>
                             </T>
                           </T>
-                          <T EC="45" EL="43" N="rightParen" SC="45" SL="43" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                          <T EC="45" EL="43" N="rightParen" SC="45" SL="43" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                           <T EC="3" EL="52" N="stmt" SC="4" SL="44" TT=".Perl.Perl_Statement">
                             <T EC="3" EL="52" SC="4" SL="44" TT=".Perl.Perl_Statement$Perl_StatementBlock">
-                              <T EC="4" EL="44" N="leftBrace" SC="4" SL="44" TT=".Perl.Terminals.Perl_Punctuation" V="{"/>
+                              <T EC="4" EL="44" N="leftBrace" SC="4" SL="44" TT="com.eagle.tokens.punctuation.PunctuationLeftBrace" V="{"/>
                               <T EC="3" EL="52" N="statements" SC="4" SL="44" TT="List">
                                 <T EC="6" EL="46" SC="7" SL="45" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
                                   <T EC="6" EL="46" SC="7" SL="45" TT=".Perl.Perl_Statement">
@@ -1127,11 +1133,11 @@
                                                 <T EC="17" EL="45" N="id" SC="15" SL="45" TT=".Perl.Symbols.Perl_Identifier_Reference" V="row"/>
                                                 <T EC="30" EL="45" N="subscript" SC="14" SL="45" TT="List">
                                                   <T EC="30" EL="45" SC="18" SL="45" TT=".Perl.Perl_Subscript">
-                                                    <T EC="18" EL="45" N="leftBracket" SC="18" SL="45" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                                    <T EC="18" EL="45" N="leftBracket" SC="18" SL="45" TT="com.eagle.tokens.punctuation.PunctuationLeftBracket" V="["/>
                                                     <T EC="29" EL="45" N="expr" SC="19" SL="45" TT=".Perl.Perl_Expression">
                                                       <T EC="29" EL="45" SC="19" SL="45" TT=".Perl.Terminals.Perl_Literal" V="&quot;Directory&quot;"/>
                                                     </T>
-                                                    <T EC="30" EL="45" N="rightBracket" SC="30" SL="45" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                                    <T EC="30" EL="45" N="rightBracket" SC="30" SL="45" TT="com.eagle.tokens.punctuation.PunctuationRightBracket" V="]"/>
                                                   </T>
                                                 </T>
                                               </T>
@@ -1139,7 +1145,7 @@
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="31" EL="45" N="semicolon" SC="31" SL="45" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="31" EL="45" N="semicolon" SC="31" SL="45" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
@@ -1164,11 +1170,11 @@
                                                 <T EC="19" EL="46" N="id" SC="17" SL="46" TT=".Perl.Symbols.Perl_Identifier_Reference" V="row"/>
                                                 <T EC="28" EL="46" N="subscript" SC="16" SL="46" TT="List">
                                                   <T EC="28" EL="46" SC="20" SL="46" TT=".Perl.Perl_Subscript">
-                                                    <T EC="20" EL="46" N="leftBracket" SC="20" SL="46" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                                    <T EC="20" EL="46" N="leftBracket" SC="20" SL="46" TT="com.eagle.tokens.punctuation.PunctuationLeftBracket" V="["/>
                                                     <T EC="27" EL="46" N="expr" SC="21" SL="46" TT=".Perl.Perl_Expression">
                                                       <T EC="27" EL="46" SC="21" SL="46" TT=".Perl.Terminals.Perl_Literal" V="&quot;Photo&quot;"/>
                                                     </T>
-                                                    <T EC="28" EL="46" N="rightBracket" SC="28" SL="46" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                                    <T EC="28" EL="46" N="rightBracket" SC="28" SL="46" TT="com.eagle.tokens.punctuation.PunctuationRightBracket" V="]"/>
                                                   </T>
                                                 </T>
                                               </T>
@@ -1176,7 +1182,7 @@
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="29" EL="46" N="semicolon" SC="29" SL="46" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="29" EL="46" N="semicolon" SC="29" SL="46" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
@@ -1201,11 +1207,11 @@
                                                 <T EC="18" EL="47" N="id" SC="16" SL="47" TT=".Perl.Symbols.Perl_Identifier_Reference" V="row"/>
                                                 <T EC="28" EL="47" N="subscript" SC="15" SL="47" TT="List">
                                                   <T EC="28" EL="47" SC="19" SL="47" TT=".Perl.Perl_Subscript">
-                                                    <T EC="19" EL="47" N="leftBracket" SC="19" SL="47" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                                    <T EC="19" EL="47" N="leftBracket" SC="19" SL="47" TT="com.eagle.tokens.punctuation.PunctuationLeftBracket" V="["/>
                                                     <T EC="27" EL="47" N="expr" SC="20" SL="47" TT=".Perl.Perl_Expression">
                                                       <T EC="27" EL="47" SC="20" SL="47" TT=".Perl.Terminals.Perl_Literal" V="&quot;Suffix&quot;"/>
                                                     </T>
-                                                    <T EC="28" EL="47" N="rightBracket" SC="28" SL="47" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                                    <T EC="28" EL="47" N="rightBracket" SC="28" SL="47" TT="com.eagle.tokens.punctuation.PunctuationRightBracket" V="]"/>
                                                   </T>
                                                 </T>
                                               </T>
@@ -1213,7 +1219,7 @@
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="29" EL="47" N="semicolon" SC="29" SL="47" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="29" EL="47" N="semicolon" SC="29" SL="47" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
@@ -1238,11 +1244,11 @@
                                                 <T EC="18" EL="48" N="id" SC="16" SL="48" TT=".Perl.Symbols.Perl_Identifier_Reference" V="row"/>
                                                 <T EC="30" EL="48" N="subscript" SC="15" SL="48" TT="List">
                                                   <T EC="30" EL="48" SC="19" SL="48" TT=".Perl.Perl_Subscript">
-                                                    <T EC="19" EL="48" N="leftBracket" SC="19" SL="48" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                                    <T EC="19" EL="48" N="leftBracket" SC="19" SL="48" TT="com.eagle.tokens.punctuation.PunctuationLeftBracket" V="["/>
                                                     <T EC="29" EL="48" N="expr" SC="20" SL="48" TT=".Perl.Perl_Expression">
                                                       <T EC="29" EL="48" SC="20" SL="48" TT=".Perl.Terminals.Perl_Literal" V="&quot;Original&quot;"/>
                                                     </T>
-                                                    <T EC="30" EL="48" N="rightBracket" SC="30" SL="48" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                                    <T EC="30" EL="48" N="rightBracket" SC="30" SL="48" TT="com.eagle.tokens.punctuation.PunctuationRightBracket" V="]"/>
                                                   </T>
                                                 </T>
                                               </T>
@@ -1250,7 +1256,7 @@
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="31" EL="48" N="semicolon" SC="31" SL="48" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="31" EL="48" N="semicolon" SC="31" SL="48" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
@@ -1260,109 +1266,111 @@
                                       <T EC="78" EL="49" N="statement" SC="4" SL="49" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementList">
                                         <T EC="78" EL="49" SC="4" SL="49" TT=".Perl.Statements.Perl_EchoStatement">
                                           <T EC="7" EL="49" N="ECHO" SC="4" SL="49" TT=".Perl.Terminals.Perl_Keyword" V="echo"/>
-                                          <T EC="78" EL="49" N="expr" SC="9" SL="49" TT=".Perl.Perl_Expression">
-                                            <T EC="78" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                              <T EC="72" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
-                                                <T EC="72" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                  <T EC="64" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
-                                                    <T EC="64" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                      <T EC="58" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
-                                                        <T EC="58" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                          <T EC="50" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
-                                                            <T EC="50" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                              <T EC="44" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
-                                                                <T EC="44" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                                  <T EC="35" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
-                                                                    <T EC="35" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                                      <T EC="29" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
-                                                                        <T EC="29" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                                          <T EC="22" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
-                                                                            <T EC="22" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                                              <T EC="15" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
-                                                                                <T EC="15" EL="49" SC="9" SL="49" TT=".Perl.Terminals.Perl_Literal" V="&quot;Photo&quot;"/>
-                                                                              </T>
-                                                                              <T EC="17" EL="49" N="dot" SC="17" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                                              <T EC="21" EL="49" N="right" SC="19" SL="49" TT=".Perl.Perl_Expression">
-                                                                                <T EC="21" EL="49" SC="19" SL="49" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                          <T EC="78" EL="49" N="exprs" SC="4" SL="49" TT="List">
+                                            <T EC="78" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression">
+                                              <T EC="78" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                <T EC="72" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
+                                                  <T EC="72" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                    <T EC="64" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
+                                                      <T EC="64" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                        <T EC="58" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
+                                                          <T EC="58" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                            <T EC="50" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
+                                                              <T EC="50" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                                <T EC="44" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
+                                                                  <T EC="44" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                                    <T EC="35" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
+                                                                      <T EC="35" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                                        <T EC="29" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
+                                                                          <T EC="29" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                                            <T EC="22" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
+                                                                              <T EC="22" EL="49" SC="9" SL="49" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                                                <T EC="15" EL="49" N="left" SC="9" SL="49" TT=".Perl.Perl_Expression">
+                                                                                  <T EC="15" EL="49" SC="9" SL="49" TT=".Perl.Terminals.Perl_Literal" V="&quot;Photo&quot;"/>
+                                                                                </T>
+                                                                                <T EC="17" EL="49" N="dot" SC="17" SL="49" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                                                <T EC="21" EL="49" N="right" SC="19" SL="49" TT=".Perl.Perl_Expression">
+                                                                                  <T EC="21" EL="49" SC="19" SL="49" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                                                </T>
                                                                               </T>
                                                                             </T>
-                                                                          </T>
-                                                                          <T EC="23" EL="49" N="dot" SC="23" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                                          <T EC="29" EL="49" N="right" SC="25" SL="49" TT=".Perl.Perl_Expression">
-                                                                            <T EC="29" EL="49" SC="25" SL="49" TT=".Perl.Perl_Variable">
-                                                                              <T EC="29" EL="49" SC="25" SL="49" TT=".Perl.Perl_Variable$Perl_UserVariable">
-                                                                                <T EC="25" EL="49" N="dollar" SC="25" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
-                                                                                <T EC="28" EL="49" N="id" SC="26" SL="49" TT=".Perl.Symbols.Perl_Identifier_Reference" V="dir"/>
+                                                                            <T EC="23" EL="49" N="dot" SC="23" SL="49" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                                            <T EC="29" EL="49" N="right" SC="25" SL="49" TT=".Perl.Perl_Expression">
+                                                                              <T EC="29" EL="49" SC="25" SL="49" TT=".Perl.Perl_Variable">
+                                                                                <T EC="29" EL="49" SC="25" SL="49" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                                                  <T EC="25" EL="49" N="dollar" SC="25" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                                                  <T EC="28" EL="49" N="id" SC="26" SL="49" TT=".Perl.Symbols.Perl_Identifier_Reference" V="dir"/>
+                                                                                </T>
                                                                               </T>
                                                                             </T>
                                                                           </T>
                                                                         </T>
-                                                                      </T>
-                                                                      <T EC="30" EL="49" N="dot" SC="30" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                                      <T EC="34" EL="49" N="right" SC="32" SL="49" TT=".Perl.Perl_Expression">
-                                                                        <T EC="34" EL="49" SC="32" SL="49" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                                        <T EC="30" EL="49" N="dot" SC="30" SL="49" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                                        <T EC="34" EL="49" N="right" SC="32" SL="49" TT=".Perl.Perl_Expression">
+                                                                          <T EC="34" EL="49" SC="32" SL="49" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                                        </T>
                                                                       </T>
                                                                     </T>
-                                                                  </T>
-                                                                  <T EC="36" EL="49" N="dot" SC="36" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                                  <T EC="44" EL="49" N="right" SC="38" SL="49" TT=".Perl.Perl_Expression">
-                                                                    <T EC="44" EL="49" SC="38" SL="49" TT=".Perl.Perl_Variable">
-                                                                      <T EC="44" EL="49" SC="38" SL="49" TT=".Perl.Perl_Variable$Perl_UserVariable">
-                                                                        <T EC="38" EL="49" N="dollar" SC="38" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
-                                                                        <T EC="43" EL="49" N="id" SC="39" SL="49" TT=".Perl.Symbols.Perl_Identifier_Reference" V="photo"/>
+                                                                    <T EC="36" EL="49" N="dot" SC="36" SL="49" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                                    <T EC="44" EL="49" N="right" SC="38" SL="49" TT=".Perl.Perl_Expression">
+                                                                      <T EC="44" EL="49" SC="38" SL="49" TT=".Perl.Perl_Variable">
+                                                                        <T EC="44" EL="49" SC="38" SL="49" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                                          <T EC="38" EL="49" N="dollar" SC="38" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                                          <T EC="43" EL="49" N="id" SC="39" SL="49" TT=".Perl.Symbols.Perl_Identifier_Reference" V="photo"/>
+                                                                        </T>
                                                                       </T>
                                                                     </T>
                                                                   </T>
                                                                 </T>
-                                                              </T>
-                                                              <T EC="45" EL="49" N="dot" SC="45" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                              <T EC="49" EL="49" N="right" SC="47" SL="49" TT=".Perl.Perl_Expression">
-                                                                <T EC="49" EL="49" SC="47" SL="49" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                                <T EC="45" EL="49" N="dot" SC="45" SL="49" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                                <T EC="49" EL="49" N="right" SC="47" SL="49" TT=".Perl.Perl_Expression">
+                                                                  <T EC="49" EL="49" SC="47" SL="49" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                                </T>
                                                               </T>
                                                             </T>
-                                                          </T>
-                                                          <T EC="51" EL="49" N="dot" SC="51" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                          <T EC="58" EL="49" N="right" SC="53" SL="49" TT=".Perl.Perl_Expression">
-                                                            <T EC="58" EL="49" SC="53" SL="49" TT=".Perl.Perl_Variable">
-                                                              <T EC="58" EL="49" SC="53" SL="49" TT=".Perl.Perl_Variable$Perl_UserVariable">
-                                                                <T EC="53" EL="49" N="dollar" SC="53" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
-                                                                <T EC="57" EL="49" N="id" SC="54" SL="49" TT=".Perl.Symbols.Perl_Identifier_Reference" V="suff"/>
+                                                            <T EC="51" EL="49" N="dot" SC="51" SL="49" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                            <T EC="58" EL="49" N="right" SC="53" SL="49" TT=".Perl.Perl_Expression">
+                                                              <T EC="58" EL="49" SC="53" SL="49" TT=".Perl.Perl_Variable">
+                                                                <T EC="58" EL="49" SC="53" SL="49" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                                  <T EC="53" EL="49" N="dollar" SC="53" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                                  <T EC="57" EL="49" N="id" SC="54" SL="49" TT=".Perl.Symbols.Perl_Identifier_Reference" V="suff"/>
+                                                                </T>
                                                               </T>
                                                             </T>
                                                           </T>
                                                         </T>
-                                                      </T>
-                                                      <T EC="59" EL="49" N="dot" SC="59" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                      <T EC="63" EL="49" N="right" SC="61" SL="49" TT=".Perl.Perl_Expression">
-                                                        <T EC="63" EL="49" SC="61" SL="49" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                        <T EC="59" EL="49" N="dot" SC="59" SL="49" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                        <T EC="63" EL="49" N="right" SC="61" SL="49" TT=".Perl.Perl_Expression">
+                                                          <T EC="63" EL="49" SC="61" SL="49" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                        </T>
                                                       </T>
                                                     </T>
-                                                  </T>
-                                                  <T EC="65" EL="49" N="dot" SC="65" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                  <T EC="72" EL="49" N="right" SC="67" SL="49" TT=".Perl.Perl_Expression">
-                                                    <T EC="72" EL="49" SC="67" SL="49" TT=".Perl.Perl_Variable">
-                                                      <T EC="72" EL="49" SC="67" SL="49" TT=".Perl.Perl_Variable$Perl_UserVariable">
-                                                        <T EC="67" EL="49" N="dollar" SC="67" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
-                                                        <T EC="71" EL="49" N="id" SC="68" SL="49" TT=".Perl.Symbols.Perl_Identifier_Reference" V="orig"/>
+                                                    <T EC="65" EL="49" N="dot" SC="65" SL="49" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                    <T EC="72" EL="49" N="right" SC="67" SL="49" TT=".Perl.Perl_Expression">
+                                                      <T EC="72" EL="49" SC="67" SL="49" TT=".Perl.Perl_Variable">
+                                                        <T EC="72" EL="49" SC="67" SL="49" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                          <T EC="67" EL="49" N="dollar" SC="67" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                          <T EC="71" EL="49" N="id" SC="68" SL="49" TT=".Perl.Symbols.Perl_Identifier_Reference" V="orig"/>
+                                                        </T>
                                                       </T>
                                                     </T>
                                                   </T>
                                                 </T>
-                                              </T>
-                                              <T EC="73" EL="49" N="dot" SC="73" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                              <T EC="78" EL="49" N="right" SC="75" SL="49" TT=".Perl.Perl_Expression">
-                                                <T EC="78" EL="49" SC="75" SL="49" TT=".Perl.Terminals.Perl_Literal" V="&quot;\n&quot;"/>
+                                                <T EC="73" EL="49" N="dot" SC="73" SL="49" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                <T EC="78" EL="49" N="right" SC="75" SL="49" TT=".Perl.Perl_Expression">
+                                                  <T EC="78" EL="49" SC="75" SL="49" TT=".Perl.Terminals.Perl_Literal" V="&quot;\n&quot;"/>
+                                                </T>
                                               </T>
                                             </T>
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="79" EL="49" N="semicolon" SC="79" SL="49" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="79" EL="49" N="semicolon" SC="79" SL="49" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
                               </T>
-                              <T EC="4" EL="50" N="rightBrace" SC="4" SL="50" TT=".Perl.Terminals.Perl_Punctuation" V="}"/>
+                              <T EC="4" EL="50" N="rightBrace" SC="4" SL="50" TT="com.eagle.tokens.punctuation.PunctuationRightBrace" V="}"/>
                             </T>
                           </T>
                         </T>
@@ -1390,7 +1398,7 @@
                             </T>
                           </T>
                         </T>
-                        <T EC="42" EL="52" N="semicolon" SC="42" SL="52" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="42" EL="52" N="semicolon" SC="42" SL="52" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>
@@ -1415,7 +1423,7 @@
                                 <T EC="25" EL="53" N="methodName" SC="15" SL="53" TT=".Perl.Perl_Variable">
                                   <T EC="25" EL="53" SC="15" SL="53" TT=".Perl.Symbols.Perl_Identifier_Reference" V="mysql_query"/>
                                 </T>
-                                <T EC="26" EL="53" N="leftParen" SC="26" SL="53" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                <T EC="26" EL="53" N="leftParen" SC="26" SL="53" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                                 <T EC="32" EL="53" N="argList" SC="27" SL="53" TT=".Perl.Perl_Expression$Perl_ArgumentList">
                                   <T EC="32" EL="53" N="arg" SC="27" SL="53" TT=".Perl.Perl_Expression">
                                     <T EC="32" EL="53" SC="27" SL="53" TT=".Perl.Perl_Variable">
@@ -1426,12 +1434,12 @@
                                     </T>
                                   </T>
                                 </T>
-                                <T EC="33" EL="53" N="rightParen" SC="33" SL="53" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                                <T EC="33" EL="53" N="rightParen" SC="33" SL="53" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                               </T>
                             </T>
                           </T>
                         </T>
-                        <T EC="34" EL="53" N="semicolon" SC="34" SL="53" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="34" EL="53" N="semicolon" SC="34" SL="53" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>
@@ -1442,7 +1450,7 @@
                       <T EC="3" EL="61" SC="4" SL="54" TT=".Perl.Perl_Statement$Perl_CompundStatement">
                         <T EC="3" EL="61" SC="4" SL="54" TT=".Perl.Statements.Perl_WhileStatement">
                           <T EC="8" EL="54" N="WHILE" SC="4" SL="54" TT=".Perl.Terminals.Perl_Keyword" V="while"/>
-                          <T EC="10" EL="54" N="leftParen" SC="10" SL="54" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                          <T EC="10" EL="54" N="leftParen" SC="10" SL="54" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                           <T EC="44" EL="54" N="condition" SC="11" SL="54" TT=".Perl.Perl_Expression">
                             <T EC="44" EL="54" SC="11" SL="54" TT=".Perl.Perl_Expression$Perl_AssignmentExpression">
                               <T EC="15" EL="54" N="var" SC="11" SL="54" TT=".Perl.Perl_Expression">
@@ -1459,7 +1467,7 @@
                                   <T EC="34" EL="54" N="methodName" SC="18" SL="54" TT=".Perl.Perl_Variable">
                                     <T EC="34" EL="54" SC="18" SL="54" TT=".Perl.Symbols.Perl_Identifier_Reference" V="mysql_fetch_array"/>
                                   </T>
-                                  <T EC="35" EL="54" N="leftParen" SC="35" SL="54" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                  <T EC="35" EL="54" N="leftParen" SC="35" SL="54" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                                   <T EC="43" EL="54" N="argList" SC="36" SL="54" TT=".Perl.Perl_Expression$Perl_ArgumentList">
                                     <T EC="43" EL="54" N="arg" SC="36" SL="54" TT=".Perl.Perl_Expression">
                                       <T EC="43" EL="54" SC="36" SL="54" TT=".Perl.Perl_Variable">
@@ -1470,15 +1478,15 @@
                                       </T>
                                     </T>
                                   </T>
-                                  <T EC="44" EL="54" N="rightParen" SC="44" SL="54" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                                  <T EC="44" EL="54" N="rightParen" SC="44" SL="54" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                                 </T>
                               </T>
                             </T>
                           </T>
-                          <T EC="45" EL="54" N="rightParen" SC="45" SL="54" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                          <T EC="45" EL="54" N="rightParen" SC="45" SL="54" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                           <T EC="3" EL="61" N="stmt" SC="4" SL="55" TT=".Perl.Perl_Statement">
                             <T EC="3" EL="61" SC="4" SL="55" TT=".Perl.Perl_Statement$Perl_StatementBlock">
-                              <T EC="4" EL="55" N="leftBrace" SC="4" SL="55" TT=".Perl.Terminals.Perl_Punctuation" V="{"/>
+                              <T EC="4" EL="55" N="leftBrace" SC="4" SL="55" TT="com.eagle.tokens.punctuation.PunctuationLeftBrace" V="{"/>
                               <T EC="3" EL="61" N="statements" SC="4" SL="55" TT="List">
                                 <T EC="6" EL="57" SC="7" SL="56" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
                                   <T EC="6" EL="57" SC="7" SL="56" TT=".Perl.Perl_Statement">
@@ -1501,11 +1509,11 @@
                                                 <T EC="19" EL="56" N="id" SC="17" SL="56" TT=".Perl.Symbols.Perl_Identifier_Reference" V="row"/>
                                                 <T EC="28" EL="56" N="subscript" SC="16" SL="56" TT="List">
                                                   <T EC="28" EL="56" SC="20" SL="56" TT=".Perl.Perl_Subscript">
-                                                    <T EC="20" EL="56" N="leftBracket" SC="20" SL="56" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                                    <T EC="20" EL="56" N="leftBracket" SC="20" SL="56" TT="com.eagle.tokens.punctuation.PunctuationLeftBracket" V="["/>
                                                     <T EC="27" EL="56" N="expr" SC="21" SL="56" TT=".Perl.Perl_Expression">
                                                       <T EC="27" EL="56" SC="21" SL="56" TT=".Perl.Terminals.Perl_Literal" V="&quot;Photo&quot;"/>
                                                     </T>
-                                                    <T EC="28" EL="56" N="rightBracket" SC="28" SL="56" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                                    <T EC="28" EL="56" N="rightBracket" SC="28" SL="56" TT="com.eagle.tokens.punctuation.PunctuationRightBracket" V="]"/>
                                                   </T>
                                                 </T>
                                               </T>
@@ -1513,7 +1521,7 @@
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="29" EL="56" N="semicolon" SC="29" SL="56" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="29" EL="56" N="semicolon" SC="29" SL="56" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
@@ -1538,11 +1546,11 @@
                                                 <T EC="17" EL="57" N="id" SC="15" SL="57" TT=".Perl.Symbols.Perl_Identifier_Reference" V="row"/>
                                                 <T EC="28" EL="57" N="subscript" SC="14" SL="57" TT="List">
                                                   <T EC="28" EL="57" SC="18" SL="57" TT=".Perl.Perl_Subscript">
-                                                    <T EC="18" EL="57" N="leftBracket" SC="18" SL="57" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                                    <T EC="18" EL="57" N="leftBracket" SC="18" SL="57" TT="com.eagle.tokens.punctuation.PunctuationLeftBracket" V="["/>
                                                     <T EC="27" EL="57" N="expr" SC="19" SL="57" TT=".Perl.Perl_Expression">
                                                       <T EC="27" EL="57" SC="19" SL="57" TT=".Perl.Terminals.Perl_Literal" V="&quot;KeyName&quot;"/>
                                                     </T>
-                                                    <T EC="28" EL="57" N="rightBracket" SC="28" SL="57" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                                    <T EC="28" EL="57" N="rightBracket" SC="28" SL="57" TT="com.eagle.tokens.punctuation.PunctuationRightBracket" V="]"/>
                                                   </T>
                                                 </T>
                                               </T>
@@ -1550,7 +1558,7 @@
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="29" EL="57" N="semicolon" SC="29" SL="57" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="29" EL="57" N="semicolon" SC="29" SL="57" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
@@ -1560,67 +1568,69 @@
                                       <T EC="56" EL="58" N="statement" SC="4" SL="58" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementList">
                                         <T EC="56" EL="58" SC="4" SL="58" TT=".Perl.Statements.Perl_EchoStatement">
                                           <T EC="7" EL="58" N="ECHO" SC="4" SL="58" TT=".Perl.Terminals.Perl_Keyword" V="echo"/>
-                                          <T EC="56" EL="58" N="expr" SC="9" SL="58" TT=".Perl.Perl_Expression">
-                                            <T EC="56" EL="58" SC="9" SL="58" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                              <T EC="50" EL="58" N="left" SC="9" SL="58" TT=".Perl.Perl_Expression">
-                                                <T EC="50" EL="58" SC="9" SL="58" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                  <T EC="43" EL="58" N="left" SC="9" SL="58" TT=".Perl.Perl_Expression">
-                                                    <T EC="43" EL="58" SC="9" SL="58" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                      <T EC="37" EL="58" N="left" SC="9" SL="58" TT=".Perl.Perl_Expression">
-                                                        <T EC="37" EL="58" SC="9" SL="58" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                          <T EC="28" EL="58" N="left" SC="9" SL="58" TT=".Perl.Perl_Expression">
-                                                            <T EC="28" EL="58" SC="9" SL="58" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                              <T EC="21" EL="58" N="left" SC="9" SL="58" TT=".Perl.Perl_Expression">
-                                                                <T EC="21" EL="58" SC="9" SL="58" TT=".Perl.Terminals.Perl_Literal" V="&quot;PeoplePhoto&quot;"/>
-                                                              </T>
-                                                              <T EC="23" EL="58" N="dot" SC="23" SL="58" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                              <T EC="27" EL="58" N="right" SC="25" SL="58" TT=".Perl.Perl_Expression">
-                                                                <T EC="27" EL="58" SC="25" SL="58" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                          <T EC="56" EL="58" N="exprs" SC="4" SL="58" TT="List">
+                                            <T EC="56" EL="58" SC="9" SL="58" TT=".Perl.Perl_Expression">
+                                              <T EC="56" EL="58" SC="9" SL="58" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                <T EC="50" EL="58" N="left" SC="9" SL="58" TT=".Perl.Perl_Expression">
+                                                  <T EC="50" EL="58" SC="9" SL="58" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                    <T EC="43" EL="58" N="left" SC="9" SL="58" TT=".Perl.Perl_Expression">
+                                                      <T EC="43" EL="58" SC="9" SL="58" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                        <T EC="37" EL="58" N="left" SC="9" SL="58" TT=".Perl.Perl_Expression">
+                                                          <T EC="37" EL="58" SC="9" SL="58" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                            <T EC="28" EL="58" N="left" SC="9" SL="58" TT=".Perl.Perl_Expression">
+                                                              <T EC="28" EL="58" SC="9" SL="58" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                                <T EC="21" EL="58" N="left" SC="9" SL="58" TT=".Perl.Perl_Expression">
+                                                                  <T EC="21" EL="58" SC="9" SL="58" TT=".Perl.Terminals.Perl_Literal" V="&quot;PeoplePhoto&quot;"/>
+                                                                </T>
+                                                                <T EC="23" EL="58" N="dot" SC="23" SL="58" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                                <T EC="27" EL="58" N="right" SC="25" SL="58" TT=".Perl.Perl_Expression">
+                                                                  <T EC="27" EL="58" SC="25" SL="58" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                                </T>
                                                               </T>
                                                             </T>
-                                                          </T>
-                                                          <T EC="29" EL="58" N="dot" SC="29" SL="58" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                          <T EC="37" EL="58" N="right" SC="31" SL="58" TT=".Perl.Perl_Expression">
-                                                            <T EC="37" EL="58" SC="31" SL="58" TT=".Perl.Perl_Variable">
-                                                              <T EC="37" EL="58" SC="31" SL="58" TT=".Perl.Perl_Variable$Perl_UserVariable">
-                                                                <T EC="31" EL="58" N="dollar" SC="31" SL="58" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
-                                                                <T EC="36" EL="58" N="id" SC="32" SL="58" TT=".Perl.Symbols.Perl_Identifier_Reference" V="photo"/>
+                                                            <T EC="29" EL="58" N="dot" SC="29" SL="58" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                            <T EC="37" EL="58" N="right" SC="31" SL="58" TT=".Perl.Perl_Expression">
+                                                              <T EC="37" EL="58" SC="31" SL="58" TT=".Perl.Perl_Variable">
+                                                                <T EC="37" EL="58" SC="31" SL="58" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                                  <T EC="31" EL="58" N="dollar" SC="31" SL="58" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                                  <T EC="36" EL="58" N="id" SC="32" SL="58" TT=".Perl.Symbols.Perl_Identifier_Reference" V="photo"/>
+                                                                </T>
                                                               </T>
                                                             </T>
                                                           </T>
                                                         </T>
-                                                      </T>
-                                                      <T EC="38" EL="58" N="dot" SC="38" SL="58" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                      <T EC="42" EL="58" N="right" SC="40" SL="58" TT=".Perl.Perl_Expression">
-                                                        <T EC="42" EL="58" SC="40" SL="58" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                        <T EC="38" EL="58" N="dot" SC="38" SL="58" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                        <T EC="42" EL="58" N="right" SC="40" SL="58" TT=".Perl.Perl_Expression">
+                                                          <T EC="42" EL="58" SC="40" SL="58" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                        </T>
                                                       </T>
                                                     </T>
-                                                  </T>
-                                                  <T EC="44" EL="58" N="dot" SC="44" SL="58" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                  <T EC="50" EL="58" N="right" SC="46" SL="58" TT=".Perl.Perl_Expression">
-                                                    <T EC="50" EL="58" SC="46" SL="58" TT=".Perl.Perl_Variable">
-                                                      <T EC="50" EL="58" SC="46" SL="58" TT=".Perl.Perl_Variable$Perl_UserVariable">
-                                                        <T EC="46" EL="58" N="dollar" SC="46" SL="58" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
-                                                        <T EC="49" EL="58" N="id" SC="47" SL="58" TT=".Perl.Symbols.Perl_Identifier_Reference" V="key"/>
+                                                    <T EC="44" EL="58" N="dot" SC="44" SL="58" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                    <T EC="50" EL="58" N="right" SC="46" SL="58" TT=".Perl.Perl_Expression">
+                                                      <T EC="50" EL="58" SC="46" SL="58" TT=".Perl.Perl_Variable">
+                                                        <T EC="50" EL="58" SC="46" SL="58" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                          <T EC="46" EL="58" N="dollar" SC="46" SL="58" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                          <T EC="49" EL="58" N="id" SC="47" SL="58" TT=".Perl.Symbols.Perl_Identifier_Reference" V="key"/>
+                                                        </T>
                                                       </T>
                                                     </T>
                                                   </T>
                                                 </T>
-                                              </T>
-                                              <T EC="51" EL="58" N="dot" SC="51" SL="58" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                              <T EC="56" EL="58" N="right" SC="53" SL="58" TT=".Perl.Perl_Expression">
-                                                <T EC="56" EL="58" SC="53" SL="58" TT=".Perl.Terminals.Perl_Literal" V="&quot;\n&quot;"/>
+                                                <T EC="51" EL="58" N="dot" SC="51" SL="58" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                <T EC="56" EL="58" N="right" SC="53" SL="58" TT=".Perl.Perl_Expression">
+                                                  <T EC="56" EL="58" SC="53" SL="58" TT=".Perl.Terminals.Perl_Literal" V="&quot;\n&quot;"/>
+                                                </T>
                                               </T>
                                             </T>
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="57" EL="58" N="semicolon" SC="57" SL="58" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="57" EL="58" N="semicolon" SC="57" SL="58" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
                               </T>
-                              <T EC="4" EL="59" N="rightBrace" SC="4" SL="59" TT=".Perl.Terminals.Perl_Punctuation" V="}"/>
+                              <T EC="4" EL="59" N="rightBrace" SC="4" SL="59" TT="com.eagle.tokens.punctuation.PunctuationRightBrace" V="}"/>
                             </T>
                           </T>
                         </T>
@@ -1648,7 +1658,7 @@
                             </T>
                           </T>
                         </T>
-                        <T EC="36" EL="61" N="semicolon" SC="36" SL="61" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="36" EL="61" N="semicolon" SC="36" SL="61" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>
@@ -1673,7 +1683,7 @@
                                 <T EC="25" EL="62" N="methodName" SC="15" SL="62" TT=".Perl.Perl_Variable">
                                   <T EC="25" EL="62" SC="15" SL="62" TT=".Perl.Symbols.Perl_Identifier_Reference" V="mysql_query"/>
                                 </T>
-                                <T EC="26" EL="62" N="leftParen" SC="26" SL="62" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                <T EC="26" EL="62" N="leftParen" SC="26" SL="62" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                                 <T EC="32" EL="62" N="argList" SC="27" SL="62" TT=".Perl.Perl_Expression$Perl_ArgumentList">
                                   <T EC="32" EL="62" N="arg" SC="27" SL="62" TT=".Perl.Perl_Expression">
                                     <T EC="32" EL="62" SC="27" SL="62" TT=".Perl.Perl_Variable">
@@ -1684,12 +1694,12 @@
                                     </T>
                                   </T>
                                 </T>
-                                <T EC="33" EL="62" N="rightParen" SC="33" SL="62" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                                <T EC="33" EL="62" N="rightParen" SC="33" SL="62" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                               </T>
                             </T>
                           </T>
                         </T>
-                        <T EC="34" EL="62" N="semicolon" SC="34" SL="62" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="34" EL="62" N="semicolon" SC="34" SL="62" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>
@@ -1700,7 +1710,7 @@
                       <T EC="3" EL="71" SC="4" SL="63" TT=".Perl.Perl_Statement$Perl_CompundStatement">
                         <T EC="3" EL="71" SC="4" SL="63" TT=".Perl.Statements.Perl_WhileStatement">
                           <T EC="8" EL="63" N="WHILE" SC="4" SL="63" TT=".Perl.Terminals.Perl_Keyword" V="while"/>
-                          <T EC="10" EL="63" N="leftParen" SC="10" SL="63" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                          <T EC="10" EL="63" N="leftParen" SC="10" SL="63" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                           <T EC="44" EL="63" N="condition" SC="11" SL="63" TT=".Perl.Perl_Expression">
                             <T EC="44" EL="63" SC="11" SL="63" TT=".Perl.Perl_Expression$Perl_AssignmentExpression">
                               <T EC="15" EL="63" N="var" SC="11" SL="63" TT=".Perl.Perl_Expression">
@@ -1717,7 +1727,7 @@
                                   <T EC="34" EL="63" N="methodName" SC="18" SL="63" TT=".Perl.Perl_Variable">
                                     <T EC="34" EL="63" SC="18" SL="63" TT=".Perl.Symbols.Perl_Identifier_Reference" V="mysql_fetch_array"/>
                                   </T>
-                                  <T EC="35" EL="63" N="leftParen" SC="35" SL="63" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
+                                  <T EC="35" EL="63" N="leftParen" SC="35" SL="63" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                                   <T EC="43" EL="63" N="argList" SC="36" SL="63" TT=".Perl.Perl_Expression$Perl_ArgumentList">
                                     <T EC="43" EL="63" N="arg" SC="36" SL="63" TT=".Perl.Perl_Expression">
                                       <T EC="43" EL="63" SC="36" SL="63" TT=".Perl.Perl_Variable">
@@ -1728,15 +1738,15 @@
                                       </T>
                                     </T>
                                   </T>
-                                  <T EC="44" EL="63" N="rightParen" SC="44" SL="63" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                                  <T EC="44" EL="63" N="rightParen" SC="44" SL="63" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                                 </T>
                               </T>
                             </T>
                           </T>
-                          <T EC="45" EL="63" N="rightParen" SC="45" SL="63" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                          <T EC="45" EL="63" N="rightParen" SC="45" SL="63" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                           <T EC="3" EL="71" N="stmt" SC="4" SL="64" TT=".Perl.Perl_Statement">
                             <T EC="3" EL="71" SC="4" SL="64" TT=".Perl.Perl_Statement$Perl_StatementBlock">
-                              <T EC="4" EL="64" N="leftBrace" SC="4" SL="64" TT=".Perl.Terminals.Perl_Punctuation" V="{"/>
+                              <T EC="4" EL="64" N="leftBrace" SC="4" SL="64" TT="com.eagle.tokens.punctuation.PunctuationLeftBrace" V="{"/>
                               <T EC="3" EL="71" N="statements" SC="4" SL="64" TT="List">
                                 <T EC="3" EL="66" SC="7" SL="65" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementOrComment">
                                   <T EC="3" EL="66" SC="7" SL="65" TT=".Perl.Perl_Statement">
@@ -1759,11 +1769,11 @@
                                                 <T EC="17" EL="65" N="id" SC="15" SL="65" TT=".Perl.Symbols.Perl_Identifier_Reference" V="row"/>
                                                 <T EC="30" EL="65" N="subscript" SC="14" SL="65" TT="List">
                                                   <T EC="30" EL="65" SC="18" SL="65" TT=".Perl.Perl_Subscript">
-                                                    <T EC="18" EL="65" N="leftBracket" SC="18" SL="65" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                                    <T EC="18" EL="65" N="leftBracket" SC="18" SL="65" TT="com.eagle.tokens.punctuation.PunctuationLeftBracket" V="["/>
                                                     <T EC="29" EL="65" N="expr" SC="19" SL="65" TT=".Perl.Perl_Expression">
                                                       <T EC="29" EL="65" SC="19" SL="65" TT=".Perl.Terminals.Perl_Literal" V="&quot;Directory&quot;"/>
                                                     </T>
-                                                    <T EC="30" EL="65" N="rightBracket" SC="30" SL="65" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                                    <T EC="30" EL="65" N="rightBracket" SC="30" SL="65" TT="com.eagle.tokens.punctuation.PunctuationRightBracket" V="]"/>
                                                   </T>
                                                 </T>
                                               </T>
@@ -1771,7 +1781,7 @@
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="31" EL="65" N="semicolon" SC="31" SL="65" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="31" EL="65" N="semicolon" SC="31" SL="65" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
@@ -1796,11 +1806,11 @@
                                                 <T EC="16" EL="66" N="id" SC="14" SL="66" TT=".Perl.Symbols.Perl_Identifier_Reference" V="row"/>
                                                 <T EC="25" EL="66" N="subscript" SC="13" SL="66" TT="List">
                                                   <T EC="25" EL="66" SC="17" SL="66" TT=".Perl.Perl_Subscript">
-                                                    <T EC="17" EL="66" N="leftBracket" SC="17" SL="66" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                                    <T EC="17" EL="66" N="leftBracket" SC="17" SL="66" TT="com.eagle.tokens.punctuation.PunctuationLeftBracket" V="["/>
                                                     <T EC="24" EL="66" N="expr" SC="18" SL="66" TT=".Perl.Perl_Expression">
                                                       <T EC="24" EL="66" SC="18" SL="66" TT=".Perl.Terminals.Perl_Literal" V="&quot;Video&quot;"/>
                                                     </T>
-                                                    <T EC="25" EL="66" N="rightBracket" SC="25" SL="66" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                                    <T EC="25" EL="66" N="rightBracket" SC="25" SL="66" TT="com.eagle.tokens.punctuation.PunctuationRightBracket" V="]"/>
                                                   </T>
                                                 </T>
                                               </T>
@@ -1808,7 +1818,7 @@
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="26" EL="66" N="semicolon" SC="26" SL="66" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="26" EL="66" N="semicolon" SC="26" SL="66" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
@@ -1833,11 +1843,11 @@
                                                 <T EC="19" EL="67" N="id" SC="17" SL="67" TT=".Perl.Symbols.Perl_Identifier_Reference" V="row"/>
                                                 <T EC="28" EL="67" N="subscript" SC="16" SL="67" TT="List">
                                                   <T EC="28" EL="67" SC="20" SL="67" TT=".Perl.Perl_Subscript">
-                                                    <T EC="20" EL="67" N="leftBracket" SC="20" SL="67" TT=".Perl.Terminals.Perl_Punctuation" V="["/>
+                                                    <T EC="20" EL="67" N="leftBracket" SC="20" SL="67" TT="com.eagle.tokens.punctuation.PunctuationLeftBracket" V="["/>
                                                     <T EC="27" EL="67" N="expr" SC="21" SL="67" TT=".Perl.Perl_Expression">
                                                       <T EC="27" EL="67" SC="21" SL="67" TT=".Perl.Terminals.Perl_Literal" V="&quot;Photo&quot;"/>
                                                     </T>
-                                                    <T EC="28" EL="67" N="rightBracket" SC="28" SL="67" TT=".Perl.Terminals.Perl_Punctuation" V="]"/>
+                                                    <T EC="28" EL="67" N="rightBracket" SC="28" SL="67" TT="com.eagle.tokens.punctuation.PunctuationRightBracket" V="]"/>
                                                   </T>
                                                 </T>
                                               </T>
@@ -1845,7 +1855,7 @@
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="29" EL="67" N="semicolon" SC="29" SL="67" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="29" EL="67" N="semicolon" SC="29" SL="67" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
@@ -1855,88 +1865,90 @@
                                       <T EC="65" EL="68" N="statement" SC="4" SL="68" TT=".Perl.Perl_Statement$Perl_SimpleStatement$Perl_StatementList">
                                         <T EC="65" EL="68" SC="4" SL="68" TT=".Perl.Statements.Perl_EchoStatement">
                                           <T EC="7" EL="68" N="ECHO" SC="4" SL="68" TT=".Perl.Terminals.Perl_Keyword" V="echo"/>
-                                          <T EC="65" EL="68" N="expr" SC="9" SL="68" TT=".Perl.Perl_Expression">
-                                            <T EC="65" EL="68" SC="9" SL="68" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                              <T EC="59" EL="68" N="left" SC="9" SL="68" TT=".Perl.Perl_Expression">
-                                                <T EC="59" EL="68" SC="9" SL="68" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                  <T EC="50" EL="68" N="left" SC="9" SL="68" TT=".Perl.Perl_Expression">
-                                                    <T EC="50" EL="68" SC="9" SL="68" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                      <T EC="44" EL="68" N="left" SC="9" SL="68" TT=".Perl.Perl_Expression">
-                                                        <T EC="44" EL="68" SC="9" SL="68" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                          <T EC="35" EL="68" N="left" SC="9" SL="68" TT=".Perl.Perl_Expression">
-                                                            <T EC="35" EL="68" SC="9" SL="68" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                              <T EC="29" EL="68" N="left" SC="9" SL="68" TT=".Perl.Perl_Expression">
-                                                                <T EC="29" EL="68" SC="9" SL="68" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                                  <T EC="22" EL="68" N="left" SC="9" SL="68" TT=".Perl.Perl_Expression">
-                                                                    <T EC="22" EL="68" SC="9" SL="68" TT=".Perl.Perl_Expression$Perl_DotExpression">
-                                                                      <T EC="15" EL="68" N="left" SC="9" SL="68" TT=".Perl.Perl_Expression">
-                                                                        <T EC="15" EL="68" SC="9" SL="68" TT=".Perl.Terminals.Perl_Literal" V="&quot;Video&quot;"/>
-                                                                      </T>
-                                                                      <T EC="17" EL="68" N="dot" SC="17" SL="68" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                                      <T EC="21" EL="68" N="right" SC="19" SL="68" TT=".Perl.Perl_Expression">
-                                                                        <T EC="21" EL="68" SC="19" SL="68" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                          <T EC="65" EL="68" N="exprs" SC="4" SL="68" TT="List">
+                                            <T EC="65" EL="68" SC="9" SL="68" TT=".Perl.Perl_Expression">
+                                              <T EC="65" EL="68" SC="9" SL="68" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                <T EC="59" EL="68" N="left" SC="9" SL="68" TT=".Perl.Perl_Expression">
+                                                  <T EC="59" EL="68" SC="9" SL="68" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                    <T EC="50" EL="68" N="left" SC="9" SL="68" TT=".Perl.Perl_Expression">
+                                                      <T EC="50" EL="68" SC="9" SL="68" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                        <T EC="44" EL="68" N="left" SC="9" SL="68" TT=".Perl.Perl_Expression">
+                                                          <T EC="44" EL="68" SC="9" SL="68" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                            <T EC="35" EL="68" N="left" SC="9" SL="68" TT=".Perl.Perl_Expression">
+                                                              <T EC="35" EL="68" SC="9" SL="68" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                                <T EC="29" EL="68" N="left" SC="9" SL="68" TT=".Perl.Perl_Expression">
+                                                                  <T EC="29" EL="68" SC="9" SL="68" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                                    <T EC="22" EL="68" N="left" SC="9" SL="68" TT=".Perl.Perl_Expression">
+                                                                      <T EC="22" EL="68" SC="9" SL="68" TT=".Perl.Perl_Expression$Perl_DotExpression">
+                                                                        <T EC="15" EL="68" N="left" SC="9" SL="68" TT=".Perl.Perl_Expression">
+                                                                          <T EC="15" EL="68" SC="9" SL="68" TT=".Perl.Terminals.Perl_Literal" V="&quot;Video&quot;"/>
+                                                                        </T>
+                                                                        <T EC="17" EL="68" N="dot" SC="17" SL="68" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                                        <T EC="21" EL="68" N="right" SC="19" SL="68" TT=".Perl.Perl_Expression">
+                                                                          <T EC="21" EL="68" SC="19" SL="68" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                                        </T>
                                                                       </T>
                                                                     </T>
-                                                                  </T>
-                                                                  <T EC="23" EL="68" N="dot" SC="23" SL="68" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                                  <T EC="29" EL="68" N="right" SC="25" SL="68" TT=".Perl.Perl_Expression">
-                                                                    <T EC="29" EL="68" SC="25" SL="68" TT=".Perl.Perl_Variable">
-                                                                      <T EC="29" EL="68" SC="25" SL="68" TT=".Perl.Perl_Variable$Perl_UserVariable">
-                                                                        <T EC="25" EL="68" N="dollar" SC="25" SL="68" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
-                                                                        <T EC="28" EL="68" N="id" SC="26" SL="68" TT=".Perl.Symbols.Perl_Identifier_Reference" V="dir"/>
+                                                                    <T EC="23" EL="68" N="dot" SC="23" SL="68" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                                    <T EC="29" EL="68" N="right" SC="25" SL="68" TT=".Perl.Perl_Expression">
+                                                                      <T EC="29" EL="68" SC="25" SL="68" TT=".Perl.Perl_Variable">
+                                                                        <T EC="29" EL="68" SC="25" SL="68" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                                          <T EC="25" EL="68" N="dollar" SC="25" SL="68" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                                          <T EC="28" EL="68" N="id" SC="26" SL="68" TT=".Perl.Symbols.Perl_Identifier_Reference" V="dir"/>
+                                                                        </T>
                                                                       </T>
                                                                     </T>
                                                                   </T>
                                                                 </T>
-                                                              </T>
-                                                              <T EC="30" EL="68" N="dot" SC="30" SL="68" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                              <T EC="34" EL="68" N="right" SC="32" SL="68" TT=".Perl.Perl_Expression">
-                                                                <T EC="34" EL="68" SC="32" SL="68" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                                <T EC="30" EL="68" N="dot" SC="30" SL="68" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                                <T EC="34" EL="68" N="right" SC="32" SL="68" TT=".Perl.Perl_Expression">
+                                                                  <T EC="34" EL="68" SC="32" SL="68" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                                </T>
                                                               </T>
                                                             </T>
-                                                          </T>
-                                                          <T EC="36" EL="68" N="dot" SC="36" SL="68" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                          <T EC="44" EL="68" N="right" SC="38" SL="68" TT=".Perl.Perl_Expression">
-                                                            <T EC="44" EL="68" SC="38" SL="68" TT=".Perl.Perl_Variable">
-                                                              <T EC="44" EL="68" SC="38" SL="68" TT=".Perl.Perl_Variable$Perl_UserVariable">
-                                                                <T EC="38" EL="68" N="dollar" SC="38" SL="68" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
-                                                                <T EC="43" EL="68" N="id" SC="39" SL="68" TT=".Perl.Symbols.Perl_Identifier_Reference" V="video"/>
+                                                            <T EC="36" EL="68" N="dot" SC="36" SL="68" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                            <T EC="44" EL="68" N="right" SC="38" SL="68" TT=".Perl.Perl_Expression">
+                                                              <T EC="44" EL="68" SC="38" SL="68" TT=".Perl.Perl_Variable">
+                                                                <T EC="44" EL="68" SC="38" SL="68" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                                  <T EC="38" EL="68" N="dollar" SC="38" SL="68" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                                  <T EC="43" EL="68" N="id" SC="39" SL="68" TT=".Perl.Symbols.Perl_Identifier_Reference" V="video"/>
+                                                                </T>
                                                               </T>
                                                             </T>
                                                           </T>
                                                         </T>
-                                                      </T>
-                                                      <T EC="45" EL="68" N="dot" SC="45" SL="68" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                      <T EC="49" EL="68" N="right" SC="47" SL="68" TT=".Perl.Perl_Expression">
-                                                        <T EC="49" EL="68" SC="47" SL="68" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                        <T EC="45" EL="68" N="dot" SC="45" SL="68" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                        <T EC="49" EL="68" N="right" SC="47" SL="68" TT=".Perl.Perl_Expression">
+                                                          <T EC="49" EL="68" SC="47" SL="68" TT=".Perl.Terminals.Perl_Literal" V="','"/>
+                                                        </T>
                                                       </T>
                                                     </T>
-                                                  </T>
-                                                  <T EC="51" EL="68" N="dot" SC="51" SL="68" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                                  <T EC="59" EL="68" N="right" SC="53" SL="68" TT=".Perl.Perl_Expression">
-                                                    <T EC="59" EL="68" SC="53" SL="68" TT=".Perl.Perl_Variable">
-                                                      <T EC="59" EL="68" SC="53" SL="68" TT=".Perl.Perl_Variable$Perl_UserVariable">
-                                                        <T EC="53" EL="68" N="dollar" SC="53" SL="68" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
-                                                        <T EC="58" EL="68" N="id" SC="54" SL="68" TT=".Perl.Symbols.Perl_Identifier_Reference" V="photo"/>
+                                                    <T EC="51" EL="68" N="dot" SC="51" SL="68" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                    <T EC="59" EL="68" N="right" SC="53" SL="68" TT=".Perl.Perl_Expression">
+                                                      <T EC="59" EL="68" SC="53" SL="68" TT=".Perl.Perl_Variable">
+                                                        <T EC="59" EL="68" SC="53" SL="68" TT=".Perl.Perl_Variable$Perl_UserVariable">
+                                                          <T EC="53" EL="68" N="dollar" SC="53" SL="68" TT=".Perl.Terminals.Perl_Punctuation" V="$"/>
+                                                          <T EC="58" EL="68" N="id" SC="54" SL="68" TT=".Perl.Symbols.Perl_Identifier_Reference" V="photo"/>
+                                                        </T>
                                                       </T>
                                                     </T>
                                                   </T>
                                                 </T>
-                                              </T>
-                                              <T EC="60" EL="68" N="dot" SC="60" SL="68" TT=".Perl.Terminals.Perl_Punctuation" V="."/>
-                                              <T EC="65" EL="68" N="right" SC="62" SL="68" TT=".Perl.Perl_Expression">
-                                                <T EC="65" EL="68" SC="62" SL="68" TT=".Perl.Terminals.Perl_Literal" V="&quot;\n&quot;"/>
+                                                <T EC="60" EL="68" N="dot" SC="60" SL="68" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
+                                                <T EC="65" EL="68" N="right" SC="62" SL="68" TT=".Perl.Perl_Expression">
+                                                  <T EC="65" EL="68" SC="62" SL="68" TT=".Perl.Terminals.Perl_Literal" V="&quot;\n&quot;"/>
+                                                </T>
                                               </T>
                                             </T>
                                           </T>
                                         </T>
                                       </T>
-                                      <T EC="66" EL="68" N="semicolon" SC="66" SL="68" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                                      <T EC="66" EL="68" N="semicolon" SC="66" SL="68" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                                     </T>
                                   </T>
                                 </T>
                               </T>
-                              <T EC="4" EL="69" N="rightBrace" SC="4" SL="69" TT=".Perl.Terminals.Perl_Punctuation" V="}"/>
+                              <T EC="4" EL="69" N="rightBrace" SC="4" SL="69" TT="com.eagle.tokens.punctuation.PunctuationRightBrace" V="}"/>
                             </T>
                           </T>
                         </T>
@@ -1953,11 +1965,11 @@
                             <T EC="11" EL="71" N="methodName" SC="4" SL="71" TT=".Perl.Perl_Variable">
                               <T EC="11" EL="71" SC="4" SL="71" TT=".Perl.Symbols.Perl_Identifier_Reference" V="db_close"/>
                             </T>
-                            <T EC="12" EL="71" N="leftParen" SC="12" SL="71" TT=".Perl.Terminals.Perl_Punctuation" V="("/>
-                            <T EC="13" EL="71" N="rightParen" SC="13" SL="71" TT=".Perl.Terminals.Perl_Punctuation" V=")"/>
+                            <T EC="12" EL="71" N="leftParen" SC="12" SL="71" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
+                            <T EC="13" EL="71" N="rightParen" SC="13" SL="71" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                           </T>
                         </T>
-                        <T EC="14" EL="71" N="semicolon" SC="14" SL="71" TT=".Perl.Terminals.Perl_Punctuation" V=";"/>
+                        <T EC="14" EL="71" N="semicolon" SC="14" SL="71" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                       </T>
                     </T>
                   </T>

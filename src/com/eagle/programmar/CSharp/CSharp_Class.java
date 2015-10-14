@@ -12,9 +12,16 @@ import com.eagle.programmar.CSharp.Terminals.CSharp_Identifier;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Keyword;
 import com.eagle.programmar.CSharp.Terminals.CSharp_KeywordChoice;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class CSharp_Class extends TokenSequence
 {
@@ -26,10 +33,10 @@ public class CSharp_Class extends TokenSequence
 	public @OPT CSharp_GenericType genericType;
 	public @OPT CSharp_ExtendsOrImplements extendsorimplements;
 	public @OPT @NEWLINE TokenList<CSharp_Comment> comments1;
-	public @NEWLINE CSharp_Punctuation leftBrace = new CSharp_Punctuation('{');
+	public @NEWLINE PunctuationLeftBrace leftBrace;
 	public @OPT @NEWLINE TokenList<CSharp_ClassElement> elements;
-	public CSharp_Punctuation rightBrace = new CSharp_Punctuation('}');
-	public @OPT @CURIOUS("Extra semicolon") CSharp_Punctuation semicolon = new CSharp_Punctuation(';');
+	public PunctuationRightBrace rightBrace;
+	public @OPT @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon;
 	
 	public static class CSharp_AnnotationOrComment extends TokenChooser
 	{
@@ -44,16 +51,15 @@ public class CSharp_Class extends TokenSequence
 
 	public static class CSharp_DotIdentifier extends TokenSequence
 	{
-		public CSharp_Punctuation dot = new CSharp_Punctuation('.');
+		public PunctuationPeriod dot;
 		public CSharp_Identifier id;
 	}
 	
 	public static class CSharp_ExtendsOrImplements extends TokenSequence
 	{
-		public CSharp_Punctuation colon = new CSharp_Punctuation(':');
+		public PunctuationColon colon;
 		public @OPT CSharp_NamespaceQualifer namespaceQualifier;
-		public CSharp_Identifier_Reference className;
-		public @OPT TokenList<CSharp_DotIdentifier> moreIds;
+		public SeparatedList<CSharp_Identifier_Reference,PunctuationPeriod> className;
 		public @OPT CSharp_GenericType genericType;
 		public @OPT TokenList<CSharp_MoreImplements> moreImpl;
 		
@@ -65,9 +71,8 @@ public class CSharp_Class extends TokenSequence
 		
 		public static class CSharp_MoreImplements extends TokenSequence
 		{
-			public CSharp_Punctuation comma = new CSharp_Punctuation(',');
-			public CSharp_Identifier_Reference className;
-			public @OPT TokenList<CSharp_DotIdentifier> moreIds;
+			public PunctuationComma comma;
+			public SeparatedList<CSharp_Identifier_Reference,PunctuationPeriod> className;
 			public @OPT CSharp_GenericType genericType;
 		}
 	}

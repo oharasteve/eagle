@@ -6,13 +6,13 @@ package com.eagle.programmar.SQL.Statements;
 import com.eagle.programmar.SQL.SQL_Type;
 import com.eagle.programmar.SQL.SQL_Variable;
 import com.eagle.programmar.SQL.Terminals.SQL_Keyword;
-import com.eagle.programmar.SQL.Terminals.SQL_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class SQL_VariableStatement extends TokenSequence
 {
 	public SQL_Keyword VARIABLE = new SQL_Keyword("VARIABLE");
 	public SQL_Variable var;
 	public SQL_Type type;
-	public SQL_Punctuation semicolon = new SQL_Punctuation(';');
+	public PunctuationSemicolon semicolon;
 }

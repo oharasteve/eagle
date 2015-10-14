@@ -8,16 +8,18 @@ import com.eagle.programmar.Python.Python_Statement.Python_SingleOrMultiLineStat
 import com.eagle.programmar.Python.Python_Variable;
 import com.eagle.programmar.Python.Terminals.Python_Comment;
 import com.eagle.programmar.Python.Terminals.Python_Keyword;
-import com.eagle.programmar.Python.Terminals.Python_Punctuation;
 import com.eagle.programmar.Python.Terminals.Python_StartOfLine;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class Python_TryStatement extends TokenSequence
 {
 	public Python_StartOfLine soln;
 	public Python_Keyword TRY = new Python_Keyword("try");
-	public Python_Punctuation colon = new Python_Punctuation(':');
+	public PunctuationColon colon;
 	public @OPT Python_Comment comment;
 	public Python_SingleOrMultiLineStatement tryType;
 	public @OPT TokenList<Python_TryExcept> tryExcept;
@@ -27,16 +29,9 @@ public class Python_TryStatement extends TokenSequence
 	public static class Python_TryExcept extends TokenSequence
 	{
 		public Python_Keyword EXCEPT = new Python_Keyword("except");
-		public @OPT Python_TryExceptClause tryExceptClause;
-		public @OPT TokenList<Python_MoreExcepts> moreExcepts;
-		public Python_Punctuation colon = new Python_Punctuation(':');
+		public @OPT SeparatedList<Python_TryExceptClause,PunctuationComma> tryExceptClauses;
+		public PunctuationColon colon;
 		public Python_SingleOrMultiLineStatement exceptWhat;
-		
-		public static class Python_MoreExcepts extends TokenSequence
-		{
-			public Python_Punctuation comma = new Python_Punctuation(',');
-			public Python_TryExceptClause tryExceptClause;
-		}
 		
 		public static class Python_TryExceptClause extends TokenSequence
 		{
@@ -55,7 +50,7 @@ public class Python_TryStatement extends TokenSequence
 	{
 		public Python_StartOfLine soln = new Python_StartOfLine();
 		public Python_Keyword ELSE = new Python_Keyword("else");
-		public Python_Punctuation colon = new Python_Punctuation(':');
+		public PunctuationColon colon;
 		public Python_SingleOrMultiLineStatement elseWhat;
 	}
 
@@ -63,7 +58,7 @@ public class Python_TryStatement extends TokenSequence
 	{
 		public Python_StartOfLine soln = new Python_StartOfLine();
 		public Python_Keyword FINALLY = new Python_Keyword("finally");
-		public Python_Punctuation colon = new Python_Punctuation(':');
+		public PunctuationColon colon;
 		public Python_SingleOrMultiLineStatement finallyWhat;
 	}
 }

@@ -16,6 +16,7 @@ import com.eagle.programmar.Python.Terminals.Python_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
 
 public class Python_FunctionDefinition extends TokenSequence
 {
@@ -24,7 +25,7 @@ public class Python_FunctionDefinition extends TokenSequence
 	public Python_Keyword DEF = new Python_Keyword("def");
 	public Python_FunctionName fnName;
 	public Python_Parameter_List params;
-	public Python_Punctuation colon = new Python_Punctuation(':');
+	public PunctuationColon colon;
 	public @OPT TokenList<Python_Comment> comment;
 	public Python_DefType defType;
 	

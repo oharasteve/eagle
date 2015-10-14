@@ -12,10 +12,11 @@ import com.eagle.programmar.COBOL.Symbols.COBOL_Section_Definition;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Comment;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Number;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
 
 public class COBOL_ProcedureDivision extends TokenSequence
 {
@@ -26,7 +27,7 @@ public class COBOL_ProcedureDivision extends TokenSequence
 	public @OPT COBOL_ProcedureUsing using;
 	public @OPT COBOL_ProcedureChaining chaining;
 	public @OPT COBOL_Keyword WINAPI = new COBOL_Keyword("WINAPI");
-	public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+	public PunctuationPeriod dot;
 	public @OPT COBOL_Declaratives declaratives;
 	public TokenList<COBOL_Section> sections;
 	public @OPT COBOL_ParagraphHeader extraPara;
@@ -39,7 +40,7 @@ public class COBOL_ProcedureDivision extends TokenSequence
 
 		public static class COBOL_ProcedureUsingWhat extends TokenSequence
 		{
-			public @OPT COBOL_Punctuation comma = new COBOL_Punctuation(',');
+			public @OPT PunctuationComma comma;
 			public COBOL_Identifier_Reference id;
 		}
 	}
@@ -52,7 +53,7 @@ public class COBOL_ProcedureDivision extends TokenSequence
 
 		public static class COBOL_ProcedureChainingWhat extends TokenSequence
 		{
-			public @OPT COBOL_Punctuation comma = new COBOL_Punctuation(',');
+			public @OPT PunctuationComma comma;
 			public COBOL_Identifier_Reference id;
 		}
 	}
@@ -60,11 +61,11 @@ public class COBOL_ProcedureDivision extends TokenSequence
 	public static class COBOL_Declaratives extends TokenSequence
 	{
 		public COBOL_Keyword DECLARATIVES1 = new COBOL_Keyword("DECLARATIVES");
-		public COBOL_Punctuation dot1 = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot1;
 		public COBOL_Section section;
 		public COBOL_Keyword END = new COBOL_Keyword("END");
 		public COBOL_Keyword DECLARATIVES2 = new COBOL_Keyword("DECLARATIVES");
-		public COBOL_Punctuation dot2 = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot2;
 	}
 	
 	public static class COBOL_Section extends TokenSequence
@@ -77,7 +78,7 @@ public class COBOL_ProcedureDivision extends TokenSequence
 			public COBOL_Section_Definition sectionName;
 			public COBOL_Keyword SECTION = new COBOL_Keyword("SECTION");
 			public @OPT COBOL_Number number;
-			public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+			public PunctuationPeriod dot;
 		}
 	}
 
@@ -101,15 +102,15 @@ public class COBOL_ProcedureDivision extends TokenSequence
 		public static class COBOL_ParagraphHeader extends TokenSequence
 		{
 			public COBOL_Paragraph_Definition paragraphName;
-			public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+			public PunctuationPeriod dot;
 		}
 	}
 
 	public static class COBOL_Sentence extends TokenSequence
 	{
 		public TokenList<COBOL_StatementOrComment> statements;
-		public COBOL_Punctuation dot = new COBOL_Punctuation('.');
-		public @CURIOUS("SENTENCE: Extra dot") @OPT COBOL_Punctuation dot2 = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot1;
+		public @CURIOUS("SENTENCE: Extra dot") @OPT PunctuationPeriod dot2;
 		
 		public static class COBOL_StatementOrComment extends TokenChooser
 		{

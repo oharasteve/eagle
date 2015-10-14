@@ -10,14 +10,14 @@ import com.eagle.programmar.Gupta.Gupta_Variable_Declaration;
 import com.eagle.programmar.Gupta.Symbols.Gupta_Function_Definition;
 import com.eagle.programmar.Gupta.Terminals.Gupta_CommentToEndOfLine;
 import com.eagle.programmar.Gupta.Terminals.Gupta_Keyword;
-import com.eagle.programmar.Gupta.Terminals.Gupta_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
 
 public class Gupta_Function extends Gupta_Declaration
 {
 	public Gupta_Keyword Function = new Gupta_Keyword("Function");
-	public Gupta_Punctuation colon = new Gupta_Punctuation(':');
+	public PunctuationColon colon;
 	public Gupta_Function_Definition functionName;
 	
 	public @INDENT Gupta_Function_Description description;
@@ -41,7 +41,7 @@ public class Gupta_Function extends Gupta_Declaration
 		public static class Gupta_Function_Return_Type extends TokenSequence
 		{
 			public @INDENT Gupta_Type returnType;
-			public Gupta_Punctuation colon = new Gupta_Punctuation(':');
+			public PunctuationColon colon;
 		}
 	}
 	

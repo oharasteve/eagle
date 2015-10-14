@@ -7,8 +7,11 @@ import com.eagle.programmar.C.Symbols.C_Identifier_Reference;
 import com.eagle.programmar.C.Terminals.C_Keyword;
 import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.programmar.CPlus.Symbols.CPlus_Class_Definition;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class CPlus_Class extends TokenSequence
 {
@@ -18,15 +21,8 @@ public class CPlus_Class extends TokenSequence
 	
 	public static class CPlus_ClassExtendList extends TokenSequence
 	{
-		public C_Punctuation colon = new C_Punctuation(':');
-		public CPlus_ClassExtends extendsClass;
-		public @OPT TokenList<CPlus_ClassExtendsMore> more;
-		
-		public static class CPlus_ClassExtendsMore extends TokenSequence
-		{
-			public C_Punctuation comma = new C_Punctuation(',');
-			public CPlus_ClassExtends extendsClass;
-		}
+		public PunctuationColon colon;
+		public SeparatedList<CPlus_ClassExtends,PunctuationComma> extendsClasses;
 		
 		public static class CPlus_ClassExtends extends TokenSequence
 		{

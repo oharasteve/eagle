@@ -6,11 +6,13 @@ package com.eagle.programmar.Natural;
 import com.eagle.programmar.Natural.Terminals.Natural_Comment;
 import com.eagle.programmar.Natural.Terminals.Natural_Keyword;
 import com.eagle.programmar.Natural.Terminals.Natural_KeywordChoice;
-import com.eagle.programmar.Natural.Terminals.Natural_Punctuation;
 import com.eagle.programmar.Natural.Terminals.Natural_PunctuationChoice;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Natural_Condition extends TokenSequence
 {
@@ -25,9 +27,9 @@ public class Natural_Condition extends TokenSequence
 		public static class Natural_NotCondition extends TokenSequence
 		{
 			public Natural_Keyword NOT = new Natural_Keyword("NOT");
-			public Natural_Punctuation leftParen = new Natural_Punctuation('(');
+			public PunctuationLeftParen leftParen;
 			public Natural_Condition cond;
-			public Natural_Punctuation rightParen = new Natural_Punctuation(')');
+			public PunctuationRightParen rightParen;
 		}
 	}
 	
@@ -58,7 +60,7 @@ public class Natural_Condition extends TokenSequence
 			public static class Natural_Not_Equals extends TokenSequence
 			{
 				public Natural_Keyword NOT = new Natural_Keyword("NOT");
-				public Natural_Punctuation equals = new Natural_Punctuation('=');
+				public PunctuationEquals equals;
 			}
 
 			public static class Natural_Less_Than extends TokenSequence

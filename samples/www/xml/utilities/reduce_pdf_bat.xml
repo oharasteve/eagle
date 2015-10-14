@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<EagleProgram Created="Sat Oct 03 13:20:46 EDT 2015" Elapsed="3" Language="CMD" Steps="777" Tokens="175">
+<EagleProgram Created="Wed Oct 14 13:46:34 EDT 2015" Elapsed="3" Language="CMD" Steps="777" Tokens="175">
   <T EC="0" EL="17" File="" SC="1" SL="1" TT=".CMD.CMD_Program">
     <T EC="0" EL="17" N="commands" SC="1" SL="1" TT="List">
       <T EC="0" EL="3" SC="1" SL="1" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
@@ -25,7 +25,7 @@
               <T EC="20" EL="3" N="setWhat" SC="5" SL="3" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What">
                 <T EC="20" EL="3" SC="5" SL="3" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What$CMS_Set_Regular">
                   <T EC="13" EL="3" N="var" SC="6" SL="3" TT=".CMD.Symbols.CMD_Variable_Definition" V="STARTDIR"/>
-                  <T EC="14" EL="3" N="equals" SC="14" SL="3" TT=".CMD.Terminals.CMD_Punctuation" V="="/>
+                  <T EC="14" EL="3" N="equals" SC="14" SL="3" TT="com.eagle.tokens.punctuation.PunctuationEquals" V="="/>
                   <T EC="20" EL="3" N="value" SC="15" SL="3" TT=".CMD.Terminals.CMD_RestOfLine" V="%~dp0"/>
                 </T>
               </T>
@@ -99,7 +99,7 @@
               <T EC="38" EL="8" N="setWhat" SC="5" SL="8" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What">
                 <T EC="38" EL="8" SC="5" SL="8" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What$CMS_Set_Regular">
                   <T EC="12" EL="8" N="var" SC="6" SL="8" TT=".CMD.Symbols.CMD_Variable_Definition" V="REDUCED"/>
-                  <T EC="13" EL="8" N="equals" SC="13" SL="8" TT=".CMD.Terminals.CMD_Punctuation" V="="/>
+                  <T EC="13" EL="8" N="equals" SC="13" SL="8" TT="com.eagle.tokens.punctuation.PunctuationEquals" V="="/>
                   <T EC="38" EL="8" N="value" SC="14" SL="8" TT=".CMD.Terminals.CMD_RestOfLine" V="%~d1%~p1reduced\%~n1%~x1"/>
                 </T>
               </T>
@@ -134,7 +134,7 @@
               <T EC="30" EL="11" N="setWhat" SC="5" SL="11" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What">
                 <T EC="30" EL="11" SC="5" SL="11" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What$CMS_Set_Regular">
                   <T EC="6" EL="11" N="var" SC="6" SL="11" TT=".CMD.Symbols.CMD_Variable_Definition" V="U"/>
-                  <T EC="7" EL="11" N="equals" SC="7" SL="11" TT=".CMD.Terminals.CMD_Punctuation" V="="/>
+                  <T EC="7" EL="11" N="equals" SC="7" SL="11" TT="com.eagle.tokens.punctuation.PunctuationEquals" V="="/>
                   <T EC="30" EL="11" N="value" SC="8" SL="11" TT=".CMD.Terminals.CMD_RestOfLine" V="%STARTDIR%\ThumbNailer"/>
                 </T>
               </T>
@@ -256,7 +256,7 @@
               <T EC="26" EL="15" N="opts" SC="2" SL="15" TT="List">
                 <T EC="8" EL="15" SC="6" SL="15" TT=".CMD.Statements.CMD_Copy_Statement$CMD_Copy_Option">
                   <T EC="8" EL="15" SC="6" SL="15" TT=".CMD.Statements.CMD_Copy_Statement$CMD_Copy_Option$CMD_Copy_Option_Y">
-                    <T EC="7" EL="15" N="slash" SC="7" SL="15" TT=".CMD.Terminals.CMD_Punctuation" V="/"/>
+                    <T EC="7" EL="15" N="slash" SC="7" SL="15" TT="com.eagle.tokens.punctuation.PunctuationSlash" V="/"/>
                     <T EC="8" EL="15" N="Y" SC="8" SL="15" TT=".CMD.Terminals.CMD_Keyword" V="y"/>
                   </T>
                 </T>
@@ -287,7 +287,7 @@
               <T EC="19" EL="16" N="opts" SC="2" SL="16" TT="List">
                 <T EC="7" EL="16" SC="5" SL="16" TT=".CMD.Statements.CMD_Del_Statement$CMD_Del_Option">
                   <T EC="7" EL="16" SC="5" SL="16" TT=".CMD.Statements.CMD_Del_Statement$CMD_Del_Option$CMD_Del_Option_F">
-                    <T EC="6" EL="16" N="slash" SC="6" SL="16" TT=".CMD.Terminals.CMD_Punctuation" V="/"/>
+                    <T EC="6" EL="16" N="slash" SC="6" SL="16" TT="com.eagle.tokens.punctuation.PunctuationSlash" V="/"/>
                     <T EC="7" EL="16" N="F" SC="7" SL="16" TT=".CMD.Terminals.CMD_Keyword" V="f"/>
                   </T>
                 </T>

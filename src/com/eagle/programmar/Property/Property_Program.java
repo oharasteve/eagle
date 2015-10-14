@@ -7,11 +7,13 @@ import com.eagle.programmar.EagleLanguage;
 import com.eagle.programmar.Property.Terminals.Property_Comment;
 import com.eagle.programmar.Property.Terminals.Property_EndOfLine;
 import com.eagle.programmar.Property.Terminals.Property_Identifier;
-import com.eagle.programmar.Property.Terminals.Property_Punctuation;
 import com.eagle.programmar.Property.Terminals.Property_RestOfLine;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
 
 public class Property_Program extends EagleLanguage
 {
@@ -39,15 +41,8 @@ public class Property_Program extends EagleLanguage
 	
 	public static class Property_Value extends TokenSequence
 	{
-		public @OPT Property_Identifier id;
-		public @OPT TokenList<Property_MoreIds> more;
-		public Property_Punctuation equals = new Property_Punctuation('=');
+		public @OPT SeparatedList<Property_Identifier,PunctuationPeriod> ids;
+		public PunctuationEquals equals;
 		public Property_RestOfLine value;
-		
-		public static class Property_MoreIds extends TokenSequence
-		{
-			public Property_Punctuation dot = new Property_Punctuation('.');
-			public Property_Identifier id;
-		}
 	}
 }

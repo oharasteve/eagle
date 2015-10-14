@@ -5,10 +5,10 @@ package com.eagle.programmar.CMD.Statements;
 
 import com.eagle.programmar.CMD.Terminals.CMD_Argument;
 import com.eagle.programmar.CMD.Terminals.CMD_Keyword;
-import com.eagle.programmar.CMD.Terminals.CMD_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationHyphen;
 
 public class CMD_Awk_Statement extends TokenSequence
 {
@@ -20,14 +20,14 @@ public class CMD_Awk_Statement extends TokenSequence
 	{
 		public static class CMD_Awk_Option_F extends TokenSequence
 		{
-			public CMD_Punctuation minus = new CMD_Punctuation('-');
+			public PunctuationHyphen minus;
 			public CMD_Keyword F = new CMD_Keyword("f");
 			public CMD_Argument arg;
 		}
 
 		public static class CMD_Awk_Option_V extends TokenSequence
 		{
-			public CMD_Punctuation minus = new CMD_Punctuation('-');
+			public PunctuationHyphen minus;
 			public CMD_Keyword V = new CMD_Keyword("v");
 			public CMD_Argument variableDefinitions;
 		}

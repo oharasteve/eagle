@@ -26,12 +26,12 @@ import com.eagle.programmar.PLI.Statements.PLI_RevertStatement;
 import com.eagle.programmar.PLI.Statements.PLI_SelectStatement;
 import com.eagle.programmar.PLI.Statements.PLI_SignalStatement;
 import com.eagle.programmar.PLI.Statements.PLI_StopStatement;
-import com.eagle.programmar.PLI.Terminals.PLI_Punctuation;
 import com.eagle.tokens.TokenChooser;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class PLI_Statement extends TokenChooser
 {
-	public PLI_Punctuation semicolom = new PLI_Punctuation(';');	// Empty statement
+	public PunctuationSemicolon semicolon;	// Empty statement
 	
 	public @LAST PLI_AssignmentStatement assignmentStatement;
 

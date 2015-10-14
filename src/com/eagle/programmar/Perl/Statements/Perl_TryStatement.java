@@ -11,13 +11,17 @@ import com.eagle.programmar.Perl.Terminals.Perl_Keyword;
 import com.eagle.programmar.Perl.Terminals.Perl_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Perl_TryStatement extends TokenSequence
 {
 	public @NEWLINE Perl_Keyword TRY = new Perl_Keyword("try");
-	public @INDENT Perl_Punctuation leftBrace = new Perl_Punctuation('{');
+	public @INDENT PunctuationLeftBrace leftBrace;
 	public TokenList<Perl_Statement> statements;
-	public @OUTDENT Perl_Punctuation rightBrace = new Perl_Punctuation('}');
+	public @OUTDENT PunctuationRightBrace rightBrace;
 	public @OPT TokenList<Perl_Comment> comments;
 	public @OPT TokenList<Perl_CatchBlock> catchBlocks;
 	public @OPT Perl_FinallyBlock finallyBlock;
@@ -25,12 +29,12 @@ public class Perl_TryStatement extends TokenSequence
 	public static class Perl_CatchBlock extends TokenSequence
 	{
 		public @NEWLINE Perl_Keyword CATCH = new Perl_Keyword("catch");
-		public Perl_Punctuation leftParen = new Perl_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public @OPT Perl_Punctuation backSlash = new Perl_Punctuation('\\');
 		public @NOSPACE Perl_Identifier_Reference ref;
 		public @OPT Perl_Punctuation dollar = new Perl_Punctuation('$');
 		public Perl_Variable_Definition id;
-		public @NOSPACE Perl_Punctuation rightParen = new Perl_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 		public Perl_Statement catchStatement;
 	}
 	

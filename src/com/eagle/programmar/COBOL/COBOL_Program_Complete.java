@@ -6,9 +6,9 @@ package com.eagle.programmar.COBOL;
 import com.eagle.programmar.COBOL.Symbols.COBOL_Identifier_Reference;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Comment;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
 
 public abstract class COBOL_Program_Complete extends COBOL_Program
 {
@@ -37,6 +37,6 @@ public abstract class COBOL_Program_Complete extends COBOL_Program
 		public COBOL_Keyword END = new COBOL_Keyword("END");
 		public COBOL_Keyword PROGRAM = new COBOL_Keyword("PROGRAM");
 		public COBOL_Identifier_Reference programId;
-		public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot;
 	}
 }

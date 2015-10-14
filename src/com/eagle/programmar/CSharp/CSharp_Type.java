@@ -7,9 +7,14 @@ import com.eagle.programmar.CSharp.Symbols.CSharp_Identifier_Reference;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Keyword;
 import com.eagle.programmar.CSharp.Terminals.CSharp_KeywordChoice;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
 
 public class CSharp_Type extends TokenSequence
 {
@@ -19,23 +24,16 @@ public class CSharp_Type extends TokenSequence
 	
 	public static class CSharp_ArrayType extends TokenSequence
 	{
-		public CSharp_Punctuation leftBracket = new CSharp_Punctuation('[');
-		public @OPT CSharp_Punctuation comma = new CSharp_Punctuation(',');
-		public CSharp_Punctuation rightBracket = new CSharp_Punctuation(']');
+		public PunctuationLeftBracket leftBracket;
+		public @OPT PunctuationComma comma;
+		public PunctuationRightBracket rightBracket;
 	}
 	
 	public static class CSharp_GenericType extends TokenSequence
 	{
 		public CSharp_Punctuation lessThan = new CSharp_Punctuation('<');
-		public CSharp_Type subType;
-		public @OPT TokenList<CSharp_MoreTypes> moreType;
+		public SeparatedList<CSharp_Type,PunctuationComma> subType;
 		public CSharp_Punctuation greaterThan = new CSharp_Punctuation('>');
-		
-		public static class CSharp_MoreTypes extends TokenSequence
-		{
-			public CSharp_Punctuation comma = new CSharp_Punctuation(',');
-			public CSharp_Type subType;
-		}
 	}
 
 	// Delay finding this one until after looking for [] and <>
@@ -51,7 +49,7 @@ public class CSharp_Type extends TokenSequence
 			
 			public static class CSharp_MoreIds extends TokenSequence
 			{
-				public CSharp_Punctuation dot = new CSharp_Punctuation('.');
+				public PunctuationPeriod dot;
 				public CSharp_TypeName nextId;
 			}
 			

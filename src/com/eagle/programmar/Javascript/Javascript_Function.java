@@ -12,16 +12,21 @@ import com.eagle.programmar.Javascript.Terminals.Javascript_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Javascript_Function extends TokenSequence
 {
 	public Javascript_Keyword FUNCTION = new Javascript_Keyword("function");
 	public @OPT Javascript_Function_Definition functionName;
-	public @NOSPACE Javascript_Punctuation leftParen = new Javascript_Punctuation('(');
+	public @NOSPACE PunctuationLeftParen leftParen;
 	public @OPT @NOSPACE Javascript_FunctionParameter param;
 	public @OPT @NOSPACE TokenList<Javascript_MoreParameters> moreParams;
 	public @OPT TokenList<Javascript_Comment> comments1;
-	public @NOSPACE Javascript_Punctuation rightParen = new Javascript_Punctuation(')');
+	public @NOSPACE PunctuationRightParen rightParen;
 	public @OPT TokenList<Javascript_Comment> comments2;
 	public Javascript_FunctionBody body;
 	
@@ -33,15 +38,15 @@ public class Javascript_Function extends TokenSequence
 		
 	public static class Javascript_MoreParameters extends TokenSequence
 	{
-		public @NOSPACE Javascript_Punctuation comma = new Javascript_Punctuation(',');
+		public @NOSPACE PunctuationComma comma;
 		public @OPT Javascript_Comment comment;
 		public Javascript_FunctionParameter param;
 	}
 	
 	public static class Javascript_FunctionBody extends TokenSequence
 	{
-		public @INDENT Javascript_Punctuation leftBrace = new Javascript_Punctuation('{');
+		public @INDENT PunctuationLeftBrace leftBrace;
 		public @OPT TokenList<Javascript_StatementOrComment> statements;
-		public @OUTDENT Javascript_Punctuation rightBrace = new Javascript_Punctuation('}');
+		public @OUTDENT PunctuationRightBrace rightBrace;
 	}
 }

@@ -3,10 +3,10 @@
 
 package com.eagle.programmar.SQL.Statements;
 
-import com.eagle.programmar.SQL.Terminals.SQL_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSlash;
 
 public class SQL_SlashStatement extends TokenSequence
 {
-	public SQL_Punctuation slash = new SQL_Punctuation('/');
+	public PunctuationSlash slash;
 }

@@ -5,10 +5,13 @@ package com.eagle.programmar.Java;
 
 import com.eagle.programmar.Java.Symbols.Java_Identifier_Reference;
 import com.eagle.programmar.Java.Terminals.Java_KeywordChoice;
-import com.eagle.programmar.Java.Terminals.Java_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Java_Variable extends TokenSequence
 {
@@ -16,8 +19,7 @@ public class Java_Variable extends TokenSequence
 //			new SeparatedList<Java_VariableIdentifier, Java_Punctuation>(
 //					Java_VariableIdentifier.class, Java_Punctuation.class, '.');
 	
-	public Java_VariableIdentifier firstId;
-	public @OPT TokenList<Java_DotIdentifier> moreIds;
+	public SeparatedList<Java_VariableIdentifier,PunctuationPeriod> id;
 	public @OPT TokenList<Java_Subscript> subscript;
 	
 	public static class Java_VariableIdentifier extends TokenChooser
@@ -27,18 +29,12 @@ public class Java_Variable extends TokenSequence
 		
 		public static class Java_CastedVariable extends TokenSequence
 		{
-			public Java_Punctuation leftParen1 = new Java_Punctuation('(');
-			public Java_Punctuation leftParen2 = new Java_Punctuation('(');
+			public PunctuationLeftParen leftParen1;
+			public PunctuationLeftParen leftParen2;
 			public Java_Type jtype;
-			public Java_Punctuation rightParen1 = new Java_Punctuation(')');
+			public PunctuationRightParen rightParen1;
 			public Java_Identifier_Reference id;
-			public Java_Punctuation rightParen2 = new Java_Punctuation(')');
+			public PunctuationRightParen rightParen2;
 		}
-	}
-
-	public static class Java_DotIdentifier extends TokenSequence
-	{
-		public @NOSPACE Java_Punctuation dot = new Java_Punctuation('.');
-		public @NOSPACE Java_VariableIdentifier id;
 	}
 }

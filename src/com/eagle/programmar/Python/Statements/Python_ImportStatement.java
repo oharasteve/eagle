@@ -8,10 +8,13 @@ import com.eagle.programmar.Python.Python_Syntax.Python_Multiline_Syntax;
 import com.eagle.programmar.Python.Python_Variable;
 import com.eagle.programmar.Python.Terminals.Python_Comment;
 import com.eagle.programmar.Python.Terminals.Python_Keyword;
-import com.eagle.programmar.Python.Terminals.Python_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class Python_ImportStatement extends TokenSequence
 {
@@ -24,25 +27,25 @@ public class Python_ImportStatement extends TokenSequence
 	public static class Python_ImportWhat extends TokenChooser
 	{
 		public Python_Variable importName;
-		public Python_Punctuation star = new Python_Punctuation('*');
+		public PunctuationStar star;
 		
 		public static class Python_ImportList extends TokenSequence
 		{
-			public Python_Punctuation leftParen = new Python_Punctuation('(');
+			public PunctuationLeftParen leftParen;
 			public @SYNTAX(Python_Multiline_Syntax.class) Python_ImportListItem list;
 			public @OPT Python_FromImportAs fromAs;
-			public Python_Punctuation rightParen = new Python_Punctuation(')');
+			public PunctuationRightParen rightParen;
 			
 			public static class Python_ImportListItem extends TokenSequence
 			{
 				public @OPT Python_Expression expr;
 				public @OPT Python_FromImportAs fromAs;
 				public @OPT TokenList<Python_MoreImportListItem> nextItem;
-				public @OPT Python_Punctuation comma = new Python_Punctuation(',');
+				public @OPT PunctuationComma comma;
 				
 				public static class Python_MoreImportListItem extends TokenSequence
 				{
-					public Python_Punctuation comma = new Python_Punctuation(',');
+					public PunctuationComma comma;
 					public Python_Expression expr;
 					public @OPT Python_FromImportAs fromAs;
 				}
@@ -52,7 +55,7 @@ public class Python_ImportStatement extends TokenSequence
 
 	public static class Python_MoreImports extends TokenSequence
 	{
-		public Python_Punctuation comma = new Python_Punctuation(',');
+		public PunctuationComma comma;
 		public Python_Variable importName;
 		public @OPT Python_FromImportAs fromAs;
 	}

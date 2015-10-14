@@ -5,8 +5,8 @@ package com.eagle.programmar.Python.Statements;
 
 import com.eagle.programmar.Python.Python_Expression;
 import com.eagle.programmar.Python.Terminals.Python_Keyword;
-import com.eagle.programmar.Python.Terminals.Python_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class Python_AssertStatement extends TokenSequence
 {
@@ -16,7 +16,7 @@ public class Python_AssertStatement extends TokenSequence
 	
 	public static class Python_AssertMessage extends TokenSequence
 	{
-		public Python_Punctuation comma = new Python_Punctuation(',');
+		public PunctuationComma comma;
 		public Python_Expression message;
 	}
 }

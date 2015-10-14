@@ -5,16 +5,16 @@ package com.eagle.programmar.SQL.Statements;
 
 import com.eagle.programmar.SQL.SQL_Program.SQL_StatementOrComment;
 import com.eagle.programmar.SQL.Terminals.SQL_Keyword;
-import com.eagle.programmar.SQL.Terminals.SQL_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class SQL_BeginStatement extends TokenSequence
 {
 	public SQL_Keyword BEGIN = new SQL_Keyword("BEGIN");
 	public SQL_BeginWhat what;
-	public SQL_Punctuation semicolon = new SQL_Punctuation(';');
+	public PunctuationSemicolon semicolon;
 	
 	public static class SQL_BeginWhat extends TokenChooser
 	{
@@ -28,7 +28,7 @@ public class SQL_BeginStatement extends TokenSequence
 		public @FIRST static class SQL_BeginTransaction extends TokenSequence
 		{
 			public SQL_Keyword TRANSACTION = new SQL_Keyword("TRANSACTION");
-			public SQL_Punctuation semicolon = new SQL_Punctuation(';');
+			public PunctuationSemicolon semicolon;
 			public TokenList<SQL_StatementOrComment> statements;
 			public SQL_Keyword COMMIT = new SQL_Keyword("COMMIT");
 		}

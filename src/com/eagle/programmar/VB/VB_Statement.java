@@ -25,10 +25,10 @@ import com.eagle.programmar.VB.Statements.VB_VersionStatement;
 import com.eagle.programmar.VB.Symbols.VB_Label_Definition;
 import com.eagle.programmar.VB.Terminals.VB_Comment;
 import com.eagle.programmar.VB.Terminals.VB_EndOfLine;
-import com.eagle.programmar.VB.Terminals.VB_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
 
 public class VB_Statement extends TokenSequence
 {
@@ -65,7 +65,7 @@ public class VB_Statement extends TokenSequence
 		public static class VB_Label extends TokenSequence
 		{
 			public VB_Label_Definition lbl;
-			public VB_Punctuation colon = new VB_Punctuation(':');
+			public PunctuationColon colon;
 		}
 	}
 }

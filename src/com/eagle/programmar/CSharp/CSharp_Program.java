@@ -7,10 +7,15 @@ import com.eagle.programmar.EagleLanguage;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Comment;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Identifier;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Keyword;
-import com.eagle.programmar.CSharp.Terminals.CSharp_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class CSharp_Program extends EagleLanguage
 {
@@ -61,39 +66,24 @@ public class CSharp_Program extends EagleLanguage
 	public static class CSharp_Using extends TokenSequence
 	{
 		public CSharp_Keyword USING = new CSharp_Keyword("using");
-		public CSharp_Identifier id;
-		public @OPT TokenList<CSharp_DotIdentifier> dotId;
+		public SeparatedList<CSharp_Identifier,PunctuationPeriod> id;
 		public @OPT CSharp_UsingEquals alternateName;
-		public CSharp_Punctuation semicolon = new CSharp_Punctuation(';');
+		public PunctuationSemicolon semicolon;
 
 		public static class CSharp_UsingEquals extends TokenSequence
 		{
-			public CSharp_Punctuation equals = new CSharp_Punctuation('=');
-			public CSharp_Identifier id;
-			public @OPT TokenList<CSharp_DotIdentifier> dotId;
-		}
-		
-		public static class CSharp_DotIdentifier extends TokenSequence
-		{
-			public CSharp_Punctuation dot = new CSharp_Punctuation('.');
-			public CSharp_Identifier id;
+			public PunctuationEquals equals;
+			public SeparatedList<CSharp_Identifier,PunctuationPeriod> id;
 		}
 	}
 	
 	public static class CSharp_Namespace extends TokenSequence
 	{
 		public CSharp_Keyword NAMESPACE = new CSharp_Keyword("namespace");
-		public CSharp_Identifier id;
-		public @OPT TokenList<CSharp_DotIdentifier> dotId;
-		public CSharp_Punctuation leftBrace = new CSharp_Punctuation('{');
+		public SeparatedList<CSharp_Identifier,PunctuationPeriod> id;
+		public PunctuationLeftBrace leftBrace;
 		public TokenList<CSharp_ProgramElems> elems; 
-		public CSharp_Punctuation rightBrace = new CSharp_Punctuation('}');
-		
-		public static class CSharp_DotIdentifier extends TokenSequence
-		{
-			public CSharp_Punctuation dot = new CSharp_Punctuation('.');
-			public CSharp_Identifier id;
-		}
+		public PunctuationRightBrace rightBrace;
 	}
 	
 	public static class CSharp_ProgramElems extends TokenChooser

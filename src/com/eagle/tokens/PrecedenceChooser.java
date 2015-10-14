@@ -13,17 +13,17 @@ public abstract class PrecedenceChooser extends TokenChooser
 	private ArrayList<Class<? extends AbstractToken>> _binaryChoices =
 			new ArrayList<Class<? extends AbstractToken>>();
 
-	private BinaryOperator.AllowedPrecedence _allowed = BinaryOperator.AllowedPrecedence.ANY;
-	private Class<? extends BinaryOperator> _lastChoice = null;
+	private PrecedenceOperator.AllowedPrecedence _allowed = PrecedenceOperator.AllowedPrecedence.ANY;
+	private Class<? extends PrecedenceOperator> _lastChoice = null;
 	
 	protected abstract void establishChoices();		
 
-	public static class UnaryOperator extends TokenSequence
+	public static class ExpressionTerm extends TokenSequence
 	{
 		// Nothing to add -- just a layer
 	}
 
-	public static class BinaryOperator extends TokenSequence
+	public static class PrecedenceOperator extends TokenSequence
 	{
 		public enum AllowedPrecedence 
 		{
@@ -38,20 +38,20 @@ public abstract class PrecedenceChooser extends TokenChooser
 		establishChoices();
 	}
 	
-	public PrecedenceChooser(BinaryOperator.AllowedPrecedence allowed,
-			Class<? extends BinaryOperator> lastChoice)
+	public PrecedenceChooser(PrecedenceOperator.AllowedPrecedence allowed,
+			Class<? extends PrecedenceOperator> lastChoice)
 	{ 
 		_allowed = allowed;
 		_lastChoice = lastChoice;
 		establishChoices();
 	}
 	
-	protected void addUnaryOperator(Class<? extends AbstractToken> cls)
+	protected void addTerm(Class<? extends AbstractToken> cls)
 	{
 		_unaryChoices.add(cls);
 	}
 		
-	protected void addBinaryOperator(Class<? extends BinaryOperator> cls)
+	protected void addOperator(Class<? extends PrecedenceOperator> cls)
 	{
 		_binaryChoices.add(cls);
 	}
@@ -66,12 +66,12 @@ public abstract class PrecedenceChooser extends TokenChooser
 		return _binaryChoices;
 	}
 	
-	public Class<? extends BinaryOperator> getLastChoice()
+	public Class<? extends PrecedenceOperator> getLastChoice()
 	{
 		return _lastChoice;
 	}
 	
-	public BinaryOperator.AllowedPrecedence getAllowed()
+	public PrecedenceOperator.AllowedPrecedence getAllowed()
 	{
 		return _allowed;
 	}

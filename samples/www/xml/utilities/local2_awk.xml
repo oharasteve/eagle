@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<EagleProgram Created="Sat Oct 03 13:20:45 EDT 2015" Elapsed="6" Language="AWK" Steps="1952" Tokens="247">
+<EagleProgram Created="Wed Oct 14 13:46:34 EDT 2015" Elapsed="6" Language="AWK" Steps="1921" Tokens="231">
   <T EC="0" EL="18" File="" SC="1" SL="1" TT=".AWK.AWK_Program">
     <T EC="0" EL="18" N="statements" SC="1" SL="1" TT="List">
       <T EC="0" EL="6" SC="1" SL="1" TT=".AWK.AWK_Command">
@@ -7,31 +7,33 @@
           <T EC="5" EL="1" SC="1" SL="1" TT=".AWK.Terminals.AWK_KeywordChoice" V="BEGIN"/>
         </T>
         <T EC="0" EL="6" N="action" SC="6" SL="1" TT=".AWK.AWK_Action">
-          <T EC="7" EL="1" N="leftBrace" SC="7" SL="1" TT=".AWK.Terminals.AWK_Punctuation" V="{"/>
+          <T EC="7" EL="1" N="leftBrace" SC="7" SL="1" TT="com.eagle.tokens.punctuation.PunctuationLeftBrace" V="{"/>
           <T EC="0" EL="6" N="newlines" SC="6" SL="1" TT="List">
             <T EC="0" EL="2" SC="8" SL="1" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
           </T>
           <T EC="0" EL="6" N="statements" SC="6" SL="1" TT="List">
             <T EC="0" EL="3" SC="1" SL="2" TT=".AWK.AWK_Action$AWK_StatementOrComment">
               <T EC="0" EL="3" SC="1" SL="2" TT=".AWK.AWK_Statements">
-                <T EC="12" EL="2" N="statement" SC="1" SL="2" TT=".AWK.AWK_Statements$AWK_Statement">
-                  <T EC="12" EL="2" SC="1" SL="2" TT=".AWK.AWK_Expression">
-                    <T EC="12" EL="2" SC="1" SL="2" TT=".AWK.AWK_Expression$AWK_Assignment">
-                      <T EC="7" EL="2" N="left" SC="1" SL="2" TT=".AWK.AWK_Expression">
-                        <T EC="7" EL="2" SC="1" SL="2" TT=".AWK.AWK_Expression$AWK_Strings">
-                          <T EC="7" EL="2" N="pieces" SC="1" SL="2" TT="List">
-                            <T EC="7" EL="2" SC="1" SL="2" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                              <T EC="7" EL="2" SC="5" SL="2" TT=".AWK.Symbols.AWK_Identifier_Reference" V="dir"/>
+                <T EC="0" EL="3" N="statements" SC="1" SL="2" TT="List">
+                  <T EC="12" EL="2" SC="1" SL="2" TT=".AWK.AWK_Statements$AWK_Statement">
+                    <T EC="12" EL="2" SC="1" SL="2" TT=".AWK.AWK_Expression">
+                      <T EC="12" EL="2" SC="1" SL="2" TT=".AWK.AWK_Expression$AWK_Assignment">
+                        <T EC="7" EL="2" N="left" SC="1" SL="2" TT=".AWK.AWK_Expression">
+                          <T EC="7" EL="2" SC="1" SL="2" TT=".AWK.AWK_Expression$AWK_Strings">
+                            <T EC="7" EL="2" N="pieces" SC="1" SL="2" TT="List">
+                              <T EC="7" EL="2" SC="1" SL="2" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                <T EC="7" EL="2" SC="5" SL="2" TT=".AWK.Symbols.AWK_Identifier_Reference" V="dir"/>
+                              </T>
                             </T>
                           </T>
                         </T>
-                      </T>
-                      <T EC="9" EL="2" N="equals" SC="9" SL="2" TT=".AWK.Terminals.AWK_PunctuationChoice" V="="/>
-                      <T EC="12" EL="2" N="right" SC="10" SL="2" TT=".AWK.AWK_Expression">
-                        <T EC="12" EL="2" SC="10" SL="2" TT=".AWK.AWK_Expression$AWK_Strings">
-                          <T EC="12" EL="2" N="pieces" SC="10" SL="2" TT="List">
-                            <T EC="12" EL="2" SC="10" SL="2" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                              <T EC="12" EL="2" SC="11" SL="2" TT=".AWK.Terminals.AWK_Literal" V="&quot;&quot;"/>
+                        <T EC="9" EL="2" N="equals" SC="9" SL="2" TT=".AWK.Terminals.AWK_PunctuationChoice" V="="/>
+                        <T EC="12" EL="2" N="right" SC="10" SL="2" TT=".AWK.AWK_Expression">
+                          <T EC="12" EL="2" SC="10" SL="2" TT=".AWK.AWK_Expression$AWK_Strings">
+                            <T EC="12" EL="2" N="pieces" SC="10" SL="2" TT="List">
+                              <T EC="12" EL="2" SC="10" SL="2" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                <T EC="12" EL="2" SC="11" SL="2" TT=".AWK.Terminals.AWK_Literal" V="&quot;&quot;"/>
+                              </T>
                             </T>
                           </T>
                         </T>
@@ -39,11 +41,7 @@
                     </T>
                   </T>
                 </T>
-                <T EC="0" EL="3" N="more" SC="1" SL="2" TT="List">
-                  <T EC="13" EL="2" SC="13" SL="2" TT=".AWK.AWK_Statements$AWK_MoreStatements">
-                    <T EC="13" EL="2" N="semicolon" SC="13" SL="2" TT=".AWK.Terminals.AWK_Punctuation" V=";"/>
-                  </T>
-                </T>
+                <T EC="13" EL="2" N="semicolon" SC="13" SL="2" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                 <T EC="0" EL="3" N="newlines" SC="1" SL="2" TT="List">
                   <T EC="0" EL="3" SC="14" SL="2" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
                 </T>
@@ -51,23 +49,27 @@
             </T>
             <T EC="0" EL="4" SC="1" SL="3" TT=".AWK.AWK_Action$AWK_StatementOrComment">
               <T EC="0" EL="4" SC="1" SL="3" TT=".AWK.AWK_Statements">
-                <T EC="27" EL="3" N="statement" SC="1" SL="3" TT=".AWK.AWK_Statements$AWK_Statement">
-                  <T EC="27" EL="3" SC="1" SL="3" TT=".AWK.Statements.AWK_PrintStatement">
-                    <T EC="9" EL="3" N="PRINT" SC="5" SL="3" TT=".AWK.Terminals.AWK_KeywordChoice" V="print"/>
-                    <T EC="27" EL="3" N="param" SC="10" SL="3" TT=".AWK.Statements.AWK_PrintStatement$AWK_PrintParameters">
-                      <T EC="27" EL="3" SC="10" SL="3" TT=".AWK.Statements.AWK_PrintStatement$AWK_PrintParameters$AWK_Print_NoParens">
-                        <T EC="27" EL="3" N="argList" SC="10" SL="3" TT=".AWK.AWK_ArgumentList">
-                          <T EC="27" EL="3" N="expr" SC="10" SL="3" TT=".AWK.AWK_Expression">
-                            <T EC="27" EL="3" SC="10" SL="3" TT=".AWK.AWK_Expression$AWK_Strings">
-                              <T EC="27" EL="3" N="pieces" SC="10" SL="3" TT="List">
-                                <T EC="16" EL="3" SC="10" SL="3" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                                  <T EC="16" EL="3" SC="11" SL="3" TT=".AWK.Terminals.AWK_Literal" V="&quot;Size&quot;"/>
-                                </T>
-                                <T EC="20" EL="3" SC="17" SL="3" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                                  <T EC="20" EL="3" SC="18" SL="3" TT=".AWK.Terminals.AWK_Literal" V="&quot;,&quot;"/>
-                                </T>
-                                <T EC="27" EL="3" SC="21" SL="3" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                                  <T EC="27" EL="3" SC="22" SL="3" TT=".AWK.Terminals.AWK_Literal" V="&quot;File&quot;"/>
+                <T EC="0" EL="4" N="statements" SC="1" SL="3" TT="List">
+                  <T EC="27" EL="3" SC="1" SL="3" TT=".AWK.AWK_Statements$AWK_Statement">
+                    <T EC="27" EL="3" SC="1" SL="3" TT=".AWK.Statements.AWK_PrintStatement">
+                      <T EC="9" EL="3" N="PRINT" SC="5" SL="3" TT=".AWK.Terminals.AWK_KeywordChoice" V="print"/>
+                      <T EC="27" EL="3" N="param" SC="10" SL="3" TT=".AWK.Statements.AWK_PrintStatement$AWK_PrintParameters">
+                        <T EC="27" EL="3" SC="10" SL="3" TT=".AWK.Statements.AWK_PrintStatement$AWK_PrintParameters$AWK_Print_NoParens">
+                          <T EC="27" EL="3" N="argList" SC="10" SL="3" TT=".AWK.AWK_ArgumentList">
+                            <T EC="27" EL="3" N="exprs" SC="10" SL="3" TT="List">
+                              <T EC="27" EL="3" SC="10" SL="3" TT=".AWK.AWK_Expression">
+                                <T EC="27" EL="3" SC="10" SL="3" TT=".AWK.AWK_Expression$AWK_Strings">
+                                  <T EC="27" EL="3" N="pieces" SC="10" SL="3" TT="List">
+                                    <T EC="16" EL="3" SC="10" SL="3" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                      <T EC="16" EL="3" SC="11" SL="3" TT=".AWK.Terminals.AWK_Literal" V="&quot;Size&quot;"/>
+                                    </T>
+                                    <T EC="20" EL="3" SC="17" SL="3" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                      <T EC="20" EL="3" SC="18" SL="3" TT=".AWK.Terminals.AWK_Literal" V="&quot;,&quot;"/>
+                                    </T>
+                                    <T EC="27" EL="3" SC="21" SL="3" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                      <T EC="27" EL="3" SC="22" SL="3" TT=".AWK.Terminals.AWK_Literal" V="&quot;File&quot;"/>
+                                    </T>
+                                  </T>
                                 </T>
                               </T>
                             </T>
@@ -77,18 +79,14 @@
                     </T>
                   </T>
                 </T>
-                <T EC="0" EL="4" N="more" SC="1" SL="3" TT="List">
-                  <T EC="28" EL="3" SC="28" SL="3" TT=".AWK.AWK_Statements$AWK_MoreStatements">
-                    <T EC="28" EL="3" N="semicolon" SC="28" SL="3" TT=".AWK.Terminals.AWK_Punctuation" V=";"/>
-                  </T>
-                </T>
+                <T EC="28" EL="3" N="semicolon" SC="28" SL="3" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                 <T EC="0" EL="4" N="newlines" SC="1" SL="3" TT="List">
                   <T EC="0" EL="4" SC="29" SL="3" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
                 </T>
               </T>
             </T>
           </T>
-          <T EC="1" EL="4" N="rightBrace" SC="1" SL="4" TT=".AWK.Terminals.AWK_Punctuation" V="}"/>
+          <T EC="1" EL="4" N="rightBrace" SC="1" SL="4" TT="com.eagle.tokens.punctuation.PunctuationRightBrace" V="}"/>
           <T EC="0" EL="6" N="blankLines" SC="6" SL="1" TT="List">
             <T EC="0" EL="5" SC="2" SL="4" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
             <T EC="0" EL="6" SC="1" SL="5" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
@@ -102,44 +100,44 @@
           </T>
         </T>
         <T EC="0" EL="12" N="action" SC="16" SL="6" TT=".AWK.AWK_Action">
-          <T EC="17" EL="6" N="leftBrace" SC="17" SL="6" TT=".AWK.Terminals.AWK_Punctuation" V="{"/>
+          <T EC="17" EL="6" N="leftBrace" SC="17" SL="6" TT="com.eagle.tokens.punctuation.PunctuationLeftBrace" V="{"/>
           <T EC="0" EL="12" N="newlines" SC="16" SL="6" TT="List">
             <T EC="0" EL="7" SC="18" SL="6" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
           </T>
           <T EC="0" EL="12" N="statements" SC="16" SL="6" TT="List">
             <T EC="0" EL="8" SC="1" SL="7" TT=".AWK.AWK_Action$AWK_StatementOrComment">
               <T EC="0" EL="8" SC="1" SL="7" TT=".AWK.AWK_Statements">
-                <T EC="26" EL="7" N="statement" SC="1" SL="7" TT=".AWK.AWK_Statements$AWK_Statement">
-                  <T EC="26" EL="7" SC="1" SL="7" TT=".AWK.AWK_Expression">
-                    <T EC="26" EL="7" SC="1" SL="7" TT=".AWK.AWK_Expression$AWK_Assignment">
-                      <T EC="6" EL="7" N="left" SC="1" SL="7" TT=".AWK.AWK_Expression">
-                        <T EC="6" EL="7" SC="1" SL="7" TT=".AWK.AWK_Expression$AWK_Strings">
-                          <T EC="6" EL="7" N="pieces" SC="1" SL="7" TT="List">
-                            <T EC="6" EL="7" SC="1" SL="7" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                              <T EC="6" EL="7" SC="5" SL="7" TT=".AWK.Symbols.AWK_Identifier_Reference" V="sc"/>
+                <T EC="0" EL="8" N="statements" SC="1" SL="7" TT="List">
+                  <T EC="26" EL="7" SC="1" SL="7" TT=".AWK.AWK_Statements$AWK_Statement">
+                    <T EC="26" EL="7" SC="1" SL="7" TT=".AWK.AWK_Expression">
+                      <T EC="26" EL="7" SC="1" SL="7" TT=".AWK.AWK_Expression$AWK_Assignment">
+                        <T EC="6" EL="7" N="left" SC="1" SL="7" TT=".AWK.AWK_Expression">
+                          <T EC="6" EL="7" SC="1" SL="7" TT=".AWK.AWK_Expression$AWK_Strings">
+                            <T EC="6" EL="7" N="pieces" SC="1" SL="7" TT="List">
+                              <T EC="6" EL="7" SC="1" SL="7" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                <T EC="6" EL="7" SC="5" SL="7" TT=".AWK.Symbols.AWK_Identifier_Reference" V="sc"/>
+                              </T>
                             </T>
                           </T>
                         </T>
-                      </T>
-                      <T EC="8" EL="7" N="equals" SC="8" SL="7" TT=".AWK.Terminals.AWK_PunctuationChoice" V="="/>
-                      <T EC="26" EL="7" N="right" SC="9" SL="7" TT=".AWK.AWK_Expression">
-                        <T EC="26" EL="7" SC="9" SL="7" TT=".AWK.AWK_Expression$AWK_FunctionCall">
-                          <T EC="14" EL="7" N="functionName" SC="10" SL="7" TT=".AWK.Terminals.AWK_KeywordChoice" V="index"/>
-                          <T EC="15" EL="7" N="leftParen" SC="15" SL="7" TT=".AWK.Terminals.AWK_Punctuation" V="("/>
-                          <T EC="25" EL="7" N="argList" SC="16" SL="7" TT=".AWK.AWK_ArgumentList">
-                            <T EC="17" EL="7" N="expr" SC="16" SL="7" TT=".AWK.AWK_Expression">
-                              <T EC="17" EL="7" SC="16" SL="7" TT=".AWK.AWK_Expression$AWK_Strings">
-                                <T EC="17" EL="7" N="pieces" SC="16" SL="7" TT="List">
-                                  <T EC="17" EL="7" SC="16" SL="7" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                                    <T EC="17" EL="7" SC="16" SL="7" TT=".AWK.Symbols.AWK_Identifier_Reference" V="$0"/>
+                        <T EC="8" EL="7" N="equals" SC="8" SL="7" TT=".AWK.Terminals.AWK_PunctuationChoice" V="="/>
+                        <T EC="26" EL="7" N="right" SC="9" SL="7" TT=".AWK.AWK_Expression">
+                          <T EC="26" EL="7" SC="9" SL="7" TT=".AWK.AWK_Expression$AWK_FunctionCall">
+                            <T EC="14" EL="7" N="functionName" SC="10" SL="7" TT=".AWK.Terminals.AWK_KeywordChoice" V="index"/>
+                            <T EC="15" EL="7" N="leftParen" SC="15" SL="7" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
+                            <T EC="25" EL="7" N="argList" SC="16" SL="7" TT=".AWK.AWK_ArgumentList">
+                              <T EC="25" EL="7" N="exprs" SC="16" SL="7" TT="List">
+                                <T EC="17" EL="7" SC="16" SL="7" TT=".AWK.AWK_Expression">
+                                  <T EC="17" EL="7" SC="16" SL="7" TT=".AWK.AWK_Expression$AWK_Strings">
+                                    <T EC="17" EL="7" N="pieces" SC="16" SL="7" TT="List">
+                                      <T EC="17" EL="7" SC="16" SL="7" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                        <T EC="17" EL="7" SC="16" SL="7" TT=".AWK.Symbols.AWK_Identifier_Reference" V="$0"/>
+                                      </T>
+                                    </T>
                                   </T>
                                 </T>
-                              </T>
-                            </T>
-                            <T EC="25" EL="7" N="more" SC="16" SL="7" TT="List">
-                              <T EC="25" EL="7" SC="18" SL="7" TT=".AWK.AWK_ArgumentList$AWK_MoreArguments">
-                                <T EC="18" EL="7" N="comma" SC="18" SL="7" TT=".AWK.Terminals.AWK_Punctuation" V=","/>
-                                <T EC="25" EL="7" N="expr" SC="19" SL="7" TT=".AWK.AWK_Expression">
+                                <T EC="18" EL="7" SC="18" SL="7" TT="com.eagle.tokens.punctuation.PunctuationComma" V=","/>
+                                <T EC="25" EL="7" SC="19" SL="7" TT=".AWK.AWK_Expression">
                                   <T EC="25" EL="7" SC="19" SL="7" TT=".AWK.AWK_Expression$AWK_Strings">
                                     <T EC="25" EL="7" N="pieces" SC="19" SL="7" TT="List">
                                       <T EC="25" EL="7" SC="19" SL="7" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
@@ -150,18 +148,14 @@
                                 </T>
                               </T>
                             </T>
+                            <T EC="26" EL="7" N="rightParen" SC="26" SL="7" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                           </T>
-                          <T EC="26" EL="7" N="rightParen" SC="26" SL="7" TT=".AWK.Terminals.AWK_Punctuation" V=")"/>
                         </T>
                       </T>
                     </T>
                   </T>
                 </T>
-                <T EC="0" EL="8" N="more" SC="1" SL="7" TT="List">
-                  <T EC="27" EL="7" SC="27" SL="7" TT=".AWK.AWK_Statements$AWK_MoreStatements">
-                    <T EC="27" EL="7" N="semicolon" SC="27" SL="7" TT=".AWK.Terminals.AWK_Punctuation" V=";"/>
-                  </T>
-                </T>
+                <T EC="27" EL="7" N="semicolon" SC="27" SL="7" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                 <T EC="0" EL="8" N="newlines" SC="1" SL="7" TT="List">
                   <T EC="0" EL="8" SC="28" SL="7" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
                 </T>
@@ -169,37 +163,37 @@
             </T>
             <T EC="0" EL="9" SC="1" SL="8" TT=".AWK.AWK_Action$AWK_StatementOrComment">
               <T EC="0" EL="9" SC="1" SL="8" TT=".AWK.AWK_Statements">
-                <T EC="31" EL="8" N="statement" SC="1" SL="8" TT=".AWK.AWK_Statements$AWK_Statement">
-                  <T EC="31" EL="8" SC="1" SL="8" TT=".AWK.AWK_Expression">
-                    <T EC="31" EL="8" SC="1" SL="8" TT=".AWK.AWK_Expression$AWK_Assignment">
-                      <T EC="7" EL="8" N="left" SC="1" SL="8" TT=".AWK.AWK_Expression">
-                        <T EC="7" EL="8" SC="1" SL="8" TT=".AWK.AWK_Expression$AWK_Strings">
-                          <T EC="7" EL="8" N="pieces" SC="1" SL="8" TT="List">
-                            <T EC="7" EL="8" SC="1" SL="8" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                              <T EC="7" EL="8" SC="5" SL="8" TT=".AWK.Symbols.AWK_Identifier_Reference" V="dir"/>
+                <T EC="0" EL="9" N="statements" SC="1" SL="8" TT="List">
+                  <T EC="31" EL="8" SC="1" SL="8" TT=".AWK.AWK_Statements$AWK_Statement">
+                    <T EC="31" EL="8" SC="1" SL="8" TT=".AWK.AWK_Expression">
+                      <T EC="31" EL="8" SC="1" SL="8" TT=".AWK.AWK_Expression$AWK_Assignment">
+                        <T EC="7" EL="8" N="left" SC="1" SL="8" TT=".AWK.AWK_Expression">
+                          <T EC="7" EL="8" SC="1" SL="8" TT=".AWK.AWK_Expression$AWK_Strings">
+                            <T EC="7" EL="8" N="pieces" SC="1" SL="8" TT="List">
+                              <T EC="7" EL="8" SC="1" SL="8" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                <T EC="7" EL="8" SC="5" SL="8" TT=".AWK.Symbols.AWK_Identifier_Reference" V="dir"/>
+                              </T>
                             </T>
                           </T>
                         </T>
-                      </T>
-                      <T EC="9" EL="8" N="equals" SC="9" SL="8" TT=".AWK.Terminals.AWK_PunctuationChoice" V="="/>
-                      <T EC="31" EL="8" N="right" SC="10" SL="8" TT=".AWK.AWK_Expression">
-                        <T EC="31" EL="8" SC="10" SL="8" TT=".AWK.AWK_Expression$AWK_FunctionCall">
-                          <T EC="16" EL="8" N="functionName" SC="11" SL="8" TT=".AWK.Terminals.AWK_KeywordChoice" V="substr"/>
-                          <T EC="17" EL="8" N="leftParen" SC="17" SL="8" TT=".AWK.Terminals.AWK_Punctuation" V="("/>
-                          <T EC="30" EL="8" N="argList" SC="18" SL="8" TT=".AWK.AWK_ArgumentList">
-                            <T EC="19" EL="8" N="expr" SC="18" SL="8" TT=".AWK.AWK_Expression">
-                              <T EC="19" EL="8" SC="18" SL="8" TT=".AWK.AWK_Expression$AWK_Strings">
-                                <T EC="19" EL="8" N="pieces" SC="18" SL="8" TT="List">
-                                  <T EC="19" EL="8" SC="18" SL="8" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                                    <T EC="19" EL="8" SC="18" SL="8" TT=".AWK.Symbols.AWK_Identifier_Reference" V="$0"/>
+                        <T EC="9" EL="8" N="equals" SC="9" SL="8" TT=".AWK.Terminals.AWK_PunctuationChoice" V="="/>
+                        <T EC="31" EL="8" N="right" SC="10" SL="8" TT=".AWK.AWK_Expression">
+                          <T EC="31" EL="8" SC="10" SL="8" TT=".AWK.AWK_Expression$AWK_FunctionCall">
+                            <T EC="16" EL="8" N="functionName" SC="11" SL="8" TT=".AWK.Terminals.AWK_KeywordChoice" V="substr"/>
+                            <T EC="17" EL="8" N="leftParen" SC="17" SL="8" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
+                            <T EC="30" EL="8" N="argList" SC="18" SL="8" TT=".AWK.AWK_ArgumentList">
+                              <T EC="30" EL="8" N="exprs" SC="18" SL="8" TT="List">
+                                <T EC="19" EL="8" SC="18" SL="8" TT=".AWK.AWK_Expression">
+                                  <T EC="19" EL="8" SC="18" SL="8" TT=".AWK.AWK_Expression$AWK_Strings">
+                                    <T EC="19" EL="8" N="pieces" SC="18" SL="8" TT="List">
+                                      <T EC="19" EL="8" SC="18" SL="8" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                        <T EC="19" EL="8" SC="18" SL="8" TT=".AWK.Symbols.AWK_Identifier_Reference" V="$0"/>
+                                      </T>
+                                    </T>
                                   </T>
                                 </T>
-                              </T>
-                            </T>
-                            <T EC="30" EL="8" N="more" SC="18" SL="8" TT="List">
-                              <T EC="25" EL="8" SC="20" SL="8" TT=".AWK.AWK_ArgumentList$AWK_MoreArguments">
-                                <T EC="20" EL="8" N="comma" SC="20" SL="8" TT=".AWK.Terminals.AWK_Punctuation" V=","/>
-                                <T EC="25" EL="8" N="expr" SC="21" SL="8" TT=".AWK.AWK_Expression">
+                                <T EC="20" EL="8" SC="20" SL="8" TT="com.eagle.tokens.punctuation.PunctuationComma" V=","/>
+                                <T EC="25" EL="8" SC="21" SL="8" TT=".AWK.AWK_Expression">
                                   <T EC="25" EL="8" SC="21" SL="8" TT=".AWK.AWK_Expression$AWK_AdditiveExpression">
                                     <T EC="23" EL="8" N="left" SC="21" SL="8" TT=".AWK.AWK_Expression">
                                       <T EC="23" EL="8" SC="21" SL="8" TT=".AWK.AWK_Expression$AWK_Strings">
@@ -216,26 +210,20 @@
                                     </T>
                                   </T>
                                 </T>
-                              </T>
-                              <T EC="30" EL="8" SC="26" SL="8" TT=".AWK.AWK_ArgumentList$AWK_MoreArguments">
-                                <T EC="26" EL="8" N="comma" SC="26" SL="8" TT=".AWK.Terminals.AWK_Punctuation" V=","/>
-                                <T EC="30" EL="8" N="expr" SC="27" SL="8" TT=".AWK.AWK_Expression">
+                                <T EC="26" EL="8" SC="26" SL="8" TT="com.eagle.tokens.punctuation.PunctuationComma" V=","/>
+                                <T EC="30" EL="8" SC="27" SL="8" TT=".AWK.AWK_Expression">
                                   <T EC="30" EL="8" SC="28" SL="8" TT=".AWK.Terminals.AWK_Number" V="999"/>
                                 </T>
                               </T>
                             </T>
+                            <T EC="31" EL="8" N="rightParen" SC="31" SL="8" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                           </T>
-                          <T EC="31" EL="8" N="rightParen" SC="31" SL="8" TT=".AWK.Terminals.AWK_Punctuation" V=")"/>
                         </T>
                       </T>
                     </T>
                   </T>
                 </T>
-                <T EC="0" EL="9" N="more" SC="1" SL="8" TT="List">
-                  <T EC="32" EL="8" SC="32" SL="8" TT=".AWK.AWK_Statements$AWK_MoreStatements">
-                    <T EC="32" EL="8" N="semicolon" SC="32" SL="8" TT=".AWK.Terminals.AWK_Punctuation" V=";"/>
-                  </T>
-                </T>
+                <T EC="32" EL="8" N="semicolon" SC="32" SL="8" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                 <T EC="0" EL="9" N="newlines" SC="1" SL="8" TT="List">
                   <T EC="0" EL="9" SC="33" SL="8" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
                 </T>
@@ -243,18 +231,18 @@
             </T>
             <T EC="0" EL="10" SC="1" SL="9" TT=".AWK.AWK_Action$AWK_StatementOrComment">
               <T EC="0" EL="10" SC="1" SL="9" TT=".AWK.AWK_Statements">
-                <T EC="22" EL="9" N="statement" SC="1" SL="9" TT=".AWK.AWK_Statements$AWK_Statement">
-                  <T EC="22" EL="9" SC="1" SL="9" TT=".AWK.Statements.AWK_SubStatement">
-                    <T EC="8" EL="9" N="SUB" SC="5" SL="9" TT=".AWK.Terminals.AWK_KeywordChoice" V="gsub"/>
-                    <T EC="9" EL="9" N="leftParen" SC="9" SL="9" TT=".AWK.Terminals.AWK_Punctuation" V="("/>
-                    <T EC="21" EL="9" N="argList" SC="10" SL="9" TT=".AWK.AWK_ArgumentList">
-                      <T EC="13" EL="9" N="expr" SC="10" SL="9" TT=".AWK.AWK_Expression">
-                        <T EC="13" EL="9" SC="10" SL="9" TT=".AWK.Terminals.AWK_Pattern" V="/\\/"/>
-                      </T>
-                      <T EC="21" EL="9" N="more" SC="10" SL="9" TT="List">
-                        <T EC="17" EL="9" SC="14" SL="9" TT=".AWK.AWK_ArgumentList$AWK_MoreArguments">
-                          <T EC="14" EL="9" N="comma" SC="14" SL="9" TT=".AWK.Terminals.AWK_Punctuation" V=","/>
-                          <T EC="17" EL="9" N="expr" SC="15" SL="9" TT=".AWK.AWK_Expression">
+                <T EC="0" EL="10" N="statements" SC="1" SL="9" TT="List">
+                  <T EC="22" EL="9" SC="1" SL="9" TT=".AWK.AWK_Statements$AWK_Statement">
+                    <T EC="22" EL="9" SC="1" SL="9" TT=".AWK.Statements.AWK_SubStatement">
+                      <T EC="8" EL="9" N="SUB" SC="5" SL="9" TT=".AWK.Terminals.AWK_KeywordChoice" V="gsub"/>
+                      <T EC="9" EL="9" N="leftParen" SC="9" SL="9" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
+                      <T EC="21" EL="9" N="argList" SC="10" SL="9" TT=".AWK.AWK_ArgumentList">
+                        <T EC="21" EL="9" N="exprs" SC="10" SL="9" TT="List">
+                          <T EC="13" EL="9" SC="10" SL="9" TT=".AWK.AWK_Expression">
+                            <T EC="13" EL="9" SC="10" SL="9" TT=".AWK.Terminals.AWK_Pattern" V="/\\/"/>
+                          </T>
+                          <T EC="14" EL="9" SC="14" SL="9" TT="com.eagle.tokens.punctuation.PunctuationComma" V=","/>
+                          <T EC="17" EL="9" SC="15" SL="9" TT=".AWK.AWK_Expression">
                             <T EC="17" EL="9" SC="15" SL="9" TT=".AWK.AWK_Expression$AWK_Strings">
                               <T EC="17" EL="9" N="pieces" SC="15" SL="9" TT="List">
                                 <T EC="17" EL="9" SC="15" SL="9" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
@@ -263,10 +251,8 @@
                               </T>
                             </T>
                           </T>
-                        </T>
-                        <T EC="21" EL="9" SC="18" SL="9" TT=".AWK.AWK_ArgumentList$AWK_MoreArguments">
-                          <T EC="18" EL="9" N="comma" SC="18" SL="9" TT=".AWK.Terminals.AWK_Punctuation" V=","/>
-                          <T EC="21" EL="9" N="expr" SC="19" SL="9" TT=".AWK.AWK_Expression">
+                          <T EC="18" EL="9" SC="18" SL="9" TT="com.eagle.tokens.punctuation.PunctuationComma" V=","/>
+                          <T EC="21" EL="9" SC="19" SL="9" TT=".AWK.AWK_Expression">
                             <T EC="21" EL="9" SC="19" SL="9" TT=".AWK.AWK_Expression$AWK_Strings">
                               <T EC="21" EL="9" N="pieces" SC="19" SL="9" TT="List">
                                 <T EC="21" EL="9" SC="19" SL="9" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
@@ -277,22 +263,18 @@
                           </T>
                         </T>
                       </T>
+                      <T EC="22" EL="9" N="rightParen" SC="22" SL="9" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                     </T>
-                    <T EC="22" EL="9" N="rightParen" SC="22" SL="9" TT=".AWK.Terminals.AWK_Punctuation" V=")"/>
                   </T>
                 </T>
-                <T EC="0" EL="10" N="more" SC="1" SL="9" TT="List">
-                  <T EC="23" EL="9" SC="23" SL="9" TT=".AWK.AWK_Statements$AWK_MoreStatements">
-                    <T EC="23" EL="9" N="semicolon" SC="23" SL="9" TT=".AWK.Terminals.AWK_Punctuation" V=";"/>
-                  </T>
-                </T>
+                <T EC="23" EL="9" N="semicolon" SC="23" SL="9" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                 <T EC="0" EL="10" N="newlines" SC="1" SL="9" TT="List">
                   <T EC="0" EL="10" SC="24" SL="9" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
                 </T>
               </T>
             </T>
           </T>
-          <T EC="1" EL="10" N="rightBrace" SC="1" SL="10" TT=".AWK.Terminals.AWK_Punctuation" V="}"/>
+          <T EC="1" EL="10" N="rightBrace" SC="1" SL="10" TT="com.eagle.tokens.punctuation.PunctuationRightBrace" V="}"/>
           <T EC="0" EL="12" N="blankLines" SC="16" SL="6" TT="List">
             <T EC="0" EL="11" SC="2" SL="10" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
             <T EC="0" EL="12" SC="1" SL="11" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
@@ -319,31 +301,33 @@
           </T>
         </T>
         <T EC="0" EL="18" N="action" SC="21" SL="12" TT=".AWK.AWK_Action">
-          <T EC="22" EL="12" N="leftBrace" SC="22" SL="12" TT=".AWK.Terminals.AWK_Punctuation" V="{"/>
+          <T EC="22" EL="12" N="leftBrace" SC="22" SL="12" TT="com.eagle.tokens.punctuation.PunctuationLeftBrace" V="{"/>
           <T EC="0" EL="18" N="newlines" SC="21" SL="12" TT="List">
             <T EC="0" EL="13" SC="23" SL="12" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
           </T>
           <T EC="0" EL="18" N="statements" SC="21" SL="12" TT="List">
             <T EC="0" EL="14" SC="1" SL="13" TT=".AWK.AWK_Action$AWK_StatementOrComment">
               <T EC="0" EL="14" SC="1" SL="13" TT=".AWK.AWK_Statements">
-                <T EC="13" EL="13" N="statement" SC="1" SL="13" TT=".AWK.AWK_Statements$AWK_Statement">
-                  <T EC="13" EL="13" SC="1" SL="13" TT=".AWK.AWK_Expression">
-                    <T EC="13" EL="13" SC="1" SL="13" TT=".AWK.AWK_Expression$AWK_Assignment">
-                      <T EC="8" EL="13" N="left" SC="1" SL="13" TT=".AWK.AWK_Expression">
-                        <T EC="8" EL="13" SC="1" SL="13" TT=".AWK.AWK_Expression$AWK_Strings">
-                          <T EC="8" EL="13" N="pieces" SC="1" SL="13" TT="List">
-                            <T EC="8" EL="13" SC="1" SL="13" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                              <T EC="8" EL="13" SC="5" SL="13" TT=".AWK.Symbols.AWK_Identifier_Reference" V="size"/>
+                <T EC="0" EL="14" N="statements" SC="1" SL="13" TT="List">
+                  <T EC="13" EL="13" SC="1" SL="13" TT=".AWK.AWK_Statements$AWK_Statement">
+                    <T EC="13" EL="13" SC="1" SL="13" TT=".AWK.AWK_Expression">
+                      <T EC="13" EL="13" SC="1" SL="13" TT=".AWK.AWK_Expression$AWK_Assignment">
+                        <T EC="8" EL="13" N="left" SC="1" SL="13" TT=".AWK.AWK_Expression">
+                          <T EC="8" EL="13" SC="1" SL="13" TT=".AWK.AWK_Expression$AWK_Strings">
+                            <T EC="8" EL="13" N="pieces" SC="1" SL="13" TT="List">
+                              <T EC="8" EL="13" SC="1" SL="13" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                <T EC="8" EL="13" SC="5" SL="13" TT=".AWK.Symbols.AWK_Identifier_Reference" V="size"/>
+                              </T>
                             </T>
                           </T>
                         </T>
-                      </T>
-                      <T EC="10" EL="13" N="equals" SC="10" SL="13" TT=".AWK.Terminals.AWK_PunctuationChoice" V="="/>
-                      <T EC="13" EL="13" N="right" SC="11" SL="13" TT=".AWK.AWK_Expression">
-                        <T EC="13" EL="13" SC="11" SL="13" TT=".AWK.AWK_Expression$AWK_Strings">
-                          <T EC="13" EL="13" N="pieces" SC="11" SL="13" TT="List">
-                            <T EC="13" EL="13" SC="11" SL="13" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                              <T EC="13" EL="13" SC="12" SL="13" TT=".AWK.Symbols.AWK_Identifier_Reference" V="$4"/>
+                        <T EC="10" EL="13" N="equals" SC="10" SL="13" TT=".AWK.Terminals.AWK_PunctuationChoice" V="="/>
+                        <T EC="13" EL="13" N="right" SC="11" SL="13" TT=".AWK.AWK_Expression">
+                          <T EC="13" EL="13" SC="11" SL="13" TT=".AWK.AWK_Expression$AWK_Strings">
+                            <T EC="13" EL="13" N="pieces" SC="11" SL="13" TT="List">
+                              <T EC="13" EL="13" SC="11" SL="13" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                <T EC="13" EL="13" SC="12" SL="13" TT=".AWK.Symbols.AWK_Identifier_Reference" V="$4"/>
+                              </T>
                             </T>
                           </T>
                         </T>
@@ -351,11 +335,7 @@
                     </T>
                   </T>
                 </T>
-                <T EC="0" EL="14" N="more" SC="1" SL="13" TT="List">
-                  <T EC="14" EL="13" SC="14" SL="13" TT=".AWK.AWK_Statements$AWK_MoreStatements">
-                    <T EC="14" EL="13" N="semicolon" SC="14" SL="13" TT=".AWK.Terminals.AWK_Punctuation" V=";"/>
-                  </T>
-                </T>
+                <T EC="14" EL="13" N="semicolon" SC="14" SL="13" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                 <T EC="0" EL="14" N="newlines" SC="1" SL="13" TT="List">
                   <T EC="0" EL="14" SC="15" SL="13" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
                 </T>
@@ -363,24 +343,26 @@
             </T>
             <T EC="0" EL="15" SC="1" SL="14" TT=".AWK.AWK_Action$AWK_StatementOrComment">
               <T EC="0" EL="15" SC="1" SL="14" TT=".AWK.AWK_Statements">
-                <T EC="14" EL="14" N="statement" SC="1" SL="14" TT=".AWK.AWK_Statements$AWK_Statement">
-                  <T EC="14" EL="14" SC="1" SL="14" TT=".AWK.AWK_Expression">
-                    <T EC="14" EL="14" SC="1" SL="14" TT=".AWK.AWK_Expression$AWK_Assignment">
-                      <T EC="9" EL="14" N="left" SC="1" SL="14" TT=".AWK.AWK_Expression">
-                        <T EC="9" EL="14" SC="1" SL="14" TT=".AWK.AWK_Expression$AWK_Strings">
-                          <T EC="9" EL="14" N="pieces" SC="1" SL="14" TT="List">
-                            <T EC="9" EL="14" SC="1" SL="14" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                              <T EC="9" EL="14" SC="5" SL="14" TT=".AWK.Symbols.AWK_Identifier_Reference" V="fname"/>
+                <T EC="0" EL="15" N="statements" SC="1" SL="14" TT="List">
+                  <T EC="14" EL="14" SC="1" SL="14" TT=".AWK.AWK_Statements$AWK_Statement">
+                    <T EC="14" EL="14" SC="1" SL="14" TT=".AWK.AWK_Expression">
+                      <T EC="14" EL="14" SC="1" SL="14" TT=".AWK.AWK_Expression$AWK_Assignment">
+                        <T EC="9" EL="14" N="left" SC="1" SL="14" TT=".AWK.AWK_Expression">
+                          <T EC="9" EL="14" SC="1" SL="14" TT=".AWK.AWK_Expression$AWK_Strings">
+                            <T EC="9" EL="14" N="pieces" SC="1" SL="14" TT="List">
+                              <T EC="9" EL="14" SC="1" SL="14" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                <T EC="9" EL="14" SC="5" SL="14" TT=".AWK.Symbols.AWK_Identifier_Reference" V="fname"/>
+                              </T>
                             </T>
                           </T>
                         </T>
-                      </T>
-                      <T EC="11" EL="14" N="equals" SC="11" SL="14" TT=".AWK.Terminals.AWK_PunctuationChoice" V="="/>
-                      <T EC="14" EL="14" N="right" SC="12" SL="14" TT=".AWK.AWK_Expression">
-                        <T EC="14" EL="14" SC="12" SL="14" TT=".AWK.AWK_Expression$AWK_Strings">
-                          <T EC="14" EL="14" N="pieces" SC="12" SL="14" TT="List">
-                            <T EC="14" EL="14" SC="12" SL="14" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                              <T EC="14" EL="14" SC="13" SL="14" TT=".AWK.Symbols.AWK_Identifier_Reference" V="$5"/>
+                        <T EC="11" EL="14" N="equals" SC="11" SL="14" TT=".AWK.Terminals.AWK_PunctuationChoice" V="="/>
+                        <T EC="14" EL="14" N="right" SC="12" SL="14" TT=".AWK.AWK_Expression">
+                          <T EC="14" EL="14" SC="12" SL="14" TT=".AWK.AWK_Expression$AWK_Strings">
+                            <T EC="14" EL="14" N="pieces" SC="12" SL="14" TT="List">
+                              <T EC="14" EL="14" SC="12" SL="14" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                <T EC="14" EL="14" SC="13" SL="14" TT=".AWK.Symbols.AWK_Identifier_Reference" V="$5"/>
+                              </T>
                             </T>
                           </T>
                         </T>
@@ -388,11 +370,7 @@
                     </T>
                   </T>
                 </T>
-                <T EC="0" EL="15" N="more" SC="1" SL="14" TT="List">
-                  <T EC="15" EL="14" SC="15" SL="14" TT=".AWK.AWK_Statements$AWK_MoreStatements">
-                    <T EC="15" EL="14" N="semicolon" SC="15" SL="14" TT=".AWK.Terminals.AWK_Punctuation" V=";"/>
-                  </T>
-                </T>
+                <T EC="15" EL="14" N="semicolon" SC="15" SL="14" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                 <T EC="0" EL="15" N="newlines" SC="1" SL="14" TT="List">
                   <T EC="0" EL="15" SC="16" SL="14" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
                 </T>
@@ -400,18 +378,18 @@
             </T>
             <T EC="0" EL="16" SC="1" SL="15" TT=".AWK.AWK_Action$AWK_StatementOrComment">
               <T EC="0" EL="16" SC="1" SL="15" TT=".AWK.AWK_Statements">
-                <T EC="21" EL="15" N="statement" SC="1" SL="15" TT=".AWK.AWK_Statements$AWK_Statement">
-                  <T EC="21" EL="15" SC="1" SL="15" TT=".AWK.Statements.AWK_SubStatement">
-                    <T EC="8" EL="15" N="SUB" SC="5" SL="15" TT=".AWK.Terminals.AWK_KeywordChoice" V="gsub"/>
-                    <T EC="9" EL="15" N="leftParen" SC="9" SL="15" TT=".AWK.Terminals.AWK_Punctuation" V="("/>
-                    <T EC="20" EL="15" N="argList" SC="10" SL="15" TT=".AWK.AWK_ArgumentList">
-                      <T EC="12" EL="15" N="expr" SC="10" SL="15" TT=".AWK.AWK_Expression">
-                        <T EC="12" EL="15" SC="10" SL="15" TT=".AWK.Terminals.AWK_Pattern" V="/,/"/>
-                      </T>
-                      <T EC="20" EL="15" N="more" SC="10" SL="15" TT="List">
-                        <T EC="15" EL="15" SC="13" SL="15" TT=".AWK.AWK_ArgumentList$AWK_MoreArguments">
-                          <T EC="13" EL="15" N="comma" SC="13" SL="15" TT=".AWK.Terminals.AWK_Punctuation" V=","/>
-                          <T EC="15" EL="15" N="expr" SC="14" SL="15" TT=".AWK.AWK_Expression">
+                <T EC="0" EL="16" N="statements" SC="1" SL="15" TT="List">
+                  <T EC="21" EL="15" SC="1" SL="15" TT=".AWK.AWK_Statements$AWK_Statement">
+                    <T EC="21" EL="15" SC="1" SL="15" TT=".AWK.Statements.AWK_SubStatement">
+                      <T EC="8" EL="15" N="SUB" SC="5" SL="15" TT=".AWK.Terminals.AWK_KeywordChoice" V="gsub"/>
+                      <T EC="9" EL="15" N="leftParen" SC="9" SL="15" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
+                      <T EC="20" EL="15" N="argList" SC="10" SL="15" TT=".AWK.AWK_ArgumentList">
+                        <T EC="20" EL="15" N="exprs" SC="10" SL="15" TT="List">
+                          <T EC="12" EL="15" SC="10" SL="15" TT=".AWK.AWK_Expression">
+                            <T EC="12" EL="15" SC="10" SL="15" TT=".AWK.Terminals.AWK_Pattern" V="/,/"/>
+                          </T>
+                          <T EC="13" EL="15" SC="13" SL="15" TT="com.eagle.tokens.punctuation.PunctuationComma" V=","/>
+                          <T EC="15" EL="15" SC="14" SL="15" TT=".AWK.AWK_Expression">
                             <T EC="15" EL="15" SC="14" SL="15" TT=".AWK.AWK_Expression$AWK_Strings">
                               <T EC="15" EL="15" N="pieces" SC="14" SL="15" TT="List">
                                 <T EC="15" EL="15" SC="14" SL="15" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
@@ -420,10 +398,8 @@
                               </T>
                             </T>
                           </T>
-                        </T>
-                        <T EC="20" EL="15" SC="16" SL="15" TT=".AWK.AWK_ArgumentList$AWK_MoreArguments">
-                          <T EC="16" EL="15" N="comma" SC="16" SL="15" TT=".AWK.Terminals.AWK_Punctuation" V=","/>
-                          <T EC="20" EL="15" N="expr" SC="17" SL="15" TT=".AWK.AWK_Expression">
+                          <T EC="16" EL="15" SC="16" SL="15" TT="com.eagle.tokens.punctuation.PunctuationComma" V=","/>
+                          <T EC="20" EL="15" SC="17" SL="15" TT=".AWK.AWK_Expression">
                             <T EC="20" EL="15" SC="17" SL="15" TT=".AWK.AWK_Expression$AWK_Strings">
                               <T EC="20" EL="15" N="pieces" SC="17" SL="15" TT="List">
                                 <T EC="20" EL="15" SC="17" SL="15" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
@@ -434,15 +410,11 @@
                           </T>
                         </T>
                       </T>
+                      <T EC="21" EL="15" N="rightParen" SC="21" SL="15" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                     </T>
-                    <T EC="21" EL="15" N="rightParen" SC="21" SL="15" TT=".AWK.Terminals.AWK_Punctuation" V=")"/>
                   </T>
                 </T>
-                <T EC="0" EL="16" N="more" SC="1" SL="15" TT="List">
-                  <T EC="22" EL="15" SC="22" SL="15" TT=".AWK.AWK_Statements$AWK_MoreStatements">
-                    <T EC="22" EL="15" N="semicolon" SC="22" SL="15" TT=".AWK.Terminals.AWK_Punctuation" V=";"/>
-                  </T>
-                </T>
+                <T EC="22" EL="15" N="semicolon" SC="22" SL="15" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                 <T EC="0" EL="16" N="newlines" SC="1" SL="15" TT="List">
                   <T EC="0" EL="16" SC="23" SL="15" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
                 </T>
@@ -450,29 +422,33 @@
             </T>
             <T EC="0" EL="17" SC="1" SL="16" TT=".AWK.AWK_Action$AWK_StatementOrComment">
               <T EC="0" EL="17" SC="1" SL="16" TT=".AWK.AWK_Statements">
-                <T EC="32" EL="16" N="statement" SC="1" SL="16" TT=".AWK.AWK_Statements$AWK_Statement">
-                  <T EC="32" EL="16" SC="1" SL="16" TT=".AWK.Statements.AWK_PrintStatement">
-                    <T EC="9" EL="16" N="PRINT" SC="5" SL="16" TT=".AWK.Terminals.AWK_KeywordChoice" V="print"/>
-                    <T EC="32" EL="16" N="param" SC="10" SL="16" TT=".AWK.Statements.AWK_PrintStatement$AWK_PrintParameters">
-                      <T EC="32" EL="16" SC="10" SL="16" TT=".AWK.Statements.AWK_PrintStatement$AWK_PrintParameters$AWK_Print_NoParens">
-                        <T EC="32" EL="16" N="argList" SC="10" SL="16" TT=".AWK.AWK_ArgumentList">
-                          <T EC="32" EL="16" N="expr" SC="10" SL="16" TT=".AWK.AWK_Expression">
-                            <T EC="32" EL="16" SC="10" SL="16" TT=".AWK.AWK_Expression$AWK_Strings">
-                              <T EC="32" EL="16" N="pieces" SC="10" SL="16" TT="List">
-                                <T EC="14" EL="16" SC="10" SL="16" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                                  <T EC="14" EL="16" SC="11" SL="16" TT=".AWK.Symbols.AWK_Identifier_Reference" V="size"/>
-                                </T>
-                                <T EC="18" EL="16" SC="15" SL="16" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                                  <T EC="18" EL="16" SC="16" SL="16" TT=".AWK.Terminals.AWK_Literal" V="&quot;,&quot;"/>
-                                </T>
-                                <T EC="22" EL="16" SC="19" SL="16" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                                  <T EC="22" EL="16" SC="20" SL="16" TT=".AWK.Symbols.AWK_Identifier_Reference" V="dir"/>
-                                </T>
-                                <T EC="26" EL="16" SC="23" SL="16" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                                  <T EC="26" EL="16" SC="24" SL="16" TT=".AWK.Terminals.AWK_Literal" V="&quot;/&quot;"/>
-                                </T>
-                                <T EC="32" EL="16" SC="27" SL="16" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
-                                  <T EC="32" EL="16" SC="28" SL="16" TT=".AWK.Symbols.AWK_Identifier_Reference" V="fname"/>
+                <T EC="0" EL="17" N="statements" SC="1" SL="16" TT="List">
+                  <T EC="32" EL="16" SC="1" SL="16" TT=".AWK.AWK_Statements$AWK_Statement">
+                    <T EC="32" EL="16" SC="1" SL="16" TT=".AWK.Statements.AWK_PrintStatement">
+                      <T EC="9" EL="16" N="PRINT" SC="5" SL="16" TT=".AWK.Terminals.AWK_KeywordChoice" V="print"/>
+                      <T EC="32" EL="16" N="param" SC="10" SL="16" TT=".AWK.Statements.AWK_PrintStatement$AWK_PrintParameters">
+                        <T EC="32" EL="16" SC="10" SL="16" TT=".AWK.Statements.AWK_PrintStatement$AWK_PrintParameters$AWK_Print_NoParens">
+                          <T EC="32" EL="16" N="argList" SC="10" SL="16" TT=".AWK.AWK_ArgumentList">
+                            <T EC="32" EL="16" N="exprs" SC="10" SL="16" TT="List">
+                              <T EC="32" EL="16" SC="10" SL="16" TT=".AWK.AWK_Expression">
+                                <T EC="32" EL="16" SC="10" SL="16" TT=".AWK.AWK_Expression$AWK_Strings">
+                                  <T EC="32" EL="16" N="pieces" SC="10" SL="16" TT="List">
+                                    <T EC="14" EL="16" SC="10" SL="16" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                      <T EC="14" EL="16" SC="11" SL="16" TT=".AWK.Symbols.AWK_Identifier_Reference" V="size"/>
+                                    </T>
+                                    <T EC="18" EL="16" SC="15" SL="16" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                      <T EC="18" EL="16" SC="16" SL="16" TT=".AWK.Terminals.AWK_Literal" V="&quot;,&quot;"/>
+                                    </T>
+                                    <T EC="22" EL="16" SC="19" SL="16" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                      <T EC="22" EL="16" SC="20" SL="16" TT=".AWK.Symbols.AWK_Identifier_Reference" V="dir"/>
+                                    </T>
+                                    <T EC="26" EL="16" SC="23" SL="16" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                      <T EC="26" EL="16" SC="24" SL="16" TT=".AWK.Terminals.AWK_Literal" V="&quot;/&quot;"/>
+                                    </T>
+                                    <T EC="32" EL="16" SC="27" SL="16" TT=".AWK.AWK_Expression$AWK_Strings$AWK_StringPiece">
+                                      <T EC="32" EL="16" SC="28" SL="16" TT=".AWK.Symbols.AWK_Identifier_Reference" V="fname"/>
+                                    </T>
+                                  </T>
                                 </T>
                               </T>
                             </T>
@@ -482,18 +458,14 @@
                     </T>
                   </T>
                 </T>
-                <T EC="0" EL="17" N="more" SC="1" SL="16" TT="List">
-                  <T EC="33" EL="16" SC="33" SL="16" TT=".AWK.AWK_Statements$AWK_MoreStatements">
-                    <T EC="33" EL="16" N="semicolon" SC="33" SL="16" TT=".AWK.Terminals.AWK_Punctuation" V=";"/>
-                  </T>
-                </T>
+                <T EC="33" EL="16" N="semicolon" SC="33" SL="16" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                 <T EC="0" EL="17" N="newlines" SC="1" SL="16" TT="List">
                   <T EC="0" EL="17" SC="34" SL="16" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
                 </T>
               </T>
             </T>
           </T>
-          <T EC="1" EL="17" N="rightBrace" SC="1" SL="17" TT=".AWK.Terminals.AWK_Punctuation" V="}"/>
+          <T EC="1" EL="17" N="rightBrace" SC="1" SL="17" TT="com.eagle.tokens.punctuation.PunctuationRightBrace" V="}"/>
           <T EC="0" EL="18" N="blankLines" SC="21" SL="12" TT="List">
             <T EC="0" EL="18" SC="2" SL="17" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
           </T>

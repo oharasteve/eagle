@@ -8,9 +8,9 @@ import com.eagle.programmar.COBOL.COBOL_Expression;
 import com.eagle.programmar.COBOL.COBOL_Subscript;
 import com.eagle.programmar.COBOL.COBOL_Variable;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class COBOL_SubtractStatement extends COBOL_AbstractStatement
 {
@@ -36,7 +36,7 @@ public class COBOL_SubtractStatement extends COBOL_AbstractStatement
 	
 	public static class COBOL_SubtractMoreVars extends TokenSequence
 	{
-		public @OPT COBOL_Punctuation comma = new COBOL_Punctuation(',');
+		public @OPT PunctuationComma comma;
 		public COBOL_Variable var;
 	}
 }

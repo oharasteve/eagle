@@ -11,6 +11,7 @@ import com.eagle.programmar.Perl.Terminals.Perl_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
 
 public class Perl_VarStatement extends TokenSequence
 {
@@ -26,7 +27,7 @@ public class Perl_VarStatement extends TokenSequence
 
 	public static class Perl_Variable_Initializer extends TokenSequence
 	{
-		public Perl_Punctuation equals = new Perl_Punctuation('=');
+		public PunctuationEquals equals;
 		public Perl_Expression initVal;
 	}
 }

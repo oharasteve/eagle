@@ -8,17 +8,19 @@ import com.eagle.programmar.Lisp.Lisp_Variable;
 import com.eagle.programmar.Lisp.Symbols.Lisp_Variable_Definition;
 import com.eagle.programmar.Lisp.Terminals.Lisp_Keyword;
 import com.eagle.programmar.Lisp.Terminals.Lisp_KeywordChoice;
-import com.eagle.programmar.Lisp.Terminals.Lisp_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Lisp_LoopFunction extends TokenSequence
 {
-	public Lisp_Punctuation leftParen = new Lisp_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public @DOC("m_loop.htm") Lisp_Keyword LOOP = new Lisp_Keyword("loop");
 	public Lisp_LoopType loopType;
-	public Lisp_Punctuation rightParen = new Lisp_Punctuation(')');
+	public PunctuationRightParen rightParen;
 	
 	public static class Lisp_LoopType extends TokenChooser
 	{
@@ -59,7 +61,7 @@ public class Lisp_LoopFunction extends TokenSequence
 						
 						public static class Lisp_LoopWithValue extends TokenSequence
 						{
-							public Lisp_Punctuation equals = new Lisp_Punctuation('=');
+							public PunctuationEquals equals;
 							public Lisp_SExpr value;
 						}
 					}
@@ -82,7 +84,7 @@ public class Lisp_LoopFunction extends TokenSequence
 		
 						public static class Lisp_ForEqualsThen extends TokenSequence
 						{
-							public Lisp_Punctuation equals = new Lisp_Punctuation('=');
+							public PunctuationEquals equals;
 							public Lisp_SExpr expr;
 							public @OPT Lisp_LoopForThen thenClause;
 							

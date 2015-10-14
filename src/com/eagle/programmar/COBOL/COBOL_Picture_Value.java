@@ -12,6 +12,8 @@ import com.eagle.programmar.COBOL.Terminals.COBOL_Number;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationHyphen;
 
 public class COBOL_Picture_Value extends TokenChooser
 {
@@ -19,7 +21,7 @@ public class COBOL_Picture_Value extends TokenChooser
 	
 	public static class COBOL_Picture_Value_Keyword extends TokenSequence
 	{
-		public @OPT COBOL_Punctuation comma = new COBOL_Punctuation(',');
+		public @OPT PunctuationComma comma;
 		public COBOL_KeywordChoice constants = new COBOL_KeywordChoice(
 				"ZERO", "ZEROS", "SPACE", "SPACES",
 				"LOW-VALUE", "LOW-VALUES", "HIGH-VALUE", "HIGH-VALUES");
@@ -27,7 +29,7 @@ public class COBOL_Picture_Value extends TokenChooser
 
 	public static class COBOL_Picture_Value_Literal extends TokenSequence
 	{
-		public @OPT COBOL_Punctuation comma = new COBOL_Punctuation(',');
+		public @OPT PunctuationComma comma;
 		public COBOL_Literal literal;
 		public @OPT COBOL_ThruLiteral thru;
 		
@@ -40,13 +42,13 @@ public class COBOL_Picture_Value extends TokenChooser
 
 	public static class COBOL_Picture_Value_Number extends TokenSequence
 	{
-		public @OPT COBOL_Punctuation comma = new COBOL_Punctuation(',');
+		public @OPT PunctuationComma comma;
 		public COBOL_Number number;
 	}
 
 	public static class COBOL_Picture_Value_HexNumber extends TokenSequence
 	{
-		public @OPT COBOL_Punctuation comma = new COBOL_Punctuation(',');
+		public @OPT PunctuationComma comma;
 		public @OPT COBOL_Punctuation ampersand = new COBOL_Punctuation('&');
 		public COBOL_HexNumber hex;
 	}
@@ -58,7 +60,7 @@ public class COBOL_Picture_Value extends TokenChooser
 		
 		public static class COBOL_PictureNextMinus extends TokenSequence
 		{
-			public COBOL_Punctuation minus = new COBOL_Punctuation('-');
+			public PunctuationHyphen minus;
 			public COBOL_Identifier_Reference id;
 		}
 	}

@@ -45,26 +45,30 @@ import com.eagle.programmar.Perl.Terminals.Perl_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationHyphen;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Perl_Statement extends TokenChooser
 {
 	public Perl_Include include;
 	public Perl_FunctionDefinition function;
 	public @LAST Perl_Label label;
-	public @CURIOUS("Empty statement") Perl_Punctuation semicolon = new Perl_Punctuation(';');
+	public @CURIOUS("Empty statement") PunctuationSemicolon semicolon;
 	
 	public @LAST static class Perl_ExpressionCallStatement extends TokenSequence
 	{
 		public Perl_Expression expr;
 		public @OPT Perl_StatementModifier modifier;
-		public Perl_Punctuation semicolon = new Perl_Punctuation(';');
+		public PunctuationSemicolon semicolon;
 	}
 
 	public static class Perl_StatementBlock extends TokenSequence
 	{
-		public @INDENT Perl_Punctuation leftBrace = new Perl_Punctuation('{');
+		public @INDENT PunctuationLeftBrace leftBrace;
 		public @OPT TokenList<Perl_StatementOrComment> statements;
-		public @OUTDENT Perl_Punctuation rightBrace = new Perl_Punctuation('}');
+		public @OUTDENT PunctuationRightBrace rightBrace;
 	}
 	
 	public static class Perl_SubDeclaration extends TokenSequence
@@ -90,7 +94,7 @@ public class Perl_Statement extends TokenChooser
 		
 		public static class Perl_MinusF extends TokenSequence
 		{
-			public Perl_Punctuation minus = new Perl_Punctuation('-');
+			public PunctuationHyphen minus;
 			public Perl_KeywordChoice DF = new Perl_KeywordChoice("d", "f");
 		}
 	}
@@ -99,7 +103,7 @@ public class Perl_Statement extends TokenChooser
 	{
 		public Perl_StatementList statement;
 		public @OPT Perl_StatementModifier modifier;
-		public @OPT Perl_Punctuation semicolon = new Perl_Punctuation(';');
+		public @OPT PunctuationSemicolon semicolon;
 
 		//
 		// Start actual statement list here

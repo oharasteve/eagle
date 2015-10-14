@@ -5,12 +5,12 @@ package com.eagle.programmar.Java.Statements;
 
 import com.eagle.programmar.Java.Symbols.Java_Identifier_Reference;
 import com.eagle.programmar.Java.Terminals.Java_Keyword;
-import com.eagle.programmar.Java.Terminals.Java_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Java_ContinueStatement extends TokenSequence
 {
 	public @DOC("statements.html#14.16") Java_Keyword CONTINUE = new Java_Keyword("continue");
 	public @OPT Java_Identifier_Reference label;
-	public Java_Punctuation semicolon = new Java_Punctuation(';');
+	public PunctuationSemicolon semicolon;
 }

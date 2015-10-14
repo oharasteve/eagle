@@ -6,22 +6,24 @@ package com.eagle.programmar.Perl.Statements;
 import com.eagle.programmar.Perl.Perl_Expression;
 import com.eagle.programmar.Perl.Perl_Statement;
 import com.eagle.programmar.Perl.Terminals.Perl_Keyword;
-import com.eagle.programmar.Perl.Terminals.Perl_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Perl_ForStatement extends TokenSequence
 {
 	public @DOC("control-structures.for.php") Perl_Keyword FOR = new Perl_Keyword("for");
-	public Perl_Punctuation leftParen = new Perl_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public @OPT Perl_Expression initExpr;
 	public @OPT Perl_ForClause testExpr;
 	public @OPT Perl_ForClause incrExpr;
-	public Perl_Punctuation rightParen = new Perl_Punctuation(')');
+	public PunctuationRightParen rightParen;
 	public Perl_Statement stmt;
 	
 	public static class Perl_ForClause extends TokenSequence
 	{
-		public @OPT Perl_Punctuation semicolon = new Perl_Punctuation(';');
+		public @OPT PunctuationSemicolon semicolon;
 		public Perl_Expression incrExpr;
 	}
 }

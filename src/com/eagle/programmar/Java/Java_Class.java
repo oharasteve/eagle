@@ -7,7 +7,6 @@ import com.eagle.programmar.Java.Java_Type.Java_GenericType;
 import com.eagle.programmar.Java.Symbols.Java_Class_Definition;
 import com.eagle.programmar.Java.Symbols.Java_Identifier_Reference;
 import com.eagle.programmar.Java.Terminals.Java_Comment;
-import com.eagle.programmar.Java.Terminals.Java_Identifier;
 import com.eagle.programmar.Java.Terminals.Java_Keyword;
 import com.eagle.programmar.Java.Terminals.Java_KeywordChoice;
 import com.eagle.programmar.Java.Terminals.Java_Punctuation;
@@ -15,9 +14,15 @@ import com.eagle.tests.EagleInterpreter;
 import com.eagle.tests.EagleRunnable;
 import com.eagle.tokens.EagleScope;
 import com.eagle.tokens.EagleScope.EagleScopeInterface;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Java_Class extends TokenSequence implements EagleRunnable, EagleScopeInterface
 {
@@ -31,11 +36,11 @@ public class Java_Class extends TokenSequence implements EagleRunnable, EagleSco
 	public @OPT Java_ClassExtends jextends;
 	public @OPT Java_ClassImplements jimplements;
 	public @OPT TokenList<Java_Comment> comments2;
-	public @INDENT Java_Punctuation leftBrace = new Java_Punctuation('{');
+	public @INDENT PunctuationLeftBrace leftBrace;
 	public @OPT TokenList<Java_ClassElement> elements;
-	public @OUTDENT Java_Punctuation rightBrace = new Java_Punctuation('}');
+	public @OUTDENT PunctuationRightBrace rightBrace;
 	public @OPT @NEWLINE TokenList<Java_Comment> comments3;
-	public @CURIOUS("Extra semicolon") @OPT Java_Punctuation semicolon = new Java_Punctuation(';');
+	public @CURIOUS("Extra semicolon") @OPT PunctuationSemicolon semicolon;
 	
 	public static class Java_ClassModifier extends TokenChooser
 	{
@@ -44,25 +49,17 @@ public class Java_Class extends TokenSequence implements EagleRunnable, EagleSco
 		public Java_KeywordChoice modifier = new Java_KeywordChoice(Java_Program.MODIFIERS);
 	}
 
-	public static class Java_DotIdentifier extends TokenSequence
-	{
-		public @NOSPACE Java_Punctuation dot = new Java_Punctuation('.');
-		public @NOSPACE Java_Identifier id;
-	}
-
 	public static class Java_ClassExtends extends TokenSequence
 	{
 		public Java_Keyword EXTENDS = new Java_Keyword("extends");
-		public Java_Identifier_Reference className;
-		public @OPT TokenList<Java_DotIdentifier> more;
+		public SeparatedList<Java_Identifier_Reference,PunctuationPeriod> classNames;
 		public @OPT Java_GenericType genericType;
 		public @OPT TokenList<Java_MoreExtends> moreExtend;
 		
 		public static class Java_MoreExtends extends TokenSequence
 		{
-			public Java_Punctuation comma = new Java_Punctuation(',');
-			public Java_Identifier_Reference className;
-			public @OPT TokenList<Java_DotIdentifier> moreIds;
+			public PunctuationComma comma;
+			public SeparatedList<Java_Identifier_Reference,PunctuationPeriod> classNames;
 			public @OPT Java_GenericType genericType;
 		}
 	}
@@ -70,17 +67,15 @@ public class Java_Class extends TokenSequence implements EagleRunnable, EagleSco
 	public static class Java_ClassImplements extends TokenSequence
 	{
 		public Java_Keyword IMPLEMENTS = new Java_Keyword("implements");
-		public Java_Identifier_Reference className;
-		public @OPT TokenList<Java_DotIdentifier> moreIds;
+		public SeparatedList<Java_Identifier_Reference,PunctuationPeriod> classNames;
 		public @OPT Java_GenericType genericType;
 		public @OPT TokenList<Java_MoreImplements> moreImpl;
 		
 		public static class Java_MoreImplements extends TokenSequence
 		{
-			public Java_Punctuation comma = new Java_Punctuation(',');
+			public PunctuationComma comma;
 			public @OPT Java_Comment comment;
-			public Java_Identifier_Reference className;
-			public @OPT TokenList<Java_DotIdentifier> moreIds;
+			public SeparatedList<Java_Identifier_Reference,PunctuationPeriod> classNames;
 			public @OPT Java_GenericType genericType;
 		}
 	}
@@ -90,7 +85,7 @@ public class Java_Class extends TokenSequence implements EagleRunnable, EagleSco
 		public @FIRST @NEWLINE Java_Comment comment;
 		public @NEWLINE Java_Method jmethod;
 		public @NEWLINE Java_Method.Java_Constructor jconstructor;
-		public @CURIOUS("Extra semicolon") Java_Punctuation semicolon = new Java_Punctuation(';');
+		public @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon;
 		
 		public static class Java_StaticStatement extends TokenSequence implements EagleRunnable
 		{

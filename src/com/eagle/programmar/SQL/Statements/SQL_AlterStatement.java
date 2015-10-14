@@ -7,15 +7,15 @@ import com.eagle.programmar.SQL.SQL_Constraint;
 import com.eagle.programmar.SQL.Symbols.SQL_Identifier_Reference;
 import com.eagle.programmar.SQL.Terminals.SQL_Keyword;
 import com.eagle.programmar.SQL.Terminals.SQL_KeywordChoice;
-import com.eagle.programmar.SQL.Terminals.SQL_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class SQL_AlterStatement extends TokenSequence
 {
 	public SQL_Keyword ALTER = new SQL_Keyword("ALTER");
 	public SQL_AlterWhat what;
-	public SQL_Punctuation semicolon = new SQL_Punctuation(';');
+	public PunctuationSemicolon semicolon;
 	
 	public static class SQL_AlterWhat extends TokenChooser
 	{

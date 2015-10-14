@@ -17,9 +17,11 @@ import com.eagle.programmar.HTML.Terminals.HTML_Identifier;
 import com.eagle.programmar.HTML.Terminals.HTML_KeywordChoice;
 import com.eagle.programmar.HTML.Terminals.HTML_Punctuation;
 import com.eagle.programmar.HTML.Terminals.HTML_Text;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
 
 public class XML_Program extends EagleLanguage
 {
@@ -105,13 +107,6 @@ public class XML_Program extends EagleLanguage
 	
 	public static class XML_Identifier extends TokenSequence
 	{
-		public HTML_Identifier tag;
-		public @OPT TokenList<XML_MoreIds> more;
-		
-		public static class XML_MoreIds extends TokenSequence
-		{
-			public HTML_Punctuation dot = new HTML_Punctuation('.');
-			public HTML_Identifier tag;
-		}
+		public SeparatedList<HTML_Identifier,PunctuationPeriod> tag;
 	}
 }

@@ -9,10 +9,13 @@ import com.eagle.programmar.TCL.Statements.TCL_SetStatement;
 import com.eagle.programmar.TCL.Statements.TCL_VariableStatement;
 import com.eagle.programmar.TCL.Terminals.TCL_Comment;
 import com.eagle.programmar.TCL.Terminals.TCL_EndOfLine;
-import com.eagle.programmar.TCL.Terminals.TCL_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class TCL_Statement extends TokenSequence
 {
@@ -22,14 +25,7 @@ public class TCL_Statement extends TokenSequence
 	
 	public static class TCL_Compound_Statement extends TokenSequence
 	{
-		public TCL_BaseStatement statement;
-		public @OPT TokenList<TCL_MoreStatements> moreStatements;
-		
-		public static class TCL_MoreStatements extends TokenSequence
-		{
-			public TCL_Punctuation semicolon = new TCL_Punctuation(';');
-			public TCL_BaseStatement statement;
-		}
+		public SeparatedList<TCL_BaseStatement,PunctuationSemicolon> statements;
 	}
 	
 	public static class TCL_BaseStatement extends TokenChooser
@@ -45,8 +41,8 @@ public class TCL_Statement extends TokenSequence
 	
 	public static class TCL_BlockStatement extends TokenSequence
 	{
-		public TCL_Punctuation leftBrace = new TCL_Punctuation('{');
+		public PunctuationLeftBrace leftBrace;
 		public @OPT TokenList<TCL_Statement> statements;
-		public TCL_Punctuation rightBrace = new TCL_Punctuation('}');
+		public PunctuationRightBrace rightBrace;
 	}
 }

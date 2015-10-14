@@ -11,6 +11,10 @@ import com.eagle.programmar.HTML.Terminals.HTML_PunctuationChoice;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class HTML_DocType extends TokenSequence
 {
@@ -34,18 +38,18 @@ public class HTML_DocType extends TokenSequence
 		
 		public static class HTML_DocBrackets extends TokenSequence
 		{
-			public HTML_Punctuation leftBracket = new HTML_Punctuation('[');
+			public PunctuationLeftBracket leftBracket;
 			public TokenList<HTML_DocValue> values; 
-			public HTML_Punctuation rightBracket = new HTML_Punctuation(']');
+			public PunctuationRightBracket rightBracket;
 		}
 		
 		public static class HTML_DocParens extends TokenSequence
 		{
-			public HTML_Punctuation leftParen = new HTML_Punctuation('(');
+			public PunctuationLeftParen leftParen;
 			public HTML_DocValue value;
 			public @OPT HTML_PunctuationChoice suffix = new HTML_PunctuationChoice(SUFFIXES);
 			public @OPT TokenList<HTML_DocMoreValues> more;
-			public HTML_Punctuation rightParen = new HTML_Punctuation(')');
+			public PunctuationRightParen rightParen;
 			public @OPT HTML_Punctuation plus = new HTML_Punctuation('+');
 			
 			public static class HTML_DocMoreValues extends TokenSequence

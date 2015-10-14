@@ -15,6 +15,12 @@ import com.eagle.programmar.Lisp.Terminals.Lisp_PunctuationChoice;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class Lisp_SExpr extends TokenChooser
 {
@@ -56,13 +62,13 @@ public class Lisp_SExpr extends TokenChooser
 	
 	public static class Lisp_Colon extends TokenSequence
 	{
-		public Lisp_Punctuation colon = new Lisp_Punctuation(':');
+		public PunctuationColon colon;
 		public Lisp_SExpr expr;
 	}
 	
 	public static class Lisp_Comma extends TokenSequence
 	{
-		public Lisp_Punctuation comma = new Lisp_Punctuation(',');
+		public PunctuationComma comma;
 		public @OPT Lisp_Punctuation at = new Lisp_Punctuation('@');
 		public Lisp_SExpr expr;
 	}
@@ -87,9 +93,9 @@ public class Lisp_SExpr extends TokenChooser
 	
 	public static class Lisp_List extends TokenSequence
 	{
-		public Lisp_Punctuation leftParen = new Lisp_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public @OPT TokenList<Lisp_SExpr> exprs;
-		public Lisp_Punctuation rightParen = new Lisp_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 	
 	public static class Lisp_CharString extends TokenSequence
@@ -98,12 +104,12 @@ public class Lisp_SExpr extends TokenChooser
 		public @OPT Lisp_Punctuation not = new Lisp_Punctuation('/');
 		public @OPT Lisp_Punctuation less = new Lisp_Punctuation('<');
 		public @OPT Lisp_Punctuation greater = new Lisp_Punctuation('>');
-		public @OPT Lisp_Punctuation equals = new Lisp_Punctuation('=');
+		public @OPT PunctuationEquals equals;
 	}
 	
 	public static class Lisp_doLetProg extends TokenSequence
 	{
 		public Lisp_KeywordChoice doLetProg = new Lisp_KeywordChoice("do", "let", "prog");
-		public @OPT Lisp_Punctuation star = new Lisp_Punctuation('*');
+		public @OPT PunctuationStar star;
 	}
 }

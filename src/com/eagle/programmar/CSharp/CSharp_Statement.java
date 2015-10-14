@@ -22,14 +22,16 @@ import com.eagle.programmar.CSharp.Statements.CSharp_TryStatement;
 import com.eagle.programmar.CSharp.Statements.CSharp_UsingStatement;
 import com.eagle.programmar.CSharp.Statements.CSharp_WhileStatement;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Comment;
-import com.eagle.programmar.CSharp.Terminals.CSharp_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class CSharp_Statement extends TokenChooser
 {
-	public @CURIOUS("Extra semicolon") CSharp_Punctuation semicolon = new CSharp_Punctuation(';');
+	public @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon;
 	
 	public CSharp_Data data;
 	public CSharp_Class myclass;
@@ -37,9 +39,9 @@ public class CSharp_Statement extends TokenChooser
 	
 	public static class CSharp_StatementBlock extends TokenSequence
 	{
-		public @INDENT CSharp_Punctuation leftBrace = new CSharp_Punctuation('{');
+		public @INDENT PunctuationLeftBrace leftBrace;
 		public @OPT TokenList<CSharp_StatementOrComment> statements;
-		public @OUTDENT CSharp_Punctuation rightBrace = new CSharp_Punctuation('}');
+		public @OUTDENT PunctuationRightBrace rightBrace;
 		
 		public static class CSharp_StatementOrComment extends TokenChooser
 		{

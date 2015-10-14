@@ -12,6 +12,9 @@ import com.eagle.programmar.Perl.Terminals.Perl_KeywordChoice;
 import com.eagle.programmar.Perl.Terminals.Perl_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Perl_ClassStatement extends TokenSequence
 {
@@ -19,10 +22,10 @@ public class Perl_ClassStatement extends TokenSequence
 	public Perl_Keyword CLASS = new Perl_Keyword("class");
 	public Perl_Class_Definition cls;
 	public @OPT Perl_ClassExtends extend;
-	public Perl_Punctuation leftBrace = new Perl_Punctuation('{');
+	public PunctuationLeftBrace leftBrace;
 	public @OPT TokenList<Perl_StatementOrComment> stmts;
-	public Perl_Punctuation rightBrace = new Perl_Punctuation('}');
-	public @OPT @CURIOUS("Extra semicolon") Perl_Punctuation semicolon = new Perl_Punctuation(';');
+	public PunctuationRightBrace rightBrace;
+	public @OPT @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon;
 
 	public static class Perl_ClassPrefix extends TokenSequence
 	{

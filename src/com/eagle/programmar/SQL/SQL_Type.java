@@ -6,26 +6,21 @@ package com.eagle.programmar.SQL;
 import com.eagle.programmar.SQL.Terminals.SQL_Keyword;
 import com.eagle.programmar.SQL.Terminals.SQL_KeywordChoice;
 import com.eagle.programmar.SQL.Terminals.SQL_Number;
-import com.eagle.programmar.SQL.Terminals.SQL_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
-import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class SQL_Type extends TokenChooser
 {
 	public static class SQL_TypeSet extends TokenSequence
 	{
 		public SQL_Keyword SET = new SQL_Keyword("SET");
-		public SQL_Punctuation leftParen = new SQL_Punctuation('(');
-		public SQL_Expression setValue;
-		public @OPT TokenList<SQL_SetMoreValues> more;
-		public SQL_Punctuation rightParen = new SQL_Punctuation(')');
-		
-		public static class SQL_SetMoreValues extends TokenSequence
-		{
-			public SQL_Punctuation comma = new SQL_Punctuation(',');
-			public SQL_Expression setValue;
-		}
+		public PunctuationLeftParen leftParen;
+		public SeparatedList<SQL_Expression,PunctuationComma> setValues;
+		public PunctuationRightParen rightParen;
 	}
 
 	public static class SQL_TypeVarChar extends TokenSequence
@@ -91,24 +86,17 @@ public class SQL_Type extends TokenChooser
 	public static class SQL_TypeEnum extends TokenSequence
 	{
 		public SQL_Keyword ENUM = new SQL_Keyword("ENUM");
-		public SQL_Punctuation leftParen = new SQL_Punctuation('(');
-		public SQL_Expression enumVal;
-		public @OPT TokenList<SQL_SetMoreEnums> more;
-		public SQL_Punctuation rightParen = new SQL_Punctuation(')');
-
-		public static class SQL_SetMoreEnums extends TokenSequence
-		{
-			public SQL_Punctuation comma = new SQL_Punctuation(',');
-			public SQL_Expression enumVal;
-		}
+		public PunctuationLeftParen leftParen;
+		public SeparatedList<SQL_Expression,PunctuationComma> enumVal;
+		public PunctuationRightParen rightParen;
 	}
 	
 	public static class SQL_TypeSize extends TokenSequence
 	{
-		public SQL_Punctuation leftParen = new SQL_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public SQL_Number size;
-		public @OPT SQL_Punctuation comma = new SQL_Punctuation(',');
+		public @OPT PunctuationComma comma;
 		public @OPT SQL_Number size2;
-		public SQL_Punctuation rightParen = new SQL_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 }

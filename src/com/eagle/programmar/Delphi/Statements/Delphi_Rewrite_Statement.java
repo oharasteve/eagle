@@ -6,15 +6,17 @@ package com.eagle.programmar.Delphi.Statements;
 import com.eagle.programmar.Delphi.Symbols.Delphi_Identifier_Reference;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Keyword;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Literal;
-import com.eagle.programmar.Delphi.Terminals.Delphi_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Delphi_Rewrite_Statement extends TokenSequence
 {
 	public Delphi_Keyword REWRITE = new Delphi_Keyword("ReWrite");
-	public Delphi_Punctuation leftParen = new Delphi_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public Delphi_Identifier_Reference file;
-	public Delphi_Punctuation comma = new Delphi_Punctuation(',');
+	public PunctuationComma comma;
 	public Delphi_Literal fileName;
-	public Delphi_Punctuation rightParen = new Delphi_Punctuation(')');
+	public PunctuationRightParen rightParen;
 }

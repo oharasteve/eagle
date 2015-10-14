@@ -9,13 +9,17 @@ import com.eagle.programmar.Delphi.Terminals.Delphi_Keyword;
 import com.eagle.programmar.Delphi.Terminals.Delphi_KeywordChoice;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Literal;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Number;
-import com.eagle.programmar.Delphi.Terminals.Delphi_Punctuation;
 import com.eagle.programmar.Delphi.Terminals.Delphi_PunctuationChoice;
 import com.eagle.tokens.PrecedenceChooser;
-import com.eagle.tokens.PrecedenceChooser.BinaryOperator.AllowedPrecedence;
+import com.eagle.tokens.PrecedenceChooser.PrecedenceOperator.AllowedPrecedence;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
-import com.eagle.tokens.TokenList;
-import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Delphi_Expression extends PrecedenceChooser
 {
@@ -23,7 +27,7 @@ public class Delphi_Expression extends PrecedenceChooser
 	{
 	}
 	
-	public Delphi_Expression(BinaryOperator token, AllowedPrecedence allowed)
+	public Delphi_Expression(PrecedenceOperator token, AllowedPrecedence allowed)
 	{ 
 		super(allowed, token.getClass());
 	}
@@ -32,69 +36,62 @@ public class Delphi_Expression extends PrecedenceChooser
 	protected void establishChoices() 
 	{
 		// Order doesn't matter
-		super.addUnaryOperator(Delphi_Parens.class);
-		super.addUnaryOperator(Delphi_Brackets.class);
-		super.addUnaryOperator(Delphi_Number.class);
-		super.addUnaryOperator(Delphi_HexNumber.class);
-		super.addUnaryOperator(Delphi_Literal.class);
-		super.addUnaryOperator(Delphi_Function_Call.class);
-		super.addUnaryOperator(Delphi_Cast.class);
-		super.addUnaryOperator(Delphi_Variable.class);
-		super.addUnaryOperator(Delphi_UnarySign.class);
-		super.addUnaryOperator(Delphi_NotOp.class);
+		super.addTerm(Delphi_Parens.class);
+		super.addTerm(Delphi_Brackets.class);
+		super.addTerm(Delphi_Number.class);
+		super.addTerm(Delphi_HexNumber.class);
+		super.addTerm(Delphi_Literal.class);
+		super.addTerm(Delphi_Function_Call.class);
+		super.addTerm(Delphi_Cast.class);
+		super.addTerm(Delphi_Variable.class);
+		super.addTerm(Delphi_UnarySign.class);
+		super.addTerm(Delphi_NotOp.class);
 
 		// Highest precedence first
-		super.addBinaryOperator(Delphi_Dot_Expression.class);
-		super.addBinaryOperator(Delphi_Multiplicative_Expression.class);
-		super.addBinaryOperator(Delphi_Additive_Expression.class);
-		super.addBinaryOperator(Delphi_Relational_Expression.class);
+		super.addOperator(Delphi_Dot_Expression.class);
+		super.addOperator(Delphi_Multiplicative_Expression.class);
+		super.addOperator(Delphi_Additive_Expression.class);
+		super.addOperator(Delphi_Relational_Expression.class);
 	}		
 
 	///////////////////////////////////////////////////////////////////////////
 	// Primary Expressions
 	
-	public static class Delphi_Brackets extends UnaryOperator
+	public static class Delphi_Brackets extends ExpressionTerm
 	{
-		public Delphi_Punctuation leftBracket = new Delphi_Punctuation('[');
-		public Delphi_Expression expr;
-		public @OPT TokenList<Delphi_MoreBrackets> more;
-		public Delphi_Punctuation rightBracket = new Delphi_Punctuation(']');		
-		
-		public static class Delphi_MoreBrackets extends TokenSequence
-		{
-			public Delphi_Punctuation comma = new Delphi_Punctuation(',');
-			public Delphi_Expression expr;
-		}
+		public PunctuationLeftBracket leftBracket;
+		public SeparatedList<Delphi_Expression,PunctuationComma> exprs;
+		public PunctuationRightBracket rightBracket;		
 	}
 	
-	public static class Delphi_Parens extends UnaryOperator
+	public static class Delphi_Parens extends ExpressionTerm
 	{
-		public Delphi_Punctuation leftParen = new Delphi_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public Delphi_Expression expr;
-		public Delphi_Punctuation rightParen = new Delphi_Punctuation(')');		
+		public PunctuationRightParen rightParen;		
 	}
 	
-	public static class Delphi_Function_Call extends UnaryOperator
+	public static class Delphi_Function_Call extends ExpressionTerm
 	{
 		public Delphi_Variable name;
 		public Delphi_Parameter_List params;
 	}
 	
-	public static class Delphi_Cast extends UnaryOperator
+	public static class Delphi_Cast extends ExpressionTerm
 	{
 		public Delphi_Type type;
-		public Delphi_Punctuation leftParen = new Delphi_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public Delphi_Expression expr;
-		public Delphi_Punctuation rightParen = new Delphi_Punctuation(')');		
+		public PunctuationRightParen rightParen;		
 	}
 	
-	public static class Delphi_UnarySign extends UnaryOperator
+	public static class Delphi_UnarySign extends ExpressionTerm
 	{
 		public Delphi_PunctuationChoice sign = new Delphi_PunctuationChoice("-", "+");
 		public Delphi_Expression expr;
 	}
 	
-	public static class Delphi_NotOp extends UnaryOperator
+	public static class Delphi_NotOp extends ExpressionTerm
 	{
 		public Delphi_Keyword NOT = new Delphi_Keyword("Not");
 		public Delphi_Expression expr;
@@ -103,14 +100,14 @@ public class Delphi_Expression extends PrecedenceChooser
 	///////////////////////////////////////////////////////////////////////////
 	// Binary Expressions
 	
-	public static class Delphi_Dot_Expression extends BinaryOperator 
+	public static class Delphi_Dot_Expression extends PrecedenceOperator 
 	{
 		public Delphi_Expression left = new Delphi_Expression(this, AllowedPrecedence.ATLEAST);
-		public Delphi_Punctuation dot = new Delphi_Punctuation('.');
+		public PunctuationPeriod dot;
 		public Delphi_Expression right = new Delphi_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class Delphi_Multiplicative_Expression extends BinaryOperator 
+	public static class Delphi_Multiplicative_Expression extends PrecedenceOperator 
 	{
 		public Delphi_Expression left = new Delphi_Expression(this, AllowedPrecedence.ATLEAST);
 		public Delphi_Multiplicative_Operator multOp;
@@ -123,7 +120,7 @@ public class Delphi_Expression extends PrecedenceChooser
 		}
 	}
 
-	public static class Delphi_Additive_Expression extends BinaryOperator 
+	public static class Delphi_Additive_Expression extends PrecedenceOperator 
 	{
 		public Delphi_Expression left = new Delphi_Expression(this, AllowedPrecedence.ATLEAST);
 		public Delphi_Additive_Operator addOp;
@@ -136,7 +133,7 @@ public class Delphi_Expression extends PrecedenceChooser
 		}
 	}
 	
-	public static class Delphi_Relational_Expression extends BinaryOperator 
+	public static class Delphi_Relational_Expression extends PrecedenceOperator 
 	{
 		public Delphi_Expression left = new Delphi_Expression(this, AllowedPrecedence.ATLEAST);
 		public Delphi_Relational_Operator relOp;

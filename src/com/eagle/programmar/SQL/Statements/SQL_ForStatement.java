@@ -10,6 +10,7 @@ import com.eagle.programmar.SQL.Terminals.SQL_Keyword;
 import com.eagle.programmar.SQL.Terminals.SQL_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class SQL_ForStatement extends TokenSequence
 {
@@ -25,5 +26,5 @@ public class SQL_ForStatement extends TokenSequence
 
 	public SQL_Keyword END = new SQL_Keyword("END");
 	public SQL_Keyword LOOP2 = new SQL_Keyword("LOOP");
-	public SQL_Punctuation semicolon = new SQL_Punctuation(';');
+	public PunctuationSemicolon semicolon;
 }

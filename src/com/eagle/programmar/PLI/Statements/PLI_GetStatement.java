@@ -8,8 +8,12 @@ import com.eagle.programmar.PLI.Symbols.PLI_Identifier_Reference;
 import com.eagle.programmar.PLI.Terminals.PLI_Keyword;
 import com.eagle.programmar.PLI.Terminals.PLI_KeywordChoice;
 import com.eagle.programmar.PLI.Terminals.PLI_Punctuation;
-import com.eagle.tokens.TokenList;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class PLI_GetStatement extends TokenSequence
 {
@@ -17,39 +21,31 @@ public class PLI_GetStatement extends TokenSequence
 	public @OPT PLI_Keyword SKIP = new PLI_Keyword("SKIP");
 	public @OPT PLI_GetFile getFile;
 	public @OPT PLI_GetEdit getEdit;
-	public PLI_Punctuation semicolon = new PLI_Punctuation(';');
+	public PunctuationSemicolon semicolon;
 	
 	public static class PLI_GetFile extends TokenSequence
 	{
 		public PLI_Keyword FILE = new PLI_Keyword("FILE");
-		public PLI_Punctuation leftParen1 = new PLI_Punctuation('(');
+		public PunctuationLeftParen leftParen1;
 		public PLI_Identifier_Reference fileName;
-		public PLI_Punctuation rightParen1 = new PLI_Punctuation(')');
+		public PunctuationRightParen rightParen1;
 	}
 	
 	public static class PLI_GetEdit extends TokenSequence
 	{
 		public PLI_Keyword EDIT = new PLI_Keyword("EDIT");
-		public PLI_Punctuation leftParen2 = new PLI_Punctuation('(');
-		public PLI_Expression expr;
-		public @OPT TokenList<PLI_GetMore> putMore;
-		public PLI_Punctuation rightParen2 = new PLI_Punctuation(')');
+		public PunctuationLeftParen leftParen2;
+		public SeparatedList<PLI_Expression,PunctuationComma> exprs;
+		public PunctuationRightParen rightParen2;
 		public PLI_Punctuation leftParen3 = new PLI_Punctuation('(');
-		public PLI_GetFormat format;
-		public @OPT TokenList<PLI_GetMoreFormats> moreFormats;
+		public SeparatedList<PLI_GetFormat,PunctuationComma> formats;
 		public PLI_Punctuation rightParen3 = new PLI_Punctuation(')');
 		
 		public static class PLI_Get_Subscript extends TokenSequence
 		{
-			public PLI_Punctuation leftParen = new PLI_Punctuation('(');
+			public PunctuationLeftParen leftParen;
 			public PLI_Expression expr;
-			public PLI_Punctuation rightParen = new PLI_Punctuation(')');
-		}
-		
-		public static class PLI_GetMore extends TokenSequence
-		{
-			public PLI_Punctuation comma = new PLI_Punctuation(',');
-			public PLI_Expression expr;
+			public PunctuationRightParen rightParen;
 		}
 	
 		public static class PLI_GetFormat extends TokenSequence
@@ -59,17 +55,11 @@ public class PLI_GetStatement extends TokenSequence
 			public @OPT PLI_GetFormat_Count formatSize;
 		}
 		
-		public static class PLI_GetMoreFormats extends TokenSequence
-		{
-			public PLI_Punctuation comma = new PLI_Punctuation(',');
-			public PLI_GetFormat fmt;
-		}
-		
 		public static class PLI_GetFormat_Count extends TokenSequence
 		{
-			public PLI_Punctuation leftParen = new PLI_Punctuation('(');
+			public PunctuationLeftParen leftParen;
 			public PLI_Expression count;
-			public PLI_Punctuation rightParen = new PLI_Punctuation(')');
+			public PunctuationRightParen rightParen;
 		}
 	}
 }

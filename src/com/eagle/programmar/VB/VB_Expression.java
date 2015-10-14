@@ -12,10 +12,18 @@ import com.eagle.programmar.VB.Terminals.VB_Number;
 import com.eagle.programmar.VB.Terminals.VB_Punctuation;
 import com.eagle.programmar.VB.Terminals.VB_PunctuationChoice;
 import com.eagle.tokens.PrecedenceChooser;
-import com.eagle.tokens.PrecedenceChooser.BinaryOperator.AllowedPrecedence;
+import com.eagle.tokens.PrecedenceChooser.PrecedenceOperator.AllowedPrecedence;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class VB_Expression extends PrecedenceChooser
 {
@@ -23,40 +31,40 @@ public class VB_Expression extends PrecedenceChooser
 	{
 	}
 	
-	public VB_Expression(BinaryOperator token, AllowedPrecedence allowed)
+	public VB_Expression(PrecedenceOperator token, AllowedPrecedence allowed)
 	{ 
 		super(allowed, token.getClass());
 	}
 		
 	@Override
-	public void establishChoices() 
+	protected void establishChoices() 
 	{
 		// Order matters a little bit ...
-		super.addUnaryOperator(VB_Number.class);			
-		super.addUnaryOperator(VB_Literal.class);
-		super.addUnaryOperator(VB_BuiltIn.class);
-		super.addUnaryOperator(VB_FunctionCall.class);
-		super.addUnaryOperator(VB_NotExpression.class);
-		super.addUnaryOperator(VB_Variable.class);
-		super.addUnaryOperator(VB_ParenthesizedExpression.class);
-		super.addUnaryOperator(VB_CommentExpression.class);
+		super.addTerm(VB_Number.class);			
+		super.addTerm(VB_Literal.class);
+		super.addTerm(VB_BuiltIn.class);
+		super.addTerm(VB_FunctionCall.class);
+		super.addTerm(VB_NotExpression.class);
+		super.addTerm(VB_Variable.class);
+		super.addTerm(VB_ParenthesizedExpression.class);
+		super.addTerm(VB_CommentExpression.class);
 		
 		// Order is critical ...
-		super.addBinaryOperator(VB_SubscriptExpression.class);
-		super.addBinaryOperator(VB_Subfield.class);
-		super.addBinaryOperator(VB_ExponentExpression.class);
-		super.addBinaryOperator(VB_MultiplicativeExpression.class);
-		super.addBinaryOperator(VB_AdditiveExpression.class);
-		super.addBinaryOperator(VB_ConcatExpression.class);
-		super.addBinaryOperator(VB_ShiftExpression.class);
-		super.addBinaryOperator(VB_RelationalExpression.class);
-		super.addBinaryOperator(VB_InstanceOfExpression.class);
-		super.addBinaryOperator(VB_EqualityExpression.class);
-		super.addBinaryOperator(VB_AndExpression.class);
-		super.addBinaryOperator(VB_ExclusiveOrExpression.class);
-		super.addBinaryOperator(VB_InclusiveOrExpression.class);
-		super.addBinaryOperator(VB_ConditionalAndExpression.class);
-		super.addBinaryOperator(VB_ConditionalOrExpression.class);
+		super.addOperator(VB_SubscriptExpression.class);
+		super.addOperator(VB_Subfield.class);
+		super.addOperator(VB_ExponentExpression.class);
+		super.addOperator(VB_MultiplicativeExpression.class);
+		super.addOperator(VB_AdditiveExpression.class);
+		super.addOperator(VB_ConcatExpression.class);
+		super.addOperator(VB_ShiftExpression.class);
+		super.addOperator(VB_RelationalExpression.class);
+		super.addOperator(VB_InstanceOfExpression.class);
+		super.addOperator(VB_EqualityExpression.class);
+		super.addOperator(VB_AndExpression.class);
+		super.addOperator(VB_ExclusiveOrExpression.class);
+		super.addOperator(VB_InclusiveOrExpression.class);
+		super.addOperator(VB_ConditionalAndExpression.class);
+		super.addOperator(VB_ConditionalOrExpression.class);
 	}
 
 	///////////////////////////////////////////////
@@ -67,101 +75,94 @@ public class VB_Expression extends PrecedenceChooser
 		public VB_KeywordChoice builtIn = new VB_KeywordChoice("false", "true", "nothing");
 	}
 	
-	public static class VB_ParenthesizedExpression extends UnaryOperator
+	public static class VB_ParenthesizedExpression extends ExpressionTerm
 	{
-		public VB_Punctuation leftParen = new VB_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public VB_Expression expression;
-		public VB_Punctuation rightParen = new VB_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 	
-	public static class VB_ArgumentList extends UnaryOperator
+	public static class VB_ArgumentList extends ExpressionTerm
 	{
 		public VB_Expression arg;
 		public @OPT TokenList<VB_Comment> comment;
 		public @OPT TokenList<VB_MoreArguments> moreArgs;
-		public @OPT @CURIOUS("Extra comma") VB_Punctuation comma = new VB_Punctuation(',');
+		public @OPT @CURIOUS("Extra comma") PunctuationComma comma;
 		
 		public static class VB_MoreArguments extends TokenSequence
 		{
-			public VB_Punctuation comma = new VB_Punctuation(',');
+			public PunctuationComma comma;
 			public @OPT TokenList<VB_Comment> comment1;
 			public VB_Expression arg;
 			public @OPT TokenList<VB_Comment> comment2;
 		}
 	}
 
-	public static class VB_NegativeExpression extends UnaryOperator
+	public static class VB_NegativeExpression extends ExpressionTerm
 	{
 		public VB_PunctuationChoice operator = new VB_PunctuationChoice("-", "+");
 		public VB_Expression expr;
 	}
 
-	public static class VB_NotExpression extends UnaryOperator
+	public static class VB_NotExpression extends ExpressionTerm
 	{
 		public VB_Keyword NOT = new VB_Keyword("NOT");
 		public VB_Expression expr;
 	}
 	
-	public static class VB_CommentExpression extends UnaryOperator
+	public static class VB_CommentExpression extends ExpressionTerm
 	{
 		public VB_Comment comment;
 		public VB_Expression expr;
 	}
 
-	public static class VB_FunctionCall extends UnaryOperator
+	public static class VB_FunctionCall extends ExpressionTerm
 	{
 		public VB_Identifier_Reference fnName;
-		public VB_Punctuation leftParen = new VB_Punctuation('(');
-		public VB_Expression arg;
-		public @OPT TokenList<VB_MoreArguments> more;
-		public VB_Punctuation rightParen = new VB_Punctuation(')');
-		
-		public static class VB_MoreArguments extends TokenSequence
-		{
-			public VB_Punctuation comma = new VB_Punctuation(',');
-			public VB_Expression arg;
-		}
+		public PunctuationLeftParen leftParen;
+		public SeparatedList<VB_Expression,PunctuationComma> args;
+		public PunctuationRightParen rightParen;
 	}
 
 	///////////////////////////////////////////////
 	// Binary expressions
 
-	public static class VB_ConditionalOrExpression extends BinaryOperator
+	public static class VB_ConditionalOrExpression extends PrecedenceOperator
 	{
 		public VB_Expression left = new VB_Expression(this, AllowedPrecedence.ATLEAST);
 		public VB_KeywordChoice orOperator = new VB_KeywordChoice("or", "orelse");
 		public VB_Expression right = new VB_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class VB_ConditionalAndExpression extends BinaryOperator
+	public static class VB_ConditionalAndExpression extends PrecedenceOperator
 	{
 		public VB_Expression left = new VB_Expression(this, AllowedPrecedence.ATLEAST);
 		public VB_KeywordChoice andOperator = new VB_KeywordChoice("and", "andalso");
 		public VB_Expression right = new VB_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class VB_InclusiveOrExpression extends BinaryOperator
+	public static class VB_InclusiveOrExpression extends PrecedenceOperator
 	{
 		public VB_Expression left = new VB_Expression(this, AllowedPrecedence.ATLEAST);
 		public VB_Keyword xor = new VB_Keyword("xor");
 		public VB_Expression right = new VB_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class VB_ExclusiveOrExpression extends BinaryOperator
+	public static class VB_ExclusiveOrExpression extends PrecedenceOperator
 	{
 		public VB_Expression left = new VB_Expression(this, AllowedPrecedence.ATLEAST);
 		public VB_Punctuation bitwiseXOrOperator = new VB_Punctuation('^');
 		public VB_Expression right = new VB_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class VB_AndExpression extends BinaryOperator
+	public static class VB_AndExpression extends PrecedenceOperator
 	{
 		public VB_Expression left = new VB_Expression(this, AllowedPrecedence.ATLEAST);
 		public VB_Punctuation bitwiseAndOperator = new VB_Punctuation('&');
 		public VB_Expression right = new VB_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class VB_EqualityExpression extends BinaryOperator
+	public static class VB_EqualityExpression extends PrecedenceOperator
 	{
 		public VB_Expression left = new VB_Expression(this, AllowedPrecedence.ATLEAST);
 		public VB_EqualityOperator equalityOperator;
@@ -169,12 +170,12 @@ public class VB_Expression extends PrecedenceChooser
 
 		public static class VB_EqualityOperator extends TokenChooser
 		{
-			public VB_Punctuation EQ = new VB_Punctuation('=');
+			public PunctuationEquals equals;
 			public VB_KeywordChoice IS = new VB_KeywordChoice("is", "like", "isnot");
 		}
 	}
 	
-	public static class VB_RelationalExpression extends BinaryOperator
+	public static class VB_RelationalExpression extends PrecedenceOperator
 	{
 		public VB_Expression left = new VB_Expression(this, AllowedPrecedence.ATLEAST);
 		public VB_PunctuationChoice operator = new VB_PunctuationChoice(
@@ -182,35 +183,35 @@ public class VB_Expression extends PrecedenceChooser
 		public VB_Expression right = new VB_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class VB_InstanceOfExpression extends BinaryOperator
+	public static class VB_InstanceOfExpression extends PrecedenceOperator
 	{
 		public VB_Expression expr = new VB_Expression(this, AllowedPrecedence.ATLEAST);
 		public VB_Keyword instanceOperator = new VB_Keyword("instanceof");
 		public VB_Type type;
 	}
 
-	public static class VB_ShiftExpression extends BinaryOperator
+	public static class VB_ShiftExpression extends PrecedenceOperator
 	{
 		public VB_Expression left = new VB_Expression(this, AllowedPrecedence.ATLEAST);
 		public VB_PunctuationChoice operator = new VB_PunctuationChoice("<<", ">>");
 		public VB_Expression right = new VB_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class VB_ConcatExpression extends BinaryOperator
+	public static class VB_ConcatExpression extends PrecedenceOperator
 	{
 		public VB_Expression left = new VB_Expression(this, AllowedPrecedence.ATLEAST);
 		public VB_Punctuation ampersand = new VB_Punctuation('&');
 		public VB_Expression right = new VB_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class VB_AdditiveExpression extends BinaryOperator
+	public static class VB_AdditiveExpression extends PrecedenceOperator
 	{
 		public VB_Expression left = new VB_Expression(this, AllowedPrecedence.ATLEAST);
 		public VB_PunctuationChoice operator = new VB_PunctuationChoice("+", "-");
 		public VB_Expression right = new VB_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class VB_MultiplicativeExpression extends BinaryOperator
+	public static class VB_MultiplicativeExpression extends PrecedenceOperator
 	{
 		public VB_Expression left = new VB_Expression(this, AllowedPrecedence.ATLEAST);
 		public VB_MultiplyOperation operator;
@@ -223,25 +224,25 @@ public class VB_Expression extends PrecedenceChooser
 		}
 	}
 
-	public static class VB_ExponentExpression extends BinaryOperator
+	public static class VB_ExponentExpression extends PrecedenceOperator
 	{
 		public VB_Expression left = new VB_Expression(this, AllowedPrecedence.ATLEAST);
 		public VB_Punctuation operator = new VB_Punctuation('^');
 		public VB_Expression right = new VB_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class VB_Subfield extends BinaryOperator
+	public static class VB_Subfield extends PrecedenceOperator
 	{
 		public VB_Expression left = new VB_Expression(this, AllowedPrecedence.ATLEAST);
-		public VB_Punctuation dot = new VB_Punctuation('.');
+		public PunctuationPeriod dot;
 		public VB_Expression right = new VB_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class VB_SubscriptExpression extends BinaryOperator
+	public static class VB_SubscriptExpression extends PrecedenceOperator
 	{
 		public VB_Expression expr = new VB_Expression(this, AllowedPrecedence.ATLEAST);
-		public VB_Punctuation leftBracket = new VB_Punctuation('[');
+		public PunctuationLeftBracket leftBracket;
 		public VB_Expression subscr = new VB_Expression(this, AllowedPrecedence.HIGHER);
-		public VB_Punctuation rightBracket = new VB_Punctuation(']');
+		public PunctuationRightBracket rightBracket;
 	}
 }

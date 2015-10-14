@@ -8,8 +8,10 @@ import com.eagle.programmar.Java.Java_Label;
 import com.eagle.programmar.Java.Java_Statement;
 import com.eagle.programmar.Java.Terminals.Java_Comment;
 import com.eagle.programmar.Java.Terminals.Java_Keyword;
-import com.eagle.programmar.Java.Terminals.Java_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Java_DoStatement extends TokenSequence
 {
@@ -18,8 +20,8 @@ public class Java_DoStatement extends TokenSequence
 	public @OPT Java_Comment comment;
 	public Java_Statement doStatement;
 	public @NEWLINE Java_Keyword WHILE = new Java_Keyword("while");
-	public Java_Punctuation leftParen = new Java_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public @NOSPACE Java_Expression condition;
-	public @NOSPACE Java_Punctuation rightParen = new Java_Punctuation(')');
-	public @NOSPACE Java_Punctuation semicolon = new Java_Punctuation(';');
+	public @NOSPACE PunctuationRightParen rightParen;
+	public @NOSPACE PunctuationSemicolon semicolon;
 }

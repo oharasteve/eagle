@@ -4,11 +4,11 @@
 package com.eagle.programmar.Javascript.Statements;
 
 import com.eagle.programmar.Javascript.Terminals.Javascript_Keyword;
-import com.eagle.programmar.Javascript.Terminals.Javascript_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Javascript_ContinueStatement extends TokenSequence
 {
 	public Javascript_Keyword CONTINUE = new Javascript_Keyword("continue");
-	public Javascript_Punctuation semicolon = new Javascript_Punctuation(';');
+	public PunctuationSemicolon semicolon;
 }

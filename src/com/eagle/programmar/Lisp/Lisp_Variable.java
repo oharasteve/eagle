@@ -4,9 +4,11 @@
 package com.eagle.programmar.Lisp;
 
 import com.eagle.programmar.Lisp.Symbols.Lisp_Identifier_Reference;
-import com.eagle.programmar.Lisp.Terminals.Lisp_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Lisp_Variable extends TokenChooser
 {
@@ -14,10 +16,10 @@ public class Lisp_Variable extends TokenChooser
 	
 	public static class Lisp_VariableWithDot extends TokenSequence
 	{
-		public Lisp_Punctuation leftParen = new Lisp_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public Lisp_Identifier_Reference var1;
-		public Lisp_Punctuation dot = new Lisp_Punctuation('.');
+		public PunctuationPeriod dot;
 		public Lisp_Identifier_Reference var2;
-		public Lisp_Punctuation rightParen = new Lisp_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 }

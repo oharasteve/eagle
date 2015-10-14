@@ -7,17 +7,17 @@ import com.eagle.programmar.COBOL.Symbols.COBOL_Identifier_Reference;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
 import com.eagle.programmar.COBOL.Terminals.COBOL_KeywordChoice;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Number;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
 
 public class COBOL_SpecialNames extends TokenSequence
 {
 	public COBOL_Keyword SPECIALNAMES = new COBOL_Keyword("SPECIAL-NAMES");
-	public COBOL_Punctuation dot1 = new COBOL_Punctuation('.');
+	public PunctuationPeriod dot1;
 	public TokenList<COBOL_SpecialName> specialNames;
-	public COBOL_Punctuation dot2 = new COBOL_Punctuation('.');
+	public PunctuationPeriod dot2;
 
 	public static class COBOL_SpecialName extends TokenChooser
 	{

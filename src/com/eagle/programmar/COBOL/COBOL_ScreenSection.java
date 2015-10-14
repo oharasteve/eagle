@@ -16,12 +16,13 @@ import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
 
 public class COBOL_ScreenSection extends TokenSequence
 {
 	public COBOL_Keyword SCREEN = new COBOL_Keyword("SCREEN");
 	public COBOL_Keyword SECTION = new COBOL_Keyword("SECTION");
-	public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+	public PunctuationPeriod dot;
 	public TokenList<COBOL_CopyOrScreenDeclaration> elements;
 	
 	public static class COBOL_CopyOrScreenDeclaration extends TokenChooser
@@ -35,7 +36,7 @@ public class COBOL_ScreenSection extends TokenSequence
 	{
 		public COBOL_Level level;
 		public COBOL_ScreenContext context;
-		public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot;
 		
 		public static class COBOL_ScreenContext extends TokenChooser
 		{

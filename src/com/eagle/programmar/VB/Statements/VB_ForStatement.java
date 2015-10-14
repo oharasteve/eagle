@@ -8,15 +8,15 @@ import com.eagle.programmar.VB.VB_Statement;
 import com.eagle.programmar.VB.Symbols.VB_Identifier_Reference;
 import com.eagle.programmar.VB.Terminals.VB_EndOfLine;
 import com.eagle.programmar.VB.Terminals.VB_Keyword;
-import com.eagle.programmar.VB.Terminals.VB_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
 
 public class VB_ForStatement extends TokenSequence
 {
 	public @DOC("5z06z1kb.aspx") VB_Keyword FOR = new VB_Keyword("for");
 	public VB_Identifier_Reference var;
-	public VB_Punctuation equals = new VB_Punctuation('=');
+	public PunctuationEquals equals;
 	public VB_Expression from;
 	public VB_Keyword TO = new VB_Keyword("to");
 	public VB_Expression to;

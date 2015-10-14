@@ -13,9 +13,18 @@ import com.eagle.programmar.CSS.Terminals.CSS_KeywordChoice;
 import com.eagle.programmar.CSS.Terminals.CSS_Literal;
 import com.eagle.programmar.CSS.Terminals.CSS_Number;
 import com.eagle.programmar.CSS.Terminals.CSS_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
+import com.eagle.tokens.punctuation.PunctuationSlash;
 
 public class CSS_Value extends TokenChooser
 {
@@ -31,16 +40,9 @@ public class CSS_Value extends TokenChooser
 		
 		public static class CSS_FunctionCall extends TokenSequence
 		{
-			public CSS_Punctuation leftParen = new CSS_Punctuation('(');
-			public @OPT CSS_Value value;
-			public @OPT TokenList<CSS_MoreValues> moreValues;
-			public CSS_Punctuation rightParen = new CSS_Punctuation(')');
-			
-			public static class CSS_MoreValues extends TokenSequence
-			{
-				public CSS_Punctuation comma = new CSS_Punctuation(',');
-				public CSS_Value value;
-			}
+			public PunctuationLeftParen leftParen;
+			public @OPT SeparatedList<CSS_Value,PunctuationComma> values;
+			public PunctuationRightParen rightParen;
 		}
 	}
 	
@@ -58,7 +60,7 @@ public class CSS_Value extends TokenChooser
 		
 		public static class CSS_SlashNumber extends TokenSequence
 		{
-			public @NOSPACE CSS_Punctuation slash = new CSS_Punctuation('/');
+			public @NOSPACE PunctuationSlash slash;
 			public @NOSPACE CSS_Number number;
 			public @OPT @NOSPACE CSS_NumericSuffix suffix;
 		}
@@ -73,86 +75,86 @@ public class CSS_Value extends TokenChooser
 	public static class CSS_Format extends TokenSequence
 	{
 		public CSS_Keyword FORMAT = new CSS_Keyword("format");
-		public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public @NOSPACE CSS_Literal literal;
-		public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 	}
 	
 	public static class CSS_Attr extends TokenSequence
 	{
 		public CSS_Keyword ATTR = new CSS_Keyword("attr");
-		public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public CSS_KeywordChoice CODE = new CSS_KeywordChoice(
 				"href",
 				"title");
-		public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 	}
 	
 	public static class CSS_Rect extends TokenSequence
 	{
 		public CSS_Keyword RECT = new CSS_Keyword("rect");
-		public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public @NOSPACE CSS_Number num1;
-		public @NOSPACE @OPT CSS_Punctuation comma1 = new CSS_Punctuation(',');
+		public @NOSPACE @OPT PunctuationComma comma1;
 		public @NOSPACE CSS_Number num2;
-		public @NOSPACE @OPT CSS_Punctuation comma2 = new CSS_Punctuation(',');
+		public @NOSPACE @OPT PunctuationComma comma2;
 		public @NOSPACE CSS_Number num3;
-		public @NOSPACE @OPT CSS_Punctuation comma3 = new CSS_Punctuation(',');
+		public @NOSPACE @OPT PunctuationComma comma3;
 		public @NOSPACE CSS_Number num4;
-		public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 	}
 	
 	public static class CSS_Alpha_Value extends TokenSequence
 	{
 		public CSS_Keyword ALPHA = new CSS_Keyword("alpha");
-		public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public @NOSPACE CSS_Keyword OPACITY = new CSS_Keyword("opacity");
-		public @NOSPACE CSS_Punctuation equals = new CSS_Punctuation('=');
+		public @NOSPACE PunctuationEquals equals;
 		public @NOSPACE CSS_Number number;
-		public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 	}
 	
 	public static class CSS_Translate3d extends TokenSequence
 	{
 		public CSS_Keyword TRANSLATE3D = new CSS_Keyword("translate3d");
-		public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public @NOSPACE CSS_Number number1;
-		public @NOSPACE CSS_Punctuation comma1 = new CSS_Punctuation(',');
+		public @NOSPACE PunctuationComma comma1;
 		public CSS_Number number2;
-		public @NOSPACE CSS_Punctuation comma2 = new CSS_Punctuation(',');
+		public @NOSPACE PunctuationComma comma2;
 		public CSS_Number number3;
-		public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 	}
 	
 	public static class CSS_Cubic_Bezier extends TokenSequence
 	{
 		public CSS_Keyword CUBIC_BEZIER = new CSS_Keyword("cubic-bezier");
-		public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public @NOSPACE CSS_Number number1;
-		public @NOSPACE CSS_Punctuation comma1 = new CSS_Punctuation(',');
+		public @NOSPACE PunctuationComma comma1;
 		public CSS_Number number2;
-		public @NOSPACE CSS_Punctuation comma2 = new CSS_Punctuation(',');
+		public @NOSPACE PunctuationComma comma2;
 		public CSS_Number number3;
-		public @NOSPACE CSS_Punctuation comma3 = new CSS_Punctuation(',');
+		public @NOSPACE PunctuationComma comma3;
 		public CSS_Number number4;
-		public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 	}
 	
 	public static class CSS_RotateValue extends TokenSequence
 	{
 		public CSS_Keyword ROTATE = new CSS_Keyword("rotate");
-		public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public @NOSPACE CSS_Number number;
 		public CSS_Keyword DEG = new CSS_Keyword("deg");
-		public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 	}
 	
 	public static class CSS_URL_Value extends TokenSequence
 	{
 		public CSS_Keyword URL = new CSS_Keyword("url");
-		public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public @NOSPACE CSS_File file;
-		public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 		
 		public static class CSS_File extends TokenChooser
 		{
@@ -161,13 +163,13 @@ public class CSS_Value extends TokenChooser
 			public static class CSS_FileInline extends TokenSequence
 			{
 				public CSS_Keyword DATA = new CSS_Keyword("data");
-				public @NOSPACE CSS_Punctuation colon = new CSS_Punctuation(':');
+				public @NOSPACE PunctuationColon colon;
 				public @NOSPACE CSS_Keyword IMAGE = new CSS_Keyword("image");
-				public @NOSPACE CSS_Punctuation slash = new CSS_Punctuation('/');
+				public @NOSPACE PunctuationSlash slash;
 				public @NOSPACE CSS_Keyword PNG = new CSS_Keyword("png");
-				public @NOSPACE CSS_Punctuation semicolon = new CSS_Punctuation(';');
+				public @NOSPACE PunctuationSemicolon semicolon;
 				public @NOSPACE CSS_Keyword BASE64 = new CSS_Keyword("base64");
-				public @NOSPACE CSS_Punctuation comma = new CSS_Punctuation(',');
+				public @NOSPACE PunctuationComma comma;
 				public @NOSPACE CSS_Base64 base64;
 			}
 		}
@@ -176,38 +178,38 @@ public class CSS_Value extends TokenChooser
 	public static class CSS_Scale extends TokenSequence
 	{
 		public CSS_Keyword SCALE = new CSS_Keyword("scale");
-		public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public @NOSPACE CSS_Number number1;
-		public @NOSPACE CSS_Punctuation comma2 = new CSS_Punctuation(',');
+		public @NOSPACE PunctuationComma comma2;
 		public CSS_Number number2;
-		public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 	}
 	
 	public static class CSS_Microsoft_Gradient extends TokenSequence
 	{
 		public CSS_Keyword PROGID = new CSS_Keyword("progid");
-		public @NOSPACE CSS_Punctuation colon = new CSS_Punctuation(':');
+		public @NOSPACE PunctuationColon colon;
 		public @NOSPACE CSS_Keyword IMAGETRANSFORM = new CSS_Keyword("DXImageTransform");
-		public @NOSPACE CSS_Punctuation dot1 = new CSS_Punctuation('.');
+		public @NOSPACE PunctuationPeriod dot1;
 		public @NOSPACE CSS_Keyword MICROSOFT = new CSS_Keyword("Microsoft");
-		public @NOSPACE CSS_Punctuation dot2 = new CSS_Punctuation('.');
+		public @NOSPACE PunctuationPeriod dot2;
 		public @NOSPACE CSS_Keyword GRADIENT = new CSS_Keyword("gradient");
-		public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public @NOSPACE CSS_MS_GradientPiece piece;
 		public @OPT TokenList<CSS_More_MS_GradientPieces> morePieces;
-		public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 		
 		public static class CSS_MS_GradientPiece extends TokenSequence
 		{
 			public CSS_KeywordChoice gradPiece = new CSS_KeywordChoice(
 					"startColorStr", "endColorStr", "GradientType", "enabled");
-			public CSS_Punctuation equals = new CSS_Punctuation('=');
+			public PunctuationEquals equals;
 			public CSS_Value value;
 		}
 		
 		public static class CSS_More_MS_GradientPieces extends TokenSequence
 		{
-			public CSS_Punctuation comma = new CSS_Punctuation(',');
+			public PunctuationComma comma;
 			public CSS_MS_GradientPiece piece;
 		}
 	}
@@ -215,10 +217,10 @@ public class CSS_Value extends TokenChooser
 	public static class CSS_Webkit_Image_Set extends TokenSequence
 	{
 		public CSS_Keyword WEBKIT_IMAGE_GET = new CSS_Keyword("-webkit-image-set");
-		public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public @NOSPACE CSS_Webkit_Value piece;
 		public @OPT TokenList<CSS_More_WebkitPieces> morePieces;
-		public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 		
 		public static class CSS_Webkit_Value extends TokenSequence
 		{
@@ -228,7 +230,7 @@ public class CSS_Value extends TokenChooser
 		
 		public static class CSS_More_WebkitPieces extends TokenSequence
 		{
-			public CSS_Punctuation comma = new CSS_Punctuation(',');
+			public PunctuationComma comma;
 			public CSS_Webkit_Value value;
 		}
 	}

@@ -17,10 +17,21 @@ import com.eagle.programmar.Python.Terminals.Python_OctalNumber;
 import com.eagle.programmar.Python.Terminals.Python_Punctuation;
 import com.eagle.programmar.Python.Terminals.Python_PunctuationChoice;
 import com.eagle.tokens.PrecedenceChooser;
-import com.eagle.tokens.PrecedenceChooser.BinaryOperator.AllowedPrecedence;
+import com.eagle.tokens.PrecedenceChooser.PrecedenceOperator.AllowedPrecedence;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class Python_Expression extends PrecedenceChooser
 {
@@ -28,7 +39,7 @@ public class Python_Expression extends PrecedenceChooser
 	{
 	}
 	
-	public Python_Expression(BinaryOperator token, AllowedPrecedence allowed)
+	public Python_Expression(PrecedenceOperator token, AllowedPrecedence allowed)
 	{ 
 		super(allowed, token.getClass());
 	}
@@ -37,46 +48,46 @@ public class Python_Expression extends PrecedenceChooser
 	protected void establishChoices() 
 	{
 		// Order doesn't matter much
-		super.addUnaryOperator(Python_Parens.class);
-		super.addUnaryOperator(Python_Braces.class);
-		super.addUnaryOperator(Python_Brackets.class);
-		super.addUnaryOperator(Python_UnarySign.class);
-		super.addUnaryOperator(Python_Not_Expression.class);
-		super.addUnaryOperator(Python_OctalNumber.class);
-		super.addUnaryOperator(Python_HexNumber.class);
-		super.addUnaryOperator(Python_Number.class);
-		super.addUnaryOperator(Python_Literals.class);
-		super.addUnaryOperator(Python_BackQuotes.class);
-		super.addUnaryOperator(Python_Function_Call.class);
-		super.addUnaryOperator(Python_BuiltIn.class);
-		super.addUnaryOperator(Python_Variable.class);
-		super.addUnaryOperator(Python_Star_Expression.class);
-		super.addUnaryOperator(Python_StarStar_Expression.class);
-		super.addUnaryOperator(Python_Lambda_Expression.class);
-		super.addUnaryOperator(Python_Yield.class);
+		super.addTerm(Python_Parens.class);
+		super.addTerm(Python_Braces.class);
+		super.addTerm(Python_Brackets.class);
+		super.addTerm(Python_UnarySign.class);
+		super.addTerm(Python_Not_Expression.class);
+		super.addTerm(Python_OctalNumber.class);
+		super.addTerm(Python_HexNumber.class);
+		super.addTerm(Python_Number.class);
+		super.addTerm(Python_Literals.class);
+		super.addTerm(Python_BackQuotes.class);
+		super.addTerm(Python_Function_Call.class);
+		super.addTerm(Python_BuiltIn.class);
+		super.addTerm(Python_Variable.class);
+		super.addTerm(Python_Star_Expression.class);
+		super.addTerm(Python_StarStar_Expression.class);
+		super.addTerm(Python_Lambda_Expression.class);
+		super.addTerm(Python_Yield.class);
 
 		// Highest precedence first
-		super.addBinaryOperator(Python_SubscriptExpression.class);
-		super.addBinaryOperator(Python_Subfield.class);
-		super.addBinaryOperator(Python_Power_Expression.class);
-		super.addBinaryOperator(Python_Multiplicative_Expression.class);
-		super.addBinaryOperator(Python_Additive_Expression.class);
-		super.addBinaryOperator(Python_Shift_Expression.class);
-		super.addBinaryOperator(Python_Bitwise_And_Expression.class);
-		super.addBinaryOperator(Python_Bitwise_Xor_Expression.class);
-		super.addBinaryOperator(Python_Bitwise_Or_Expression.class);
-		super.addBinaryOperator(Python_Relational_Expression.class);
-		super.addBinaryOperator(Python_And_Expression.class);
-		super.addBinaryOperator(Python_Or_Expression.class);
-		super.addBinaryOperator(Python_If_Else_Expression.class);
-		super.addBinaryOperator(Python_For_In_Expression.class);
-		super.addBinaryOperator(Python_Assignment_Expression.class);
+		super.addOperator(Python_SubscriptExpression.class);
+		super.addOperator(Python_Subfield.class);
+		super.addOperator(Python_Power_Expression.class);
+		super.addOperator(Python_Multiplicative_Expression.class);
+		super.addOperator(Python_Additive_Expression.class);
+		super.addOperator(Python_Shift_Expression.class);
+		super.addOperator(Python_Bitwise_And_Expression.class);
+		super.addOperator(Python_Bitwise_Xor_Expression.class);
+		super.addOperator(Python_Bitwise_Or_Expression.class);
+		super.addOperator(Python_Relational_Expression.class);
+		super.addOperator(Python_And_Expression.class);
+		super.addOperator(Python_Or_Expression.class);
+		super.addOperator(Python_If_Else_Expression.class);
+		super.addOperator(Python_For_In_Expression.class);
+		super.addOperator(Python_Assignment_Expression.class);
 	}
 	
 	///////////////////////////////////////////////////////////////////////////
 	// Primary Expressions
 	
-	public static class Python_Literals extends UnaryOperator
+	public static class Python_Literals extends ExpressionTerm
 	{
 		public TokenList<Python_Literal_or_Comment> literals;
 		
@@ -87,13 +98,13 @@ public class Python_Expression extends PrecedenceChooser
 		}
 	}
 	
-	public static class Python_BackQuotes extends UnaryOperator
+	public static class Python_BackQuotes extends ExpressionTerm
 	{
 		// These are obsolete as of Python 3.
 		public @CURIOUS("Obsolete backquotes") TokenList<Python_BackQuote> quotes;
 	}
 	
-	public static class Python_Variable_List extends UnaryOperator
+	public static class Python_Variable_List extends ExpressionTerm
 	{
 		public @OPT Python_PunctuationChoice star = new Python_PunctuationChoice("*", "**");
 		public Python_Variable var;
@@ -102,7 +113,7 @@ public class Python_Expression extends PrecedenceChooser
 
 		public static class Python_MoreVariablesInList extends TokenSequence
 		{
-			public Python_Punctuation comma = new Python_Punctuation(',');
+			public PunctuationComma comma;
 			public @OPT TokenList<Python_Comment> comments;
 			public @OPT Python_PunctuationChoice star = new Python_PunctuationChoice("*", "**");
 			public Python_Variable var;
@@ -111,64 +122,64 @@ public class Python_Expression extends PrecedenceChooser
 		
 		public static class Python_Variable_Default extends TokenSequence
 		{
-			public Python_Punctuation equals = new Python_Punctuation('=');
+			public PunctuationEquals equals;
 			public Python_Expression defaultValue;
 		}
 	}
 	
-	public static class Python_List extends UnaryOperator
+	public static class Python_List extends ExpressionTerm
 	{
 		public @OPT TokenList<Python_Comment> comment1;
 		public @OPT Python_Expression expr;
 		public @OPT TokenList<Python_MoreListItem> nextItem;
-		public @OPT Python_Punctuation comma = new Python_Punctuation(',');
+		public @OPT PunctuationComma comma;
 		public @OPT TokenList<Python_Comment> comment2;
 		
 		public static class Python_MoreListItem extends TokenSequence
 		{
-			public Python_Punctuation comma = new Python_Punctuation(',');
+			public PunctuationComma comma;
 			public @OPT TokenList<Python_Comment> comment;
 			public Python_Expression expr;
 		}
 	}
 	
-	public static class Python_Parens extends UnaryOperator
+	public static class Python_Parens extends ExpressionTerm
 	{
-		public Python_Punctuation leftParen = new Python_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public @OPT TokenList<Python_Comment> comment;
 		public @OPT Python_EndOfLine eoln;
 		public @OPT @SYNTAX(Python_Multiline_Syntax.class) Python_List list;
-		public Python_Punctuation rightParen = new Python_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 	
-	public static class Python_Brackets extends UnaryOperator
+	public static class Python_Brackets extends ExpressionTerm
 	{
-		public Python_Punctuation leftBracket = new Python_Punctuation('[');
+		public PunctuationLeftBracket leftBracket;
 		public @OPT TokenList<Python_Comment> comment;
 		public @OPT Python_EndOfLine eoln;
 		public @OPT @SYNTAX(Python_Multiline_Syntax.class) Python_List list;
-		public Python_Punctuation rightBracket = new Python_Punctuation(']');
+		public PunctuationRightBracket rightBracket;
 	}
 	
-	public static class Python_Braces extends UnaryOperator
+	public static class Python_Braces extends ExpressionTerm
 	{
-		public Python_Punctuation leftBrace = new Python_Punctuation('{');
+		public PunctuationLeftBrace leftBrace;
 		public @OPT Python_EndOfLine eoln;
 		public @OPT @SYNTAX(Python_Multiline_Syntax.class) Python_Dictionary dictionary;
-		public Python_Punctuation rightBrace = new Python_Punctuation('}');
+		public PunctuationRightBrace rightBrace;
 		
 		public static class Python_Dictionary extends TokenSequence
 		{
 			public @OPT TokenList<Python_Comment> comment1;
 			public @OPT Python_DictionaryElement element;
 			public @OPT TokenList<Python_MoreDictionaryElement> nextElement;
-			public @OPT Python_Punctuation comma = new Python_Punctuation(',');
+			public @OPT PunctuationComma comma;
 			public @OPT TokenList<Python_Comment> comment2;
 			
 			public static class Python_DictionaryElement extends TokenSequence
 			{
 				public Python_Expression key;
-				public Python_Punctuation colon = new Python_Punctuation(':');
+				public PunctuationColon colon;
 				public @OPT Python_EndOfLine eoln;
 				public @OPT Python_Comment comment;
 				public Python_Expression value;
@@ -176,26 +187,26 @@ public class Python_Expression extends PrecedenceChooser
 			
 			public static class Python_MoreDictionaryElement extends TokenSequence
 			{
-				public Python_Punctuation comma = new Python_Punctuation(',');
+				public PunctuationComma comma;
 				public @OPT TokenList<Python_Comment> comment;
 				public Python_DictionaryElement element;
 			}
 		}
 	}
 	
-	public static class Python_UnarySign extends UnaryOperator
+	public static class Python_UnarySign extends ExpressionTerm
 	{
 		public Python_PunctuationChoice sign = new Python_PunctuationChoice("*", "-", "+", "~");
 		public Python_Expression expr;
 	}
 
-	public static class Python_Star_Expression extends UnaryOperator
+	public static class Python_Star_Expression extends ExpressionTerm
 	{
-		public Python_Punctuation star = new Python_Punctuation('*');
+		public PunctuationStar star;
 		public Python_Expression expr;
 	}
 
-	public static class Python_StarStar_Expression extends UnaryOperator
+	public static class Python_StarStar_Expression extends ExpressionTerm
 	{
 		public Python_Punctuation starStar = new Python_Punctuation("**");
 		public Python_Expression expr;
@@ -206,23 +217,23 @@ public class Python_Expression extends PrecedenceChooser
 		public Python_KeywordChoice builtins = new Python_KeywordChoice("False", "True");
 	}
 	
-	public static class Python_Function_Call extends UnaryOperator
+	public static class Python_Function_Call extends ExpressionTerm
 	{
 		public Python_Variable name;
 		public TokenList<Python_Function_Arguments> args;
 		
 		public static class Python_Function_Arguments extends TokenSequence
 		{
-			public Python_Punctuation leftParen = new Python_Punctuation('(');
+			public PunctuationLeftParen leftParen;
 			public @OPT @SYNTAX(Python_Multiline_Syntax.class) Python_Function_ArgList argList;
-			public Python_Punctuation rightParen = new Python_Punctuation(')');
+			public PunctuationRightParen rightParen;
 			
 			public static class Python_Function_ArgList extends TokenSequence
 			{
 				public @OPT Python_EndOfLine eoln;
 				public @OPT TokenList<Python_Comment> comment1;
 				public Python_Function_Params params;
-				public @OPT Python_Punctuation comma = new Python_Punctuation(',');
+				public @OPT PunctuationComma comma;
 				public @OPT TokenList<Python_Comment> comment2;
 			}
 			
@@ -235,13 +246,13 @@ public class Python_Expression extends PrecedenceChooser
 
 				public static class Python_InitialValue extends TokenSequence
 				{
-					public Python_Punctuation equals = new Python_Punctuation('=');
+					public PunctuationEquals equals;
 					public Python_Expression expr;
 				}
 				
 				public static class Python_MoreArgument extends TokenSequence
 				{
-					public Python_Punctuation comma = new Python_Punctuation(',');
+					public PunctuationComma comma;
 					public @OPT TokenList<Python_Comment> comment;
 					public @OPT Python_PunctuationChoice star = new Python_PunctuationChoice("*", "**");
 					public Python_Expression expr;
@@ -251,17 +262,17 @@ public class Python_Expression extends PrecedenceChooser
 		}
 	}
 	
-	public static class Python_Lambda_Expression extends UnaryOperator 
+	public static class Python_Lambda_Expression extends ExpressionTerm 
 	{
 		public Python_Keyword LAMBDA = new Python_Keyword("lambda");
-		public @OPT Python_Punctuation leftParen = new Python_Punctuation('(');
+		public @OPT PunctuationLeftParen leftParen;
 		public @OPT Python_Variable_List parameters;
-		public @OPT Python_Punctuation rightParen = new Python_Punctuation(')');
-		public Python_Punctuation colon = new Python_Punctuation(':');
+		public @OPT PunctuationRightParen rightParen;
+		public PunctuationColon colon;
 		public Python_Expression expr;
 	}
 	
-	public static class Python_Yield extends UnaryOperator
+	public static class Python_Yield extends ExpressionTerm
 	{
 		public Python_Keyword YIELD = new Python_Keyword("yield");
 		public Python_Expression expr;
@@ -270,56 +281,56 @@ public class Python_Expression extends PrecedenceChooser
 	///////////////////////////////////////////////////////////////////////////
 	// Binary Expressions
 	
-	public static class Python_Power_Expression extends BinaryOperator
+	public static class Python_Power_Expression extends PrecedenceOperator
 	{
 		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
 		public Python_Punctuation stars = new Python_Punctuation("**");
 		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class Python_Multiplicative_Expression extends BinaryOperator 
+	public static class Python_Multiplicative_Expression extends PrecedenceOperator 
 	{
 		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
 		public Python_PunctuationChoice operator = new Python_PunctuationChoice("//", "*", "/", "%");
 		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class Python_Additive_Expression extends BinaryOperator 
+	public static class Python_Additive_Expression extends PrecedenceOperator 
 	{
 		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
 		public Python_PunctuationChoice operator = new Python_PunctuationChoice("+", "-");
 		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class Python_Shift_Expression extends BinaryOperator 
+	public static class Python_Shift_Expression extends PrecedenceOperator 
 	{
 		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
 		public Python_PunctuationChoice operator = new Python_PunctuationChoice("<<", ">>");
 		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class Python_Bitwise_And_Expression extends BinaryOperator 
+	public static class Python_Bitwise_And_Expression extends PrecedenceOperator 
 	{
 		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
 		public Python_Punctuation and = new Python_Punctuation('&');
 		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class Python_Bitwise_Xor_Expression extends BinaryOperator 
+	public static class Python_Bitwise_Xor_Expression extends PrecedenceOperator 
 	{
 		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
 		public Python_Punctuation xor = new Python_Punctuation('^');
 		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class Python_Bitwise_Or_Expression extends BinaryOperator 
+	public static class Python_Bitwise_Or_Expression extends PrecedenceOperator 
 	{
 		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
 		public Python_Punctuation or = new Python_Punctuation('|');
 		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class Python_Relational_Expression extends BinaryOperator 
+	public static class Python_Relational_Expression extends PrecedenceOperator 
 	{
 		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
 		public Python_Relational_Operator relOp;
@@ -344,13 +355,13 @@ public class Python_Expression extends PrecedenceChooser
 		}
 	}
 
-	public static class Python_Not_Expression extends BinaryOperator 
+	public static class Python_Not_Expression extends PrecedenceOperator 
 	{
 		public Python_Keyword NOT = new Python_Keyword("not");
 		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class Python_And_Expression extends BinaryOperator 
+	public static class Python_And_Expression extends PrecedenceOperator 
 	{
 		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
 		public Python_Keyword AND = new Python_Keyword("and");
@@ -358,7 +369,7 @@ public class Python_Expression extends PrecedenceChooser
 		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class Python_Or_Expression extends BinaryOperator 
+	public static class Python_Or_Expression extends PrecedenceOperator 
 	{
 		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
 		public Python_Keyword OR = new Python_Keyword("or");
@@ -366,7 +377,7 @@ public class Python_Expression extends PrecedenceChooser
 		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class Python_If_Else_Expression extends BinaryOperator 
+	public static class Python_If_Else_Expression extends PrecedenceOperator 
 	{
 		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
 		public Python_Keyword IF = new Python_Keyword("if");
@@ -375,7 +386,7 @@ public class Python_Expression extends PrecedenceChooser
 		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class Python_For_In_Expression extends BinaryOperator
+	public static class Python_For_In_Expression extends PrecedenceOperator
 	{
 		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
 		public Python_Keyword FOR = new Python_Keyword("for");
@@ -391,20 +402,20 @@ public class Python_Expression extends PrecedenceChooser
 		}
 	}
 	
-	public static class Python_Subfield extends BinaryOperator
+	public static class Python_Subfield extends PrecedenceOperator
 	{
 		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
-		public Python_Punctuation dot = new Python_Punctuation('.');
+		public PunctuationPeriod dot;
 		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class Python_SubscriptExpression extends BinaryOperator
+	public static class Python_SubscriptExpression extends PrecedenceOperator
 	{
 		public Python_Expression expr = new Python_Expression(this, AllowedPrecedence.ATLEAST);
-		public Python_Punctuation leftBracket = new Python_Punctuation('[');
+		public PunctuationLeftBracket leftBracket;
 		public @OPT Python_EndOfLine eoln;
 		public @SYNTAX(Python_Multiline_Syntax.class) Python_SubscrExpr subscr;
-		public Python_Punctuation rightBracket = new Python_Punctuation(']');
+		public PunctuationRightBracket rightBracket;
 		
 		public static class Python_SubscrExpr extends TokenSequence
 		{
@@ -415,16 +426,16 @@ public class Python_Expression extends PrecedenceChooser
 
 		public static class Python_ColonSubscript extends TokenSequence
 		{
-			public Python_Punctuation colon = new Python_Punctuation(':');
+			public PunctuationColon colon;
 			public @OPT Python_EndOfLine eoln;
 			public @OPT Python_Expression expr;
 		}
 	}
 	
-	public static class Python_Assignment_Expression extends BinaryOperator
+	public static class Python_Assignment_Expression extends PrecedenceOperator
 	{
 		public Python_Expression leftVar = new Python_Expression(this, AllowedPrecedence.ATLEAST);
-		public Python_Punctuation equals = new Python_Punctuation('=');
+		public PunctuationEquals equals;
 		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
 	}
 }

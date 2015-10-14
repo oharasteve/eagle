@@ -4,11 +4,11 @@
 package com.eagle.programmar.Java;
 
 import com.eagle.programmar.Java.Symbols.Java_Label_Definition;
-import com.eagle.programmar.Java.Terminals.Java_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
 
 public class Java_Label extends TokenSequence
 {
 	public Java_Label_Definition label;
-	public Java_Punctuation colon = new Java_Punctuation(':');
+	public PunctuationColon colon;
 }

@@ -5,14 +5,16 @@ package com.eagle.programmar.Perl;
 
 import com.eagle.programmar.Perl.Terminals.Perl_Keyword;
 import com.eagle.programmar.Perl.Terminals.Perl_Literal;
-import com.eagle.programmar.Perl.Terminals.Perl_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Perl_Include extends TokenSequence
 {
 	public Perl_Keyword INCLUDE = new Perl_Keyword("include");
-	public Perl_Punctuation leftParen = new Perl_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public Perl_Literal fileName;
-	public Perl_Punctuation rightParen = new Perl_Punctuation(')');
-	public Perl_Punctuation semicolon = new Perl_Punctuation(';');
+	public PunctuationRightParen rightParen;
+	public PunctuationSemicolon semicolon;
 }

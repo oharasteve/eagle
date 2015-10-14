@@ -4,7 +4,6 @@
 package com.eagle.programmar.PLI.Statements;
 
 import com.eagle.programmar.PLI.PLI_Expression;
-import com.eagle.programmar.PLI.Statements.PLI_PercentStatement.PLI_PercentWhat.PLI_PercentActivate.PLI_DeclareMore;
 import com.eagle.programmar.PLI.Symbols.PLI_Identifier_Reference;
 import com.eagle.programmar.PLI.Symbols.PLI_Variable_Definition;
 import com.eagle.programmar.PLI.Terminals.PLI_Keyword;
@@ -12,23 +11,28 @@ import com.eagle.programmar.PLI.Terminals.PLI_KeywordChoice;
 import com.eagle.programmar.PLI.Terminals.PLI_Literal;
 import com.eagle.programmar.PLI.Terminals.PLI_Number;
 import com.eagle.programmar.PLI.Terminals.PLI_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
-import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class PLI_PercentStatement extends TokenSequence
 {
 	public PLI_Punctuation percent = new PLI_Punctuation('%');
 	public PLI_PercentWhat what;
-	public PLI_Punctuation semicolon1 = new PLI_Punctuation(';');
-	public @OPT @CURIOUS("Extra semicolon") PLI_Punctuation semiColon2 = new PLI_Punctuation(';');
+	public PunctuationSemicolon semicolon1;
+	public @OPT @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon2;
 	
 	public static class PLI_PercentWhat extends TokenChooser
 	{
 		public static class PLI_PercentAssignment extends TokenSequence
 		{
 			public PLI_Variable_Definition var;
-			public PLI_Punctuation equals = new PLI_Punctuation('=');
+			public PunctuationEquals equals;
 			public PLI_Expression expr;
 		}
 		
@@ -53,25 +57,17 @@ public class PLI_PercentStatement extends TokenSequence
 		public static class PLI_PercentDeclare extends TokenSequence
 		{
 			public @DOC("7.10") PLI_Keyword DECLARE = new PLI_Keyword("DECLARE");
-			public @OPT PLI_Punctuation leftParen = new PLI_Punctuation('(');
-			public PLI_Variable_Definition var;
-			public @OPT TokenList<PLI_DeclareMore> more;
-			public @OPT PLI_Punctuation rightParen = new PLI_Punctuation(')');
+			public @OPT PunctuationLeftParen leftParen;
+			public SeparatedList<PLI_Variable_Definition,PunctuationComma> vars;
+			public @OPT PunctuationRightParen rightParen;
 			public PLI_KeywordChoice type = new PLI_KeywordChoice("FIXED", "CHARACTER");
 		}
 		
 		public static class PLI_PercentActivate extends TokenSequence
 		{
 			public PLI_Keyword ACTIVATE = new PLI_Keyword("ACTIVATE");
-			public PLI_Identifier_Reference var;
-			public @OPT TokenList<PLI_DeclareMore> more;
+			public SeparatedList<PLI_Identifier_Reference,PunctuationComma> vars;
 			public @OPT PLI_Keyword NORESCAN = new PLI_Keyword("NORESCAN");
-			
-			public static class PLI_DeclareMore extends TokenSequence
-			{
-				public PLI_Punctuation comma = new PLI_Punctuation(',');
-				public PLI_Identifier_Reference var;
-			}
 		}
 		
 		public static class PLI_PercentDeactivate extends TokenSequence
@@ -83,9 +79,9 @@ public class PLI_PercentStatement extends TokenSequence
 		public static class PLI_PercentSkip extends TokenSequence
 		{
 			public PLI_Keyword SKIP = new PLI_Keyword("SKIP");
-			public PLI_Punctuation leftParen = new PLI_Punctuation('(');
+			public PunctuationLeftParen leftParen;
 			public PLI_Number number;
-			public PLI_Punctuation rightParen = new PLI_Punctuation(')');
+			public PunctuationRightParen rightParen;
 		}
 	}
 }

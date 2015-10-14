@@ -4,11 +4,11 @@
 package com.eagle.programmar.C;
 
 import com.eagle.programmar.C.Symbols.C_Label_Definition;
-import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
 
 public class C_Label extends TokenSequence
 {
 	public C_Label_Definition label;
-	public C_Punctuation colon = new C_Punctuation(':');
+	public PunctuationColon colon;
 }

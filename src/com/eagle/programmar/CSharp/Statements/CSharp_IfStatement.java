@@ -7,16 +7,17 @@ import com.eagle.programmar.CSharp.CSharp_Expression;
 import com.eagle.programmar.CSharp.CSharp_Statement;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Comment;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Keyword;
-import com.eagle.programmar.CSharp.Terminals.CSharp_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class CSharp_IfStatement extends TokenSequence
 {
 	public @NEWLINE @DOC("statements.html#14.9") CSharp_Keyword IF = new CSharp_Keyword("if");
-	public CSharp_Punctuation leftParen = new CSharp_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public CSharp_Expression condition;
-	public CSharp_Punctuation rightParen = new CSharp_Punctuation(')');
+	public PunctuationRightParen rightParen;
 	public @OPT TokenList<CSharp_Comment> comments1;
 	public CSharp_Statement thenStatement;
 	public @OPT CSharp_IfElseClause elseClause;

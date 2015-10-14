@@ -3,20 +3,22 @@
 
 package com.eagle.programmar.CSharp;
 
-import com.eagle.programmar.CSharp.Terminals.CSharp_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
 
 public class CSharp_Subscript extends TokenSequence
 {
-	public @NOSPACE CSharp_Punctuation leftBracket = new CSharp_Punctuation('[');
+	public @NOSPACE PunctuationLeftBracket leftBracket;
 	public @NOSPACE CSharp_Expression expr;
 	public @OPT @NOSPACE TokenList<CSharp_MoreSubscripts> more;
-	public @NOSPACE CSharp_Punctuation rightBracket = new CSharp_Punctuation(']');
+	public @NOSPACE PunctuationRightBracket rightBracket;
 	
 	public static class CSharp_MoreSubscripts extends TokenSequence
 	{
-		public CSharp_Punctuation comma = new CSharp_Punctuation(',');
+		public PunctuationComma comma;
 		public CSharp_Expression expr;
 	}
 }

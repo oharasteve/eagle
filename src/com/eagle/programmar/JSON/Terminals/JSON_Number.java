@@ -6,7 +6,7 @@ package com.eagle.programmar.JSON.Terminals;
 import com.eagle.parsers.EagleFileReader;
 import com.eagle.tokens.TerminalNumberToken;
 
-public class JSON_Number  extends TerminalNumberToken
+public class JSON_Number extends TerminalNumberToken
 {
 	@Override
 	public boolean parse(EagleFileReader lines)

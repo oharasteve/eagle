@@ -6,9 +6,10 @@ package com.eagle.programmar.PLI;
 import com.eagle.programmar.PLI.Symbols.PLI_Identifier_Reference;
 import com.eagle.programmar.PLI.Terminals.PLI_Keyword;
 import com.eagle.programmar.PLI.Terminals.PLI_KeywordChoice;
-import com.eagle.programmar.PLI.Terminals.PLI_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class PLI_Signal extends TokenChooser
 {
@@ -17,8 +18,8 @@ public class PLI_Signal extends TokenChooser
 	public static class PLI_OnEndFile extends TokenSequence
 	{
 		public PLI_Keyword ENDFILE = new PLI_Keyword("ENDFILE");
-		public PLI_Punctuation leftParen = new PLI_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public PLI_Identifier_Reference file;
-		public PLI_Punctuation rightParen = new PLI_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 }

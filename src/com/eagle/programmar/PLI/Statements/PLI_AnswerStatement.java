@@ -6,19 +6,21 @@ package com.eagle.programmar.PLI.Statements;
 import com.eagle.programmar.PLI.PLI_Expression;
 import com.eagle.programmar.PLI.Terminals.PLI_Keyword;
 import com.eagle.programmar.PLI.Terminals.PLI_KeywordChoice;
-import com.eagle.programmar.PLI.Terminals.PLI_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class PLI_AnswerStatement extends TokenSequence
 {
 	public PLI_Keyword ANSWER = new PLI_Keyword("ANSWER");
-	public PLI_Punctuation leftParen = new PLI_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public PLI_Expression expr;
-	public PLI_Punctuation rightParen = new PLI_Punctuation(')');
+	public PunctuationRightParen rightParen;
 	public @OPT TokenList<PLI_AnswerClause> clauses;
-	public PLI_Punctuation semiColon = new PLI_Punctuation(';');
+	public PunctuationSemicolon semicolon;
 	
 	public static class PLI_AnswerClause extends TokenChooser
 	{

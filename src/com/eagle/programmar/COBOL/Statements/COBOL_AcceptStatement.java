@@ -10,10 +10,12 @@ import com.eagle.programmar.COBOL.Symbols.COBOL_Identifier_Reference;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
 import com.eagle.programmar.COBOL.Terminals.COBOL_KeywordChoice;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Number;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class COBOL_AcceptStatement extends COBOL_AbstractStatement
 {
@@ -25,11 +27,11 @@ public class COBOL_AcceptStatement extends COBOL_AbstractStatement
 	
 	public static class COBOL_AcceptPosition extends TokenSequence
 	{
-		public COBOL_Punctuation leftParen = new COBOL_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public COBOL_Expression line;
-		public COBOL_Punctuation comma = new COBOL_Punctuation(',');
+		public PunctuationComma comma;
 		public COBOL_Expression column;
-		public COBOL_Punctuation rightParen = new COBOL_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 	
 	public static class COBOL_AcceptOption extends TokenChooser

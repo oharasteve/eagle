@@ -9,9 +9,10 @@ import com.eagle.programmar.VB.VB_Type;
 import com.eagle.programmar.VB.Symbols.VB_Variable_Definition;
 import com.eagle.programmar.VB.Terminals.VB_Keyword;
 import com.eagle.programmar.VB.Terminals.VB_KeywordChoice;
-import com.eagle.programmar.VB.Terminals.VB_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationEquals;
 
 public class VB_DataDeclaration extends TokenSequence
 {
@@ -32,13 +33,13 @@ public class VB_DataDeclaration extends TokenSequence
 
 	public static class VB_DataInitialization extends TokenSequence
 	{
-		public VB_Punctuation equals = new VB_Punctuation('=');
+		public PunctuationEquals equals;
 		public VB_Expression expr;
 	}
 	
 	public static class VB_MoreVariables extends TokenSequence
 	{
-		public VB_Punctuation comma = new VB_Punctuation(',');
+		public PunctuationComma comma;
 		public VB_Variable_Definition var;
 		public @OPT VB_Subscript subscript;
 	}

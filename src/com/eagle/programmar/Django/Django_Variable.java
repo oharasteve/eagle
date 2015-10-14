@@ -4,8 +4,8 @@
 package com.eagle.programmar.Django;
 
 import com.eagle.programmar.Django.Symbols.Django_Identifier_Reference;
-import com.eagle.programmar.Django.Terminals.Django_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
 
 public class Django_Variable extends TokenSequence
 {
@@ -14,7 +14,7 @@ public class Django_Variable extends TokenSequence
 	
 	public static class Django_DotVariable extends TokenSequence
 	{
-		public Django_Punctuation dot = new Django_Punctuation('.');
+		public PunctuationPeriod dot;
 		public Django_Identifier_Reference variable;
 	}
 }

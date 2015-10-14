@@ -10,10 +10,14 @@ import com.eagle.programmar.PLI.Terminals.PLI_Keyword;
 import com.eagle.programmar.PLI.Terminals.PLI_KeywordChoice;
 import com.eagle.programmar.PLI.Terminals.PLI_Literal;
 import com.eagle.programmar.PLI.Terminals.PLI_Number;
-import com.eagle.programmar.PLI.Terminals.PLI_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class PLI_PutStatement extends TokenSequence
 {
@@ -30,44 +34,37 @@ public class PLI_PutStatement extends TokenSequence
 
 	public @OPT PLI_PutFormat putFormat;
 	
-	public PLI_Punctuation semiColon = new PLI_Punctuation(';');
+	public PunctuationSemicolon semicolon;
 
 	public static class PLI_PutFile extends TokenSequence
 	{
 		public PLI_Keyword FILE = new PLI_Keyword("FILE");
-		public PLI_Punctuation leftParen1 = new PLI_Punctuation('(');
+		public PunctuationLeftParen leftParen1;
 		public PLI_Identifier_Reference file;
-		public PLI_Punctuation rightParen1 = new PLI_Punctuation(')');
+		public PunctuationRightParen rightParen1;
 	}
 	
 	public static class PLI_PutString extends TokenSequence
 	{
 		public PLI_Keyword STRING = new PLI_Keyword("STRING");
-		public PLI_Punctuation leftParen1 = new PLI_Punctuation('(');
+		public PunctuationLeftParen leftParen1;
 		public PLI_Identifier_Reference var;
-		public PLI_Punctuation rightParen1 = new PLI_Punctuation(')');
+		public PunctuationRightParen rightParen1;
 	}
 	
 	public static class PLI_PutValues extends TokenSequence
 	{
-		public PLI_Punctuation leftParen1 = new PLI_Punctuation('(');
-		public PLI_Expression expr;
-		public @OPT TokenList<PLI_PutMore> putMore;
-		public PLI_Punctuation rightParen1 = new PLI_Punctuation(')');
+		public PunctuationLeftParen leftParen1;
+		public SeparatedList<PLI_Expression,PunctuationComma> exprs;
+		public PunctuationRightParen rightParen1;
 	}
 
-	public static class PLI_PutMore extends TokenSequence
-	{
-		public PLI_Punctuation comma = new PLI_Punctuation(',');
-		public PLI_Expression expr;
-	}
-	
 	public static class PLI_PutFormat extends TokenSequence
 	{
-		public PLI_Punctuation leftParen2 = new PLI_Punctuation('(');
+		public PunctuationLeftParen leftParen2;
 		public PLI_PutEditFormat editFormat;
 		public @OPT TokenList<PLI_PutMoreFormats> moreFmts;
-		public PLI_Punctuation rightParen2 = new PLI_Punctuation(')');
+		public PunctuationRightParen rightParen2;
 		
 		public static class PLI_PutEditFormat extends TokenChooser
 		{
@@ -104,9 +101,9 @@ public class PLI_PutStatement extends TokenSequence
 			public static class PLI_PutFormat_R extends TokenSequence
 			{
 				public PLI_Keyword R = new PLI_Keyword("R");
-				public PLI_Punctuation leftParen = new PLI_Punctuation('(');
+				public PunctuationLeftParen leftParen;
 				public PLI_Identifier_Reference label;
-				public PLI_Punctuation rightParen = new PLI_Punctuation(')');
+				public PunctuationRightParen rightParen;
 			}
 
 			public static class PLI_PutFormat_X extends TokenSequence
@@ -119,21 +116,21 @@ public class PLI_PutStatement extends TokenSequence
 		
 		public static class PLI_PutMoreFormats extends TokenSequence
 		{
-			public PLI_Punctuation comma = new PLI_Punctuation(',');
+			public PunctuationComma comma;
 			public PLI_PutEditFormat editFormat;
 		}
 	}
 	
 	public static class PLI_PutFormat_Count extends TokenSequence
 	{
-		public PLI_Punctuation leftParen = new PLI_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public PLI_Expression expr;
 		public @OPT PLI_PutFormat_SecondCount secondCount;
-		public PLI_Punctuation rightParen = new PLI_Punctuation(')');
+		public PunctuationRightParen rightParen;
 		
 		public static class PLI_PutFormat_SecondCount extends TokenSequence
 		{
-			public PLI_Punctuation comma = new PLI_Punctuation(',');
+			public PunctuationComma comma;
 			public PLI_Expression expr;
 		}
 	}

@@ -12,16 +12,22 @@ import com.eagle.programmar.Java.Terminals.Java_Comment;
 import com.eagle.programmar.Java.Terminals.Java_Identifier;
 import com.eagle.programmar.Java.Terminals.Java_Keyword;
 import com.eagle.programmar.Java.Terminals.Java_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Java_TryStatement extends TokenSequence
 {
 	public @NEWLINE @DOC("statements.html#14.20") Java_Keyword TRY = new Java_Keyword("try");
 	public @OPT Java_TryResources resources;
-	public @INDENT Java_Punctuation leftBrace = new Java_Punctuation('{');
+	public @INDENT PunctuationLeftBrace leftBrace;
 	public TokenList<Java_StatementOrComment> statements;
-	public @OUTDENT Java_Punctuation rightBrace = new Java_Punctuation('}');
+	public @OUTDENT PunctuationRightBrace rightBrace;
 	public @OPT TokenList<Java_Comment> comments;
 	public @OPT TokenList<Java_CatchBlock> catchBlocks;
 	public @OPT Java_FinallyBlock finallyBlock;
@@ -29,12 +35,12 @@ public class Java_TryStatement extends TokenSequence
 	public static class Java_CatchBlock extends TokenSequence
 	{
 		public @NEWLINE Java_Keyword CATCH = new Java_Keyword("catch");
-		public Java_Punctuation leftParen = new Java_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public @OPT Java_Keyword FINAL = new Java_Keyword("final");
 		public @NOSPACE Java_Type jtype;
 		public @OPT TokenList<Java_MoreExceptions> more;
 		public Java_Identifier id;
-		public @NOSPACE Java_Punctuation rightParen = new Java_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 		public Java_Statement catchStatement;
 		
 		public static class Java_MoreExceptions extends TokenSequence
@@ -52,22 +58,15 @@ public class Java_TryStatement extends TokenSequence
 	
 	public static class Java_TryResources extends TokenSequence
 	{
-		public Java_Punctuation leftParen = new Java_Punctuation('(');
-		public Java_TryResource resource;
-		public @OPT TokenList<Java_TryMoreResources> more;
-		public Java_Punctuation rightParen = new Java_Punctuation(')');
+		public PunctuationLeftParen leftParen;
+		public SeparatedList<Java_TryResource,PunctuationComma> resources;
+		public PunctuationRightParen rightParen;
 		
 		public static class Java_TryResource extends TokenSequence
 		{
 			public Java_Type jtype;
 			public Java_Variable_Definition id;
 			public Java_DataInitialValue initialValue;
-		}
-		
-		public static class Java_TryMoreResources extends TokenSequence
-		{
-			public Java_Punctuation comma = new Java_Punctuation(',');
-			public Java_TryResource resource;
 		}
 	}
 }

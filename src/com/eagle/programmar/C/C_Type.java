@@ -16,9 +16,18 @@ import com.eagle.programmar.C.Terminals.C_Keyword;
 import com.eagle.programmar.C.Terminals.C_KeywordChoice;
 import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.programmar.C.Terminals.C_PunctuationChoice;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
+import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class C_Type extends TokenSequence
 {
@@ -38,10 +47,10 @@ public class C_Type extends TokenSequence
 		public static class C_TypeUnion extends TokenSequence
 		{
 			public C_Keyword UNION = new C_Keyword("union");
-			public C_Punctuation leftBrace = new C_Punctuation('{');
+			public PunctuationLeftBrace leftBrace;
 			public @OPT TokenList<C_FieldOrComment> fields;
-			public C_Punctuation rightBrace = new C_Punctuation('}');
-			public C_Punctuation semicolon = new C_Punctuation(';');
+			public PunctuationRightBrace rightBrace;
+			public PunctuationSemicolon semicolon;
 		}
 		
 		public static class C_TypeStruct extends TokenSequence
@@ -51,10 +60,10 @@ public class C_Type extends TokenSequence
 			public @OPT C_Comment comment1;
 			public @OPT C_Type_Definition def;
 			public @OPT C_Comment comment2;
-			public C_Punctuation leftBrace = new C_Punctuation('{');
+			public PunctuationLeftBrace leftBrace;
 			public @OPT TokenList<C_FieldOrComment> fields;
-			public C_Punctuation rightBrace = new C_Punctuation('}');
-			public @OPT @CURIOUS("Extra semicolon") C_Punctuation semicolon = new C_Punctuation(';');
+			public PunctuationRightBrace rightBrace;
+			public @OPT @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon;
 			
 			public static class C_FieldOrComment extends TokenChooser
 			{
@@ -69,13 +78,13 @@ public class C_Type extends TokenSequence
 					public @OPT TokenList<C_Subscript> subscripts;
 					public @OPT C_FieldInitialValue initialValue;
 					public @OPT TokenList<C_MoreFields> more;
-					public @NOSPACE C_Punctuation semicolon = new C_Punctuation(';');
+					public @NOSPACE PunctuationSemicolon semicolon;
 					public @OPT TokenList<C_Comment> comments;
 					
 					public static class C_MoreFields extends TokenSequence
 					{
-						public C_Punctuation comma = new C_Punctuation(',');
-						public @OPT C_Punctuation star = new C_Punctuation('*');
+						public PunctuationComma comma;
+						public @OPT PunctuationStar star;
 						public C_Field_Definition id;
 						public @OPT TokenList<C_Subscript> subscripts;
 						public @OPT C_FieldInitialValue initialValue;
@@ -83,7 +92,7 @@ public class C_Type extends TokenSequence
 					
 					public static class C_FieldInitialValue extends TokenSequence
 					{
-						public C_Punctuation equals = new C_Punctuation('=');
+						public PunctuationEquals equals;
 						public C_Expression expression;
 					}
 				}
@@ -123,16 +132,16 @@ public class C_Type extends TokenSequence
 		{
 			public C_Keyword ENUM = new C_Keyword("enum");
 			public @OPT C_Identifier_Reference typeName;
-			public C_Punctuation leftBrace = new C_Punctuation('{');
+			public PunctuationLeftBrace leftBrace;
 			public C_Variable_Definition firstEnum;
 			public @OPT C_EnumInitializer init;
 			public @OPT C_Comment comment;
 			public @OPT TokenList<C_MoreEnums> moreEnums;
-			public C_Punctuation rightBrace = new C_Punctuation('}');
+			public PunctuationRightBrace rightBrace;
 			
 			public static class C_MoreEnums extends TokenSequence
 			{
-				public C_Punctuation comma = new C_Punctuation(',');
+				public PunctuationComma comma;
 				public C_Variable_Definition nextEnum;
 				public @OPT C_EnumInitializer init;
 				public @OPT C_Comment comment;
@@ -140,7 +149,7 @@ public class C_Type extends TokenSequence
 			
 			public static class C_EnumInitializer extends TokenSequence
 			{
-				public C_Punctuation equals = new C_Punctuation('=');
+				public PunctuationEquals equals;
 				public C_Expression initialValue;
 			}
 		}
@@ -149,22 +158,15 @@ public class C_Type extends TokenSequence
 	public static class C_TypeGeneric extends TokenSequence
 	{
 		public C_Punctuation lessThan = new C_Punctuation('<');
-		public C_Type type;
-		public @OPT TokenList<C_MoreTypeGeneric> more;
+		public SeparatedList<C_Type, PunctuationComma> types;
 		public C_Punctuation greaterThan = new C_Punctuation('>');
-		
-		public static class C_MoreTypeGeneric extends TokenSequence
-		{
-			public C_Punctuation comma = new C_Punctuation(',');
-			public C_Type type;
-		}
 	}
 	
 	public static class C_TypeFunction extends TokenSequence
 	{
-		public C_Punctuation leftParen = new C_Punctuation('(');
-		public C_Punctuation star = new C_Punctuation('*');
-		public C_Punctuation rightParen = new C_Punctuation(')');
+		public PunctuationLeftParen leftParen;
+		public PunctuationStar star;
+		public PunctuationRightParen rightParen;
 		public C_Function_ParameterDefs params;
 	}
 }

@@ -10,6 +10,7 @@ import com.eagle.programmar.Perl.Terminals.Perl_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Perl_NamespaceStatement extends TokenSequence
 {
@@ -20,7 +21,7 @@ public class Perl_NamespaceStatement extends TokenSequence
 	
 	public static class Perl_NamespaceBody extends TokenChooser
 	{
-		public Perl_Punctuation semicolon = new Perl_Punctuation(';');
+		public PunctuationSemicolon semicolon;
 		public Perl_StatementBlock block;
 	}
 	

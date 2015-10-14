@@ -7,8 +7,10 @@ import com.eagle.programmar.C.C_Expression;
 import com.eagle.programmar.C.C_Statement;
 import com.eagle.programmar.C.Terminals.C_Comment;
 import com.eagle.programmar.C.Terminals.C_Keyword;
-import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class C_DoStatement extends TokenSequence
 {
@@ -16,8 +18,8 @@ public class C_DoStatement extends TokenSequence
 	public @OPT C_Comment comment;
 	public C_Statement doStatement;
 	public C_Keyword WHILE = new C_Keyword("while");
-	public C_Punctuation leftParen = new C_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public C_Expression condition;
-	public C_Punctuation rightParen = new C_Punctuation(')');
-	public C_Punctuation semicolon = new C_Punctuation(';');
+	public PunctuationRightParen rightParen;
+	public PunctuationSemicolon semicolon;
 }

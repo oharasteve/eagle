@@ -10,6 +10,7 @@ import com.eagle.programmar.SQL.Terminals.SQL_Keyword;
 import com.eagle.programmar.SQL.Terminals.SQL_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class SQL_DeclareStatement extends TokenSequence
 {
@@ -22,6 +23,6 @@ public class SQL_DeclareStatement extends TokenSequence
 		public SQL_Type type;
 		public SQL_Punctuation colonEquals = new SQL_Punctuation(":=");
 		public SQL_Expression value;
-		public SQL_Punctuation semicolon = new SQL_Punctuation(';');
+		public PunctuationSemicolon semicolon;
 	}
 }

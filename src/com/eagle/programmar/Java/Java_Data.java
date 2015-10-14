@@ -5,11 +5,15 @@ package com.eagle.programmar.Java;
 
 import com.eagle.programmar.Java.Symbols.Java_Variable_Definition;
 import com.eagle.programmar.Java.Terminals.Java_KeywordChoice;
-import com.eagle.programmar.Java.Terminals.Java_Punctuation;
 import com.eagle.tests.EagleInterpreter;
 import com.eagle.tests.EagleRunnable;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Java_Data extends TokenSequence implements EagleRunnable
 {
@@ -21,12 +25,12 @@ public class Java_Data extends TokenSequence implements EagleRunnable
 	public @OPT TokenList<Java_DataSubscript> subscripts;
 	public @OPT Java_DataInitialValue initialValue;
 	public @OPT TokenList<Java_MoreIdentifiers> moreIds;
-	public @NOSPACE Java_Punctuation semicolon = new Java_Punctuation(';');
+	public @NOSPACE PunctuationSemicolon semicolon;
 	
 	public static class Java_DataSubscript extends TokenSequence
 	{
-		public Java_Punctuation leftBracket = new Java_Punctuation('[');
-		public Java_Punctuation rightBracket = new Java_Punctuation(']');
+		public PunctuationLeftBracket leftBracket;
+		public PunctuationRightBracket rightBracket;
 	}
 	
 	public static class Java_DataModifier extends TokenSequence
@@ -36,16 +40,16 @@ public class Java_Data extends TokenSequence implements EagleRunnable
 	
 	public static class Java_DataInitialValue extends TokenSequence
 	{
-		public Java_Punctuation equals = new Java_Punctuation('=');
+		public PunctuationEquals equals;
 		public Java_Expression expression;
 	}
 	
 	public static class Java_MoreIdentifiers extends TokenSequence
 	{
-		public Java_Punctuation comma = new Java_Punctuation(',');
+		public PunctuationComma comma;
 		public Java_Variable_Definition id;
-		public @OPT Java_Punctuation leftBracket = new Java_Punctuation('[');
-		public @OPT Java_Punctuation rightBracket = new Java_Punctuation(']');
+		public @OPT PunctuationLeftBracket leftBracket;
+		public @OPT PunctuationRightBracket rightBracket;
 		public @OPT Java_DataInitialValue initialValue;
 	}
 

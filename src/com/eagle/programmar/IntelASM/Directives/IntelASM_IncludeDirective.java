@@ -7,9 +7,10 @@ import com.eagle.programmar.IntelASM.Symbols.IntelASM_Identifier_Reference;
 import com.eagle.programmar.IntelASM.Terminals.IntelASM_Keyword;
 import com.eagle.programmar.IntelASM.Terminals.IntelASM_Literal;
 import com.eagle.programmar.IntelASM.Terminals.IntelASM_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
-import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
 
 public class IntelASM_IncludeDirective extends TokenSequence
 {
@@ -23,14 +24,7 @@ public class IntelASM_IncludeDirective extends TokenSequence
 
 		public static class IntelASM_BareFilename extends TokenSequence
 		{
-			public IntelASM_Identifier_Reference name;
-			public @OPT TokenList<IntelASM_MoreFilename> more;
-			
-			public static class IntelASM_MoreFilename extends TokenSequence
-			{
-				public IntelASM_Punctuation dot = new IntelASM_Punctuation('.');
-				public IntelASM_Identifier_Reference name;
-			}
+			public SeparatedList<IntelASM_Identifier_Reference,PunctuationPeriod> name;
 		}
 	}
 }

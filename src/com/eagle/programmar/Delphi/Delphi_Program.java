@@ -9,10 +9,11 @@ import com.eagle.programmar.Delphi.Symbols.Delphi_Program_Definition;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Comment;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Keyword;
 import com.eagle.programmar.Delphi.Terminals.Delphi_KeywordChoice;
-import com.eagle.programmar.Delphi.Terminals.Delphi_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Delphi_Program extends EagleLanguage
 {
@@ -37,11 +38,11 @@ public class Delphi_Program extends EagleLanguage
 		{
 			public Delphi_KeywordChoice programOrUnit = new Delphi_KeywordChoice("Program", "Unit");
 			public Delphi_Program_Definition id;
-			public Delphi_Punctuation semicolon = new Delphi_Punctuation(';');
+			public PunctuationSemicolon semicolon;
 			public @OPT TokenList<Delphi_Header> headers;
 			public @OPT Delphi_BeginEnd beginEnd;
 			public @OPT Delphi_Keyword END = new Delphi_Keyword("End");
-			public Delphi_Punctuation dot = new Delphi_Punctuation('.');
+			public PunctuationPeriod dot;
 		}
 		
 		public static class Delphi_Partial extends TokenSequence
@@ -67,7 +68,7 @@ public class Delphi_Program extends EagleLanguage
 		{
 			public Delphi_KeywordChoice INITIALIZATION = new Delphi_KeywordChoice("Initialization", "Finalization");
 			public Delphi_Statement stmt;
-			public Delphi_Punctuation semicolon = new Delphi_Punctuation(';');
+			public PunctuationSemicolon semicolon;
 		}
 	}
 }

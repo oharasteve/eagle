@@ -4,22 +4,23 @@
 package com.eagle.programmar.Javascript.Statements;
 
 import com.eagle.programmar.Javascript.Javascript_Expression;
-import com.eagle.programmar.Javascript.Javascript_Expression.Javascript_ParenthesizedExpression.Javascript_MoreExpressions;
 import com.eagle.programmar.Javascript.Javascript_Statement;
 import com.eagle.programmar.Javascript.Terminals.Javascript_Comment;
 import com.eagle.programmar.Javascript.Terminals.Javascript_Keyword;
-import com.eagle.programmar.Javascript.Terminals.Javascript_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Javascript_IfStatement extends TokenSequence
 {
 	public @NEWLINE @DOC("js_if_else.asp") Javascript_Keyword IF = new Javascript_Keyword("if");
-	public Javascript_Punctuation leftParen = new Javascript_Punctuation('(');
-	public @NOSPACE Javascript_Expression condition;
-	public @OPT Javascript_MoreExpressions moreExpr;
+	public PunctuationLeftParen leftParen;
+	public @NOSPACE SeparatedList<Javascript_Expression,PunctuationComma> conditions;
 	public @OPT TokenList<Javascript_Comment> comment;
-	public @NOSPACE Javascript_Punctuation rightParen = new Javascript_Punctuation(')');
+	public @NOSPACE PunctuationRightParen rightParen;
 	public @OPT TokenList<Javascript_Comment> comments;
 	public @NEWLINE Javascript_Statement thenStatement;
 	public @OPT Javascript_IfElseClause elseClause;

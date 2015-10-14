@@ -11,9 +11,11 @@ import com.eagle.programmar.CSharp.CSharp_Method.CSharp_MoreParameters;
 import com.eagle.programmar.CSharp.Symbols.CSharp_Current_Class_Reference;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Comment;
 import com.eagle.programmar.CSharp.Terminals.CSharp_KeywordChoice;
-import com.eagle.programmar.CSharp.Terminals.CSharp_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class CSharp_Constructor extends TokenSequence
 {
@@ -21,20 +23,20 @@ public class CSharp_Constructor extends TokenSequence
 	public @OPT TokenList<CSharp_Annotation> annotation;
 	public @OPT TokenList<CSharp_MethodModifiers> modifiers;
 	public CSharp_Current_Class_Reference constructorName;
-	public CSharp_Punctuation leftParen = new CSharp_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public @OPT CSharp_MethodParameter param;
 	public @OPT TokenList<CSharp_MoreParameters> moreParams;
-	public CSharp_Punctuation rightParen = new CSharp_Punctuation(')');
+	public PunctuationRightParen rightParen;
 	public @OPT CSharp_ExtendsBase extendsBase;
 	public CSharp_MethodBody body;
 
 	public static class CSharp_ExtendsBase extends TokenSequence
 	{
-		public CSharp_Punctuation colon = new CSharp_Punctuation(':');
+		public PunctuationColon colon;
 		public CSharp_KeywordChoice baseOrthis = new CSharp_KeywordChoice(
 				"base", "this");
-		public CSharp_Punctuation leftParen = new CSharp_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public @OPT CSharp_ArgumentList argList;
-		public CSharp_Punctuation rightParen = new CSharp_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 }

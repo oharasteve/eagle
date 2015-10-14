@@ -3,19 +3,12 @@
 
 package com.eagle.programmar.Python;
 
-import com.eagle.programmar.Python.Terminals.Python_Punctuation;
-import com.eagle.tokens.TokenList;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class Python_ExpressionList extends TokenSequence
 {
-	public Python_Expression expression;
-	public @OPT TokenList<Python_MoreExpressions> moreExpressions;
-	public @OPT Python_Punctuation comma = new Python_Punctuation(',');
-	
-	public static class Python_MoreExpressions extends TokenSequence
-	{
-		public Python_Punctuation comma = new Python_Punctuation(',');
-		public Python_Expression expression;
-	}
+	public SeparatedList<Python_Expression,PunctuationComma> expressions;
+	public @OPT PunctuationComma comma;
 }

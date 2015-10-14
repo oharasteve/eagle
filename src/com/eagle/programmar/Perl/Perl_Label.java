@@ -4,11 +4,11 @@
 package com.eagle.programmar.Perl;
 
 import com.eagle.programmar.Perl.Symbols.Perl_Label_Definition;
-import com.eagle.programmar.Perl.Terminals.Perl_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
 
 public class Perl_Label extends TokenSequence
 {
 	public Perl_Label_Definition label;
-	public Perl_Punctuation colon = new Perl_Punctuation(':');
+	public PunctuationColon colon;
 }

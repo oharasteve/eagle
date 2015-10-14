@@ -5,10 +5,10 @@ package com.eagle.programmar.CMD.Statements;
 
 import com.eagle.programmar.CMD.Terminals.CMD_Argument;
 import com.eagle.programmar.CMD.Terminals.CMD_Keyword;
-import com.eagle.programmar.CMD.Terminals.CMD_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSlash;
 
 public class CMD_Del_Statement extends TokenSequence
 {
@@ -20,19 +20,19 @@ public class CMD_Del_Statement extends TokenSequence
 	{
 		public static class CMD_Del_Option_F extends TokenSequence
 		{
-			public CMD_Punctuation slash = new CMD_Punctuation('/');
+			public PunctuationSlash slash;
 			public CMD_Keyword F = new CMD_Keyword("f");
 		}
 
 		public static class CMD_Del_Option_Q extends TokenSequence
 		{
-			public CMD_Punctuation slash = new CMD_Punctuation('/');
+			public PunctuationSlash slash;
 			public CMD_Keyword Q = new CMD_Keyword("q");
 		}
 
 		public static class CMD_Del_Option_S extends TokenSequence
 		{
-			public CMD_Punctuation slash = new CMD_Punctuation('/');
+			public PunctuationSlash slash;
 			public CMD_Keyword S = new CMD_Keyword("s");
 		}
 	}

@@ -11,8 +11,9 @@ import com.eagle.programmar.SQL.Terminals.SQL_Number;
 import com.eagle.programmar.SQL.Terminals.SQL_Punctuation;
 import com.eagle.programmar.SQL.Terminals.SQL_PunctuationChoice;
 import com.eagle.tokens.PrecedenceChooser;
-import com.eagle.tokens.PrecedenceChooser.BinaryOperator.AllowedPrecedence;
+import com.eagle.tokens.PrecedenceChooser.PrecedenceOperator.AllowedPrecedence;
 import com.eagle.tokens.TokenChooser;
+import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class SQL_Expression extends PrecedenceChooser
 {
@@ -20,30 +21,30 @@ public class SQL_Expression extends PrecedenceChooser
 	{
 	}
 	
-	public SQL_Expression(BinaryOperator token, AllowedPrecedence allowed)
+	public SQL_Expression(PrecedenceOperator token, AllowedPrecedence allowed)
 	{ 
 		super(allowed, token.getClass());
 	}
 		
 	@Override
-	public void establishChoices() 
+	protected void establishChoices() 
 	{
 		// Order matters a little bit ...
-		super.addUnaryOperator(SQL_Number.class);
-		super.addUnaryOperator(SQL_Literal.class);
-		super.addUnaryOperator(SQL_HexString.class);
-		super.addUnaryOperator(SQL_Builtin.class);
-		super.addUnaryOperator(SQL_Function.class);
-		super.addUnaryOperator(SQL_DollarVariable.class);
-		super.addUnaryOperator(SQL_Variable.class);
-		super.addUnaryOperator(SQL_Star.class);
+		super.addTerm(SQL_Number.class);
+		super.addTerm(SQL_Literal.class);
+		super.addTerm(SQL_HexString.class);
+		super.addTerm(SQL_Builtin.class);
+		super.addTerm(SQL_Function.class);
+		super.addTerm(SQL_DollarVariable.class);
+		super.addTerm(SQL_Variable.class);
+		super.addTerm(SQL_Star.class);
 
 		// Order is critical ...
-		super.addBinaryOperator(SQL_MultiplicativeExpression.class);
-		super.addBinaryOperator(SQL_AdditiveExpression.class);
-		super.addBinaryOperator(SQL_RelationalExpression.class);
-		super.addBinaryOperator(SQL_AndExpression.class);
-		super.addBinaryOperator(SQL_OrExpression.class);
+		super.addOperator(SQL_MultiplicativeExpression.class);
+		super.addOperator(SQL_AdditiveExpression.class);
+		super.addOperator(SQL_RelationalExpression.class);
+		super.addOperator(SQL_AndExpression.class);
+		super.addOperator(SQL_OrExpression.class);
 	}
 	
 	///////////////////////////////////////////////
@@ -54,12 +55,12 @@ public class SQL_Expression extends PrecedenceChooser
 		public SQL_KeywordChoice TIMESTAMP = new SQL_KeywordChoice("CURRENT_TIMESTAMP", "SYSTIMESTAMP");
 	}
 
-	public static class SQL_Star extends UnaryOperator
+	public static class SQL_Star extends ExpressionTerm
 	{
-		public SQL_Punctuation star = new SQL_Punctuation('*');
+		public PunctuationStar star;
 	}
 
-	public static class SQL_DollarVariable extends UnaryOperator
+	public static class SQL_DollarVariable extends ExpressionTerm
 	{
 		public SQL_Punctuation dollar = new SQL_Punctuation('$');
 		public SQL_Number number;
@@ -68,21 +69,21 @@ public class SQL_Expression extends PrecedenceChooser
 	///////////////////////////////////////////////
 	// Binary expressions
 
-	public static class SQL_OrExpression extends BinaryOperator
+	public static class SQL_OrExpression extends PrecedenceOperator
 	{
 		public SQL_Expression left = new SQL_Expression(this, AllowedPrecedence.ATLEAST);
 		public SQL_Keyword OR = new SQL_Keyword("OR");
 		public SQL_Expression right = new SQL_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class SQL_AndExpression extends BinaryOperator
+	public static class SQL_AndExpression extends PrecedenceOperator
 	{
 		public SQL_Expression left = new SQL_Expression(this, AllowedPrecedence.ATLEAST);
 		public SQL_Keyword AND = new SQL_Keyword("AND");
 		public SQL_Expression right = new SQL_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class SQL_RelationalExpression extends BinaryOperator
+	public static class SQL_RelationalExpression extends PrecedenceOperator
 	{
 		public SQL_Expression left = new SQL_Expression(this, AllowedPrecedence.ATLEAST);
 		public SQL_RelationalOperator relationalOperator;
@@ -95,14 +96,14 @@ public class SQL_Expression extends PrecedenceChooser
 		}
 	}
 
-	public static class SQL_AdditiveExpression extends BinaryOperator
+	public static class SQL_AdditiveExpression extends PrecedenceOperator
 	{
 		public SQL_Expression left = new SQL_Expression(this, AllowedPrecedence.ATLEAST);
 		public SQL_PunctuationChoice operator = new SQL_PunctuationChoice("+", "-");
 		public SQL_Expression right = new SQL_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class SQL_MultiplicativeExpression extends BinaryOperator
+	public static class SQL_MultiplicativeExpression extends PrecedenceOperator
 	{
 		public SQL_Expression left = new SQL_Expression(this, AllowedPrecedence.ATLEAST);
 		public SQL_PunctuationChoice operator = new SQL_PunctuationChoice("*", "/", "%");

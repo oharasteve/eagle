@@ -5,21 +5,14 @@ package com.eagle.programmar.Python.Statements;
 
 import com.eagle.programmar.Python.Python_Expression;
 import com.eagle.programmar.Python.Terminals.Python_Keyword;
-import com.eagle.programmar.Python.Terminals.Python_Punctuation;
-import com.eagle.tokens.TokenList;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class Python_RaiseStatement extends TokenSequence
 {
 	public Python_Keyword RAISE = new Python_Keyword("raise");
-	public @OPT Python_RaiseCondition raiseCondition;
-	public @OPT TokenList<Python_RaiseMore> moreConditions;
-	
-	public static class Python_RaiseMore extends TokenSequence
-	{
-		public Python_Punctuation comma = new Python_Punctuation(',');
-		public Python_RaiseCondition raiseCondition;
-	}
+	public @OPT SeparatedList<Python_RaiseCondition,PunctuationComma> raiseConditions;
 	
 	public static class Python_RaiseCondition extends TokenSequence
 	{

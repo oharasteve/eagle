@@ -7,21 +7,25 @@ import com.eagle.programmar.C.C_Expression;
 import com.eagle.programmar.C.C_Program.C_StatementOrComment;
 import com.eagle.programmar.C.Terminals.C_Comment;
 import com.eagle.programmar.C.Terminals.C_Keyword;
-import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class C_SwitchStatement extends TokenSequence
 {
 	public @DOC("#The-switch-Statement") C_Keyword SWITCH = new C_Keyword("switch");
-	public C_Punctuation leftParen = new C_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public C_Expression val;
-	public C_Punctuation rightParen = new C_Punctuation(')');
+	public PunctuationRightParen rightParen;
 	public @OPT C_Comment comment;
-	public C_Punctuation leftBrace = new C_Punctuation('{');
+	public PunctuationLeftBrace leftBrace;
 	public TokenList<C_SwitchClause> switchClause;
-	public C_Punctuation rightBrace = new C_Punctuation('}');
+	public PunctuationRightBrace rightBrace;
 	
 	public static class C_SwitchClause extends TokenChooser
 	{
@@ -34,14 +38,14 @@ public class C_SwitchStatement extends TokenSequence
 	{
 		public C_Keyword CASE = new C_Keyword("case");
 		public C_Expression expr;
-		public C_Punctuation colon = new C_Punctuation(':');
+		public PunctuationColon colon;
 		public @OPT TokenList<C_StatementOrComment> statements;
 	}
 	
 	public static class C_DefaultClause extends TokenSequence
 	{
 		public C_Keyword DEFAULT = new C_Keyword("default");
-		public C_Punctuation colon = new C_Punctuation(':');
+		public PunctuationColon colon;
 		public @OPT TokenList<C_StatementOrComment> statements;
 	}
 }

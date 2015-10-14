@@ -7,13 +7,16 @@ import com.eagle.programmar.EagleLanguage;
 import com.eagle.programmar.Java.Terminals.Java_Comment;
 import com.eagle.programmar.Java.Terminals.Java_Identifier;
 import com.eagle.programmar.Java.Terminals.Java_Keyword;
-import com.eagle.programmar.Java.Terminals.Java_Punctuation;
 import com.eagle.tests.EagleInterpreter;
 import com.eagle.tests.EagleRunnable;
 import com.eagle.tokens.EagleScope.EagleScopeInterface;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
+import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class Java_Program extends EagleLanguage implements EagleRunnable, EagleScopeInterface
 {
@@ -59,15 +62,8 @@ public class Java_Program extends EagleLanguage implements EagleRunnable, EagleS
 	public static class Java_Package extends TokenSequence
 	{
 		public @NEWLINE2 Java_Keyword PACKAGE = new Java_Keyword("package");
-		public Java_Identifier id;
-		public @OPT TokenList<Java_DotIdentifier> dotId;
-		public @NOSPACE Java_Punctuation semicolon = new Java_Punctuation(';');
-		
-		public static class Java_DotIdentifier extends TokenSequence
-		{
-			public @NOSPACE Java_Punctuation dot = new Java_Punctuation('.');
-			public @NOSPACE Java_Identifier id;
-		}
+		public SeparatedList<Java_Identifier,PunctuationPeriod> ids;
+		public @NOSPACE PunctuationSemicolon semicolon;
 	}
 	
 	public static class Java_ImportOrComment extends TokenChooser
@@ -82,17 +78,17 @@ public class Java_Program extends EagleLanguage implements EagleRunnable, EagleS
 		public @OPT Java_Keyword STATIC = new Java_Keyword("static");
 		public Java_Identifier id;
 		public @OPT TokenList<Java_DotIdentifierStar> dotId;
-		public @NOSPACE Java_Punctuation semicolon = new Java_Punctuation(';');
+		public @NOSPACE PunctuationSemicolon semicolon;
 
 		public static class Java_DotIdentifierStar extends TokenSequence
 		{
-			public @NOSPACE Java_Punctuation dot = new Java_Punctuation('.');
+			public @NOSPACE PunctuationPeriod dot;
 			public Java_IdentifierStar idStar;
 			
 			public static class Java_IdentifierStar extends TokenChooser
 			{
 				public @NOSPACE Java_Identifier id;
-				public @NOSPACE Java_Punctuation star = new Java_Punctuation('*');
+				public @NOSPACE PunctuationStar star;
 			}
 		}
 	}

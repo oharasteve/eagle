@@ -24,6 +24,7 @@ import com.eagle.programmar.EagleLanguage;
 import com.eagle.tokens.AbstractToken;
 import com.eagle.tokens.EagleScope;
 import com.eagle.tokens.EagleScope.EagleScopeInterface;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TerminalToken;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
@@ -190,15 +191,39 @@ public class EagleReadXML implements ErrorHandler
 			String fldName = parent.getAttribute(XML_NAME);
 			Field fld = container.getClass().getField(fldName);
 			@SuppressWarnings("unchecked")
-			TokenList<AbstractToken> items = (TokenList<AbstractToken>) fld.get(container);
-			if (items == null)
+			Class<? extends AbstractToken> fldType = (Class<? extends AbstractToken>) fld.getType();
+			boolean isSeparatedList = fldType.equals(SeparatedList.class);
+			
+			TokenList<AbstractToken> items;
+			if (isSeparatedList)
 			{
-				//System.out.println("******** Creating a new TokenList");
-				items = new TokenList<AbstractToken>();
-				items._present = true;
-				fld.set(container, items);
+				@SuppressWarnings("unchecked")
+				SeparatedList<AbstractToken, AbstractToken> items2 = (SeparatedList<AbstractToken, AbstractToken>) fld.get(container);
+				items = items2;
+				if (items == null)
+				{
+					//System.out.println("******** Creating a new TokenList");
+					items = new SeparatedList<AbstractToken, AbstractToken>();
+					items._present = true;
+					fld.set(container, items);
+				}
+				//else System.out.println("********* Reusing old TokenList");
 			}
-			//else System.out.println("********* Reusing old TokenList");
+			else
+			{
+				@SuppressWarnings("unchecked")
+				TokenList<AbstractToken> items1 = (TokenList<AbstractToken>) fld.get(container);
+				items = items1;
+				if (items == null)
+				{
+					//System.out.println("******** Creating a new TokenList");
+					items = new TokenList<AbstractToken>();
+					items._present = true;
+					fld.set(container, items);
+				}
+				//else System.out.println("********* Reusing old TokenList");
+			}
+			
 			items.setParent(container);
 			items._currentLine = getInt(parent, XML_STARTLINE);
 			items._currentChar = getInt(parent, XML_STARTCHAR);

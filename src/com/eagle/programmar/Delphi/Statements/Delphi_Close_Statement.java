@@ -5,8 +5,9 @@ package com.eagle.programmar.Delphi.Statements;
 
 import com.eagle.programmar.Delphi.Delphi_Expression;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Keyword;
-import com.eagle.programmar.Delphi.Terminals.Delphi_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Delphi_Close_Statement extends TokenSequence
 {
@@ -15,8 +16,8 @@ public class Delphi_Close_Statement extends TokenSequence
 	
 	public static class Delphi_CloseWhat extends TokenSequence
 	{
-		public Delphi_Punctuation leftParen = new Delphi_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public Delphi_Expression file;
-		public Delphi_Punctuation righttParen = new Delphi_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 }

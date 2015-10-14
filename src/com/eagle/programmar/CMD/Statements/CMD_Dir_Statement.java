@@ -6,10 +6,11 @@ package com.eagle.programmar.CMD.Statements;
 import com.eagle.programmar.CMD.Terminals.CMD_Argument;
 import com.eagle.programmar.CMD.Terminals.CMD_Keyword;
 import com.eagle.programmar.CMD.Terminals.CMD_KeywordChoice;
-import com.eagle.programmar.CMD.Terminals.CMD_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationSlash;
 
 public class CMD_Dir_Statement extends TokenSequence
 {
@@ -21,29 +22,29 @@ public class CMD_Dir_Statement extends TokenSequence
 	{
 		public static class CMD_Dir_Option_A extends TokenSequence
 		{
-			public CMD_Punctuation slash = new CMD_Punctuation('/');
+			public PunctuationSlash slash;
 			public CMD_Keyword A = new CMD_Keyword("a");
-			public CMD_Punctuation colon = new CMD_Punctuation(':');
+			public PunctuationColon colon;
 			public CMD_KeywordChoice R = new CMD_KeywordChoice("h", "r");
 		}
 
 		public static class CMD_Dir_Option_B extends TokenSequence
 		{
-			public CMD_Punctuation slash = new CMD_Punctuation('/');
+			public PunctuationSlash slash;
 			public CMD_Keyword B = new CMD_Keyword("b");
 		}
 
 		public static class CMD_Dir_Option_O extends TokenSequence
 		{
-			public CMD_Punctuation slash = new CMD_Punctuation('/');
+			public PunctuationSlash slash;
 			public CMD_Keyword O = new CMD_Keyword("o");
-			public CMD_Punctuation colon = new CMD_Punctuation(':');
+			public PunctuationColon colon;
 			public CMD_Keyword D = new CMD_Keyword("d");
 		}
 
 		public static class CMD_Dir_Option_S extends TokenSequence
 		{
-			public CMD_Punctuation slash = new CMD_Punctuation('/');
+			public PunctuationSlash slash;
 			public CMD_Keyword S = new CMD_Keyword("s");
 		}
 	}

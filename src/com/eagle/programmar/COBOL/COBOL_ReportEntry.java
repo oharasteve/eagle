@@ -12,10 +12,10 @@ import com.eagle.programmar.COBOL.Terminals.COBOL_Level;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Literal;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Number;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Picture;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
 
 public class COBOL_ReportEntry extends TokenSequence
 {
@@ -27,7 +27,7 @@ public class COBOL_ReportEntry extends TokenSequence
 		public COBOL_Keyword RD = new COBOL_Keyword("RD");
 		public COBOL_Report_Definition reportName;
 		public TokenList<COBOL_ReportDescriptionEntry> descriptionEntries;
-		public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot;
 		
 		public static class COBOL_ReportDescriptionEntry extends TokenChooser
 		{
@@ -78,7 +78,7 @@ public class COBOL_ReportEntry extends TokenSequence
 		public COBOL_Keyword TYPE = new COBOL_Keyword("TYPE");
 		public COBOL_Keyword IS = new COBOL_Keyword("IS");
 		public COBOL_ReportDataLineType lineType;
-		public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot;
 		
 		public TokenList<COBOL_ReportLine> reportLines;
 		
@@ -133,7 +133,7 @@ public class COBOL_ReportEntry extends TokenSequence
  			public @OPT COBOL_Keyword IS = new COBOL_Keyword("IS");
  			public @OPT COBOL_Keyword PLUS = new COBOL_Keyword("PLUS");
 			public @OPT COBOL_Number line;
- 			public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+ 			public PunctuationPeriod dot;
  			
  			public TokenList<COBOL_ColumnLine> columnLines;
  			
@@ -147,7 +147,7 @@ public class COBOL_ReportEntry extends TokenSequence
  				public COBOL_KeywordChoice pic = new COBOL_KeywordChoice("PIC", "PICTURE");
  				public COBOL_Picture picture;
  				public TokenList<COBOL_ColumnLineClause> columnClauses;
- 				public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+ 				public PunctuationPeriod dot;
  	 			
  	 			public static class COBOL_ColumnLineClause extends TokenChooser
  	 			{

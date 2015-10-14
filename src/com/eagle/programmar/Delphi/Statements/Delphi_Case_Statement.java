@@ -6,9 +6,10 @@ package com.eagle.programmar.Delphi.Statements;
 import com.eagle.programmar.Delphi.Delphi_Expression;
 import com.eagle.programmar.Delphi.Delphi_Statement;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Keyword;
-import com.eagle.programmar.Delphi.Terminals.Delphi_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Delphi_Case_Statement extends TokenSequence
 {
@@ -21,8 +22,8 @@ public class Delphi_Case_Statement extends TokenSequence
 	public static class Delphi_CaseClause extends TokenSequence
 	{
 		public Delphi_Expression expr;
-		public Delphi_Punctuation colon = new Delphi_Punctuation(':');
+		public PunctuationColon colon;
 		public Delphi_Statement stmt;
-		public Delphi_Punctuation semicolon = new Delphi_Punctuation(';');
+		public PunctuationSemicolon semicolon;
 	}
 }

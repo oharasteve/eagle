@@ -11,6 +11,7 @@ import com.eagle.programmar.HTML.Terminals.HTML_PunctuationChoice;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
 
 public class HTML_Tag extends TokenSequence
 {
@@ -36,7 +37,7 @@ public class HTML_Tag extends TokenSequence
 	public static class HTML_Tag_Namespace extends TokenSequence
 	{
 		public HTML_Identifier ns;
-		public HTML_Punctuation colon = new HTML_Punctuation(':');
+		public PunctuationColon colon;
 	}
 	
 	public static class HTML_EndTag extends TokenSequence

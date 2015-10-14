@@ -21,12 +21,12 @@ import com.eagle.programmar.Delphi.Statements.Delphi_While_Statement;
 import com.eagle.programmar.Delphi.Statements.Delphi_With_Statement;
 import com.eagle.programmar.Delphi.Statements.Delphi_Write_Statement;
 import com.eagle.programmar.Delphi.Statements.Delphi_Writeln_Statement;
-import com.eagle.programmar.Delphi.Terminals.Delphi_Punctuation;
 import com.eagle.tokens.TokenChooser;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Delphi_Statement extends TokenChooser
 {
-	public Delphi_Punctuation semicolon = new Delphi_Punctuation(';');
+	public PunctuationSemicolon semicolon;
 	
 	public Delphi_Assignment assignment;
 	public Delphi_BeginEnd beginEnd;

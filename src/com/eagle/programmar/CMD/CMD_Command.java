@@ -37,6 +37,8 @@ import com.eagle.programmar.CMD.Terminals.CMD_PunctuationChoice;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class CMD_Command extends TokenSequence
 {
@@ -63,10 +65,10 @@ public class CMD_Command extends TokenSequence
 
 		public static class CMD_BlockStatement extends TokenSequence
 		{
-			public CMD_Punctuation leftParen = new CMD_Punctuation('(');
+			public PunctuationLeftParen leftParen;
 			public CMD_EndOfLine eoln;
 			public TokenList<CMD_CommandOrLabel> commands;
-			public CMD_Punctuation righParen = new CMD_Punctuation(')');
+			public PunctuationRightParen rightParen;
 			public @OPT CMD_IfElse ifElse;
 			
 			public static class CMD_CommandOrLabel extends TokenChooser

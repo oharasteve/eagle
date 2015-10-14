@@ -8,9 +8,10 @@ import com.eagle.programmar.CSharp.CSharp_Method.CSharp_MethodModifiers;
 import com.eagle.programmar.CSharp.CSharp_Method.CSharp_MethodParameter;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Comment;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Keyword;
-import com.eagle.programmar.CSharp.Terminals.CSharp_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
 
 public class CSharp_SubscriptOperator extends TokenSequence
 {
@@ -19,8 +20,8 @@ public class CSharp_SubscriptOperator extends TokenSequence
 	public @OPT @NEWLINE TokenList<CSharp_MethodModifiers> modifiers;
 	public CSharp_Type returnType;
 	public CSharp_Keyword THIS = new CSharp_Keyword("this");
-	public CSharp_Punctuation leftBracket = new CSharp_Punctuation('[');
+	public PunctuationLeftBracket leftBracket;
 	public CSharp_MethodParameter parameter;
-	public CSharp_Punctuation rightBracket = new CSharp_Punctuation(']');
+	public PunctuationRightBracket rightBracket;
 	public CSharp_MethodImplementation implementation;
 }

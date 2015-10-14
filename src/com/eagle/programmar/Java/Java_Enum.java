@@ -10,10 +10,16 @@ import com.eagle.programmar.Java.Java_Enum.Java_EnumDeclarations.Java_EnumClassB
 import com.eagle.programmar.Java.Symbols.Java_Variable_Definition;
 import com.eagle.programmar.Java.Terminals.Java_Comment;
 import com.eagle.programmar.Java.Terminals.Java_Keyword;
-import com.eagle.programmar.Java.Terminals.Java_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Java_Enum extends TokenSequence
 {
@@ -22,19 +28,19 @@ public class Java_Enum extends TokenSequence
 	public Java_Keyword ENUM = new Java_Keyword("enum");
 	public Java_Variable_Definition id;
 	public @OPT Java_ClassImplements implement;
-	public @INDENT Java_Punctuation leftBrace = new Java_Punctuation('{');
+	public @INDENT PunctuationLeftBrace leftBrace;
 	public @OPT Java_Comment comment1;
 
 	public @OPT Java_EnumConstants constants;
-	public @OPT Java_Punctuation comma = new Java_Punctuation(',');
+	public @OPT PunctuationComma comma;
 	public @OPT TokenList<Java_Comment> comment2;
 	public @OPT Java_EnumDeclarations declarations;
 	public @OPT TokenList<Java_Comment> comment3;
 	
-	public @OPT Java_Punctuation semicolon1 = new Java_Punctuation(';');
-	public @OUTDENT Java_Punctuation rightBrace = new Java_Punctuation('}');
+	public @OPT PunctuationSemicolon semicolon1;
+	public @OUTDENT PunctuationRightBrace rightBrace;
 	public @OPT TokenList<Java_Comment> comment4;
-	public @OPT @NOSPACE @CURIOUS("Extra semicolon") Java_Punctuation semicolon2 = new Java_Punctuation(';');
+	public @OPT @NOSPACE @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon2;
 	
 	public static class Java_EnumConstants extends TokenSequence
 	{
@@ -44,7 +50,7 @@ public class Java_Enum extends TokenSequence
 		
 		public static class Java_MoreEnumConstants extends TokenSequence
 		{
-			public @NOSPACE Java_Punctuation comma = new Java_Punctuation(',');
+			public @NOSPACE PunctuationComma comma;
 			public @OPT TokenList<Java_Comment> comments;
 			public Java_EnumConstant constant;
 		}
@@ -59,15 +65,15 @@ public class Java_Enum extends TokenSequence
 		
 		public static class Java_EnumClassBody extends TokenSequence
 		{
-			public @INDENT Java_Punctuation leftBrace = new Java_Punctuation('{');
+			public @INDENT PunctuationLeftBrace leftBrace;
 			public @OPT TokenList<Java_EnumClassBodyDeclaration> declarations;
-			public @OUTDENT Java_Punctuation rightBrace = new Java_Punctuation('}');
+			public @OUTDENT PunctuationRightBrace rightBrace;
 		}
 	}
 	
 	public static class Java_EnumDeclarations extends TokenSequence
 	{
-		public @NOSPACE Java_Punctuation semicolon = new Java_Punctuation(';');
+		public @NOSPACE PunctuationSemicolon semicolon;
 		public TokenList<Java_EnumClassBodyDeclaration> body;
 		
 		public static class Java_EnumClassBodyDeclaration extends TokenChooser
@@ -78,15 +84,8 @@ public class Java_Enum extends TokenSequence
 	
 	public static class Java_EnumInitializer extends TokenSequence
 	{
-		public Java_Punctuation leftParen = new Java_Punctuation('(');
-		public @OPT Java_Expression expr;
-		public @OPT TokenList<Java_EnumMoreInitializers> moreInits;
-		public Java_Punctuation rightParen = new Java_Punctuation(')');
-		
-		public static class Java_EnumMoreInitializers extends TokenSequence
-		{
-			public @NOSPACE Java_Punctuation comma = new Java_Punctuation(',');
-			public Java_Expression expr;
-		}
+		public PunctuationLeftParen leftParen;
+		public @OPT SeparatedList<Java_Expression,PunctuationComma> exprs;
+		public PunctuationRightParen rightParen;
 	}
 }

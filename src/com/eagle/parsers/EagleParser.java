@@ -15,7 +15,7 @@ public class EagleParser
 		return false;
 	}
 	
-	public boolean quickParse(String fileName, EagleFileReader lines, AbstractToken token)
+	public boolean quickParse(String fileName, EagleFileReader lines, EagleLanguage lang, AbstractToken token)
 	{
 		return false;
 	}

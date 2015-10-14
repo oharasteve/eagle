@@ -9,10 +9,10 @@ import com.eagle.programmar.COBOL.Symbols.COBOL_Identifier_Reference;
 import com.eagle.programmar.COBOL.Terminals.COBOL_HexNumber;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Literal;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class COBOL_StringStatement extends COBOL_AbstractStatement
 {
@@ -46,7 +46,7 @@ public class COBOL_StringStatement extends COBOL_AbstractStatement
 
 	public static class COBOL_StringPiece extends TokenSequence
 	{
-		public @OPT COBOL_Punctuation comma = new COBOL_Punctuation(',');
+		public @OPT PunctuationComma comma;
 		public COBOL_Identifier_Reference intoVar;
 		public @OPT COBOL_StringCount count;
 		

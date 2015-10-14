@@ -6,9 +6,13 @@ package com.eagle.programmar.Java;
 import com.eagle.programmar.Java.Terminals.Java_Comment;
 import com.eagle.programmar.Java.Terminals.Java_Identifier;
 import com.eagle.programmar.Java.Terminals.Java_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Java_Annotation extends TokenChooser
 {
@@ -16,16 +20,9 @@ public class Java_Annotation extends TokenChooser
 	{
 		public Java_Punctuation atSign = new Java_Punctuation('@');
 		public Java_Variable var;
-		public Java_Punctuation leftParen = new Java_Punctuation('(');
-		public @OPT Java_Expression expr;
-		public @OPT TokenList<Java_MoreAnnotationExpressions> moreExpressions;
-		public Java_Punctuation rightParen = new Java_Punctuation(')');
-	}
-	
-	public static class Java_MoreAnnotationExpressions extends TokenSequence
-	{
-		public Java_Punctuation comma = new Java_Punctuation(',');
-		public Java_Expression expr;
+		public PunctuationLeftParen leftParen;
+		public @OPT SeparatedList<Java_Expression, PunctuationComma> expressions;
+		public PunctuationRightParen rightParen;
 	}
 	
 	public static class Java_AnnotationCall2 extends TokenSequence

@@ -7,10 +7,10 @@ import com.eagle.programmar.EagleLanguage;
 import com.eagle.programmar.EagleSyntax;
 import com.eagle.programmar.C.C_Type.C_TypeBase.C_TypeEnum;
 import com.eagle.programmar.C.Terminals.C_Comment;
-import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class C_Program extends EagleLanguage
 {
@@ -92,7 +92,7 @@ public class C_Program extends EagleLanguage
 		public static class C_Enum extends TokenSequence
 		{
 			public C_TypeEnum cenum;
-			public C_Punctuation semicolon = new C_Punctuation(';');
+			public PunctuationSemicolon semicolon;
 		}
 	}
 }

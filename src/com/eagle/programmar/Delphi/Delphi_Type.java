@@ -9,9 +9,18 @@ import com.eagle.programmar.Delphi.Terminals.Delphi_Keyword;
 import com.eagle.programmar.Delphi.Terminals.Delphi_KeywordChoice;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Number;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Delphi_Type extends TokenChooser
 {
@@ -23,22 +32,15 @@ public class Delphi_Type extends TokenChooser
 	
 	public static class Delphi_Enum extends TokenSequence
 	{
-		public Delphi_Punctuation leftParen = new Delphi_Punctuation('(');
-		public Delphi_EnumValue enumValue;
-		public @OPT TokenList<Delphi_MoreEnums> moreEnums;
-		public Delphi_Punctuation rightParen = new Delphi_Punctuation(')');
+		public PunctuationLeftParen leftParen;
+		public SeparatedList<Delphi_EnumValue,PunctuationComma> enumValues;
+		public PunctuationRightParen rightParen;
 		
 		public static class Delphi_EnumValue extends TokenSequence
 		{
 			public Delphi_Variable_Definition name;
-			public Delphi_Punctuation equals = new Delphi_Punctuation('=');
+			public PunctuationEquals equals;
 			public Delphi_Expression value;
-		}
-		
-		public static class Delphi_MoreEnums extends TokenSequence
-		{
-			public Delphi_Punctuation comma = new Delphi_Punctuation(',');
-			public Delphi_EnumValue enumValue;
 		}
 	}
 	
@@ -51,11 +53,11 @@ public class Delphi_Type extends TokenChooser
 		
 		public static class Delphi_ArraySize extends TokenSequence
 		{
-			public Delphi_Punctuation leftBracket = new Delphi_Punctuation('[');
+			public PunctuationLeftBracket leftBracket;
 			public Delphi_Expression lowSubscript;
 			public Delphi_Punctuation dotDot = new Delphi_Punctuation("..");
 			public Delphi_Expression highSubscript;
-			public Delphi_Punctuation rightBracket = new Delphi_Punctuation(']');
+			public PunctuationRightBracket rightBracket;
 		}
 	}
 	
@@ -74,17 +76,10 @@ public class Delphi_Type extends TokenChooser
 
 		public static class Delphi_RecordEntry extends TokenSequence
 		{
-			public Delphi_Variable_Definition var;
-			public @OPT TokenList<Delphi_MoreVars> more;
-			public Delphi_Punctuation colon = new Delphi_Punctuation(':');
+			public SeparatedList<Delphi_Variable_Definition,PunctuationComma> vars;
+			public PunctuationColon colon;
 			public Delphi_Type type;
-			public Delphi_Punctuation semicolon = new Delphi_Punctuation(';');
-			
-			public static class Delphi_MoreVars extends TokenSequence
-			{
-				public Delphi_Punctuation comma = new Delphi_Punctuation(',');
-				public Delphi_Variable_Definition var;
-			}
+			public PunctuationSemicolon semicolon;
 		}
 	}
 }

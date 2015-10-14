@@ -12,6 +12,11 @@ import com.eagle.programmar.Perl.Terminals.Perl_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Perl_FunctionDefinition extends TokenSequence
 {
@@ -28,16 +33,16 @@ public class Perl_FunctionDefinition extends TokenSequence
 
 	public static class Perl_FunctionBlock extends TokenChooser
 	{
-		public Perl_Punctuation semicolon = new Perl_Punctuation(';');
+		public PunctuationSemicolon semicolon;
 		public Perl_StatementBlock block;
 	}
 	
 	public static class Perl_Function_Parameters extends TokenSequence
 	{
-		public Perl_Punctuation leftParen = new Perl_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public @OPT Perl_FunctionVariableOrTypeVariable var;
 		public @OPT TokenList<Perl_MoreParameters> moreParams;
-		public Perl_Punctuation rightParen = new Perl_Punctuation(')');
+		public PunctuationRightParen rightParen;
 
 		public static class Perl_FunctionVariableOrTypeVariable extends TokenChooser
 		{
@@ -59,14 +64,14 @@ public class Perl_FunctionDefinition extends TokenSequence
 			
 			public static class Perl_Variable_Initializer extends TokenSequence
 			{
-				public Perl_Punctuation equals = new Perl_Punctuation('=');
+				public PunctuationEquals equals;
 				public Perl_Expression initVal;
 			}
 		}
 		
 		public static class Perl_MoreParameters extends TokenSequence
 		{
-			public Perl_Punctuation comma = new Perl_Punctuation(',');
+			public PunctuationComma comma;
 			public Perl_FunctionVariableOrTypeVariable var;
 		}
 	}

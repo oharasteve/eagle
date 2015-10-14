@@ -7,9 +7,11 @@ import com.eagle.programmar.Natural.Natural_Expression;
 import com.eagle.programmar.Natural.Natural_Variable;
 import com.eagle.programmar.Natural.Terminals.Natural_EditMask;
 import com.eagle.programmar.Natural.Terminals.Natural_Keyword;
-import com.eagle.programmar.Natural.Terminals.Natural_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Natural_MoveStatement extends TokenSequence
 {
@@ -22,10 +24,10 @@ public class Natural_MoveStatement extends TokenSequence
 	
 	public static class Natural_MoveMask extends TokenSequence
 	{
-		public Natural_Punctuation leftParen = new Natural_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public Natural_Keyword EM = new Natural_Keyword("EM");
-		public Natural_Punctuation equals = new Natural_Punctuation('=');
+		public PunctuationEquals equals;
 		public Natural_EditMask mask;
-		public Natural_Punctuation rightParen = new Natural_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 }

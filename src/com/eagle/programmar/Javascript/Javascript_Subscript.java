@@ -3,12 +3,13 @@
 
 package com.eagle.programmar.Javascript;
 
-import com.eagle.programmar.Javascript.Terminals.Javascript_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
 
 public class Javascript_Subscript extends TokenSequence
 {
-	public @NOSPACE Javascript_Punctuation leftBracket = new Javascript_Punctuation('[');
+	public @NOSPACE PunctuationLeftBracket leftBracket;
 	public @NOSPACE Javascript_Expression expr;
-	public @NOSPACE Javascript_Punctuation rightBracket = new Javascript_Punctuation(']');
+	public @NOSPACE PunctuationRightBracket rightBracket;
 }

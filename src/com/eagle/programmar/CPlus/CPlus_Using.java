@@ -5,13 +5,13 @@ package com.eagle.programmar.CPlus;
 
 import com.eagle.programmar.C.C_Expression;
 import com.eagle.programmar.C.Terminals.C_Keyword;
-import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class CPlus_Using extends TokenSequence
 {
 	public C_Keyword USING = new C_Keyword("using");
 	public @OPT C_Keyword NAMESPACE = new C_Keyword("namespace");
 	public C_Expression what;
-	public C_Punctuation semicolon = new C_Punctuation(';');
+	public PunctuationSemicolon semicolon;
 }

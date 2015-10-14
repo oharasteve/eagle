@@ -11,6 +11,7 @@ import com.eagle.programmar.PHP.PHP_Program.PHP_Entry;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
 
 public class HTML_Anchor extends TokenChooser
 {
@@ -42,7 +43,7 @@ public class HTML_Anchor extends TokenChooser
 		public @INDENT HTML_Punctuation startTagA = new HTML_Punctuation('<');
 		public @NOSPACE HTML_Keyword A = new HTML_Keyword("a");
 		public HTML_Keyword NAME = new HTML_Keyword("name");
-		public @NOSPACE HTML_Punctuation equals = new HTML_Punctuation('=');
+		public @NOSPACE PunctuationEquals equals;
 		public @NOSPACE HTML_Value value;
 		public @NOSPACE HTML_Punctuation endTagA = new HTML_Punctuation("/>");
 		public @OPT HTML_WithEndAnchor endAnchorName;

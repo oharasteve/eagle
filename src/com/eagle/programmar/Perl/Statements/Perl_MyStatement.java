@@ -6,10 +6,13 @@ package com.eagle.programmar.Perl.Statements;
 import com.eagle.programmar.Perl.Perl_Expression;
 import com.eagle.programmar.Perl.Perl_Variable;
 import com.eagle.programmar.Perl.Terminals.Perl_Keyword;
-import com.eagle.programmar.Perl.Terminals.Perl_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
-import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Perl_MyStatement extends TokenSequence
 {
@@ -26,22 +29,15 @@ public class Perl_MyStatement extends TokenSequence
 		
 		public static class Perl_MyMany extends TokenSequence
 		{
-			public Perl_Punctuation leftParen = new Perl_Punctuation('(');
-			public Perl_Variable var;
-			public @OPT TokenList<Perl_MoreMys> moreMys;
-			public Perl_Punctuation rightParen = new Perl_Punctuation(')');
-			
-			public static class Perl_MoreMys extends TokenSequence
-			{
-				public Perl_Punctuation comma = new Perl_Punctuation(',');
-				public Perl_Variable var;
-			}
+			public PunctuationLeftParen leftParen;
+			public SeparatedList<Perl_Variable,PunctuationComma> vars;
+			public PunctuationRightParen rightParen;
 		}
 	}
 	
 	public static class Perl_MyEquals extends TokenSequence
 	{
-		public Perl_Punctuation equals = new Perl_Punctuation('=');
+		public PunctuationEquals equals;
 		public Perl_Expression expression;
 	}
 }

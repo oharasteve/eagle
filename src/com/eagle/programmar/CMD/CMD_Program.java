@@ -7,10 +7,10 @@ import com.eagle.programmar.EagleLanguage;
 import com.eagle.programmar.CMD.Statements.CMD_Unparsed_Statement;
 import com.eagle.programmar.CMD.Symbols.CMD_Label_Definition;
 import com.eagle.programmar.CMD.Terminals.CMD_EndOfLine;
-import com.eagle.programmar.CMD.Terminals.CMD_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
 
 public class CMD_Program extends EagleLanguage
 {
@@ -38,7 +38,7 @@ public class CMD_Program extends EagleLanguage
 	
 	public @SKIP static class CMD_Label extends TokenSequence
 	{
-		public CMD_Punctuation colon = new CMD_Punctuation(':');
+		public PunctuationColon colon;
 		public CMD_Label_Definition label;
 		public CMD_EndOfLine eoln;
 	}

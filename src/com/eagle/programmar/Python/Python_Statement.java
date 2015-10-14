@@ -28,31 +28,26 @@ import com.eagle.programmar.Python.Statements.Python_WithStatement;
 import com.eagle.programmar.Python.Statements.Python_YieldStatement;
 import com.eagle.programmar.Python.Terminals.Python_Comment;
 import com.eagle.programmar.Python.Terminals.Python_EndOfLine;
-import com.eagle.programmar.Python.Terminals.Python_Punctuation;
 import com.eagle.programmar.Python.Terminals.Python_StartOfLine;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Python_Statement extends TokenSequence
 {
 	public @OPT Python_EndOfLine eoln1;
 	public Python_Compound_Statement statement;
-	public @OPT @CURIOUS("Extra semicolon") Python_Punctuation semicolon = new Python_Punctuation(';');
-	public @OPT @CURIOUS("Extra comma") Python_Punctuation comma = new Python_Punctuation(',');
+	public @OPT @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon;
+	public @OPT @CURIOUS("Extra comma") PunctuationComma comma;
 	public @OPT Python_Comment comment;
 	public @OPT TokenList<Python_EndOfLine> eoln2;
 	
 	public static class Python_Compound_Statement extends TokenSequence
 	{
-		public Python_Simple_Statement statement;
-		public @OPT TokenList<Python_MoreStatements> moreStatements;
-		
-		public static class Python_MoreStatements extends TokenSequence
-		{
-			public Python_Punctuation semicolon = new Python_Punctuation(';');
-			public Python_Simple_Statement statement;
-		}
+		public SeparatedList<Python_Simple_Statement,PunctuationSemicolon> statements;
 	}
 	
 	public static class Python_Simple_Statement extends TokenChooser
@@ -114,13 +109,6 @@ public class Python_Statement extends TokenSequence
 	
 	public static class Python_Statement_List extends TokenSequence
 	{
-		public Python_Statement_Choices statement;
-		public @OPT TokenList<Python_Next_Statement> next;
-		
-		public static class Python_Next_Statement extends TokenSequence
-		{
-			public Python_Punctuation semicolon = new Python_Punctuation(';');
-			public Python_Statement_Choices statement;
-		}
+		public SeparatedList<Python_Statement_Choices,PunctuationSemicolon> statements;
 	}
 }

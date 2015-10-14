@@ -4,10 +4,12 @@
 package com.eagle.programmar.Delphi;
 
 import com.eagle.programmar.Delphi.Symbols.Delphi_Identifier_Reference;
-import com.eagle.programmar.Delphi.Terminals.Delphi_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
 
 public class Delphi_Variable extends TokenSequence
 {
@@ -18,15 +20,15 @@ public class Delphi_Variable extends TokenSequence
 	{
 		public static class Delphi_DotName extends TokenSequence
 		{
-			public Delphi_Punctuation dot = new Delphi_Punctuation('.');
+			public PunctuationPeriod dot;
 			public Delphi_Identifier_Reference var;
 		}
 	
 		public static class Delphi_Subscript extends TokenSequence
 		{
-			public Delphi_Punctuation leftBracket = new Delphi_Punctuation('[');
+			public PunctuationLeftBracket leftBracket;
 			public Delphi_Expression expr;
-			public Delphi_Punctuation rightBracket = new Delphi_Punctuation(']');
+			public PunctuationRightBracket rightBracket;
 		}
 	}
 }

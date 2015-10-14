@@ -10,23 +10,18 @@ import com.eagle.programmar.AWK.Statements.AWK_SplitStatement;
 import com.eagle.programmar.AWK.Statements.AWK_SubStatement;
 import com.eagle.programmar.AWK.Terminals.AWK_Comment;
 import com.eagle.programmar.AWK.Terminals.AWK_EndOfLine;
-import com.eagle.programmar.AWK.Terminals.AWK_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class AWK_Statements extends TokenSequence
 {
-	public AWK_Statement statement;
-	public @OPT TokenList<AWK_MoreStatements> more;
+	public SeparatedList<AWK_Statement,PunctuationSemicolon> statements;
+	public @OPT PunctuationSemicolon semicolon;
 	public @OPT AWK_Comment comment;
 	public @OPT TokenList<AWK_EndOfLine> newlines;
-	
-	public static class AWK_MoreStatements extends TokenSequence
-	{
-		public AWK_Punctuation semicolon = new AWK_Punctuation(';');
-		@OPT public AWK_Statement statement;
-	}
 	
 	public static class AWK_Statement extends TokenChooser
 	{

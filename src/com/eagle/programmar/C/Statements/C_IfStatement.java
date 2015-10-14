@@ -7,16 +7,17 @@ import com.eagle.programmar.C.C_Expression;
 import com.eagle.programmar.C.C_Statement;
 import com.eagle.programmar.C.Terminals.C_Comment;
 import com.eagle.programmar.C.Terminals.C_Keyword;
-import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class C_IfStatement extends TokenSequence
 {
 	public @DOC("#The-if-Statement") C_Keyword IF = new C_Keyword("if");
-	public C_Punctuation leftParen = new C_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public C_Expression condition;
-	public C_Punctuation rightParen = new C_Punctuation(')');
+	public PunctuationRightParen rightParen;
 	public @OPT TokenList<C_Comment> comments;
 	public C_Statement thenStatement;
 	public @OPT C_IfElseClause elseClause;

@@ -5,15 +5,17 @@ package com.eagle.programmar.CMD.Statements;
 
 import com.eagle.programmar.CMD.Terminals.CMD_Argument;
 import com.eagle.programmar.CMD.Terminals.CMD_Keyword;
-import com.eagle.programmar.CMD.Terminals.CMD_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationHyphen;
+import com.eagle.tokens.punctuation.PunctuationSlash;
 
 public class CMD_Call_Statement extends TokenSequence
 {
 	public @DOC("call.mspx") CMD_Keyword CALL = new CMD_Keyword("call");
-	public @OPT CMD_Punctuation colon = new CMD_Punctuation(':');
+	public @OPT PunctuationColon colon;
 	public CMD_Argument what;
 	public @OPT TokenList<CMD_Call_Parameter> args;
 
@@ -23,13 +25,13 @@ public class CMD_Call_Statement extends TokenSequence
 		
 		public static class CMD_Call_Minus_Option extends TokenSequence
 		{
-			public CMD_Punctuation minus = new CMD_Punctuation('-');
+			public PunctuationHyphen minus;
 			public CMD_Argument option;
 		}
 		
 		public static class CMD_Call_Slash_Option extends TokenSequence
 		{
-			public CMD_Punctuation slash = new CMD_Punctuation('/');
+			public PunctuationSlash slash;
 			public CMD_Argument option;
 		}
 	}

@@ -9,10 +9,10 @@ import com.eagle.programmar.COBOL.Terminals.COBOL_Comment;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
 import com.eagle.programmar.COBOL.Terminals.COBOL_KeywordChoice;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Literal;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
 
 public class COBOL_DataDivision extends TokenSequence
 {
@@ -23,7 +23,7 @@ public class COBOL_DataDivision extends TokenSequence
 	{
 		public COBOL_Keyword DATA = new COBOL_Keyword("DATA");
 		public COBOL_Keyword DIVISION = new COBOL_Keyword("DIVISION");
-		public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot;
 	}
 
 	public static class COBOL_DataSection extends TokenChooser
@@ -41,7 +41,7 @@ public class COBOL_DataDivision extends TokenSequence
 	{
 		public COBOL_Keyword FILE = new COBOL_Keyword("FILE");
 		public COBOL_Keyword SECTION = new COBOL_Keyword("SECTION");
-		public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot;
 		public TokenList<COBOL_Copy_or_FileDescriptor> fileDescriptors;
 	}
 	
@@ -61,7 +61,7 @@ public class COBOL_DataDivision extends TokenSequence
 			public @OPT COBOL_FD_LabelRecordStandard labelRecordStandard;
 			public @OPT COBOL_FD_LabelRecordOmitted labelRecordOmitted;
 			public @OPT COBOL_FD_RecordingMode recordingMode;
-			public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+			public PunctuationPeriod dot;
 			public @OPT TokenList<COBOL_CopyOrDataDeclaration> dataDeclarations;
 			
 			public static class COBOL_FD_LabelRecordStandard extends TokenSequence
@@ -114,7 +114,7 @@ public class COBOL_DataDivision extends TokenSequence
 	{
 		public COBOL_Keyword WORKINGSTORAGE = new COBOL_Keyword("WORKING-STORAGE");
 		public COBOL_Keyword SECTION = new COBOL_Keyword("SECTION");
-		public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot;
 		public TokenList<COBOL_CopyOrDataDeclaration> dataDeclarations;
 	}
 		
@@ -122,7 +122,7 @@ public class COBOL_DataDivision extends TokenSequence
 	{
 		public COBOL_Keyword LOCALSTORAGE = new COBOL_Keyword("LOCAL-STORAGE");
 		public COBOL_Keyword SECTION = new COBOL_Keyword("SECTION");
-		public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot;
 		public @OPT TokenList<COBOL_CopyOrDataDeclaration> dataDeclarations;
 	}
 		
@@ -130,7 +130,7 @@ public class COBOL_DataDivision extends TokenSequence
 	{
 		public COBOL_Keyword LINKAGE = new COBOL_Keyword("LINKAGE");
 		public COBOL_Keyword SECTION = new COBOL_Keyword("SECTION");
-		public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot;
 		public TokenList<COBOL_CopyOrDataDeclaration> dataDeclarations;
 	}
 	
@@ -138,7 +138,7 @@ public class COBOL_DataDivision extends TokenSequence
 	{
 		public COBOL_Keyword REPORT = new COBOL_Keyword("REPORT");
 		public COBOL_Keyword SECTION = new COBOL_Keyword("SECTION");
-		public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot;
 		public TokenList<COBOL_ReportEntry> reportEntries;
 	}
 	

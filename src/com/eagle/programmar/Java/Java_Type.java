@@ -10,6 +10,10 @@ import com.eagle.programmar.Java.Terminals.Java_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
 
 public class Java_Type extends TokenSequence
 {
@@ -20,8 +24,8 @@ public class Java_Type extends TokenSequence
 	
 	public static class Java_ArrayType extends TokenSequence
 	{
-		public @NOSPACE Java_Punctuation leftBracket = new Java_Punctuation('[');
-		public @NOSPACE Java_Punctuation rightBracket = new Java_Punctuation(']');
+		public @NOSPACE PunctuationLeftBracket leftBracket;
+		public @NOSPACE PunctuationRightBracket rightBracket;
 	}
 	
 	public static class Java_GenericType extends TokenSequence
@@ -34,7 +38,7 @@ public class Java_Type extends TokenSequence
 		
 		public static class Java_MoreTypes extends TokenSequence
 		{
-			public Java_Punctuation comma = new Java_Punctuation(',');
+			public PunctuationComma comma;
 			public Java_Type subType2;
 		}
 	}
@@ -51,7 +55,7 @@ public class Java_Type extends TokenSequence
 			
 			public static class Java_MoreIds extends TokenSequence
 			{
-				public @NOSPACE Java_Punctuation dot = new Java_Punctuation('.');
+				public @NOSPACE PunctuationPeriod dot;
 				public @NOSPACE Java_TypeName nextId;
 			}
 			

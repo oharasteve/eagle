@@ -5,9 +5,11 @@ package com.eagle.programmar.Javascript;
 
 import com.eagle.programmar.Javascript.Symbols.Javascript_Variable_Definition;
 import com.eagle.programmar.Javascript.Terminals.Javascript_Comment;
-import com.eagle.programmar.Javascript.Terminals.Javascript_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Javascript_Data extends TokenSequence
 {
@@ -15,17 +17,17 @@ public class Javascript_Data extends TokenSequence
 	public Javascript_Variable_Definition var;
 	public @OPT Javascript_InitData init;
 	public @OPT TokenList<Javascript_More_Variables> moreVars;
-	public @OPT @NOSPACE Javascript_Punctuation semicolon = new Javascript_Punctuation(';');
+	public @OPT @NOSPACE PunctuationSemicolon semicolon;
 	
 	public static class Javascript_InitData extends TokenSequence
 	{
-		public Javascript_Punctuation equals = new Javascript_Punctuation('=');
+		public PunctuationEquals equals;
 		public Javascript_Expression expr;
 	}
 	
 	public static class Javascript_More_Variables extends TokenSequence
 	{
-		public @NOSPACE Javascript_Punctuation comma = new Javascript_Punctuation(',');
+		public @NOSPACE PunctuationComma comma;
 		public @OPT TokenList<Javascript_Comment> comments;
 		public Javascript_Variable_Definition var;
 		public @OPT Javascript_InitData init;

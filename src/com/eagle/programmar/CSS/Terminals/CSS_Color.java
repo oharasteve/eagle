@@ -6,6 +6,9 @@ package com.eagle.programmar.CSS.Terminals;
 import com.eagle.programmar.CSS.CSS_Value.CSS_NumericValue;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class CSS_Color extends TokenChooser
 {
@@ -32,42 +35,42 @@ public class CSS_Color extends TokenChooser
 	public static class CSS_RGB_Value extends TokenSequence
 	{
 		public CSS_Keyword RGB = new CSS_Keyword("rgb");
-		public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public @NOSPACE CSS_Number red;
-		public @NOSPACE CSS_Punctuation comma1 = new CSS_Punctuation(',');
+		public @NOSPACE PunctuationComma comma1;
 		public CSS_Number green;
-		public @NOSPACE CSS_Punctuation comma2 = new CSS_Punctuation(',');
+		public @NOSPACE PunctuationComma comma2;
 		public CSS_Number blue;
-		public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 	}
 	
 	public static class CSS_RGBA_Value extends TokenSequence
 	{
 		public CSS_Keyword RGBA = new CSS_Keyword("rgba");
-		public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public @NOSPACE CSS_Number red;
-		public @NOSPACE CSS_Punctuation comma1 = new CSS_Punctuation(',');
+		public @NOSPACE PunctuationComma comma1;
 		public CSS_Number green;
-		public @NOSPACE CSS_Punctuation comma2 = new CSS_Punctuation(',');
+		public @NOSPACE PunctuationComma comma2;
 		public CSS_Number blue;
-		public @NOSPACE CSS_Punctuation comma3 = new CSS_Punctuation(',');
+		public @NOSPACE PunctuationComma comma3;
 		public CSS_Number alpha;
-		public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 		public @OPT CSS_NumericValue percentage;
 	}
 	
 	public static class CSS_HSL_Value extends TokenSequence
 	{
 		public CSS_Keyword HSL = new CSS_Keyword("hsl");
-		public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public @NOSPACE CSS_Number hue;
-		public @NOSPACE CSS_Punctuation comma1 = new CSS_Punctuation(',');
+		public @NOSPACE PunctuationComma comma1;
 		public CSS_Number saturation;
 		public @OPT CSS_Punctuation pct1 = new CSS_Punctuation('%');
-		public @NOSPACE CSS_Punctuation comma2 = new CSS_Punctuation(',');
+		public @NOSPACE PunctuationComma comma2;
 		public CSS_Number luminosity;
 		public @OPT CSS_Punctuation pct2 = new CSS_Punctuation('%');
-		public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 	}
 	
 	public static class CSS_Transparent extends TokenSequence

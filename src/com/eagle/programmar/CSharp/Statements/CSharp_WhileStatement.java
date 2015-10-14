@@ -7,15 +7,16 @@ import com.eagle.programmar.CSharp.CSharp_Expression;
 import com.eagle.programmar.CSharp.CSharp_Statement;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Comment;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Keyword;
-import com.eagle.programmar.CSharp.Terminals.CSharp_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class CSharp_WhileStatement extends TokenSequence
 {
 	public @NEWLINE @DOC("statements.html#14.12") CSharp_Keyword WHILE = new CSharp_Keyword("while");
-	public CSharp_Punctuation leftParen = new CSharp_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public @NOSPACE CSharp_Expression condition;
-	public @NOSPACE CSharp_Punctuation rightParen = new CSharp_Punctuation(')');
+	public @NOSPACE PunctuationRightParen rightParen;
 	public @OPT CSharp_Comment comment;
 	public CSharp_Statement whileStatement;
 }

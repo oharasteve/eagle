@@ -32,6 +32,11 @@
     @xcopy %XOPTS% "%SVN%\Tools\src\com\eagle\preprocess\%%i.java" "%GIT%\src\com\eagle\preprocess\" | %FILTER%
 )
 
+@%ECHOREM% Copying src\com\eagle\preprocess\C
+@for %%i in ( CMacro_Preprocess ) do @(
+    @xcopy %XOPTS% "%SVN%\Tools\src\com\eagle\preprocess\C\%%i.java" "%GIT%\src\com\eagle\preprocess\C\" | %FILTER%
+)
+
 @%ECHOREM% Copying src\com\eagle\project
 @for %%i in ( EagleProject ProgramEntry ProjectEntry RepairFile ) do @(
     @xcopy %XOPTS% "%SVN%\Tools\src\com\eagle\project\%%i.java" "%GIT%\src\com\eagle\project\" | %FILTER%

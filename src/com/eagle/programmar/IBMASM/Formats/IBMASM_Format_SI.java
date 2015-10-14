@@ -6,9 +6,9 @@ package com.eagle.programmar.IBMASM.Formats;
 import com.eagle.programmar.IBMASM.IBMASM_Address;
 import com.eagle.programmar.IBMASM.IBMASM_Immediate;
 import com.eagle.programmar.IBMASM.Terminals.IBMASM_KeywordChoice;
-import com.eagle.programmar.IBMASM.Terminals.IBMASM_Punctuation;
 import com.eagle.programmar.IBMASM.Terminals.IBMASM_Spaces;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class IBMASM_Format_SI extends TokenSequence
 {
@@ -23,6 +23,6 @@ public class IBMASM_Format_SI extends TokenSequence
 	
 	public IBMASM_Spaces spaces;
 	public IBMASM_Address address;
-	public IBMASM_Punctuation comma2 = new IBMASM_Punctuation(',');
+	public PunctuationComma comma2;
 	public IBMASM_Immediate immediate;
 }

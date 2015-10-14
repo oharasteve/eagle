@@ -3,12 +3,13 @@
 
 package com.eagle.programmar.Perl;
 
-import com.eagle.programmar.Perl.Terminals.Perl_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
 
 public class Perl_Subscript extends TokenSequence
 {
-	public @NOSPACE Perl_Punctuation leftBracket = new Perl_Punctuation('[');
+	public @NOSPACE PunctuationLeftBracket leftBracket;
 	public @NOSPACE Perl_Expression expr;
-	public @NOSPACE Perl_Punctuation rightBracket = new Perl_Punctuation(']');
+	public @NOSPACE PunctuationRightBracket rightBracket;
 }

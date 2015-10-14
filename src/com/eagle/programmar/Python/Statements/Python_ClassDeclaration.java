@@ -11,10 +11,13 @@ import com.eagle.programmar.Python.Statements.Python_FunctionDefinition.Python_D
 import com.eagle.programmar.Python.Symbols.Python_Class_Definition;
 import com.eagle.programmar.Python.Terminals.Python_EndOfLine;
 import com.eagle.programmar.Python.Terminals.Python_Keyword;
-import com.eagle.programmar.Python.Terminals.Python_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Python_ClassDeclaration extends TokenSequence
 {
@@ -23,7 +26,7 @@ public class Python_ClassDeclaration extends TokenSequence
 	public Python_Keyword CLASS = new Python_Keyword("class");
 	public Python_Class_Definition name;
 	public @OPT Python_ClassSuper superClass;
-	public Python_Punctuation colon = new Python_Punctuation(':');
+	public PunctuationColon colon;
 	public Python_ClassType classType;
 	
 	public static class Python_ClassType extends TokenChooser
@@ -42,15 +45,15 @@ public class Python_ClassDeclaration extends TokenSequence
 	
 	public static class Python_ClassSuper extends TokenSequence
 	{
-		public Python_Punctuation leftParen = new Python_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public @OPT Python_EndOfLine eoln;
 		public @OPT Python_Type type;
 		public @OPT @SYNTAX(Python_Multiline_Syntax.class) TokenList<Python_MoreTypes> moreTypes; 
-		public Python_Punctuation rightParen = new Python_Punctuation(')');
+		public PunctuationRightParen rightParen;
 
 		public static class Python_MoreTypes extends TokenSequence
 		{
-			public Python_Punctuation comma = new Python_Punctuation(',');
+			public PunctuationComma comma;
 			public Python_Type type;
 		}
 	}

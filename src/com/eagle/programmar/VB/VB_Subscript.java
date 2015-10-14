@@ -3,20 +3,15 @@
 
 package com.eagle.programmar.VB;
 
-import com.eagle.programmar.VB.Terminals.VB_Punctuation;
-import com.eagle.tokens.TokenList;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class VB_Subscript extends TokenSequence
 {
-	public VB_Punctuation leftParen = new VB_Punctuation('(');
-	public VB_Expression expr;
-	public @OPT TokenList<VB_MoreSubscripts> moreSubscripts;
-	public VB_Punctuation rightParen = new VB_Punctuation(')');
-	
-	public static class VB_MoreSubscripts extends TokenSequence
-	{
-		public VB_Punctuation comma = new VB_Punctuation(',');
-		public VB_Expression expr;
-	}
+	public PunctuationLeftParen leftParen;
+	public SeparatedList<VB_Expression,PunctuationComma> exprs;
+	public PunctuationRightParen rightParen;
 }

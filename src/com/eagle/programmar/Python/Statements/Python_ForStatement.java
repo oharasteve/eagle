@@ -8,9 +8,9 @@ import com.eagle.programmar.Python.Python_Statement.Python_SingleOrMultiLineStat
 import com.eagle.programmar.Python.Python_VariableList;
 import com.eagle.programmar.Python.Terminals.Python_Comment;
 import com.eagle.programmar.Python.Terminals.Python_Keyword;
-import com.eagle.programmar.Python.Terminals.Python_Punctuation;
 import com.eagle.programmar.Python.Terminals.Python_StartOfLine;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
 
 public class Python_ForStatement extends TokenSequence
 {
@@ -18,7 +18,7 @@ public class Python_ForStatement extends TokenSequence
 	public Python_VariableList varList;
 	public Python_Keyword IN = new Python_Keyword("in");
 	public Python_ExpressionList expressionList;
-	public Python_Punctuation colon = new Python_Punctuation(':');
+	public PunctuationColon colon;
 	public @OPT Python_Comment comment;
 	public Python_SingleOrMultiLineStatement forType;
 	public @OPT Python_ForElse forElseStatement;
@@ -27,7 +27,7 @@ public class Python_ForStatement extends TokenSequence
 	{
 		public Python_StartOfLine soln = new Python_StartOfLine();
 		public Python_Keyword ELSE = new Python_Keyword("else");
-		public Python_Punctuation colon = new Python_Punctuation(':');
+		public PunctuationColon colon;
 		public Python_SingleOrMultiLineStatement doWhat;
 	}
 }

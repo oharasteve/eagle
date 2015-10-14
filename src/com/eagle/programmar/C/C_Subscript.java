@@ -3,12 +3,13 @@
 
 package com.eagle.programmar.C;
 
-import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
 
 public class C_Subscript extends TokenSequence
 {
-	public @NOSPACE C_Punctuation leftBracket = new C_Punctuation('[');
+	public @NOSPACE PunctuationLeftBracket leftBracket;
 	public @NOSPACE @OPT C_Expression expr;
-	public @NOSPACE C_Punctuation rightBracket = new C_Punctuation(']');
+	public @NOSPACE PunctuationRightBracket rightBracket;
 }

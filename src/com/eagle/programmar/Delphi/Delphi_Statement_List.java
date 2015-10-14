@@ -4,9 +4,9 @@
 package com.eagle.programmar.Delphi;
 
 import com.eagle.programmar.Delphi.Terminals.Delphi_Comment;
-import com.eagle.programmar.Delphi.Terminals.Delphi_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Delphi_Statement_List extends TokenSequence
 {
@@ -14,12 +14,12 @@ public class Delphi_Statement_List extends TokenSequence
 	public Delphi_Statement stmt;
 	public @OPT TokenList<Delphi_MoreStatements> stmts;
 	public @OPT TokenList<Delphi_Comment> comments2;
-	public @OPT Delphi_Punctuation semicolon = new Delphi_Punctuation(';');
+	public @OPT PunctuationSemicolon semicolon;
 	public @OPT TokenList<Delphi_Comment> comments3;
 	
 	public static class Delphi_MoreStatements extends TokenSequence
 	{
-		public Delphi_Punctuation semicolon = new Delphi_Punctuation(';');
+		public PunctuationSemicolon semicolon;
 		public @OPT TokenList<Delphi_Comment> comments4;
 		public Delphi_Statement stmt;
 		public @OPT TokenList<Delphi_Comment> comments5;

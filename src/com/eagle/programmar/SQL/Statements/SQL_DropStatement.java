@@ -5,15 +5,15 @@ package com.eagle.programmar.SQL.Statements;
 
 import com.eagle.programmar.SQL.Symbols.SQL_Identifier_Reference;
 import com.eagle.programmar.SQL.Terminals.SQL_Keyword;
-import com.eagle.programmar.SQL.Terminals.SQL_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class SQL_DropStatement extends TokenSequence
 {
 	public SQL_Keyword DROP = new SQL_Keyword("DROP");
 	public SQL_DropWhat what;
-	public SQL_Punctuation semicolon = new SQL_Punctuation(';');
+	public PunctuationSemicolon semicolon;
 
 	public static class SQL_DropWhat extends TokenChooser
 	{

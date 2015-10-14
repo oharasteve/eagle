@@ -17,10 +17,21 @@ import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.programmar.C.Terminals.C_PunctuationChoice;
 import com.eagle.programmar.CPlus.CPlus_Expression.CPlus_NewExpression;
 import com.eagle.tokens.PrecedenceChooser;
-import com.eagle.tokens.PrecedenceChooser.BinaryOperator.AllowedPrecedence;
+import com.eagle.tokens.PrecedenceChooser.PrecedenceOperator.AllowedPrecedence;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationHyphen;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class C_Expression extends PrecedenceChooser
 {
@@ -28,187 +39,187 @@ public class C_Expression extends PrecedenceChooser
 	{
 	}
 	
-	public C_Expression(BinaryOperator token, AllowedPrecedence allowed)
+	public C_Expression(PrecedenceOperator token, AllowedPrecedence allowed)
 	{ 
 		super(allowed, token.getClass());
 	}
 		
 	@Override
-	public void establishChoices() 
+	protected void establishChoices() 
 	{
 		// Order matters a little bit ...
-		super.addUnaryOperator(C_Number.class);			
-		super.addUnaryOperator(C_HexNumber.class);				
-		super.addUnaryOperator(C_Literals.class);
-		super.addUnaryOperator(C_Character_Literal.class);
-		super.addUnaryOperator(C_CastExpression.class);
-		super.addUnaryOperator(C_ExpressionList.class);
-		super.addUnaryOperator(C_FunctionCall.class);
-		super.addUnaryOperator(C_FunctionPointerCall.class);
-		super.addUnaryOperator(C_PreIncrementExpression.class);
-		super.addUnaryOperator(C_PreDecrementExpression.class);
-		super.addUnaryOperator(C_PostIncrementExpression.class);
-		super.addUnaryOperator(C_PostDecrementExpression.class);
-		super.addUnaryOperator(C_SignedExpression.class);
-		super.addUnaryOperator(C_LogicalNotExpression.class);
-		super.addUnaryOperator(C_NotExpression.class);
-		super.addUnaryOperator(C_BuiltIn.class);
-		super.addUnaryOperator(C_Variable.class);
-		super.addUnaryOperator(C_AddressOfVariable.class);
-		super.addUnaryOperator(C_SizeOf.class);
-		super.addUnaryOperator(C_ParenthesizedExpression.class);
-		super.addUnaryOperator(C_StarExpression.class);
-		super.addUnaryOperator(C_CommentExpression.class);
-		super.addUnaryOperator(CPlus_NewExpression.class);
+		super.addTerm(C_Number.class);			
+		super.addTerm(C_HexNumber.class);				
+		super.addTerm(C_Literals.class);
+		super.addTerm(C_Character_Literal.class);
+		super.addTerm(C_CastExpression.class);
+		super.addTerm(C_ExpressionList.class);
+		super.addTerm(C_FunctionCall.class);
+		super.addTerm(C_FunctionPointerCall.class);
+		super.addTerm(C_PreIncrementExpression.class);
+		super.addTerm(C_PreDecrementExpression.class);
+		super.addTerm(C_PostIncrementExpression.class);
+		super.addTerm(C_PostDecrementExpression.class);
+		super.addTerm(C_SignedExpression.class);
+		super.addTerm(C_LogicalNotExpression.class);
+		super.addTerm(C_NotExpression.class);
+		super.addTerm(C_BuiltIn.class);
+		super.addTerm(C_Variable.class);
+		super.addTerm(C_AddressOfVariable.class);
+		super.addTerm(C_SizeOf.class);
+		super.addTerm(C_ParenthesizedExpression.class);
+		super.addTerm(C_StarExpression.class);
+		super.addTerm(C_CommentExpression.class);
+		super.addTerm(CPlus_NewExpression.class);
 		
 		// Order is critical ...
-		super.addBinaryOperator(C_SubscriptExpression.class);
-		super.addBinaryOperator(C_DotSubfield.class);
-		super.addBinaryOperator(C_ArrowSubfield.class);
-		super.addBinaryOperator(C_MultiplicativeExpression.class);
-		super.addBinaryOperator(C_AdditiveExpression.class);
-		super.addBinaryOperator(C_ShiftExpression.class);
-		super.addBinaryOperator(C_RelationalExpression.class);
-		super.addBinaryOperator(C_EqualityExpression.class);
-		super.addBinaryOperator(C_BitwiseAndExpression.class);
-		super.addBinaryOperator(C_ExclusiveOrExpression.class);
-		super.addBinaryOperator(C_BitwiseOrExpression.class);
-		super.addBinaryOperator(C_ConditionalAndExpression.class);
-		super.addBinaryOperator(C_ConditionalOrExpression.class);
-		super.addBinaryOperator(C_TrueFalseExpression.class);
-		super.addBinaryOperator(C_AssignmentExpression.class);
-		super.addBinaryOperator(C_CommaExpression.class);
+		super.addOperator(C_SubscriptExpression.class);
+		super.addOperator(C_DotSubfield.class);
+		super.addOperator(C_ArrowSubfield.class);
+		super.addOperator(C_MultiplicativeExpression.class);
+		super.addOperator(C_AdditiveExpression.class);
+		super.addOperator(C_ShiftExpression.class);
+		super.addOperator(C_RelationalExpression.class);
+		super.addOperator(C_EqualityExpression.class);
+		super.addOperator(C_BitwiseAndExpression.class);
+		super.addOperator(C_ExclusiveOrExpression.class);
+		super.addOperator(C_BitwiseOrExpression.class);
+		super.addOperator(C_ConditionalAndExpression.class);
+		super.addOperator(C_ConditionalOrExpression.class);
+		super.addOperator(C_TrueFalseExpression.class);
+		super.addOperator(C_AssignmentExpression.class);
+		super.addOperator(C_CommaExpression.class);
 	}
 	
 	///////////////////////////////////////////////
 	// Primary expressions
 
-	public static class C_Literals extends UnaryOperator
+	public static class C_Literals extends ExpressionTerm
 	{
 		public TokenList<C_Literal> literals;
 	}
 	
-	public static class C_PreIncrementExpression extends UnaryOperator
+	public static class C_PreIncrementExpression extends ExpressionTerm
 	{
 		public C_Punctuation preIncrementOperator = new C_Punctuation("++");
 		public C_Expression expr;
 	}
 
-	public static class C_PreDecrementExpression extends UnaryOperator
+	public static class C_PreDecrementExpression extends ExpressionTerm
 	{
 		public C_Punctuation preDecrementOperator = new C_Punctuation("--");
 		public C_Expression expr;
 	}
 	
-	public static class C_PostIncrementExpression extends UnaryOperator
+	public static class C_PostIncrementExpression extends ExpressionTerm
 	{
 		public C_Variable var;		// Cannot be just C_Expression -- infinite loop
 		public C_Punctuation postIncrementOperator = new C_Punctuation("++");
 	}
 
-	public static class C_PostDecrementExpression extends UnaryOperator
+	public static class C_PostDecrementExpression extends ExpressionTerm
 	{
 		public C_Variable var;		// Cannot be just C_Expression -- infinite loop
 		public C_Punctuation postDecrementOperator = new C_Punctuation("--");
 	}
 
-	public static class C_SignedExpression extends UnaryOperator
+	public static class C_SignedExpression extends ExpressionTerm
 	{
 		public C_PunctuationChoice signedOperator = new C_PunctuationChoice("+", "-");
 		public C_Expression expr;
 	}
 
-	public static class C_CastExpression extends UnaryOperator
+	public static class C_CastExpression extends ExpressionTerm
 	{
-		public C_Punctuation leftParen = new C_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public C_Type ctype;
-		public C_Punctuation rightParen = new C_Punctuation(')');
+		public PunctuationRightParen rightParen;
 		public C_Expression expr;
 	}
 
-	public static class C_LogicalNotExpression extends UnaryOperator
+	public static class C_LogicalNotExpression extends ExpressionTerm
 	{
 		public C_Punctuation logicalNotOperator = new C_Punctuation('~');
 		public C_Expression expr;
 	}
 		
-	public static class C_NotExpression extends UnaryOperator
+	public static class C_NotExpression extends ExpressionTerm
 	{
 		public C_Punctuation notOperator = new C_Punctuation('!');
 		public C_Expression expr;
 	}
 	
-	public static class C_AddressOfVariable extends UnaryOperator
+	public static class C_AddressOfVariable extends ExpressionTerm
 	{
 		public C_Punctuation ampersand = new C_Punctuation('&');
 		public C_Expression expr;
 	}
 	
-	public static class C_SizeOf extends UnaryOperator
+	public static class C_SizeOf extends ExpressionTerm
 	{
 		public C_Keyword SIZEOF = new C_Keyword("sizeof");
-		public C_Punctuation leftParen = new C_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public C_Type ctype;
-		public C_Punctuation rightParen = new C_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 
-	public static class C_ParenthesizedExpression extends UnaryOperator
+	public static class C_ParenthesizedExpression extends ExpressionTerm
 	{
-		public C_Punctuation leftParen = new C_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public C_Expression expression;
-		public C_Punctuation rightParen = new C_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 
-	public static class C_BuiltIn extends UnaryOperator
+	public static class C_BuiltIn extends ExpressionTerm
 	{
 		public C_KeywordChoice logicalConstant = new C_KeywordChoice("false", "true", "NULL");
 	}
 			
-	public static class C_ExpressionList extends UnaryOperator
+	public static class C_ExpressionList extends ExpressionTerm
 	{
-		public C_Punctuation leftBrace = new C_Punctuation('{');
+		public PunctuationLeftBrace leftBrace;
 		public C_ArgumentList valueList;
 		public @OPT C_Comment comment;
-		public C_Punctuation rightBrace = new C_Punctuation('}');
+		public PunctuationRightBrace rightBrace;
 	}
 	
-	public static class C_CommentExpression extends UnaryOperator
+	public static class C_CommentExpression extends ExpressionTerm
 	{
 		public C_Comment comment;
 		public C_Expression expr;
 	}
 
-	public static class C_StarExpression extends UnaryOperator
+	public static class C_StarExpression extends ExpressionTerm
 	{
-		public C_Punctuation star = new C_Punctuation('*');
+		public PunctuationStar star;
 		public C_Expression expr;
 	}
 
-	public static class C_FunctionCall extends UnaryOperator
+	public static class C_FunctionCall extends ExpressionTerm
 	{
 		public C_Variable functionName;
-		public C_Punctuation leftParen = new C_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public @OPT C_ArgumentList argList;
-		public C_Punctuation rightParen = new C_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 				
-	public static class C_FunctionPointerCall extends UnaryOperator
+	public static class C_FunctionPointerCall extends ExpressionTerm
 	{
-		public C_Punctuation leftParen1 = new C_Punctuation('(');
-		public @OPT C_Punctuation star2 = new C_Punctuation('*');
+		public PunctuationLeftParen leftParen1;
+		public @OPT PunctuationHyphen star2;
 		public C_Variable mathodName;
-		public C_Punctuation rightParen1 = new C_Punctuation(')');
-		public C_Punctuation leftParen2 = new C_Punctuation('(');
+		public PunctuationRightParen rightParen1;
+		public PunctuationLeftParen leftParen2;
 		public @OPT C_ArgumentList argList;
-		public C_Punctuation rightParen2 = new C_Punctuation(')');
+		public PunctuationRightParen rightParen2;
 	}
 
-	public static class C_ArgumentList extends UnaryOperator
+	public static class C_ArgumentList extends ExpressionTerm
 	{
 		public C_ExpressionArg arg;
 		public @OPT C_Comment comment;
 		public @OPT TokenList<C_MoreArguments> moreArgs;
-		public @OPT @CURIOUS("Extra comma") C_Punctuation comma = new C_Punctuation(',');
+		public @OPT @CURIOUS("Extra comma") PunctuationComma comma;
 		
 		public static class C_ExpressionArg extends TokenChooser
 		{
@@ -224,7 +235,7 @@ public class C_Expression extends PrecedenceChooser
 		
 		public static class C_MoreArguments extends TokenSequence
 		{
-			public C_Punctuation comma = new C_Punctuation(',');
+			public PunctuationComma comma;
 			public @OPT C_Comment comment1;
 			public C_ExpressionArg arg;
 			public @OPT C_Comment comment2;
@@ -234,14 +245,14 @@ public class C_Expression extends PrecedenceChooser
 	///////////////////////////////////////////////
 	// Binary expressions
 
-	public static class C_CommaExpression extends BinaryOperator
+	public static class C_CommaExpression extends PrecedenceOperator
 	{
 		public C_Expression left = new C_Expression(this, AllowedPrecedence.ATLEAST);
-		public C_Punctuation comma = new C_Punctuation(',');
+		public PunctuationComma comma;
 		public C_Expression right = new C_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class C_AssignmentExpression extends BinaryOperator
+	public static class C_AssignmentExpression extends PrecedenceOperator
 	{
 		public C_Expression var = new C_Expression(this, AllowedPrecedence.HIGHER);
 		public C_AssignmentOperator assignmentOperator;
@@ -254,111 +265,111 @@ public class C_Expression extends PrecedenceChooser
 		}
 	}
 
-	public static class C_TrueFalseExpression extends BinaryOperator
+	public static class C_TrueFalseExpression extends PrecedenceOperator
 	{
 		public C_Expression left = new C_Expression(this, AllowedPrecedence.HIGHER);
 		public C_Punctuation questionMark = new C_Punctuation('?');
 		public C_Expression middle = new C_Expression(this, AllowedPrecedence.ATLEAST);
-		public C_Punctuation colon = new C_Punctuation(':');
+		public PunctuationColon colon;
 		public C_Expression right = new C_Expression(this, AllowedPrecedence.ATLEAST);
 	}
 	
-	public static class C_ConditionalOrExpression extends BinaryOperator
+	public static class C_ConditionalOrExpression extends PrecedenceOperator
 	{
 		public C_Expression left = new C_Expression(this, AllowedPrecedence.ATLEAST);
 		public C_Punctuation orOperator = new C_Punctuation("||");
 		public C_Expression right = new C_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class C_ConditionalAndExpression extends BinaryOperator
+	public static class C_ConditionalAndExpression extends PrecedenceOperator
 	{
 		public C_Expression left = new C_Expression(this, AllowedPrecedence.ATLEAST);
 		public C_Punctuation andOperator = new C_Punctuation("&&");
 		public C_Expression right = new C_Expression(this, AllowedPrecedence.HIGHER);
 	}
 		
-	public static class C_BitwiseOrExpression extends BinaryOperator
+	public static class C_BitwiseOrExpression extends PrecedenceOperator
 	{
 		public C_Expression left = new C_Expression(this, AllowedPrecedence.ATLEAST);
 		public C_Punctuation bitwiseOrOperator = new C_Punctuation('|');
 		public C_Expression right = new C_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class C_ExclusiveOrExpression extends BinaryOperator
+	public static class C_ExclusiveOrExpression extends PrecedenceOperator
 	{
 		public C_Expression left = new C_Expression(this, AllowedPrecedence.ATLEAST);
 		public C_Punctuation bitwiseXOrOperator = new C_Punctuation('^');
 		public C_Expression right = new C_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class C_BitwiseAndExpression extends BinaryOperator
+	public static class C_BitwiseAndExpression extends PrecedenceOperator
 	{
 		public C_Expression left = new C_Expression(this, AllowedPrecedence.ATLEAST);
 		public C_Punctuation bitwiseAndOperator = new C_Punctuation('&');
 		public C_Expression right = new C_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class C_EqualityExpression extends BinaryOperator
+	public static class C_EqualityExpression extends PrecedenceOperator
 	{
 		public C_Expression left = new C_Expression(this, AllowedPrecedence.ATLEAST);
 		public C_PunctuationChoice operator = new C_PunctuationChoice("==", "!=");
 		public C_Expression right = new C_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class C_RelationalExpression extends BinaryOperator
+	public static class C_RelationalExpression extends PrecedenceOperator
 	{
 		public C_Expression left = new C_Expression(this, AllowedPrecedence.ATLEAST);
 		public C_PunctuationChoice operator = new C_PunctuationChoice("<", ">", "<=", ">=");
 		public C_Expression right = new C_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class C_InstanceOfExpression extends BinaryOperator
+	public static class C_InstanceOfExpression extends PrecedenceOperator
 	{
 		public C_Expression expr = new C_Expression(this, AllowedPrecedence.ATLEAST);
 		public C_Keyword instanceOperator = new C_Keyword("instanceof");
 		public C_Type type;
 	}
 
-	public static class C_ShiftExpression extends BinaryOperator
+	public static class C_ShiftExpression extends PrecedenceOperator
 	{
 		public C_Expression left = new C_Expression(this, AllowedPrecedence.ATLEAST);
 		public C_PunctuationChoice operator = new C_PunctuationChoice("<<", ">>", ">>>");
 		public C_Expression right = new C_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class C_AdditiveExpression extends BinaryOperator
+	public static class C_AdditiveExpression extends PrecedenceOperator
 	{
 		public C_Expression left = new C_Expression(this, AllowedPrecedence.ATLEAST);
 		public C_PunctuationChoice operator = new C_PunctuationChoice("+", "-");
 		public C_Expression right = new C_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class C_MultiplicativeExpression extends BinaryOperator
+	public static class C_MultiplicativeExpression extends PrecedenceOperator
 	{
 		public C_Expression left = new C_Expression(this, AllowedPrecedence.ATLEAST);
 		public C_PunctuationChoice operator = new C_PunctuationChoice("*", "/", "%");
 		public C_Expression right = new C_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class C_DotSubfield extends BinaryOperator
+	public static class C_DotSubfield extends PrecedenceOperator
 	{
 		public C_Expression left = new C_Expression(this, AllowedPrecedence.ATLEAST);
-		public C_Punctuation dot = new C_Punctuation('.');
+		public PunctuationPeriod dot;
 		public C_Expression right = new C_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class C_ArrowSubfield extends BinaryOperator
+	public static class C_ArrowSubfield extends PrecedenceOperator
 	{
 		public C_Expression left = new C_Expression(this, AllowedPrecedence.ATLEAST);
 		public C_Punctuation arrow = new C_Punctuation("->");
 		public C_Expression right = new C_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class C_SubscriptExpression extends BinaryOperator
+	public static class C_SubscriptExpression extends PrecedenceOperator
 	{
 		public C_Expression expr = new C_Expression(this, AllowedPrecedence.ATLEAST);
-		public C_Punctuation leftBracket = new C_Punctuation('[');
+		public PunctuationLeftBracket leftBracket;
 		public C_Expression subscr = new C_Expression(this, AllowedPrecedence.HIGHER);
-		public C_Punctuation rightBracket = new C_Punctuation(']');
+		public PunctuationRightBracket rightBracket;
 	}
 }

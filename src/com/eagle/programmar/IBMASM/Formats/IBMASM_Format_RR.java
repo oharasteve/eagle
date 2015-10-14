@@ -4,10 +4,10 @@
 package com.eagle.programmar.IBMASM.Formats;
 
 import com.eagle.programmar.IBMASM.Terminals.IBMASM_KeywordChoice;
-import com.eagle.programmar.IBMASM.Terminals.IBMASM_Punctuation;
 import com.eagle.programmar.IBMASM.Terminals.IBMASM_Register;
 import com.eagle.programmar.IBMASM.Terminals.IBMASM_Spaces;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class IBMASM_Format_RR extends TokenSequence
 {
@@ -65,6 +65,6 @@ public class IBMASM_Format_RR extends TokenSequence
 	
 	public IBMASM_Spaces spaces;
 	public IBMASM_Register register1;
-	public IBMASM_Punctuation comma = new IBMASM_Punctuation(',');
+	public PunctuationComma comma;
 	public IBMASM_Register register2;
 }

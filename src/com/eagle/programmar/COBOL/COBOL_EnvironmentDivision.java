@@ -6,15 +6,15 @@ package com.eagle.programmar.COBOL;
 import com.eagle.programmar.COBOL.Symbols.COBOL_Class_Definition;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Literal;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
 
 public class COBOL_EnvironmentDivision extends TokenSequence
 {
 	public COBOL_Keyword ENVIRONMENT = new COBOL_Keyword("ENVIRONMENT");
 	public COBOL_Keyword DIVISION = new COBOL_Keyword("DIVISION");
-	public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+	public PunctuationPeriod dot;
 	public @OPT COBOL_ClassControl classControl;
 	public @OPT COBOL_ConfigurationSection configuration;
 	public @OPT COBOL_InputOutputSection inputOutput;
@@ -23,9 +23,9 @@ public class COBOL_EnvironmentDivision extends TokenSequence
 	public static class COBOL_ClassControl extends TokenSequence
 	{
 		public COBOL_Keyword CLASSCONTROL = new COBOL_Keyword("CLASS-CONTROL");
-		public COBOL_Punctuation dot1 = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot1;
 		public TokenList<COBOL_ClassControlIs> controlIsList;
-		public COBOL_Punctuation dot2 = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot2;
 		
 		public static class COBOL_ClassControlIs extends TokenSequence
 		{
@@ -40,7 +40,7 @@ public class COBOL_EnvironmentDivision extends TokenSequence
 	{
 		public COBOL_Keyword CONFIGURATION = new COBOL_Keyword("CONFIGURATION");
 		public COBOL_Keyword SECTION = new COBOL_Keyword("SECTION");
-		public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot;
 		public @OPT COBOL_SpecialNames specialNames;
 	}
 	
@@ -48,7 +48,7 @@ public class COBOL_EnvironmentDivision extends TokenSequence
 	{
 		public COBOL_Keyword INPUTOUTPUT = new COBOL_Keyword("INPUT-OUTPUT");
 		public COBOL_Keyword SECTION = new COBOL_Keyword("SECTION");
-		public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot;
 		public @OPT COBOL_FileControl fileControl;
 		public @OPT COBOL_IOControl ioControl;
 	}
@@ -56,7 +56,7 @@ public class COBOL_EnvironmentDivision extends TokenSequence
 	public static class COBOL_IOControl extends TokenSequence
 	{
 		public COBOL_Keyword IOCONTROL = new COBOL_Keyword("I-O-CONTROL");
-		public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+		public PunctuationPeriod dot;
 		public COBOL_IOControlSame controlSame;
 
 		public static class COBOL_IOControlSame extends TokenSequence
@@ -67,7 +67,7 @@ public class COBOL_EnvironmentDivision extends TokenSequence
 			public COBOL_Keyword FOR = new COBOL_Keyword("FOR");
 			public COBOL_Keyword NETWORK = new COBOL_Keyword("NETWORK");
 			public COBOL_Keyword SHARED = new COBOL_Keyword("SHARED");
-			public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+			public PunctuationPeriod dot;
 		}
 	}
 }

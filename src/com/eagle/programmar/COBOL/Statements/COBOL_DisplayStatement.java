@@ -9,13 +9,16 @@ import com.eagle.programmar.COBOL.Symbols.COBOL_Identifier_Reference;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
 import com.eagle.programmar.COBOL.Terminals.COBOL_KeywordChoice;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Number;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tests.EagleInterpreter;
 import com.eagle.tests.EagleInterpreter.EagleValue;
 import com.eagle.tests.EagleRunnable;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class COBOL_DisplayStatement extends COBOL_AbstractStatement implements EagleRunnable
 {
@@ -25,11 +28,11 @@ public class COBOL_DisplayStatement extends COBOL_AbstractStatement implements E
 	
 	public static class COBOL_DisplayPosition extends TokenSequence
 	{
-		public COBOL_Punctuation leftParen = new COBOL_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public @OPT COBOL_Expression x;
-		public COBOL_Punctuation comma = new COBOL_Punctuation(',');
+		public PunctuationComma comma;
 		public COBOL_Expression y;
-		public COBOL_Punctuation righttParen = new COBOL_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 	
 	public static class COBOL_DisplayClause extends TokenSequence
@@ -69,14 +72,7 @@ public class COBOL_DisplayStatement extends COBOL_AbstractStatement implements E
 	
 	public static class COBOL_DisplayWhat extends TokenSequence
 	{
-		public COBOL_Expression expr;
-		public @OPT TokenList<COBOL_DisplayMore> more;
-		
-		public static class COBOL_DisplayMore extends TokenSequence
-		{
-			public COBOL_Punctuation comma = new COBOL_Punctuation(',');
-			public COBOL_Expression expr;
-		}
+		public SeparatedList<COBOL_Expression,PunctuationComma> expr;
 	}
 	
 	public static class COBOL_DisplayAt extends TokenSequence

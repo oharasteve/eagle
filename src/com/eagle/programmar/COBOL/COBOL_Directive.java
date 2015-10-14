@@ -12,6 +12,8 @@ import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class COBOL_Directive extends TokenSequence
 {
@@ -59,18 +61,18 @@ public class COBOL_Directive extends TokenSequence
 			public static class COBOL_SetParensPlus extends TokenSequence
 			{
 				public COBOL_KeywordChoice key = new COBOL_KeywordChoice("OOCTRL", "PREPROCESS", "REMOVE");
-				public COBOL_Punctuation leftParen = new COBOL_Punctuation('(');
+				public PunctuationLeftParen leftParen;
 				public @OPT COBOL_Punctuation plus = new COBOL_Punctuation('+');
 				public COBOL_KeywordChoice code = new COBOL_KeywordChoice("CONTROL", "P", "WINDOW1");
-				public COBOL_Punctuation rightParen = new COBOL_Punctuation(')');
+				public PunctuationRightParen rightParen;
 			}
 
 			public static class COBOL_SetParensNumber extends TokenSequence
 			{
 				public COBOL_KeywordChoice key = new COBOL_KeywordChoice("INTCODE");
-				public COBOL_Punctuation leftParen = new COBOL_Punctuation('(');
+				public PunctuationLeftParen leftParen;
 				public COBOL_Number number;
-				public COBOL_Punctuation rightParen = new COBOL_Punctuation(')');
+				public PunctuationRightParen rightParen;
 			}
 		}
 	}

@@ -6,10 +6,10 @@ package com.eagle.programmar.Python.Statements;
 import com.eagle.programmar.Python.Python_Expression;
 import com.eagle.programmar.Python.Python_VariableList;
 import com.eagle.programmar.Python.Terminals.Python_Comment;
-import com.eagle.programmar.Python.Terminals.Python_Punctuation;
 import com.eagle.programmar.Python.Terminals.Python_PunctuationChoice;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class Python_Assignment extends TokenSequence
 {
@@ -22,7 +22,7 @@ public class Python_Assignment extends TokenSequence
 	
 	public static class Python_MoreAsgExpressions extends TokenSequence
 	{
-		public Python_Punctuation comma = new Python_Punctuation(',');
+		public PunctuationComma comma;
 		public @OPT Python_Expression expr;
 	}
 }

@@ -8,9 +8,10 @@ import com.eagle.programmar.PLI.PLI_Label;
 import com.eagle.programmar.PLI.PLI_Procedure.PLI_StatementOrComment;
 import com.eagle.programmar.PLI.Symbols.PLI_Identifier_Reference;
 import com.eagle.programmar.PLI.Terminals.PLI_Keyword;
-import com.eagle.programmar.PLI.Terminals.PLI_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class PLI_DoStatement extends TokenSequence
 {
@@ -20,16 +21,16 @@ public class PLI_DoStatement extends TokenSequence
 	public @OPT PLI_DoUntil until;
 	public @OPT PLI_DoWhile dowhile;
 	public @OPT PLI_Keyword FOREVER = new PLI_Keyword("FOREVER");
-	public PLI_Punctuation semiColon1 = new PLI_Punctuation(';');
+	public PunctuationSemicolon semicolon1;
 	public @OPT TokenList<PLI_StatementOrComment> statements;
 	public PLI_Keyword END = new PLI_Keyword("END");
 	public @OPT PLI_Identifier_Reference label2;
-	public PLI_Punctuation semiColon2 = new PLI_Punctuation(';');
+	public PunctuationSemicolon semicolon2;
 	
 	public static class PLI_DoLoop extends TokenSequence
 	{
 		public PLI_Identifier_Reference var;
-		public PLI_Punctuation equals = new PLI_Punctuation('=');
+		public PunctuationEquals equals;
 		public PLI_Expression fromExpr;
 		public PLI_Keyword TO = new PLI_Keyword("TO");
 		public PLI_Expression toExpr;

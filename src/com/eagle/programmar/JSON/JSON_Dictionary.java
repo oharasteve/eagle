@@ -5,27 +5,23 @@ package com.eagle.programmar.JSON;
 
 import com.eagle.programmar.JSON.JSON_Program.JSON_Element;
 import com.eagle.programmar.JSON.Terminals.JSON_Literal;
-import com.eagle.programmar.JSON.Terminals.JSON_Punctuation;
-import com.eagle.tokens.TokenList;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
 
 public class JSON_Dictionary extends TokenSequence
 {
-	public JSON_Punctuation leftBrace = new JSON_Punctuation('{');
-	public @OPT JSON_DictEntry entry;
-	public @OPT TokenList<JSON_MoreFields> more;
-	public JSON_Punctuation rightBrace = new JSON_Punctuation('}');
+	public PunctuationLeftBrace leftBrace;
+	public @OPT SeparatedList<JSON_DictEntry,PunctuationComma> entries;
+	public PunctuationRightBrace rightBrace;
 	
 	public static class JSON_DictEntry extends TokenSequence
 	{
 		public JSON_Literal name;
-		public JSON_Punctuation colon = new JSON_Punctuation(':');
+		public PunctuationColon colon;
 		public JSON_Element value;
-	}
-	
-	public static class JSON_MoreFields extends TokenSequence
-	{
-		public JSON_Punctuation comma = new JSON_Punctuation(',');
-		public JSON_DictEntry entry;
 	}
 }

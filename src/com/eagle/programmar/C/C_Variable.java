@@ -8,6 +8,10 @@ import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class C_Variable extends TokenSequence
 {
@@ -18,7 +22,7 @@ public class C_Variable extends TokenSequence
 	
 	public static class C_VariableStar extends TokenSequence
 	{
-		public C_Punctuation star = new C_Punctuation('*');
+		public PunctuationStar star;
 	}
 	
 	public static class C_VariableIdentifier extends TokenChooser
@@ -27,20 +31,20 @@ public class C_Variable extends TokenSequence
 		
 		public static class C_CastedVariable extends TokenSequence
 		{
-			public C_Punctuation leftParen1 = new C_Punctuation('(');
-			public C_Punctuation leftParen2 = new C_Punctuation('(');
+			public PunctuationLeftParen leftParen1;
+			public PunctuationLeftParen leftParen2;
 			public C_Type jtype;
-			public C_Punctuation rightParen1 = new C_Punctuation(')');
+			public PunctuationRightParen rightParen1;
 			public C_Identifier_Reference id;
-			public C_Punctuation rightParen2 = new C_Punctuation(')');
+			public PunctuationRightParen rightParen2;
 		}
 
 		public static class C_IndirectVariable extends TokenSequence
 		{
-			public C_Punctuation leftParen = new C_Punctuation('(');
+			public PunctuationLeftParen leftParen;
 			public TokenList<C_VariableStar> stars;
 			public C_Identifier_Reference id;
-			public C_Punctuation rightParen = new C_Punctuation(')');
+			public PunctuationRightParen rightParen;
 		}
 
 		public static class C_SubscriptedVariable extends TokenSequence
@@ -54,7 +58,7 @@ public class C_Variable extends TokenSequence
 	{
 		public static class C_DotIdentifier extends TokenSequence
 		{
-			public @NOSPACE C_Punctuation dot = new C_Punctuation('.');
+			public @NOSPACE PunctuationPeriod dot;
 			public @NOSPACE C_Identifier_Reference id;
 		}
 		

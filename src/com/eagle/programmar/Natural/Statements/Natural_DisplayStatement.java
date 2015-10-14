@@ -12,11 +12,15 @@ import com.eagle.programmar.Natural.Terminals.Natural_Keyword;
 import com.eagle.programmar.Natural.Terminals.Natural_KeywordChoice;
 import com.eagle.programmar.Natural.Terminals.Natural_Literal;
 import com.eagle.programmar.Natural.Terminals.Natural_Number;
-import com.eagle.programmar.Natural.Terminals.Natural_Punctuation;
 import com.eagle.programmar.Natural.Terminals.Natural_Tab;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSlash;
+import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class Natural_DisplayStatement extends TokenSequence
 {
@@ -36,7 +40,7 @@ public class Natural_DisplayStatement extends TokenSequence
 	public static class Natural_DisplayElement extends TokenChooser
 	{
 		public Natural_Option displayOption;
-		public Natural_Punctuation slash = new Natural_Punctuation('/');
+		public PunctuationSlash slash;
 		public Natural_Tab tab;
 		public Natural_Variable var;
 		public Natural_Comment comment;
@@ -54,14 +58,14 @@ public class Natural_DisplayStatement extends TokenSequence
 		public static class Natural_FieldPositioning extends TokenSequence
 		{
 			public Natural_Keyword T = new Natural_Keyword("T");
-			public Natural_Punctuation star = new Natural_Punctuation('*');
+			public PunctuationStar star;
 			public Natural_Variable var;
 		}
 		
 		public static class Natural_FieldAndLinePositioning extends TokenSequence
 		{
 			public Natural_Keyword P = new Natural_Keyword("P");
-			public Natural_Punctuation star = new Natural_Punctuation('*');
+			public PunctuationStar star;
 			public Natural_Variable var;
 		}
 		
@@ -86,25 +90,25 @@ public class Natural_DisplayStatement extends TokenSequence
 			
 			public static class Natural_LiteralCount extends TokenSequence
 			{
-				public Natural_Punctuation leftParen = new Natural_Punctuation('(');
+				public PunctuationLeftParen leftParen;
 				public Natural_Number count;
-				public Natural_Punctuation rightParen = new Natural_Punctuation(')');
+				public PunctuationRightParen rightParen;
 			}
 		}
 		
 		public static class Natural_Relative_Positioning extends TokenSequence
 		{
 			public Natural_Number lines;
-			public Natural_Punctuation slash = new Natural_Punctuation('/');
+			public PunctuationSlash slash;
 			public Natural_Number column;
 		}
 	}
 	
 	public static class Natural_DisplayParameter extends TokenSequence
 	{
-		public Natural_Punctuation leftParen = new Natural_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public Natural_DisplayParameterContents contents;
-		public Natural_Punctuation rightParen = new Natural_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 	
 	public static class Natural_DisplayParameterContents extends TokenChooser
@@ -115,21 +119,21 @@ public class Natural_DisplayStatement extends TokenSequence
 		public static class NaturalDisplayParameterFieldRepresentation extends TokenSequence
 		{
 			public Natural_Keyword AD = new Natural_Keyword("AD");
-			public Natural_Punctuation equals = new Natural_Punctuation('=');
+			public PunctuationEquals equals;
 			public Natural_DisplayParametersAD parameters;
 		}
 
 		public static class NaturalDisplayParameterColorDefinition extends TokenSequence
 		{
 			public Natural_Keyword CD = new Natural_Keyword("CD");
-			public Natural_Punctuation equals = new Natural_Punctuation('=');
+			public PunctuationEquals equals;
 			public Natural_DisplayParametersCD parameters;
 		}
 
 		public static class NaturalDisplayParameterPrintMode extends TokenSequence
 		{
 			public Natural_Keyword PM = new Natural_Keyword("PM");
-			public Natural_Punctuation equals = new Natural_Punctuation('=');
+			public PunctuationEquals equals;
 			public Natural_DisplayParametersPM parameters;
 		}
 	}

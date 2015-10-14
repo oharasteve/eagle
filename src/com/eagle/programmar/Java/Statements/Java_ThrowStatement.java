@@ -5,12 +5,12 @@ package com.eagle.programmar.Java.Statements;
 
 import com.eagle.programmar.Java.Java_Expression;
 import com.eagle.programmar.Java.Terminals.Java_Keyword;
-import com.eagle.programmar.Java.Terminals.Java_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Java_ThrowStatement extends TokenSequence
 {
 	public @DOC("statements.html#14.18") Java_Keyword THROW = new Java_Keyword("throw");
 	public Java_Expression expression;
-	public Java_Punctuation semicolon = new Java_Punctuation(';');
+	public PunctuationSemicolon semicolon;
 }

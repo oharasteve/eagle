@@ -4,8 +4,9 @@
 package com.eagle.programmar.TCL;
 
 import com.eagle.programmar.TCL.Symbols.TCL_Identifier_Reference;
-import com.eagle.programmar.TCL.Terminals.TCL_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class TCL_Variable extends TokenSequence
 {
@@ -14,8 +15,8 @@ public class TCL_Variable extends TokenSequence
 	
 	public static class TCL_Subscript extends TokenSequence
 	{
-		public TCL_Punctuation leftParen = new TCL_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public TCL_Expression expr;
-		public TCL_Punctuation rightParen = new TCL_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 }

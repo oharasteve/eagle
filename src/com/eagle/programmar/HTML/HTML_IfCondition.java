@@ -7,13 +7,15 @@ import com.eagle.programmar.HTML.Terminals.HTML_Identifier;
 import com.eagle.programmar.HTML.Terminals.HTML_Keyword;
 import com.eagle.programmar.HTML.Terminals.HTML_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
 
 public class HTML_IfCondition extends TokenSequence
 {
 	public HTML_Punctuation startTag = new HTML_Punctuation("<!");
-	public HTML_Punctuation leftBracket = new HTML_Punctuation('[');
+	public PunctuationLeftBracket leftBracket;
 	public HTML_Keyword IF = new HTML_Keyword("if");
 	public HTML_Identifier tag;
-	public HTML_Punctuation rightBracket = new HTML_Punctuation(']');
+	public PunctuationRightBracket rightBracket;
 	public HTML_Punctuation endTag = new HTML_Punctuation('>');
 }

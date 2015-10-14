@@ -7,11 +7,16 @@ import com.eagle.programmar.Python.Python_Syntax.Python_Multiline_Syntax;
 import com.eagle.programmar.Python.Symbols.Python_Identifier_Reference;
 import com.eagle.programmar.Python.Terminals.Python_EndOfLine;
 import com.eagle.programmar.Python.Terminals.Python_Keyword;
-import com.eagle.programmar.Python.Terminals.Python_Punctuation;
 import com.eagle.programmar.Python.Terminals.Python_PunctuationChoice;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
 
 public class Python_Variable extends TokenSequence
 {
@@ -30,22 +35,21 @@ public class Python_Variable extends TokenSequence
 	
 	public static class Python_DotVariable extends TokenSequence
 	{
-		public Python_Punctuation dot = new Python_Punctuation('.');
-		public @OPT Python_Punctuation dot2 = new Python_Punctuation('.');
+		public PunctuationPeriod dot1;
+		public @OPT PunctuationPeriod dot2;
 		public Python_Identifier_Reference fld;
 	}
 	
 	public static class Python_Subscript extends TokenSequence
 	{
-		public Python_Punctuation leftBracket = new Python_Punctuation('[');
+		public PunctuationLeftBracket leftBracket;
 		public @SYNTAX(Python_Multiline_Syntax.class) Python_Subscript_Body body;
-		public Python_Punctuation rightBracket = new Python_Punctuation(']');
+		public PunctuationRightBracket rightBracket;
 
 		public static class Python_Subscript_Body extends TokenSequence
 		{
 			public @OPT Python_EndOfLine eoln;
-			public Python_Subscript_Dimension dimension;
-			public @OPT TokenList<Python_More_Dimensions> more;
+			public SeparatedList<Python_Subscript_Dimension,PunctuationComma> dimensions;
 		}
 
 		public static class Python_Subscript_Dimension extends TokenSequence
@@ -56,16 +60,10 @@ public class Python_Variable extends TokenSequence
 
 			public static class Python_ColonSubscript extends TokenSequence
 			{
-				public Python_Punctuation colon = new Python_Punctuation(':');
+				public PunctuationColon colon;
 				public @OPT Python_EndOfLine eoln;
 				public @OPT Python_Expression subscr;
 			}
-		}
-		
-		public static class Python_More_Dimensions extends TokenSequence
-		{
-			public Python_Punctuation comma = new Python_Punctuation(',');
-			public Python_Subscript_Dimension dimension;
 		}
 	}
 }

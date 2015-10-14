@@ -5,19 +5,12 @@ package com.eagle.programmar.Perl.Statements;
 
 import com.eagle.programmar.Perl.Perl_Expression;
 import com.eagle.programmar.Perl.Terminals.Perl_Keyword;
-import com.eagle.programmar.Perl.Terminals.Perl_Punctuation;
-import com.eagle.tokens.TokenList;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class Perl_EchoStatement extends TokenSequence
 {
 	public Perl_Keyword ECHO = new Perl_Keyword("echo");
-	public Perl_Expression expr;
-	public @OPT TokenList<Perl_MoreEcho> more;
-	
-	public static class Perl_MoreEcho extends TokenSequence
-	{
-		public Perl_Punctuation comma = new Perl_Punctuation(',');
-		public Perl_Expression expr;
-	}
+	public SeparatedList<Perl_Expression,PunctuationComma> exprs;
 }

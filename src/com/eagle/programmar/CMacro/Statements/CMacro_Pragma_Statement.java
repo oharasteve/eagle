@@ -3,13 +3,18 @@
 
 package com.eagle.programmar.CMacro.Statements;
 
+import com.eagle.preprocess.FindIncludeFile;
+import com.eagle.preprocess.C.CMacro_Preprocess;
 import com.eagle.programmar.C.Terminals.C_Keyword;
 import com.eagle.programmar.C.Terminals.C_Number;
-import com.eagle.programmar.C.Terminals.C_Punctuation;
+import com.eagle.programmar.CMacro.CMacro_Statement;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
-public class CMacro_Pragma_Statement extends TokenSequence
+public class CMacro_Pragma_Statement extends CMacro_Statement
 {
 	public @DOC("Pragmas.html") C_Keyword PRAGMA = new C_Keyword("pragma");
 	public CMacro_Pragma_Type what;
@@ -21,11 +26,18 @@ public class CMacro_Pragma_Statement extends TokenSequence
 		public static class CMacro_Pragma_Warning extends TokenSequence
 		{
 			public C_Keyword WARNING = new C_Keyword("warning");
-			public C_Punctuation leftParen = new C_Punctuation('(');
+			public PunctuationLeftParen leftParen;
 			public C_Keyword DISABLE = new C_Keyword("disable");
-			public C_Punctuation colon = new C_Punctuation(':');
+			public PunctuationColon colon;
 			public C_Number code;
-			public C_Punctuation rightParen = new C_Punctuation(')');
+			public PunctuationRightParen rightParen;
 		}
+	}
+	
+	@Override
+	public boolean processMacro(CMacro_Preprocess preprocessor, FindIncludeFile findInclude)
+	{
+		// Nothing to do
+		return false;	// false means we didn't change anything
 	}
 }

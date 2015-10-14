@@ -101,14 +101,14 @@ public class ParserManager
 	 * Parse a single line
 	 */
 
-	public boolean parseLine(String line, AbstractToken token, EagleSyntax syntax)
+	public boolean parseLine(String line, EagleLanguage lang, AbstractToken token, EagleSyntax syntax)
 	{
 		token.setSyntax(syntax);
 		EagleFileReader lines = new EagleFileReader();
 		lines.add(line);
 		try
 		{
-			return _parser.quickParse(null, lines, token);
+			return _parser.quickParse(null, lines, lang, token);
 		}
 		catch (Exception ex)
 		{
@@ -120,11 +120,11 @@ public class ParserManager
 	/**
 	 * Parse an array of Strings
 	 */
-	public boolean parseLines(EagleFileReader lines, AbstractToken token)
+	public boolean parseLines(EagleFileReader lines, EagleLanguage lang, AbstractToken token)
 	{
 		try
 		{
-			return _parser.quickParse(null, lines, token);
+			return _parser.quickParse(null, lines, lang, token);
 		}
 		catch (Exception ex)
 		{

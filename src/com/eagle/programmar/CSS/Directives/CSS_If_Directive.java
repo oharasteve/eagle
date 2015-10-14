@@ -9,13 +9,15 @@ import com.eagle.programmar.CSS.Terminals.CSS_Literal;
 import com.eagle.programmar.CSS.Terminals.CSS_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationSlash;
 
 public class CSS_If_Directive extends TokenSequence
 {
 	public CSS_Punctuation lessThan = new CSS_Punctuation('<');
 	public CSS_Keyword IF = new CSS_Keyword("if");
 	public CSS_Keyword EXPR = new CSS_Keyword("expr");
-	public CSS_Punctuation equals = new CSS_Punctuation('=');
+	public PunctuationEquals equals;
 	public CSS_Literal literal;
 	public CSS_Punctuation greaterThan = new CSS_Punctuation('>');
 	
@@ -26,7 +28,7 @@ public class CSS_If_Directive extends TokenSequence
 	public static class CSS_EndIf extends TokenSequence
 	{
 		public CSS_Punctuation lessThan = new CSS_Punctuation('<');
-		public CSS_Punctuation slash = new CSS_Punctuation('/');
+		public PunctuationSlash slash;
 		public CSS_Keyword IF = new CSS_Keyword("if");
 		public CSS_Punctuation greaterThan = new CSS_Punctuation('>');
 	}

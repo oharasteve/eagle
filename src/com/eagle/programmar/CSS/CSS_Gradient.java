@@ -12,6 +12,9 @@ import com.eagle.programmar.CSS.Terminals.CSS_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class CSS_Gradient extends TokenSequence
 {
@@ -22,10 +25,10 @@ public class CSS_Gradient extends TokenSequence
 			"-o-linear-gradient",
 			"-webkit-linear-gradient",
 			"-webkit-gradient");
-	public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+	public @NOSPACE PunctuationLeftParen leftParen;
 	public @NOSPACE CSS_Gradient_Piece piece;
 	public @OPT TokenList<CSS_MoreGradient> moreGradients;
-	public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
+	public @NOSPACE PunctuationRightParen rightParen;
 	
 	public static class CSS_Gradient_Piece extends TokenChooser
 	{
@@ -43,9 +46,9 @@ public class CSS_Gradient extends TokenSequence
 		public static class CSS_Gradient_Source extends TokenSequence
 		{
 			public CSS_KeywordChoice fromTo = new CSS_KeywordChoice("from", "to");
-			public CSS_Punctuation leftParen = new CSS_Punctuation('(');
+			public PunctuationLeftParen leftParen;
 			public CSS_Value value;
-			public CSS_Punctuation rightParen = new CSS_Punctuation(')');
+			public PunctuationRightParen rightParen;
 		}
 		
 		public static class CSS_NumberNumber extends TokenSequence
@@ -58,7 +61,7 @@ public class CSS_Gradient extends TokenSequence
 	
 	public static class CSS_MoreGradient extends TokenSequence
 	{
-		public @OPT CSS_Punctuation comma = new CSS_Punctuation(',');
+		public @OPT PunctuationComma comma;
 		public CSS_Gradient_Piece nextPiece;
 	}
 }

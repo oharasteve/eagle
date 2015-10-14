@@ -44,7 +44,7 @@ public class CMacro_Program extends EagleLanguage
 	public static class CMacro_Element extends TokenChooser
 	{
 		public CMacro_CommentLine comment;
-		public CMacro_Statement stmt;
+		public CMacro_StatementOrComment stmt;
 		public CMacro_TextLine textLine;
 		public @LAST CMacro_EndOfLine endOfLine;
 	}

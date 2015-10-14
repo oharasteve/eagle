@@ -7,15 +7,16 @@ import com.eagle.programmar.C.C_Expression;
 import com.eagle.programmar.C.C_Statement;
 import com.eagle.programmar.C.Terminals.C_Comment;
 import com.eagle.programmar.C.Terminals.C_Keyword;
-import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class C_WhileStatement extends TokenSequence
 {
 	public @DOC("#The-while-Statement") C_Keyword WHILE = new C_Keyword("while");
-	public C_Punctuation leftParen = new C_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public C_Expression condition;
-	public C_Punctuation rightParen = new C_Punctuation(')');
+	public PunctuationRightParen rightParen;
 	public @OPT C_Comment comment;
 	public C_Statement whileStatement;
 }

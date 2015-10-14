@@ -11,10 +11,14 @@ import com.eagle.programmar.AWK.Terminals.AWK_Pattern;
 import com.eagle.programmar.AWK.Terminals.AWK_Punctuation;
 import com.eagle.programmar.AWK.Terminals.AWK_PunctuationChoice;
 import com.eagle.tokens.PrecedenceChooser;
-import com.eagle.tokens.PrecedenceChooser.BinaryOperator.AllowedPrecedence;
+import com.eagle.tokens.PrecedenceChooser.PrecedenceOperator.AllowedPrecedence;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class AWK_Expression extends PrecedenceChooser
 {
@@ -22,34 +26,34 @@ public class AWK_Expression extends PrecedenceChooser
 	{
 	}
 	
-	public AWK_Expression(BinaryOperator token, AllowedPrecedence allowed)
+	public AWK_Expression(PrecedenceOperator token, AllowedPrecedence allowed)
 	{ 
 		super(allowed, token.getClass());
 	}
 		
 	@Override
-	public void establishChoices() 
+	protected void establishChoices() 
 	{
 		// Order matters a little bit ...
-		super.addUnaryOperator(AWK_Number.class);
-		super.addUnaryOperator(AWK_FunctionCall.class);
-		super.addUnaryOperator(AWK_Pattern.class);
-		super.addUnaryOperator(AWK_PreIncrementExpression.class);
-		super.addUnaryOperator(AWK_PreDecrementExpression.class);
-		super.addUnaryOperator(AWK_PostIncrementExpression.class);
-		super.addUnaryOperator(AWK_PostDecrementExpression.class);
-		super.addUnaryOperator(AWK_Strings.class);
-		super.addUnaryOperator(AWK_NotExpression.class);
-		super.addUnaryOperator(AWK_ParenthesizedExpression.class);
+		super.addTerm(AWK_Number.class);
+		super.addTerm(AWK_FunctionCall.class);
+		super.addTerm(AWK_Pattern.class);
+		super.addTerm(AWK_PreIncrementExpression.class);
+		super.addTerm(AWK_PreDecrementExpression.class);
+		super.addTerm(AWK_PostIncrementExpression.class);
+		super.addTerm(AWK_PostDecrementExpression.class);
+		super.addTerm(AWK_Strings.class);
+		super.addTerm(AWK_NotExpression.class);
+		super.addTerm(AWK_ParenthesizedExpression.class);
 		
 		// Order is critical ...
-		super.addBinaryOperator(AWK_SubscriptExpression.class);
-		super.addBinaryOperator(AWK_MultiplicativeExpression.class);
-		super.addBinaryOperator(AWK_AdditiveExpression.class);
-		super.addBinaryOperator(AWK_RelationalExpression.class);
-		super.addBinaryOperator(AWK_AndExpression.class);
-		super.addBinaryOperator(AWK_OrExpression.class);
-		super.addBinaryOperator(AWK_Assignment.class);
+		super.addOperator(AWK_SubscriptExpression.class);
+		super.addOperator(AWK_MultiplicativeExpression.class);
+		super.addOperator(AWK_AdditiveExpression.class);
+		super.addOperator(AWK_RelationalExpression.class);
+		super.addOperator(AWK_AndExpression.class);
+		super.addOperator(AWK_OrExpression.class);
+		super.addOperator(AWK_Assignment.class);
 	}
 	
 	///////////////////////////////////////////////
@@ -66,101 +70,101 @@ public class AWK_Expression extends PrecedenceChooser
 		}
 	}
 	
-	public static class AWK_PreIncrementExpression extends UnaryOperator
+	public static class AWK_PreIncrementExpression extends ExpressionTerm
 	{
 		public AWK_Punctuation preIncrementOperator = new AWK_Punctuation("++");
 		public AWK_Expression expr;
 	}
 
-	public static class AWK_PreDecrementExpression extends UnaryOperator
+	public static class AWK_PreDecrementExpression extends ExpressionTerm
 	{
 		public AWK_Punctuation preDecrementOperator = new AWK_Punctuation("--");
 		public AWK_Expression expr;
 	}
 	
-	public static class AWK_PostIncrementExpression extends UnaryOperator
+	public static class AWK_PostIncrementExpression extends ExpressionTerm
 	{
 		public AWK_Variable var;		// Cannot be just AWK_Expression -- infinite loop
 		public AWK_Punctuation postIncrementOperator = new AWK_Punctuation("++");
 	}
 
-	public static class AWK_PostDecrementExpression extends UnaryOperator
+	public static class AWK_PostDecrementExpression extends ExpressionTerm
 	{
 		public AWK_Variable var;		// Cannot be just AWK_Expression -- infinite loop
 		public AWK_Punctuation postDecrementOperator = new AWK_Punctuation("--");
 	}
 
-	public static class AWK_FunctionCall extends UnaryOperator
+	public static class AWK_FunctionCall extends ExpressionTerm
 	{
 		public AWK_KeywordChoice functionName = new AWK_KeywordChoice(AWK_Syntax.FUNCTIONS);
-		public AWK_Punctuation leftParen = new AWK_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public @OPT AWK_ArgumentList argList;
-		public AWK_Punctuation rightParen = new AWK_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 
-	public static class AWK_NotExpression extends UnaryOperator
+	public static class AWK_NotExpression extends ExpressionTerm
 	{
 		public AWK_Punctuation notOperator = new AWK_Punctuation('!');
 		public AWK_Expression expr;
 	}
 
-	public static class AWK_ParenthesizedExpression extends UnaryOperator
+	public static class AWK_ParenthesizedExpression extends ExpressionTerm
 	{
-		public AWK_Punctuation leftParen = new AWK_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public AWK_Expression expression;
-		public AWK_Punctuation rightParen = new AWK_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 
 	///////////////////////////////////////////////
 	// Binary expressions
 
-	public static class AWK_Assignment extends BinaryOperator
+	public static class AWK_Assignment extends PrecedenceOperator
 	{
 		public AWK_Expression left = new AWK_Expression(this, AllowedPrecedence.ATLEAST);
 		public AWK_PunctuationChoice equals = new AWK_PunctuationChoice("=", "+=");
 		public AWK_Expression right = new AWK_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class AWK_OrExpression extends BinaryOperator
+	public static class AWK_OrExpression extends PrecedenceOperator
 	{
 		public AWK_Expression left = new AWK_Expression(this, AllowedPrecedence.ATLEAST);
 		public AWK_Punctuation orOperator = new AWK_Punctuation("||");
 		public AWK_Expression right = new AWK_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class AWK_AndExpression extends BinaryOperator
+	public static class AWK_AndExpression extends PrecedenceOperator
 	{
 		public AWK_Expression left = new AWK_Expression(this, AllowedPrecedence.ATLEAST);
 		public AWK_Punctuation andOperator = new AWK_Punctuation("&&");
 		public AWK_Expression right = new AWK_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class AWK_RelationalExpression extends BinaryOperator
+	public static class AWK_RelationalExpression extends PrecedenceOperator
 	{
 		public AWK_Expression left = new AWK_Expression(this, AllowedPrecedence.ATLEAST);
 		public AWK_PunctuationChoice operator = new AWK_PunctuationChoice("==", "!=", "<", ">", "<=", ">=");
 		public AWK_Expression right = new AWK_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class AWK_AdditiveExpression extends BinaryOperator
+	public static class AWK_AdditiveExpression extends PrecedenceOperator
 	{
 		public AWK_Expression left = new AWK_Expression(this, AllowedPrecedence.ATLEAST);
 		public AWK_PunctuationChoice operator = new AWK_PunctuationChoice("+", "-");
 		public AWK_Expression right = new AWK_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class AWK_MultiplicativeExpression extends BinaryOperator
+	public static class AWK_MultiplicativeExpression extends PrecedenceOperator
 	{
 		public AWK_Expression left = new AWK_Expression(this, AllowedPrecedence.ATLEAST);
 		public AWK_PunctuationChoice operator = new AWK_PunctuationChoice("*", "/", "%");
 		public AWK_Expression right = new AWK_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class AWK_SubscriptExpression extends BinaryOperator
+	public static class AWK_SubscriptExpression extends PrecedenceOperator
 	{
 		public AWK_Expression expr = new AWK_Expression(this, AllowedPrecedence.ATLEAST);
-		public AWK_Punctuation leftBracket = new AWK_Punctuation('[');
+		public PunctuationLeftBracket leftBracket;
 		public AWK_Expression subscr = new AWK_Expression(this, AllowedPrecedence.HIGHER);
-		public AWK_Punctuation rightBracket = new AWK_Punctuation(']');
+		public PunctuationRightBracket rightBracket;
 	}
 }

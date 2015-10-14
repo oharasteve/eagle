@@ -5,12 +5,12 @@ package com.eagle.programmar.VB.Statements;
 
 import com.eagle.programmar.VB.VB_Expression;
 import com.eagle.programmar.VB.VB_Variable;
-import com.eagle.programmar.VB.Terminals.VB_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
 
 public class VB_AssignmentStatement extends TokenSequence
 {
 	public VB_Variable var;
-	public VB_Punctuation equals = new VB_Punctuation('=');
+	public PunctuationEquals equals;
 	public VB_Expression expr;
 }

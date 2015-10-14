@@ -7,14 +7,17 @@ import com.eagle.programmar.PLI.Terminals.PLI_BitLiteral;
 import com.eagle.programmar.PLI.Terminals.PLI_Keyword;
 import com.eagle.programmar.PLI.Terminals.PLI_KeywordChoice;
 import com.eagle.programmar.PLI.Terminals.PLI_Literal;
-import com.eagle.programmar.PLI.Terminals.PLI_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
-import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class PLI_Type extends TokenChooser
 {
-	public PLI_Punctuation star = new PLI_Punctuation('*');
+	public PunctuationStar star;
 	
 	public static class PLI_BaseType extends TokenChooser
 	{
@@ -32,9 +35,9 @@ public class PLI_Type extends TokenChooser
 			public static class PLI_CharInitial extends TokenSequence
 			{
 				public PLI_Keyword INITIAL = new PLI_Keyword("INITIAL");
-				public PLI_Punctuation leftParen = new PLI_Punctuation('(');
+				public PunctuationLeftParen leftParen;
 				public PLI_Literal initialValue;
-				public PLI_Punctuation rightParen = new PLI_Punctuation(')');
+				public PunctuationRightParen rightParen;
 			}
 		}
 
@@ -67,9 +70,9 @@ public class PLI_Type extends TokenChooser
 			public static class PLI_BitInitial extends TokenSequence
 			{
 				public PLI_Keyword INITIAL = new PLI_Keyword("INITIAL");
-				public PLI_Punctuation leftParen = new PLI_Punctuation('(');
+				public PunctuationLeftParen leftParen;
 				public PLI_BitLiteral initialValue;
-				public PLI_Punctuation rightParen = new PLI_Punctuation(')');
+				public PunctuationRightParen rightParen;
 			}
 		}
 		
@@ -84,27 +87,20 @@ public class PLI_Type extends TokenChooser
 
 	public static class PLI_TypeSize extends TokenSequence
 	{
-		public PLI_Punctuation leftParen = new PLI_Punctuation('(');
-		public PLI_TypeSizeContents typeSizeContents;
-		public @OPT TokenList<PLI_TypeMoreSizes> moreSizes;
-		public PLI_Punctuation rightParen = new PLI_Punctuation(')');
+		public PunctuationLeftParen leftParen;
+		public SeparatedList<PLI_TypeSizeContents,PunctuationComma> typeSizeContents;
+		public PunctuationRightParen rightParen;
 		
 		public static class PLI_TypeSizeContents extends TokenChooser
 		{
-			public PLI_Punctuation star = new PLI_Punctuation('*');
+			public PunctuationStar star;
 			
 			public static class PLI_TypeSizeNormal extends TokenSequence
 			{
 				public PLI_Expression size1;
-				public @OPT PLI_Punctuation comma = new PLI_Punctuation(',');
+				public @OPT PunctuationComma comma;
 				public @OPT PLI_Expression size2;
 			}
-		}
-		
-		public static class PLI_TypeMoreSizes extends TokenSequence
-		{
-			public PLI_Punctuation comma = new PLI_Punctuation(',');
-			public PLI_TypeSizeContents typeSizeContents;
 		}
 	}
 }

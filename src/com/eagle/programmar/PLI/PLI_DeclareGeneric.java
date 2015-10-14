@@ -6,40 +6,37 @@ package com.eagle.programmar.PLI;
 import com.eagle.programmar.PLI.Symbols.PLI_Identifier_Reference;
 import com.eagle.programmar.PLI.Symbols.PLI_Variable_Definition;
 import com.eagle.programmar.PLI.Terminals.PLI_Keyword;
-import com.eagle.programmar.PLI.Terminals.PLI_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class PLI_DeclareGeneric extends TokenSequence
 {
 	public PLI_Keyword DECLARE = new PLI_Keyword("DECLARE");
 	public PLI_Variable_Definition id;
 	public PLI_Keyword GENERIC = new PLI_Keyword("GENERIC");
-	public PLI_Punctuation leftParen = new PLI_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public PLI_GenericWhen when;
 	public @OPT TokenList<PLI_GenericMoreWhens> moreWhens;
-	public PLI_Punctuation rightParen = new PLI_Punctuation(')');
-	public PLI_Punctuation semicolon = new PLI_Punctuation(';');
+	public PunctuationRightParen rightParen;
+	public PunctuationSemicolon semicolon;
 	
 	public static class PLI_GenericWhen extends TokenSequence
 	{
 		public PLI_Identifier_Reference id;
 		public PLI_Keyword WHEN = new PLI_Keyword("WHEN");
-		public PLI_Punctuation leftParen = new PLI_Punctuation('(');
-		public @OPT PLI_Type type;
-		public @OPT TokenList<PLI_MoreTypes> moreTypes;
-		public PLI_Punctuation rightParen = new PLI_Punctuation(')');
-		
-		public static class PLI_MoreTypes extends TokenSequence
-		{
-			public PLI_Punctuation comma = new PLI_Punctuation(',');
-			public PLI_Type type;
-		}
+		public PunctuationLeftParen leftParen;
+		public @OPT SeparatedList<PLI_Type,PunctuationComma> types;
+		public PunctuationRightParen rightParen;
 	}
 	
 	public static class PLI_GenericMoreWhens extends TokenSequence
 	{
-		public PLI_Punctuation comma = new PLI_Punctuation(',');
+		public PunctuationComma comma;
 		public PLI_GenericWhen when;
 	}
 }

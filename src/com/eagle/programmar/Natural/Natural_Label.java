@@ -4,11 +4,11 @@
 package com.eagle.programmar.Natural;
 
 import com.eagle.programmar.Natural.Symbols.Natural_Identifier_Reference;
-import com.eagle.programmar.Natural.Terminals.Natural_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
 
 public class Natural_Label extends TokenSequence
 {
 	public Natural_Identifier_Reference label;
-	public Natural_Punctuation dot = new Natural_Punctuation('.');
+	public PunctuationPeriod dot;
 }

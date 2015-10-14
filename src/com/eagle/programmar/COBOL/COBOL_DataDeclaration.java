@@ -18,10 +18,11 @@ import com.eagle.programmar.COBOL.Terminals.COBOL_KeywordChoice;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Level;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Number;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Picture;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class COBOL_DataDeclaration extends TokenSequence
 {
@@ -30,7 +31,7 @@ public class COBOL_DataDeclaration extends TokenSequence
 	public COBOL_Level level;
 	public @OPT COBOL_DataFieldName fieldName;
 	public @OPT TokenList<COBOL_DataClause> clauses;
-	public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+	public PunctuationPeriod dot;
 	public @OPT COBOL_DataComment comment;
 	
 	// These are special -- context-sensitive, must have larger (deeper) Level numbers
@@ -173,7 +174,7 @@ public class COBOL_DataDeclaration extends TokenSequence
 	
 	public static class COBOL_DataComment extends TokenSequence
 	{
-		public COBOL_Punctuation star = new COBOL_Punctuation('*');
+		public PunctuationStar star;
 		public COBOL_CommentToEndOfLine comment;
 	}
 }

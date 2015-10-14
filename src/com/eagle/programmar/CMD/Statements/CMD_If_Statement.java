@@ -12,6 +12,7 @@ import com.eagle.programmar.CMD.Terminals.CMD_Number;
 import com.eagle.programmar.CMD.Terminals.CMD_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationHyphen;
 
 public class CMD_If_Statement extends TokenSequence
 {
@@ -62,7 +63,7 @@ public class CMD_If_Statement extends TokenSequence
 				public static class CMD_EqualsEquals extends TokenSequence
 				{
 					public CMD_Punctuation equals = new CMD_Punctuation("==");
-					public @OPT CMD_Punctuation minus = new CMD_Punctuation('-');
+					public @OPT PunctuationHyphen minus;
 				}
 			}
 		}

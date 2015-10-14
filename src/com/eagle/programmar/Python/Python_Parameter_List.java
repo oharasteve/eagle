@@ -9,17 +9,22 @@ import com.eagle.programmar.Python.Terminals.Python_Comment;
 import com.eagle.programmar.Python.Terminals.Python_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class Python_Parameter_List extends TokenSequence
 {
-	public Python_Punctuation leftParen = new Python_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public @OPT Python_Comment comment;
 	public @SYNTAX(Python_Multiline_Syntax.class) Python_Params params;
-	public Python_Punctuation rightParen = new Python_Punctuation(')');
+	public PunctuationRightParen rightParen;
 	
 	public static class Python_Params extends TokenSequence
 	{
-		public @OPT Python_Punctuation star = new Python_Punctuation('*');
+		public @OPT PunctuationStar star;
 		public @OPT Python_Punctuation starStar = new Python_Punctuation("**");
 		public @OPT Python_Expression expr;
 		public @OPT Python_InitValue initValue;
@@ -27,16 +32,16 @@ public class Python_Parameter_List extends TokenSequence
 		
 		public static class Python_MoreParams extends TokenSequence
 		{
-			public Python_Punctuation comma = new Python_Punctuation(',');
+			public PunctuationComma comma;
 			public @OPT Python_Comment comment;
-			public @OPT Python_Punctuation star = new Python_Punctuation('*');
+			public @OPT PunctuationStar star;
 			public @OPT Python_Punctuation starStar = new Python_Punctuation("**");
 			public @OPT Python_Expression expr;
 			public @OPT Python_InitValue initValue;
 			
 			public static class Python_InitValue extends TokenSequence
 			{
-				public Python_Punctuation equals = new Python_Punctuation('=');
+				public PunctuationEquals equals;
 				public Python_Expression defaultValue;
 			}
 		}

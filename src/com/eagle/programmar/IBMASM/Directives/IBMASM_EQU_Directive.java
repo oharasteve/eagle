@@ -5,10 +5,10 @@ package com.eagle.programmar.IBMASM.Directives;
 
 import com.eagle.programmar.IBMASM.IBMASM_Immediate;
 import com.eagle.programmar.IBMASM.Terminals.IBMASM_Keyword;
-import com.eagle.programmar.IBMASM.Terminals.IBMASM_Punctuation;
 import com.eagle.programmar.IBMASM.Terminals.IBMASM_Spaces;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class IBMASM_EQU_Directive extends TokenSequence
 {
@@ -18,7 +18,7 @@ public class IBMASM_EQU_Directive extends TokenSequence
 	
 	public static class IBMASM_EQU_What extends TokenChooser
 	{
-		public IBMASM_Punctuation star = new IBMASM_Punctuation('*');
+		public PunctuationStar star;
 		public IBMASM_Immediate immediage;
 	}
 }

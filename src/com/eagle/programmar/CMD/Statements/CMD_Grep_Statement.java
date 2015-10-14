@@ -9,6 +9,7 @@ import com.eagle.programmar.CMD.Terminals.CMD_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationHyphen;
 
 public class CMD_Grep_Statement extends TokenSequence
 {
@@ -58,7 +59,7 @@ public class CMD_Grep_Statement extends TokenSequence
 
 		public static class CMD_Grep_Option_w extends TokenSequence
 		{
-			public CMD_Punctuation minus = new CMD_Punctuation('-');
+			public PunctuationHyphen minus;
 			public CMD_Keyword W = new CMD_Keyword("w");
 		}
 	}

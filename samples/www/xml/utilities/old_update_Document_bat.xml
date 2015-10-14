@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<EagleProgram Created="Sat Oct 03 13:20:46 EDT 2015" Elapsed="5" Language="CMD" Steps="1664" Tokens="333">
+<EagleProgram Created="Wed Oct 14 13:46:34 EDT 2015" Elapsed="5" Language="CMD" Steps="1664" Tokens="333">
   <T EC="0" EL="34" File="" SC="1" SL="1" TT=".CMD.CMD_Program">
     <T EC="0" EL="34" N="commands" SC="1" SL="1" TT="List">
       <T EC="0" EL="3" SC="1" SL="1" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
@@ -25,7 +25,7 @@
               <T EC="20" EL="3" N="setWhat" SC="5" SL="3" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What">
                 <T EC="20" EL="3" SC="5" SL="3" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What$CMS_Set_Regular">
                   <T EC="13" EL="3" N="var" SC="6" SL="3" TT=".CMD.Symbols.CMD_Variable_Definition" V="STARTDIR"/>
-                  <T EC="14" EL="3" N="equals" SC="14" SL="3" TT=".CMD.Terminals.CMD_Punctuation" V="="/>
+                  <T EC="14" EL="3" N="equals" SC="14" SL="3" TT="com.eagle.tokens.punctuation.PunctuationEquals" V="="/>
                   <T EC="20" EL="3" N="value" SC="15" SL="3" TT=".CMD.Terminals.CMD_RestOfLine" V="%~dp0"/>
                 </T>
               </T>
@@ -85,7 +85,7 @@
               <T EC="11" EL="7" N="setWhat" SC="5" SL="7" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What">
                 <T EC="11" EL="7" SC="5" SL="7" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What$CMS_Set_Regular">
                   <T EC="6" EL="7" N="var" SC="6" SL="7" TT=".CMD.Symbols.CMD_Variable_Definition" V="D"/>
-                  <T EC="7" EL="7" N="equals" SC="7" SL="7" TT=".CMD.Terminals.CMD_Punctuation" V="="/>
+                  <T EC="7" EL="7" N="equals" SC="7" SL="7" TT="com.eagle.tokens.punctuation.PunctuationEquals" V="="/>
                   <T EC="11" EL="7" N="value" SC="8" SL="7" TT=".CMD.Terminals.CMD_RestOfLine" V="%~1"/>
                 </T>
               </T>
@@ -105,7 +105,7 @@
               <T EC="28" EL="8" N="setWhat" SC="5" SL="8" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What">
                 <T EC="28" EL="8" SC="5" SL="8" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What$CMS_Set_Regular">
                   <T EC="6" EL="8" N="var" SC="6" SL="8" TT=".CMD.Symbols.CMD_Variable_Definition" V="U"/>
-                  <T EC="7" EL="8" N="equals" SC="7" SL="8" TT=".CMD.Terminals.CMD_Punctuation" V="="/>
+                  <T EC="7" EL="8" N="equals" SC="7" SL="8" TT="com.eagle.tokens.punctuation.PunctuationEquals" V="="/>
                   <T EC="28" EL="8" N="value" SC="8" SL="8" TT=".CMD.Terminals.CMD_RestOfLine" V="..\..\www2\utilities"/>
                 </T>
               </T>
@@ -222,7 +222,7 @@
               <T EC="1" EL="19" N="opts" SC="2" SL="17" TT="List">
                 <T EC="13" EL="17" SC="5" SL="17" TT=".CMD.Statements.CMD_For_Statement$CMD_For_Option">
                   <T EC="13" EL="17" SC="5" SL="17" TT=".CMD.Statements.CMD_For_Statement$CMD_For_Option$CMD_For_Option_R">
-                    <T EC="6" EL="17" N="slash" SC="6" SL="17" TT=".CMD.Terminals.CMD_Punctuation" V="/"/>
+                    <T EC="6" EL="17" N="slash" SC="6" SL="17" TT="com.eagle.tokens.punctuation.PunctuationSlash" V="/"/>
                     <T EC="7" EL="17" N="R" SC="7" SL="17" TT=".CMD.Terminals.CMD_Keyword" V="r"/>
                     <T EC="13" EL="17" N="forR" SC="8" SL="17" TT=".CMD.Statements.CMD_For_Statement$CMD_For_Option$CMD_For_Option_R$CMD_For_R">
                       <T EC="13" EL="17" SC="9" SL="17" TT=".CMD.Terminals.CMD_Literal" V="&quot;%D%&quot;"/>
@@ -232,18 +232,18 @@
               </T>
               <T EC="17" EL="17" N="var" SC="15" SL="17" TT=".CMD.Terminals.CMD_PercentVariable" V="%%i"/>
               <T EC="20" EL="17" N="IN" SC="19" SL="17" TT=".CMD.Terminals.CMD_Keyword" V="in"/>
-              <T EC="22" EL="17" N="leftParen" SC="22" SL="17" TT=".CMD.Terminals.CMD_Punctuation" V="("/>
+              <T EC="22" EL="17" N="leftParen" SC="22" SL="17" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
               <T EC="28" EL="17" N="arg" SC="23" SL="17" TT=".CMD.Terminals.CMD_Argument">
                 <T EC="28" EL="17" N="wrapper" SC="23" SL="17" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper">
                   <T EC="28" EL="17" SC="24" SL="17" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="*.pdf"/>
                 </T>
               </T>
-              <T EC="30" EL="17" N="rightParen" SC="30" SL="17" TT=".CMD.Terminals.CMD_Punctuation" V=")"/>
+              <T EC="30" EL="17" N="rightParen" SC="30" SL="17" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
               <T EC="33" EL="17" N="DO" SC="32" SL="17" TT=".CMD.Terminals.CMD_Keyword" V="do"/>
               <T EC="35" EL="17" N="at" SC="35" SL="17" TT=".CMD.Terminals.CMD_Punctuation" V="@"/>
               <T EC="1" EL="19" N="stmt" SC="36" SL="17" TT=".CMD.CMD_Command$CMD_Statement">
                 <T EC="1" EL="19" SC="36" SL="17" TT=".CMD.CMD_Command$CMD_Statement$CMD_BlockStatement">
-                  <T EC="36" EL="17" N="leftParen" SC="36" SL="17" TT=".CMD.Terminals.CMD_Punctuation" V="("/>
+                  <T EC="36" EL="17" N="leftParen" SC="36" SL="17" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                   <T EC="0" EL="18" N="eoln" SC="37" SL="17" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
                   <T EC="1" EL="19" N="commands" SC="36" SL="17" TT="List">
                     <T EC="0" EL="19" SC="1" SL="18" TT=".CMD.CMD_Command$CMD_Statement$CMD_BlockStatement$CMD_CommandOrLabel">
@@ -274,7 +274,7 @@
                       </T>
                     </T>
                   </T>
-                  <T EC="1" EL="19" N="righParen" SC="1" SL="19" TT=".CMD.Terminals.CMD_Punctuation" V=")"/>
+                  <T EC="1" EL="19" N="rightParen" SC="1" SL="19" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                 </T>
               </T>
             </T>
@@ -308,13 +308,13 @@
               <T EC="52" EL="22" N="opts" SC="2" SL="22" TT="List">
                 <T EC="7" EL="22" SC="5" SL="22" TT=".CMD.Statements.CMD_For_Statement$CMD_For_Option">
                   <T EC="7" EL="22" SC="5" SL="22" TT=".CMD.Statements.CMD_For_Statement$CMD_For_Option$CMD_For_Option_D">
-                    <T EC="6" EL="22" N="slash" SC="6" SL="22" TT=".CMD.Terminals.CMD_Punctuation" V="/"/>
+                    <T EC="6" EL="22" N="slash" SC="6" SL="22" TT="com.eagle.tokens.punctuation.PunctuationSlash" V="/"/>
                     <T EC="7" EL="22" N="D" SC="7" SL="22" TT=".CMD.Terminals.CMD_Keyword" V="d"/>
                   </T>
                 </T>
                 <T EC="16" EL="22" SC="8" SL="22" TT=".CMD.Statements.CMD_For_Statement$CMD_For_Option">
                   <T EC="16" EL="22" SC="8" SL="22" TT=".CMD.Statements.CMD_For_Statement$CMD_For_Option$CMD_For_Option_R">
-                    <T EC="9" EL="22" N="slash" SC="9" SL="22" TT=".CMD.Terminals.CMD_Punctuation" V="/"/>
+                    <T EC="9" EL="22" N="slash" SC="9" SL="22" TT="com.eagle.tokens.punctuation.PunctuationSlash" V="/"/>
                     <T EC="10" EL="22" N="R" SC="10" SL="22" TT=".CMD.Terminals.CMD_Keyword" V="r"/>
                     <T EC="16" EL="22" N="forR" SC="11" SL="22" TT=".CMD.Statements.CMD_For_Statement$CMD_For_Option$CMD_For_Option_R$CMD_For_R">
                       <T EC="16" EL="22" SC="12" SL="22" TT=".CMD.Terminals.CMD_Literal" V="&quot;%D%&quot;"/>
@@ -324,13 +324,13 @@
               </T>
               <T EC="20" EL="22" N="var" SC="18" SL="22" TT=".CMD.Terminals.CMD_PercentVariable" V="%%i"/>
               <T EC="23" EL="22" N="IN" SC="22" SL="22" TT=".CMD.Terminals.CMD_Keyword" V="in"/>
-              <T EC="25" EL="22" N="leftParen" SC="25" SL="22" TT=".CMD.Terminals.CMD_Punctuation" V="("/>
+              <T EC="25" EL="22" N="leftParen" SC="25" SL="22" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
               <T EC="34" EL="22" N="arg" SC="26" SL="22" TT=".CMD.Terminals.CMD_Argument">
                 <T EC="34" EL="22" N="wrapper" SC="26" SL="22" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper">
                   <T EC="34" EL="22" SC="27" SL="22" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="reduced*"/>
                 </T>
               </T>
-              <T EC="36" EL="22" N="rightParen" SC="36" SL="22" TT=".CMD.Terminals.CMD_Punctuation" V=")"/>
+              <T EC="36" EL="22" N="rightParen" SC="36" SL="22" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
               <T EC="39" EL="22" N="DO" SC="38" SL="22" TT=".CMD.Terminals.CMD_Keyword" V="do"/>
               <T EC="41" EL="22" N="at" SC="41" SL="22" TT=".CMD.Terminals.CMD_Punctuation" V="@"/>
               <T EC="52" EL="22" N="stmt" SC="42" SL="22" TT=".CMD.CMD_Command$CMD_Statement">
@@ -437,7 +437,7 @@
               <T EC="1" EL="31" N="opts" SC="2" SL="28" TT="List">
                 <T EC="13" EL="28" SC="5" SL="28" TT=".CMD.Statements.CMD_For_Statement$CMD_For_Option">
                   <T EC="13" EL="28" SC="5" SL="28" TT=".CMD.Statements.CMD_For_Statement$CMD_For_Option$CMD_For_Option_R">
-                    <T EC="6" EL="28" N="slash" SC="6" SL="28" TT=".CMD.Terminals.CMD_Punctuation" V="/"/>
+                    <T EC="6" EL="28" N="slash" SC="6" SL="28" TT="com.eagle.tokens.punctuation.PunctuationSlash" V="/"/>
                     <T EC="7" EL="28" N="R" SC="7" SL="28" TT=".CMD.Terminals.CMD_Keyword" V="r"/>
                     <T EC="13" EL="28" N="forR" SC="8" SL="28" TT=".CMD.Statements.CMD_For_Statement$CMD_For_Option$CMD_For_Option_R$CMD_For_R">
                       <T EC="13" EL="28" SC="9" SL="28" TT=".CMD.Terminals.CMD_Literal" V="&quot;%D%&quot;"/>
@@ -447,18 +447,18 @@
               </T>
               <T EC="17" EL="28" N="var" SC="15" SL="28" TT=".CMD.Terminals.CMD_PercentVariable" V="%%i"/>
               <T EC="20" EL="28" N="IN" SC="19" SL="28" TT=".CMD.Terminals.CMD_Keyword" V="in"/>
-              <T EC="22" EL="28" N="leftParen" SC="22" SL="28" TT=".CMD.Terminals.CMD_Punctuation" V="("/>
+              <T EC="22" EL="28" N="leftParen" SC="22" SL="28" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
               <T EC="34" EL="28" N="arg" SC="23" SL="28" TT=".CMD.Terminals.CMD_Argument">
                 <T EC="34" EL="28" N="wrapper" SC="23" SL="28" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper">
                   <T EC="34" EL="28" SC="24" SL="28" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="index*.html"/>
                 </T>
               </T>
-              <T EC="36" EL="28" N="rightParen" SC="36" SL="28" TT=".CMD.Terminals.CMD_Punctuation" V=")"/>
+              <T EC="36" EL="28" N="rightParen" SC="36" SL="28" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
               <T EC="39" EL="28" N="DO" SC="38" SL="28" TT=".CMD.Terminals.CMD_Keyword" V="do"/>
               <T EC="41" EL="28" N="at" SC="41" SL="28" TT=".CMD.Terminals.CMD_Punctuation" V="@"/>
               <T EC="1" EL="31" N="stmt" SC="42" SL="28" TT=".CMD.CMD_Command$CMD_Statement">
                 <T EC="1" EL="31" SC="42" SL="28" TT=".CMD.CMD_Command$CMD_Statement$CMD_BlockStatement">
-                  <T EC="42" EL="28" N="leftParen" SC="42" SL="28" TT=".CMD.Terminals.CMD_Punctuation" V="("/>
+                  <T EC="42" EL="28" N="leftParen" SC="42" SL="28" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
                   <T EC="0" EL="29" N="eoln" SC="43" SL="28" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
                   <T EC="1" EL="31" N="commands" SC="42" SL="28" TT="List">
                     <T EC="0" EL="30" SC="1" SL="29" TT=".CMD.CMD_Command$CMD_Statement$CMD_BlockStatement$CMD_CommandOrLabel">
@@ -539,7 +539,7 @@
                       </T>
                     </T>
                   </T>
-                  <T EC="1" EL="31" N="righParen" SC="1" SL="31" TT=".CMD.Terminals.CMD_Punctuation" V=")"/>
+                  <T EC="1" EL="31" N="rightParen" SC="1" SL="31" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
                 </T>
               </T>
             </T>

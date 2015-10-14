@@ -3,6 +3,8 @@
 
 package com.eagle.programmar.CMacro.Statements;
 
+import com.eagle.preprocess.FindIncludeFile;
+import com.eagle.preprocess.C.CMacro_Preprocess;
 import com.eagle.programmar.C.Terminals.C_Character_Literal;
 import com.eagle.programmar.C.Terminals.C_Comment;
 import com.eagle.programmar.C.Terminals.C_HexNumber;
@@ -11,33 +13,45 @@ import com.eagle.programmar.C.Terminals.C_Literal;
 import com.eagle.programmar.C.Terminals.C_Number;
 import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.programmar.C.Terminals.C_PunctuationChoice;
+import com.eagle.programmar.CMacro.CMacro_Statement;
 import com.eagle.programmar.CMacro.Symbols.CMacro_Define_Definition;
 import com.eagle.programmar.CMacro.Symbols.CMacro_Identifier_Reference;
 import com.eagle.programmar.CMacro.Symbols.CMacro_Parameter_Definition;
+import com.eagle.programmar.CMacro.Terminals.CMacro_Definition;
 import com.eagle.programmar.CMacro.Terminals.CMacro_EndOfLine;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
-public class CMacro_Define_Statement extends TokenSequence
+public class CMacro_Define_Statement extends CMacro_Statement
 {
 	public @DOC("Macros.html") C_Keyword DEFINE = new C_Keyword("define");
 	public CMacro_Define_Definition var;
-	public @OPT CMacro_Define_Parameters params;
-	public @OPT TokenList<CMacro_DefineItem> item;
+	public CMacro_DefineWhich which;
+	
+	public static class CMacro_DefineWhich extends TokenChooser
+	{
+		public static class CMacro_DefineSimple extends TokenSequence
+		{
+			public CMacro_Definition definition;
+		}
+		
+		public @FIRST static class CMacro_DefineFunction extends TokenSequence
+		{
+			public CMacro_Define_Parameters params;
+			public TokenList<CMacro_DefineItem> item;
+		}
+	}
 	
 	public static class CMacro_Define_Parameters extends TokenSequence
 	{
-		public C_Punctuation leftParen = new C_Punctuation('(');
-		public CMacro_Parameter_Definition var;
-		public @OPT TokenList<CMacro_More_Parameter> more;
-		public C_Punctuation rightParen = new C_Punctuation(')');
-		
-		public static class CMacro_More_Parameter extends TokenSequence
-		{
-			public C_Punctuation comma = new C_Punctuation(',');
-			public CMacro_Parameter_Definition var;
-		}
+		public PunctuationLeftParen leftParen;
+		public SeparatedList<CMacro_Parameter_Definition, PunctuationComma> vars;
+		public PunctuationRightParen rightParen;
 	}
 	
 	public static class CMacro_DefineItem extends TokenChooser
@@ -61,16 +75,18 @@ public class CMacro_Define_Statement extends TokenSequence
 		
 		public static class CMacro_Parameters extends TokenSequence
 		{
-			public C_Punctuation leftParen = new C_Punctuation('(');
-			public CMacro_Parameter_Definition param;
-			public @OPT TokenList<CMacro_MoreParameters> more;
-			public C_Punctuation rightParen = new C_Punctuation(')');
-			
-			public static class CMacro_MoreParameters extends TokenSequence
-			{
-				public C_Punctuation comma = new C_Punctuation(',');
-				public CMacro_Parameter_Definition param;
-			}
+			public PunctuationLeftParen leftParen;
+			public SeparatedList<CMacro_Parameter_Definition,PunctuationComma> params;
+			public PunctuationRightParen rightParen;
 		}
+	}
+	
+	@Override
+	public boolean processMacro(CMacro_Preprocess preprocessor, FindIncludeFile findInclude)
+	{
+		String macroName = var.getValue();
+		System.out.println("#define " + macroName + " ...");
+		preprocessor.setSymbol(macroName, this);
+		return true;	// No need to add these to the file
 	}
 }

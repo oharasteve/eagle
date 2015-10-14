@@ -6,15 +6,16 @@ package com.eagle.programmar.TCL.Statements;
 import com.eagle.programmar.TCL.TCL_Expression;
 import com.eagle.programmar.TCL.TCL_Statement;
 import com.eagle.programmar.TCL.Terminals.TCL_Keyword;
-import com.eagle.programmar.TCL.Terminals.TCL_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
 
 public class TCL_IfStatement extends TokenSequence
 {
 	public TCL_Keyword IF = new TCL_Keyword("if");
-	public TCL_Punctuation leftBrace = new TCL_Punctuation('{');
+	public PunctuationLeftBrace leftBrace;
 	public TCL_Expression condition;
-	public TCL_Punctuation rightBrace = new TCL_Punctuation('}');
+	public PunctuationRightBrace rightBrace;
 	public TCL_Statement stmt;
 	public @OPT TCL_ElseClause elseClause;
 	

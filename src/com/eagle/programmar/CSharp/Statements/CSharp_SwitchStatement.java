@@ -6,25 +6,29 @@ package com.eagle.programmar.CSharp.Statements;
 import com.eagle.programmar.CSharp.CSharp_Expression;
 import com.eagle.programmar.CSharp.CSharp_Statement.CSharp_StatementBlock.CSharp_StatementOrComment;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Keyword;
-import com.eagle.programmar.CSharp.Terminals.CSharp_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class CSharp_SwitchStatement extends TokenSequence
 {
 	public @NEWLINE @DOC("statements.html#14.11") CSharp_Keyword SWITCH = new CSharp_Keyword("switch");
-	public CSharp_Punctuation leftParen = new CSharp_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public CSharp_Expression val;
-	public CSharp_Punctuation rightParen = new CSharp_Punctuation(')');
-	public @INDENT CSharp_Punctuation leftBrace = new CSharp_Punctuation('{');
+	public PunctuationRightParen rightParen;
+	public @INDENT PunctuationLeftBrace leftBrace;
 	public TokenList<CSharp_CaseClause> caseClause;
-	public @OUTDENT CSharp_Punctuation rightBrace = new CSharp_Punctuation('}');
+	public @OUTDENT PunctuationRightBrace rightBrace;
 	
 	public static class CSharp_CaseClause extends TokenSequence
 	{
 		public @NEWLINE CSharp_CaseType caseType;
-		public CSharp_Punctuation colon = new CSharp_Punctuation(':');
+		public PunctuationColon colon;
 		public @OPT TokenList<CSharp_StatementOrComment> statements;
 	}
 	

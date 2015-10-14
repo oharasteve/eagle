@@ -9,9 +9,9 @@ import com.eagle.programmar.COBOL.COBOL_Subscript;
 import com.eagle.programmar.COBOL.Symbols.COBOL_Identifier_Reference;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Comment;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class COBOL_MoveStatement extends COBOL_AbstractStatement
 {
@@ -22,11 +22,11 @@ public class COBOL_MoveStatement extends COBOL_AbstractStatement
 	public @OPT COBOL_Identifier_Reference var;
 	public @OPT COBOL_Subscript subscript;
 	public @OPT TokenList<COBOL_MoveMore> more;
-	public @OPT @CURIOUS("MOVE: Extra comma") COBOL_Punctuation comma = new COBOL_Punctuation(',');
+	public @OPT @CURIOUS("MOVE: Extra comma") PunctuationComma comma;
 	
 	public static class COBOL_MoveMore extends TokenSequence
 	{
-		public @OPT COBOL_Punctuation comma = new COBOL_Punctuation(',');
+		public @OPT PunctuationComma comma;
 		public @OPT TokenList<COBOL_Comment> comments;
 		public COBOL_Identifier_Reference var;
 		public @OPT COBOL_Subscript subscript;

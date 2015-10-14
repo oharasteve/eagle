@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<EagleProgram Created="Sat Oct 03 13:20:39 EDT 2015" Elapsed="48" Language="AWK" Steps="150" Tokens="25">
+<EagleProgram Created="Wed Oct 14 13:46:31 EDT 2015" Elapsed="19" Language="AWK" Steps="148" Tokens="24">
   <T EC="0" EL="4" File="" SC="1" SL="1" TT=".AWK.AWK_Program">
     <T EC="0" EL="4" N="statements" SC="1" SL="1" TT="List">
       <T EC="0" EL="4" SC="1" SL="1" TT=".AWK.AWK_Command">
@@ -17,33 +17,31 @@
           </T>
         </T>
         <T EC="0" EL="4" N="action" SC="17" SL="1" TT=".AWK.AWK_Action">
-          <T EC="18" EL="1" N="leftBrace" SC="18" SL="1" TT=".AWK.Terminals.AWK_Punctuation" V="{"/>
+          <T EC="18" EL="1" N="leftBrace" SC="18" SL="1" TT="com.eagle.tokens.punctuation.PunctuationLeftBrace" V="{"/>
           <T EC="0" EL="4" N="newlines" SC="17" SL="1" TT="List">
             <T EC="0" EL="2" SC="19" SL="1" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
           </T>
           <T EC="0" EL="4" N="statements" SC="17" SL="1" TT="List">
             <T EC="0" EL="3" SC="1" SL="2" TT=".AWK.AWK_Action$AWK_StatementOrComment">
               <T EC="0" EL="3" SC="1" SL="2" TT=".AWK.AWK_Statements">
-                <T EC="7" EL="2" N="statement" SC="1" SL="2" TT=".AWK.AWK_Statements$AWK_Statement">
-                  <T EC="7" EL="2" SC="1" SL="2" TT=".AWK.Statements.AWK_PrintStatement">
-                    <T EC="7" EL="2" N="PRINT" SC="3" SL="2" TT=".AWK.Terminals.AWK_KeywordChoice" V="print"/>
-                    <T EC="7" EL="2" N="param" SC="8" SL="2" TT=".AWK.Statements.AWK_PrintStatement$AWK_PrintParameters">
-                      <T EC="7" EL="2" SC="8" SL="2" TT=".AWK.Statements.AWK_PrintStatement$AWK_PrintParameters$AWK_Print_NoParens"/>
+                <T EC="0" EL="3" N="statements" SC="1" SL="2" TT="List">
+                  <T EC="7" EL="2" SC="1" SL="2" TT=".AWK.AWK_Statements$AWK_Statement">
+                    <T EC="7" EL="2" SC="1" SL="2" TT=".AWK.Statements.AWK_PrintStatement">
+                      <T EC="7" EL="2" N="PRINT" SC="3" SL="2" TT=".AWK.Terminals.AWK_KeywordChoice" V="print"/>
+                      <T EC="7" EL="2" N="param" SC="8" SL="2" TT=".AWK.Statements.AWK_PrintStatement$AWK_PrintParameters">
+                        <T EC="7" EL="2" SC="8" SL="2" TT=".AWK.Statements.AWK_PrintStatement$AWK_PrintParameters$AWK_Print_NoParens"/>
+                      </T>
                     </T>
                   </T>
                 </T>
-                <T EC="0" EL="3" N="more" SC="1" SL="2" TT="List">
-                  <T EC="8" EL="2" SC="8" SL="2" TT=".AWK.AWK_Statements$AWK_MoreStatements">
-                    <T EC="8" EL="2" N="semicolon" SC="8" SL="2" TT=".AWK.Terminals.AWK_Punctuation" V=";"/>
-                  </T>
-                </T>
+                <T EC="8" EL="2" N="semicolon" SC="8" SL="2" TT="com.eagle.tokens.punctuation.PunctuationSemicolon" V=";"/>
                 <T EC="0" EL="3" N="newlines" SC="1" SL="2" TT="List">
                   <T EC="0" EL="3" SC="9" SL="2" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
                 </T>
               </T>
             </T>
           </T>
-          <T EC="1" EL="3" N="rightBrace" SC="1" SL="3" TT=".AWK.Terminals.AWK_Punctuation" V="}"/>
+          <T EC="1" EL="3" N="rightBrace" SC="1" SL="3" TT="com.eagle.tokens.punctuation.PunctuationRightBrace" V="}"/>
           <T EC="0" EL="4" N="blankLines" SC="17" SL="1" TT="List">
             <T EC="0" EL="4" SC="2" SL="3" TT=".AWK.Terminals.AWK_EndOfLine" V=""/>
           </T>

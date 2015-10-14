@@ -8,6 +8,7 @@ import com.eagle.programmar.Django.Terminals.Django_Literal;
 import com.eagle.programmar.Django.Terminals.Django_Punctuation;
 import com.eagle.programmar.HTML.Terminals.HTML_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
 
 public class Django_Insert extends TokenSequence
 {
@@ -27,7 +28,7 @@ public class Django_Insert extends TokenSequence
 	{
 		public Django_Punctuation verticalBar = new Django_Punctuation('|');
 		public Django_Keyword DATE = new Django_Keyword("date");
-		public Django_Punctuation colon = new Django_Punctuation(':');
+		public PunctuationColon colon;
 		public Django_Literal literal;
 	}
 }

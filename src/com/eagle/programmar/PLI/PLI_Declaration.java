@@ -11,10 +11,16 @@ import com.eagle.programmar.PLI.Terminals.PLI_Keyword;
 import com.eagle.programmar.PLI.Terminals.PLI_KeywordChoice;
 import com.eagle.programmar.PLI.Terminals.PLI_Level;
 import com.eagle.programmar.PLI.Terminals.PLI_Number;
-import com.eagle.programmar.PLI.Terminals.PLI_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
+import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class PLI_Declaration extends TokenSequence
 {
@@ -22,9 +28,8 @@ public class PLI_Declaration extends TokenSequence
 	
 	public PLI_KeywordChoice DECLARE = new PLI_KeywordChoice(
 			"DCL", "DECLARE");
-	public PLI_Declare_Item item;
-	public @OPT TokenList<PLI_Declare_MoreItems> moreItems;
-	public PLI_Punctuation semiColon = new PLI_Punctuation(';');
+	public SeparatedList<PLI_Declare_Item,PunctuationComma> items;
+	public PunctuationSemicolon semicolon;
 
 	public static class PLI_Declare_Item extends TokenSequence
 	{
@@ -41,30 +46,24 @@ public class PLI_Declaration extends TokenSequence
 		public @OPT PLI_Declare_Character character2;
 	}
 	
-	public static class PLI_Declare_MoreItems extends TokenSequence
-	{
-		public PLI_Punctuation comma = new PLI_Punctuation(',');
-		public PLI_Declare_Item item;
-	}
-	
 	public static class PLI_Declare_Variables extends TokenChooser
 	{
 		public PLI_Variable_Definition varDecl;
 		
 		public static class PLI_Identifier_List extends TokenSequence
 		{
-			public PLI_Punctuation leftParen = new PLI_Punctuation('(');
+			public PunctuationLeftParen leftParen;
 			public PLI_Variable_Definition varDecl;
 			public @OPT PLI_Declare_Size size;
 			public @OPT PLI_Type type;
 			public @OPT PLI_Keyword STATIC = new PLI_Keyword("STATIC");
 			public @OPT PLI_Declare_Initial initial;
 			public @OPT TokenList<PLI_More_Identifier_List> moreIdentifiers;
-			public PLI_Punctuation rightParen = new PLI_Punctuation(')');
+			public PunctuationRightParen rightParen;
 
 			public static class PLI_More_Identifier_List extends TokenSequence
 			{
-				public PLI_Punctuation comma = new PLI_Punctuation(',');
+				public PunctuationComma comma;
 				public PLI_Variable_Definition varDecl;
 				public @OPT PLI_Declare_Size size;
 				public @OPT PLI_Type type;
@@ -75,64 +74,50 @@ public class PLI_Declaration extends TokenSequence
 			public static class PLI_Declare_Initial extends TokenSequence
 			{
 				public PLI_Keyword INITIAL = new PLI_Keyword("INITIAL");
-				public PLI_Punctuation leftParen = new PLI_Punctuation('(');
-				public PLI_Expression expr;
-				public @OPT TokenList<PLI_Declare_MoreInitial> more;
-				public PLI_Punctuation rightParen = new PLI_Punctuation(')');
-				
-				public static class PLI_Declare_MoreInitial extends TokenSequence
-				{
-					public PLI_Punctuation comma = new PLI_Punctuation(',');
-					public PLI_Expression expr;
-				}
+				public PunctuationLeftParen leftParen;
+				public SeparatedList<PLI_Expression,PunctuationComma> exprs;
+				public PunctuationRightParen rightParen;
 			}
 		}
 	}
 	
 	public static class PLI_Declare_Size extends TokenSequence
 	{
-		public PLI_Punctuation leftParen = new PLI_Punctuation('(');
-		public PLI_Declare_Size_OneDimension dim;
-		public @OPT TokenList<PLI_Declare_Size_MoreDimensions> moreDims;
-		public PLI_Punctuation rightParen = new PLI_Punctuation(')');
-			
-		public static class PLI_Declare_Size_MoreDimensions extends TokenSequence
-		{
-			public PLI_Punctuation comma = new PLI_Punctuation(',');
-			public PLI_Declare_Size_OneDimension dim;
-		}
+		public PunctuationLeftParen leftParen;
+		public SeparatedList<PLI_Declare_Size_OneDimension,PunctuationComma> dims;
+		public PunctuationRightParen rightParen;
 		
 		public static class PLI_Declare_Size_OneDimension extends TokenChooser
 		{
 			public static class PLI_ParenStar extends TokenSequence
 			{
-				public PLI_Punctuation star = new PLI_Punctuation('*');
+				public PunctuationStar star;
 			}
 	
 			public static class PLI_Declare_Array extends TokenSequence
 			{
 				public PLI_Expression exprFrom;
-				public PLI_Punctuation colon = new PLI_Punctuation(':');
+				public PunctuationColon colon;
 				public PLI_Expression exprTo;
 			}
 			
 			public static class PLI_Declare_Bounds_Array extends TokenSequence
 			{
 				public PLI_Keyword LBOUND = new PLI_Keyword("LBOUND");
-				public PLI_Punctuation leftParen1 = new PLI_Punctuation('(');
+				public PunctuationLeftParen leftParen1;
 				public PLI_Identifier_Reference var1;
 				public @OPT PLI_Declare_Array_Dim dim1;
-				public PLI_Punctuation rightParen1 = new PLI_Punctuation(')');
-				public PLI_Punctuation colon = new PLI_Punctuation(':');
+				public PunctuationRightParen rightParen1;
+				public PunctuationColon colon;
 				public PLI_Keyword HBOUND = new PLI_Keyword("HBOUND");
-				public PLI_Punctuation leftParen2 = new PLI_Punctuation('(');
+				public PunctuationLeftParen leftParen2;
 				public PLI_Identifier_Reference var2;
 				public @OPT PLI_Declare_Array_Dim dim2;
-				public PLI_Punctuation rightParen2 = new PLI_Punctuation(')');
+				public PunctuationRightParen rightParen2;
 				
 				public static class PLI_Declare_Array_Dim extends TokenSequence
 				{
-					public PLI_Punctuation comma = new PLI_Punctuation(',');
+					public PunctuationComma comma;
 					public PLI_Number num;
 				}
 			}
@@ -148,9 +133,9 @@ public class PLI_Declaration extends TokenSequence
 		
 		public static class PLI_Declare_Character_Size extends TokenSequence
 		{
-			public PLI_Punctuation leftParen = new PLI_Punctuation('(');
+			public PunctuationLeftParen leftParen;
 			public PLI_Expression expr;
-			public PLI_Punctuation rightParen = new PLI_Punctuation(')');
+			public PunctuationRightParen rightParen;
 		}
 	}
 }

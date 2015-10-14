@@ -7,9 +7,9 @@ import com.eagle.programmar.COBOL.COBOL_AbstractStatement;
 import com.eagle.programmar.COBOL.Symbols.COBOL_Identifier_Reference;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
 import com.eagle.programmar.COBOL.Terminals.COBOL_KeywordChoice;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class COBOL_OpenStatement extends COBOL_AbstractStatement
 {
@@ -19,7 +19,7 @@ public class COBOL_OpenStatement extends COBOL_AbstractStatement
 	
 	public static class COBOL_OpenFileList extends TokenSequence
 	{
-		public @OPT COBOL_Punctuation comma = new COBOL_Punctuation(',');
+		public @OPT PunctuationComma comma;
 		public COBOL_Identifier_Reference file;
 	}
 }

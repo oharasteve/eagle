@@ -12,10 +12,10 @@ import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
 import com.eagle.programmar.COBOL.Terminals.COBOL_KeywordChoice;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Literal;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Number;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class COBOL_CallStatement extends COBOL_AbstractStatement
 {
@@ -35,7 +35,7 @@ public class COBOL_CallStatement extends COBOL_AbstractStatement
 	
 	public static class COBOL_CallParameter extends TokenSequence
 	{
-		public @OPT COBOL_Punctuation comma = new COBOL_Punctuation(',');
+		public @OPT PunctuationComma comma;
 		public @OPT COBOL_Keyword BY = new COBOL_Keyword("BY");
 		public @OPT COBOL_KeywordChoice byHow = new COBOL_KeywordChoice(
 				"CONTENT", "REFERENCE", "VALUE");

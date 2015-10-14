@@ -5,19 +5,20 @@ package com.eagle.programmar.Gupta;
 
 import com.eagle.programmar.Gupta.Symbols.Gupta_Data_Definition;
 import com.eagle.programmar.Gupta.Terminals.Gupta_Literal;
-import com.eagle.programmar.Gupta.Terminals.Gupta_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationEquals;
 
 public class Gupta_Variable_Declaration extends TokenSequence
 {
 	public Gupta_Type type;
-	public Gupta_Punctuation colon = new Gupta_Punctuation(':');
+	public PunctuationColon colon;
 	public Gupta_Data_Definition varName;
 	public @OPT Gupta_InitialValue initValue;
 	
 	public static class Gupta_InitialValue extends TokenSequence
 	{
-		public Gupta_Punctuation equals = new Gupta_Punctuation('=');
+		public PunctuationEquals equals;
 		public Gupta_Literal literal;
 	}
 }

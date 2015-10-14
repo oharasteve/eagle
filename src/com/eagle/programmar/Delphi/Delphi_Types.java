@@ -5,9 +5,10 @@ package com.eagle.programmar.Delphi;
 
 import com.eagle.programmar.Delphi.Symbols.Delphi_Type_Definition;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Keyword;
-import com.eagle.programmar.Delphi.Terminals.Delphi_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Delphi_Types extends TokenSequence
 {
@@ -17,8 +18,8 @@ public class Delphi_Types extends TokenSequence
 	public static class Delphi_MoreTypes extends TokenSequence
 	{
 		public Delphi_Type_Definition name;
-		public Delphi_Punctuation equals = new Delphi_Punctuation('=');
+		public PunctuationEquals equals;
 		public Delphi_Type type;
-		public Delphi_Punctuation semicolon = new Delphi_Punctuation(';');
+		public PunctuationSemicolon semicolon;
 	}
 }

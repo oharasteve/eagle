@@ -12,10 +12,12 @@ import com.eagle.programmar.Natural.Terminals.Natural_Keyword;
 import com.eagle.programmar.Natural.Terminals.Natural_KeywordChoice;
 import com.eagle.programmar.Natural.Terminals.Natural_Literal;
 import com.eagle.programmar.Natural.Terminals.Natural_Number;
-import com.eagle.programmar.Natural.Terminals.Natural_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Natural_FindStatement extends TokenSequence
 {
@@ -60,9 +62,9 @@ public class Natural_FindStatement extends TokenSequence
 	
 	public static class Natural_Find_Number_Records extends TokenSequence
 	{
-		public Natural_Punctuation leftParen = new Natural_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public Natural_Number number;
-		public Natural_Punctuation rightParen = new Natural_Punctuation(')');
+		public PunctuationRightParen rightParen;
 	}
 	
 	public static class Natural_Find_By_ISN extends TokenSequence
@@ -91,7 +93,7 @@ public class Natural_FindStatement extends TokenSequence
 			
 			public static class Natural_Find_Via_Equals extends TokenChooser
 			{
-				public Natural_Punctuation equals = new Natural_Punctuation('=');
+				public PunctuationEquals equals;
 				public Natural_KeywordChoice EQUALS = new Natural_KeywordChoice(
 						"EQ", "EQUAL");
 			}

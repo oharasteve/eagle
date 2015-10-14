@@ -6,9 +6,9 @@ package com.eagle.programmar.SQL.Statements;
 import com.eagle.programmar.SQL.Symbols.SQL_Identifier_Reference;
 import com.eagle.programmar.SQL.Terminals.SQL_Keyword;
 import com.eagle.programmar.SQL.Terminals.SQL_KeywordChoice;
-import com.eagle.programmar.SQL.Terminals.SQL_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class SQL_GrantStatement extends TokenSequence
 {
@@ -16,7 +16,7 @@ public class SQL_GrantStatement extends TokenSequence
 	public SQL_GrantPermission permission;
 	public SQL_Keyword TO = new SQL_Keyword("TO");
 	public SQL_Identifier_Reference role;
-	public SQL_Punctuation semicolon = new SQL_Punctuation(';');
+	public PunctuationSemicolon semicolon;
 	
 	public static class SQL_GrantPermission extends TokenChooser
 	{

@@ -11,12 +11,16 @@ import com.eagle.programmar.Java.Java_Type;
 import com.eagle.programmar.Java.Java_Variable;
 import com.eagle.programmar.Java.Terminals.Java_Comment;
 import com.eagle.programmar.Java.Terminals.Java_Keyword;
-import com.eagle.programmar.Java.Terminals.Java_Punctuation;
 import com.eagle.tokens.EagleScope;
 import com.eagle.tokens.EagleScope.EagleScopeInterface;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
-import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Java_ForStatement extends TokenChooser implements EagleScopeInterface
 {
@@ -26,21 +30,20 @@ public class Java_ForStatement extends TokenChooser implements EagleScopeInterfa
 	{
 		public @OPT @NEWLINE Java_Label label;
 		public @DOC("statements.html#14.14") Java_Keyword FOR = new Java_Keyword("for");
-		public Java_Punctuation leftParen = new Java_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public @OPT Java_ForInit init;
-		public @NOSPACE Java_Punctuation semicolon1 = new Java_Punctuation(';');
+		public @NOSPACE PunctuationSemicolon semicolon1;
 		public @OPT Java_Expression terminateCondition;
-		public @NOSPACE Java_Punctuation semicolon2 = new Java_Punctuation(';');
+		public @NOSPACE PunctuationSemicolon semicolon2;
 		public @OPT Java_Expression increment;
-		public @NOSPACE Java_Punctuation rightParen = new Java_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 		public @OPT Java_Comment comment;
 		public Java_Statement action;
 
 		public static class Java_ForInit extends TokenSequence
 		{
 			public @OPT Java_Keyword FINAL = new Java_Keyword("final");
-			public Java_ForWhat what;
-			public @OPT TokenList<Java_MoreForInit> more;
+			public SeparatedList<Java_ForWhat,PunctuationComma> what;
 			
 			public static class Java_ForWhat extends TokenChooser
 			{
@@ -52,12 +55,6 @@ public class Java_ForStatement extends TokenChooser implements EagleScopeInterfa
 					public Java_Expression expr;
 				}
 			}
-			
-			public static class Java_MoreForInit extends TokenSequence
-			{
-				public Java_Punctuation comma = new Java_Punctuation(',');
-				public Java_Expression expr;
-			}
 		}
 	}
 	
@@ -65,13 +62,13 @@ public class Java_ForStatement extends TokenChooser implements EagleScopeInterfa
 	{
 		public @OPT @NEWLINE Java_Label label;
 		public Java_Keyword FOR = new Java_Keyword("for");
-		public Java_Punctuation leftParen = new Java_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public @OPT Java_Keyword FINAL = new Java_Keyword("final");
 		public Java_Type varType;
 		public Java_Variable forVar;
-		public Java_Punctuation colon = new Java_Punctuation(':');
+		public PunctuationColon colon;
 		public Java_Expression collection;
-		public Java_Punctuation rightParen = new Java_Punctuation(')');
+		public PunctuationRightParen rightParen;
 		public @OPT Java_Comment comment;
 		public Java_Statement action;
 	}

@@ -9,12 +9,16 @@ import com.eagle.programmar.CSS.Terminals.CSS_Literal;
 import com.eagle.programmar.CSS.Terminals.CSS_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
+import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class CSS_Qualifier extends TokenSequence
 {
-	public CSS_Punctuation leftBracket = new CSS_Punctuation('[');
+	public PunctuationLeftBracket leftBracket;
 	public CSS_QualifierChoice qual;
-	public CSS_Punctuation rightBracket = new CSS_Punctuation(']');
+	public PunctuationRightBracket rightBracket;
 	public @OPT CSS_Punctuation greaterThan = new CSS_Punctuation('>');
 
 	public static class CSS_QualifierChoice extends TokenChooser
@@ -30,8 +34,8 @@ public class CSS_Qualifier extends TokenSequence
 		public static class CSS_QualifierClass extends TokenSequence
 		{
 			public CSS_Keyword CLASS = new CSS_Keyword("class");
-			public CSS_Punctuation star = new CSS_Punctuation('*');
-			public CSS_Punctuation equals = new CSS_Punctuation('=');
+			public PunctuationStar star;
+			public PunctuationEquals equals;
 			public CSS_Value value;
 		}
 		
@@ -49,7 +53,7 @@ public class CSS_Qualifier extends TokenSequence
 			public static class CSS_BracketsHatEquals extends TokenSequence
 			{
 				public CSS_Punctuation hat = new CSS_Punctuation('^');
-				public CSS_Punctuation equals = new CSS_Punctuation('=');
+				public PunctuationEquals equals;
 				public CSS_Literal literal;
 			}
 		}
@@ -57,14 +61,14 @@ public class CSS_Qualifier extends TokenSequence
 		public static class CSS_QualifierDataToggle extends TokenSequence
 		{
 			public CSS_Keyword DATA_TOGGLE = new CSS_Keyword("data-toggle");
-			public CSS_Punctuation equals = new CSS_Punctuation('=');
+			public PunctuationEquals equals;
 			public CSS_Value value;
 		}
 		
 		public static class CSS_QualifierDir extends TokenSequence
 		{
 			public CSS_Keyword DIR = new CSS_Keyword("dir");
-			public CSS_Punctuation equals = new CSS_Punctuation('=');
+			public PunctuationEquals equals;
 			public CSS_QualifierWhichDir which;
 			
 			public static class CSS_QualifierWhichDir extends TokenChooser
@@ -81,14 +85,14 @@ public class CSS_Qualifier extends TokenSequence
 					"aria-valuenow",
 					"frame",
 					"page");
-			public CSS_Punctuation equals = new CSS_Punctuation('=');
+			public PunctuationEquals equals;
 			public CSS_Literal literal;
 		}
 
 		public static class CSS_QualifierHighlight extends TokenSequence
 		{
 			public CSS_Keyword HIGHLIGHT = new CSS_Keyword("highlight");
-			public CSS_Punctuation equals = new CSS_Punctuation('=');
+			public PunctuationEquals equals;
 			public CSS_QualifierWhichHighlight which;
 			
 			public static class CSS_QualifierWhichHighlight extends TokenChooser
@@ -102,7 +106,7 @@ public class CSS_Qualifier extends TokenSequence
 		public static class CSS_QualifierRole extends TokenSequence
 		{
 			public CSS_Keyword ROLE = new CSS_Keyword("role");
-			public CSS_Punctuation equals = new CSS_Punctuation('=');
+			public PunctuationEquals equals;
 			public CSS_QualifierWhichRole which;
 			
 			public static class CSS_QualifierWhichRole extends TokenChooser
@@ -118,14 +122,14 @@ public class CSS_Qualifier extends TokenSequence
 		public static class CSS_QualifierRow extends TokenSequence
 		{
 			public CSS_Keyword ROW = new CSS_Keyword("row$");
-			public CSS_Punctuation equals = new CSS_Punctuation('=');
+			public PunctuationEquals equals;
 			public CSS_Literal literal;
 		}
 
 		public static class CSS_QualifierType extends TokenSequence
 		{
 			public CSS_Keyword TYPE = new CSS_Keyword("type");
-			public CSS_Punctuation equals = new CSS_Punctuation('=');
+			public PunctuationEquals equals;
 			public CSS_QualifierWhichType which;
 			
 			public static class CSS_QualifierWhichType extends TokenChooser

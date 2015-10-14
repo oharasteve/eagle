@@ -3,12 +3,13 @@
 
 package com.eagle.programmar.Java;
 
-import com.eagle.programmar.Java.Terminals.Java_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
 
 public class Java_Subscript extends TokenSequence
 {
-	public @NOSPACE Java_Punctuation leftBracket = new Java_Punctuation('[');
+	public @NOSPACE PunctuationLeftBracket leftBracket;
 	public @NOSPACE Java_Expression expr;
-	public @NOSPACE Java_Punctuation rightBracket = new Java_Punctuation(']');
+	public @NOSPACE PunctuationRightBracket rightBracket;
 }

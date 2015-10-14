@@ -12,12 +12,12 @@ import com.eagle.tokens.TokenChooser;
 public class CPlus_Expression extends C_Expression
 {
 	@Override
-	public void establishChoices()
+	protected void establishChoices()
 	{
 		super.establishChoices();
 	}
 
-	public static class CPlus_NewExpression extends UnaryOperator
+	public static class CPlus_NewExpression extends ExpressionTerm
 	{
 		public C_Keyword NEW = new C_Keyword("new");
 		public C_Type type;

@@ -8,22 +8,25 @@ import com.eagle.programmar.CSharp.CSharp_Statement;
 import com.eagle.programmar.CSharp.CSharp_Type;
 import com.eagle.programmar.CSharp.CSharp_Variable;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Keyword;
-import com.eagle.programmar.CSharp.Terminals.CSharp_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class CSharp_ForStatement extends TokenSequence
 {
 	public @NEWLINE @DOC("statements.html#14.14") CSharp_Keyword FOR = new CSharp_Keyword("for");
-	public CSharp_Punctuation leftParen = new CSharp_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public CSharp_ForLoopVariable loopVar;
-	public CSharp_Punctuation equals = new CSharp_Punctuation('=');
+	public PunctuationEquals equals;
 	public CSharp_Expression initialize;
-	public CSharp_Punctuation semicolon1 = new CSharp_Punctuation(';');
+	public PunctuationSemicolon semicolon1;
 	public CSharp_Expression terminateCondition;
-	public CSharp_Punctuation semicolon2 = new CSharp_Punctuation(';');
+	public PunctuationSemicolon semicolon2;
 	public CSharp_Expression increment;
-	public CSharp_Punctuation rightParen = new CSharp_Punctuation(')');
+	public PunctuationRightParen rightParen;
 	public CSharp_Statement action;
 
 	public static class CSharp_ForLoopVariable extends TokenChooser

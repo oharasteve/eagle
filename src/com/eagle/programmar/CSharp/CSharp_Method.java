@@ -13,6 +13,12 @@ import com.eagle.programmar.CSharp.Terminals.CSharp_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class CSharp_Method extends TokenSequence
 {
@@ -26,14 +32,14 @@ public class CSharp_Method extends TokenSequence
 	public CSharp_Method_Definition methodName;
 	public CSharp_MethodParameters parameters;
 	public @NEWLINE CSharp_MethodBody body;
-	public @OPT @CURIOUS("Extra semicolon") CSharp_Punctuation semicolon = new CSharp_Punctuation(';');
+	public @OPT @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon;
 
 	public static class CSharp_MethodParameters extends TokenSequence
 	{
-		public CSharp_Punctuation leftParen = new CSharp_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public @OPT CSharp_MethodParameter param;
 		public @OPT TokenList<CSharp_MoreParameters> moreParams;
-		public CSharp_Punctuation rightParen = new CSharp_Punctuation(')');
+		public PunctuationRightParen rightParen;
 		public @OPT CSharp_Comment comment3;
 	}
 	
@@ -53,19 +59,19 @@ public class CSharp_Method extends TokenSequence
 	
 	public static class CSharp_MoreParameters extends TokenSequence
 	{
-		public CSharp_Punctuation comma = new CSharp_Punctuation(',');
+		public PunctuationComma comma;
 		public CSharp_MethodParameter param;
 	}
 	
 	public static class CSharp_MethodBody extends TokenChooser
 	{
-		public CSharp_Punctuation semicolon = new CSharp_Punctuation(';');
+		public PunctuationSemicolon semicolon;
 		
 		public static class CSharp_MethodImplementation extends TokenSequence
 		{
-			public CSharp_Punctuation leftBrace = new CSharp_Punctuation('{');
+			public PunctuationLeftBrace leftBrace;
 			public @OPT TokenList<CSharp_StatementOrComment> elements;
-			public CSharp_Punctuation rightBrace = new CSharp_Punctuation('}');
+			public PunctuationRightBrace rightBrace;
 		}
 	}
 }

@@ -5,13 +5,14 @@ package com.eagle.programmar.AWK.Statements;
 
 import com.eagle.programmar.AWK.AWK_ArgumentList;
 import com.eagle.programmar.AWK.Terminals.AWK_KeywordChoice;
-import com.eagle.programmar.AWK.Terminals.AWK_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class AWK_SplitStatement extends TokenSequence
 {
 	public AWK_KeywordChoice SPLIT = new AWK_KeywordChoice("split");
-	public AWK_Punctuation leftParen = new AWK_Punctuation('(');
+	public PunctuationLeftParen leftParen;
 	public AWK_ArgumentList argList;
-	public AWK_Punctuation rightParen = new AWK_Punctuation(')');
+	public PunctuationRightParen rightParen;
 }

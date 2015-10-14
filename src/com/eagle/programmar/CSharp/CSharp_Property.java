@@ -8,10 +8,14 @@ import com.eagle.programmar.CSharp.CSharp_Method.CSharp_MoreParameters;
 import com.eagle.programmar.CSharp.Symbols.CSharp_Variable_Definition;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Keyword;
 import com.eagle.programmar.CSharp.Terminals.CSharp_KeywordChoice;
-import com.eagle.programmar.CSharp.Terminals.CSharp_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class CSharp_Property extends TokenSequence
 {
@@ -21,9 +25,9 @@ public class CSharp_Property extends TokenSequence
 	public CSharp_Variable_Definition id;
 	public @OPT CSharp_PropertySubscript subscript;
 	
-	public CSharp_Punctuation leftBrace = new CSharp_Punctuation('{');
+	public PunctuationLeftBrace leftBrace;
 	public @OPT TokenList<CSharp_GetterSetter> getSet;
-	public CSharp_Punctuation rightBrace = new CSharp_Punctuation('}');
+	public PunctuationRightBrace rightBrace;
 	
 	public static class CSharp_PropertyModifier extends TokenSequence
 	{
@@ -32,10 +36,10 @@ public class CSharp_Property extends TokenSequence
 	
 	public static class CSharp_PropertySubscript extends TokenSequence
 	{
-		public CSharp_Punctuation leftBracket = new CSharp_Punctuation('[');
+		public PunctuationLeftBracket leftBracket;
 		public @OPT CSharp_MethodParameter param;
 		public @OPT TokenList<CSharp_MoreParameters> moreParams;
-		public CSharp_Punctuation rightBracket = new CSharp_Punctuation(']');
+		public PunctuationRightBracket rightBracket;
 	}
 	
 	public static class CSharp_GetterSetter extends TokenChooser
@@ -43,7 +47,7 @@ public class CSharp_Property extends TokenSequence
 		public static class CSharp_GetterNoBody extends TokenSequence
 		{
 			public CSharp_Keyword get = new CSharp_Keyword("get");
-			public CSharp_Punctuation semi = new CSharp_Punctuation(';');
+			public PunctuationSemicolon semicolon;
 		}
 		
 		public static class CSharp_GetterBody extends TokenSequence
@@ -56,7 +60,7 @@ public class CSharp_Property extends TokenSequence
 		{
 			public @OPT CSharp_Keyword csPrivate = new CSharp_Keyword("private");
 			public CSharp_Keyword set = new CSharp_Keyword("set");
-			public CSharp_Punctuation semi = new CSharp_Punctuation(';');
+			public PunctuationSemicolon semicolon;
 		}
 		
 		public static class CSharp_SetterBody extends TokenSequence

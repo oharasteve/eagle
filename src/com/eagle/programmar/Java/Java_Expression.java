@@ -19,10 +19,19 @@ import com.eagle.tests.EagleInterpreter.EagleValue;
 import com.eagle.tests.EagleRunnable;
 import com.eagle.tests.EagleTestable;
 import com.eagle.tokens.PrecedenceChooser;
-import com.eagle.tokens.PrecedenceChooser.BinaryOperator.AllowedPrecedence;
+import com.eagle.tokens.PrecedenceChooser.PrecedenceOperator.AllowedPrecedence;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationLeftBracket;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationRightBracket;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Java_Expression extends PrecedenceChooser
 {
@@ -30,55 +39,55 @@ public class Java_Expression extends PrecedenceChooser
 	{
 	}
 	
-	public Java_Expression(BinaryOperator token, AllowedPrecedence allowed)
+	public Java_Expression(PrecedenceOperator token, AllowedPrecedence allowed)
 	{ 
 		super(allowed, token.getClass());
 	}
 		
 	@Override
-	public void establishChoices() 
+	protected void establishChoices() 
 	{
 		// Order matters a little bit ...
-		super.addUnaryOperator(Java_HexNumber.class);
-		super.addUnaryOperator(Java_Number.class);
-		super.addUnaryOperator(Java_Literal.class);
-		super.addUnaryOperator(Java_Character_Literal.class);
-		super.addUnaryOperator(Java_DotClass.class);
-		super.addUnaryOperator(Java_CastExpression.class);
-		super.addUnaryOperator(Java_ExpressionList.class);
-		super.addUnaryOperator(Java_InterfaceCreationWithMethod.class);
-		super.addUnaryOperator(Java_ClassCreationExpression.class);
-		super.addUnaryOperator(Java_ClassCreationWithInitializers.class);
-		super.addUnaryOperator(Java_ClassCreationWithSubscript.class);
-		super.addUnaryOperator(Java_MethodInvocation.class);
-		super.addUnaryOperator(Java_PreIncrementExpression.class);
-		super.addUnaryOperator(Java_PreDecrementExpression.class);
-		super.addUnaryOperator(Java_PostIncrementExpression.class);
-		super.addUnaryOperator(Java_PostDecrementExpression.class);
-		super.addUnaryOperator(Java_NegativeExpression.class);
-		super.addUnaryOperator(Java_LogicalNotExpression.class);
-		super.addUnaryOperator(Java_NotExpression.class);
-		super.addUnaryOperator(Java_BuiltIn.class);
-		super.addUnaryOperator(Java_Variable.class);
-		super.addUnaryOperator(Java_ParenthesizedExpression.class);
-		super.addUnaryOperator(Java_CommentExpression.class);
-		super.addBinaryOperator(Java_SubscriptExpression.class);
+		super.addTerm(Java_HexNumber.class);
+		super.addTerm(Java_Number.class);
+		super.addTerm(Java_Literal.class);
+		super.addTerm(Java_Character_Literal.class);
+		super.addTerm(Java_DotClass.class);
+		super.addTerm(Java_CastExpression.class);
+		super.addTerm(Java_ExpressionList.class);
+		super.addTerm(Java_InterfaceCreationWithMethod.class);
+		super.addTerm(Java_ClassCreationExpression.class);
+		super.addTerm(Java_ClassCreationWithInitializers.class);
+		super.addTerm(Java_ClassCreationWithSubscript.class);
+		super.addTerm(Java_MethodInvocation.class);
+		super.addTerm(Java_PreIncrementExpression.class);
+		super.addTerm(Java_PreDecrementExpression.class);
+		super.addTerm(Java_PostIncrementExpression.class);
+		super.addTerm(Java_PostDecrementExpression.class);
+		super.addTerm(Java_NegativeExpression.class);
+		super.addTerm(Java_LogicalNotExpression.class);
+		super.addTerm(Java_NotExpression.class);
+		super.addTerm(Java_BuiltIn.class);
+		super.addTerm(Java_Variable.class);
+		super.addTerm(Java_ParenthesizedExpression.class);
+		super.addTerm(Java_CommentExpression.class);
+		super.addOperator(Java_SubscriptExpression.class);
 		
 		// Order is critical ...
-		super.addBinaryOperator(Java_Subfield.class);
-		super.addBinaryOperator(Java_MultiplicativeExpression.class);
-		super.addBinaryOperator(Java_AdditiveExpression.class);
-		super.addBinaryOperator(Java_ShiftExpression.class);
-		super.addBinaryOperator(Java_RelationalExpression.class);
-		super.addBinaryOperator(Java_InstanceOfExpression.class);
-		super.addBinaryOperator(Java_EqualityExpression.class);
-		super.addBinaryOperator(Java_AndExpression.class);
-		super.addBinaryOperator(Java_ExclusiveOrExpression.class);
-		super.addBinaryOperator(Java_InclusiveOrExpression.class);
-		super.addBinaryOperator(Java_ConditionalAndExpression.class);
-		super.addBinaryOperator(Java_ConditionalOrExpression.class);
-		super.addBinaryOperator(Java_AssignmentExpression.class);
-		super.addBinaryOperator(Java_TrueFalseExpression.class);
+		super.addOperator(Java_Subfield.class);
+		super.addOperator(Java_MultiplicativeExpression.class);
+		super.addOperator(Java_AdditiveExpression.class);
+		super.addOperator(Java_ShiftExpression.class);
+		super.addOperator(Java_RelationalExpression.class);
+		super.addOperator(Java_InstanceOfExpression.class);
+		super.addOperator(Java_EqualityExpression.class);
+		super.addOperator(Java_AndExpression.class);
+		super.addOperator(Java_ExclusiveOrExpression.class);
+		super.addOperator(Java_InclusiveOrExpression.class);
+		super.addOperator(Java_ConditionalAndExpression.class);
+		super.addOperator(Java_ConditionalOrExpression.class);
+		super.addOperator(Java_AssignmentExpression.class);
+		super.addOperator(Java_TrueFalseExpression.class);
 	}
 
 	///////////////////////////////////////////////
@@ -114,11 +123,11 @@ public class Java_Expression extends PrecedenceChooser
 		}
 	}
 	
-	public static class Java_ParenthesizedExpression extends UnaryOperator implements EagleRunnable
+	public static class Java_ParenthesizedExpression extends ExpressionTerm implements EagleRunnable
 	{
-		public Java_Punctuation leftParen = new Java_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public Java_Expression expression;
-		public Java_Punctuation rightParen = new Java_Punctuation(')');
+		public PunctuationRightParen rightParen;
 		
 		@Override
 		public void interpret(EagleInterpreter interpreter)
@@ -127,75 +136,75 @@ public class Java_Expression extends PrecedenceChooser
 		}
 	}
 	
-	public static class Java_CastExpression extends UnaryOperator
+	public static class Java_CastExpression extends ExpressionTerm
 	{
-		public Java_Punctuation leftParen = new Java_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public Java_Type jtype;
-		public Java_Punctuation rightParen = new Java_Punctuation(')');
+		public PunctuationRightParen rightParen;
 		public Java_Expression expr;
 	}
 
-	public static class Java_ExpressionList extends UnaryOperator
+	public static class Java_ExpressionList extends ExpressionTerm
 	{
 		int a;
-		public Java_Punctuation leftBrace = new Java_Punctuation('{');
+		public PunctuationLeftBrace leftBrace;
 		public @OPT TokenList<Java_Comment> comment;
 		public @OPT Java_ArgumentList valueList;
-		public Java_Punctuation rightBrace = new Java_Punctuation('}');
+		public PunctuationRightBrace rightBrace;
 	}
 	
-	public static class Java_InterfaceCreationWithMethod extends UnaryOperator
+	public static class Java_InterfaceCreationWithMethod extends ExpressionTerm
 	{
 		public Java_Keyword NEW = new Java_Keyword("new");
 		public Java_KeywordChoice jinterface = new Java_KeywordChoice( 
 				"Runnable", "ActionListener", "WindowAdapter");
-		public Java_Punctuation leftParen = new Java_Punctuation('(');
-		public Java_Punctuation rightParen = new Java_Punctuation(')');
-		public Java_Punctuation leftBrace = new Java_Punctuation('{');
+		public PunctuationLeftParen leftParen;
+		public PunctuationRightParen rightParen;
+		public PunctuationLeftBrace leftBrace;
 		public Java_Method method;
-		public Java_Punctuation rightBrace = new Java_Punctuation('}');
+		public PunctuationRightBrace rightBrace;
 	}
 
-	public static class Java_ClassCreationExpression extends UnaryOperator
+	public static class Java_ClassCreationExpression extends ExpressionTerm
 	{
 		public Java_Keyword NEW = new Java_Keyword("new");
 		public Java_Type jtype;
-		public @NOSPACE Java_Punctuation leftParen = new Java_Punctuation('(');
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public @NOSPACE @OPT TokenList<Java_Comment> comments;
 		public @NOSPACE @OPT Java_ArgumentList argList;
-		public @NOSPACE Java_Punctuation rightParen = new Java_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 		public @OPT Java_ClassOverride override;
 
 		public static class Java_ClassOverride extends TokenSequence
 		{
-			public Java_Punctuation leftBrace = new Java_Punctuation('{');
+			public PunctuationLeftBrace leftBrace;
 			public TokenList<Java_ClassElement> elementList;
-			public Java_Punctuation rightBrace = new Java_Punctuation('}');
+			public PunctuationRightBrace rightBrace;
 		}
 	}
 	
-	public static class Java_ClassCreationWithInitializers extends UnaryOperator
+	public static class Java_ClassCreationWithInitializers extends ExpressionTerm
 	{
 		public Java_Keyword NEW = new Java_Keyword("new");
 		public Java_Type jtype;
-		public Java_Punctuation leftBrace = new Java_Punctuation('{');
+		public PunctuationLeftBrace leftBrace;
 		public @OPT Java_ArgumentList valueList;
-		public Java_Punctuation rightBrace = new Java_Punctuation('}');
+		public PunctuationRightBrace rightBrace;
 	}
 	
-	public static class Java_ClassCreationWithSubscript extends UnaryOperator
+	public static class Java_ClassCreationWithSubscript extends ExpressionTerm
 	{
 		public Java_Keyword NEW = new Java_Keyword("new");
 		public Java_Type jtype;
 		public TokenList<Java_Subscript> subscripts;
 	}
 	
-	public static class Java_MethodInvocation extends UnaryOperator implements EagleRunnable
+	public static class Java_MethodInvocation extends ExpressionTerm implements EagleRunnable
 	{
 		public Java_Variable methodName;
-		public @NOSPACE Java_Punctuation leftParen = new Java_Punctuation('(');
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public @NOSPACE @OPT Java_ArgumentList argList;
-		public @NOSPACE Java_Punctuation rightParen = new Java_Punctuation(')');
+		public @NOSPACE PunctuationRightParen rightParen;
 		
 		@Override
 		public void interpret(EagleInterpreter interpreter)
@@ -207,72 +216,72 @@ public class Java_Expression extends PrecedenceChooser
 		}
 	}
 	
-	public static class Java_DotClass extends UnaryOperator
+	public static class Java_DotClass extends ExpressionTerm
 	{
 		public Java_Type jtype;
-		public @NOSPACE Java_Punctuation dot = new Java_Punctuation('.');
+		public @NOSPACE PunctuationPeriod dot;
 		public @NOSPACE Java_Keyword CLASS = new Java_Keyword("class");
 	}
 	
-	public static class Java_ArgumentList extends UnaryOperator
+	public static class Java_ArgumentList extends ExpressionTerm
 	{
 		public Java_Expression arg;
 		public @OPT TokenList<Java_Comment> comment;
 		public @OPT TokenList<Java_MoreArguments> moreArgs;
-		public @OPT @CURIOUS("Extra comma") Java_Punctuation comma = new Java_Punctuation(',');
+		public @OPT @CURIOUS("Extra comma") PunctuationComma comma;
 		
 		public static class Java_MoreArguments extends TokenSequence
 		{
-			public Java_Punctuation comma = new Java_Punctuation(',');
+			public PunctuationComma comma;
 			public @OPT TokenList<Java_Comment> comment1;
 			public Java_Expression arg;
 			public @OPT TokenList<Java_Comment> comment2;
 		}
 	}
 
-	public static class Java_PreIncrementExpression extends UnaryOperator
+	public static class Java_PreIncrementExpression extends ExpressionTerm
 	{
 		public Java_Punctuation preIncrementOperator = new Java_Punctuation("++");
 		public Java_Variable var;
 	}
 
-	public static class Java_PreDecrementExpression extends UnaryOperator
+	public static class Java_PreDecrementExpression extends ExpressionTerm
 	{
 		public Java_Punctuation preDecrementOperator = new Java_Punctuation("--");
 		public Java_Variable var;
 	}
 	
-	public static class Java_PostIncrementExpression extends UnaryOperator
+	public static class Java_PostIncrementExpression extends ExpressionTerm
 	{
 		public Java_Variable var;
 		public Java_Punctuation postIncrementOperator = new Java_Punctuation("++");
 	}
 
-	public static class Java_PostDecrementExpression extends UnaryOperator
+	public static class Java_PostDecrementExpression extends ExpressionTerm
 	{
 		public Java_Variable var;
 		public Java_Punctuation postDecrementOperator = new Java_Punctuation("--");
 	}
 	
-	public static class Java_NegativeExpression extends UnaryOperator
+	public static class Java_NegativeExpression extends ExpressionTerm
 	{
 		public Java_PunctuationChoice operator = new Java_PunctuationChoice("-", "+");
 		public Java_Expression expr;
 	}
 
-	public static class Java_LogicalNotExpression extends UnaryOperator
+	public static class Java_LogicalNotExpression extends ExpressionTerm
 	{
 		public Java_Punctuation logicalNotOperator = new Java_Punctuation('~');
 		public Java_Expression expr;
 	}
 	
-	public static class Java_NotExpression extends UnaryOperator
+	public static class Java_NotExpression extends ExpressionTerm
 	{
 		public Java_Punctuation notOperator = new Java_Punctuation('!');
 		public Java_Expression expr;
 	}
 	
-	public static class Java_CommentExpression extends UnaryOperator
+	public static class Java_CommentExpression extends ExpressionTerm
 	{
 		public Java_Comment comment;
 		public Java_Expression expr;
@@ -282,15 +291,15 @@ public class Java_Expression extends PrecedenceChooser
 	///////////////////////////////////////////////
 	// Binary expressions
 
-	public static class Java_SubscriptExpression extends BinaryOperator
+	public static class Java_SubscriptExpression extends PrecedenceOperator
 	{
 		public Java_Expression expr = new Java_Expression(this, AllowedPrecedence.HIGHER);
-		public Java_Punctuation leftBracket = new Java_Punctuation('[');
+		public PunctuationLeftBracket leftBracket;
 		public @OPT Java_Expression subscr;
-		public Java_Punctuation rightBracket = new Java_Punctuation(']');
+		public PunctuationRightBracket rightBracket;
 	}
 
-	public static class Java_AssignmentExpression extends BinaryOperator
+	public static class Java_AssignmentExpression extends PrecedenceOperator
 	{
 		public Java_Expression var = new Java_Expression(this, AllowedPrecedence.HIGHER);
 		public Java_AssignmentOperator assignmentOperator;
@@ -314,16 +323,16 @@ public class Java_Expression extends PrecedenceChooser
 		}
 	}
 
-	public static class Java_TrueFalseExpression extends BinaryOperator
+	public static class Java_TrueFalseExpression extends PrecedenceOperator
 	{
 		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.HIGHER);
 		public Java_Punctuation questionMark = new Java_Punctuation('?');
 		public Java_Expression middle = new Java_Expression(this, AllowedPrecedence.ATLEAST);
-		public Java_Punctuation colon = new Java_Punctuation(':');
+		public PunctuationColon colon;
 		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.ATLEAST);
 	}
 	
-	public static class Java_ConditionalOrExpression extends BinaryOperator implements EagleRunnable
+	public static class Java_ConditionalOrExpression extends PrecedenceOperator implements EagleRunnable
 	{
 		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
 		public Java_Punctuation orOperator = new Java_Punctuation("||");
@@ -338,7 +347,7 @@ public class Java_Expression extends PrecedenceChooser
 		}
 	}
 	
-	public static class Java_ConditionalAndExpression extends BinaryOperator implements EagleRunnable
+	public static class Java_ConditionalAndExpression extends PrecedenceOperator implements EagleRunnable
 	{
 		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
 		public Java_Punctuation andOperator = new Java_Punctuation("&&");
@@ -353,49 +362,49 @@ public class Java_Expression extends PrecedenceChooser
 		}
 	}
 	
-	public static class Java_InclusiveOrExpression extends BinaryOperator
+	public static class Java_InclusiveOrExpression extends PrecedenceOperator
 	{
 		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
 		public Java_Punctuation bitwiseOrOperator = new Java_Punctuation('|');
 		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class Java_ExclusiveOrExpression extends BinaryOperator
+	public static class Java_ExclusiveOrExpression extends PrecedenceOperator
 	{
 		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
 		public Java_Punctuation bitwiseXOrOperator = new Java_Punctuation('^');
 		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class Java_AndExpression extends BinaryOperator
+	public static class Java_AndExpression extends PrecedenceOperator
 	{
 		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
 		public Java_Punctuation bitwiseAndOperator = new Java_Punctuation('&');
 		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class Java_EqualityExpression extends BinaryOperator
+	public static class Java_EqualityExpression extends PrecedenceOperator
 	{
 		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
 		public Java_PunctuationChoice operator = new Java_PunctuationChoice("==", "!=");
 		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class Java_RelationalExpression extends BinaryOperator
+	public static class Java_RelationalExpression extends PrecedenceOperator
 	{
 		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
 		public Java_PunctuationChoice operator = new Java_PunctuationChoice("<", ">", "<=", ">=");
 		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class Java_InstanceOfExpression extends BinaryOperator
+	public static class Java_InstanceOfExpression extends PrecedenceOperator
 	{
 		public Java_Expression expr = new Java_Expression(this, AllowedPrecedence.ATLEAST);
 		public Java_Keyword instanceOperator = new Java_Keyword("instanceof");
 		public Java_Type type;
 	}
 
-	public static class Java_ShiftExpression extends BinaryOperator
+	public static class Java_ShiftExpression extends PrecedenceOperator
 	{
 		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
 		public Java_ShiftOperator shiftOperator;
@@ -407,7 +416,7 @@ public class Java_Expression extends PrecedenceChooser
 		}
 	}
 
-	public static class Java_AdditiveExpression extends BinaryOperator implements EagleTestable, EagleRunnable
+	public static class Java_AdditiveExpression extends PrecedenceOperator implements EagleTestable, EagleRunnable
 	{
 		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
 		public Java_PunctuationChoice operator = new Java_PunctuationChoice("+", "-");
@@ -439,7 +448,7 @@ public class Java_Expression extends PrecedenceChooser
 		}
 	}
 
-	public static class Java_MultiplicativeExpression extends BinaryOperator implements EagleTestable, EagleRunnable
+	public static class Java_MultiplicativeExpression extends PrecedenceOperator implements EagleTestable, EagleRunnable
 	{
 		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
 		public Java_PunctuationChoice operator = new Java_PunctuationChoice("*", "/", "%");
@@ -473,10 +482,10 @@ public class Java_Expression extends PrecedenceChooser
 		}
 	}
 
-	public static class Java_Subfield extends BinaryOperator
+	public static class Java_Subfield extends PrecedenceOperator
 	{
 		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
-		public @NOSPACE Java_Punctuation dot = new Java_Punctuation('.');
+		public @NOSPACE PunctuationPeriod dot;
 		public @OPT @NOSPACE Java_GenericType genericType;
 		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
 	}

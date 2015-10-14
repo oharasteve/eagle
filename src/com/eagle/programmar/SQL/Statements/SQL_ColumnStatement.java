@@ -7,8 +7,8 @@ import com.eagle.programmar.SQL.SQL_Expression;
 import com.eagle.programmar.SQL.Symbols.SQL_Identifier_Reference;
 import com.eagle.programmar.SQL.Terminals.SQL_Keyword;
 import com.eagle.programmar.SQL.Terminals.SQL_KeywordChoice;
-import com.eagle.programmar.SQL.Terminals.SQL_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class SQL_ColumnStatement extends TokenSequence
 {
@@ -16,5 +16,5 @@ public class SQL_ColumnStatement extends TokenSequence
 	public SQL_Identifier_Reference column;
 	public SQL_Keyword NEWVALUE = new SQL_Keyword("NEW_VALUE");
 	public SQL_Expression value;
-	public SQL_Punctuation semicolon = new SQL_Punctuation(';');
+	public PunctuationSemicolon semicolon;
 }

@@ -10,9 +10,9 @@ import com.eagle.programmar.COBOL.COBOL_Subscript;
 import com.eagle.programmar.COBOL.COBOL_Variable;
 import com.eagle.programmar.COBOL.Symbols.COBOL_Identifier_Reference;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class COBOL_AddStatement extends COBOL_AbstractStatement
 {
@@ -26,7 +26,7 @@ public class COBOL_AddStatement extends COBOL_AbstractStatement
 	
 	public static class COBOL_AddMoreExprs extends TokenSequence
 	{
-		public COBOL_Punctuation comma = new COBOL_Punctuation(',');
+		public PunctuationComma comma;
 		public COBOL_Expression expr;
 	}
 
@@ -38,14 +38,14 @@ public class COBOL_AddStatement extends COBOL_AbstractStatement
 		
 		public static class COBOL_AddMoreVars extends TokenSequence
 		{
-			public @OPT COBOL_Punctuation comma = new COBOL_Punctuation(',');
+			public @OPT PunctuationComma comma;
 			public COBOL_Variable var;
 		}
 	}
 	
 	public static class COBOL_AddGiving extends TokenSequence
 	{
-		public @OPT @CURIOUS("ADD: Extra comma") COBOL_Punctuation comma = new COBOL_Punctuation(',');
+		public @OPT @CURIOUS("ADD: Extra comma") PunctuationComma comma;
 		public COBOL_Keyword GIVING = new COBOL_Keyword("GIVING");
 		public TokenList<COBOL_Identifier_Reference> sum;
 		public @OPT COBOL_Subscript subscript;

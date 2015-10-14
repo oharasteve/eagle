@@ -8,12 +8,13 @@ import com.eagle.programmar.VB.Terminals.VB_Keyword;
 import com.eagle.programmar.VB.Terminals.VB_Number;
 import com.eagle.programmar.VB.Terminals.VB_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class VB_PrintStatement extends TokenSequence
 {
 	public VB_Keyword PRINT = new VB_Keyword("print");
 	public VB_Punctuation pound = new VB_Punctuation('#');
 	public VB_Number channel;
-	public VB_Punctuation comma = new VB_Punctuation(',');
+	public PunctuationComma comma;
 	public VB_Expression expr;
 }

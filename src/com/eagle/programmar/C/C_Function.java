@@ -14,6 +14,12 @@ import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class C_Function extends TokenSequence
 {
@@ -42,11 +48,11 @@ public class C_Function extends TokenSequence
 		// Adding an extra layer because some projects override C_Function_ParameterDefs
 		public static class C_Function_Simple_Defs extends TokenSequence
 		{
-			public @NOSPACE C_Punctuation leftParen = new C_Punctuation('(');
+			public @NOSPACE PunctuationLeftParen leftParen;
 			public @OPT @NOSPACE C_FunctionParameter param;
 			public @OPT C_Comment comment;
 			public @OPT @NOSPACE TokenList<C_MoreParameterDefs> moreParams;
-			public @NOSPACE C_Punctuation rightParen = new C_Punctuation(')');
+			public @NOSPACE PunctuationRightParen rightParen;
 		}
 	}
 
@@ -71,21 +77,21 @@ public class C_Function extends TokenSequence
 		
 	public static class C_MoreParameterDefs extends TokenSequence
 	{
-		public @NOSPACE C_Punctuation comma = new C_Punctuation(',');
+		public @NOSPACE PunctuationComma comma;
 		public @OPT C_Comment comment;
 		public C_FunctionParameter param;
 	}
 	
 	public static class C_FunctionBody extends TokenChooser
 	{
-		public C_Punctuation semicolon = new C_Punctuation(';');
+		public PunctuationSemicolon semicolon;
 		
 		public static class C_FunctionImplementation extends TokenSequence
 		{
-			public @INDENT C_Punctuation leftBrace = new C_Punctuation('{');
+			public @INDENT PunctuationLeftBrace leftBrace;
 			public @OPT TokenList<C_StatementOrComment> elements;
-			public @OUTDENT C_Punctuation rightBrace = new C_Punctuation('}');
-			public @OPT @CURIOUS("Extra semicolon") C_Punctuation semicolon = new C_Punctuation(';');
+			public @OUTDENT PunctuationRightBrace rightBrace;
+			public @OPT @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon;
 		}
 	}
 }

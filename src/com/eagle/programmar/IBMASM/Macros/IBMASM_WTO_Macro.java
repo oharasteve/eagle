@@ -5,11 +5,14 @@ package com.eagle.programmar.IBMASM.Macros;
 
 import com.eagle.programmar.IBMASM.IBMASM_Address;
 import com.eagle.programmar.IBMASM.Terminals.IBMASM_Keyword;
-import com.eagle.programmar.IBMASM.Terminals.IBMASM_Punctuation;
 import com.eagle.programmar.IBMASM.Terminals.IBMASM_Remark;
 import com.eagle.programmar.IBMASM.Terminals.IBMASM_Spaces;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class IBMASM_WTO_Macro extends TokenSequence
 {
@@ -25,12 +28,12 @@ public class IBMASM_WTO_Macro extends TokenSequence
 		public static class IBMASM_WTO_E extends TokenSequence
 		{
 			public IBMASM_Keyword MF = new IBMASM_Keyword("MF");
-			public IBMASM_Punctuation equals = new IBMASM_Punctuation('=');
-			public IBMASM_Punctuation leftParen = new IBMASM_Punctuation('(');
+			public PunctuationEquals equals;
+			public PunctuationLeftParen leftParen;
 			public IBMASM_Keyword E = new IBMASM_Keyword("E");
-			public IBMASM_Punctuation comma = new IBMASM_Punctuation(',');
+			public PunctuationComma comma;
 			public IBMASM_Address address;
-			public IBMASM_Punctuation rightParen = new IBMASM_Punctuation(')');
+			public PunctuationRightParen rightParen;
 		}
 	}
 }

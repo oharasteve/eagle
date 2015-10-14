@@ -30,7 +30,7 @@ public class Python_StartOfLine extends TerminalLiteralToken
 					if (token instanceof Python_Comment) continue;	// Doesn't matter what columns comments are in
 					if (! (token instanceof Python_Statement)) break;
 					Python_Statement firstStmt = (Python_Statement) token;
-					AbstractToken child = firstStmt.statement.statement._whichToken;
+					AbstractToken child = firstStmt.statement.statements.first()._whichToken;
 					if (child instanceof Python_Statement_Not_Comment)
 					{
 						Python_Statement_Not_Comment childStmt = (Python_Statement_Not_Comment) child;

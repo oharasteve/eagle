@@ -13,26 +13,28 @@ import com.eagle.programmar.C.Statements.C_IfStatement;
 import com.eagle.programmar.C.Statements.C_ReturnStatement;
 import com.eagle.programmar.C.Statements.C_SwitchStatement;
 import com.eagle.programmar.C.Statements.C_WhileStatement;
-import com.eagle.programmar.C.Terminals.C_Punctuation;
-import com.eagle.programmar.CMacro.CMacro_Statement;
+import com.eagle.programmar.CMacro.CMacro_StatementOrComment;
 import com.eagle.programmar.CMacro.CMacro_Syntax;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class C_Statement extends TokenChooser
 {
 	public C_Data jdata;
 	public C_Label label;
-	public C_Punctuation semicolon = new C_Punctuation(';');	// Empty for loop body is ok
+	public PunctuationSemicolon semicolon;	// Empty for loop body is ok
 	
-	public @SYNTAX(CMacro_Syntax.class) CMacro_Statement macro;
+	public @SYNTAX(CMacro_Syntax.class) CMacro_StatementOrComment macro;
 	
 	public static class C_StatementBlock extends TokenSequence
 	{
-		public @INDENT C_Punctuation leftBrace = new C_Punctuation('{');
+		public @INDENT PunctuationLeftBrace leftBrace;
 		public @OPT TokenList<C_StatementOrComment> statements;
-		public @OUTDENT C_Punctuation rightBrace = new C_Punctuation('}');
+		public @OUTDENT PunctuationRightBrace rightBrace;
 	}
 
 	public C_BreakStatement breakStatement;

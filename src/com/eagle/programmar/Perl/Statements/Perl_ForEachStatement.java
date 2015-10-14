@@ -11,19 +11,21 @@ import com.eagle.programmar.Perl.Terminals.Perl_Keyword;
 import com.eagle.programmar.Perl.Terminals.Perl_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Perl_ForEachStatement extends TokenChooser
 {
 	public static class Perl_ForEachAsStatement extends TokenSequence
 	{
 		public @DOC("control-structures.foreach.php") Perl_Keyword FOREACH = new Perl_Keyword("foreach");
-		public Perl_Punctuation leftParen = new Perl_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public Perl_Expression expr;
 		public Perl_Keyword AS = new Perl_Keyword("as");
 		public Perl_Punctuation dollar = new Perl_Punctuation('$');
 		public Perl_Variable_Definition var;
 		public @OPT Perl_ForEachArrow arrow;
-		public Perl_Punctuation rightParen = new Perl_Punctuation(')');
+		public PunctuationRightParen rightParen;
 		public Perl_Statement stmt;
 		
 		public static class Perl_ForEachArrow extends TokenSequence
@@ -37,9 +39,9 @@ public class Perl_ForEachStatement extends TokenChooser
 	{
 		public @DOC("control-structures.foreach.php") Perl_Keyword FOREACH = new Perl_Keyword("foreach");
 		public @OPT Perl_ForEachVariable var;
-		public Perl_Punctuation leftParen = new Perl_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public Perl_Expression expr;
-		public Perl_Punctuation rightParen = new Perl_Punctuation(')');
+		public PunctuationRightParen rightParen;
 		public Perl_Statement stmt;
 		
 		public static class Perl_ForEachVariable extends TokenSequence

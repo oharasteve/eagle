@@ -20,6 +20,15 @@ import com.eagle.programmar.CSS.Terminals.CSS_PunctuationChoice;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
+import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class CSS_Program extends EagleLanguage
 {
@@ -53,7 +62,7 @@ public class CSS_Program extends EagleLanguage
 	public static class CSS_TagList extends TokenSequence
 	{
 		public @OPT CSS_Punctuation at = new CSS_Punctuation('@');
-		public @OPT CSS_Punctuation colon = new CSS_Punctuation(':');
+		public @OPT PunctuationColon colon;
 		public @OPT CSS_Punctuation colonColon = new CSS_Punctuation("::");
 		public CSS_Tag tag;
 		public @OPT CSS_DotClass dotClass;
@@ -65,7 +74,7 @@ public class CSS_Program extends EagleLanguage
 
 		public static class CSS_MoreQualifiers extends TokenSequence
 		{
-			public @OPT @NOSPACE CSS_Punctuation comma = new CSS_Punctuation(',');
+			public @OPT @NOSPACE PunctuationComma comma;
 			public CSS_Qualifier qualifier;
 		}
 		
@@ -73,7 +82,7 @@ public class CSS_Program extends EagleLanguage
 		{
 			public CSS_Identifier id;
 			public CSS_DotClass dotClass;
-			public CSS_Punctuation star = new CSS_Punctuation('*');
+			public PunctuationStar star;
 			
 			public static class CSS_Id_DotClass extends TokenSequence
 			{
@@ -84,7 +93,7 @@ public class CSS_Program extends EagleLanguage
 		
 		public static class CSS_DotClass extends TokenSequence
 		{
-			public CSS_Punctuation dot = new CSS_Punctuation('.');
+			public PunctuationPeriod dot;
 			public CSS_DotWhat what;
 			
 			public static class CSS_DotWhat extends TokenChooser
@@ -96,9 +105,9 @@ public class CSS_Program extends EagleLanguage
 
 		public static class CSS_ColonOption extends TokenSequence
 		{
-			public CSS_Punctuation colon = new CSS_Punctuation(':');
+			public PunctuationColon colon;
 			public @NOSPACE CSS_ColonWhat what;
-			public @OPT @NOSPACE CSS_Punctuation comma = new CSS_Punctuation(',');
+			public @OPT @NOSPACE PunctuationComma comma;
 			
 			public static class CSS_ColonWhat extends TokenChooser
 			{
@@ -128,17 +137,17 @@ public class CSS_Program extends EagleLanguage
 					public CSS_KeywordChoice NTH_CHILD = new CSS_KeywordChoice(
 							"nth-child",
 							"nth-last-child");
-					public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+					public @NOSPACE PunctuationLeftParen leftParen;
 					public @NOSPACE CSS_Value value;
-					public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
+					public @NOSPACE PunctuationRightParen rightParen;
 				}
 				
 				public static class CSS_ColonNot extends TokenSequence
 				{
 					public CSS_Keyword NOT = new CSS_Keyword("not");
-					public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+					public @NOSPACE PunctuationLeftParen leftParen;
 					public @NOSPACE CSS_ColonNotWhat what;
-					public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
+					public @NOSPACE PunctuationRightParen rightParen;
 					
 					public static class CSS_ColonNotWhat extends TokenChooser
 					{
@@ -158,20 +167,20 @@ public class CSS_Program extends EagleLanguage
 	public static class CSS_Body extends TokenSequence
 	{
 		public @OPT @NEWLINE TokenList<CSS_TagList> tags;
-		public @OPT CSS_Punctuation star = new CSS_Punctuation('*');
-		public @INDENT CSS_Punctuation leftBrace = new CSS_Punctuation('{');
+		public @OPT PunctuationStar star;
+		public @INDENT PunctuationLeftBrace leftBrace;
 		public @OPT TokenList<CSS_Item> items;
-		public @OUTDENT CSS_Punctuation rightBrace = new CSS_Punctuation('}');
+		public @OUTDENT PunctuationRightBrace rightBrace;
 		public @OPT TokenList<CSS_ColonOption> colonOption;
 		public @OPT CSS_StarPiece starPiece;
 		public @OPT CSS_Qualifier qualifier;
-		public @OPT @NOSPACE CSS_Punctuation comma = new CSS_Punctuation(',');
-		public @OPT @NOSPACE @CURIOUS("Extra semicolon") CSS_Punctuation semicolon = new CSS_Punctuation(';');
+		public @OPT @NOSPACE PunctuationComma comma;
+		public @OPT @NOSPACE @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon;
 		
 		public static class CSS_StarPiece extends TokenSequence
 		{
-			public CSS_Punctuation star = new CSS_Punctuation('*');
-			public @OPT CSS_Punctuation colon = new CSS_Punctuation(':');
+			public PunctuationStar star;
+			public @OPT PunctuationColon colon;
 			public @OPT CSS_Keyword FIRSTCHILD = new CSS_Keyword("first-child");
 			public @OPT CSS_Punctuation plus = new CSS_Punctuation('+');
 			public CSS_Keyword HTML = new CSS_Keyword("html");
@@ -187,29 +196,29 @@ public class CSS_Program extends EagleLanguage
 		{
 			public @NEWLINE CSS_Number pct;
 			public @NOSPACE CSS_Punctuation percent = new CSS_Punctuation('%');
-			public @INDENT CSS_Punctuation leftBrace = new CSS_Punctuation('{');
+			public @INDENT PunctuationLeftBrace leftBrace;
 			public @OPT TokenList<CSS_Item> items;
-			public @NOSPACE @OUTDENT CSS_Punctuation rightBrace = new CSS_Punctuation('}');
+			public @NOSPACE @OUTDENT PunctuationRightBrace rightBrace;
 		}
 		
 		public static class CSS_ToItem extends TokenSequence
 		{
 			public CSS_KeywordChoice TO = new CSS_KeywordChoice("from", "to");
-			public @INDENT CSS_Punctuation leftBrace = new CSS_Punctuation('{');
+			public @INDENT PunctuationLeftBrace leftBrace;
 			public @OPT TokenList<CSS_Item> items;
-			public @NOSPACE @OUTDENT CSS_Punctuation rightBrace = new CSS_Punctuation('}');
+			public @NOSPACE @OUTDENT PunctuationRightBrace rightBrace;
 		}
 	}
 	
 	public static class CSS_Line extends TokenSequence
 	{
-		public @NEWLINE @OPT CSS_Punctuation star = new CSS_Punctuation('*');
+		public @NEWLINE @OPT PunctuationStar star;
 		public @NOSPACE CSS_Identifier attribute;
 		public @NOSPACE CSS_PunctuationChoice colonEquals = new CSS_PunctuationChoice(":", "=");
 		public @OPT CSS_Value_List values;
 		public @OPT CSS_Tab tab;
-		public @OPT @NOSPACE CSS_Punctuation semicolon1 = new CSS_Punctuation(';');
-		public @OPT @NOSPACE @CURIOUS("Extra semicolon") CSS_Punctuation semicolon2 = new CSS_Punctuation(';');
+		public @OPT @NOSPACE PunctuationSemicolon semicolon1;
+		public @OPT @NOSPACE @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon2;
 	
 		public static class CSS_Tab extends TokenSequence
 		{
@@ -227,7 +236,7 @@ public class CSS_Program extends EagleLanguage
 				
 				public static class CSS_MoreValuesComma extends TokenSequence
 				{
-					public @NOSPACE CSS_Punctuation comma = new CSS_Punctuation(',');
+					public @NOSPACE PunctuationComma comma;
 					public CSS_Value val;
 				}
 			}
@@ -239,12 +248,12 @@ public class CSS_Program extends EagleLanguage
 		public CSS_Punctuation at = new CSS_Punctuation('@');
 		public CSS_Keyword MOZDOCUMENT = new CSS_Keyword("-moz-document");
 		public CSS_Keyword URLPREFIX = new CSS_Keyword("url-prefix");
-		public @NOSPACE CSS_Punctuation leftParen = new CSS_Punctuation('(');
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public @NOSPACE CSS_Literal literal;
-		public @NOSPACE CSS_Punctuation rightParen = new CSS_Punctuation(')');
-		public @INDENT CSS_Punctuation leftBrace = new CSS_Punctuation('{');
+		public @NOSPACE PunctuationRightParen rightParen;
+		public @INDENT PunctuationLeftBrace leftBrace;
 		public TokenList<CSS_Body> bodies;
-		public @NOSPACE @OUTDENT CSS_Punctuation rightBrace = new CSS_Punctuation('}');
+		public @NOSPACE @OUTDENT PunctuationRightBrace rightBrace;
 	}
 	
 	public static class CSS_AtMedia extends TokenSequence
@@ -253,18 +262,18 @@ public class CSS_Program extends EagleLanguage
 		public @NOSPACE CSS_Keyword MEDIA = new CSS_Keyword("media");
 		public CSS_MediaParam param;
 		public @OPT TokenList<CSS_MoreMediaParam> moreParams;
-		public @INDENT CSS_Punctuation leftBrace = new CSS_Punctuation('{');
+		public @INDENT PunctuationLeftBrace leftBrace;
 		public @OPT CSS_Comment comment;
 		public TokenList<CSS_Body> bodies;
-		public @NOSPACE @OUTDENT CSS_Punctuation rightBrace = new CSS_Punctuation('}');
+		public @NOSPACE @OUTDENT PunctuationRightBrace rightBrace;
 		
 		public static class CSS_MediaParam extends TokenChooser
 		{
 			public static class CSS_MediaParamParens extends TokenSequence
 			{
-				public CSS_Punctuation leftParen = new CSS_Punctuation('(');
+				public PunctuationLeftParen leftParen;
 				public CSS_Line line;
-				public CSS_Punctuation rightParen = new CSS_Punctuation(')');
+				public PunctuationRightParen rightParen;
 			}
 			
 			public static class CSS_MediaScreen extends TokenSequence
@@ -281,7 +290,7 @@ public class CSS_Program extends EagleLanguage
 		
 		public static class CSS_MoreMediaParam extends TokenSequence
 		{
-			public @OPT @NOSPACE CSS_Punctuation comma = new CSS_Punctuation(',');
+			public @OPT @NOSPACE PunctuationComma comma;
 			public @OPT CSS_Keyword AND = new CSS_Keyword("and");
 			public CSS_MediaParam param;
 		}
@@ -292,7 +301,7 @@ public class CSS_Program extends EagleLanguage
 		public CSS_Punctuation at = new CSS_Punctuation('@');
 		public @NOSPACE CSS_Keyword IMPORT = new CSS_Keyword("import");
 		public CSS_ImportWhat what;
-		public @NOSPACE CSS_Punctuation semicolon = new CSS_Punctuation(';');
+		public @NOSPACE PunctuationSemicolon semicolon;
 		
 		public static class CSS_ImportWhat extends TokenChooser
 		{
@@ -306,7 +315,7 @@ public class CSS_Program extends EagleLanguage
 		public CSS_Punctuation at = new CSS_Punctuation('@');
 		public @NOSPACE CSS_Keyword CHARSET = new CSS_Keyword("charset");
 		public CSS_Literal charset;
-		public @NOSPACE CSS_Punctuation semicolon = new CSS_Punctuation(';');
+		public @NOSPACE PunctuationSemicolon semicolon;
 	}
 
 	public static class CSS_AtNamespace extends TokenSequence
@@ -315,9 +324,9 @@ public class CSS_Program extends EagleLanguage
 		public @NOSPACE CSS_Keyword NAMESPACE = new CSS_Keyword("namespace");
 		public CSS_Identifier name;
 		public CSS_Keyword URL = new CSS_Keyword("URL");
-		public CSS_Punctuation leftParen = new CSS_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public CSS_FileName url;
-		public CSS_Punctuation rightParen = new CSS_Punctuation(')');
-		public @NOSPACE CSS_Punctuation semicolon = new CSS_Punctuation(';');
+		public PunctuationRightParen rightParen;
+		public @NOSPACE PunctuationSemicolon semicolon;
 	}
 }

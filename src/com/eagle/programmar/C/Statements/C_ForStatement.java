@@ -10,27 +10,31 @@ import com.eagle.programmar.C.C_Type;
 import com.eagle.programmar.C.C_Variable;
 import com.eagle.programmar.C.Terminals.C_Comment;
 import com.eagle.programmar.C.Terminals.C_Keyword;
-import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationColon;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class C_ForStatement extends TokenChooser
 {
 	public static class C_ForLoopStatement extends TokenSequence
 	{
 		public @DOC("#The-for-Statement") C_Keyword FOR = new C_Keyword("for");
-		public C_Punctuation leftParen = new C_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public @OPT C_ForLoopVariable initializer;
 		public @OPT C_Comment comment1;
-		public C_Punctuation semicolon1 = new C_Punctuation(';');
+		public PunctuationSemicolon semicolon1;
 		public @OPT C_Expression terminateCondition;
 		public @OPT C_Comment comment2;
-		public C_Punctuation semicolon2 = new C_Punctuation(';');
+		public PunctuationSemicolon semicolon2;
 		public @OPT C_Expression increment;
 		public @OPT TokenList<C_MoreLoopIncrements> moreLoopIncrements;
 		public @OPT C_Comment comment3;
-		public C_Punctuation rightParen = new C_Punctuation(')');
+		public PunctuationRightParen rightParen;
 		public @OPT C_Comment comment4;
 		public C_Statement action;
 
@@ -50,7 +54,7 @@ public class C_ForStatement extends TokenChooser
 		
 		public static class C_MoreLoopIncrements extends TokenSequence
 		{
-			public C_Punctuation comma = new C_Punctuation(',');
+			public PunctuationComma comma;
 			public C_ForLoopVariable forVar;
 		}
 	}
@@ -58,12 +62,12 @@ public class C_ForStatement extends TokenChooser
 	public static class C_ForCollectionStatement extends TokenSequence
 	{
 		public C_Keyword FOR = new C_Keyword("for");
-		public C_Punctuation leftParen = new C_Punctuation('(');
+		public PunctuationLeftParen leftParen;
 		public C_Type varType;
 		public C_Variable forVar;
-		public C_Punctuation colon = new C_Punctuation(':');
+		public PunctuationColon colon;
 		public C_Expression collection;
-		public C_Punctuation rightParen = new C_Punctuation(')');
+		public PunctuationRightParen rightParen;
 		public C_Statement action;
 	}
 }

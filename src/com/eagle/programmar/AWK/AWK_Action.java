@@ -5,17 +5,18 @@ package com.eagle.programmar.AWK;
 
 import com.eagle.programmar.AWK.Terminals.AWK_Comment;
 import com.eagle.programmar.AWK.Terminals.AWK_EndOfLine;
-import com.eagle.programmar.AWK.Terminals.AWK_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
 
 public class AWK_Action extends TokenSequence
 {
-	public AWK_Punctuation leftBrace = new AWK_Punctuation('{');
+	public PunctuationLeftBrace leftBrace;
 	public @OPT TokenList<AWK_EndOfLine> newlines;
 	public @OPT TokenList<AWK_StatementOrComment> statements;
-	public AWK_Punctuation rightBrace = new AWK_Punctuation('}');
+	public PunctuationRightBrace rightBrace;
 	public TokenList<AWK_EndOfLine> blankLines;
 	
 	public static class AWK_StatementOrComment extends TokenChooser

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<EagleProgram Created="Sat Oct 03 13:20:46 EDT 2015" Elapsed="3" Language="CMD" Steps="467" Tokens="108">
+<EagleProgram Created="Wed Oct 14 13:46:34 EDT 2015" Elapsed="3" Language="CMD" Steps="467" Tokens="108">
   <T EC="0" EL="11" File="" SC="1" SL="1" TT=".CMD.CMD_Program">
     <T EC="0" EL="11" N="commands" SC="1" SL="1" TT="List">
       <T EC="0" EL="3" SC="1" SL="1" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
@@ -64,7 +64,7 @@
               <T EC="12" EL="5" N="setWhat" SC="5" SL="5" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What">
                 <T EC="12" EL="5" SC="5" SL="5" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What$CMS_Set_Regular">
                   <T EC="7" EL="5" N="var" SC="6" SL="5" TT=".CMD.Symbols.CMD_Variable_Definition" V="IN"/>
-                  <T EC="8" EL="5" N="equals" SC="8" SL="5" TT=".CMD.Terminals.CMD_Punctuation" V="="/>
+                  <T EC="8" EL="5" N="equals" SC="8" SL="5" TT="com.eagle.tokens.punctuation.PunctuationEquals" V="="/>
                   <T EC="12" EL="5" N="value" SC="9" SL="5" TT=".CMD.Terminals.CMD_RestOfLine" V="%~1"/>
                 </T>
               </T>
@@ -84,7 +84,7 @@
               <T EC="13" EL="6" N="setWhat" SC="5" SL="6" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What">
                 <T EC="13" EL="6" SC="5" SL="6" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What$CMS_Set_Regular">
                   <T EC="8" EL="6" N="var" SC="6" SL="6" TT=".CMD.Symbols.CMD_Variable_Definition" V="OUT"/>
-                  <T EC="9" EL="6" N="equals" SC="9" SL="6" TT=".CMD.Terminals.CMD_Punctuation" V="="/>
+                  <T EC="9" EL="6" N="equals" SC="9" SL="6" TT="com.eagle.tokens.punctuation.PunctuationEquals" V="="/>
                   <T EC="13" EL="6" N="value" SC="10" SL="6" TT=".CMD.Terminals.CMD_RestOfLine" V="%~2"/>
                 </T>
               </T>
@@ -105,7 +105,7 @@
               <T EC="63" EL="8" N="setWhat" SC="5" SL="8" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What">
                 <T EC="63" EL="8" SC="5" SL="8" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What$CMS_Set_Regular">
                   <T EC="11" EL="8" N="var" SC="6" SL="8" TT=".CMD.Symbols.CMD_Variable_Definition" V="PDFBOX"/>
-                  <T EC="12" EL="8" N="equals" SC="12" SL="8" TT=".CMD.Terminals.CMD_Punctuation" V="="/>
+                  <T EC="12" EL="8" N="equals" SC="12" SL="8" TT="com.eagle.tokens.punctuation.PunctuationEquals" V="="/>
                   <T EC="63" EL="8" N="value" SC="13" SL="8" TT=".CMD.Terminals.CMD_RestOfLine" V="C:\Program Files (x86)\PDFBox\pdfbox-app-1.7.1.jar"/>
                 </T>
               </T>

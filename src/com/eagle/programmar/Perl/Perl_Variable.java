@@ -9,9 +9,15 @@ import com.eagle.programmar.Perl.Terminals.Perl_Keyword;
 import com.eagle.programmar.Perl.Terminals.Perl_KeywordChoice;
 import com.eagle.programmar.Perl.Terminals.Perl_Number;
 import com.eagle.programmar.Perl.Terminals.Perl_Punctuation;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Perl_Variable extends TokenChooser
 {
@@ -63,9 +69,9 @@ public class Perl_Variable extends TokenChooser
 	{
 		public Perl_Punctuation dollar = new Perl_Punctuation('$');
 		public Perl_Keyword SIG = new Perl_Keyword("SIG");
-		public Perl_Punctuation leftBrace = new Perl_Punctuation('{');
+		public PunctuationLeftBrace leftBrace;
 		public Perl_Expression signal;
-		public Perl_Punctuation rightBrace = new Perl_Punctuation('}');
+		public PunctuationRightBrace rightBrace;
 	}
 	
 	public static class Perl_SpecialVariable extends TokenSequence
@@ -133,29 +139,15 @@ public class Perl_Variable extends TokenChooser
 	public static class Perl_ListVariable extends TokenSequence
 	{
 		public Perl_Keyword LIST = new Perl_Keyword("list");
-		public Perl_Punctuation leftParen = new Perl_Punctuation('(');
-		public Perl_Expression arg;
-		public @OPT TokenList<Perl_List_MoreArgs> more;
-		public Perl_Punctuation rightParen = new Perl_Punctuation(')');
-		
-		public static class Perl_List_MoreArgs extends TokenSequence
-		{
-			public Perl_Punctuation comma = new Perl_Punctuation(',');
-			public Perl_Expression arg;
-		}
+		public PunctuationLeftParen leftParen;
+		public SeparatedList<Perl_Expression,PunctuationComma> args;
+		public PunctuationRightParen rightParen;
 	}
 	
 	public static class Perl_FunctionCall extends TokenSequence
 	{
-		public Perl_Punctuation leftParen = new Perl_Punctuation('(');
-		public @OPT Perl_Expression parameter;
-		public @OPT TokenList<Perl_MoreParameters> moreExpr;
-		public Perl_Punctuation rightParen = new Perl_Punctuation(')');
-
-		public static class Perl_MoreParameters extends TokenSequence
-		{
-			public Perl_Punctuation comma = new Perl_Punctuation(',');
-			public Perl_Expression parameter;
-		}
+		public PunctuationLeftParen leftParen;
+		public @OPT SeparatedList<Perl_Expression,PunctuationComma> parameters;
+		public PunctuationRightParen rightParen;
 	}
 }

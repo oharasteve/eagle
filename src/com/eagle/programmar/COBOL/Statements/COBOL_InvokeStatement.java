@@ -9,9 +9,9 @@ import com.eagle.programmar.COBOL.Symbols.COBOL_Identifier_Reference;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Literal;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Number;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class COBOL_InvokeStatement extends COBOL_AbstractStatement
 {
@@ -38,7 +38,7 @@ public class COBOL_InvokeStatement extends COBOL_AbstractStatement
 		
 		public static class COBOL_InvokeMoreUsing extends TokenSequence
 		{
-			public COBOL_Punctuation comma = new COBOL_Punctuation(',');
+			public PunctuationComma comma;
 			public COBOL_Expression expr;
 			public @OPT COBOL_InvokeSize size;
 		}

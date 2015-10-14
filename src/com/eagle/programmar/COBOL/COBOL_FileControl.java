@@ -8,15 +8,16 @@ import com.eagle.programmar.COBOL.Terminals.COBOL_Comment;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
 import com.eagle.programmar.COBOL.Terminals.COBOL_KeywordChoice;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Literal;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationEquals;
+import com.eagle.tokens.punctuation.PunctuationPeriod;
 
 public class COBOL_FileControl extends TokenSequence
 {
 	public COBOL_Keyword FILECONTROL = new COBOL_Keyword("FILE-CONTROL");
-	public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+	public PunctuationPeriod dot;
 	public @OPT TokenList<COBOL_Copy_or_FileSelect> fileSelects;
 	
 	public static class COBOL_Copy_or_FileSelect extends TokenChooser
@@ -35,7 +36,7 @@ public class COBOL_FileControl extends TokenSequence
 			public @OPT COBOL_Keyword TO = new COBOL_Keyword("TO");
 			public COBOL_AssignTo assignTo;
 			public @OPT TokenList<COBOL_SelectClause> selectClauses;
-			public COBOL_Punctuation dot = new COBOL_Punctuation('.');
+			public PunctuationPeriod dot;
 		}
 	}
 	
@@ -77,7 +78,7 @@ public class COBOL_FileControl extends TokenSequence
 			
 			public static class COBOL_SelectRecordEquals extends TokenSequence
 			{
-				public COBOL_Punctuation equals = new COBOL_Punctuation('=');
+				public PunctuationEquals equals;
 				public TokenList<COBOL_Identifier_Reference> ids;
 			}
 		}
@@ -95,7 +96,7 @@ public class COBOL_FileControl extends TokenSequence
 			
 			public static class COBOL_SelectAlternates extends TokenSequence
 			{
-				public COBOL_Punctuation equals = new COBOL_Punctuation('=');
+				public PunctuationEquals equals;
 				public TokenList<COBOL_Identifier_Reference> variables;
 			}
 		}

@@ -8,9 +8,9 @@ import com.eagle.programmar.Delphi.Statements.Delphi_BeginEnd;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Comment;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Keyword;
 import com.eagle.programmar.Delphi.Terminals.Delphi_KeywordChoice;
-import com.eagle.programmar.Delphi.Terminals.Delphi_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Delphi_Procedure extends TokenSequence
 {
@@ -18,20 +18,20 @@ public class Delphi_Procedure extends TokenSequence
 	public @OPT TokenList<Delphi_Header> headers;
 	public @OPT Delphi_BeginEnd body;
 	public @OPT TokenList<Delphi_Comment> comments;
-	public @OPT Delphi_Punctuation semicolon = new Delphi_Punctuation(';');
+	public @OPT PunctuationSemicolon semicolon;
 	
 	public static class Delphi_ProcedureForward extends TokenSequence
 	{
 		public Delphi_KeywordChoice PROCEDURE = new Delphi_KeywordChoice("Procedure", "Constructor", "Destructor");
 		public Delphi_Variable name;
 		public @OPT Delphi_Arguments args;
-		public Delphi_Punctuation semicolon = new Delphi_Punctuation(';');
+		public PunctuationSemicolon semicolon;
 		public @OPT Delphi_Override override;
 
 		public static class Delphi_Override extends TokenSequence
 		{
 			public Delphi_Keyword OVERRIDE = new Delphi_Keyword("Override");
-			public Delphi_Punctuation semicolon = new Delphi_Punctuation(';');
+			public PunctuationSemicolon semicolon;
 		}
 	}
 }

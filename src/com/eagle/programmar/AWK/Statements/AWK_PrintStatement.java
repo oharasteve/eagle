@@ -5,9 +5,10 @@ package com.eagle.programmar.AWK.Statements;
 
 import com.eagle.programmar.AWK.AWK_ArgumentList;
 import com.eagle.programmar.AWK.Terminals.AWK_KeywordChoice;
-import com.eagle.programmar.AWK.Terminals.AWK_Punctuation;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationLeftParen;
+import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class AWK_PrintStatement extends TokenSequence
 {
@@ -18,9 +19,9 @@ public class AWK_PrintStatement extends TokenSequence
 	{
 		public @FIRST static class AWK_Print_WithParens extends TokenSequence
 		{
-			public AWK_Punctuation leftParen = new AWK_Punctuation('(');
+			public PunctuationLeftParen leftParen;
 			public @OPT AWK_ArgumentList argList;
-			public AWK_Punctuation rightParen = new AWK_Punctuation(')');
+			public PunctuationRightParen rightParen;
 		}
 		
 		public static class AWK_Print_NoParens extends TokenSequence
