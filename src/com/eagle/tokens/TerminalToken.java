@@ -141,7 +141,10 @@ public abstract class TerminalToken extends AbstractToken
 			{
 				if (Character.isLetter(ch)) return false;
 			}
-			if (syntax._extraCharacters.indexOf(ch) >= 0) return false;			// - for COBOL, _ for Java, etc
+			if (syntax._extraCharacters != null)
+			{
+				if (syntax._extraCharacters.indexOf(ch) >= 0) return false;			// - for COBOL, _ for Java, etc
+			}
 		}
 		
 		foundIt(_currentLine, _currentChar + word.length() - 1);

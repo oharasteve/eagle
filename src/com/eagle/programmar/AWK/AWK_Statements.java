@@ -3,6 +3,7 @@
 
 package com.eagle.programmar.AWK;
 
+import com.eagle.programmar.AWK.Statements.AWK_ForStatement;
 import com.eagle.programmar.AWK.Statements.AWK_IfStatement;
 import com.eagle.programmar.AWK.Statements.AWK_NextStatement;
 import com.eagle.programmar.AWK.Statements.AWK_PrintStatement;
@@ -20,11 +21,14 @@ public class AWK_Statements extends TokenSequence
 {
 	public SeparatedList<AWK_Statement,PunctuationSemicolon> statements;
 	public @OPT PunctuationSemicolon semicolon;
-	public @OPT AWK_Comment comment;
+	public @OPT TokenList<AWK_Comment> comments;
 	public @OPT TokenList<AWK_EndOfLine> newlines;
 	
 	public static class AWK_Statement extends TokenChooser
 	{
+		public PunctuationSemicolon semicolon;	// Empty statement
+
+		public AWK_ForStatement forStatement;
 		public AWK_IfStatement ifStatement;
 		public AWK_NextStatement nextStatement;
 		public AWK_PrintStatement printStatement;

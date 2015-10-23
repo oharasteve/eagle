@@ -4,6 +4,9 @@
 package com.eagle.programmar.AWK;
 
 import com.eagle.programmar.EagleLanguage;
+import com.eagle.programmar.AWK.Terminals.AWK_Comment;
+import com.eagle.programmar.AWK.Terminals.AWK_EndOfLine;
+import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 
 public class AWK_Program extends EagleLanguage
@@ -21,5 +24,12 @@ public class AWK_Program extends EagleLanguage
 		return "TBD";
 	}
 
-	public TokenList<AWK_Command> statements;
+	public TokenList<AWK_Element> elements;
+	
+	public static class AWK_Element extends TokenChooser
+	{
+		public AWK_Command command;
+		public AWK_Comment comment;
+		public AWK_EndOfLine eoln;
+	}
 }

@@ -14,14 +14,14 @@ import com.eagle.tokens.punctuation.PunctuationRightBrace;
 public class AWK_Action extends TokenSequence
 {
 	public PunctuationLeftBrace leftBrace;
-	public @OPT TokenList<AWK_EndOfLine> newlines;
 	public @OPT TokenList<AWK_StatementOrComment> statements;
 	public PunctuationRightBrace rightBrace;
-	public TokenList<AWK_EndOfLine> blankLines;
+	public @OPT TokenList<AWK_EndOfLine> blankLines;
 	
 	public static class AWK_StatementOrComment extends TokenChooser
 	{
 		public AWK_Statements statements;
 		public AWK_Comment comment;
+		public AWK_EndOfLine newline;
 	}
 }

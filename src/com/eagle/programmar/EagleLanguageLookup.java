@@ -30,6 +30,7 @@ import com.eagle.programmar.Lisp.Lisp_Program;
 import com.eagle.programmar.Natural.Natural_Program;
 import com.eagle.programmar.PHP.PHP_Program;
 import com.eagle.programmar.PLI.PLI_Program;
+import com.eagle.programmar.PPSM.PPSM_Program;
 import com.eagle.programmar.Property.Property_Program;
 import com.eagle.programmar.Python.Python_Program;
 import com.eagle.programmar.RPG.RPG_Program.RPG_III_Program;
@@ -84,6 +85,7 @@ public class EagleLanguageLookup
 		//new LanguageDefinition(Perl_Program.NAME, Perl_Program.class),
 		new LanguageDefinition(PHP_Program.NAME, PHP_Program.class),
 		new LanguageDefinition(PLI_Program.NAME, PLI_Program.class),
+		new LanguageDefinition(PPSM_Program.NAME, PPSM_Program.class),
 		new LanguageDefinition(Property_Program.NAME, Property_Program.class),
 		new LanguageDefinition(Python_Program.NAME, Python_Program.class),
 		new LanguageDefinition(RPG_III_Program.NAME, RPG_III_Program.class),
@@ -150,6 +152,7 @@ public class EagleLanguageLookup
 		//setLanguageSuffix(".pl", Perl_Program.NAME);
 		setLanguageSuffix(".pli", PLI_Program.NAME);
 		//setLanguageSuffix(".pm", Perl_Program.NAME);
+		setLanguageSuffix(".ppsm", PPSM_Program.NAME);
 		setLanguageSuffix(".properties", Property_Program.NAME);
 		setLanguageSuffix(".py", Python_Program.NAME);
 		setLanguageSuffix(".rpg", RPG_III_Program.NAME);

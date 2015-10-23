@@ -45,12 +45,14 @@ public class AWK_Expression extends PrecedenceChooser
 		super.addTerm(AWK_Strings.class);
 		super.addTerm(AWK_NotExpression.class);
 		super.addTerm(AWK_ParenthesizedExpression.class);
+		super.addTerm(AWK_DollarParensExpression.class);
 		
 		// Order is critical ...
 		super.addOperator(AWK_SubscriptExpression.class);
 		super.addOperator(AWK_MultiplicativeExpression.class);
 		super.addOperator(AWK_AdditiveExpression.class);
 		super.addOperator(AWK_RelationalExpression.class);
+		super.addOperator(AWK_RegularExpression.class);
 		super.addOperator(AWK_AndExpression.class);
 		super.addOperator(AWK_OrExpression.class);
 		super.addOperator(AWK_Assignment.class);
@@ -115,6 +117,14 @@ public class AWK_Expression extends PrecedenceChooser
 		public PunctuationRightParen rightParen;
 	}
 
+	public static class AWK_DollarParensExpression extends ExpressionTerm
+	{
+		public AWK_Punctuation dollar = new AWK_Punctuation('$');
+		public PunctuationLeftParen leftParen;
+		public AWK_Expression expression;
+		public PunctuationRightParen rightParen;
+	}
+
 	///////////////////////////////////////////////
 	// Binary expressions
 
@@ -136,6 +146,13 @@ public class AWK_Expression extends PrecedenceChooser
 	{
 		public AWK_Expression left = new AWK_Expression(this, AllowedPrecedence.ATLEAST);
 		public AWK_Punctuation andOperator = new AWK_Punctuation("&&");
+		public AWK_Expression right = new AWK_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static class AWK_RegularExpression extends PrecedenceOperator
+	{
+		public AWK_Expression left = new AWK_Expression(this, AllowedPrecedence.ATLEAST);
+		public AWK_PunctuationChoice operator = new AWK_PunctuationChoice("~", "!~");
 		public AWK_Expression right = new AWK_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
@@ -164,7 +181,7 @@ public class AWK_Expression extends PrecedenceChooser
 	{
 		public AWK_Expression expr = new AWK_Expression(this, AllowedPrecedence.ATLEAST);
 		public PunctuationLeftBracket leftBracket;
-		public AWK_Expression subscr = new AWK_Expression(this, AllowedPrecedence.HIGHER);
+		public AWK_Expression subscr = new AWK_Expression();
 		public PunctuationRightBracket rightBracket;
 	}
 }

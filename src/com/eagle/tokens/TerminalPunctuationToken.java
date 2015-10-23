@@ -31,10 +31,13 @@ public class TerminalPunctuationToken extends TerminalToken
 		{
 		case 4:
 			_punct4 = punct.charAt(3);
+			//$FALL-THROUGH$
 		case 3:
 			_punct3 = punct.charAt(2);
+			//$FALL-THROUGH$
 		case 2:
 			_punct2 = punct.charAt(1);
+			//$FALL-THROUGH$
 		case 1:
 			_punct1 = punct.charAt(0);
 			break;

@@ -1,5 +1,5 @@
-// Copyright Eagle Legacy Modernization, 2010-date
-// Original author: Steven A. O'Hara, Sep 30, 2015
+// Copyright Eagle Legacy Modernization, LLC, 2010-date
+// Original author: Steven A. O'Hara, Oct 15, 2015
 
 package com.eagle.programmar.AWK.Statements;
 
@@ -11,25 +11,23 @@ import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.punctuation.PunctuationLeftParen;
 import com.eagle.tokens.punctuation.PunctuationRightParen;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
-public class AWK_IfStatement extends TokenSequence
+public class AWK_ForStatement extends TokenSequence
 {
-	public AWK_Keyword IF = new AWK_Keyword("if");
+	public AWK_Keyword FOR = new AWK_Keyword("for");
 	public PunctuationLeftParen leftParen;
-	public AWK_Expression condition;
+	public AWK_Expression initialize;
+	public PunctuationSemicolon semicolon1;
+	public AWK_Expression test;
+	public PunctuationSemicolon semicolon2;
+	public AWK_Expression increment;
 	public PunctuationRightParen rightParen;
-	public AWK_IfBlock block;
-	public @OPT AWK_IfElse ifelse;
+	public AWK_ForBlock block;
 	
-	public static class AWK_IfElse extends TokenSequence
-	{
-		public AWK_Keyword ELSE = new AWK_Keyword("else");
-		public AWK_IfBlock block;
-	}
-	
-	public static class AWK_IfBlock extends TokenChooser
+	public static class AWK_ForBlock extends TokenChooser
 	{
 		public AWK_Statement stmt;
-		public AWK_Action action;
+		public AWK_Action actions;
 	}
 }

@@ -122,8 +122,7 @@ public class EagleReadXML implements ErrorHandler
 		}
 		catch (Exception ex)
 		{
-			// throw new RuntimeException("Unable to read " + xmlFile, ex);
-			return null;
+			throw new RuntimeException("Unable to read " + xmlFile, ex);
 		}
     	if (_parseException != null)
     	{

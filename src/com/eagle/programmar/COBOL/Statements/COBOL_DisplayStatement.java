@@ -12,6 +12,7 @@ import com.eagle.programmar.COBOL.Terminals.COBOL_Number;
 import com.eagle.tests.EagleInterpreter;
 import com.eagle.tests.EagleInterpreter.EagleValue;
 import com.eagle.tests.EagleRunnable;
+import com.eagle.tokens.AbstractToken;
 import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
@@ -70,9 +71,24 @@ public class COBOL_DisplayStatement extends COBOL_AbstractStatement implements E
 		public COBOL_Identifier_Reference upon;
 	}
 	
-	public static class COBOL_DisplayWhat extends TokenSequence
+	public static class COBOL_DisplayWhat extends TokenSequence implements EagleRunnable
 	{
-		public SeparatedList<COBOL_Expression,PunctuationComma> expr;
+		public SeparatedList<COBOL_Expression,PunctuationComma> exprs;
+
+		@Override
+		public void interpret(EagleInterpreter interpreter)
+		{
+			for (AbstractToken token : exprs._elements)
+			{
+				if (token instanceof COBOL_Expression)
+				{
+					COBOL_Expression expr = (COBOL_Expression) token;
+					expr.tryToInterpret(interpreter);
+					EagleValue result = interpreter.popValue();
+					System.out.println(result.toString());
+				}
+			}
+		}
 	}
 	
 	public static class COBOL_DisplayAt extends TokenSequence
@@ -107,9 +123,7 @@ public class COBOL_DisplayStatement extends COBOL_AbstractStatement implements E
 	{
 		for (COBOL_DisplayClause clause : clauses._elements)
 		{
-			clause.what.expr.tryToInterpret(interpreter);
-			EagleValue result = interpreter.popValue();
-			System.out.println(result.toString());
+			clause.what.tryToInterpret(interpreter);
 		}
 	}
 }

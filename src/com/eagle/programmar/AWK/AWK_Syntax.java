@@ -18,7 +18,7 @@ public class AWK_Syntax extends EagleSyntax
 		_isCaseSensitive = false;
 		_extraCharacters = "";
 		_autoAdvance = false;
-		_punctuationExceptions = new String[] { "==", "!=", "<=", ">=", "++", "--", "+=" };
+		_punctuationExceptions = new String[] { "==", "!=", "<=", ">=", "++", "--", "+=", "!~" };
 		
 		addReservedWords(keywords);
 		addReservedWords(FUNCTIONS);
@@ -27,6 +27,8 @@ public class AWK_Syntax extends EagleSyntax
 	public static final String[] FUNCTIONS = {
 		"index",
 		"length",
+		"match",
+		"sprintf",
 		"strftime",
 		"substr",
 	};
