@@ -22,13 +22,16 @@
     @xcopy %XOPTS% "%SVN%\Tools\src\com\eagle\%%i.java" "%GIT%\src\com\eagle\" | %FILTER%
 )
 
+@%ECHOREM% Copying src\com\eagle\math
+@xcopy %XOPTS% "%SVN%\Tools\src\com\eagle\math" "%GIT%\src\com\eagle\math\" | %FILTER%
+
 @%ECHOREM% Copying src\com\eagle\parsers
-@for %%i in ( EagleFileReader EagleLineReader EagleOverrideManager EagleParseException ParserManager ) do @(
+@for %%i in ( EagleFileReader EagleLineReader EagleOverrideManager EagleParseException EagleTracer ParserInterface ParserManager UnexpectedCommentManager UnparsedTokenManager UnusualTokenManager ) do @(
     @xcopy %XOPTS% "%SVN%\Tools\src\com\eagle\parsers\%%i.java" "%GIT%\src\com\eagle\parsers\" | %FILTER%
 )
 
 @%ECHOREM% Copying src\com\eagle\preprocess
-@for %%i in ( EagleInclude FindIncludeFile ) do @(
+@for %%i in ( EagleInclude EagleSymbolTable FindIncludeFile SavePreprocessedFile ) do @(
     @xcopy %XOPTS% "%SVN%\Tools\src\com\eagle\preprocess\%%i.java" "%GIT%\src\com\eagle\preprocess\" | %FILTER%
 )
 
@@ -57,5 +60,7 @@
 
 @%ECHOREM% Make all the files read-only, except the fake EagleParser.java
 @attrib +r *.java /s
-@attrib -r EagleParser.java /s
+@for %%i in ( EagleParser ParserCache ) do @(
+    @attrib -r "%GIT%\src\com\eagle\parsers\%%i.java"
+)
 @attrib +r *.xml /s

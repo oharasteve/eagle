@@ -10,17 +10,24 @@ import com.eagle.tokens.AbstractToken;
 
 public class EagleParser
 {
+	EagleTracer _tracer = null;
+	
+	public void setTrace(EagleTracer tracer)
+	{
+		_tracer = tracer;
+	}
+	
 	public boolean parse(EagleProject project, EagleLanguage lang, String canonicalName, EagleFileReader lines)
 	{
 		return false;
 	}
 	
-	public boolean quickParse(String fileName, EagleFileReader lines, EagleLanguage lang, AbstractToken token)
+	public boolean quickParse(EagleFileReader lines, EagleLanguage lang, AbstractToken token)
 	{
 		return false;
 	}
 	
-	public String getHighestPosition(String fileName)
+	public String getStoppingPoint(String fileName)
 	{
 		return null;
 	}
