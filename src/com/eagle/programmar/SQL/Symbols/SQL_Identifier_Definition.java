@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.SQL.Symbols;
 
-import com.eagle.programmar.DefinitionInterface;
 import com.eagle.programmar.SQL.Terminals.SQL_Identifier;
+import com.eagle.tokens.DefinitionInterface;
 
 public abstract class SQL_Identifier_Definition extends SQL_Identifier implements DefinitionInterface
 {

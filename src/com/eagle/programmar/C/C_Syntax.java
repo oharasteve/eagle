@@ -18,6 +18,7 @@ public class C_Syntax extends EagleSyntax
 		_isCaseSensitive = true;
 		_continuationChar = "\\";
 		_extraCharacters = "_";
+		//_commentInstance = new C_Comment();
 		_punctuationExceptions = new String[] { "!=", "<=", "==", ">=", "/*", "&&", "||", "..", "->", "++", "--", "::" };
 		
 		addReservedWords(keywords);

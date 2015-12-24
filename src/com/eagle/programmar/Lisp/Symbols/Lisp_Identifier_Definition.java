@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.Lisp.Symbols;
 
-import com.eagle.programmar.DefinitionInterface;
 import com.eagle.programmar.Lisp.Terminals.Lisp_Identifier;
+import com.eagle.tokens.DefinitionInterface;
 
 public abstract class Lisp_Identifier_Definition extends Lisp_Identifier implements DefinitionInterface
 {

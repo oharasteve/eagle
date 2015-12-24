@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.CSharp.Symbols;
 
-import com.eagle.programmar.DefinitionInterface;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Identifier;
+import com.eagle.tokens.DefinitionInterface;
 
 public abstract class CSharp_Identifier_Definition extends CSharp_Identifier implements DefinitionInterface
 {

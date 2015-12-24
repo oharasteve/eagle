@@ -29,6 +29,12 @@ public class EagleUtilities
 	{
 		return lj(Long.toString(i), nc);
 	}
+
+	public static String trunc(String str, int nc)
+	{
+		if (str.length() <= nc) return str;
+		return str.substring(0, nc);
+	}
 	
 	public static String fixHtml(String s)
 	{
@@ -84,6 +90,35 @@ public class EagleUtilities
 			{
 				sb.append(c);
 			}
+		}
+		return sb.toString();
+	}
+	
+	// XML 1.1 doesn't seem to like &x80 etc in UTF-8
+	
+	public static char HIGHCHAR = 0xFFFF;
+	public static char REPLACECHAR = '?';
+	
+	public static boolean hasHighChars(String s)
+	{
+		int len = s.length();
+		for (int i = 0; i < len; i++)
+		{
+			char ch = s.charAt(i);
+			if (ch > HIGHCHAR) return true;
+		}
+		return false;
+	}
+	
+	public static String stripHighChars(String s)
+	{
+		int len = s.length();
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < len; i++)
+		{
+			char ch = s.charAt(i);
+			if (ch > HIGHCHAR) ch = REPLACECHAR;
+			sb.append(ch);
 		}
 		return sb.toString();
 	}

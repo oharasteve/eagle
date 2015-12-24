@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.Python.Symbols;
 
-import com.eagle.programmar.DefinitionInterface;
 import com.eagle.programmar.Python.Terminals.Python_Identifier;
+import com.eagle.tokens.DefinitionInterface;
 
 public abstract class Python_Identifier_Definition extends Python_Identifier implements DefinitionInterface
 {

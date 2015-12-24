@@ -4,13 +4,14 @@
 package com.eagle.programmar.Django;
 
 import com.eagle.programmar.Django.Symbols.Django_Identifier_Reference;
+import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.punctuation.PunctuationPeriod;
 
 public class Django_Variable extends TokenSequence
 {
 	public Django_Identifier_Reference variable;
-	public @OPT Django_DotVariable more;
+	public @OPT TokenList<Django_DotVariable> more;
 	
 	public static class Django_DotVariable extends TokenSequence
 	{

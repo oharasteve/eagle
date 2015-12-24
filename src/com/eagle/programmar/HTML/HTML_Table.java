@@ -6,9 +6,11 @@ package com.eagle.programmar.HTML;
 import com.eagle.programmar.Django.Django_Control;
 import com.eagle.programmar.HTML.HTML_Program.HTML_Element;
 import com.eagle.programmar.HTML.HTML_Table.HTML_TableRow.HTML_TableData;
+import com.eagle.programmar.HTML.Terminals.HTML_Comment;
 import com.eagle.programmar.HTML.Terminals.HTML_Keyword;
 import com.eagle.programmar.HTML.Terminals.HTML_KeywordChoice;
 import com.eagle.programmar.HTML.Terminals.HTML_Punctuation;
+import com.eagle.programmar.HTML.Terminals.HTML_PunctuationChoice;
 import com.eagle.programmar.PHP.PHP_Program.PHP_Section;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
@@ -29,6 +31,7 @@ public class HTML_Table extends TokenSequence
 
 	public static class HTML_TablePiece extends TokenChooser
 	{
+		public HTML_Comment comment;
 		public HTML_TableRow row;
 		public HTML_Caption caption;
 		public @CURIOUS("Missing table row") HTML_TableData data;
@@ -51,7 +54,7 @@ public class HTML_Table extends TokenSequence
 				public @INDENT HTML_Punctuation startTagSection = new HTML_Punctuation('<');
 				public @NOSPACE HTML_Keyword COL = new HTML_Keyword("col");
 				public @OPT TokenList<HTML_Attribute> attributes; 
-				public @NOSPACE HTML_Punctuation endTagRow = new HTML_Punctuation("/>");
+				public @NOSPACE HTML_PunctuationChoice endTagCol = new HTML_PunctuationChoice(">", "/>");
 			}
 		}
 		

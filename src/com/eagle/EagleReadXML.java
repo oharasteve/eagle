@@ -19,9 +19,9 @@ import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
-import com.eagle.programmar.DefinitionInterface;
 import com.eagle.programmar.EagleLanguage;
 import com.eagle.tokens.AbstractToken;
+import com.eagle.tokens.DefinitionInterface;
 import com.eagle.tokens.EagleScope;
 import com.eagle.tokens.EagleScope.EagleScopeInterface;
 import com.eagle.tokens.SeparatedList;
@@ -273,12 +273,6 @@ public class EagleReadXML implements ErrorHandler
 		if (TerminalToken.class.isAssignableFrom(cls))
 		{
 			val = parent.getAttribute(XML_VALUE);
-			if (val.indexOf("ASCII-") >= 0)
-			{
-				val = val.replaceAll("ASCII"+"-DLE-CODE", "\020"); // Ascii DLE is in the APAC source code comments
-				val = val.replaceAll("ASCII"+"-CANCEL", "\030"); // Ascii CANCEL is in the APAC source code comments
-				val = val.replaceAll("ASCII"+"-END-MEDIUM", "\031"); // Ascii END MEDIUM is in the APAC source code comments
-			}
 			((TerminalToken)token).setValue(val);
 		}
 		else if (TokenChooser.class.isAssignableFrom(cls))

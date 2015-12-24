@@ -21,7 +21,7 @@ public class C_Program extends EagleLanguage
 		super(NAME, new C_Syntax());
 	}
 	
-	// For C++
+	// Called from C++ constructor
 	public C_Program(String name, EagleSyntax syntax)
 	{
 		super(name, syntax);
@@ -34,11 +34,25 @@ public class C_Program extends EagleLanguage
 	}
 	
 	private static String[] primitives = new String[] {
-		"void", "short", "int", "long", "char", "float", "double" };
+			"char",
+			"double",
+			"float",
+			"int",
+			"long",
+			"short",
+			"void"
+	};
 	
 	// Careful, this gets added to in some projects
 	private static String[] modifiers = new String[] {
-		"const", "extern", "register", "static", "volatile" };
+			"const",
+			"extern",
+			"inline",
+			"register",
+			"static",
+			"virtual",
+			"volatile"
+	};
 
 	public static void addPrimitive(String primitive)
 	{

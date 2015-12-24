@@ -1,7 +1,7 @@
 # Created by backupDB: 2015-09-29 08:51:41
 
 CREATE TABLE `Details` (
-  `Clan` set('OHara','Johnson','Greer','Berberich','Lynch','Torrence','Robinson','Day','McCaffrey') NOT NULL default '',
+  `Clan` set('Hatfield','McCoy') NOT NULL default '',
   `KeyName` varchar(20) NOT NULL default '',
   `CellPhone` varchar(20) NOT NULL default '',
   `HomePhone` varchar(20) NOT NULL default '',
@@ -43,7 +43,8 @@ CREATE TABLE `Families` (
   UNIQUE KEY `FamilyKey` (`FamilyKey`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Family Names';
 
-INSERT INTO `Families` VALUES ('OHara','O\'Hara');
+INSERT INTO `Families` VALUES ('Hatfield','Hatfield');
+INSERT INTO `Families` VALUES ('McCoy','McCoy');
 
 
 CREATE TABLE `Marriages` (

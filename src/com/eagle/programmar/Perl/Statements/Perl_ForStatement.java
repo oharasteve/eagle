@@ -16,14 +16,10 @@ public class Perl_ForStatement extends TokenSequence
 	public @DOC("control-structures.for.php") Perl_Keyword FOR = new Perl_Keyword("for");
 	public PunctuationLeftParen leftParen;
 	public @OPT Perl_Expression initExpr;
-	public @OPT Perl_ForClause testExpr;
-	public @OPT Perl_ForClause incrExpr;
+	public @OPT PunctuationSemicolon semicolon1;
+	public @OPT Perl_Expression testExpr;
+	public @OPT PunctuationSemicolon semicolon2;
+	public @OPT Perl_Expression incrExpr;
 	public PunctuationRightParen rightParen;
 	public Perl_Statement stmt;
-	
-	public static class Perl_ForClause extends TokenSequence
-	{
-		public @OPT PunctuationSemicolon semicolon;
-		public Perl_Expression incrExpr;
-	}
 }

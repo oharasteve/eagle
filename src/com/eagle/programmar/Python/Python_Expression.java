@@ -4,6 +4,7 @@
 package com.eagle.programmar.Python;
 
 import com.eagle.programmar.PLI.Terminals.PLI_PunctuationChoice;
+import com.eagle.programmar.Python.Python_Expression.Python_Function_Call.Python_Function_Arguments;
 import com.eagle.programmar.Python.Python_Syntax.Python_Multiline_Syntax;
 import com.eagle.programmar.Python.Terminals.Python_BackQuote;
 import com.eagle.programmar.Python.Terminals.Python_Comment;
@@ -89,13 +90,7 @@ public class Python_Expression extends PrecedenceChooser
 	
 	public static class Python_Literals extends ExpressionTerm
 	{
-		public TokenList<Python_Literal_or_Comment> literals;
-		
-		public static class Python_Literal_or_Comment extends TokenChooser
-		{
-			public Python_Literal literal;
-			public Python_Comment comment;
-		}
+		public TokenList<Python_Literal> literals;
 	}
 	
 	public static class Python_BackQuotes extends ExpressionTerm
@@ -164,8 +159,9 @@ public class Python_Expression extends PrecedenceChooser
 	public static class Python_Braces extends ExpressionTerm
 	{
 		public PunctuationLeftBrace leftBrace;
-		public @OPT Python_EndOfLine eoln;
+		public @OPT Python_EndOfLine eoln1;
 		public @OPT @SYNTAX(Python_Multiline_Syntax.class) Python_Dictionary dictionary;
+		public @OPT Python_EndOfLine eoln2;
 		public PunctuationRightBrace rightBrace;
 		
 		public static class Python_Dictionary extends TokenSequence
@@ -221,11 +217,13 @@ public class Python_Expression extends PrecedenceChooser
 	{
 		public Python_Variable name;
 		public TokenList<Python_Function_Arguments> args;
+		public @OPT Python_Function_Arguments moreArguments;
 		
 		public static class Python_Function_Arguments extends TokenSequence
 		{
 			public PunctuationLeftParen leftParen;
 			public @OPT @SYNTAX(Python_Multiline_Syntax.class) Python_Function_ArgList argList;
+			public @OPT Python_EndOfLine eoln;
 			public PunctuationRightParen rightParen;
 			
 			public static class Python_Function_ArgList extends TokenSequence
@@ -416,6 +414,7 @@ public class Python_Expression extends PrecedenceChooser
 		public @OPT Python_EndOfLine eoln;
 		public @SYNTAX(Python_Multiline_Syntax.class) Python_SubscrExpr subscr;
 		public PunctuationRightBracket rightBracket;
+		public @OPT Python_Function_Arguments moreArguments;
 		
 		public static class Python_SubscrExpr extends TokenSequence
 		{

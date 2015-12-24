@@ -3,6 +3,7 @@
 
 package com.eagle.programmar.Java;
 
+import com.eagle.math.EagleValue;
 import com.eagle.programmar.Java.Java_Class.Java_ClassElement;
 import com.eagle.programmar.Java.Java_Type.Java_GenericType;
 import com.eagle.programmar.Java.Terminals.Java_Character_Literal;
@@ -15,7 +16,6 @@ import com.eagle.programmar.Java.Terminals.Java_Number;
 import com.eagle.programmar.Java.Terminals.Java_Punctuation;
 import com.eagle.programmar.Java.Terminals.Java_PunctuationChoice;
 import com.eagle.tests.EagleInterpreter;
-import com.eagle.tests.EagleInterpreter.EagleValue;
 import com.eagle.tests.EagleRunnable;
 import com.eagle.tests.EagleTestable;
 import com.eagle.tokens.PrecedenceChooser;
@@ -132,7 +132,7 @@ public class Java_Expression extends PrecedenceChooser
 		@Override
 		public void interpret(EagleInterpreter interpreter)
 		{
-			expression.tryToInterpret(interpreter);
+			interpreter.tryToInterpret(expression);
 		}
 	}
 	
@@ -146,7 +146,6 @@ public class Java_Expression extends PrecedenceChooser
 
 	public static class Java_ExpressionList extends ExpressionTerm
 	{
-		int a;
 		public PunctuationLeftBrace leftBrace;
 		public @OPT TokenList<Java_Comment> comment;
 		public @OPT Java_ArgumentList valueList;
@@ -210,8 +209,7 @@ public class Java_Expression extends PrecedenceChooser
 		public void interpret(EagleInterpreter interpreter)
 		{
 			// Assume System.out.println(exp);
-			argList.arg.tryToInterpret(interpreter);
-			EagleValue result = interpreter.popValue();
+			EagleValue result = interpreter.getEagleValue(argList.arg);
 			System.out.println(result.toString());
 		}
 	}
@@ -430,6 +428,7 @@ public class Java_Expression extends PrecedenceChooser
 			Java_Tests.addTestExpr("Add3", "2 * 3 + 4", "10");
 			Java_Tests.addTestExpr("Subtract1", "27-10-1", "16");
 			Java_Tests.addTestExpr("Subtract2", "27-(10-1)", "18");
+			Java_Tests.addTestExpr("FiveSix", "five + six", "11");
 		}
 
 		@Override

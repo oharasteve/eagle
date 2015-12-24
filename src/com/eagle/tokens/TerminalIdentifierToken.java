@@ -7,9 +7,7 @@ import java.util.ArrayList;
 
 import com.eagle.parsers.EagleFileReader;
 import com.eagle.parsers.EagleLineReader;
-import com.eagle.programmar.DefinitionInterface;
 import com.eagle.programmar.EagleSyntax;
-import com.eagle.programmar.ReferenceInterface;
 import com.eagle.tokens.EagleScope.EagleScopeInterface;
 
 
@@ -56,6 +54,24 @@ public abstract class TerminalIdentifierToken extends TerminalToken
 		////////// Can't always fail if not found .... might be a program snippet from transformation generator
         // throw new RuntimeException("No surrounding scope found for " + def.typeName() +
         // " on line " + (def.getStartLine()+1));
+	}
+	
+	public DefinitionInterface findDefinitionInScope()
+	{
+		AbstractToken parent = this.getParent();
+		while (parent != null)
+		{
+			if (parent instanceof EagleScopeInterface)
+			{
+				EagleScopeInterface scopeInterface = (EagleScopeInterface) parent;
+				EagleScope scope = scopeInterface.getScope();
+				DefinitionInterface def = scope.findSymbol(_id);
+				if (def != null) return def;
+			}
+			parent = parent.getParent();
+		}
+		
+		return null;	// Didn't find it
 	}
 
 	///////////////////////////////////////////////////////////////

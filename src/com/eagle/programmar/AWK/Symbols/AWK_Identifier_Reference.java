@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.AWK.Symbols;
 
-import com.eagle.programmar.ReferenceInterface;
 import com.eagle.programmar.AWK.Terminals.AWK_Identifier;
+import com.eagle.tokens.ReferenceInterface;
 
 public class AWK_Identifier_Reference extends AWK_Identifier implements ReferenceInterface
 {

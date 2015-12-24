@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.IntelASM.Symbols;
 
-import com.eagle.programmar.ReferenceInterface;
 import com.eagle.programmar.IntelASM.Terminals.IntelASM_Identifier;
+import com.eagle.tokens.ReferenceInterface;
 
 public class IntelASM_Identifier_Reference extends IntelASM_Identifier implements ReferenceInterface
 {

@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.Django.Symbols;
 
-import com.eagle.programmar.ReferenceInterface;
 import com.eagle.programmar.Django.Terminals.Django_Identifier;
+import com.eagle.tokens.ReferenceInterface;
 
 public class Django_Identifier_Reference extends Django_Identifier implements ReferenceInterface
 {

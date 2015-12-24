@@ -223,7 +223,7 @@ public class TerminalPunctuationToken extends TerminalToken
 		case 2:
 			return "\"" + _punct1 + _punct2 + "\"";
 		case 3:
-			return Character.toString(_punct1) + Character.toString(_punct2) + Character.toString(_punct3);
+			return "\"" + _punct1 + _punct2 + _punct3 + "\"";
 		case 4:
 			return "\"" + _punct1 + _punct2 + _punct3 + _punct4 + "\"";
 		default:

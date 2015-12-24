@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.SQL.Symbols;
 
-import com.eagle.programmar.ReferenceInterface;
 import com.eagle.programmar.SQL.Terminals.SQL_Identifier;
+import com.eagle.tokens.ReferenceInterface;
 
 public class SQL_Identifier_Reference extends SQL_Identifier implements ReferenceInterface
 {

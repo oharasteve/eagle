@@ -20,7 +20,7 @@ public class VB_ForStatement extends TokenSequence
 	public VB_Expression from;
 	public VB_Keyword TO = new VB_Keyword("to");
 	public VB_Expression to;
-	public TokenList<VB_EndOfLine> eoln;
+	public VB_EndOfLine eoln;
 	public TokenList<VB_Statement> action;
 	public VB_Keyword NEXT = new VB_Keyword("next");
 	public @OPT VB_Identifier_Reference var2;

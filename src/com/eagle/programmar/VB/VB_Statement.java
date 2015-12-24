@@ -26,7 +26,6 @@ import com.eagle.programmar.VB.Symbols.VB_Label_Definition;
 import com.eagle.programmar.VB.Terminals.VB_Comment;
 import com.eagle.programmar.VB.Terminals.VB_EndOfLine;
 import com.eagle.tokens.TokenChooser;
-import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.punctuation.PunctuationColon;
 
@@ -34,7 +33,7 @@ public class VB_Statement extends TokenSequence
 {
 	public VB_BaseStatement baseStatement;
 	public @OPT VB_Comment comment;
-	public TokenList<VB_EndOfLine> eoln;
+	public VB_EndOfLine eoln;
 	
 	public static class VB_BaseStatement extends TokenChooser
 	{

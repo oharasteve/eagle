@@ -3,100 +3,90 @@
 
 package com.eagle.tests;
 
-import java.util.Stack;
-
-import com.eagle.programmar.DefinitionInterface;
-import com.eagle.programmar.ReferenceInterface;
+import com.eagle.math.EagleStack;
+import com.eagle.math.EagleValue;
+import com.eagle.preprocess.EagleSymbolTable;
 import com.eagle.tokens.AbstractToken;
+import com.eagle.tokens.TerminalCommentToken;
+import com.eagle.tokens.TokenChooser;
 
 public abstract class EagleInterpreter
 {
-	public abstract static class EagleValue
+	public EagleSymbolTable _symbolTable;
+	private EagleStack _stack = new EagleStack();
+	
+	public EagleInterpreter(EagleSymbolTable symbolTable)
 	{
+		_symbolTable = symbolTable;
 	}
 	
-	public static class BooleanValue extends EagleValue
+	public void tryToInterpret(AbstractToken token)
 	{
-		boolean _boolValue;
-		
-		public BooleanValue(boolean b)
+		if (token instanceof EagleRunnable)
 		{
-			_boolValue = b;
+			EagleRunnable runnable = (EagleRunnable) token;
+			runnable.interpret(this);
 		}
-		
-		@Override
-		public String toString()
+		else if (TokenChooser.class.isAssignableFrom(token.getClass()))
 		{
-			return Boolean.toString(_boolValue);
+			tryToInterpret(((TokenChooser) token)._whichToken);
 		}
-	}
-	
-	public static class IntegerValue extends EagleValue
-	{
-		int _intValue;
-		
-		public IntegerValue(int i)
+		else if (!TerminalCommentToken.class.isAssignableFrom(token.getClass()))
 		{
-			_intValue = i;
-		}
-
-		@Override
-		public String toString()
-		{
-			return Integer.toString(_intValue);
+			throw new RuntimeException("Please add EagleRunnable interface to " +
+					token.getClass().getName() + " in " + token.getParent().getClass().getName());
 		}
 	}
 	
-	private Stack<EagleValue> stack = new Stack<EagleValue>();
-
+	//
+	// Pushers
+	//
+	
 	public void pushBool(boolean val)
 	{
-		stack.push(new BooleanValue(val));
+		_stack.pushBool(val);
 	}
 	
 	public void pushInt(int val)
 	{
-		stack.push(new IntegerValue(val));
+		_stack.pushInt(val);
 	}
 	
-	public EagleValue popValue()
+	public void pushStr(String val)
 	{
-		return stack.pop();
+		_stack.pushStr(val);
 	}
 	
-	private boolean popBoolValue()
+	public void pushEagleValue(EagleValue val)
 	{
-		EagleValue value = stack.pop();
-		if (value instanceof BooleanValue)
-		{
-			return ((BooleanValue) value)._boolValue;
-		}
-		throw new RuntimeException("Expected a boolean value on the stack, not " + value.toString());
+		_stack.pushEagleValue(val);
 	}
 	
-	private int popIntValue()
-	{
-		EagleValue value = stack.pop();
-		if (value instanceof IntegerValue)
-		{
-			return ((IntegerValue) value)._intValue;
-		}
-		throw new RuntimeException("Expected an integer value on the stack, not " + value.toString());
-	}
+	//
+	// Getters
+	//
 	
 	public boolean getBoolValue(AbstractToken expr)
 	{
-		expr.tryToInterpret(this);
-		return popBoolValue();
+		tryToInterpret(expr);
+		return _stack.popBoolValue();
 	}
 	
 	public int getIntValue(AbstractToken expr)
 	{
-		expr.tryToInterpret(this);
-		return popIntValue();
+		tryToInterpret(expr);
+		return _stack.popIntValue();
 	}
 	
-	public abstract int getValue(ReferenceInterface variable);
-
-	public abstract void setValue(DefinitionInterface definition, int value);
+	public String getStrValue(AbstractToken expr)
+	{
+		tryToInterpret(expr);
+		return _stack.popStrValue();
+	}
+	
+	public EagleValue getEagleValue(AbstractToken expr)
+	{
+		tryToInterpret(expr);
+		return _stack.popEagleValue();
+	}
 }

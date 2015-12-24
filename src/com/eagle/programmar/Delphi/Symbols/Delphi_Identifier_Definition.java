@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.Delphi.Symbols;
 
-import com.eagle.programmar.DefinitionInterface;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Identifier;
+import com.eagle.tokens.DefinitionInterface;
 
 public abstract class Delphi_Identifier_Definition extends Delphi_Identifier implements DefinitionInterface
 {

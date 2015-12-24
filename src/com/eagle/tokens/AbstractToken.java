@@ -9,8 +9,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 import com.eagle.programmar.EagleSyntax;
-import com.eagle.tests.EagleInterpreter;
-import com.eagle.tests.EagleRunnable;
 
 /**
  * What a generic token looks like
@@ -59,56 +57,6 @@ public abstract class AbstractToken
 		_present = true;
 		_endLine = endLine;
 		_endChar = endChar;
-	}
-	
-//	protected EagleScope newEagleScope()
-//	{
-//		EagleScope scope = EagleScope.createEagleScope();
-//		
-//		// Need to find the top token (EagleLanguage)
-//		AbstractToken parent = this;
-//		while (parent != null)
-//		{
-//			if (parent instanceof EagleLanguage)
-//			{
-//				EagleLanguage lang = (EagleLanguage) parent;
-//				lang.addScope(scope);
-//				return scope;
-//			}
-//			parent = parent.getParent();
-//		}
-//		
-//		// This little section is for debugging only. Creates the parentage tree for the offending token.
-//		StringBuffer parents = new StringBuffer(this.toString());
-//	    parent = this.getParent();
-//		while (parent != null)
-//		{
-//			parents.append(" -> ");
-//			parents.append(parent.toString());
-//			parent = parent.getParent();
-//		}
-//		
-//		//////// Can't always fail on this
-//		// throw new RuntimeException("Unable to find the EagleLanguage parent of " + parents.toString());
-//		return null;
-//	}
-	
-	public void tryToInterpret(EagleInterpreter interpreter)
-	{
-		if (this instanceof EagleRunnable)
-		{
-			EagleRunnable runnable = (EagleRunnable) this;
-			runnable.interpret(interpreter);
-		}
-		else if (TokenChooser.class.isAssignableFrom(this.getClass()))
-		{
-			((TokenChooser) this)._whichToken.tryToInterpret(interpreter);
-		}
-		else if (!TerminalCommentToken.class.isAssignableFrom(this.getClass()))
-		{
-			throw new RuntimeException("Please add EagleRunnable interface to " +
-					this.getClass().getName() + " in " + this.getParent().getClass().getName());
-		}
 	}
 	
 	// Wow, this is really weird. Default is to discard all the Annotations at compile time

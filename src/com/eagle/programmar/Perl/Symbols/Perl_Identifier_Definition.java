@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.Perl.Symbols;
 
-import com.eagle.programmar.DefinitionInterface;
 import com.eagle.programmar.Perl.Terminals.Perl_Identifier;
+import com.eagle.tokens.DefinitionInterface;
 
 public abstract class Perl_Identifier_Definition extends Perl_Identifier implements DefinitionInterface
 {

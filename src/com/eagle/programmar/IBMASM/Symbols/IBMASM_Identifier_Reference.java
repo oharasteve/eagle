@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.IBMASM.Symbols;
 
-import com.eagle.programmar.ReferenceInterface;
 import com.eagle.programmar.IBMASM.Terminals.IBMASM_Identifier;
+import com.eagle.tokens.ReferenceInterface;
 
 public class IBMASM_Identifier_Reference extends IBMASM_Identifier implements ReferenceInterface
 {

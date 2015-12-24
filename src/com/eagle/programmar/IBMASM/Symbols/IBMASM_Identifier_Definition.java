@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.IBMASM.Symbols;
 
-import com.eagle.programmar.DefinitionInterface;
 import com.eagle.programmar.IBMASM.Terminals.IBMASM_Identifier;
+import com.eagle.tokens.DefinitionInterface;
 
 public abstract class IBMASM_Identifier_Definition extends IBMASM_Identifier implements DefinitionInterface
 {

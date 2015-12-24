@@ -3,6 +3,7 @@
 
 package com.eagle.programmar.COBOL.Statements;
 
+import com.eagle.math.EagleValue;
 import com.eagle.programmar.COBOL.COBOL_AbstractStatement;
 import com.eagle.programmar.COBOL.COBOL_Expression;
 import com.eagle.programmar.COBOL.Symbols.COBOL_Identifier_Reference;
@@ -10,7 +11,6 @@ import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
 import com.eagle.programmar.COBOL.Terminals.COBOL_KeywordChoice;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Number;
 import com.eagle.tests.EagleInterpreter;
-import com.eagle.tests.EagleInterpreter.EagleValue;
 import com.eagle.tests.EagleRunnable;
 import com.eagle.tokens.AbstractToken;
 import com.eagle.tokens.SeparatedList;
@@ -83,8 +83,7 @@ public class COBOL_DisplayStatement extends COBOL_AbstractStatement implements E
 				if (token instanceof COBOL_Expression)
 				{
 					COBOL_Expression expr = (COBOL_Expression) token;
-					expr.tryToInterpret(interpreter);
-					EagleValue result = interpreter.popValue();
+					EagleValue result = interpreter.getEagleValue(expr);
 					System.out.println(result.toString());
 				}
 			}
@@ -123,7 +122,7 @@ public class COBOL_DisplayStatement extends COBOL_AbstractStatement implements E
 	{
 		for (COBOL_DisplayClause clause : clauses._elements)
 		{
-			clause.what.tryToInterpret(interpreter);
+			interpreter.tryToInterpret(clause.what);
 		}
 	}
 }

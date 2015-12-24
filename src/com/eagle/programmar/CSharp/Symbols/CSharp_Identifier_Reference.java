@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.CSharp.Symbols;
 
-import com.eagle.programmar.ReferenceInterface;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Identifier;
+import com.eagle.tokens.ReferenceInterface;
 
 public class CSharp_Identifier_Reference extends CSharp_Identifier implements ReferenceInterface
 {

@@ -7,7 +7,7 @@ import com.eagle.parsers.EagleFileReader;
 import com.eagle.parsers.EagleLineReader;
 import com.eagle.tokens.TerminalLiteralToken;
 
-public class Python_BackQuote  extends TerminalLiteralToken
+public class Python_BackQuote extends TerminalLiteralToken
 {
 	@Override
 	public boolean parse(EagleFileReader lines)

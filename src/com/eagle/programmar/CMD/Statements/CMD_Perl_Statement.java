@@ -19,12 +19,12 @@ public class CMD_Perl_Statement extends TokenSequence
 	public CMD_Keyword PERL = new CMD_Keyword("perl");
 	public @OPT TokenList<CMD_Perl_Option> opts;
 	public TokenList<CMD_Argument> args;
-	public TokenList<CMD_EndOfLine> eoln1;
+	public CMD_EndOfLine eoln1;
 	public CMD_Goto_Statement gotoStatement;
-	public TokenList<CMD_EndOfLine> eoln2;
+	public CMD_EndOfLine eoln2;
 	public @OPT CMD_Punctuation at = new CMD_Punctuation('@');
 	public CMD_Rem_Statement remStatement;
-	public TokenList<CMD_EndOfLine> eoln3;
+	public CMD_EndOfLine eoln3;
 	
 	public @SYNTAX(Perl_Syntax.class) Perl_Program perlProgram;
 

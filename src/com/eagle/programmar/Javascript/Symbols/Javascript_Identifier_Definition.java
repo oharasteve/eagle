@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.Javascript.Symbols;
 
-import com.eagle.programmar.DefinitionInterface;
 import com.eagle.programmar.Javascript.Terminals.Javascript_Identifier;
+import com.eagle.tokens.DefinitionInterface;
 
 public abstract class Javascript_Identifier_Definition extends Javascript_Identifier implements DefinitionInterface
 {

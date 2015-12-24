@@ -25,6 +25,7 @@ import com.eagle.programmar.HTML.HTML_Program;
 import com.eagle.programmar.IBMASM.IBMASM_Program;
 import com.eagle.programmar.JSON.JSON_Program;
 import com.eagle.programmar.Java.Java_Program;
+import com.eagle.programmar.JavaP.JavaP_Program;
 import com.eagle.programmar.Javascript.Javascript_Program;
 import com.eagle.programmar.Lisp.Lisp_Program;
 import com.eagle.programmar.Natural.Natural_Program;
@@ -78,6 +79,7 @@ public class EagleLanguageLookup
 		new LanguageDefinition(IBMASM_Program.NAME, IBMASM_Program.class),
 		//new LanguageDefinition(IntelASM_Program.NAME, IntelASM_Program.class),
 		new LanguageDefinition(Java_Program.NAME, Java_Program.class),
+		new LanguageDefinition(JavaP_Program.NAME, JavaP_Program.class),
 		new LanguageDefinition(Javascript_Program.NAME, Javascript_Program.class),
 		new LanguageDefinition(JSON_Program.NAME, JSON_Program.class),
 		new LanguageDefinition(Lisp_Program.NAME, Lisp_Program.class),
@@ -141,6 +143,7 @@ public class EagleLanguageLookup
 		setLanguageSuffix(".htm", HTML_Program.NAME);
 		setLanguageSuffix(".html", HTML_Program.NAME);
 		setLanguageSuffix(".java", Java_Program.NAME);
+		setLanguageSuffix(".javap", JavaP_Program.NAME);
 		setLanguageSuffix(".js", Javascript_Program.NAME);
 		setLanguageSuffix(".json", JSON_Program.NAME);
 		setLanguageSuffix(".lisp", Lisp_Program.NAME);

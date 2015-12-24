@@ -3,22 +3,22 @@
 
 package com.eagle.programmar.COBOL;
 
-import java.util.HashMap;
-
 import com.eagle.parsers.EagleFileReader;
+import com.eagle.parsers.EagleTracer;
 import com.eagle.preprocess.EagleInclude;
-import com.eagle.preprocess.FindIncludeFile;
+import com.eagle.preprocess.EagleSymbolTable;
+import com.eagle.project.EagleProject;
 import com.eagle.tokens.AbstractToken;
 
 public class COBOL_CopyBook extends EagleInclude
 {
-	public COBOL_CopyBook(HashMap<String, AbstractToken> symbolTable)
+	public COBOL_CopyBook(EagleProject project, EagleSymbolTable symbolTable, EagleTracer tracer)
 	{
-		super(symbolTable);
+		super(project, symbolTable, tracer);
 	}
 	
 	@Override
-	public EagleFileReader preprocessFile(EagleFileReader lines, FindIncludeFile findInclude)
+	public EagleFileReader preprocessFile(EagleFileReader lines)
 	{
 		// TODO: implement
 		return null;

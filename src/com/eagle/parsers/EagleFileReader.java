@@ -12,6 +12,7 @@ public class EagleFileReader
 	private ArrayList<EagleLineReader> _lines = new ArrayList<EagleLineReader>();
 	private int _currentLine = 0;
 	private int _currentChar = 0;
+	private String _fileName = null;
 	
 	public EagleFileReader()
 	{
@@ -43,6 +44,16 @@ public class EagleFileReader
 	public void setCurrentChar(int currentChar)
 	{
 		_currentChar = currentChar;
+	}
+	
+	public String getFileName()
+	{
+		return _fileName;
+	}
+	
+	public void setFileName(String fileName)
+	{
+		_fileName = fileName;
 	}
 	
 	public EagleLineReader get(int line)

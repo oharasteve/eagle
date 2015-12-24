@@ -16,7 +16,7 @@ public class AWK_Action extends TokenSequence
 	public PunctuationLeftBrace leftBrace;
 	public @OPT TokenList<AWK_StatementOrComment> statements;
 	public PunctuationRightBrace rightBrace;
-	public @OPT TokenList<AWK_EndOfLine> blankLines;
+	public @OPT AWK_EndOfLine blankLines;
 	
 	public static class AWK_StatementOrComment extends TokenChooser
 	{

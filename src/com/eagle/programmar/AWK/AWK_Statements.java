@@ -22,7 +22,7 @@ public class AWK_Statements extends TokenSequence
 	public SeparatedList<AWK_Statement,PunctuationSemicolon> statements;
 	public @OPT PunctuationSemicolon semicolon;
 	public @OPT TokenList<AWK_Comment> comments;
-	public @OPT TokenList<AWK_EndOfLine> newlines;
+	public @OPT AWK_EndOfLine newline;
 	
 	public static class AWK_Statement extends TokenChooser
 	{

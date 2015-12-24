@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.Java.Symbols;
 
-import com.eagle.programmar.DefinitionInterface;
 import com.eagle.programmar.Java.Terminals.Java_Identifier;
+import com.eagle.tokens.DefinitionInterface;
 
 public abstract class Java_Identifier_Definition extends Java_Identifier implements DefinitionInterface
 {

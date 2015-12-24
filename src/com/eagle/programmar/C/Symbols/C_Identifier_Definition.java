@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.C.Symbols;
 
-import com.eagle.programmar.DefinitionInterface;
 import com.eagle.programmar.C.Terminals.C_Identifier;
+import com.eagle.tokens.DefinitionInterface;
 
 public abstract class C_Identifier_Definition extends C_Identifier implements DefinitionInterface
 {

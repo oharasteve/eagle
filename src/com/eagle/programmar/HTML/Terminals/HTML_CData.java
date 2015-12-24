@@ -30,18 +30,19 @@ public class HTML_CData extends TerminalLiteralToken
 			_endLine = _currentLine;
 			_txt = "";
 			int endChar = _currentChar + 8;
+			int sc = _currentChar;
 			while (true)
 			{
 				endChar++;
 				if (endChar + 2 >= recLen)
 				{
 					// Continued onto the next line, ick.
-					_txt += rec.substring(_currentChar < 0 ? 0 : _currentChar) + '\n';
+					_txt += rec.substring(sc < 0 ? 0 : sc) + '\n';
 					_endLine++;
 					rec = lines.get(_endLine);
 					recLen = rec.length();
-					_currentChar = -1;
-					endChar = _currentChar;
+					sc = -1;
+					endChar = sc;
 					continue;
 				}
 				
@@ -50,7 +51,7 @@ public class HTML_CData extends TerminalLiteralToken
 						rec.charAt(endChar + 2) == '>')
 				{
 					foundIt(_endLine, endChar + 2);
-					_txt += rec.substring(_currentChar < 0 ? 0 : _currentChar, endChar + 3);
+					_txt += rec.substring(sc < 0 ? 0 : sc, endChar + 3);
 					return true;
 				}
 			}

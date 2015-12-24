@@ -3,26 +3,23 @@
 
 package com.eagle.programmar.Java;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.eagle.parsers.EagleFileReader;
-import com.eagle.parsers.ParserManager;
+import com.eagle.preprocess.EagleSymbolTable;
 import com.eagle.tests.EagleTests;
 
 @RunWith(Parameterized.class)
 public class Java_Tests extends EagleTests
 {
-	private Java_Interpreter _interpreter = new Java_Interpreter();
+	private EagleSymbolTable _symbolTable = new EagleSymbolTable();
+	private Java_Interpreter _interpreter = new Java_Interpreter(_symbolTable);
 
 	private static ArrayList<Object[]> tests = new ArrayList<Object[]>();
 
@@ -69,32 +66,19 @@ public class Java_Tests extends EagleTests
 	}
 
 	// Then JUnit calls this test on it
-	@Override
-	@Test public void runTest() throws Exception
+	@Override @Test
+	public void runTest() throws Exception
 	{
 		// Build up a little program
-		EagleFileReader pgm = new EagleFileReader();
-		pgm.add("class test {");
-		pgm.add("  int six = 6;");
-		pgm.add("  int five = 5;");
-		pgm.add(_stmt);
-		pgm.add("}");
+		String[] input = new String[] {
+				"class test {",
+				"  int six = 6;",
+				"  int five = 5;",
+				_stmt,
+				"}"
+		};
 		Java_Program lang = new Java_Program();
-		ParserManager parser = new ParserManager();
-		parser.parseLines(pgm, lang, lang);
 		
-		// Now, run the program
-		PrintStream saveOut = System.out;
-		ByteArrayOutputStream stream = new ByteArrayOutputStream();
-		PrintStream prt = new PrintStream(stream);
-		System.setOut(prt);	// Redirect into my byte stream
-		
-		lang.interpret(_interpreter);
-		
-		System.setOut(saveOut);	// Restore original stdout
-		prt.close();
-		String actualOutput = stream.toString().replaceAll("\\r", "");
-		Assert.assertEquals(_expected, actualOutput);
-		System.out.println("==== " + _testName + " ====\n" + _stmt + "\nPrinted " + _expected + "As expected.\n");
+		super.runTest(_interpreter, _testName, input, _expected, lang);
 	}
 }

@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.Natural.Symbols;
 
-import com.eagle.programmar.ReferenceInterface;
 import com.eagle.programmar.Natural.Terminals.Natural_Identifier;
+import com.eagle.tokens.ReferenceInterface;
 
 public class Natural_Identifier_Reference extends Natural_Identifier implements ReferenceInterface
 {

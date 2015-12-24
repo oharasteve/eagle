@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.PLI.Symbols;
 
-import com.eagle.programmar.DefinitionInterface;
 import com.eagle.programmar.PLI.Terminals.PLI_Identifier;
+import com.eagle.tokens.DefinitionInterface;
 
 public abstract class PLI_Identifier_Definition extends PLI_Identifier implements DefinitionInterface
 {

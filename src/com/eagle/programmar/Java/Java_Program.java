@@ -96,6 +96,6 @@ public class Java_Program extends EagleLanguage implements EagleRunnable, EagleS
 	@Override
 	public void interpret(EagleInterpreter interpreter)
 	{
-		classOrEnum.first()._whichToken.tryToInterpret(interpreter);
+		interpreter.tryToInterpret(classOrEnum.first()._whichToken);
 	}
 }

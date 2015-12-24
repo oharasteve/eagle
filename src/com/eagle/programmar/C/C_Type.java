@@ -47,10 +47,11 @@ public class C_Type extends TokenSequence
 		public static class C_TypeUnion extends TokenSequence
 		{
 			public C_Keyword UNION = new C_Keyword("union");
+			public @OPT C_Type_Definition def1;
 			public PunctuationLeftBrace leftBrace;
 			public @OPT TokenList<C_FieldOrComment> fields;
 			public PunctuationRightBrace rightBrace;
-			public PunctuationSemicolon semicolon;
+			public @OPT PunctuationSemicolon semicolon;
 		}
 		
 		public static class C_TypeStruct extends TokenSequence
@@ -63,7 +64,7 @@ public class C_Type extends TokenSequence
 			public PunctuationLeftBrace leftBrace;
 			public @OPT TokenList<C_FieldOrComment> fields;
 			public PunctuationRightBrace rightBrace;
-			public @OPT @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon;
+			public @OPT PunctuationSemicolon semicolon;
 			
 			public static class C_FieldOrComment extends TokenChooser
 			{
@@ -84,7 +85,7 @@ public class C_Type extends TokenSequence
 					public static class C_MoreFields extends TokenSequence
 					{
 						public PunctuationComma comma;
-						public @OPT PunctuationStar star;
+						public @OPT TokenList<PunctuationStar> stars;
 						public C_Field_Definition id;
 						public @OPT TokenList<C_Subscript> subscripts;
 						public @OPT C_FieldInitialValue initialValue;
@@ -114,6 +115,7 @@ public class C_Type extends TokenSequence
 			public C_KeywordChoice SHORT = new C_KeywordChoice("long", "short");
 			public C_Keyword UNSIGNED = new C_Keyword("unsigned");
 			public C_Keyword INT = new C_Keyword("int");
+			public @OPT TokenList<C_TypeStar> stars;
 		}
 		
 		public static class C_TypeUserDefined extends TokenSequence
@@ -132,25 +134,32 @@ public class C_Type extends TokenSequence
 		{
 			public C_Keyword ENUM = new C_Keyword("enum");
 			public @OPT C_Identifier_Reference typeName;
-			public PunctuationLeftBrace leftBrace;
-			public C_Variable_Definition firstEnum;
-			public @OPT C_EnumInitializer init;
-			public @OPT C_Comment comment;
-			public @OPT TokenList<C_MoreEnums> moreEnums;
-			public PunctuationRightBrace rightBrace;
+			public @OPT C_TypeEnumValues values;
 			
-			public static class C_MoreEnums extends TokenSequence
+			public static class C_TypeEnumValues extends TokenSequence
 			{
-				public PunctuationComma comma;
-				public C_Variable_Definition nextEnum;
+				public PunctuationLeftBrace leftBrace;
+				public @OPT TokenList<C_Comment> comment1;
+				public C_Variable_Definition firstEnum;
 				public @OPT C_EnumInitializer init;
-				public @OPT C_Comment comment;
-			}
-			
-			public static class C_EnumInitializer extends TokenSequence
-			{
-				public PunctuationEquals equals;
-				public C_Expression initialValue;
+				public @OPT TokenList<C_Comment> comment2;
+				public @OPT TokenList<C_MoreEnums> moreEnums;
+				public PunctuationRightBrace rightBrace;
+				
+				public static class C_MoreEnums extends TokenSequence
+				{
+					public PunctuationComma comma;
+					public @OPT TokenList<C_Comment> comment1;
+					public C_Variable_Definition nextEnum;
+					public @OPT C_EnumInitializer init;
+					public @OPT TokenList<C_Comment> comment2;
+				}
+				
+				public static class C_EnumInitializer extends TokenSequence
+				{
+					public PunctuationEquals equals;
+					public C_Expression initialValue;
+				}
 			}
 		}
 	}

@@ -29,7 +29,7 @@ public class VB_IfStatement extends TokenSequence
 		
 		public static class VB_IfMultiLiner extends TokenSequence
 		{
-			public TokenList<VB_EndOfLine> eoln;
+			public VB_EndOfLine eoln;
 			public TokenList<VB_Statement> thenStatement;
 			public @OPT TokenList<VB_IfElseIfClause> elseIfClause;
 			public @OPT VB_IfElseClause elseClause;
@@ -44,7 +44,7 @@ public class VB_IfStatement extends TokenSequence
 		public VB_Keyword ELSEIF = new VB_Keyword("elseif");
 		public VB_Expression condition;
 		public VB_Keyword THEN = new VB_Keyword("then");
-		public TokenList<VB_EndOfLine> eoln;
+		public VB_EndOfLine eoln;
 		public TokenList<VB_Statement> elseIfStatement;
 	}
 	
@@ -52,7 +52,7 @@ public class VB_IfStatement extends TokenSequence
 	{
 		public @OPT TokenList<VB_Comment> comments;
 		public VB_Keyword ELSE = new VB_Keyword("else");
-		public TokenList<VB_EndOfLine> eoln;
+		public VB_EndOfLine eoln;
 		public TokenList<VB_Statement> elseStatement;
 	}
 }

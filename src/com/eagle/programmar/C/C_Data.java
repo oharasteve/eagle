@@ -58,6 +58,7 @@ public class C_Data extends TokenChooser
 		public C_Field_Definition id;
 		public PunctuationRightParen rightParen1;
 		public PunctuationLeftParen leftParen2;
+		public @OPT C_Comment comment;
 		public @OPT @NOSPACE C_FunctionParameter param;
 		public @OPT @NOSPACE TokenList<C_MoreParameterDefs> moreParams;
 		public PunctuationRightParen rightParen2;

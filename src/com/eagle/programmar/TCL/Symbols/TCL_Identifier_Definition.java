@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.TCL.Symbols;
 
-import com.eagle.programmar.DefinitionInterface;
 import com.eagle.programmar.TCL.Terminals.TCL_Identifier;
+import com.eagle.tokens.DefinitionInterface;
 
 public abstract class TCL_Identifier_Definition extends TCL_Identifier implements DefinitionInterface
 {

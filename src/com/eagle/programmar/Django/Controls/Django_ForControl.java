@@ -10,10 +10,12 @@ import com.eagle.programmar.Django.Terminals.Django_Keyword;
 import com.eagle.programmar.HTML.Terminals.HTML_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationHyphen;
 
 public class Django_ForControl extends TokenSequence
 {
 	public HTML_Punctuation bracePercent = new HTML_Punctuation("{%");
+	public @OPT PunctuationHyphen dash1;
 	public Django_Keyword FOR = new Django_Keyword("for");
 	public Django_Variable var;
 	public Django_Keyword IN = new Django_Keyword("in");
@@ -23,6 +25,7 @@ public class Django_ForControl extends TokenSequence
 	public TokenList<Django_Element> html;
 
 	public HTML_Punctuation bracePercent2 = new HTML_Punctuation("{%");
+	public @OPT PunctuationHyphen dash2;
 	public Django_Keyword ENDFOR = new Django_Keyword("endfor");
 	public HTML_Punctuation percentBrace2 = new HTML_Punctuation("%}");
 }

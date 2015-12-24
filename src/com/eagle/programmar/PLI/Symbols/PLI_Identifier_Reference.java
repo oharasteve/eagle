@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.PLI.Symbols;
 
-import com.eagle.programmar.ReferenceInterface;
 import com.eagle.programmar.PLI.Terminals.PLI_Identifier;
+import com.eagle.tokens.ReferenceInterface;
 
 public class PLI_Identifier_Reference extends PLI_Identifier implements ReferenceInterface
 {

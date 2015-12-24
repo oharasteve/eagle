@@ -3,7 +3,11 @@
 
 package com.eagle.preprocess;
 
+import java.io.IOException;
+
+import com.eagle.parsers.EagleFileReader;
+
 public interface FindIncludeFile
 {
-	public String[] findFile(String dir, String fname);
+	public EagleFileReader findFile(String dir, String fname) throws IOException;
 }

@@ -241,4 +241,39 @@ public abstract class TerminalCommentToken extends TerminalToken
 		}
 		return false;
 	}
+
+	// Django example "... {%"
+	protected boolean commentUntilSentinel(EagleFileReader lines, EagleLineReader rec0, String endMarker)
+	{
+		EagleLineReader rec = rec0;
+		
+		// Is the end on the same line?
+		int ec = rec.indexOf(endMarker, _currentChar + 1);
+		if (ec >= 0)
+		{
+			// Yes! Whew!
+			foundIt(_currentLine, ec-1);
+			_comment = rec.substring(_currentChar, ec).trim();
+			return true;
+		}
+		
+		// Oh dang ... multi-line comment
+		_comment = rec.substring(_currentChar) + "\n";
+		int lastLine = _currentLine + 1;
+		int numberLines = lines.size();
+		while (lastLine < numberLines)
+		{
+			rec = lines.get(lastLine);
+			ec = rec.indexOf(endMarker);
+			if (ec >= 0)
+			{
+				foundIt(lastLine, ec-1);
+				_comment += rec.substring(0, ec).trim();
+				return true;
+			}
+			_comment += rec + "\n";
+			lastLine++;
+		}
+		throw new RuntimeException("End of comment missing " + endMarker);
+	}
 }

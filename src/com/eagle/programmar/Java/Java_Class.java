@@ -84,7 +84,7 @@ public class Java_Class extends TokenSequence implements EagleRunnable, EagleSco
 	{
 		public @FIRST @NEWLINE Java_Comment comment;
 		public @NEWLINE Java_Method jmethod;
-		public @NEWLINE Java_Method.Java_Constructor jconstructor;
+		public @NEWLINE @FIRST Java_Method.Java_Constructor jconstructor;
 		public @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon;
 		
 		public static class Java_StaticStatement extends TokenSequence implements EagleRunnable
@@ -95,7 +95,7 @@ public class Java_Class extends TokenSequence implements EagleRunnable, EagleSco
 			@Override
 			public void interpret(EagleInterpreter interpreter)
 			{
-				statement._whichToken.tryToInterpret(interpreter);
+				interpreter.tryToInterpret(statement._whichToken);
 			}
 		}
 	}
@@ -105,7 +105,7 @@ public class Java_Class extends TokenSequence implements EagleRunnable, EagleSco
 	{
 		for (Java_ClassElement element : elements._elements)
 		{
-			element._whichToken.tryToInterpret(interpreter);
+			interpreter.tryToInterpret(element._whichToken);
 		}
 	}
 	

@@ -3,7 +3,10 @@
 
 package com.eagle.project;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.junit.runner.RunWith;
@@ -24,16 +27,37 @@ import com.eagle.utils.EaglePath;
 
 public abstract class EagleProject
 {
-	public String sourceBase;		// Including the C: but no trailing backslash
-	public String artifactBase;		// Including the C: but no trailing backslash
+	public static final String SAMPLES = "Samples";
+	public static final String VIEWER = "Viewer";
+	public static final String SYMBOLS = "Symbols";
+	public static final String PARSED = "Parsed";
+	public static final String TOKENS = "Tokens";
+	
+	public String _sourceBase;		    // Including the C: but no trailing backslash
+	public String _artifactBase;		// Including the C: but no trailing backslash
 
-	public String programViewCss;
-	public String symbolTableCss;
-	
 	protected EagleLanguageLookup _languageLookup = new EagleLanguageLookup();
-	
+	protected ParserManager _parserManager = new ParserManager();
 	protected RepairFile _repair = new RepairFile();
+
+	/**
+	 * Does this language, for this project, have macro processing?
+	 * @param lang  
+	 */
+	public boolean hasMacros(EagleLanguage lang)
+	{
+		return false;	// Assume no.
+	}
 	
+	/**
+	 * Expand all macros unless told otherwise
+	 * @param macroName  
+	 */
+	public boolean expandMacro(String macroName)
+	{
+		return true;
+	}
+
 	/**
 	 * @param overrider  
 	 */
@@ -59,18 +83,23 @@ public abstract class EagleProject
 	
 	public abstract String getName();
 	
+	protected void findSourceFiles()
+	{
+		addEntries("");
+	}
+	
 	public ArrayList<ProjectEntry> getEntries()
 	{
 		if (!_entriesLoaded)
 		{
 			_entriesLoaded = true;
-			addEntries("");
+			findSourceFiles();
 		}
 		return _entries;
 	}
 	
 	/**
-	 * @param parser 
+	 * @param parser  
 	 */
 	public void findClassOverrides(EagleParser parser)
 	{
@@ -89,17 +118,18 @@ public abstract class EagleProject
 	/**
 	 * In case the project wants to exclude some files
 	 * @param dir 
-	 * @param fname  
+	 * @param fname 
 	 */
-	protected boolean rejectEntry(String dir, String fname)
+	protected boolean acceptEntry(String dir, String fname)
 	{
-		return false;
+		return true;
 	}
 	
 	// Careful, recursive
-	private void addEntries(String sourceDir)
+	protected void addEntries(String sourceDir)
 	{
-		String dirName = EaglePath.combinePaths(sourceBase, sourceDir);
+		String dirName = EaglePath.combinePaths(_sourceBase, sourceDir);
+		if (dirName == null) return;
 		File dir = new File(dirName);
 		
 		if (!dir.exists()) throw new RuntimeException(dirName + " does not exist.");
@@ -109,35 +139,17 @@ public abstract class EagleProject
 		
 		// System.out.println("Processing " + sourceDir + "  files=" + files.length);
 		
-		programViewCss = EaglePath.combinePaths("VIEWER", "ProgramViewer.css");
-		symbolTableCss = EaglePath.combinePaths("SYMBOLS", "SymbolTable.css");
-		
 		for (File file : files)
 		{
-			if (!file.isDirectory())
+			if (! file.isDirectory())
 			{
 				String fname = file.getName();
 				String languageName = _languageLookup.lookupSuffix(fname);
 				if (languageName != null && file.length() > 0)
 				{
 					// Might want to exclude some files
-					if (rejectEntry(sourceDir, fname)) continue;
-					
-					ProgramEntry entry = new ProgramEntry();
-					entry.languageName = languageName;
-	
-					entry.sourceFile = EaglePath.combinePaths(sourceDir, fname);
-					EagleFile ef = new EagleFile(entry);
-					
-					String baseNameAndPath = EaglePath.combinePaths(ef.getPath(), ef.getBaseName() + "_" + ef.getExtension());
-					
-					entry.parsedFile = EaglePath.combinePaths("PARSED", baseNameAndPath + ".xml");
-					entry.parseFailedFile = EaglePath.combinePaths("PARSED", baseNameAndPath + "_failed.html");
-	
-					entry.programView = EaglePath.combinePaths("VIEWER", baseNameAndPath + ".html"); 
-					entry.symbolTable = EaglePath.combinePaths("SYMBOLS", baseNameAndPath + ".html");
-
-					_entries.add(entry);
+					if (! acceptEntry(sourceDir, fname)) continue;
+					addSourceEntry(sourceDir, fname, languageName);
 				}
 				else
 				{
@@ -163,6 +175,25 @@ public abstract class EagleProject
 		}
 	}
 	
+	// Called to javap file when the .class file exists, but the .javap file does not exist
+	protected void addSourceEntry(String sourceDir, String fname, String languageName)
+	{
+		ProgramEntry entry = new ProgramEntry();
+		entry.languageName = languageName;
+
+		entry.sourceFile = EaglePath.combinePaths(sourceDir, fname);
+		EagleFile ef = new EagleFile(entry);
+		String baseNameAndPath = EaglePath.combinePaths(ef.getPath(), ef.getBaseName() + "_" + ef.getExtension());
+		
+		entry.parsedFile = EaglePath.combinePaths(PARSED, baseNameAndPath + ".xml");
+		entry.parseFailedFile = EaglePath.combinePaths(PARSED, baseNameAndPath + "_failed.html");
+
+		entry.programView = EaglePath.combinePaths(VIEWER, baseNameAndPath + ".html"); 
+		entry.symbolTable = EaglePath.combinePaths(SYMBOLS, baseNameAndPath + ".html");
+
+		_entries.add(entry);
+	}
+
 	protected void parseFiles(boolean force)
 	{
 		for (ProjectEntry file : getEntries())
@@ -172,8 +203,8 @@ public abstract class EagleProject
 				
 			boolean needsParsing = true;
 			
-			String parsedFileName = EaglePath.combinePaths(artifactBase, entry.parsedFile);
-			String sourceFileName = EaglePath.combinePaths(sourceBase, entry.sourceFile);
+			String parsedFileName = EaglePath.combinePaths(_artifactBase, entry.parsedFile);
+			String sourceFileName = EaglePath.combinePaths(_sourceBase, entry.sourceFile);
 			
 			// Check date/time stamps to see if it needs to be re-parsed
 			if (!force)
@@ -204,12 +235,11 @@ public abstract class EagleProject
 				
 				if (program != null)
 				{
-					ParserManager p = new ParserManager();
 					int tabs = getTabSize();
 					if (tabs > 0)
 					{
-						p._convertTabs = true;
-						p._tabSize = tabs;
+						_parserManager._convertTabs = true;
+						_parserManager._tabSize = tabs;
 					}
 					
 					try
@@ -217,7 +247,7 @@ public abstract class EagleProject
 						ParseStatus status = ParseStatus.PARSED_SUCCESSFULLY;
 						try
 						{
-							p.parseFile(this, sourceFileName, program);
+							_parserManager.parseFile(this, entry.sourceFile, entry.sourceFile, program);
 						}
 						catch (EagleSoftParseException ex)
 						{
@@ -231,7 +261,7 @@ public abstract class EagleProject
 						// Now save it
 						try
 						{
-							p._parser.saveXML(program, parsedFileName);
+							_parserManager._parser.saveXML(program, parsedFileName);
 							System.out.println("Created " + parsedFileName);
 							entry.status = status;
 						}
@@ -300,7 +330,7 @@ public abstract class EagleProject
 		{
 			// Read whole file at once
 			EagleReadXML reader = new EagleReadXML();
-			String parsedFileName = EaglePath.combinePaths(artifactBase, entry.parsedFile);
+			String parsedFileName = EaglePath.combinePaths(_artifactBase, entry.parsedFile);
 			EagleLanguage pgm = reader.readFrom(parsedFileName);
 			return pgm;
 		}
@@ -312,9 +342,17 @@ public abstract class EagleProject
 
 	public ProjectEntry findEntry(String name)
 	{
+		// In case the full Name is given ....
+		String shortName = name;
+		if (name.startsWith(_sourceBase))
+		{
+			shortName = name.substring(_sourceBase.length());
+			if (shortName.startsWith("/")) shortName = shortName.substring(1);
+		}
+		
 		for (ProjectEntry entry : getEntries())
 		{
-			if (entry.sourceFile.equals(name)) return entry;
+			if (entry.sourceFile.equals(shortName)) return entry;
 		}
 		return null;
 	}
@@ -338,8 +376,8 @@ public abstract class EagleProject
 		String baseDir = args[offset + 0];
 		if (!baseDir.endsWith("\\")) baseDir += '\\';
 	
-		this.parseFiles(force);
-		this.showParseResults();
+		parseFiles(force);
+		showParseResults();
 	}
 	
 	public void performRepairs(String fileName, EagleFileReader lines)
@@ -351,5 +389,51 @@ public abstract class EagleProject
 	public void repair(String fileName, Integer lineNumber, String pattern, String replacement, String explanation)
 	{
 		_repair.repair(fileName, lineNumber, pattern, replacement, explanation);
+	}
+	
+	// For handling FindIncludeFile interface
+	protected EagleFileReader findFileFixedLocation(String dir, String fname) throws IOException
+	{
+		String includeFile = EaglePath.combinePaths(_sourceBase, dir, fname);
+		BufferedReader br = new BufferedReader(new FileReader(includeFile));
+		ArrayList<String> contents = new ArrayList<String>();
+		String rec;
+		
+		while ((rec = br.readLine()) != null)
+		{
+			contents.add(rec);
+		}
+		br.close();
+
+		String[] body = contents.toArray(new String[contents.size()]);
+		EagleFileReader lines = new EagleFileReader(body);
+		lines.setFileName(EaglePath.combinePaths(dir, fname));
+		return lines;
+	}
+
+	// Called from RemoveTemporaryFiles.java, at start of TestDriver.java
+	public void removeFiles()
+	{
+		String parsedDir = EaglePath.combinePaths(_artifactBase, EagleProject.PARSED);
+		File pdir = new File(parsedDir);
+		if (pdir.exists() && EaglePath.deleteDir(pdir))
+		{
+			System.out.println("Deleted directory " + parsedDir);
+		}
+		
+		
+		String symbolsDir = EaglePath.combinePaths(_artifactBase, EagleProject.SYMBOLS);
+		File sdir = new File(symbolsDir);
+		if (sdir.exists() && EaglePath.deleteDir(sdir))
+		{
+			System.out.println("Deleted directory " + symbolsDir);
+		}
+		
+		String viewerDir = EaglePath.combinePaths(_artifactBase, EagleProject.VIEWER);
+		File vdir = new File(viewerDir);
+		if (vdir.exists() && EaglePath.deleteDir(vdir))
+		{
+			System.out.println("Deleted directory " + viewerDir);
+		}
 	}
 }

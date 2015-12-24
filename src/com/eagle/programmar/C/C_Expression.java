@@ -23,7 +23,6 @@ import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.punctuation.PunctuationColon;
 import com.eagle.tokens.punctuation.PunctuationComma;
-import com.eagle.tokens.punctuation.PunctuationHyphen;
 import com.eagle.tokens.punctuation.PunctuationLeftBrace;
 import com.eagle.tokens.punctuation.PunctuationLeftBracket;
 import com.eagle.tokens.punctuation.PunctuationLeftParen;
@@ -88,7 +87,7 @@ public class C_Expression extends PrecedenceChooser
 		super.addOperator(C_ConditionalOrExpression.class);
 		super.addOperator(C_TrueFalseExpression.class);
 		super.addOperator(C_AssignmentExpression.class);
-		super.addOperator(C_CommaExpression.class);
+		// super.addOperator(C_CommaExpression.class);		// Steals all the commas from lists
 	}
 	
 	///////////////////////////////////////////////
@@ -206,7 +205,7 @@ public class C_Expression extends PrecedenceChooser
 	public static class C_FunctionPointerCall extends ExpressionTerm
 	{
 		public PunctuationLeftParen leftParen1;
-		public @OPT PunctuationHyphen star2;
+		public @OPT PunctuationStar star2;
 		public C_Variable mathodName;
 		public PunctuationRightParen rightParen1;
 		public PunctuationLeftParen leftParen2;
@@ -223,6 +222,7 @@ public class C_Expression extends PrecedenceChooser
 		
 		public static class C_ExpressionArg extends TokenChooser
 		{
+			public @OPT C_Keyword CONST = new C_Keyword("const");
 			public @FIRST C_Expression expr;
 			public C_TypePrimitive primitiveType;
 			
@@ -245,12 +245,18 @@ public class C_Expression extends PrecedenceChooser
 	///////////////////////////////////////////////
 	// Binary expressions
 
-	public static class C_CommaExpression extends PrecedenceOperator
-	{
-		public C_Expression left = new C_Expression(this, AllowedPrecedence.ATLEAST);
-		public PunctuationComma comma;
-		public C_Expression right = new C_Expression(this, AllowedPrecedence.HIGHER);
-	}
+/**
+ * Using C_CommaExpression causes lists to get too deep. It becomes a binary operator instead
+ * of a list. So the "depth" gets crazy deep. See, for example,
+ * Chromium/depot_tools/src/third_party/pdfium/core/src/fpdfapi/fpdf_cmaps/Korea1/KSCpc-EUC-H_0.cpp
+ * You don't want each comma to increase the depth.
+ */
+//	public static class C_CommaExpression extends PrecedenceOperator
+//	{
+//		public C_Expression left = new C_Expression(this, AllowedPrecedence.ATLEAST);
+//		public PunctuationComma comma;
+//		public C_Expression right = new C_Expression(this, AllowedPrecedence.HIGHER);
+//	}
 
 	public static class C_AssignmentExpression extends PrecedenceOperator
 	{

@@ -43,17 +43,14 @@ public class C_Function extends TokenSequence
 		}
 	}
 	
-	public static class C_Function_ParameterDefs extends TokenChooser
+	public static class C_Function_ParameterDefs extends TokenSequence
 	{
-		// Adding an extra layer because some projects override C_Function_ParameterDefs
-		public static class C_Function_Simple_Defs extends TokenSequence
-		{
-			public @NOSPACE PunctuationLeftParen leftParen;
-			public @OPT @NOSPACE C_FunctionParameter param;
-			public @OPT C_Comment comment;
-			public @OPT @NOSPACE TokenList<C_MoreParameterDefs> moreParams;
-			public @NOSPACE PunctuationRightParen rightParen;
-		}
+		public @NOSPACE PunctuationLeftParen leftParen;
+		public @OPT C_Comment comment1;
+		public @OPT @NOSPACE C_FunctionParameter param;
+		public @OPT C_Comment comment2;
+		public @OPT @NOSPACE TokenList<C_MoreParameterDefs> moreParams;
+		public @NOSPACE PunctuationRightParen rightParen;
 	}
 
 	public static class C_FunctionParameter extends TokenChooser

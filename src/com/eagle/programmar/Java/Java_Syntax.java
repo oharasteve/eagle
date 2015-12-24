@@ -76,6 +76,6 @@ public class Java_Syntax extends EagleSyntax
 		"try",
 		"void",
 		"volatile",
-		"while"
+		"while",
 	};
 }

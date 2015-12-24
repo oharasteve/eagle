@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.Python.Symbols;
 
-import com.eagle.programmar.ReferenceInterface;
 import com.eagle.programmar.Python.Terminals.Python_Identifier;
+import com.eagle.tokens.ReferenceInterface;
 
 public class Python_Identifier_Reference extends Python_Identifier implements ReferenceInterface
 {

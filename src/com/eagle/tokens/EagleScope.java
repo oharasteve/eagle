@@ -6,8 +6,6 @@ package com.eagle.tokens;
 import java.util.Collection;
 import java.util.TreeMap;
 
-import com.eagle.programmar.DefinitionInterface;
-
 public class EagleScope
 {
 	private boolean _caseSensitive;
@@ -23,7 +21,7 @@ public class EagleScope
 		_caseSensitive = caseSensitive;
 	}
 	
-	private TreeMap<String, DefinitionInterface> allSymbols = new TreeMap<String, DefinitionInterface>();
+	private TreeMap<String, DefinitionInterface> _allSymbols = new TreeMap<String, DefinitionInterface>();
 
 	public interface EagleScopeInterface
 	{
@@ -36,11 +34,11 @@ public class EagleScope
 	{
 		if (_caseSensitive)
 		{
-			allSymbols.put(token.toString(), token);
+			_allSymbols.put(token.toString(), token);
 		}
 		else
 		{
-			allSymbols.put(token.toString().toLowerCase(), token);
+			_allSymbols.put(token.toString().toLowerCase(), token);
 		}
 	}
 	
@@ -49,12 +47,12 @@ public class EagleScope
 	{
 		if (_caseSensitive)
 		{
-			if (allSymbols.containsKey(name)) return allSymbols.get(name);
+			if (_allSymbols.containsKey(name)) return _allSymbols.get(name);
 		}
 		else
 		{
 			String lower = name.toLowerCase();
-			if (allSymbols.containsKey(lower)) return allSymbols.get(lower);
+			if (_allSymbols.containsKey(lower)) return _allSymbols.get(lower);
 		}
 		return null;
 	}
@@ -62,6 +60,6 @@ public class EagleScope
 	// Return all symbols at this scope level.
 	public Collection<DefinitionInterface> allSymbols()
 	{
-		return allSymbols.values();
+		return _allSymbols.values();
 	}
 }

@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.Perl.Symbols;
 
-import com.eagle.programmar.ReferenceInterface;
 import com.eagle.programmar.Perl.Terminals.Perl_Identifier;
+import com.eagle.tokens.ReferenceInterface;
 
 public class Perl_Identifier_Reference extends Perl_Identifier implements ReferenceInterface
 {

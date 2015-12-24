@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.Javascript.Symbols;
 
-import com.eagle.programmar.ReferenceInterface;
 import com.eagle.programmar.Javascript.Terminals.Javascript_Identifier;
+import com.eagle.tokens.ReferenceInterface;
 
 public class Javascript_Identifier_Reference extends Javascript_Identifier implements ReferenceInterface
 {

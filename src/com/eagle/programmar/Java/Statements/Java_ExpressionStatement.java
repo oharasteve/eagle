@@ -17,6 +17,6 @@ public class Java_ExpressionStatement extends TokenSequence implements EagleRunn
 	@Override
 	public void interpret(EagleInterpreter interpreter)
 	{
-		expr.tryToInterpret(interpreter);
+		interpreter.tryToInterpret(expr);
 	}
 }

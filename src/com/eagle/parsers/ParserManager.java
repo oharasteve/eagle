@@ -9,6 +9,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import com.eagle.preprocess.EagleSymbolTable;
+import com.eagle.preprocess.FindIncludeFile;
+import com.eagle.preprocess.C.CMacro_Preprocess;
 import com.eagle.programmar.DeTabber;
 import com.eagle.programmar.EagleLanguage;
 import com.eagle.programmar.EagleSyntax;
@@ -18,6 +21,7 @@ import com.eagle.tokens.AbstractToken;
 public class ParserManager
 {
 	public EagleParser _parser = new EagleParser();
+	public EagleSymbolTable _symbolTable = new EagleSymbolTable();
 
 	private static final char UTF8_BOM = '\uFEFF';
 	
@@ -27,11 +31,12 @@ public class ParserManager
 	/**
 	 * Just read the whole file into the EagleFileReader structure
 	 */
-	public EagleFileReader readWholeFile(String fullName)
+	public EagleFileReader readWholeFile(String fullName, String shortName)
 	{
 		// Read the whole file into an array
 		BufferedReader br = null;
 		EagleFileReader lines = new EagleFileReader();
+		lines.setFileName(shortName);
 		try
 		{
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(fullName), "UTF-8"));
@@ -74,10 +79,11 @@ public class ParserManager
 	/**
 	 * Parse the file and create a 'Language' object
 	 */
-	public boolean parseFile(EagleProject project, String fullName, EagleLanguage lang)
+	public boolean parseFile(EagleProject project, String fullName, String shortName, EagleLanguage lang)
 	{
 		File file = new File(fullName);
-		EagleFileReader lines = readWholeFile(fullName);
+		EagleFileReader lines = readWholeFile(fullName, shortName);
+		lines.setFileName(shortName);
 		String canonicalName = fullName;
 		try
 		{
@@ -92,6 +98,21 @@ public class ParserManager
 		if (project != null)
 		{
 			project.performRepairs(fullName, lines);
+			
+			// Process macros, if this project / language pair supports them
+			if (project instanceof FindIncludeFile && project.hasMacros(lang))
+			{
+				CMacro_Preprocess preprocessor = new CMacro_Preprocess(project, (FindIncludeFile) project, _symbolTable, _parser._tracer);
+				lines = preprocessor.preprocessFile(lines);
+				
+				// DUMP IT (TEMPORARY)
+				int seq = 0;
+				for (EagleLineReader line : lines.lines())
+				{
+					seq++;
+					System.out.println(seq + ": " + line.toString());
+				}
+			}
 		}
 
 		return _parser.parse(project, lang, canonicalName, lines);
@@ -108,11 +129,11 @@ public class ParserManager
 		lines.add(line);
 		try
 		{
-			return _parser.quickParse(null, lines, lang, token);
+			return _parser.quickParse(lines, lang, token);
 		}
 		catch (Exception ex)
 		{
-			String msg = _parser.getHighestPosition(null);
+			String msg = _parser.getStoppingPoint(null);
 			throw new EagleParseException(msg, ex);
 		}
 	}
@@ -124,11 +145,11 @@ public class ParserManager
 	{
 		try
 		{
-			return _parser.quickParse(null, lines, lang, token);
+			return _parser.quickParse(lines, lang, token);
 		}
 		catch (Exception ex)
 		{
-			String msg = _parser.getHighestPosition(null);
+			String msg = _parser.getStoppingPoint(null);
 			throw new EagleParseException(msg, ex);
 		}
 	}

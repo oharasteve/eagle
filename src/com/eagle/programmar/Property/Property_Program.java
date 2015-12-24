@@ -41,6 +41,7 @@ public class Property_Program extends EagleLanguage
 	
 	public static class Property_Value extends TokenSequence
 	{
+		public @OPT PunctuationPeriod period;
 		public @OPT SeparatedList<Property_Identifier,PunctuationPeriod> ids;
 		public PunctuationEquals equals;
 		public Property_RestOfLine value;

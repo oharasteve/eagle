@@ -7,8 +7,6 @@ import com.eagle.parsers.EagleFileReader;
 import com.eagle.parsers.EagleLineReader;
 import com.eagle.programmar.EagleSyntax;
 
-
-
 /**
  * Different kinds of tokens
  */
@@ -115,7 +113,7 @@ public abstract class TerminalToken extends AbstractToken
 		if (endChar > recLen) return false;	// Not enough chars left on the line
 		String piece = rec.substring(_currentChar, endChar);
 		
-		EagleSyntax syntax = this.getSyntax();
+		EagleSyntax syntax = getSyntax();
 		if (syntax == null)
 		{
 			throw new RuntimeException("Syntax should not be null: " + this.toString());

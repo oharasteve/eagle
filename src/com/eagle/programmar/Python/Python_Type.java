@@ -16,6 +16,12 @@ public class Python_Type extends TokenChooser
 	
 	public static class Python_Regular_Class extends TokenSequence
 	{
-		public SeparatedList<Python_Identifier_Reference,PunctuationPeriod> superClass;
+		public SeparatedList<Python_TypeName,PunctuationPeriod> superClass;
+		
+		public static class Python_TypeName extends TokenChooser
+		{
+			public Python_Keyword SELF = new Python_Keyword("self");
+			public Python_Identifier_Reference id;
+		}
 	}
 }

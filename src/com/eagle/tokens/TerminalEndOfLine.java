@@ -11,7 +11,12 @@ public abstract class TerminalEndOfLine extends TerminalLiteralToken
 	public boolean parse(EagleFileReader lines)
 	{
 		if (findStart(lines) != FOUND.EOLN) return false;
-		foundIt(_currentLine+1, -1);
+		while (true)
+		{
+			_currentLine++;
+			if (findStart(lines, _currentLine, 0) != FOUND.EOLN) break;
+		}
+		foundIt(_currentLine, -1);
 		return true;
 	}
 	

@@ -16,12 +16,14 @@ import org.junit.runners.Parameterized.Parameters;
 
 import com.eagle.parsers.EagleFileReader;
 import com.eagle.parsers.ParserManager;
+import com.eagle.preprocess.EagleSymbolTable;
 import com.eagle.tests.EagleTests;
 
 @RunWith(Parameterized.class)
 public class COBOL_Tests extends EagleTests
 {
-	private COBOL_Interpreter _interpreter = new COBOL_Interpreter();
+	private EagleSymbolTable _symbolTable = new EagleSymbolTable();
+	private COBOL_Interpreter _interpreter = new COBOL_Interpreter(_symbolTable);
 
 	private static ArrayList<Object[]> tests = new ArrayList<Object[]>();
 

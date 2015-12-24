@@ -3,7 +3,7 @@
 
 package com.eagle.programmar.TCL.Symbols;
 
-import com.eagle.programmar.DefinitionInterface;
+import com.eagle.tokens.DefinitionInterface;
 
 public class TCL_Variable_Definition extends TCL_Identifier_Definition implements DefinitionInterface
 {

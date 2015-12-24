@@ -82,7 +82,7 @@ public class COBOL_PerformStatement extends COBOL_AbstractStatement implements E
 				{
 					for (COBOL_StatementOrComment stmt : statements._elements)
 					{
-						stmt.tryToInterpret(interpreter);
+						interpreter.tryToInterpret(stmt);
 					}
 				}
 			}

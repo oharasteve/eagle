@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.CSS.Symbols;
 
-import com.eagle.programmar.ReferenceInterface;
 import com.eagle.programmar.CSS.Terminals.CSS_Identifier;
+import com.eagle.tokens.ReferenceInterface;
 
 public class CSS_Identifier_Reference extends CSS_Identifier implements ReferenceInterface
 {

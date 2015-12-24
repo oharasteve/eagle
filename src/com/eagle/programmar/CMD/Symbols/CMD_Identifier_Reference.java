@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.CMD.Symbols;
 
-import com.eagle.programmar.ReferenceInterface;
 import com.eagle.programmar.CMD.Terminals.CMD_Identifier;
+import com.eagle.tokens.ReferenceInterface;
 
 public class CMD_Identifier_Reference extends CMD_Identifier implements ReferenceInterface
 {

@@ -5,9 +5,11 @@ package com.eagle.tokens;
 
 import com.eagle.parsers.EagleFileReader;
 import com.eagle.parsers.EagleLineReader;
+import com.eagle.tests.EagleInterpreter;
+import com.eagle.tests.EagleRunnable;
 
 
-public abstract class TerminalNumberToken extends TerminalToken
+public abstract class TerminalNumberToken extends TerminalToken implements EagleRunnable
 {
 	protected String _numberAsText;
 	
@@ -121,5 +123,12 @@ public abstract class TerminalNumberToken extends TerminalToken
 	public String description()
 	{
 		return "A number";
+	}
+
+	@Override
+	public void interpret(EagleInterpreter interpreter)
+	{
+		int value = Integer.parseInt(_numberAsText);
+		interpreter.pushInt(value);
 	}
 }

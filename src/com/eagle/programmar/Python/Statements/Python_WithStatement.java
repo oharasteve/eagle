@@ -18,7 +18,7 @@ public class Python_WithStatement extends TokenSequence
 	public Python_Keyword WITH = new Python_Keyword("with");
 	public SeparatedList<Python_WithItem,PunctuationComma> withItems;
 	public PunctuationColon colon;
-	public TokenList<Python_EndOfLine> eoln;
+	public Python_EndOfLine eoln;
 	public TokenList<Python_Statement> statements;
 	
 	public static class Python_WithItem extends TokenSequence

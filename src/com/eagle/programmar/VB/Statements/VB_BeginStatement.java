@@ -12,7 +12,7 @@ import com.eagle.tokens.TokenSequence;
 public class VB_BeginStatement extends TokenSequence
 {
 	public VB_Keyword BEGIN = new VB_Keyword("begin");
-	public TokenList<VB_EndOfLine> eoln1;
+	public VB_EndOfLine eoln;
 	public TokenList<VB_Statement> stmts;
 	public VB_Keyword END = new VB_Keyword("end");
 

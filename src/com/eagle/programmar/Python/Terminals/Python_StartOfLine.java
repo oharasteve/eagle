@@ -5,8 +5,10 @@ package com.eagle.programmar.Python.Terminals;
 
 import com.eagle.parsers.EagleFileReader;
 import com.eagle.programmar.Python.Python_Statement;
-import com.eagle.programmar.Python.Python_Statement.Python_Simple_Statement.Python_Statement_Not_Comment;
+import com.eagle.programmar.Python.Python_Statement.Python_Statement_List;
+import com.eagle.programmar.Python.Statements.Python_IfStatement.Python_IfElif;
 import com.eagle.tokens.AbstractToken;
+import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TerminalLiteralToken;
 import com.eagle.tokens.TokenList;
 
@@ -20,28 +22,50 @@ public class Python_StartOfLine extends TerminalLiteralToken
 		while (parent != null)
 		{
 			// Find the enclosing TokenList of statements
-			if (parent instanceof TokenList)
+			if (parent instanceof TokenList && !(parent instanceof SeparatedList))
 			{
 				@SuppressWarnings("unchecked")
 				TokenList<? extends AbstractToken> tokenList = (TokenList<? extends AbstractToken>) parent;
 				if (tokenList.size() == 0) break; // First entry always matches
-				for (AbstractToken token : tokenList._elements)
+
+				// The 'elif' clause is an irrelevant TokenList on an 'if' statement
+				if (! (tokenList.first() instanceof Python_IfElif))
 				{
-					if (token instanceof Python_Comment) continue;	// Doesn't matter what columns comments are in
-					if (! (token instanceof Python_Statement)) break;
-					Python_Statement firstStmt = (Python_Statement) token;
-					AbstractToken child = firstStmt.statement.statements.first()._whichToken;
-					if (child instanceof Python_Statement_Not_Comment)
+					for (AbstractToken token : tokenList._elements)
 					{
-						Python_Statement_Not_Comment childStmt = (Python_Statement_Not_Comment) child;
-						if (_currentChar != childStmt.statement._currentChar) return false;
-						break;
+						if (token instanceof Python_Comment)
+						{
+							continue;	// Doesn't matter what columns comments are in
+						}
+	
+						if (token instanceof Python_Statement)
+						{
+							Python_Statement firstStmt = (Python_Statement) token;
+							AbstractToken child = firstStmt.statement._whichToken;
+							if (child instanceof Python_Statement_List)
+							{
+								Python_Statement_List stmtList = (Python_Statement_List) child;
+								if (_currentChar != stmtList.statements.getPrimaryElement(0)._currentChar) return false;
+								break;
+							}
+						}
+						else
+						{
+							throw new RuntimeException("Expected a Python_Statement, not " + token);
+						}
 					}
+					break;
 				}
-				break;
 			}
 			parent = parent.getParent();
 		}
+		
+		// This is an error -- the python statement was not inside a TokenList
+		if (parent == null)
+		{
+			throw new RuntimeException("Never found the parent TokenList, at line " + _currentLine);
+		}
+
 		foundIt(_currentLine, _currentChar-1);
 		return true;
 	}

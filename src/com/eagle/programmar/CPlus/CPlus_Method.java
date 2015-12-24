@@ -36,11 +36,19 @@ public class CPlus_Method extends TokenSequence
 			public @OPT C_Punctuation tilde = new C_Punctuation('~');
 			public CPlus_Current_Class_Reference methodName;
 		}
+
+		public @LAST static class CPlus_MethodNoType extends TokenSequence
+		{
+			public TokenList<CPlus_NamespaceQualifier> nameSpaces;
+			public @OPT C_Punctuation tilde = new C_Punctuation('~');
+			public C_Identifier_Reference methodName;
+		}
 	}
 	
 	public static class CPlus_NamespaceQualifier extends TokenSequence
 	{
 		public C_Identifier_Reference nameSpace;
+		public @OPT CPlus_Generic generic;
 		public C_Punctuation colonColon = new C_Punctuation("::");
 	}
 }

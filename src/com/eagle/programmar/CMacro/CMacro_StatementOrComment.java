@@ -4,7 +4,6 @@
 package com.eagle.programmar.CMacro;
 
 import com.eagle.programmar.C.Terminals.C_Comment;
-import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.programmar.CMacro.Statements.CMacro_Define_Statement;
 import com.eagle.programmar.CMacro.Statements.CMacro_Error_Statement;
 import com.eagle.programmar.CMacro.Statements.CMacro_IfDef_Statement;
@@ -15,16 +14,14 @@ import com.eagle.programmar.CMacro.Statements.CMacro_Pragma_Statement;
 import com.eagle.programmar.CMacro.Statements.CMacro_Undef_Statement;
 import com.eagle.programmar.CMacro.Terminals.CMacro_EndOfLine;
 import com.eagle.tokens.TokenChooser;
-import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
 
 public class CMacro_StatementOrComment extends TokenSequence
 {
-	public @OPT TokenList<CMacro_EndOfLine> eolns;
-	public C_Punctuation pound = new C_Punctuation('#'); 
+	public @OPT CMacro_EndOfLine eoln1;
 	public CMacro_StmtBody stmt;
 	public @OPT C_Comment comment;
-	public TokenList<CMacro_EndOfLine> eoln;
+	public CMacro_EndOfLine eoln2;
 
 	public static class CMacro_StmtBody extends TokenChooser
 	{

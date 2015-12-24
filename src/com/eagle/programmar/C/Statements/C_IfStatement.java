@@ -17,6 +17,7 @@ public class C_IfStatement extends TokenSequence
 	public @DOC("#The-if-Statement") C_Keyword IF = new C_Keyword("if");
 	public PunctuationLeftParen leftParen;
 	public C_Expression condition;
+	public @OPT C_Comment comment1;
 	public PunctuationRightParen rightParen;
 	public @OPT TokenList<C_Comment> comments;
 	public C_Statement thenStatement;

@@ -21,7 +21,7 @@ public class TCL_Statement extends TokenSequence
 {
 	public TCL_Compound_Statement compoundStatement;
 	public @OPT TCL_Comment comment;
-	public TokenList<TCL_EndOfLine> eoln;
+	public TCL_EndOfLine eoln;
 	
 	public static class TCL_Compound_Statement extends TokenSequence
 	{

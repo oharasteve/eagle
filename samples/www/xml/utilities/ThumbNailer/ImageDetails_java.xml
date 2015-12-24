@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<EagleProgram Created="Wed Oct 14 13:46:11 EDT 2015" Elapsed="23" Language="Java" Steps="5093" Tokens="424">
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<EagleProgram Created="Thu Dec 24 09:27:51 EST 2015" Elapsed="12" Language="Java" Steps="5132" Tokens="461">
   <T EC="0" EL="42" File="" SC="1" SL="1" TT=".Java.Java_Program">
     <T EC="0" EL="42" N="comments1" SC="1" SL="1" TT="List">
       <T EC="49" EL="1" SC="1" SL="1" TT=".Java.Terminals.Java_Comment" V="// Original author: Steven A. O'Hara, May 4, 2013"/>
@@ -214,7 +214,7 @@
                                           <T EC="38" EL="16" N="argList" SC="30" SL="16" TT=".Java.Java_Expression$Java_ArgumentList">
                                             <T EC="38" EL="16" N="arg" SC="30" SL="16" TT=".Java.Java_Expression">
                                               <T EC="38" EL="16" SC="30" SL="16" TT=".Java.Java_Variable">
-                                                <T EC="38" EL="16" N="id" SC="30" SL="16" TT="List">
+                                                <T EC="38" EL="16" N="ids" SC="30" SL="16" TT="List">
                                                   <T EC="38" EL="16" SC="30" SL="16" TT=".Java.Java_Variable$Java_VariableIdentifier">
                                                     <T EC="38" EL="16" SC="30" SL="16" TT=".Java.Symbols.Java_Identifier_Reference" V="imageName"/>
                                                   </T>
@@ -247,7 +247,7 @@
                                       <T EC="66" EL="17" N="expression" SC="24" SL="17" TT=".Java.Java_Expression">
                                         <T EC="66" EL="17" SC="24" SL="17" TT=".Java.Java_Expression$Java_MethodInvocation">
                                           <T EC="55" EL="17" N="methodName" SC="24" SL="17" TT=".Java.Java_Variable">
-                                            <T EC="55" EL="17" N="id" SC="24" SL="17" TT="List">
+                                            <T EC="55" EL="17" N="ids" SC="24" SL="17" TT="List">
                                               <T EC="42" EL="17" SC="24" SL="17" TT=".Java.Java_Variable$Java_VariableIdentifier">
                                                 <T EC="42" EL="17" SC="24" SL="17" TT=".Java.Symbols.Java_Identifier_Reference" V="ImageMetadataReader"/>
                                               </T>
@@ -261,7 +261,7 @@
                                           <T EC="65" EL="17" N="argList" SC="57" SL="17" TT=".Java.Java_Expression$Java_ArgumentList">
                                             <T EC="65" EL="17" N="arg" SC="57" SL="17" TT=".Java.Java_Expression">
                                               <T EC="65" EL="17" SC="57" SL="17" TT=".Java.Java_Variable">
-                                                <T EC="65" EL="17" N="id" SC="57" SL="17" TT="List">
+                                                <T EC="65" EL="17" N="ids" SC="57" SL="17" TT="List">
                                                   <T EC="65" EL="17" SC="57" SL="17" TT=".Java.Java_Variable$Java_VariableIdentifier">
                                                     <T EC="65" EL="17" SC="57" SL="17" TT=".Java.Symbols.Java_Identifier_Reference" V="imageFile"/>
                                                   </T>
@@ -292,7 +292,7 @@
                                         </T>
                                       </T>
                                       <T EC="22" EL="18" N="forVar" SC="19" SL="18" TT=".Java.Java_Variable">
-                                        <T EC="22" EL="18" N="id" SC="19" SL="18" TT="List">
+                                        <T EC="22" EL="18" N="ids" SC="19" SL="18" TT="List">
                                           <T EC="21" EL="18" SC="19" SL="18" TT=".Java.Java_Variable$Java_VariableIdentifier">
                                             <T EC="21" EL="18" SC="19" SL="18" TT=".Java.Symbols.Java_Identifier_Reference" V="dir"/>
                                           </T>
@@ -302,7 +302,7 @@
                                       <T EC="49" EL="18" N="collection" SC="25" SL="18" TT=".Java.Java_Expression">
                                         <T EC="49" EL="18" SC="25" SL="18" TT=".Java.Java_Expression$Java_MethodInvocation">
                                           <T EC="47" EL="18" N="methodName" SC="25" SL="18" TT=".Java.Java_Variable">
-                                            <T EC="47" EL="18" N="id" SC="25" SL="18" TT="List">
+                                            <T EC="47" EL="18" N="ids" SC="25" SL="18" TT="List">
                                               <T EC="32" EL="18" SC="25" SL="18" TT=".Java.Java_Variable$Java_VariableIdentifier">
                                                 <T EC="32" EL="18" SC="25" SL="18" TT=".Java.Symbols.Java_Identifier_Reference" V="metadata"/>
                                               </T>
@@ -328,7 +328,7 @@
                                                   <T EC="45" EL="20" N="expr" SC="5" SL="20" TT=".Java.Java_Expression">
                                                     <T EC="45" EL="20" SC="5" SL="20" TT=".Java.Java_Expression$Java_MethodInvocation">
                                                       <T EC="22" EL="20" N="methodName" SC="5" SL="20" TT=".Java.Java_Variable">
-                                                        <T EC="22" EL="20" N="id" SC="5" SL="20" TT="List">
+                                                        <T EC="22" EL="20" N="ids" SC="5" SL="20" TT="List">
                                                           <T EC="10" EL="20" SC="5" SL="20" TT=".Java.Java_Variable$Java_VariableIdentifier">
                                                             <T EC="10" EL="20" SC="5" SL="20" TT=".Java.Symbols.Java_Identifier_Reference" V="System"/>
                                                           </T>
@@ -353,7 +353,7 @@
                                                             <T EC="44" EL="20" N="right" SC="32" SL="20" TT=".Java.Java_Expression">
                                                               <T EC="44" EL="20" SC="32" SL="20" TT=".Java.Java_Expression$Java_MethodInvocation">
                                                                 <T EC="42" EL="20" N="methodName" SC="32" SL="20" TT=".Java.Java_Variable">
-                                                                  <T EC="42" EL="20" N="id" SC="32" SL="20" TT="List">
+                                                                  <T EC="42" EL="20" N="ids" SC="32" SL="20" TT="List">
                                                                     <T EC="34" EL="20" SC="32" SL="20" TT=".Java.Java_Variable$Java_VariableIdentifier">
                                                                       <T EC="34" EL="20" SC="32" SL="20" TT=".Java.Symbols.Java_Identifier_Reference" V="dir"/>
                                                                     </T>
@@ -392,7 +392,7 @@
                                                       </T>
                                                     </T>
                                                     <T EC="17" EL="21" N="forVar" SC="14" SL="21" TT=".Java.Java_Variable">
-                                                      <T EC="17" EL="21" N="id" SC="14" SL="21" TT="List">
+                                                      <T EC="17" EL="21" N="ids" SC="14" SL="21" TT="List">
                                                         <T EC="16" EL="21" SC="14" SL="21" TT=".Java.Java_Variable$Java_VariableIdentifier">
                                                           <T EC="16" EL="21" SC="14" SL="21" TT=".Java.Symbols.Java_Identifier_Reference" V="tag"/>
                                                         </T>
@@ -402,7 +402,7 @@
                                                     <T EC="32" EL="21" N="collection" SC="20" SL="21" TT=".Java.Java_Expression">
                                                       <T EC="32" EL="21" SC="20" SL="21" TT=".Java.Java_Expression$Java_MethodInvocation">
                                                         <T EC="30" EL="21" N="methodName" SC="20" SL="21" TT=".Java.Java_Variable">
-                                                          <T EC="30" EL="21" N="id" SC="20" SL="21" TT="List">
+                                                          <T EC="30" EL="21" N="ids" SC="20" SL="21" TT="List">
                                                             <T EC="22" EL="21" SC="20" SL="21" TT=".Java.Java_Variable$Java_VariableIdentifier">
                                                               <T EC="22" EL="21" SC="20" SL="21" TT=".Java.Symbols.Java_Identifier_Reference" V="dir"/>
                                                             </T>
@@ -428,7 +428,7 @@
                                                                 <T EC="50" EL="23" N="expr" SC="6" SL="23" TT=".Java.Java_Expression">
                                                                   <T EC="50" EL="23" SC="6" SL="23" TT=".Java.Java_Expression$Java_MethodInvocation">
                                                                     <T EC="23" EL="23" N="methodName" SC="6" SL="23" TT=".Java.Java_Variable">
-                                                                      <T EC="23" EL="23" N="id" SC="6" SL="23" TT="List">
+                                                                      <T EC="23" EL="23" N="ids" SC="6" SL="23" TT="List">
                                                                         <T EC="11" EL="23" SC="6" SL="23" TT=".Java.Java_Variable$Java_VariableIdentifier">
                                                                           <T EC="11" EL="23" SC="6" SL="23" TT=".Java.Symbols.Java_Identifier_Reference" V="System"/>
                                                                         </T>
@@ -453,7 +453,7 @@
                                                                           <T EC="49" EL="23" N="right" SC="36" SL="23" TT=".Java.Java_Expression">
                                                                             <T EC="49" EL="23" SC="36" SL="23" TT=".Java.Java_Expression$Java_MethodInvocation">
                                                                               <T EC="47" EL="23" N="methodName" SC="36" SL="23" TT=".Java.Java_Variable">
-                                                                                <T EC="47" EL="23" N="id" SC="36" SL="23" TT="List">
+                                                                                <T EC="47" EL="23" N="ids" SC="36" SL="23" TT="List">
                                                                                   <T EC="38" EL="23" SC="36" SL="23" TT=".Java.Java_Variable$Java_VariableIdentifier">
                                                                                     <T EC="38" EL="23" SC="36" SL="23" TT=".Java.Symbols.Java_Identifier_Reference" V="tag"/>
                                                                                   </T>
@@ -519,7 +519,7 @@
                                             <T EC="23" EL="29" N="expr" SC="4" SL="29" TT=".Java.Java_Expression">
                                               <T EC="23" EL="29" SC="4" SL="29" TT=".Java.Java_Expression$Java_MethodInvocation">
                                                 <T EC="21" EL="29" N="methodName" SC="4" SL="29" TT=".Java.Java_Variable">
-                                                  <T EC="21" EL="29" N="id" SC="4" SL="29" TT="List">
+                                                  <T EC="21" EL="29" N="ids" SC="4" SL="29" TT="List">
                                                     <T EC="5" EL="29" SC="4" SL="29" TT=".Java.Java_Variable$Java_VariableIdentifier">
                                                       <T EC="5" EL="29" SC="4" SL="29" TT=".Java.Symbols.Java_Identifier_Reference" V="ex"/>
                                                     </T>
@@ -642,7 +642,7 @@
                                 </T>
                               </T>
                               <T EC="18" EL="36" N="forVar" SC="15" SL="36" TT=".Java.Java_Variable">
-                                <T EC="18" EL="36" N="id" SC="15" SL="36" TT="List">
+                                <T EC="18" EL="36" N="ids" SC="15" SL="36" TT="List">
                                   <T EC="17" EL="36" SC="15" SL="36" TT=".Java.Java_Variable$Java_VariableIdentifier">
                                     <T EC="17" EL="36" SC="15" SL="36" TT=".Java.Symbols.Java_Identifier_Reference" V="arg"/>
                                   </T>
@@ -651,7 +651,7 @@
                               <T EC="19" EL="36" N="colon" SC="19" SL="36" TT="com.eagle.tokens.punctuation.PunctuationColon" V=":"/>
                               <T EC="24" EL="36" N="collection" SC="21" SL="36" TT=".Java.Java_Expression">
                                 <T EC="24" EL="36" SC="21" SL="36" TT=".Java.Java_Variable">
-                                  <T EC="24" EL="36" N="id" SC="21" SL="36" TT="List">
+                                  <T EC="24" EL="36" N="ids" SC="21" SL="36" TT="List">
                                     <T EC="24" EL="36" SC="21" SL="36" TT=".Java.Java_Variable$Java_VariableIdentifier">
                                       <T EC="24" EL="36" SC="21" SL="36" TT=".Java.Symbols.Java_Identifier_Reference" V="args"/>
                                     </T>
@@ -670,7 +670,7 @@
                                           <T EC="14" EL="38" N="expr" SC="4" SL="38" TT=".Java.Java_Expression">
                                             <T EC="14" EL="38" SC="4" SL="38" TT=".Java.Java_Expression$Java_MethodInvocation">
                                               <T EC="9" EL="38" N="methodName" SC="4" SL="38" TT=".Java.Java_Variable">
-                                                <T EC="9" EL="38" N="id" SC="4" SL="38" TT="List">
+                                                <T EC="9" EL="38" N="ids" SC="4" SL="38" TT="List">
                                                   <T EC="4" EL="38" SC="4" SL="38" TT=".Java.Java_Variable$Java_VariableIdentifier">
                                                     <T EC="4" EL="38" SC="4" SL="38" TT=".Java.Symbols.Java_Identifier_Reference" V="x"/>
                                                   </T>
@@ -684,7 +684,7 @@
                                               <T EC="13" EL="38" N="argList" SC="11" SL="38" TT=".Java.Java_Expression$Java_ArgumentList">
                                                 <T EC="13" EL="38" N="arg" SC="11" SL="38" TT=".Java.Java_Expression">
                                                   <T EC="13" EL="38" SC="11" SL="38" TT=".Java.Java_Variable">
-                                                    <T EC="13" EL="38" N="id" SC="11" SL="38" TT="List">
+                                                    <T EC="13" EL="38" N="ids" SC="11" SL="38" TT="List">
                                                       <T EC="13" EL="38" SC="11" SL="38" TT=".Java.Java_Variable$Java_VariableIdentifier">
                                                         <T EC="13" EL="38" SC="11" SL="38" TT=".Java.Symbols.Java_Identifier_Reference" V="arg"/>
                                                       </T>

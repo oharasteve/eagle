@@ -103,7 +103,7 @@ public class EagleFile {
 	 * @return
 	 */
 	public File getFileObject(EagleProject proj) {
-		return new File(EaglePath.combinePaths(proj.sourceBase, path, filename));
+		return new File(EaglePath.combinePaths(proj._sourceBase, path, filename));
 	}
 	
 	public static String doubleQ(String s)

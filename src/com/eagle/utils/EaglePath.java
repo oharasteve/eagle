@@ -14,6 +14,7 @@ public class EaglePath {
 	public static String combinePaths(String... paths) {
 		//go through and add slashes to all path elements except the last one
 		String result = normalizeSlashes(paths[0]);
+		if (result == null) return null;
 		if (!result.isEmpty()) result = result.concat("/");
 		// allow the first element to have a prefix slash
 		
@@ -42,16 +43,44 @@ public class EaglePath {
 	 */
 	public static String normalizeSlashes(String filenameAndPath)
 	{
+		if (filenameAndPath == null) return null;
 		return filenameAndPath.replace("\\","/");
 	}
 
 
 	/**
 	 * Will create a directory if it doesn't exist
+	 * Returns true if the directory was created successfully
 	 */
-	public static void createDir(String path) {
+	public static boolean createDir(String path)
+	{
+		if (path == null) return false;
 		File outFile = new File(path);
-		if (! outFile.exists()) outFile.mkdirs();
+		if (outFile.exists()) return false;
+		return outFile.mkdirs();
 	}
-
+	
+	
+	/**
+	 * Remove a whole directory, one file at a time :(
+	 * Returns true if the directory was deleted successfully
+	 */
+	public static boolean deleteDir(File path)
+	{
+		if (! path.exists()) return true;
+		
+		for (File f : path.listFiles())
+		{
+			if (f.isDirectory())
+			{
+				if (! deleteDir(f)) return false;
+			}
+			else
+			{
+				if (! f.delete()) return false;
+			}
+		}
+		if (! path.delete()) return false;
+		return true;
+	}
 }

@@ -20,11 +20,37 @@ public class EagleLineReader
 	private ArrayList<EagleLineChange> _changes = null;
 	private String _rec;
 	
+	private String _originalFileName = null;
+	private int _originalLineNumber;
+	
 	public EagleLineReader(String rec)
 	{
 		_rec = rec;
 	}
 	
+	//
+	// Handle #includes
+	//
+	
+	public void setOriginalLocation(String fileName, int lineNumber)
+	{
+		_originalFileName = fileName;
+		_originalLineNumber = lineNumber;
+	}
+	
+	public String getOriginalFileName()
+	{
+		return _originalFileName;
+	}
+	
+	public int getOriginalLineNumber()
+	{
+		return _originalLineNumber;
+	}
+	
+	//
+	// String functions
+	//
 	public char charAt(int pos)
 	{
 		return _rec.charAt(pos);
@@ -75,10 +101,24 @@ public class EagleLineReader
 		return _rec.startsWith(str, sc);
 	}
 	
+	public boolean endsWith(String str)
+	{
+		return _rec.endsWith(str);
+	}
+	
+	public String trim()
+	{
+		return _rec.trim();
+	}
+	
 	public int length()
 	{
 		return _rec.length();
 	}
+	
+	//
+	// Special functions
+	//
 	
 	// This is the ONLY way to modify a source line!
 	public void change(String rec, String explanation)

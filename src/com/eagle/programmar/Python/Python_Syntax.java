@@ -4,6 +4,7 @@
 package com.eagle.programmar.Python;
 
 import com.eagle.programmar.EagleSyntax;
+import com.eagle.programmar.Python.Terminals.Python_Comment;
 
 public class Python_Syntax extends EagleSyntax
 {
@@ -19,9 +20,9 @@ public class Python_Syntax extends EagleSyntax
 		_continuationChar = "\\";
 		_extraCharacters = "_";
 		_autoAdvance = false;
-		_punctuationExceptions = new String[] { ">>", "|=", "+=", "__", "_$", "**" };
+		_punctuationExceptions = new String[] { ">>", "|=", "+=", "-=", "__", "_$", "**" };
 		
-		// _commentInstance = new Python_Comment();
+		_commentInstance = new Python_Comment();
 		
 		addReservedWords(keywords);
 	}

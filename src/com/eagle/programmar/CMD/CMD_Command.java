@@ -47,7 +47,7 @@ public class CMD_Command extends TokenSequence
 	public CMD_Statement command;
 	public @OPT TokenList<CMD_Redirect> redirects;
 	public @OPT TokenList<CMD_More_Statements> moreStatements;
-	public TokenList<CMD_EndOfLine> eoln2;
+	public CMD_EndOfLine eoln2;
 
 	public static class CMD_Redirect extends TokenChooser
 	{

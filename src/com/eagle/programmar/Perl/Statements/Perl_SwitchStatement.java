@@ -14,7 +14,7 @@ import com.eagle.tokens.punctuation.PunctuationLeftParen;
 import com.eagle.tokens.punctuation.PunctuationRightBrace;
 import com.eagle.tokens.punctuation.PunctuationRightParen;
 
-public class Perl_SwitchStatement  extends TokenSequence
+public class Perl_SwitchStatement extends TokenSequence
 {
 	public @DOC("control-structures.switch.php") Perl_Keyword SWITCH = new Perl_Keyword("switch");
 	public PunctuationLeftParen leftParen;

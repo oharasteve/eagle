@@ -3,15 +3,16 @@
 
 package com.eagle.programmar.Django.Controls;
 
-import com.eagle.programmar.Django.Terminals.Django_Keyword;
 import com.eagle.programmar.Django.Terminals.Django_KeywordChoice;
 import com.eagle.programmar.HTML.Terminals.HTML_Punctuation;
 import com.eagle.tokens.TokenSequence;
+import com.eagle.tokens.punctuation.PunctuationHyphen;
 
 public class Django_AutoEscapeControl extends TokenSequence
 {
 	public HTML_Punctuation bracePercent1 = new HTML_Punctuation("{%");
+	public @OPT PunctuationHyphen dash;
 	public Django_KeywordChoice AUTOESCAPE = new Django_KeywordChoice("autoescape", "endautoescape");
-	public @OPT Django_Keyword OFF = new Django_Keyword("off");
+	public @OPT Django_KeywordChoice OFF = new Django_KeywordChoice("false", "off", "on", "true");
 	public HTML_Punctuation percentBrace1 = new HTML_Punctuation("%}");
 }

@@ -31,12 +31,12 @@ public class HTML_Program extends EagleLanguage
 		return "http://www.w3schools.com/html/";
 	}
 	
-	public @OPT HTML_Comment comment;
-	public @OPT HTML_DocType docType;
 	public TokenList<HTML_Element> elements;
 	
 	public static class HTML_Element extends TokenChooser
 	{
+		public HTML_DocType docType;
+
 		public HTML_Tag tag;
 		public HTML_EndTag endTag;
 		public HTML_Comment comment;

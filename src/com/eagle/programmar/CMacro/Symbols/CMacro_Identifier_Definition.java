@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.CMacro.Symbols;
 
-import com.eagle.programmar.DefinitionInterface;
 import com.eagle.programmar.CMacro.Terminals.CMacro_Identifier;
+import com.eagle.tokens.DefinitionInterface;
 
 public abstract class CMacro_Identifier_Definition extends CMacro_Identifier implements DefinitionInterface
 {

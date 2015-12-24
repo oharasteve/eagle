@@ -5,6 +5,7 @@ package com.eagle.programmar.Java.Symbols;
 
 import com.eagle.parsers.EagleFileReader;
 import com.eagle.programmar.Java.Java_Class;
+import com.eagle.programmar.Java.Java_Enum;
 import com.eagle.tokens.AbstractToken;
 
 public class Java_Current_Class_Reference extends Java_Identifier_Reference
@@ -24,6 +25,13 @@ public class Java_Current_Class_Reference extends Java_Identifier_Reference
 				String parentClassName = parentClass.className.getValue();
 				// Can you declare a constructor for an outer class? I don't think so.
 				return parentClassName.equals(_id);
+			}
+			if (parent instanceof Java_Enum)
+			{
+				Java_Enum parentEnum = (Java_Enum) parent;
+				String parentEnumName = parentEnum.id.getValue();
+				// Can you declare a constructor for an outer class? I don't think so.
+				return parentEnumName.equals(_id);
 			}
 			parent = parent.getParent();
 		}

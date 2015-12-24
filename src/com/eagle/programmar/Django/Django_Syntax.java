@@ -20,5 +20,7 @@ public class Django_Syntax extends EagleSyntax
 		_continuationChar = null;
 		_extraCharacters = "";
 		_punctuationExceptions = HTML_Syntax.PUNCT;
+		
+		addReservedWord("super");
 	}
 }

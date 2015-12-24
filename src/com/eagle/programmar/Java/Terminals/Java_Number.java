@@ -4,7 +4,6 @@
 package com.eagle.programmar.Java.Terminals;
 
 import com.eagle.parsers.EagleFileReader;
-import com.eagle.tests.EagleInterpreter;
 import com.eagle.tests.EagleRunnable;
 import com.eagle.tokens.TerminalNumberToken;
 
@@ -14,12 +13,5 @@ public class Java_Number extends TerminalNumberToken implements EagleRunnable
 	public boolean parse(EagleFileReader lines)
 	{
 		return genericNumber(lines, "x", "Ee", "LlFfDd", true);
-	}
-
-	@Override
-	public void interpret(EagleInterpreter interpreter)
-	{
-		int value = Integer.parseInt(_numberAsText);
-		interpreter.pushInt(value);
 	}
 }

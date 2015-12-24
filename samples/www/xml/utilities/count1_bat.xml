@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<EagleProgram Created="Wed Oct 14 13:46:31 EDT 2015" Elapsed="13" Language="CMD" Steps="345" Tokens="74">
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<EagleProgram Created="Thu Dec 24 09:27:44 EST 2015" Elapsed="2" Language="CMD" Steps="340" Tokens="78">
   <T EC="0" EL="6" File="" SC="1" SL="1" TT=".CMD.CMD_Program">
     <T EC="0" EL="6" N="commands" SC="1" SL="1" TT="List">
       <T EC="0" EL="2" SC="1" SL="1" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
@@ -10,9 +10,7 @@
               <T EC="9" EL="1" N="SETLOCAL" SC="2" SL="1" TT=".CMD.Terminals.CMD_Keyword" V="setlocal"/>
             </T>
           </T>
-          <T EC="0" EL="2" N="eoln2" SC="1" SL="1" TT="List">
-            <T EC="0" EL="2" SC="10" SL="1" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
-          </T>
+          <T EC="0" EL="2" N="eoln2" SC="1" SL="2" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
         </T>
       </T>
       <T EC="0" EL="3" SC="1" SL="2" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
@@ -30,9 +28,7 @@
               </T>
             </T>
           </T>
-          <T EC="0" EL="3" N="eoln2" SC="1" SL="2" TT="List">
-            <T EC="0" EL="3" SC="27" SL="2" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
-          </T>
+          <T EC="0" EL="3" N="eoln2" SC="1" SL="3" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
         </T>
       </T>
       <T EC="0" EL="4" SC="1" SL="3" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
@@ -42,12 +38,10 @@
             <T EC="15" EL="3" SC="2" SL="3" TT=".CMD.Statements.CMD_Echo_Statement">
               <T EC="5" EL="3" N="ECHO" SC="2" SL="3" TT=".CMD.Terminals.CMD_Keyword" V="echo"/>
               <T EC="6" EL="3" N="dot" SC="6" SL="3" TT="com.eagle.tokens.punctuation.PunctuationPeriod" V="."/>
-              <T EC="15" EL="3" N="line" SC="7" SL="3" TT=".CMD.Terminals.CMD_RestOfLine" V=" &gt; %OUT%"/>
+              <T EC="15" EL="3" N="line" SC="8" SL="3" TT=".CMD.Terminals.CMD_RestOfLine" V="&gt; %OUT%"/>
             </T>
           </T>
-          <T EC="0" EL="4" N="eoln2" SC="1" SL="3" TT="List">
-            <T EC="0" EL="4" SC="16" SL="3" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
-          </T>
+          <T EC="0" EL="4" N="eoln2" SC="1" SL="4" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
         </T>
       </T>
       <T EC="0" EL="5" SC="1" SL="4" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
@@ -84,14 +78,12 @@
               <T EC="87" EL="4" N="stmt" SC="34" SL="4" TT=".CMD.CMD_Command$CMD_Statement">
                 <T EC="87" EL="4" SC="34" SL="4" TT=".CMD.Statements.CMD_Echo_Statement">
                   <T EC="37" EL="4" N="ECHO" SC="34" SL="4" TT=".CMD.Terminals.CMD_Keyword" V="echo"/>
-                  <T EC="87" EL="4" N="line" SC="38" SL="4" TT=".CMD.Terminals.CMD_RestOfLine" V=" %%i &gt;&gt; %OUT% &amp;&amp; @awk -f count.awk &quot;%%i&quot; &gt;&gt; %OUT%"/>
+                  <T EC="87" EL="4" N="line" SC="39" SL="4" TT=".CMD.Terminals.CMD_RestOfLine" V="%%i &gt;&gt; %OUT% &amp;&amp; @awk -f count.awk &quot;%%i&quot; &gt;&gt; %OUT%"/>
                 </T>
               </T>
             </T>
           </T>
-          <T EC="0" EL="5" N="eoln2" SC="1" SL="4" TT="List">
-            <T EC="0" EL="5" SC="88" SL="4" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
-          </T>
+          <T EC="0" EL="5" N="eoln2" SC="1" SL="5" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
         </T>
       </T>
       <T EC="0" EL="6" SC="1" SL="5" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
@@ -122,9 +114,7 @@
               </T>
             </T>
           </T>
-          <T EC="0" EL="6" N="eoln2" SC="1" SL="5" TT="List">
-            <T EC="0" EL="6" SC="27" SL="5" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
-          </T>
+          <T EC="0" EL="6" N="eoln2" SC="27" SL="6" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
         </T>
       </T>
     </T>

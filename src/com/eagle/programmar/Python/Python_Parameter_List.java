@@ -6,6 +6,7 @@ package com.eagle.programmar.Python;
 import com.eagle.programmar.Python.Python_Parameter_List.Python_Params.Python_MoreParams.Python_InitValue;
 import com.eagle.programmar.Python.Python_Syntax.Python_Multiline_Syntax;
 import com.eagle.programmar.Python.Terminals.Python_Comment;
+import com.eagle.programmar.Python.Terminals.Python_EndOfLine;
 import com.eagle.programmar.Python.Terminals.Python_Punctuation;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
@@ -20,6 +21,7 @@ public class Python_Parameter_List extends TokenSequence
 	public PunctuationLeftParen leftParen;
 	public @OPT Python_Comment comment;
 	public @SYNTAX(Python_Multiline_Syntax.class) Python_Params params;
+	public @OPT Python_EndOfLine eoln;
 	public PunctuationRightParen rightParen;
 	
 	public static class Python_Params extends TokenSequence

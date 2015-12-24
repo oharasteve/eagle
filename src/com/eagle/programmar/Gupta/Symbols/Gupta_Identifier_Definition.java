@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.Gupta.Symbols;
 
-import com.eagle.programmar.DefinitionInterface;
 import com.eagle.programmar.Gupta.Terminals.Gupta_Identifier;
+import com.eagle.tokens.DefinitionInterface;
 
 public abstract class Gupta_Identifier_Definition extends Gupta_Identifier implements DefinitionInterface
 {

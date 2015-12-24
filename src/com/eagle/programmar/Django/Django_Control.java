@@ -5,6 +5,8 @@ package com.eagle.programmar.Django;
 
 import com.eagle.programmar.Django.Controls.Django_AutoEscapeControl;
 import com.eagle.programmar.Django.Controls.Django_BlockControl;
+import com.eagle.programmar.Django.Controls.Django_BlockTransControl;
+import com.eagle.programmar.Django.Controls.Django_CommentControl;
 import com.eagle.programmar.Django.Controls.Django_ExtendsControl;
 import com.eagle.programmar.Django.Controls.Django_ForControl;
 import com.eagle.programmar.Django.Controls.Django_IfControl;
@@ -17,6 +19,8 @@ public class Django_Control extends TokenChooser
 {
 	public Django_AutoEscapeControl autoescapeControl;
 	public Django_BlockControl blockControl;
+	public Django_BlockTransControl blockTransControl;
+	public Django_CommentControl commentControl;
 	public Django_ExtendsControl extendsControl;
 	public Django_ForControl forControl;
 	public Django_IfControl ifControl;

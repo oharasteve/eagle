@@ -15,18 +15,25 @@ import com.eagle.programmar.EagleSyntax;
 public class TokenSequence extends AbstractToken
 {
 	@Override
-	public void forceSyntax(EagleSyntax syntax) throws IllegalAccessException
+	public void forceSyntax(EagleSyntax syntax)
 	{
-		setSyntax(syntax);
-
-		Class<? extends AbstractToken> cls = this.getClass();
-		Field[] fields = cls.getFields();
-		for (Field fld : fields)
+		try
 		{
-			Class<?> fldType = fld.getType();
-			if (! AbstractToken.class.isAssignableFrom(fldType)) continue;
-			AbstractToken child = (AbstractToken) fld.get(this);
-			if (child != null) child.forceSyntax(syntax);
+			setSyntax(syntax);
+	
+			Class<? extends AbstractToken> cls = this.getClass();
+			Field[] fields = cls.getFields();
+			for (Field fld : fields)
+			{
+				Class<?> fldType = fld.getType();
+				if (! AbstractToken.class.isAssignableFrom(fldType)) continue;
+				AbstractToken child = (AbstractToken) fld.get(this);
+				if (child != null) child.forceSyntax(syntax);
+			}
+		}
+		catch (IllegalAccessException ex)
+		{
+			throw new RuntimeException("Unable to set syntax on " + this.toString(), ex);
 		}
 	}
 }

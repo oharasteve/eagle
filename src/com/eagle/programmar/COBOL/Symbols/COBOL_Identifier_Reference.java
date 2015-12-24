@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.COBOL.Symbols;
 
-import com.eagle.programmar.ReferenceInterface;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Identifier;
+import com.eagle.tokens.ReferenceInterface;
 
 public class COBOL_Identifier_Reference extends COBOL_Identifier implements ReferenceInterface
 {

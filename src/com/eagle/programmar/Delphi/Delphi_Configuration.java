@@ -49,7 +49,7 @@ public class Delphi_Configuration extends EagleLanguage
 		return null;
 	}
 	
-	public @OPT TokenList<Delphi_Config_EndOfLine> eoln;
+	public @OPT Delphi_Config_EndOfLine eoln;
 	public TokenList<Delphi_Config_Block> blocks;
 	
 	public static class Delphi_Config_Block extends TokenSequence
@@ -57,7 +57,7 @@ public class Delphi_Configuration extends EagleLanguage
 		public Delphi_Config_Punctuation leftBracket = new Delphi_Config_Punctuation('[');
 		public @OPT Delphi_Config_Value blockName = new Delphi_Config_Value("]");
 		public Delphi_Config_Punctuation rightBracket = new Delphi_Config_Punctuation(']');
-		public TokenList<Delphi_Config_EndOfLine> eoln;
+		public Delphi_Config_EndOfLine eoln;
 		public TokenList<Delphi_Config_Line> lines;
 		
 		public static class Delphi_Config_Line extends TokenSequence
@@ -65,7 +65,7 @@ public class Delphi_Configuration extends EagleLanguage
 			public @OPT Delphi_Config_Value id = new Delphi_Config_Value("=]");
 			public Delphi_Config_Punctuation equals = new Delphi_Config_Punctuation('=');
 			public @OPT Delphi_Config_Value value = new Delphi_Config_Value("]");
-			public TokenList<Delphi_Config_EndOfLine> eoln;
+			public Delphi_Config_EndOfLine eoln;
 		}
 	}
 	

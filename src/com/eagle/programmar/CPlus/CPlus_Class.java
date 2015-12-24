@@ -3,21 +3,33 @@
 
 package com.eagle.programmar.CPlus;
 
+import com.eagle.programmar.C.C_Program.C_StatementOrComment;
 import com.eagle.programmar.C.Symbols.C_Identifier_Reference;
 import com.eagle.programmar.C.Terminals.C_Keyword;
 import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.programmar.CPlus.Symbols.CPlus_Class_Definition;
 import com.eagle.tokens.SeparatedList;
+import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.punctuation.PunctuationColon;
 import com.eagle.tokens.punctuation.PunctuationComma;
+import com.eagle.tokens.punctuation.PunctuationLeftBrace;
+import com.eagle.tokens.punctuation.PunctuationRightBrace;
 
 public class CPlus_Class extends TokenSequence
 {
 	public C_Keyword CLASS = new C_Keyword("class");
 	public CPlus_Class_Definition className;
 	public @OPT CPlus_ClassExtendList extendsClasses;
+	public PunctuationLeftBrace leftBrace;
+	public TokenList<CPlus_ClassElement> statements;
+	public PunctuationRightBrace rightBrace;
+	
+	public static class CPlus_ClassElement extends TokenChooser
+	{
+		public @LAST C_StatementOrComment c_stmt;
+	}
 	
 	public static class CPlus_ClassExtendList extends TokenSequence
 	{

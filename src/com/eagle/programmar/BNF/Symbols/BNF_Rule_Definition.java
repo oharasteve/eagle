@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.BNF.Symbols;
 
-import com.eagle.programmar.DefinitionInterface;
 import com.eagle.programmar.BNF.Terminals.BNF_Identifier;
+import com.eagle.tokens.DefinitionInterface;
 
 public class BNF_Rule_Definition extends BNF_Identifier implements DefinitionInterface
 {

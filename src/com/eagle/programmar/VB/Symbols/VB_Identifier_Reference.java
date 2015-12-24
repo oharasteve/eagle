@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.VB.Symbols;
 
-import com.eagle.programmar.ReferenceInterface;
 import com.eagle.programmar.VB.Terminals.VB_Identifier;
+import com.eagle.tokens.ReferenceInterface;
 
 public class VB_Identifier_Reference extends VB_Identifier implements ReferenceInterface
 {

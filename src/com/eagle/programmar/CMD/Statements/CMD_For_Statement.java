@@ -69,7 +69,6 @@ public class CMD_For_Statement extends TokenSequence
 			public static class CMD_For_R extends TokenChooser
 			{
 				public CMD_Literal dir;
-				
 				public CMD_Identifier dirName;
 				
 				public static class CMD_For_R_pct extends TokenSequence
