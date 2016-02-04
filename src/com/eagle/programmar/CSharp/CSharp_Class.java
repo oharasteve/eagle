@@ -31,11 +31,11 @@ public class CSharp_Class extends TokenSequence
 			"class", "interface", "struct");
 	public CSharp_Class_Definition className;
 	public @OPT CSharp_GenericType genericType;
-	public @OPT CSharp_ExtendsOrImplements extendsorimplements;
+	public @OPT CSharp_ExtendsOrImplements extendsOrImplements;
 	public @OPT @NEWLINE TokenList<CSharp_Comment> comments1;
-	public @NEWLINE PunctuationLeftBrace leftBrace;
-	public @OPT @NEWLINE TokenList<CSharp_ClassElement> elements;
-	public PunctuationRightBrace rightBrace;
+	public @INDENT PunctuationLeftBrace leftBrace;
+	public @OPT TokenList<CSharp_ClassElement> elements;
+	public @OUTDENT PunctuationRightBrace rightBrace;
 	public @OPT @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon;
 	
 	public static class CSharp_AnnotationOrComment extends TokenChooser

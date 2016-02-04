@@ -1,23 +1,22 @@
-<?xml version="1.1" encoding="UTF-8" standalone="no"?>
-<EagleProgram Created="Thu Dec 24 09:27:45 EST 2015" Elapsed="0" Language="CMD" Steps="51" Tokens="17">
+<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Sun Jan 31 05:09:21 EST 2016" Elapsed="0" Language="CMD" Steps="51" Tokens="17">
   <T EC="0" EL="2" File="" SC="1" SL="1" TT=".CMD.CMD_Program">
     <T EC="0" EL="2" N="commands" SC="1" SL="1" TT="List">
-      <T EC="0" EL="2" SC="1" SL="1" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
-        <T EC="0" EL="2" SC="1" SL="1" TT=".CMD.CMD_Command">
+      <T EC="0" EL="2" N="commands[0]" SC="1" SL="1" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
+        <T EC="0" EL="2" N="commands[0]" SC="1" SL="1" TT=".CMD.CMD_Command">
           <T EC="1" EL="1" N="at" SC="1" SL="1" TT=".CMD.Terminals.CMD_Punctuation" V="@"/>
           <T EC="21" EL="1" N="command" SC="2" SL="1" TT=".CMD.CMD_Command$CMD_Statement">
-            <T EC="21" EL="1" SC="2" SL="1" TT=".CMD.Statements.CMD_Call_Statement">
+            <T EC="21" EL="1" N="command" SC="2" SL="1" TT=".CMD.Statements.CMD_Call_Statement">
               <T EC="5" EL="1" N="CALL" SC="2" SL="1" TT=".CMD.Terminals.CMD_Keyword" V="call"/>
               <T EC="18" EL="1" N="what" SC="6" SL="1" TT=".CMD.Terminals.CMD_Argument">
                 <T EC="18" EL="1" N="wrapper" SC="6" SL="1" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper">
-                  <T EC="18" EL="1" SC="7" SL="1" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="ftpbin.bat"/>
+                  <T EC="18" EL="1" N="wrapper" SC="7" SL="1" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="ftpbin.bat"/>
                 </T>
               </T>
               <T EC="21" EL="1" N="args" SC="2" SL="1" TT="List">
-                <T EC="21" EL="1" SC="19" SL="1" TT=".CMD.Statements.CMD_Call_Statement$CMD_Call_Parameter">
-                  <T EC="21" EL="1" SC="19" SL="1" TT=".CMD.Terminals.CMD_Argument">
+                <T EC="21" EL="1" N="args[0]" SC="19" SL="1" TT=".CMD.Statements.CMD_Call_Statement$CMD_Call_Parameter">
+                  <T EC="21" EL="1" N="args[0]" SC="19" SL="1" TT=".CMD.Terminals.CMD_Argument">
                     <T EC="21" EL="1" N="wrapper" SC="19" SL="1" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper">
-                      <T EC="21" EL="1" SC="20" SL="1" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="%*"/>
+                      <T EC="21" EL="1" N="wrapper" SC="20" SL="1" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="%*"/>
                     </T>
                   </T>
                 </T>

@@ -17,9 +17,9 @@
 @%ECHOREM% Copying Samples\Dave\src to samples\www
 @xcopy %XOPTS% "%SVN%\Samples\Dave\src" "%GIT%\samples\www\" | %FILTER%
 
-@%ECHOREM% Copying src\com\eagle
-@for %%i in ( EagleReadXML ) do @(
-    @xcopy %XOPTS% "%SVN%\Tools\src\com\eagle\%%i.java" "%GIT%\src\com\eagle\" | %FILTER%
+@%ECHOREM% Copying src\com\eagle\io
+@for %%i in ( EagleReadXML EagleReader AbbreviateClassName ) do @(
+    @xcopy %XOPTS% "%SVN%\Tools\src\com\eagle\io\%%i.java" "%GIT%\src\com\eagle\io\" | %FILTER%
 )
 
 @%ECHOREM% Copying src\com\eagle\math

@@ -8,7 +8,6 @@ import com.eagle.programmar.Java.Symbols.Java_Identifier_Reference;
 import com.eagle.programmar.Java.Terminals.Java_KeywordChoice;
 import com.eagle.tests.EagleInterpreter;
 import com.eagle.tests.EagleRunnable;
-import com.eagle.tokens.SeparatedList;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
@@ -22,9 +21,15 @@ public class Java_Variable extends TokenSequence implements EagleRunnable
 //			new SeparatedList<Java_VariableIdentifier, Java_Punctuation>(
 //					Java_VariableIdentifier.class, Java_Punctuation.class, '.');
 	
-	public SeparatedList<Java_VariableIdentifier,PunctuationPeriod> ids;
+	public Java_VariableIdentifier var;
+	public @OPT TokenList<Java_DotVariable> moreIds;
 	public @OPT TokenList<Java_Subscript> subscript;
-	
+
+	public static class Java_DotVariable extends TokenSequence
+	{
+		public @NOSPACE PunctuationPeriod dot;
+		public @NOSPACE Java_VariableIdentifier id;
+	}
 	public static class Java_VariableIdentifier extends TokenChooser
 	{
 		public Java_KeywordChoice THIS = new Java_KeywordChoice("this", "class", "super");
@@ -44,7 +49,6 @@ public class Java_Variable extends TokenSequence implements EagleRunnable
 	@Override
 	public void interpret(EagleInterpreter interpreter)
 	{
-		Java_VariableIdentifier var = ids.getPrimaryElement(0);
 		Java_Identifier_Reference which = (Java_Identifier_Reference) var._whichToken;
 		EagleValue value = interpreter._symbolTable.findSymbol(which.toString());
 		interpreter.pushEagleValue(value);

@@ -43,7 +43,11 @@ public abstract class EagleLanguage extends TokenSequence implements EagleScopeI
 		return _name;
 	}
 	
-	public abstract String getDocRoot();
+	// For online documentation
+	public String getDocRoot()
+	{
+		return null;
+	}
 	
 	
 	@Override

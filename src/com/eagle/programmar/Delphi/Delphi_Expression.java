@@ -3,12 +3,14 @@
 
 package com.eagle.programmar.Delphi;
 
+import com.eagle.programmar.Delphi.Terminals.Delphi_Character;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Comment;
 import com.eagle.programmar.Delphi.Terminals.Delphi_HexNumber;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Keyword;
 import com.eagle.programmar.Delphi.Terminals.Delphi_KeywordChoice;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Literal;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Number;
+import com.eagle.programmar.Delphi.Terminals.Delphi_Punctuation;
 import com.eagle.programmar.Delphi.Terminals.Delphi_PunctuationChoice;
 import com.eagle.tokens.PrecedenceChooser;
 import com.eagle.tokens.PrecedenceChooser.PrecedenceOperator.AllowedPrecedence;
@@ -41,6 +43,7 @@ public class Delphi_Expression extends PrecedenceChooser
 		super.addTerm(Delphi_Number.class);
 		super.addTerm(Delphi_HexNumber.class);
 		super.addTerm(Delphi_Literal.class);
+		super.addTerm(Delphi_Character.class);
 		super.addTerm(Delphi_Function_Call.class);
 		super.addTerm(Delphi_Cast.class);
 		super.addTerm(Delphi_Variable.class);
@@ -52,6 +55,7 @@ public class Delphi_Expression extends PrecedenceChooser
 		super.addOperator(Delphi_Multiplicative_Expression.class);
 		super.addOperator(Delphi_Additive_Expression.class);
 		super.addOperator(Delphi_Relational_Expression.class);
+		super.addOperator(Delphi_DotDot_Expression.class);
 	}		
 
 	///////////////////////////////////////////////////////////////////////////
@@ -67,7 +71,7 @@ public class Delphi_Expression extends PrecedenceChooser
 	public static class Delphi_Parens extends ExpressionTerm
 	{
 		public PunctuationLeftParen leftParen;
-		public Delphi_Expression expr;
+		public SeparatedList<Delphi_Expression,PunctuationComma> expr;
 		public PunctuationRightParen rightParen;		
 	}
 	
@@ -99,6 +103,13 @@ public class Delphi_Expression extends PrecedenceChooser
 	
 	///////////////////////////////////////////////////////////////////////////
 	// Binary Expressions
+	
+	public static class Delphi_DotDot_Expression extends PrecedenceOperator 
+	{
+		public Delphi_Expression left = new Delphi_Expression(this, AllowedPrecedence.HIGHER);
+		public Delphi_Punctuation dotDot = new Delphi_Punctuation("..");
+		public Delphi_Expression right = new Delphi_Expression(this, AllowedPrecedence.HIGHER);
+	}
 	
 	public static class Delphi_Dot_Expression extends PrecedenceOperator 
 	{

@@ -9,7 +9,7 @@ import com.eagle.tokens.TerminalLiteralToken;
 
 public class JavaP_Primitives extends TerminalLiteralToken
 {
-	private static final String PRIMITIVES = "CIJVZ";
+	private static final String PRIMITIVES = "BCIJVZ";
 	
 	@Override
 	public boolean parse(EagleFileReader lines)

@@ -32,6 +32,7 @@ import com.eagle.programmar.Natural.Natural_Program;
 import com.eagle.programmar.PHP.PHP_Program;
 import com.eagle.programmar.PLI.PLI_Program;
 import com.eagle.programmar.PPSM.PPSM_Program;
+import com.eagle.programmar.Perl.Perl_Program;
 import com.eagle.programmar.Property.Property_Program;
 import com.eagle.programmar.Python.Python_Program;
 import com.eagle.programmar.RPG.RPG_Program.RPG_III_Program;
@@ -84,7 +85,7 @@ public class EagleLanguageLookup
 		new LanguageDefinition(JSON_Program.NAME, JSON_Program.class),
 		new LanguageDefinition(Lisp_Program.NAME, Lisp_Program.class),
 		new LanguageDefinition(Natural_Program.NAME, Natural_Program.class),
-		//new LanguageDefinition(Perl_Program.NAME, Perl_Program.class),
+		new LanguageDefinition(Perl_Program.NAME, Perl_Program.class),
 		new LanguageDefinition(PHP_Program.NAME, PHP_Program.class),
 		new LanguageDefinition(PLI_Program.NAME, PLI_Program.class),
 		new LanguageDefinition(PPSM_Program.NAME, PPSM_Program.class),
@@ -169,6 +170,7 @@ public class EagleLanguageLookup
 	// Decide which language it is, from the name
 	public EagleLanguage findLanguage(String langName)
 	{
+		if (langName == null) return null;
 		try
 		{
 			for (LanguageDefinition lang : _allLanguages)

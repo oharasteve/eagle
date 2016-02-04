@@ -16,7 +16,7 @@ import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class JavaP_InnerClasses extends TokenSequence
 {
-	public JavaP_Keyword INNERCLASSES = new JavaP_Keyword("InnerClasses");
+	public JavaP_KeywordChoice INNERCLASS = new JavaP_KeywordChoice("InnerClass", "InnerClasses");
 	public PunctuationColon colon;
 	public JavaP_EndOfLine eoln;
 	

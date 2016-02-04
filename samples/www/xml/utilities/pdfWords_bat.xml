@@ -1,45 +1,44 @@
-<?xml version="1.1" encoding="UTF-8" standalone="no"?>
-<EagleProgram Created="Thu Dec 24 09:27:47 EST 2015" Elapsed="2" Language="CMD" Steps="457" Tokens="107">
+<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Sun Jan 31 05:09:26 EST 2016" Elapsed="0" Language="CMD" Steps="457" Tokens="107">
   <T EC="0" EL="11" File="" SC="1" SL="1" TT=".CMD.CMD_Program">
     <T EC="0" EL="11" N="commands" SC="1" SL="1" TT="List">
-      <T EC="0" EL="3" SC="1" SL="1" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
-        <T EC="0" EL="3" SC="1" SL="1" TT=".CMD.CMD_Command">
+      <T EC="0" EL="3" N="commands[0]" SC="1" SL="1" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
+        <T EC="0" EL="3" N="commands[0]" SC="1" SL="1" TT=".CMD.CMD_Command">
           <T EC="1" EL="1" N="at" SC="1" SL="1" TT=".CMD.Terminals.CMD_Punctuation" V="@"/>
           <T EC="9" EL="1" N="command" SC="2" SL="1" TT=".CMD.CMD_Command$CMD_Statement">
-            <T EC="9" EL="1" SC="2" SL="1" TT=".CMD.Statements.CMD_SetLocal_Statement">
+            <T EC="9" EL="1" N="command" SC="2" SL="1" TT=".CMD.Statements.CMD_SetLocal_Statement">
               <T EC="9" EL="1" N="SETLOCAL" SC="2" SL="1" TT=".CMD.Terminals.CMD_Keyword" V="setlocal"/>
             </T>
           </T>
           <T EC="0" EL="3" N="eoln2" SC="1" SL="3" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
         </T>
       </T>
-      <T EC="0" EL="5" SC="1" SL="3" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
-        <T EC="0" EL="5" SC="1" SL="3" TT=".CMD.CMD_Command">
+      <T EC="0" EL="5" N="commands[1]" SC="1" SL="3" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
+        <T EC="0" EL="5" N="commands[1]" SC="1" SL="3" TT=".CMD.CMD_Command">
           <T EC="1" EL="3" N="at" SC="1" SL="3" TT=".CMD.Terminals.CMD_Punctuation" V="@"/>
           <T EC="52" EL="3" N="command" SC="2" SL="3" TT=".CMD.CMD_Command$CMD_Statement">
-            <T EC="52" EL="3" SC="2" SL="3" TT=".CMD.Statements.CMD_If_Statement">
+            <T EC="52" EL="3" N="command" SC="2" SL="3" TT=".CMD.Statements.CMD_If_Statement">
               <T EC="3" EL="3" N="IF" SC="2" SL="3" TT=".CMD.Terminals.CMD_Keyword" V="if"/>
               <T EC="15" EL="3" N="what" SC="4" SL="3" TT=".CMD.Statements.CMD_If_Statement$CMD_IfWhat">
-                <T EC="15" EL="3" SC="4" SL="3" TT=".CMD.Statements.CMD_If_Statement$CMD_IfWhat$CMD_IfEqual">
+                <T EC="15" EL="3" N="what" SC="4" SL="3" TT=".CMD.Statements.CMD_If_Statement$CMD_IfWhat$CMD_IfEqual">
                   <T EC="9" EL="3" N="expr1" SC="4" SL="3" TT=".CMD.Terminals.CMD_Argument">
                     <T EC="9" EL="3" N="wrapper" SC="4" SL="3" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper">
-                      <T EC="9" EL="3" SC="5" SL="3" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="%~2"/>
+                      <T EC="9" EL="3" N="wrapper" SC="5" SL="3" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="%~2"/>
                     </T>
                   </T>
                   <T EC="12" EL="3" N="operator" SC="10" SL="3" TT=".CMD.Statements.CMD_If_Statement$CMD_IfWhat$CMD_IfEqual$CMD_IfOperator">
-                    <T EC="12" EL="3" SC="10" SL="3" TT=".CMD.Statements.CMD_If_Statement$CMD_IfWhat$CMD_IfEqual$CMD_IfOperator$CMD_EqualsEquals">
+                    <T EC="12" EL="3" N="operator" SC="10" SL="3" TT=".CMD.Statements.CMD_If_Statement$CMD_IfWhat$CMD_IfEqual$CMD_IfOperator$CMD_EqualsEquals">
                       <T EC="12" EL="3" N="equals" SC="11" SL="3" TT=".CMD.Terminals.CMD_Punctuation" V="=="/>
                     </T>
                   </T>
                   <T EC="15" EL="3" N="expr2" SC="13" SL="3" TT=".CMD.Terminals.CMD_Argument">
                     <T EC="15" EL="3" N="wrapper" SC="13" SL="3" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper">
-                      <T EC="15" EL="3" SC="14" SL="3" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V=""/>
+                      <T EC="15" EL="3" N="wrapper" SC="14" SL="3" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V=""/>
                     </T>
                   </T>
                 </T>
               </T>
               <T EC="52" EL="3" N="stmt" SC="16" SL="3" TT=".CMD.CMD_Command$CMD_Statement">
-                <T EC="52" EL="3" SC="16" SL="3" TT=".CMD.Statements.CMD_Echo_Statement">
+                <T EC="52" EL="3" N="stmt" SC="16" SL="3" TT=".CMD.Statements.CMD_Echo_Statement">
                   <T EC="20" EL="3" N="ECHO" SC="17" SL="3" TT=".CMD.Terminals.CMD_Keyword" V="echo"/>
                   <T EC="52" EL="3" N="line" SC="22" SL="3" TT=".CMD.Terminals.CMD_RestOfLine" V="Usage: pdfWords in.pdf out.txt"/>
                 </T>
@@ -49,14 +48,14 @@
           <T EC="0" EL="5" N="eoln2" SC="1" SL="5" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
         </T>
       </T>
-      <T EC="0" EL="6" SC="1" SL="5" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
-        <T EC="0" EL="6" SC="1" SL="5" TT=".CMD.CMD_Command">
+      <T EC="0" EL="6" N="commands[2]" SC="1" SL="5" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
+        <T EC="0" EL="6" N="commands[2]" SC="1" SL="5" TT=".CMD.CMD_Command">
           <T EC="1" EL="5" N="at" SC="1" SL="5" TT=".CMD.Terminals.CMD_Punctuation" V="@"/>
           <T EC="12" EL="5" N="command" SC="2" SL="5" TT=".CMD.CMD_Command$CMD_Statement">
-            <T EC="12" EL="5" SC="2" SL="5" TT=".CMD.Statements.CMD_Set_Statement">
+            <T EC="12" EL="5" N="command" SC="2" SL="5" TT=".CMD.Statements.CMD_Set_Statement">
               <T EC="4" EL="5" N="SET" SC="2" SL="5" TT=".CMD.Terminals.CMD_Keyword" V="set"/>
               <T EC="12" EL="5" N="setWhat" SC="5" SL="5" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What">
-                <T EC="12" EL="5" SC="5" SL="5" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What$CMS_Set_Regular">
+                <T EC="12" EL="5" N="setWhat" SC="5" SL="5" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What$CMS_Set_Regular">
                   <T EC="7" EL="5" N="var" SC="6" SL="5" TT=".CMD.Symbols.CMD_Variable_Definition" V="IN"/>
                   <T EC="8" EL="5" N="equals" SC="8" SL="5" TT="com.eagle.tokens.punctuation.PunctuationEquals" V="="/>
                   <T EC="12" EL="5" N="value" SC="9" SL="5" TT=".CMD.Terminals.CMD_RestOfLine" V="%~1"/>
@@ -67,14 +66,14 @@
           <T EC="0" EL="6" N="eoln2" SC="1" SL="6" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
         </T>
       </T>
-      <T EC="0" EL="8" SC="1" SL="6" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
-        <T EC="0" EL="8" SC="1" SL="6" TT=".CMD.CMD_Command">
+      <T EC="0" EL="8" N="commands[3]" SC="1" SL="6" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
+        <T EC="0" EL="8" N="commands[3]" SC="1" SL="6" TT=".CMD.CMD_Command">
           <T EC="1" EL="6" N="at" SC="1" SL="6" TT=".CMD.Terminals.CMD_Punctuation" V="@"/>
           <T EC="13" EL="6" N="command" SC="2" SL="6" TT=".CMD.CMD_Command$CMD_Statement">
-            <T EC="13" EL="6" SC="2" SL="6" TT=".CMD.Statements.CMD_Set_Statement">
+            <T EC="13" EL="6" N="command" SC="2" SL="6" TT=".CMD.Statements.CMD_Set_Statement">
               <T EC="4" EL="6" N="SET" SC="2" SL="6" TT=".CMD.Terminals.CMD_Keyword" V="set"/>
               <T EC="13" EL="6" N="setWhat" SC="5" SL="6" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What">
-                <T EC="13" EL="6" SC="5" SL="6" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What$CMS_Set_Regular">
+                <T EC="13" EL="6" N="setWhat" SC="5" SL="6" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What$CMS_Set_Regular">
                   <T EC="8" EL="6" N="var" SC="6" SL="6" TT=".CMD.Symbols.CMD_Variable_Definition" V="OUT"/>
                   <T EC="9" EL="6" N="equals" SC="9" SL="6" TT="com.eagle.tokens.punctuation.PunctuationEquals" V="="/>
                   <T EC="13" EL="6" N="value" SC="10" SL="6" TT=".CMD.Terminals.CMD_RestOfLine" V="%~2"/>
@@ -85,14 +84,14 @@
           <T EC="0" EL="8" N="eoln2" SC="1" SL="8" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
         </T>
       </T>
-      <T EC="0" EL="10" SC="1" SL="8" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
-        <T EC="0" EL="10" SC="1" SL="8" TT=".CMD.CMD_Command">
+      <T EC="0" EL="10" N="commands[4]" SC="1" SL="8" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
+        <T EC="0" EL="10" N="commands[4]" SC="1" SL="8" TT=".CMD.CMD_Command">
           <T EC="1" EL="8" N="at" SC="1" SL="8" TT=".CMD.Terminals.CMD_Punctuation" V="@"/>
           <T EC="63" EL="8" N="command" SC="2" SL="8" TT=".CMD.CMD_Command$CMD_Statement">
-            <T EC="63" EL="8" SC="2" SL="8" TT=".CMD.Statements.CMD_Set_Statement">
+            <T EC="63" EL="8" N="command" SC="2" SL="8" TT=".CMD.Statements.CMD_Set_Statement">
               <T EC="4" EL="8" N="SET" SC="2" SL="8" TT=".CMD.Terminals.CMD_Keyword" V="set"/>
               <T EC="63" EL="8" N="setWhat" SC="5" SL="8" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What">
-                <T EC="63" EL="8" SC="5" SL="8" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What$CMS_Set_Regular">
+                <T EC="63" EL="8" N="setWhat" SC="5" SL="8" TT=".CMD.Statements.CMD_Set_Statement$CMD_Set_What$CMS_Set_Regular">
                   <T EC="11" EL="8" N="var" SC="6" SL="8" TT=".CMD.Symbols.CMD_Variable_Definition" V="PDFBOX"/>
                   <T EC="12" EL="8" N="equals" SC="12" SL="8" TT="com.eagle.tokens.punctuation.PunctuationEquals" V="="/>
                   <T EC="63" EL="8" N="value" SC="13" SL="8" TT=".CMD.Terminals.CMD_RestOfLine" V="C:\Program Files (x86)\PDFBox\pdfbox-app-1.7.1.jar"/>
@@ -103,54 +102,54 @@
           <T EC="0" EL="10" N="eoln2" SC="1" SL="10" TT=".CMD.Terminals.CMD_EndOfLine" V=""/>
         </T>
       </T>
-      <T EC="0" EL="11" SC="1" SL="10" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
-        <T EC="0" EL="11" SC="1" SL="10" TT=".CMD.CMD_Command">
+      <T EC="0" EL="11" N="commands[5]" SC="1" SL="10" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
+        <T EC="0" EL="11" N="commands[5]" SC="1" SL="10" TT=".CMD.CMD_Command">
           <T EC="48" EL="10" N="command" SC="1" SL="10" TT=".CMD.CMD_Command$CMD_Statement">
-            <T EC="48" EL="10" SC="1" SL="10" TT=".CMD.CMD_Command$CMD_Statement$CMD_GenericStatement">
+            <T EC="48" EL="10" N="command" SC="1" SL="10" TT=".CMD.CMD_Command$CMD_Statement$CMD_GenericStatement">
               <T EC="4" EL="10" N="programName" SC="1" SL="10" TT=".CMD.Terminals.CMD_Argument">
                 <T EC="4" EL="10" N="wrapper" SC="1" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper">
-                  <T EC="4" EL="10" SC="1" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="java"/>
+                  <T EC="4" EL="10" N="wrapper" SC="1" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="java"/>
                 </T>
               </T>
               <T EC="48" EL="10" N="args" SC="1" SL="10" TT="List">
-                <T EC="6" EL="10" SC="5" SL="10" TT=".CMD.CMD_Command$CMD_Statement$CMD_GenericStatement$CMD_GenericArgument">
-                  <T EC="6" EL="10" SC="6" SL="10" TT=".CMD.Terminals.CMD_PunctuationChoice" V="-"/>
+                <T EC="6" EL="10" N="args[0]" SC="5" SL="10" TT=".CMD.CMD_Command$CMD_Statement$CMD_GenericStatement$CMD_GenericArgument">
+                  <T EC="6" EL="10" N="args[0]" SC="6" SL="10" TT=".CMD.Terminals.CMD_PunctuationChoice" V="-"/>
                 </T>
-                <T EC="9" EL="10" SC="7" SL="10" TT=".CMD.CMD_Command$CMD_Statement$CMD_GenericStatement$CMD_GenericArgument">
-                  <T EC="9" EL="10" SC="7" SL="10" TT=".CMD.Terminals.CMD_Argument">
+                <T EC="9" EL="10" N="args[1]" SC="7" SL="10" TT=".CMD.CMD_Command$CMD_Statement$CMD_GenericStatement$CMD_GenericArgument">
+                  <T EC="9" EL="10" N="args[1]" SC="7" SL="10" TT=".CMD.Terminals.CMD_Argument">
                     <T EC="9" EL="10" N="wrapper" SC="7" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper">
-                      <T EC="9" EL="10" SC="7" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="jar"/>
+                      <T EC="9" EL="10" N="wrapper" SC="7" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="jar"/>
                     </T>
                   </T>
                 </T>
-                <T EC="20" EL="10" SC="10" SL="10" TT=".CMD.CMD_Command$CMD_Statement$CMD_GenericStatement$CMD_GenericArgument">
-                  <T EC="20" EL="10" SC="10" SL="10" TT=".CMD.Terminals.CMD_Argument">
+                <T EC="20" EL="10" N="args[2]" SC="10" SL="10" TT=".CMD.CMD_Command$CMD_Statement$CMD_GenericStatement$CMD_GenericArgument">
+                  <T EC="20" EL="10" N="args[2]" SC="10" SL="10" TT=".CMD.Terminals.CMD_Argument">
                     <T EC="20" EL="10" N="wrapper" SC="10" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper">
-                      <T EC="20" EL="10" SC="11" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="%PDFBOX%"/>
+                      <T EC="20" EL="10" N="wrapper" SC="11" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="%PDFBOX%"/>
                     </T>
                   </T>
                 </T>
-                <T EC="32" EL="10" SC="21" SL="10" TT=".CMD.CMD_Command$CMD_Statement$CMD_GenericStatement$CMD_GenericArgument">
-                  <T EC="32" EL="10" SC="21" SL="10" TT=".CMD.Terminals.CMD_Argument">
+                <T EC="32" EL="10" N="args[3]" SC="21" SL="10" TT=".CMD.CMD_Command$CMD_Statement$CMD_GenericStatement$CMD_GenericArgument">
+                  <T EC="32" EL="10" N="args[3]" SC="21" SL="10" TT=".CMD.Terminals.CMD_Argument">
                     <T EC="32" EL="10" N="wrapper" SC="21" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper">
-                      <T EC="32" EL="10" SC="22" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="ExtractText"/>
+                      <T EC="32" EL="10" N="wrapper" SC="22" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="ExtractText"/>
                     </T>
                   </T>
                 </T>
-                <T EC="34" EL="10" SC="33" SL="10" TT=".CMD.CMD_Command$CMD_Statement$CMD_GenericStatement$CMD_GenericArgument">
-                  <T EC="34" EL="10" SC="34" SL="10" TT=".CMD.Terminals.CMD_PunctuationChoice" V="-"/>
+                <T EC="34" EL="10" N="args[4]" SC="33" SL="10" TT=".CMD.CMD_Command$CMD_Statement$CMD_GenericStatement$CMD_GenericArgument">
+                  <T EC="34" EL="10" N="args[4]" SC="34" SL="10" TT=".CMD.Terminals.CMD_PunctuationChoice" V="-"/>
                 </T>
-                <T EC="41" EL="10" SC="35" SL="10" TT=".CMD.CMD_Command$CMD_Statement$CMD_GenericStatement$CMD_GenericArgument">
-                  <T EC="41" EL="10" SC="35" SL="10" TT=".CMD.Terminals.CMD_Argument">
+                <T EC="41" EL="10" N="args[5]" SC="35" SL="10" TT=".CMD.CMD_Command$CMD_Statement$CMD_GenericStatement$CMD_GenericArgument">
+                  <T EC="41" EL="10" N="args[5]" SC="35" SL="10" TT=".CMD.Terminals.CMD_Argument">
                     <T EC="41" EL="10" N="wrapper" SC="35" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper">
-                      <T EC="41" EL="10" SC="35" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="console"/>
+                      <T EC="41" EL="10" N="wrapper" SC="35" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="console"/>
                     </T>
                   </T>
                 </T>
-                <T EC="48" EL="10" SC="42" SL="10" TT=".CMD.CMD_Command$CMD_Statement$CMD_GenericStatement$CMD_GenericArgument">
-                  <T EC="48" EL="10" SC="42" SL="10" TT=".CMD.Terminals.CMD_Argument">
+                <T EC="48" EL="10" N="args[6]" SC="42" SL="10" TT=".CMD.CMD_Command$CMD_Statement$CMD_GenericStatement$CMD_GenericArgument">
+                  <T EC="48" EL="10" N="args[6]" SC="42" SL="10" TT=".CMD.Terminals.CMD_Argument">
                     <T EC="48" EL="10" N="wrapper" SC="42" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper">
-                      <T EC="48" EL="10" SC="43" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="%IN%"/>
+                      <T EC="48" EL="10" N="wrapper" SC="43" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="%IN%"/>
                     </T>
                   </T>
                 </T>
@@ -158,12 +157,12 @@
             </T>
           </T>
           <T EC="0" EL="11" N="redirects" SC="1" SL="10" TT="List">
-            <T EC="58" EL="10" SC="49" SL="10" TT=".CMD.CMD_Command$CMD_Redirect">
-              <T EC="58" EL="10" SC="49" SL="10" TT=".CMD.CMD_Command$CMD_Redirect_Output">
+            <T EC="58" EL="10" N="redirects[0]" SC="49" SL="10" TT=".CMD.CMD_Command$CMD_Redirect">
+              <T EC="58" EL="10" N="redirects[0]" SC="49" SL="10" TT=".CMD.CMD_Command$CMD_Redirect_Output">
                 <T EC="50" EL="10" N="greater" SC="50" SL="10" TT=".CMD.Terminals.CMD_Punctuation" V="&gt;"/>
                 <T EC="58" EL="10" N="outFile" SC="51" SL="10" TT=".CMD.Terminals.CMD_Argument">
                   <T EC="58" EL="10" N="wrapper" SC="51" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper">
-                    <T EC="58" EL="10" SC="52" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="%OUT%"/>
+                    <T EC="58" EL="10" N="wrapper" SC="52" SL="10" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="%OUT%"/>
                   </T>
                 </T>
               </T>

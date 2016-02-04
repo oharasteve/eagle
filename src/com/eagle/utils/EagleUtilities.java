@@ -36,6 +36,11 @@ public class EagleUtilities
 		return str.substring(0, nc);
 	}
 	
+	public static String doubleQ(String s)
+	{
+		return '"' + s.replaceAll("\"", "\"\"") + '"';
+	}
+	
 	public static String fixHtml(String s)
 	{
 		StringBuffer sb = new StringBuffer();
@@ -96,6 +101,7 @@ public class EagleUtilities
 	
 	// XML 1.1 doesn't seem to like &x80 etc in UTF-8
 	
+	public static char LOWCHAR = ' ';
 	public static char HIGHCHAR = 0xFFFF;
 	public static char REPLACECHAR = '?';
 	
@@ -105,7 +111,10 @@ public class EagleUtilities
 		for (int i = 0; i < len; i++)
 		{
 			char ch = s.charAt(i);
-			if (ch > HIGHCHAR) return true;
+			if (ch < LOWCHAR || ch > HIGHCHAR)
+			{
+				if (ch != '\n' && ch != '\r') return true;
+			}
 		}
 		return false;
 	}
@@ -117,7 +126,10 @@ public class EagleUtilities
 		for (int i = 0; i < len; i++)
 		{
 			char ch = s.charAt(i);
-			if (ch > HIGHCHAR) ch = REPLACECHAR;
+			if (ch < LOWCHAR || ch > HIGHCHAR)
+			{
+				if (ch != '\n' && ch != '\r') ch = REPLACECHAR;
+			}
 			sb.append(ch);
 		}
 		return sb.toString();

@@ -11,8 +11,9 @@ import com.eagle.tokens.punctuation.PunctuationHyphen;
 public class Django_AutoEscapeControl extends TokenSequence
 {
 	public HTML_Punctuation bracePercent1 = new HTML_Punctuation("{%");
-	public @OPT PunctuationHyphen dash;
+	public @OPT PunctuationHyphen dash1;
 	public Django_KeywordChoice AUTOESCAPE = new Django_KeywordChoice("autoescape", "endautoescape");
 	public @OPT Django_KeywordChoice OFF = new Django_KeywordChoice("false", "off", "on", "true");
+	public @OPT PunctuationHyphen dash2;
 	public HTML_Punctuation percentBrace1 = new HTML_Punctuation("%}");
 }

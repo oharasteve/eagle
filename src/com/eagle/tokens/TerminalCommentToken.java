@@ -156,47 +156,6 @@ public abstract class TerminalCommentToken extends TerminalToken
 		throw new RuntimeException("End of comment missing " + firstMarker + " ... " + lastMarker);
 	}
 	
-	// Python example: """ ... """)
-//	protected boolean possibleCommentPair3(EagleFileReader lines, String rec, String firstMarker, String lastMarker)
-//	{
-//		if (firstMarker.length() != 3) throw new RuntimeException("Comment first marker must have length three.");
-//		if (lastMarker.length() != 3) throw new RuntimeException("Comment last marker must have length three.");
-//		if (rec.charAt(_currentChar) != firstMarker.charAt(0)) return false;	// Redundant check
-//		int nc = rec.length();
-//		if (_currentChar + 2 >= nc) return false;
-//		if (rec.charAt(_currentChar + 1) != firstMarker.charAt(1)) return false;
-//		if (rec.charAt(_currentChar + 2) != firstMarker.charAt(2)) return false;
-//
-//		// Is the end on the same line?
-//		int ec = rec.indexOf(lastMarker, _currentChar + 2);
-//		if (ec >= 0)
-//		{
-//			// Yes! Whew!
-//			foundIt(_fileName, _currentLine, ec+3);
-//			_comment = rec.substring(_currentChar, ec+3).trim();
-//			return true;
-//		}
-//		
-//		// Oh dang ... multi-line comment
-//		_comment = rec.substring(_currentChar) + "\n";
-//		int lastLine = _currentLine + 1;
-//		int numberLines = lines.size();
-//		while (lastLine < numberLines)
-//		{
-//			rec = lines.get(lastLine);
-//			ec = rec.indexOf(lastMarker);
-//			if (ec >= 0)
-//			{
-//				foundIt(_fileName, lastLine, ec+3);
-//				_comment += rec.substring(0, ec+3);
-//				return true;
-//			}
-//			_comment += rec + "\n";
-//			lastLine++;
-//		}
-//		throw new RuntimeException("End of comment missing " + firstMarker + " ... " + lastMarker);
-//	}
-
 	protected boolean possibleHtmlComment(EagleFileReader lines, EagleLineReader rec0, String firstMarker, String lastMarker)
 	{
 		EagleLineReader rec = rec0;

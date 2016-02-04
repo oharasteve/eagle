@@ -7,7 +7,6 @@ import com.eagle.programmar.JavaP.JavaP_Syntax;
 import com.eagle.programmar.JavaP.Terminals.JavaP_EndOfLine;
 import com.eagle.programmar.JavaP.Terminals.JavaP_Keyword;
 import com.eagle.programmar.JavaP.Terminals.JavaP_KeywordChoice;
-import com.eagle.programmar.JavaP.Terminals.JavaP_Number;
 import com.eagle.programmar.JavaP.Terminals.JavaP_Punctuation;
 import com.eagle.programmar.JavaP.Terminals.JavaP_QualifiedName;
 import com.eagle.tokens.SeparatedList;
@@ -44,24 +43,6 @@ public class JavaP_PublicClass extends TokenSequence
 		}
 	}
 
-	public static class JavaP_MinorVersion extends TokenSequence
-	{
-		public JavaP_Keyword MINOR = new JavaP_Keyword("minor");
-		public JavaP_Keyword VERSION = new JavaP_Keyword("version");
-		public PunctuationColon colon;
-		public JavaP_Number version;
-		public JavaP_EndOfLine eoln;
-	}
-	
-	public static class JavaP_MajorVersion extends TokenSequence
-	{
-		public JavaP_Keyword MAJOR = new JavaP_Keyword("major");
-		public JavaP_Keyword VERSION = new JavaP_Keyword("version");
-		public PunctuationColon colon;
-		public JavaP_Number version;
-		public JavaP_EndOfLine eoln;
-	}
-	
 	public static class JavaP_Flags extends TokenSequence
 	{
 		public JavaP_Keyword FLAGS = new JavaP_Keyword("flags");

@@ -15,6 +15,7 @@ import com.eagle.tokens.punctuation.PunctuationSemicolon;
 public class Delphi_Consts extends TokenSequence
 {
 	public Delphi_Keyword CONST = new Delphi_Keyword("Const");
+	public @OPT TokenList<Delphi_Comment> comments;
 	public TokenList<Delphi_Const> constants;
 	
 	public static class Delphi_Const extends TokenSequence

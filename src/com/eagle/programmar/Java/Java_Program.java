@@ -1,3 +1,4 @@
+
 // Copyright Eagle Legacy Modernization, 2010-date
 // Original author: Steven A. O'Hara, Dec 17, 2010
 
@@ -83,7 +84,7 @@ public class Java_Program extends EagleLanguage implements EagleRunnable, EagleS
 		public static class Java_DotIdentifierStar extends TokenSequence
 		{
 			public @NOSPACE PunctuationPeriod dot;
-			public Java_IdentifierStar idStar;
+			public @NOSPACE Java_IdentifierStar idStar;
 			
 			public static class Java_IdentifierStar extends TokenChooser
 			{

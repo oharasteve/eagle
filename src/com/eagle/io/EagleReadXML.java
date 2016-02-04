@@ -1,7 +1,7 @@
 // Copyright Eagle Legacy Modernization, 2010-date
 // Original author: Steven A. O'Hara, Dec 6, 2010
 
-package com.eagle;
+package com.eagle.io;
 
 import java.io.FileInputStream;
 import java.lang.reflect.Constructor;
@@ -29,12 +29,10 @@ import com.eagle.tokens.TerminalToken;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
-import com.eagle.utils.EagleFile;
+import com.eagle.utils.EagleUtilities;
 
-public class EagleReadXML implements ErrorHandler
+public class EagleReadXML extends EagleReader implements ErrorHandler
 {
-	public static final String CLASS_PREFIX = "com.eagle.programmar";
-
 	static final String XML_MAIN = "EagleProgram";
 	static final String XML_CREATED = "Created";
 	static final String XML_LANGUAGE = "Language";
@@ -100,6 +98,7 @@ public class EagleReadXML implements ErrorHandler
 		_parseException = ex;
 	}
 	
+	@Override
 	public EagleLanguage readFrom(String xmlFile)
 	{
 		return collectStats(xmlFile, null);
@@ -179,92 +178,16 @@ public class EagleReadXML implements ErrorHandler
 		AbstractToken token = null;
 		String clsName = parent.getAttribute(XML_TOKENTYPE);
 		String fullName = clsName;
-		if (clsName.startsWith(".")) fullName = CLASS_PREFIX + clsName;
-		Class<?> cls = null;
-		Constructor<?> construct = null;
-		
+		if (clsName.startsWith(".")) fullName = AbbreviateClassName.CLASS_PREFIX1 + clsName;
 		//System.out.println("******* FULLNAME = " + fullName);
+
 		if (fullName.equalsIgnoreCase(XML_ARRAY))
 		{
-			// Read an array of stuff from the document tree
-			String fldName = parent.getAttribute(XML_NAME);
-			Field fld = container.getClass().getField(fldName);
-			@SuppressWarnings("unchecked")
-			Class<? extends AbstractToken> fldType = (Class<? extends AbstractToken>) fld.getType();
-			boolean isSeparatedList = fldType.equals(SeparatedList.class);
-			
-			TokenList<AbstractToken> items;
-			if (isSeparatedList)
-			{
-				@SuppressWarnings("unchecked")
-				SeparatedList<AbstractToken, AbstractToken> items2 = (SeparatedList<AbstractToken, AbstractToken>) fld.get(container);
-				items = items2;
-				if (items == null)
-				{
-					//System.out.println("******** Creating a new TokenList");
-					items = new SeparatedList<AbstractToken, AbstractToken>();
-					items._present = true;
-					fld.set(container, items);
-				}
-				//else System.out.println("********* Reusing old TokenList");
-			}
-			else
-			{
-				@SuppressWarnings("unchecked")
-				TokenList<AbstractToken> items1 = (TokenList<AbstractToken>) fld.get(container);
-				items = items1;
-				if (items == null)
-				{
-					//System.out.println("******** Creating a new TokenList");
-					items = new TokenList<AbstractToken>();
-					items._present = true;
-					fld.set(container, items);
-				}
-				//else System.out.println("********* Reusing old TokenList");
-			}
-			
-			items.setParent(container);
-			items._currentLine = getInt(parent, XML_STARTLINE);
-			items._currentChar = getInt(parent, XML_STARTCHAR);
-			items._endLine = getInt(parent ,XML_ENDLINE);
-			items._endChar = getInt(parent, XML_ENDCHAR);
-			//System.out.println("************* LIST " + fldName + " at (" + (items._currentLine+1) + ", " + (items._currentChar+1) + ")");
-
-			NodeList nodes = parent.getChildNodes();
-			boolean first = true;
-			int saveLineNumber = 0;
-			int saveCharNumber = 0;
-			for (int i = 0; i < nodes.getLength(); i++)
-			{
-				Node node = nodes.item(i);
-				if (node instanceof Element)
-				{
-					Element elt = (Element) node;
-					//System.out.println("***************** i = " + i);
-					AbstractToken child = extractToken(items, elt, xmlTokens);
-					child._present = true;
-					child.setParent(items);
-					items.addToken(child);
-					
-					saveLineNumber = child._endLine;
-					saveCharNumber = child._endChar;
-					if (first)
-					{
-						items._currentLine = child._currentLine;
-						items._currentChar = child._currentChar;
-						first = false;
-					}
-				}
-			}
-			items._endLine = saveLineNumber;
-			items._endChar = saveCharNumber;
-			
-			//System.out.println("**************** EXITING");
-			return container;
+			return extractTokenList(container, parent, xmlTokens);
 		}
 
-		cls = Class.forName(fullName);
-		construct = cls.getConstructor((Class<?>[]) null);
+		Class<?> cls = Class.forName(fullName);
+		Constructor<?> construct = cls.getConstructor((Class<?>[]) null);
 		token = (AbstractToken) construct.newInstance();
 		token.setParent(container);
 		String val = "";
@@ -277,34 +200,11 @@ public class EagleReadXML implements ErrorHandler
 		}
 		else if (TokenChooser.class.isAssignableFrom(cls))
 		{
-			NodeList nodes = parent.getChildNodes();
-			for (int i = 0; i < nodes.getLength(); i++)
-			{
-				Node node = nodes.item(i);
-				if (node instanceof Element)
-				{
-					Element elt = (Element) node;
-					AbstractToken child = extractToken(token, elt, xmlTokens);
-					((TokenChooser) token)._whichToken = child;
-					child.setParent(token);
-				}
-			}
+			extractTokenChooser(token, parent, xmlTokens);
 		}
 		else if (TokenSequence.class.isAssignableFrom(cls))
 		{
-			NodeList nodes = parent.getChildNodes();
-			for (int i = 0; i < nodes.getLength(); i++)
-			{
-				Node node = nodes.item(i);
-				if (node instanceof Element)
-				{
-					Element elt = (Element) node;
-					AbstractToken child = extractToken(token, elt, xmlTokens);
-					String fldName = elt.getAttribute(XML_NAME);
-					Field fld = cls.getField(fldName);
-					if (token != child) fld.set(token, child);
-				}
-			}
+			extractTokenSequence(token, cls, parent, xmlTokens);
 		}
 		else
 		{
@@ -351,7 +251,7 @@ public class EagleReadXML implements ErrorHandler
 			XMLToken xmlToken = new XMLToken();
 			xmlToken._name = parent.getAttribute(XML_NAME);
 			xmlToken._type = clsName;
-			xmlToken._value = EagleFile.doubleQ(val);
+			xmlToken._value = EagleUtilities.doubleQ(val);
 			xmlToken._sl = token._currentLine;
 			xmlToken._sc = token._currentChar;
 			xmlToken._el = token._endLine;
@@ -363,6 +263,118 @@ public class EagleReadXML implements ErrorHandler
 		return token;
 	}
 	
+	private AbstractToken extractTokenList(AbstractToken container, Element parent, ArrayList<XMLToken> xmlTokens) throws Exception
+	{
+		// Read an array of stuff from the document tree
+		String fldName = parent.getAttribute(XML_NAME);
+		Field fld = container.getClass().getField(fldName);
+		@SuppressWarnings("unchecked")
+		Class<? extends AbstractToken> fldType = (Class<? extends AbstractToken>) fld.getType();
+		boolean isSeparatedList = fldType.equals(SeparatedList.class);
+		
+		TokenList<AbstractToken> items;
+		if (isSeparatedList)
+		{
+			@SuppressWarnings("unchecked")
+			SeparatedList<AbstractToken, AbstractToken> items2 = (SeparatedList<AbstractToken, AbstractToken>) fld.get(container);
+			items = items2;
+			if (items == null)
+			{
+				//System.out.println("******** Creating a new SeparatedList");
+				items = new SeparatedList<AbstractToken, AbstractToken>();
+				items._present = true;
+				fld.set(container, items);
+			}
+			//else System.out.println("********* Reusing old SeparatedList");
+		}
+		else
+		{
+			@SuppressWarnings("unchecked")
+			TokenList<AbstractToken> items1 = (TokenList<AbstractToken>) fld.get(container);
+			items = items1;
+			if (items == null)
+			{
+				//System.out.println("******** Creating a new TokenList");
+				items = new TokenList<AbstractToken>();
+				items._present = true;
+				fld.set(container, items);
+			}
+			//else System.out.println("********* Reusing old TokenList");
+		}
+		
+		items.setParent(container);
+		items._currentLine = getInt(parent, XML_STARTLINE);
+		items._currentChar = getInt(parent, XML_STARTCHAR);
+		items._endLine = getInt(parent ,XML_ENDLINE);
+		items._endChar = getInt(parent, XML_ENDCHAR);
+		//System.out.println("************* LIST " + fldName + " at (" + (items._currentLine+1) + ", " + (items._currentChar+1) + ")");
+
+		NodeList nodes = parent.getChildNodes();
+		boolean first = true;
+		int saveLineNumber = 0;
+		int saveCharNumber = 0;
+		for (int i = 0; i < nodes.getLength(); i++)
+		{
+			Node node = nodes.item(i);
+			if (node instanceof Element)
+			{
+				Element elt = (Element) node;
+				//System.out.println("***************** i = " + i);
+				AbstractToken child = extractToken(items, elt, xmlTokens);
+				child._present = true;
+				child.setParent(items);
+				items.addToken(child);
+				
+				saveLineNumber = child._endLine;
+				saveCharNumber = child._endChar;
+				if (first)
+				{
+					items._currentLine = child._currentLine;
+					items._currentChar = child._currentChar;
+					first = false;
+				}
+			}
+		}
+		items._endLine = saveLineNumber;
+		items._endChar = saveCharNumber;
+		
+		//System.out.println("**************** EXITING");
+		return container;
+	}
+	
+	private void extractTokenChooser(AbstractToken token, Element parent, ArrayList<XMLToken> xmlTokens) throws Exception
+	{
+		NodeList nodes = parent.getChildNodes();
+		for (int i = 0; i < nodes.getLength(); i++)
+		{
+			Node node = nodes.item(i);
+			if (node instanceof Element)
+			{
+				Element elt = (Element) node;
+				AbstractToken child = extractToken(token, elt, xmlTokens);
+				((TokenChooser) token)._whichToken = child;
+				child.setParent(token);
+			}
+		}
+	}
+	
+	private void extractTokenSequence(AbstractToken token, Class<?> cls, Element parent, ArrayList<XMLToken> xmlTokens) throws Exception
+	{
+		NodeList nodes = parent.getChildNodes();
+		for (int i = 0; i < nodes.getLength(); i++)
+		{
+			Node node = nodes.item(i);
+			if (node instanceof Element)
+			{
+				Element elt = (Element) node;
+				AbstractToken child = extractToken(token, elt, xmlTokens);
+				String fldName = elt.getAttribute(XML_NAME);
+				Field fld = cls.getField(fldName);
+				if (token != child) fld.set(token, child);
+			}
+		}
+	}
+
 	private static int getInt(Element parent, String attribute)
 	{
 		String str = parent.getAttribute(attribute);

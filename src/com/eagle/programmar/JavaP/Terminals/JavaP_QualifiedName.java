@@ -9,7 +9,7 @@ import com.eagle.tokens.TerminalLiteralToken;
 
 public class JavaP_QualifiedName extends TerminalLiteralToken
 {
-	private static final String VALIDS = "/-._$";	// Valid characters in the name
+	private static final String VALIDS = "/-._$:";	// Valid characters in the name
 	
 	@Override
 	public boolean parse(EagleFileReader lines)

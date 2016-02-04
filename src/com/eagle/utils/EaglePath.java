@@ -5,13 +5,15 @@ package com.eagle.utils;
 
 import java.io.File;
 
-public class EaglePath {
+public class EaglePath
+{
 	/**
 	 * Will return a full path containing all the passed in elements
 	 * @param paths
 	 * @return
 	 */
-	public static String combinePaths(String... paths) {
+	public static String combinePaths(String... paths)
+	{
 		//go through and add slashes to all path elements except the last one
 		String result = normalizeSlashes(paths[0]);
 		if (result == null) return null;
@@ -28,8 +30,7 @@ public class EaglePath {
 				{
 					p = p.substring(1);
 				}
-				if (!p.endsWith("/") 
-						&& i < paths.length - 1) p = p.concat("/");
+				if (!p.endsWith("/") && i < paths.length - 1) p = p.concat("/");
 				result = result.concat(p);
 			}
 		}		
@@ -44,7 +45,7 @@ public class EaglePath {
 	public static String normalizeSlashes(String filenameAndPath)
 	{
 		if (filenameAndPath == null) return null;
-		return filenameAndPath.replace("\\","/");
+		return filenameAndPath.replaceAll("\\\\", "/");
 	}
 
 

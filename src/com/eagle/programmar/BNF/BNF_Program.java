@@ -15,11 +15,5 @@ public class BNF_Program extends EagleLanguage
 		super(NAME, new BNF_Syntax());
 	}
 	
-	@Override
-	public String getDocRoot()
-	{
-		return "TBD";
-	}
-	
 	public TokenList<BNF_Rule> rules;
 }

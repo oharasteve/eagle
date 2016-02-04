@@ -30,7 +30,8 @@ public class SQL_Type extends TokenChooser
 			"CHAR",
 			"LONGVARCHAR",
 			"NVARCHAR2",
-			"VARCHAR"
+			"VARCHAR",
+			"VARCHAR2"
 		);
 		public @OPT SQL_TypeSize size;
 	}

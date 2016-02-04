@@ -6,7 +6,7 @@ package com.eagle.tokens;
 import com.eagle.parsers.EagleFileReader;
 import com.eagle.parsers.EagleLineReader;
 
-public class TokenRestOfLine extends TerminalLiteralToken
+public abstract class TokenRestOfLine extends TerminalLiteralToken
 {
 	@Override
 	public boolean parse(EagleFileReader lines)

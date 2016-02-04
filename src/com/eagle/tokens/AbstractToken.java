@@ -122,6 +122,16 @@ public abstract class AbstractToken
 	{
 		Class<? extends EagleSyntax> value();
 	}
+
+	// Force token info
+	public void setSource(String fileName, int sl, int sc, int el, int ec)
+	{
+		_fileName = fileName;
+		_currentLine = sl;
+		_currentChar = sc;
+		_endLine = el;
+		_endChar = ec;
+	}
 	
 	// Set the source for this token and all its children
 	public void setSource(AbstractToken sourceToken)

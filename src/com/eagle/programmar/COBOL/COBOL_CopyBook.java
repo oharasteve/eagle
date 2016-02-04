@@ -17,16 +17,16 @@ public class COBOL_CopyBook extends EagleInclude
 		super(project, symbolTable, tracer);
 	}
 	
+	// TODO: Handle COBOL Copybooks with REPLACEMENT
+	
 	@Override
 	public EagleFileReader preprocessFile(EagleFileReader lines)
 	{
-		// TODO: implement
 		return null;
 	}
 
 	@Override
 	public void copyElement(AbstractToken token)
 	{
-		// TODO Auto-generated method stub
 	}
 }

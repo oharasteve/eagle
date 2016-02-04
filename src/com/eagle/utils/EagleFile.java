@@ -8,11 +8,6 @@ import java.io.File;
 import com.eagle.project.EagleProject;
 import com.eagle.project.ProjectEntry;
 
-/**
- * 
- * @author Administrator
- *
- */
 public class EagleFile {
 	private String filename = null;
 	private String path = null;
@@ -48,7 +43,6 @@ public class EagleFile {
 			path = "";
 			filename = filenameAndPath;
 		}
-		
 	}
 	
 	/**
@@ -69,14 +63,12 @@ public class EagleFile {
 	 */
 	public String getBaseName()
 	{
-		String base_name = "";
 		int pos = filename.lastIndexOf('.');
 		if (pos >= 0) 
 		{ 
-			base_name = filename.substring(0, pos);
+			return filename.substring(0, pos);
 		}
-		
-		return base_name;
+		return filename;
 	}
 	
 	/**
@@ -104,10 +96,5 @@ public class EagleFile {
 	 */
 	public File getFileObject(EagleProject proj) {
 		return new File(EaglePath.combinePaths(proj._sourceBase, path, filename));
-	}
-	
-	public static String doubleQ(String s)
-	{
-		return '"' + s.replaceAll("\"", "\"\"") + '"';
 	}
 }

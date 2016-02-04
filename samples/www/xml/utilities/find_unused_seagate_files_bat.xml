@@ -1,19 +1,18 @@
-<?xml version="1.1" encoding="UTF-8" standalone="no"?>
-<EagleProgram Created="Thu Dec 24 09:27:45 EST 2015" Elapsed="2" Language="CMD" Steps="109" Tokens="28">
+<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Sun Jan 31 05:09:20 EST 2016" Elapsed="0" Language="CMD" Steps="109" Tokens="28">
   <T EC="0" EL="2" File="" SC="1" SL="1" TT=".CMD.CMD_Program">
     <T EC="0" EL="2" N="commands" SC="1" SL="1" TT="List">
-      <T EC="0" EL="2" SC="1" SL="1" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
-        <T EC="0" EL="2" SC="1" SL="1" TT=".CMD.CMD_Command">
+      <T EC="0" EL="2" N="commands[0]" SC="1" SL="1" TT=".CMD.CMD_Program$CMD_CommandOrLabelOrUnparsed">
+        <T EC="0" EL="2" N="commands[0]" SC="1" SL="1" TT=".CMD.CMD_Command">
           <T EC="79" EL="1" N="command" SC="1" SL="1" TT=".CMD.CMD_Command$CMD_Statement">
-            <T EC="79" EL="1" SC="1" SL="1" TT=".CMD.Statements.CMD_For_Statement">
+            <T EC="79" EL="1" N="command" SC="1" SL="1" TT=".CMD.Statements.CMD_For_Statement">
               <T EC="3" EL="1" N="FOR" SC="1" SL="1" TT=".CMD.Terminals.CMD_Keyword" V="for"/>
               <T EC="79" EL="1" N="opts" SC="1" SL="1" TT="List">
-                <T EC="20" EL="1" SC="4" SL="1" TT=".CMD.Statements.CMD_For_Statement$CMD_For_Option">
-                  <T EC="20" EL="1" SC="4" SL="1" TT=".CMD.Statements.CMD_For_Statement$CMD_For_Option$CMD_For_Option_R">
+                <T EC="20" EL="1" N="opts[0]" SC="4" SL="1" TT=".CMD.Statements.CMD_For_Statement$CMD_For_Option">
+                  <T EC="20" EL="1" N="opts[0]" SC="4" SL="1" TT=".CMD.Statements.CMD_For_Statement$CMD_For_Option$CMD_For_Option_R">
                     <T EC="5" EL="1" N="slash" SC="5" SL="1" TT="com.eagle.tokens.punctuation.PunctuationSlash" V="/"/>
                     <T EC="6" EL="1" N="R" SC="6" SL="1" TT=".CMD.Terminals.CMD_Keyword" V="r"/>
                     <T EC="20" EL="1" N="forR" SC="7" SL="1" TT=".CMD.Statements.CMD_For_Statement$CMD_For_Option$CMD_For_Option_R$CMD_For_R">
-                      <T EC="20" EL="1" SC="8" SL="1" TT=".CMD.Terminals.CMD_Literal" V="&quot;I:\www2\Dox&quot;"/>
+                      <T EC="20" EL="1" N="forR" SC="8" SL="1" TT=".CMD.Terminals.CMD_Literal" V="&quot;I:\www2\Dox&quot;"/>
                     </T>
                   </T>
                 </T>
@@ -23,14 +22,14 @@
               <T EC="29" EL="1" N="leftParen" SC="29" SL="1" TT="com.eagle.tokens.punctuation.PunctuationLeftParen" V="("/>
               <T EC="31" EL="1" N="arg" SC="30" SL="1" TT=".CMD.Terminals.CMD_Argument">
                 <T EC="31" EL="1" N="wrapper" SC="30" SL="1" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper">
-                  <T EC="31" EL="1" SC="31" SL="1" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="*"/>
+                  <T EC="31" EL="1" N="wrapper" SC="31" SL="1" TT=".CMD.Terminals.CMD_Argument$CMD_ArgumentWrapper$CMD_RawArgument" V="*"/>
                 </T>
               </T>
               <T EC="33" EL="1" N="rightParen" SC="33" SL="1" TT="com.eagle.tokens.punctuation.PunctuationRightParen" V=")"/>
               <T EC="36" EL="1" N="DO" SC="35" SL="1" TT=".CMD.Terminals.CMD_Keyword" V="do"/>
               <T EC="38" EL="1" N="at" SC="38" SL="1" TT=".CMD.Terminals.CMD_Punctuation" V="@"/>
               <T EC="79" EL="1" N="stmt" SC="39" SL="1" TT=".CMD.CMD_Command$CMD_Statement">
-                <T EC="79" EL="1" SC="39" SL="1" TT=".CMD.Statements.CMD_Echo_Statement">
+                <T EC="79" EL="1" N="stmt" SC="39" SL="1" TT=".CMD.Statements.CMD_Echo_Statement">
                   <T EC="42" EL="1" N="ECHO" SC="39" SL="1" TT=".CMD.Terminals.CMD_Keyword" V="echo"/>
                   <T EC="79" EL="1" N="line" SC="44" SL="1" TT=".CMD.Terminals.CMD_RestOfLine" V="@if not exist %%i @move %%i I:\junk"/>
                 </T>

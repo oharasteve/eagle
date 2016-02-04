@@ -65,7 +65,7 @@ public abstract class TerminalLevelToken extends TerminalToken
 	@Override
 	public String getValue()
 	{
-		return Integer.toString(_level);
+		return toString();
 	}
 
 	@Override

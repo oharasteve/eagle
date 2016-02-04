@@ -54,14 +54,12 @@ public class Delphi_Type extends TokenChooser
 		public static class Delphi_ArraySize extends TokenSequence
 		{
 			public PunctuationLeftBracket leftBracket;
-			public Delphi_Expression lowSubscript;
-			public Delphi_Punctuation dotDot = new Delphi_Punctuation("..");
-			public Delphi_Expression highSubscript;
+			public SeparatedList<Delphi_Expression,PunctuationComma> subscripts;
 			public PunctuationRightBracket rightBracket;
 		}
 	}
 	
-	public static class Delphi_Type_Range extends TokenSequence
+	public static class Delphi_Range extends TokenSequence
 	{
 		public Delphi_Number low;
 		public Delphi_Punctuation dotDot = new Delphi_Punctuation("..");
@@ -81,5 +79,13 @@ public class Delphi_Type extends TokenChooser
 			public Delphi_Type type;
 			public PunctuationSemicolon semicolon;
 		}
+	}
+	
+	public @FIRST static class Delphi_String extends TokenSequence
+	{
+		public Delphi_Keyword STRING = new Delphi_Keyword("String");
+		public PunctuationLeftBracket leftBracket;
+		public Delphi_Expression expr;
+		public PunctuationRightBracket rightBracket;		
 	}
 }

@@ -20,12 +20,14 @@ public class Django_ForControl extends TokenSequence
 	public Django_Variable var;
 	public Django_Keyword IN = new Django_Keyword("in");
 	public Django_Expression expr;
+	public @OPT PunctuationHyphen dash2;
 	public HTML_Punctuation percentBrace = new HTML_Punctuation("%}");
 	
 	public TokenList<Django_Element> html;
 
 	public HTML_Punctuation bracePercent2 = new HTML_Punctuation("{%");
-	public @OPT PunctuationHyphen dash2;
+	public @OPT PunctuationHyphen dash3;
 	public Django_Keyword ENDFOR = new Django_Keyword("endfor");
+	public @OPT PunctuationHyphen dash4;
 	public HTML_Punctuation percentBrace2 = new HTML_Punctuation("%}");
 }

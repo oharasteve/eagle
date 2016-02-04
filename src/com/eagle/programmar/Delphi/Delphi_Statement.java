@@ -19,7 +19,6 @@ import com.eagle.programmar.Delphi.Statements.Delphi_Rewrite_Statement;
 import com.eagle.programmar.Delphi.Statements.Delphi_Try_Statement;
 import com.eagle.programmar.Delphi.Statements.Delphi_While_Statement;
 import com.eagle.programmar.Delphi.Statements.Delphi_With_Statement;
-import com.eagle.programmar.Delphi.Statements.Delphi_Write_Statement;
 import com.eagle.programmar.Delphi.Statements.Delphi_Writeln_Statement;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.punctuation.PunctuationSemicolon;
@@ -43,7 +42,6 @@ public class Delphi_Statement extends TokenChooser
 	public Delphi_Try_Statement tryStatement;
 	public Delphi_While_Statement while_Statement;
 	public Delphi_With_Statement with_Statement;
-	public Delphi_Write_Statement writeStatement;
 	public Delphi_Writeln_Statement writelnStatement;
 
 	// This guy has to be last

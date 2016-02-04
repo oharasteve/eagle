@@ -230,7 +230,7 @@ public class Java_Expression extends PrecedenceChooser
 		
 		public static class Java_MoreArguments extends TokenSequence
 		{
-			public PunctuationComma comma;
+			public @NOSPACE PunctuationComma comma;
 			public @OPT TokenList<Java_Comment> comment1;
 			public Java_Expression arg;
 			public @OPT TokenList<Java_Comment> comment2;

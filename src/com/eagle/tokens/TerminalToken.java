@@ -5,6 +5,7 @@ package com.eagle.tokens;
 
 import com.eagle.parsers.EagleFileReader;
 import com.eagle.parsers.EagleLineReader;
+import com.eagle.parsers.ParserCache;
 import com.eagle.programmar.EagleSyntax;
 
 /**
@@ -39,7 +40,26 @@ public abstract class TerminalToken extends AbstractToken
 	// These two are needed by ShowGrammar.
 	public abstract String showString();
 	public abstract String description();
-
+	
+	private ParserCache _parserCache = null;
+	
+	public void setParserCache(ParserCache cache)
+	{
+		_parserCache = cache;
+	}
+	
+	// Have to invalidate the cache if any terminal node calls getParent()
+	@Override
+	public AbstractToken getParent()
+	{
+		AbstractToken parent = super.getParent();
+		if (_parserCache != null)
+		{
+			_parserCache.terminalPeekedAtParent(this, parent);
+		}
+		return parent;
+	}
+	
 	// For most languages, line breaks don't matter so continuationChar will be null
 	// For some, like CMD, it will be a String = "\\" (length 1)
 	protected FOUND findStart(EagleFileReader lines)

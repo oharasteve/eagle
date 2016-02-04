@@ -1,4 +1,4 @@
-import com.eagle.EagleReadXML;
+import com.eagle.io.EagleReadXML;
 import com.eagle.programmar.PHP.PHP_Program;
 import com.eagle.programmar.PHP.PHP_Program.PHP_Entry;
 import com.eagle.tokens.AbstractToken;

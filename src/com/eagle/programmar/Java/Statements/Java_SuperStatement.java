@@ -13,8 +13,8 @@ import com.eagle.tokens.punctuation.PunctuationSemicolon;
 public class Java_SuperStatement extends TokenSequence
 {
 	public Java_Keyword SUPER = new Java_Keyword("super");
-	public PunctuationLeftParen leftParen;
-	public @OPT Java_ArgumentList args;
-	public PunctuationRightParen rightParen;
-	public PunctuationSemicolon semicolon;
+	public @NOSPACE PunctuationLeftParen leftParen;
+	public @OPT @NOSPACE Java_ArgumentList args;
+	public @NOSPACE PunctuationRightParen rightParen;
+	public @NOSPACE PunctuationSemicolon semicolon;
 }

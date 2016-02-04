@@ -10,7 +10,7 @@ import com.eagle.tokens.TokenSequence;
 
 public class JavaP_ConstantLong extends TokenSequence implements JavaP_ConstantShowable
 {
-	public JavaP_KeywordChoice LONG = new JavaP_KeywordChoice("Double", "Integer", "Long");
+	public JavaP_KeywordChoice type = new JavaP_KeywordChoice("double", "Double", "int", "Integer", "long", "Long");
 	public JavaP_Number number;
 	
 	@Override

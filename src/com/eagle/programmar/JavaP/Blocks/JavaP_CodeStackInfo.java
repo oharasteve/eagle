@@ -19,6 +19,7 @@ import com.eagle.tokens.punctuation.PunctuationComma;
 import com.eagle.tokens.punctuation.PunctuationEquals;
 import com.eagle.tokens.punctuation.PunctuationLeftBrace;
 import com.eagle.tokens.punctuation.PunctuationRightBrace;
+import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class JavaP_CodeStackInfo extends TokenSequence
 {
@@ -28,7 +29,7 @@ public class JavaP_CodeStackInfo extends TokenSequence
 	
 	public static class JavaP_CodeStackParam extends TokenSequence
 	{
-		public JavaP_KeywordChoice STACK = new JavaP_KeywordChoice("args_size", "locals", "stack");
+		public JavaP_KeywordChoice STACK = new JavaP_KeywordChoice("args_size", "locals", "stack", "Args_size", "Locals", "Stack");
 		public PunctuationEquals equals;
 		public JavaP_Number number;
 	}
@@ -46,6 +47,7 @@ public class JavaP_CodeStackInfo extends TokenSequence
 			public static class JavaP_CodeValueRegular extends TokenSequence
 			{
 				public @OPT SeparatedList<JavaP_Value,PunctuationComma> values;
+				public @OPT PunctuationSemicolon semicolon;
 				public @OPT JavaP_Comment comment;
 			}
 			
@@ -62,7 +64,8 @@ public class JavaP_CodeStackInfo extends TokenSequence
 					public JavaP_CodeValueCase value;
 					public PunctuationColon colon;
 					public JavaP_Number number;
-					public JavaP_EndOfLine eoln;
+					public @OPT PunctuationSemicolon semicolon;
+					public @OPT JavaP_EndOfLine eoln;
 					
 					public static class JavaP_CodeValueCase extends TokenChooser
 					{

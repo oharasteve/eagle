@@ -69,9 +69,9 @@ public class CSharp_Method extends TokenSequence
 		
 		public static class CSharp_MethodImplementation extends TokenSequence
 		{
-			public PunctuationLeftBrace leftBrace;
+			public @INDENT PunctuationLeftBrace leftBrace;
 			public @OPT TokenList<CSharp_StatementOrComment> elements;
-			public PunctuationRightBrace rightBrace;
+			public @OUTDENT PunctuationRightBrace rightBrace;
 		}
 	}
 }

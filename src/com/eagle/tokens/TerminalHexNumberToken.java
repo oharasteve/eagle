@@ -38,6 +38,12 @@ public abstract class TerminalHexNumberToken extends TerminalNumberToken
 				{
 					endChar++;
 				}
+				
+				// Fail if there is a letter next, above A-F
+				if (endChar >= recLen) break;
+				ch = rec.charAt(endChar);
+				if (Character.isAlphabetic(ch)) return false;
+				
 				break;
 			}
 		}

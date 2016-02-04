@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import com.eagle.EagleReadXML;
+import com.eagle.io.EagleReadXML;
 import com.eagle.parsers.EagleFileReader;
 import com.eagle.parsers.EagleOverrideManager;
 import com.eagle.parsers.EagleParseException.EagleSoftParseException;
@@ -175,7 +175,7 @@ public abstract class EagleProject
 		}
 	}
 	
-	// Called to javap file when the .class file exists, but the .javap file does not exist
+	// Called for javap file when the .class file exists, but the .javap file does not exist
 	protected void addSourceEntry(String sourceDir, String fname, String languageName)
 	{
 		ProgramEntry entry = new ProgramEntry();
@@ -414,6 +414,8 @@ public abstract class EagleProject
 	// Called from RemoveTemporaryFiles.java, at start of TestDriver.java
 	public void removeFiles()
 	{
+		if (_artifactBase == null) return;
+		
 		String parsedDir = EaglePath.combinePaths(_artifactBase, EagleProject.PARSED);
 		File pdir = new File(parsedDir);
 		if (pdir.exists() && EaglePath.deleteDir(pdir))
@@ -434,6 +436,13 @@ public abstract class EagleProject
 		if (vdir.exists() && EaglePath.deleteDir(vdir))
 		{
 			System.out.println("Deleted directory " + viewerDir);
+		}
+		
+		String tokenDir = EaglePath.combinePaths(_artifactBase, EagleProject.TOKENS);
+		File tdir = new File(tokenDir);
+		if (tdir.exists() && EaglePath.deleteDir(tdir))
+		{
+			System.out.println("Deleted directory " + tokenDir);
 		}
 	}
 }

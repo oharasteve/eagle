@@ -119,10 +119,10 @@ public class Java_Method extends TokenSequence implements EagleScopeInterface
 		public @OPT @NEWLINE2 TokenList<Java_Annotation> annotation;
 		public @OPT TokenList<Java_MethodModifiers> modifiers;
 		public Java_Current_Class_Reference constructorName;
-		public PunctuationLeftParen leftParen;
+		public @NOSPACE PunctuationLeftParen leftParen;
 		public @OPT Java_MethodParameter param;
 		public @OPT TokenList<Java_MoreParameters> moreParams;
-		public PunctuationRightParen rightParen;
+		public @NOSPACE PunctuationRightParen rightParen;
 		public @OPT Java_MethodThrows jthrows;
 		public @OPT Java_Comment comment;
 		public Java_MethodBody body;

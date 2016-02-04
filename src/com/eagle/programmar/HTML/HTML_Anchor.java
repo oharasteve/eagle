@@ -3,7 +3,6 @@
 
 package com.eagle.programmar.HTML;
 
-import com.eagle.programmar.HTML.HTML_Anchor.HTML_AnchorHref.HTML_EndAnchor;
 import com.eagle.programmar.HTML.HTML_Attribute.HTML_Value;
 import com.eagle.programmar.HTML.Terminals.HTML_Keyword;
 import com.eagle.programmar.HTML.Terminals.HTML_Punctuation;
@@ -46,12 +45,5 @@ public class HTML_Anchor extends TokenChooser
 		public @NOSPACE PunctuationEquals equals;
 		public @NOSPACE HTML_Value value;
 		public @NOSPACE HTML_Punctuation endTagA = new HTML_Punctuation("/>");
-		public @OPT HTML_WithEndAnchor endAnchorName;
-
-		public static class HTML_WithEndAnchor extends TokenSequence
-		{
-			public @OPT TokenList<PHP_Entry> contents;
-			public @OUTDENT HTML_EndAnchor endAnchor;
-		}
 	}
 }

@@ -12,8 +12,11 @@ import com.eagle.tokens.punctuation.PunctuationPeriod;
 public class JavaP_ConstantMethodRef extends TokenSequence implements JavaP_ConstantShowable
 {
 	public JavaP_KeywordChoice METHODREF = new JavaP_KeywordChoice(
+			"Field",
 			"Fieldref",
+			"InterfaceMethod",
 			"InterfaceMethodref",
+			"Method",
 			"Methodref");
 	public JavaP_Symbol_Reference object;
 	public PunctuationPeriod dot;

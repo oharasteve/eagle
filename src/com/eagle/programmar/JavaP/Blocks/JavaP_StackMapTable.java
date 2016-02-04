@@ -61,7 +61,7 @@ public class JavaP_StackMapTable extends TokenSequence
 			
 			public static class JavaP_StackMapLocal extends TokenChooser
 			{
-				public JavaP_KeywordChoice type = new JavaP_KeywordChoice("int", "long", "top");
+				public JavaP_KeywordChoice type = new JavaP_KeywordChoice("bogus", "int", "long", "top");
 				
 				public static class JavaP_StackMapLocalClass extends TokenSequence
 				{
