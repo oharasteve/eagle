@@ -39,7 +39,7 @@ public class CSharp_Type extends TokenSequence
 	// Delay finding this one until after looking for [] and <>
 	public static class CSharp_TypeName extends TokenChooser
 	{
-		public static class CSharp_IdList extends TokenSequence
+		public @CHOICE static class CSharp_IdList extends TokenSequence
 		{
 			public @OPT CSharp_NamespaceId namespaceId;
 			public CSharp_Identifier_Reference typeName;
@@ -60,11 +60,11 @@ public class CSharp_Type extends TokenSequence
 			}
 		}
 
-		public CSharp_KeywordChoice primitive = new CSharp_KeywordChoice(
+		public @CHOICE CSharp_KeywordChoice primitive = new CSharp_KeywordChoice(
 				"void", "bool", "boolean", "byte", "short", "int",
 				"long", "char", "float", "double", "string", "String", "class");
 		
-		public static class CSharp_GenericTypeQuestion extends TokenSequence
+		public @CHOICE static class CSharp_GenericTypeQuestion extends TokenSequence
 		{
 			public CSharp_Punctuation question = new CSharp_Punctuation('?');
 			public @OPT CSharp_ExtendsType extendsType;

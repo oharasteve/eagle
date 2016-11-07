@@ -78,6 +78,7 @@ public abstract class AbstractToken
 	{
 		// @CURIOUS means this token ain't supposed to be here, but is (sort-of) ok.
 		// An example is an extra semicolon in Java after a block { } statement.
+		// Seems we can't change the name of 'value' to 'description'.
 		String value();
 	}
 	
@@ -88,9 +89,9 @@ public abstract class AbstractToken
 	}
 	
 	@Retention(RetentionPolicy.RUNTIME)
-	public @interface NEWLINE2
+	public @interface BLANKLINE
 	{
-		// Do two newlines BEFORE this token
+		// Do a blank line BEFORE this token
 	}
 	
 	@Retention(RetentionPolicy.RUNTIME)

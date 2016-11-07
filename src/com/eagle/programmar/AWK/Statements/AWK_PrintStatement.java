@@ -24,7 +24,7 @@ public class AWK_PrintStatement extends TokenSequence
 			public PunctuationRightParen rightParen;
 		}
 		
-		public static class AWK_Print_NoParens extends TokenSequence
+		public @CHOICE static class AWK_Print_NoParens extends TokenSequence
 		{
 			public @OPT AWK_ArgumentList argList;
 		}

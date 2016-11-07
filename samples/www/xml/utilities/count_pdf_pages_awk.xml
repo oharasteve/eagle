@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Sun Jan 31 05:09:18 EST 2016" Elapsed="16" Language="AWK" Steps="582" Tokens="87">
+<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Mon Nov 07 10:58:02 EST 2016" Elapsed="2" Language="AWK" Steps="595" Tokens="88">
   <T EC="0" EL="12" File="" SC="1" SL="1" TT=".AWK.AWK_Program">
     <T EC="0" EL="12" N="elements" SC="1" SL="1" TT="List">
       <T EC="0" EL="5" N="elements[0]" SC="1" SL="1" TT=".AWK.AWK_Program$AWK_Element">
@@ -52,7 +52,9 @@
           <T EC="0" EL="9" N="condition" SC="1" SL="5" TT="List">
             <T EC="16" EL="5" N="condition[0]" SC="1" SL="5" TT=".AWK.AWK_Condition">
               <T EC="16" EL="5" N="condition[0]" SC="1" SL="5" TT=".AWK.AWK_Expression">
-                <T EC="16" EL="5" N="condition[0]" SC="1" SL="5" TT=".AWK.Terminals.AWK_Pattern" V="/Type.*Page[^s]/"/>
+                <T EC="16" EL="5" N="condition[0]" SC="1" SL="5" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                  <T EC="16" EL="5" N="pattern" SC="1" SL="5" TT=".AWK.Terminals.AWK_Pattern" V="/Type.*Page[^s]/"/>
+                </T>
               </T>
             </T>
           </T>
@@ -71,7 +73,7 @@
                           <T EC="9" EL="6" N="var" SC="1" SL="6" TT=".AWK.AWK_Variable">
                             <T EC="9" EL="6" N="id" SC="5" SL="6" TT=".AWK.Symbols.AWK_Identifier_Reference" V="pages"/>
                           </T>
-                          <T EC="11" EL="6" N="postIncrementOperator" SC="10" SL="6" TT=".AWK.Terminals.AWK_Punctuation" V="++"/>
+                          <T EC="11" EL="6" N="operator" SC="10" SL="6" TT=".AWK.Terminals.AWK_Punctuation" V="++"/>
                         </T>
                       </T>
                     </T>

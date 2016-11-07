@@ -18,9 +18,9 @@ public class Python_VariableList extends TokenSequence
 
 	public static class Python_Variable_or_List extends TokenChooser
 	{
-		public Python_Variable var;
+		public @CHOICE Python_Variable var;
 		
-		public static class Python_Var_List extends TokenSequence
+		public @CHOICE static class Python_Var_List extends TokenSequence
 		{
 			public PunctuationLeftParen leftParen;
 			public @OPT @SYNTAX(Python_Multiline_Syntax.class) Python_VariableList more;

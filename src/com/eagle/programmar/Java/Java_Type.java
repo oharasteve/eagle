@@ -19,8 +19,8 @@ public class Java_Type extends TokenSequence
 {
 	public @OPT Java_Comment comment;
 	public Java_TypeName typeName;
-	public @OPT Java_GenericType genericType;
-	public @OPT TokenList<Java_ArrayType> arrayTypes;
+	public @OPT @NOSPACE Java_GenericType genericType;
+	public @OPT @NOSPACE TokenList<Java_ArrayType> arrayTypes;
 	
 	public static class Java_ArrayType extends TokenSequence
 	{
@@ -31,10 +31,10 @@ public class Java_Type extends TokenSequence
 	public static class Java_GenericType extends TokenSequence
 	{
 		public Java_Punctuation lessThan = new Java_Punctuation('<');
-		public @OPT Java_Type subType1;
+		public @OPT @NOSPACE Java_Type subType1;
 		public @OPT Java_Punctuation emptySubscript = new Java_Punctuation("[]");
 		public @OPT TokenList<Java_MoreTypes> moreType;
-		public Java_Punctuation greaterThan = new Java_Punctuation('>');
+		public @NOSPACE Java_Punctuation greaterThan = new Java_Punctuation('>');
 		
 		public static class Java_MoreTypes extends TokenSequence
 		{
@@ -46,7 +46,11 @@ public class Java_Type extends TokenSequence
 	// Delay finding this one until after looking for [] and <>
 	public static class Java_TypeName extends TokenChooser
 	{
-		public static class Java_IdList extends TokenSequence
+		public @CHOICE Java_KeywordChoice primitive = new Java_KeywordChoice(
+				"void", "boolean", "byte", "short", "int",
+				"long", "char", "float", "double", "String", "class");
+		
+		public @CHOICE static class Java_IdList extends TokenSequence
 		{
 			public Java_Identifier_Reference typeName;
 			public @OPT Java_ExtendsType extendsType;
@@ -68,11 +72,7 @@ public class Java_Type extends TokenSequence
 			}
 		}
 
-		public Java_KeywordChoice primitive = new Java_KeywordChoice(
-				"void", "boolean", "byte", "short", "int",
-				"long", "char", "float", "double", "String", "class");
-		
-		public static class Java_GenericTypeQuestion extends TokenSequence
+		public @CHOICE static class Java_GenericTypeQuestion extends TokenSequence
 		{
 			public Java_Punctuation question = new Java_Punctuation('?');
 			public @OPT Java_ExtendsType extendsType;

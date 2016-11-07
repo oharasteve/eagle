@@ -11,6 +11,6 @@ public class AWK_Number extends TerminalNumberToken
 	@Override
 	public boolean parse(EagleFileReader lines)
 	{
-		return genericNumber(lines, "", "", "", true);
+		return genericNumber(lines, null, null, true);
 	}
 }

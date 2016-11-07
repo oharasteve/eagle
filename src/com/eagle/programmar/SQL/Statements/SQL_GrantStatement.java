@@ -20,9 +20,9 @@ public class SQL_GrantStatement extends TokenSequence
 	
 	public static class SQL_GrantPermission extends TokenChooser
 	{
-		public SQL_Identifier_Reference permission;
+		public @CHOICE SQL_Identifier_Reference permission;
 		
-		public static class SQL_GrantPermissionOn extends TokenSequence
+		public @CHOICE static class SQL_GrantPermissionOn extends TokenSequence
 		{
 			public SQL_KeywordChoice EXECUTE = new SQL_KeywordChoice("EXECUTE", "SELECT");
 			public SQL_Keyword ON = new SQL_Keyword("ON");

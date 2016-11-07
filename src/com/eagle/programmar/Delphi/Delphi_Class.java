@@ -37,12 +37,12 @@ public class Delphi_Class extends TokenSequence
 	
 	public static class Delphi_Class_Entry extends TokenChooser
 	{
-		public Delphi_Comment comment;
-		public Delphi_ProcedureForward procedure;
-		public Delphi_FunctionForward function;
-		public Delphi_Property property;
+		public @CHOICE Delphi_Comment comment;
+		public @CHOICE Delphi_ProcedureForward procedure;
+		public @CHOICE Delphi_FunctionForward function;
+		public @CHOICE Delphi_Property property;
 		
-		public static class Delphi_Field extends TokenSequence
+		public @CHOICE static class Delphi_Field extends TokenSequence
 		{
 			public SeparatedList<Delphi_Variable_Definition,PunctuationComma> variables;
 			public PunctuationColon colon;

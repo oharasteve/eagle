@@ -18,9 +18,7 @@ import com.eagle.tokens.PrecedenceChooser;
 import com.eagle.tokens.PrecedenceChooser.PrecedenceOperator.AllowedPrecedence;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
-import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.punctuation.PunctuationColon;
-import com.eagle.tokens.punctuation.PunctuationComma;
 import com.eagle.tokens.punctuation.PunctuationLeftBrace;
 import com.eagle.tokens.punctuation.PunctuationLeftBracket;
 import com.eagle.tokens.punctuation.PunctuationLeftParen;
@@ -31,82 +29,38 @@ import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class CSharp_Expression extends PrecedenceChooser
 {
+	private static OperatorList _operators = new OperatorList();
+
+	public @P(10) CSharp_HexNumber hex;
+	public @P(20) CSharp_Number number;
+	public @P(30) CSharp_Literal literal;
+	public @P(40) CSharp_Character_Literal characters;
+
+	//
+	// Note: All operators should stay in @P(#) order. This determines operator precedence.
+	//
+
 	public CSharp_Expression()
 	{
+	    super(_operators);
 	}
-	
+
 	public CSharp_Expression(PrecedenceOperator token, AllowedPrecedence allowed)
-	{ 
-		super(allowed, token.getClass());
-	}
-		
-	@Override
-	protected void establishChoices() 
 	{
-		// Order matters a little bit ...
-		super.addTerm(CSharp_Number.class);			
-		super.addTerm(CSharp_HexNumber.class);				
-		super.addTerm(CSharp_Literal.class);
-		super.addTerm(CSharp_Character_Literal.class);
-		super.addTerm(CSharp_DotClass.class);
-		super.addTerm(CSharp_CastExpression.class);
-		super.addTerm(CSharp_ExpressionList.class);
-		super.addTerm(CSharp_InterfaceCreationWithMethod.class);
-		super.addTerm(CSharp_ClassCreationExpression.class);
-		super.addTerm(CSharp_ClassCreationWithInitializers.class);
-		super.addTerm(CSharp_ClassCreationWithSubscript.class);
-		super.addTerm(CSharp_MethodInvocation.class);
-		super.addTerm(CSharp_PreIncrementExpression.class);
-		super.addTerm(CSharp_PreDecrementExpression.class);
-		super.addTerm(CSharp_PostIncrementExpression.class);
-		super.addTerm(CSharp_PostDecrementExpression.class);
-		super.addTerm(CSharp_NegativeExpression.class);
-		super.addTerm(CSharp_LogicalNotExpression.class);
-		super.addTerm(CSharp_NotExpression.class);
-		super.addTerm(CSharp_BuiltIn.class);
-		super.addTerm(CSharp_Variable.class);
-		super.addTerm(CSharp_Type.class);
-		super.addTerm(CSharp_ParenthesizedExpression.class);
-		super.addTerm(CSharp_CommentExpression.class);
-		super.addTerm(CSharp_TypeOf.class);
-		super.addTerm(CSharp_Delegation.class);
-		
-		// Order is critical ...
-		super.addOperator(CSharp_SubscriptExpression.class);
-		super.addOperator(CSharp_NamespaceExpression.class);
-		super.addOperator(CSharp_SubfieldExpression.class);
-		super.addOperator(CSharp_MultiplicativeExpression.class);
-		super.addOperator(CSharp_AdditiveExpression.class);
-		super.addOperator(CSharp_ShiftExpression.class);
-		super.addOperator(CSharp_RelationalExpression.class);
-		super.addOperator(CSharp_InstanceOfExpression.class);
-		super.addOperator(CSharp_EqualityExpression.class);
-		super.addOperator(CSharp_AndExpression.class);
-		super.addOperator(CSharp_ExclusiveOrExpression.class);
-		super.addOperator(CSharp_InclusiveOrExpression.class);
-		super.addOperator(CSharp_ConditionalAndExpression.class);
-		super.addOperator(CSharp_ConditionalOrExpression.class);
-		super.addOperator(CSharp_TrueFalseExpression.class);
-		super.addOperator(CSharp_AssignmentExpression.class);
-		super.addOperator(CSharp_LambdaExpression.class);
+	    super(_operators, allowed, token.getClass());
 	}
 
 	///////////////////////////////////////////////
 	// Primary expressions
 	
-	public static class CSharp_BuiltIn extends TokenChooser
+	public static @P(100) class CSharp_DotClass extends PrimaryOperator
 	{
-		public CSharp_KeywordChoice builtIn = new CSharp_KeywordChoice("false", "true", "null", "this", "super");
+		public CSharp_Type jtype;
+		public PunctuationPeriod dot;
+		public CSharp_Keyword CLASS = new CSharp_Keyword("class");
 	}
 	
-	public static class CSharp_ParenthesizedExpression extends ExpressionTerm
-	{
-		public PunctuationLeftParen leftParen;
-		public CSharp_Expression expression;
-		public PunctuationRightParen rightParen;
-	}
-	
-	public static class CSharp_CastExpression extends ExpressionTerm
+	public static @P(110) class CSharp_CastExpression extends PrimaryOperator
 	{
 		public PunctuationLeftParen leftParen;
 		public CSharp_Type jtype;
@@ -114,7 +68,7 @@ public class CSharp_Expression extends PrecedenceChooser
 		public CSharp_Expression expr;
 	}
 
-	public static class CSharp_ExpressionList extends ExpressionTerm
+	public static @P(120) class CSharp_ExpressionList extends PrimaryOperator
 	{
 		public PunctuationLeftBrace leftBrace;
 		public @OPT TokenList<CSharp_Comment> comment;
@@ -122,7 +76,7 @@ public class CSharp_Expression extends PrecedenceChooser
 		public PunctuationRightBrace rightBrace;
 	}
 	
-	public static class CSharp_InterfaceCreationWithMethod extends ExpressionTerm
+	public static @P(130) class CSharp_InterfaceCreationWithMethod extends PrimaryOperator
 	{
 		public CSharp_Keyword NEW = new CSharp_Keyword("new");
 		public CSharp_KeywordChoice jinterface = new CSharp_KeywordChoice(
@@ -134,7 +88,7 @@ public class CSharp_Expression extends PrecedenceChooser
 		public PunctuationRightBrace rightBrace;
 	}
 
-	public static class CSharp_ClassCreationExpression extends ExpressionTerm
+	public static @P(140) class CSharp_ClassCreationExpression extends PrimaryOperator
 	{
 		public CSharp_Keyword NEW = new CSharp_Keyword("new");
 		public CSharp_Type jtype;
@@ -144,7 +98,7 @@ public class CSharp_Expression extends PrecedenceChooser
 		public PunctuationRightParen rightParen;
 	}
 	
-	public static class CSharp_ClassCreationWithInitializers extends ExpressionTerm
+	public static @P(150) class CSharp_ClassCreationWithInitializers extends PrimaryOperator
 	{
 		public CSharp_Keyword NEW = new CSharp_Keyword("new");
 		public CSharp_Type jtype;
@@ -153,14 +107,14 @@ public class CSharp_Expression extends PrecedenceChooser
 		public PunctuationRightBrace rightBrace;
 	}
 	
-	public static class CSharp_ClassCreationWithSubscript extends ExpressionTerm
+	public static @P(160) class CSharp_ClassCreationWithSubscript extends PrimaryOperator
 	{
 		public CSharp_Keyword NEW = new CSharp_Keyword("new");
 		public CSharp_Type jtype;
 		public TokenList<CSharp_Subscript> subscripts;
 	}
 
-	public static class CSharp_MethodInvocation extends ExpressionTerm
+	public static @P(170) class CSharp_MethodInvocation extends PrimaryOperator
 	{
 		public CSharp_Variable methodName;
 		public PunctuationLeftParen leftParen;
@@ -168,85 +122,85 @@ public class CSharp_Expression extends PrecedenceChooser
 		public PunctuationRightParen rightParen;
 	}
 	
-	public static class CSharp_DotClass extends ExpressionTerm
-	{
-		public CSharp_Type jtype;
-		public PunctuationPeriod dot;
-		public CSharp_Keyword CLASS = new CSharp_Keyword("class");
-	}
-	
-	public static class CSharp_ArgumentList extends ExpressionTerm
-	{
-		public @OPT CSharp_KeywordChoice passBy = new CSharp_KeywordChoice("ref", "out");
-		public CSharp_Expression arg;
-		public @OPT TokenList<CSharp_MoreArguments> moreArgs;
-		
-		public static class CSharp_MoreArguments extends TokenSequence
-		{
-			public PunctuationComma comma;
-			public @OPT CSharp_KeywordChoice passBy = new CSharp_KeywordChoice("ref", "out");
-			public CSharp_Expression arg;
-			public @OPT TokenList<CSharp_Comment> comments;
-		}
-	}
-
-	public static class CSharp_PreIncrementExpression extends ExpressionTerm
+	public static @P(180) class CSharp_PreIncrementExpression extends PrimaryOperator
 	{
 		public CSharp_Punctuation preIncrementOperator = new CSharp_Punctuation("++");
 		public CSharp_Variable var;
 	}
 
-	public static class CSharp_PreDecrementExpression extends ExpressionTerm
+	public static @P(190) class CSharp_PreDecrementExpression extends PrimaryOperator
 	{
 		public CSharp_Punctuation preDecrementOperator = new CSharp_Punctuation("--");
 		public CSharp_Variable var;
 	}
 	
-	public static class CSharp_PostIncrementExpression extends ExpressionTerm
+	public static @P(200) class CSharp_PostIncrementExpression extends PrimaryOperator
 	{
 		public CSharp_Variable var;
 		public CSharp_Punctuation postIncrementOperator = new CSharp_Punctuation("++");
 	}
 
-	public static class CSharp_PostDecrementExpression extends ExpressionTerm
+	public static @P(210) class CSharp_PostDecrementExpression extends PrimaryOperator
 	{
 		public CSharp_Variable var;
 		public CSharp_Punctuation postDecrementOperator = new CSharp_Punctuation("--");
 	}
 	
-	public static class CSharp_NegativeExpression extends ExpressionTerm
+	public static @P(220) class CSharp_NegativeExpression extends PrimaryOperator
 	{
 		public CSharp_PunctuationChoice operator = new CSharp_PunctuationChoice("-", "+");
 		public CSharp_Expression expr;
 	}
 
-	public static class CSharp_LogicalNotExpression extends ExpressionTerm
+	public static @P(230) class CSharp_LogicalNotExpression extends PrimaryOperator
 	{
 		public CSharp_Punctuation logicalNotOperator = new CSharp_Punctuation('~');
 		public CSharp_Expression expr;
 	}
 	
-	public static class CSharp_NotExpression extends ExpressionTerm
+	public static @P(240) class CSharp_NotExpression extends PrimaryOperator
 	{
 		public CSharp_Punctuation notOperator = new CSharp_Punctuation('!');
 		public CSharp_Expression expr;
 	}
 	
-	public static class CSharp_CommentExpression extends ExpressionTerm
+	public static @P(250) class CSharp_BuiltIn extends PrimaryOperator
+	{
+		public CSharp_KeywordChoice builtIn = new CSharp_KeywordChoice("false", "true", "null", "this", "super");
+	}
+	
+	public static @P(260) class CSharp_VariableExpression extends PrimaryOperator
+	{
+		public CSharp_Variable variable;
+	}
+	
+	public static @P(270) class CSharp_TypeExpression extends PrimaryOperator
+	{
+		public CSharp_Type type;
+	}
+	
+	public static @P(280) class CSharp_ParenthesizedExpression extends PrimaryOperator
+	{
+		public PunctuationLeftParen leftParen;
+		public CSharp_Expression expression;
+		public PunctuationRightParen rightParen;
+	}
+	
+	public static @P(290) class CSharp_CommentExpression extends PrimaryOperator
 	{
 		public CSharp_Comment comment;
 		public CSharp_Expression expr;
 	}
 	
-	public static class CSharp_TypeOf extends ExpressionTerm
+	public static @P(300) class CSharp_TypeOf extends PrimaryOperator
 	{
 		public CSharp_Keyword TYPEOF = new CSharp_Keyword("typeof");
 		public PunctuationLeftParen leftParen;
 		public CSharp_Type type;
 		public PunctuationRightParen rightParen;
 	}
-	
-	public static class CSharp_Delegation extends ExpressionTerm
+
+	public static @P(310) class CSharp_Delegation extends PrimaryOperator
 	{
 		public CSharp_Keyword DELEGATE = new CSharp_Keyword("delegate");
 		public CSharp_MethodParameters parameters;
@@ -256,22 +210,112 @@ public class CSharp_Expression extends PrecedenceChooser
 	///////////////////////////////////////////////
 	// Binary expressions
 
-	public static class CSharp_LambdaExpression extends PrecedenceOperator
+	public static @P(320) class CSharp_SubscriptExpression extends PrecedenceOperator
 	{
-		public CSharp_Expression var = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
-		public CSharp_Punctuation lambda = new CSharp_Punctuation("=>");
-		public CSharp_Expression expr;
+		public CSharp_Expression expr = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
+		public PunctuationLeftBracket leftBracket;
+		public CSharp_Expression subscr = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
+		public PunctuationRightBracket rightBracket;
+	}
+	
+	public static @P(330) class CSharp_NamespaceExpression extends PrecedenceOperator
+	{
+		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
+		public CSharp_Punctuation colonColon = new CSharp_Punctuation("::");
+		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class CSharp_AssignmentExpression extends PrecedenceOperator
+	public static @P(340) class CSharp_SubfieldExpression extends PrecedenceOperator
 	{
-		public CSharp_Expression var = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
-		public CSharp_PunctuationChoice operator = new CSharp_PunctuationChoice(
-				"=", "*=", "/=", "%=", "+=", "-=", "<<=", ">>=", ">>>=", "&=", "^=", "|=");
-		public CSharp_Expression expr;
+		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
+		public PunctuationPeriod dot;
+		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class CSharp_TrueFalseExpression extends PrecedenceOperator
+	public static @P(350) class CSharp_MultiplicativeExpression extends PrecedenceOperator
+	{
+		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
+		public CSharp_PunctuationChoice operator = new CSharp_PunctuationChoice("*", "/", "%");
+		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(360) class CSharp_AdditiveExpression extends PrecedenceOperator
+	{
+		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
+		public CSharp_PunctuationChoice operator = new CSharp_PunctuationChoice("+", "-");
+		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(370) class CSharp_ShiftExpression extends PrecedenceOperator
+	{
+		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
+		public CSharp_PunctuationChoice operator = new CSharp_PunctuationChoice("<<", ">>", ">>>");
+		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static @P(380) class CSharp_RelationalExpression extends PrecedenceOperator
+	{
+		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
+		public CSharp_PunctuationChoice operator = new CSharp_PunctuationChoice("<", ">", "<=", ">=");
+		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(390) class CSharp_InstanceOfExpression extends PrecedenceOperator
+	{
+		public CSharp_Expression expr = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
+		public CSharp_Keyword instanceOperator = new CSharp_Keyword("is");
+		public CSharp_Type type;
+	}
+
+	public static @P(400) class CSharp_EqualityExpression extends PrecedenceOperator
+	{
+		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
+		public CSharp_EqualityOperator equalityOperator;
+		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
+
+		public static class CSharp_EqualityOperator extends TokenChooser
+		{
+			public @CHOICE CSharp_PunctuationChoice operator = new CSharp_PunctuationChoice("==", "!=", "??");
+			public @CHOICE CSharp_KeywordChoice asIs = new CSharp_KeywordChoice("as", "is");
+		}
+	}
+
+	public static @P(410) class CSharp_AndExpression extends PrecedenceOperator
+	{
+		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
+		public CSharp_Punctuation bitwiseAndOperator = new CSharp_Punctuation('&');
+		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(420) class CSharp_ExclusiveOrExpression extends PrecedenceOperator
+	{
+		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
+		public CSharp_Punctuation bitwiseXOrOperator = new CSharp_Punctuation('^');
+		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(430) class CSharp_InclusiveOrExpression extends PrecedenceOperator
+	{
+		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
+		public CSharp_Punctuation bitwiseOrOperator = new CSharp_Punctuation('|');
+		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(440) class CSharp_ConditionalAndExpression extends PrecedenceOperator
+	{
+		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
+		public CSharp_Punctuation andOperator = new CSharp_Punctuation("&&");
+		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static @P(450) class CSharp_ConditionalOrExpression extends PrecedenceOperator
+	{
+		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
+		public CSharp_Punctuation orOperator = new CSharp_Punctuation("||");
+		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static @P(460) class CSharp_TrueFalseExpression extends PrecedenceOperator
 	{
 		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
 		public CSharp_Punctuation questionMark = new CSharp_Punctuation('?');
@@ -280,108 +324,18 @@ public class CSharp_Expression extends PrecedenceChooser
 		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
 	}
 	
-	public static class CSharp_ConditionalOrExpression extends PrecedenceOperator
+	public static @P(470) class CSharp_AssignmentExpression extends PrecedenceOperator
 	{
-		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
-		public CSharp_Punctuation orOperator = new CSharp_Punctuation("||");
-		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
-	}
-	
-	public static class CSharp_ConditionalAndExpression extends PrecedenceOperator
-	{
-		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
-		public CSharp_Punctuation andOperator = new CSharp_Punctuation("&&");
-		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
-	}
-	
-	public static class CSharp_InclusiveOrExpression extends PrecedenceOperator
-	{
-		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
-		public CSharp_Punctuation bitwiseOrOperator = new CSharp_Punctuation('|');
-		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
+		public CSharp_Expression var = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
+		public CSharp_PunctuationChoice operator = new CSharp_PunctuationChoice(
+				"=", "*=", "/=", "%=", "+=", "-=", "<<=", ">>=", ">>>=", "&=", "^=", "|=");
+		public CSharp_Expression expr;
 	}
 
-	public static class CSharp_ExclusiveOrExpression extends PrecedenceOperator
+	public static @P(480) class CSharp_LambdaExpression extends PrecedenceOperator
 	{
-		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
-		public CSharp_Punctuation bitwiseXOrOperator = new CSharp_Punctuation('^');
-		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class CSharp_AndExpression extends PrecedenceOperator
-	{
-		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
-		public CSharp_Punctuation bitwiseAndOperator = new CSharp_Punctuation('&');
-		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class CSharp_EqualityExpression extends PrecedenceOperator
-	{
-		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
-		public CSharp_EqualityOperator equalityOperator;
-		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
-
-		public static class CSharp_EqualityOperator extends TokenChooser
-		{
-			public CSharp_PunctuationChoice operator = new CSharp_PunctuationChoice("==", "!=", "??");
-			public CSharp_KeywordChoice asIs = new CSharp_KeywordChoice("as", "is");
-		}
-	}
-	
-	public static class CSharp_RelationalExpression extends PrecedenceOperator
-	{
-		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
-		public CSharp_PunctuationChoice operator = new CSharp_PunctuationChoice("<", ">", "<=", ">=");
-		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class CSharp_InstanceOfExpression extends PrecedenceOperator
-	{
-		public CSharp_Expression expr = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
-		public CSharp_Keyword instanceOperator = new CSharp_Keyword("is");
-		public CSharp_Type type;
-	}
-
-	public static class CSharp_ShiftExpression extends PrecedenceOperator
-	{
-		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
-		public CSharp_PunctuationChoice operator = new CSharp_PunctuationChoice("<<", ">>", ">>>");
-		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class CSharp_AdditiveExpression extends PrecedenceOperator
-	{
-		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
-		public CSharp_PunctuationChoice operator = new CSharp_PunctuationChoice("+", "-");
-		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class CSharp_MultiplicativeExpression extends PrecedenceOperator
-	{
-		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
-		public CSharp_PunctuationChoice operator = new CSharp_PunctuationChoice("*", "/", "%");
-		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class CSharp_SubfieldExpression extends PrecedenceOperator
-	{
-		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
-		public PunctuationPeriod dot;
-		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class CSharp_NamespaceExpression extends PrecedenceOperator
-	{
-		public CSharp_Expression left = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
-		public CSharp_Punctuation colonColon = new CSharp_Punctuation("::");
-		public CSharp_Expression right = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class CSharp_SubscriptExpression extends PrecedenceOperator
-	{
-		public CSharp_Expression expr = new CSharp_Expression(this, AllowedPrecedence.ATLEAST);
-		public PunctuationLeftBracket leftBracket;
-		public CSharp_Expression subscr = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
-		public PunctuationRightBracket rightBracket;
+		public CSharp_Expression var = new CSharp_Expression(this, AllowedPrecedence.HIGHER);
+		public CSharp_Punctuation lambda = new CSharp_Punctuation("=>");
+		public CSharp_Expression expr;
 	}
 }

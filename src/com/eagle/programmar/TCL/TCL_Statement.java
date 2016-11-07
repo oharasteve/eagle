@@ -30,13 +30,13 @@ public class TCL_Statement extends TokenSequence
 	
 	public static class TCL_BaseStatement extends TokenChooser
 	{
-		public TCL_Comment comment;
-		public TCL_BlockStatement blockStatement;
+		public @CHOICE TCL_Comment comment;
+		public @CHOICE TCL_BlockStatement blockStatement;
 		
-		public TCL_IfStatement ifStatement;
-		public TCL_NamespaceStatement namespaceStatement;
-		public TCL_SetStatement setStatement;
-		public TCL_VariableStatement variableStatement;
+		public @CHOICE TCL_IfStatement ifStatement;
+		public @CHOICE TCL_NamespaceStatement namespaceStatement;
+		public @CHOICE TCL_SetStatement setStatement;
+		public @CHOICE TCL_VariableStatement variableStatement;
 	}
 	
 	public static class TCL_BlockStatement extends TokenSequence

@@ -23,15 +23,15 @@ public class HTML_Tag extends TokenSequence
 	
 	public static class HTML_TagCloser extends TokenChooser
 	{
-		public HTML_Punctuation endTag1 = new HTML_Punctuation('>');
-		public HTML_Punctuation endTag2 = new HTML_Punctuation("/>");
+		public @CHOICE HTML_Punctuation endTag1 = new HTML_Punctuation('>');
+		public @CHOICE HTML_Punctuation endTag2 = new HTML_Punctuation("/>");
 	}
 	
 	public static class HTML_TagElement extends TokenChooser
 	{
-		public HTML_Attribute attribute;
-		public Django_Control control;
-		public Django_Insert insert;
+		public @CHOICE HTML_Attribute attribute;
+		public @CHOICE Django_Control control;
+		public @CHOICE Django_Insert insert;
 	}
 	
 	public static class HTML_Tag_Namespace extends TokenSequence

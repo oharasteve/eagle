@@ -1,5 +1,5 @@
-	// Copyright Eagle Legacy Modernization, LLC, 2010-date
-// Original author: Steven A. O'Hara, Nov 3, 2015
+// Copyright Eagle Legacy Modernization, LLC, 2010-date
+// Original author: Steven A. O'Hara, Aug 26, 2016
 
 package com.eagle.programmar.JavaP.Terminals;
 
@@ -11,8 +11,6 @@ public class JavaP_Identifier extends TerminalIdentifierToken
 	@Override
 	public boolean parse(EagleFileReader lines)
 	{
-		if (! genericIdentifier(lines, "#", DIGITS, false)) return false;
-		if (_id.length() < 2) return false;	// Need at least one digit
-		return true;
+		return genericIdentifier(lines, ALPHAS, ALPHAS+DIGITS, true);
 	}
 }

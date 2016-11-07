@@ -35,8 +35,8 @@ public class PHP_Program extends EagleLanguage
 	
 	public static class PHP_Entry extends TokenChooser
 	{
-		public @SYNTAX(HTML_Syntax.class) HTML_Program html;
-		public PHP_Section php;
+		public @CHOICE @SYNTAX(HTML_Syntax.class) HTML_Program html;
+		public @CHOICE PHP_Section php;
 		public @LAST PHP_IfBlock ifBlock;
 	}
 	
@@ -59,13 +59,13 @@ public class PHP_Program extends EagleLanguage
 		public static class PHP_Body extends TokenChooser
 		{
 			// Really wasteful ... frequently parses twice
-			public static class PHP_NoEnd extends TokenSequence
+			public @CHOICE static class PHP_NoEnd extends TokenSequence
 			{
 				public TokenList<PHP_Element> elements;
 				public PHP_EndOfFile eof;	// Can't be inside another class ...
 			}
 			
-			public static class PHP_NormalEnd extends TokenSequence
+			public @CHOICE static class PHP_NormalEnd extends TokenSequence
 			{
 				public TokenList<PHP_Element> elements;
 				public PHP_EndTag endTag;
@@ -74,7 +74,7 @@ public class PHP_Program extends EagleLanguage
 
 		public static class PHP_Element extends TokenChooser
 		{
-			public @SYNTAX(Perl_Syntax.class) Perl_StatementOrComment statement;
+			public @CHOICE @SYNTAX(Perl_Syntax.class) Perl_StatementOrComment statement;
 		}
 	}
 }

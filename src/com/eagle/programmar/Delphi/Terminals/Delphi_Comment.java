@@ -30,7 +30,9 @@ public class Delphi_Comment extends TerminalCommentToken
 		switch (ch)
 		{
 		case '{' :
-			return super.possibleCommentPair1(lines, rec, '{', '}');
+			if (! super.possibleCommentPair1(lines, rec, '{', '}')) return false;
+			if (_comment.startsWith("{$I ")) return false;
+			return true;
 		case '/' :
 			return super.possibleCommentToEndOfLine(rec, "//");
 		case '(' :

@@ -26,7 +26,7 @@ public class Java_ForStatement extends TokenChooser implements EagleScopeInterfa
 {
 	private EagleScope _scope = new EagleScope(Java_Syntax.isCaseSensitive);
 	
-	public static class Java_ForLoopStatement extends TokenSequence
+	public @CHOICE static class Java_ForLoopStatement extends TokenSequence
 	{
 		public @OPT @NEWLINE Java_Label label;
 		public @DOC("statements.html#14.14") Java_Keyword FOR = new Java_Keyword("for");
@@ -47,9 +47,9 @@ public class Java_ForStatement extends TokenChooser implements EagleScopeInterfa
 			
 			public static class Java_ForWhat extends TokenChooser
 			{
-				public Java_Expression expr;
+				public @CHOICE Java_Expression expr;
 				
-				public static class Java_ForWithType extends TokenSequence
+				public @CHOICE static class Java_ForWithType extends TokenSequence
 				{
 					public Java_Type varType;
 					public Java_Expression expr;
@@ -58,7 +58,7 @@ public class Java_ForStatement extends TokenChooser implements EagleScopeInterfa
 		}
 	}
 	
-	public static class Java_ForCollectionStatement extends TokenSequence
+	public @CHOICE static class Java_ForCollectionStatement extends TokenSequence
 	{
 		public @OPT @NEWLINE Java_Label label;
 		public Java_Keyword FOR = new Java_Keyword("for");

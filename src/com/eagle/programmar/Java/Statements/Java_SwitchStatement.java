@@ -28,9 +28,9 @@ public class Java_SwitchStatement extends TokenSequence
 	
 	public static class Java_SwitchClause extends TokenChooser
 	{
-		public Java_Comment comment;
+		public @CHOICE Java_Comment comment;
 		
-		public static class Java_CaseClause extends TokenSequence
+		public @CHOICE static class Java_CaseClause extends TokenSequence
 		{
 			public @NEWLINE Java_Keyword CASE = new Java_Keyword("case");
 			public Java_Expression expr;
@@ -38,7 +38,7 @@ public class Java_SwitchStatement extends TokenSequence
 			public @OPT TokenList<Java_StatementOrComment> statements;
 		}
 		
-		public static class Java_DefaultClause extends TokenSequence
+		public @CHOICE static class Java_DefaultClause extends TokenSequence
 		{
 			public @NEWLINE Java_Keyword DEFAULT = new Java_Keyword("default");
 			public PunctuationColon colon;

@@ -22,10 +22,10 @@ public class CSharp_SwitchStatement extends TokenSequence
 	public CSharp_Expression val;
 	public PunctuationRightParen rightParen;
 	public @INDENT PunctuationLeftBrace leftBrace;
-	public TokenList<CSharp_CaseClause> caseClause;
+	public TokenList<CSharp_SwitchCase> caseClause;
 	public @OUTDENT PunctuationRightBrace rightBrace;
 	
-	public static class CSharp_CaseClause extends TokenSequence
+	public static class CSharp_SwitchCase extends TokenSequence
 	{
 		public @NEWLINE CSharp_CaseType caseType;
 		public PunctuationColon colon;
@@ -34,11 +34,11 @@ public class CSharp_SwitchStatement extends TokenSequence
 	
 	public static class CSharp_CaseType extends TokenChooser
 	{
-		public CSharp_Keyword DEFAULT = new CSharp_Keyword("default");
+		public @CHOICE CSharp_Keyword DEFAULT = new CSharp_Keyword("default");
 
-		public static class CSharp_CaseClause extends TokenSequence
+		public @CHOICE static class CSharp_CaseClause extends TokenSequence
 		{
-			public @NEWLINE2 CSharp_Keyword CASE = new CSharp_Keyword("case");
+			public @BLANKLINE CSharp_Keyword CASE = new CSharp_Keyword("case");
 			public CSharp_Expression expr;
 		}
 	}

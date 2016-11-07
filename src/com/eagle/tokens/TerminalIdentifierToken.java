@@ -156,6 +156,44 @@ public abstract class TerminalIdentifierToken extends TerminalToken
 		return false;
 	}
 	
+	protected boolean genericIdentifierWithPrefix(EagleFileReader lines, String prefix, String firstChars, String moreChars)
+	{
+		int prefixLen = prefix.length();
+		if (prefixLen < 1 || prefixLen > 2) throw new RuntimeException("Prefix must be 1 or 2 characters");
+		
+		if (findStart(lines) == FOUND.EOF) return false;
+	
+		// Special test for Perl variables that start with $ or $# because
+		// these can be reserved words, like $else.
+		EagleLineReader rec = lines.get(_currentLine);
+		int recLen = rec.length();
+		if (_currentChar >= recLen) return false;
+		char ch = rec.charAt(_currentChar);
+		if (ch != prefix.charAt(0)) return false;
+
+		int endChar = _currentChar + 1;
+		if (prefixLen > 1 && endChar < recLen)
+		{
+			ch = rec.charAt(endChar);
+			if (ch == prefix.charAt(1)) endChar++;
+		}
+		if (endChar >= recLen) return false;
+		ch = rec.charAt(endChar);
+		if (firstChars.indexOf(ch) < 0) return false;
+		
+		// Matched $ and first char. Now see how long the identifier is
+		while (true)
+		{
+			endChar++;
+			if (endChar >= recLen) break;
+			ch = rec.charAt(endChar);
+			if (moreChars.indexOf(ch) < 0) break;
+		}
+		_id = rec.substring(_currentChar, endChar);
+		foundIt(_currentLine, endChar - 1);
+		return true;
+	}
+	
 	@Override
 	public String getDisplayStyleName()
 	{
@@ -172,6 +210,7 @@ public abstract class TerminalIdentifierToken extends TerminalToken
 	public void setValue(String val)
 	{
 		_id = val;
+		_present = (val != null);
 	}
 	
 	@Override

@@ -21,11 +21,11 @@ public class Javascript_Variable extends TokenSequence
 	
 	public static class Javascript_VariableIdentifier extends TokenChooser
 	{
-		public Javascript_Identifier_Reference id;
-		public Javascript_KeywordChoice THIS = new Javascript_KeywordChoice("this", "class");
+		public @CHOICE Javascript_Identifier_Reference id;
+		public @CHOICE Javascript_KeywordChoice THIS = new Javascript_KeywordChoice("this", "class");
 		public @LAST Javascript_PunctuationChoice dollar = new Javascript_PunctuationChoice("$", "_");
 		
-		public static class Javascript_CastedVariable extends TokenSequence
+		public @CHOICE static class Javascript_CastedVariable extends TokenSequence
 		{
 			public PunctuationLeftParen leftParen1;
 			public PunctuationLeftParen leftParen2;

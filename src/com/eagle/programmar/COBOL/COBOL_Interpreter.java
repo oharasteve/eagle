@@ -29,21 +29,23 @@ public class COBOL_Interpreter extends EagleInterpreter
 		COBOL_Paragraph firstParagraph = firstSection.paragraphs.first();
 		for (COBOL_SentenceOrComment sentenceItem : firstParagraph.sentences._elements)
 		{
-			if (sentenceItem._whichToken instanceof COBOL_Sentence)
+			AbstractToken whichSentence = sentenceItem.getWhich();
+			if (whichSentence instanceof COBOL_Sentence)
 			{
-				COBOL_Sentence sentence = (COBOL_Sentence) sentenceItem._whichToken;
+				COBOL_Sentence sentence = (COBOL_Sentence) whichSentence;
 				for (COBOL_StatementOrComment statementItem : sentence.statements._elements)
 				{
-					if (statementItem._whichToken instanceof COBOL_Statement)
+					AbstractToken whichStmtItem = statementItem.getWhich();
+					if (whichStmtItem instanceof COBOL_Statement)
 					{
-						COBOL_Statement stmt = (COBOL_Statement) statementItem._whichToken;
-						AbstractToken which = stmt._whichToken;
-						if (which instanceof EagleRunnable)
+						COBOL_Statement stmt = (COBOL_Statement) whichStmtItem;
+						AbstractToken whichStmt = stmt.getWhich();
+						if (whichStmt instanceof EagleRunnable)
 						{
-							EagleRunnable runnable = (EagleRunnable) which;
+							EagleRunnable runnable = (EagleRunnable) whichStmt;
 							runnable.interpret(this);
 						}
-						else throw new RuntimeException("Don't know how to interpret statement: " + which);
+						else throw new RuntimeException("Don't know how to interpret statement: " + whichStmt);
 					}
 				}
 			}

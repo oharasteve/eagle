@@ -38,7 +38,7 @@ public class Python_FunctionDefinition extends TokenSequence
 	
 	public static class Python_FunctionName extends TokenChooser
 	{
-		public Python_Function_Definition name;
-		public Python_Keyword INIT = new Python_Keyword("__init__");
+		public @CHOICE Python_Function_Definition name;
+		public @CHOICE Python_Keyword INIT = new Python_Keyword("__init__");
 	}
 }

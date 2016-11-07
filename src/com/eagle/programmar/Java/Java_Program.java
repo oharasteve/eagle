@@ -1,4 +1,3 @@
-
 // Copyright Eagle Legacy Modernization, 2010-date
 // Original author: Steven A. O'Hara, Dec 17, 2010
 
@@ -56,21 +55,21 @@ public class Java_Program extends EagleLanguage implements EagleRunnable, EagleS
 	
 	public static class Java_ClassOrEnum extends TokenChooser
 	{
-		public Java_Class jclass;
-		public Java_Enum jenum;
+		public @CHOICE Java_Class jclass;
+		public @CHOICE Java_Enum jenum;
 	}
 
 	public static class Java_Package extends TokenSequence
 	{
-		public @NEWLINE2 Java_Keyword PACKAGE = new Java_Keyword("package");
+		public @BLANKLINE Java_Keyword PACKAGE = new Java_Keyword("package");
 		public SeparatedList<Java_Identifier,PunctuationPeriod> ids;
 		public @NOSPACE PunctuationSemicolon semicolon;
 	}
 	
 	public static class Java_ImportOrComment extends TokenChooser
 	{
-		public @NEWLINE Java_Comment comment;
-		public Java_Import jimport;
+		public @CHOICE @NEWLINE Java_Comment comment;
+		public @CHOICE Java_Import jimport;
 	}
 	
 	public static class Java_Import extends TokenSequence
@@ -88,8 +87,8 @@ public class Java_Program extends EagleLanguage implements EagleRunnable, EagleS
 			
 			public static class Java_IdentifierStar extends TokenChooser
 			{
-				public @NOSPACE Java_Identifier id;
-				public @NOSPACE PunctuationStar star;
+				public @CHOICE @NOSPACE Java_Identifier id;
+				public @CHOICE @NOSPACE PunctuationStar star;
 			}
 		}
 	}
@@ -97,6 +96,6 @@ public class Java_Program extends EagleLanguage implements EagleRunnable, EagleS
 	@Override
 	public void interpret(EagleInterpreter interpreter)
 	{
-		interpreter.tryToInterpret(classOrEnum.first()._whichToken);
+		interpreter.tryToInterpret(classOrEnum.first().getWhich());
 	}
 }

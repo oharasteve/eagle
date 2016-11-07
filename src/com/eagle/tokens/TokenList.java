@@ -29,11 +29,18 @@ public class TokenList<T extends AbstractToken> extends AbstractToken
 	
 	public boolean addToken(T token, AbstractToken startToken, AbstractToken endToken)
 	{
-		token._fileName = startToken._fileName;
-		token._currentChar = startToken._currentChar;
-		token._currentLine = startToken._currentLine;
-		token._endChar = endToken._endChar;
-		token._endLine = endToken._endLine;
+		if (startToken != null)
+		{
+			token._fileName = startToken._fileName;
+			token._currentChar = startToken._currentChar;
+			token._currentLine = startToken._currentLine;
+		}
+		
+		if (endToken != null)
+		{
+			token._endChar = endToken._endChar;
+			token._endLine = endToken._endLine;
+		}
 
 		return _elements.add(token);
 	}

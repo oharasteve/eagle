@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Sun Jan 31 05:09:14 EST 2016" Elapsed="4603" Language="AWK" Steps="207" Tokens="30">
+<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Mon Nov 07 10:58:00 EST 2016" Elapsed="1592" Language="AWK" Steps="213" Tokens="32">
   <T EC="0" EL="4" File="" SC="1" SL="1" TT=".AWK.AWK_Program">
     <T EC="0" EL="4" N="elements" SC="1" SL="1" TT="List">
       <T EC="0" EL="4" N="elements[0]" SC="1" SL="1" TT=".AWK.AWK_Program$AWK_Element">
@@ -8,11 +8,15 @@
               <T EC="16" EL="1" N="condition[0]" SC="1" SL="1" TT=".AWK.AWK_Expression">
                 <T EC="16" EL="1" N="condition[0]" SC="1" SL="1" TT=".AWK.AWK_Expression$AWK_OrExpression">
                   <T EC="6" EL="1" N="left" SC="1" SL="1" TT=".AWK.AWK_Expression">
-                    <T EC="6" EL="1" N="left" SC="1" SL="1" TT=".AWK.Terminals.AWK_Pattern" V="/.jpg/"/>
+                    <T EC="6" EL="1" N="left" SC="1" SL="1" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                      <T EC="6" EL="1" N="pattern" SC="1" SL="1" TT=".AWK.Terminals.AWK_Pattern" V="/.jpg/"/>
+                    </T>
                   </T>
                   <T EC="9" EL="1" N="orOperator" SC="8" SL="1" TT=".AWK.Terminals.AWK_Punctuation" V="||"/>
                   <T EC="16" EL="1" N="right" SC="10" SL="1" TT=".AWK.AWK_Expression">
-                    <T EC="16" EL="1" N="right" SC="11" SL="1" TT=".AWK.Terminals.AWK_Pattern" V="/.JPG/"/>
+                    <T EC="16" EL="1" N="right" SC="10" SL="1" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                      <T EC="16" EL="1" N="pattern" SC="11" SL="1" TT=".AWK.Terminals.AWK_Pattern" V="/.JPG/"/>
+                    </T>
                   </T>
                 </T>
               </T>

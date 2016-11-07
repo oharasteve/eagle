@@ -8,5 +8,5 @@ import com.eagle.tokens.TokenChooser;
 
 public class IBMASM_Macro extends TokenChooser
 {
-	public IBMASM_WTO_Macro wto;
+	public @CHOICE IBMASM_WTO_Macro wto;
 }

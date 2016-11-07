@@ -32,6 +32,7 @@ public abstract class TerminalKeywordToken extends TerminalToken
 	public void setValue(String val)
 	{
 		_word = val;
+		_present = (val != null);
 	}
 
 	@Override

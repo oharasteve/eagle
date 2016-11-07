@@ -10,6 +10,6 @@ import com.eagle.tokens.TokenChooser;
 
 public class Django_Element extends TokenChooser
 {
-	public @SYNTAX(HTML_Syntax.class) HTML_TableRow tableRow;
-	public @SYNTAX(HTML_Syntax.class) HTML_Element element;
+	public @CHOICE @SYNTAX(HTML_Syntax.class) HTML_TableRow tableRow;
+	public @CHOICE @SYNTAX(HTML_Syntax.class) HTML_Element element;
 }

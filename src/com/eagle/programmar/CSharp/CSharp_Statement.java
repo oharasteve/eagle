@@ -31,13 +31,13 @@ import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class CSharp_Statement extends TokenChooser
 {
-	public @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon;
+	public @CHOICE @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon;
 	
-	public CSharp_Data data;
-	public CSharp_Class myclass;
-	public CSharp_Enum enumeration;
+	public @CHOICE CSharp_Data data;
+	public @CHOICE CSharp_Class myclass;
+	public @CHOICE CSharp_Enum enumeration;
 	
-	public static class CSharp_StatementBlock extends TokenSequence
+	public @CHOICE static class CSharp_StatementBlock extends TokenSequence
 	{
 		public @INDENT PunctuationLeftBrace leftBrace;
 		public @OPT TokenList<CSharp_StatementOrComment> statements;
@@ -45,32 +45,32 @@ public class CSharp_Statement extends TokenChooser
 		
 		public static class CSharp_StatementOrComment extends TokenChooser
 		{
-			public CSharp_Statement statement;
-			public CSharp_Comment comment;
+			public @CHOICE CSharp_Statement statement;
+			public @CHOICE CSharp_Comment comment;
 		}
 	}
 
-	public CSharp_BreakStatement breakStatement;
-	public CSharp_ContinueStatement continueStatement;
-	public CSharp_CheckedStatement checkedStatement;
-	public CSharp_DoStatement doStatement;
-	public CSharp_ForStatement forStatement;
-	public CSharp_ForEachStatement forEachStatement;
-	public CSharp_GetProperty getProperty;
-	public CSharp_IfStatement ifStatement;
-	public CSharp_LockStatement lockStatement;
-	public CSharp_ReturnStatement returnStatement;
-	public CSharp_SetProperty setProperty;
-	public CSharp_SuperStatement superStatement;
-	public CSharp_SwitchStatement switchStatement;
-	public CSharp_SynchronizedStatement synchronizedStatement;
-	public CSharp_ThrowStatement throwStatement;
-	public CSharp_TryStatement tryStatement;
-	public CSharp_UsingStatement usingStatement;
-	public CSharp_WhileStatement whileStatement;
+	public @CHOICE CSharp_BreakStatement breakStatement;
+	public @CHOICE CSharp_ContinueStatement continueStatement;
+	public @CHOICE CSharp_CheckedStatement checkedStatement;
+	public @CHOICE CSharp_DoStatement doStatement;
+	public @CHOICE CSharp_ForStatement forStatement;
+	public @CHOICE CSharp_ForEachStatement forEachStatement;
+	public @CHOICE CSharp_GetProperty getProperty;
+	public @CHOICE CSharp_IfStatement ifStatement;
+	public @CHOICE CSharp_LockStatement lockStatement;
+	public @CHOICE CSharp_ReturnStatement returnStatement;
+	public @CHOICE CSharp_SetProperty setProperty;
+	public @CHOICE CSharp_SuperStatement superStatement;
+	public @CHOICE CSharp_SwitchStatement switchStatement;
+	public @CHOICE CSharp_SynchronizedStatement synchronizedStatement;
+	public @CHOICE CSharp_ThrowStatement throwStatement;
+	public @CHOICE CSharp_TryStatement tryStatement;
+	public @CHOICE CSharp_UsingStatement usingStatement;
+	public @CHOICE CSharp_WhileStatement whileStatement;
 
 	// Do this one after the others, just because it is so slow
-	public CSharp_ExpressionStatement assignmentStatement;
+	public @CHOICE CSharp_ExpressionStatement assignmentStatement;
 	
 	//public @LAST CSharp_UnparsedStatement unparsed;
 }

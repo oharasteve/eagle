@@ -50,6 +50,8 @@ public abstract class TerminalKeywordChoice extends TerminalToken
 	@Override
 	public void setValue(String val)
 	{
+		_present = (val != null);
+		
 		if (_words == null || _words.length == 0)
 		{
 			// Must be coming from XML reader .. no way to know the value choices

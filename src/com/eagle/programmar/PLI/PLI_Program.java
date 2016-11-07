@@ -29,10 +29,10 @@ public class PLI_Program extends EagleLanguage
 	
 	public static class PLI_Element extends TokenChooser
 	{
-		public PLI_Comment comment;
-		public PLI_DeclareGeneric declareGeneric;
-		public PLI_Procedure procedure;
-		public PLI_Declaration declaration;
-		public PLI_PercentStatement percentStmt;
+		public @CHOICE PLI_Comment comment;
+		public @CHOICE PLI_DeclareGeneric declareGeneric;
+		public @CHOICE PLI_Procedure procedure;
+		public @CHOICE PLI_Declaration declaration;
+		public @CHOICE PLI_PercentStatement percentStmt;
 	}
 }

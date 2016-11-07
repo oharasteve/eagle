@@ -20,9 +20,9 @@ public class IntelASM_IncludeDirective extends TokenSequence
 
 	public static class IntelASM_Filename extends TokenChooser
 	{
-		public IntelASM_Literal literal;
+		public @CHOICE IntelASM_Literal literal;
 
-		public static class IntelASM_BareFilename extends TokenSequence
+		public @CHOICE static class IntelASM_BareFilename extends TokenSequence
 		{
 			public SeparatedList<IntelASM_Identifier_Reference,PunctuationPeriod> name;
 		}

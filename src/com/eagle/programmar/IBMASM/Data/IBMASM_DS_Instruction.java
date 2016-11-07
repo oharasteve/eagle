@@ -24,7 +24,7 @@ public class IBMASM_DS_Instruction extends TokenSequence
 
 	public static class IBMASM_DS_Value extends TokenChooser
 	{
-		public static class IBMASM_DS_storage extends TokenSequence
+		public @CHOICE static class IBMASM_DS_storage extends TokenSequence
 		{
 			public @OPT IBMASM_Number replication;
 			public IBMASM_KeywordChoice code = new IBMASM_KeywordChoice("F");

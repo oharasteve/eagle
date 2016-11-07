@@ -25,24 +25,24 @@ import com.eagle.tokens.TokenChooser;
 
 public class SQL_Statement extends TokenChooser
 {
-	public SQL_AlterStatement alterStmt;
-	public SQL_AtAtStatement atAtStmt;
-	public SQL_BeginStatement beginStmt;
-	public SQL_ColumnStatement columnStmt;
-	//public SQL_CommitStatement commitStmt;	// Part of a BEGIN / END transaction
-	public SQL_CreateStatement createStmt;
-	public SQL_DeclareStatement declareStmt;
-	public SQL_DeleteStatement deleteStmt;
-	public SQL_DropStatement dropStmt;
-	public SQL_ForStatement forStmt;
-	public SQL_GrantStatement grantStmt;
-	public SQL_LoadStatement loadStmt;
-	public SQL_InsertStatement insertStmt;
-	public SQL_PragmaStatement pragmaStmt;
-	public SQL_SelectStatement selectStmt;
-	public SQL_SlashStatement slashStmt;
-	public SQL_UpdateStatement updateStmt;
-	public SQL_VariableStatement variableStmt;
+	public @CHOICE SQL_AlterStatement alterStmt;
+	public @CHOICE SQL_AtAtStatement atAtStmt;
+	public @CHOICE SQL_BeginStatement beginStmt;
+	public @CHOICE SQL_ColumnStatement columnStmt;
+	//public @CHOICE SQL_CommitStatement commitStmt;	// Part of a BEGIN / END transaction
+	public @CHOICE SQL_CreateStatement createStmt;
+	public @CHOICE SQL_DeclareStatement declareStmt;
+	public @CHOICE SQL_DeleteStatement deleteStmt;
+	public @CHOICE SQL_DropStatement dropStmt;
+	public @CHOICE SQL_ForStatement forStmt;
+	public @CHOICE SQL_GrantStatement grantStmt;
+	public @CHOICE SQL_LoadStatement loadStmt;
+	public @CHOICE SQL_InsertStatement insertStmt;
+	public @CHOICE SQL_PragmaStatement pragmaStmt;
+	public @CHOICE SQL_SelectStatement selectStmt;
+	public @CHOICE SQL_SlashStatement slashStmt;
+	public @CHOICE SQL_UpdateStatement updateStmt;
+	public @CHOICE SQL_VariableStatement variableStmt;
 
 	public @LAST SQL_ExpressionStatement expressionStmt;
 }

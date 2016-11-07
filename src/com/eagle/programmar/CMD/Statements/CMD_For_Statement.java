@@ -41,26 +41,26 @@ public class CMD_For_Statement extends TokenSequence
 	
 	public static class CMD_For_Option extends TokenChooser
 	{
-		public static class CMD_For_Option_D extends TokenSequence
+		public @CHOICE static class CMD_For_Option_D extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword D = new CMD_Keyword("d");
 		}
 
-		public static class CMD_For_Option_F extends TokenSequence
+		public @CHOICE static class CMD_For_Option_F extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword F = new CMD_Keyword("f");
 			public @OPT CMD_Literal opts;
 		}
 	
-		public static class CMD_For_Option_L extends TokenSequence
+		public @CHOICE static class CMD_For_Option_L extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword L = new CMD_Keyword("l");
 		}
 
-		public static class CMD_For_Option_R extends TokenSequence
+		public @CHOICE static class CMD_For_Option_R extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword R = new CMD_Keyword("r");
@@ -68,10 +68,10 @@ public class CMD_For_Statement extends TokenSequence
 			
 			public static class CMD_For_R extends TokenChooser
 			{
-				public CMD_Literal dir;
-				public CMD_Identifier dirName;
+				public @CHOICE CMD_Literal dir;
+				public @CHOICE CMD_Identifier dirName;
 				
-				public static class CMD_For_R_pct extends TokenSequence
+				public @CHOICE static class CMD_For_R_pct extends TokenSequence
 				{
 					public CMD_Punctuation percent = new CMD_Punctuation('%');
 					public CMD_Number number;

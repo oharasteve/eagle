@@ -21,7 +21,7 @@ import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Javascript_ForStatement extends TokenChooser
 {
-	public static class Javascript_ForLoopStatement extends TokenSequence
+	public @CHOICE static class Javascript_ForLoopStatement extends TokenSequence
 	{
 		public @NEWLINE @DOC("js_loop_for.asp") Javascript_Keyword FOR = new Javascript_Keyword("for");
 		public PunctuationLeftParen leftParen;
@@ -46,14 +46,14 @@ public class Javascript_ForStatement extends TokenChooser
 				public Javascript_Variable forVar;
 			}
 
-			public static class Javascript_ForLoopVariableNoType extends TokenSequence
+			public @CHOICE static class Javascript_ForLoopVariableNoType extends TokenSequence
 			{
 				public @NOSPACE Javascript_Variable forVar;
 			}
 		}
 	}
 	
-	public static class Javascript_ForCollectionStatement extends TokenSequence
+	public @CHOICE static class Javascript_ForCollectionStatement extends TokenSequence
 	{
 		public @NEWLINE Javascript_Keyword FOR = new Javascript_Keyword("for");
 		public PunctuationLeftParen leftParen;
@@ -66,8 +66,8 @@ public class Javascript_ForStatement extends TokenChooser
 		
 		public static class Javascript_InOrColon extends TokenChooser
 		{
-			public PunctuationColon colon;
-			public Javascript_Keyword IN = new Javascript_Keyword("in");
+			public @CHOICE PunctuationColon colon;
+			public @CHOICE Javascript_Keyword IN = new Javascript_Keyword("in");
 		}
 	}
 }

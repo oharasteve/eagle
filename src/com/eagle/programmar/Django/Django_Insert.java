@@ -24,7 +24,7 @@ public class Django_Insert extends TokenSequence
 	
 	public static class Django_InsertWhat extends TokenChooser
 	{
-		public static class Django_InsertSuper extends TokenSequence
+		public @CHOICE static class Django_InsertSuper extends TokenSequence
 		{
 			public Django_Keyword SUPER = new Django_Keyword("super");
 			public @OPT Django_InsertSuperArgs args;
@@ -36,7 +36,7 @@ public class Django_Insert extends TokenSequence
 			}
 		}
 
-		public static class Django_InsertVariable extends TokenSequence
+		public @CHOICE static class Django_InsertVariable extends TokenSequence
 		{
 			public Django_Variable variable;
 			public @OPT Django_InsertDot insertDot;

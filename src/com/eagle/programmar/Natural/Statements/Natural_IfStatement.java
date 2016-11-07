@@ -22,8 +22,8 @@ public class Natural_IfStatement extends TokenSequence
 	
 	public static class Natural_IfWhat extends TokenChooser
 	{
-		public Natural_NoRecordsFound noRecordsFound;
-		public Natural_Condition condition;
+		public @CHOICE Natural_NoRecordsFound noRecordsFound;
+		public @CHOICE Natural_Condition condition;
 	}
 	
 	public static class Natural_NoRecordsFound extends TokenSequence

@@ -37,11 +37,11 @@ public class IBMASM_Program extends EagleLanguage
 
 	public static class IBMASM_LineContents extends TokenChooser
 	{
-		public IBMASM_Comment comment;
-		public IBMASM_Instruction instruction;
-		public IBMASM_Directive directive;
-		public IBMASM_Macro macro;
-		public IBMASM_DC_Instruction defineConstant;
-		public IBMASM_DS_Instruction declareStorage;
+		public @CHOICE IBMASM_Comment comment;
+		public @CHOICE IBMASM_Instruction instruction;
+		public @CHOICE IBMASM_Directive directive;
+		public @CHOICE IBMASM_Macro macro;
+		public @CHOICE IBMASM_DC_Instruction defineConstant;
+		public @CHOICE IBMASM_DS_Instruction declareStorage;
 	}
 }

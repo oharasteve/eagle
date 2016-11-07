@@ -3,8 +3,8 @@
 
 package com.eagle.programmar.C.Statements;
 
+import com.eagle.programmar.C.C_Assignment;
 import com.eagle.programmar.C.C_Expression;
-import com.eagle.programmar.C.C_Expression.C_AssignmentExpression;
 import com.eagle.programmar.C.C_Statement;
 import com.eagle.programmar.C.C_Type;
 import com.eagle.programmar.C.C_Variable;
@@ -21,7 +21,7 @@ import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class C_ForStatement extends TokenChooser
 {
-	public static class C_ForLoopStatement extends TokenSequence
+	public @CHOICE static class C_ForLoopStatement extends TokenSequence
 	{
 		public @DOC("#The-for-Statement") C_Keyword FOR = new C_Keyword("for");
 		public PunctuationLeftParen leftParen;
@@ -40,15 +40,15 @@ public class C_ForStatement extends TokenChooser
 
 		public static class C_ForLoopVariable extends TokenChooser
 		{
-			public static class C_ForLoopVariableWithType extends TokenSequence
+			public @CHOICE static class C_ForLoopVariableWithType extends TokenSequence
 			{
 				public C_Type varType;
-				public C_AssignmentExpression assignment;
+				public C_Assignment assignment;
 			}
 
-			public static class C_ForLoopVariableNoType extends TokenSequence
+			public @CHOICE static class C_ForLoopVariableNoType extends TokenSequence
 			{
-				public C_AssignmentExpression assignment;
+				public C_Assignment assignment;
 			}
 		}
 		
@@ -59,7 +59,7 @@ public class C_ForStatement extends TokenChooser
 		}
 	}
 	
-	public static class C_ForCollectionStatement extends TokenSequence
+	public @CHOICE static class C_ForCollectionStatement extends TokenSequence
 	{
 		public C_Keyword FOR = new C_Keyword("for");
 		public PunctuationLeftParen leftParen;

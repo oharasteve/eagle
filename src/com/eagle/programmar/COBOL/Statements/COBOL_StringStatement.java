@@ -39,8 +39,8 @@ public class COBOL_StringStatement extends COBOL_AbstractStatement
 		
 		public static class COBOL_HexOrLiteral extends TokenChooser
 		{
-			public COBOL_HexNumber hex;
-			public COBOL_Literal literal;
+			public @CHOICE COBOL_HexNumber hex;
+			public @CHOICE COBOL_Literal literal;
 		}
 	}
 

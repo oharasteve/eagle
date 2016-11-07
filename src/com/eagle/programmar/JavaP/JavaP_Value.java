@@ -19,24 +19,24 @@ import com.eagle.tokens.punctuation.PunctuationSemicolon;
 public class JavaP_Value extends TokenChooser
 {
 	public @FIRST JavaP_Type type;
-	public JavaP_Symbol_Reference symbol;
+	public @CHOICE JavaP_Symbol_Reference symbol;
 	public @LAST JavaP_QualifiedName name;
-	public JavaP_Literal literal;
+	public @CHOICE JavaP_Literal literal;
 	
-	public static class JavaP_ValueLClass extends TokenSequence
+	public @CHOICE static class JavaP_ValueLClass extends TokenSequence
 	{
 		public JavaP_LClassName className;
 		public PunctuationSemicolon semicolon;
 	}
 	
-	public static class JavaP_ValueInit extends TokenSequence
+	public @CHOICE static class JavaP_ValueInit extends TokenSequence
 	{
 		public JavaP_Punctuation lessThan = new JavaP_Punctuation('<');
 		public JavaP_Keyword INIT = new JavaP_Keyword("init");
 		public JavaP_Punctuation greaterThan = new JavaP_Punctuation('>');
 	}
 	
-	public static class JavaP_ValueArray extends TokenSequence
+	public @CHOICE static class JavaP_ValueArray extends TokenSequence
 	{
 		public PunctuationLeftParen leftParen;
 		public @OPT TokenList<JavaP_Type> parameters;

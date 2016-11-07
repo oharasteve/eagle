@@ -18,7 +18,7 @@ public class SQL_PragmaStatement extends TokenSequence
 	
 	public static class SQL_PragmaClause extends TokenChooser
 	{
-		public static class SQL_Pragma_ForeignKeys extends TokenSequence
+		public @CHOICE static class SQL_Pragma_ForeignKeys extends TokenSequence
 		{
 			public SQL_Keyword FOREIGN_KEYS = new SQL_Keyword("FOREIGN_KEYS");
 			public PunctuationEquals equals;

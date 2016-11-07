@@ -21,12 +21,12 @@ public class IntelASM_Directive extends TokenSequence
 	
 	public static class IntelASM_DirectiveList extends TokenChooser
 	{
-		public IntelASM_CpuDirective cpuDirective;
-		public IntelASM_DefineDirective defineDirective;
-		public IntelASM_IncludeDirective includeDirective;
-		public IntelASM_ListDirective listDirective;
-		public IntelASM_MacroDirective macroDirective;
-		public IntelASM_SectionDirective sectionDirective;
-		public IntelASM_TitleDirective titleInstruction;
+		public @CHOICE IntelASM_CpuDirective cpuDirective;
+		public @CHOICE IntelASM_DefineDirective defineDirective;
+		public @CHOICE IntelASM_IncludeDirective includeDirective;
+		public @CHOICE IntelASM_ListDirective listDirective;
+		public @CHOICE IntelASM_MacroDirective macroDirective;
+		public @CHOICE IntelASM_SectionDirective sectionDirective;
+		public @CHOICE IntelASM_TitleDirective titleInstruction;
 	}
 }

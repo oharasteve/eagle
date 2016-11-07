@@ -34,12 +34,12 @@ public class CSharp_UnparsedStatement extends UnparsedElement
 	
 	public static class CSharp_UnparsedElement extends TokenChooser
 	{
-		public CSharp_Identifier_Reference id;
+		public @CHOICE CSharp_Identifier_Reference id;
 		public @LAST CSharp_PunctuationChoice punct = new CSharp_PunctuationChoice(PUNCTS);
-		public CSharp_Literal literal;
-		public CSharp_Number number;
-		public CSharp_HexNumber hex;
-		public CSharp_Comment comment;
-		public CSharp_KeywordChoice keyword = new CSharp_KeywordChoice(KEYWORDS);
+		public @CHOICE CSharp_Literal literal;
+		public @CHOICE CSharp_Number number;
+		public @CHOICE CSharp_HexNumber hex;
+		public @CHOICE CSharp_Comment comment;
+		public @CHOICE CSharp_KeywordChoice keyword = new CSharp_KeywordChoice(KEYWORDS);
 	}
 }

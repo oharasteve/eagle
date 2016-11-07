@@ -51,19 +51,19 @@ public class CMD_Command extends TokenSequence
 
 	public static class CMD_Redirect extends TokenChooser
 	{
-		public CMD_Redirect_Input redirectInput;
-		public CMD_Redirect_Output redirectOutput;
-		public CMD_Redirect_Append redirectAppend;
-		public CMD_Redirect_Error redirectError;
+		public @CHOICE CMD_Redirect_Input redirectInput;
+		public @CHOICE CMD_Redirect_Output redirectOutput;
+		public @CHOICE CMD_Redirect_Append redirectAppend;
+		public @CHOICE CMD_Redirect_Error redirectError;
 	}
 
 	// Some need a wrapper because they have CMD_Statement's inside of themselves
 
 	public static class CMD_Statement extends TokenChooser
 	{
-		public CMD_Comment comment;
+		public @CHOICE CMD_Comment comment;
 
-		public static class CMD_BlockStatement extends TokenSequence
+		public @CHOICE static class CMD_BlockStatement extends TokenSequence
 		{
 			public PunctuationLeftParen leftParen;
 			public CMD_EndOfLine eoln;
@@ -73,8 +73,8 @@ public class CMD_Command extends TokenSequence
 			
 			public static class CMD_CommandOrLabel extends TokenChooser
 			{
-				public CMD_Command command;
-				public CMD_Label label;
+				public @CHOICE CMD_Command command;
+				public @CHOICE CMD_Label label;
 			}
 			
 			public static class CMD_IfElse extends TokenSequence
@@ -85,41 +85,41 @@ public class CMD_Command extends TokenSequence
 			}
 		}
 		
-		public static class CMD_GenericStatement extends TokenSequence
+		public @CHOICE static class CMD_GenericStatement extends TokenSequence
 		{
 			public CMD_Argument programName;
 			public @OPT TokenList<CMD_GenericArgument> args;
 			
 			public static class CMD_GenericArgument extends TokenChooser
 			{
-				public CMD_Argument arg;
-				public CMD_PunctuationChoice minus = new CMD_PunctuationChoice("-", "/");
+				public @CHOICE CMD_Argument arg;
+				public @CHOICE CMD_PunctuationChoice minus = new CMD_PunctuationChoice("-", "/");
 			}
 		}
 		
-		public CMD_Awk_Statement awkCommand;
-		public CMD_Call_Statement callCommand;
-		public CMD_CD_Statement cdCommand;
-		public CMD_Copy_Statement copyCommand;
-		public CMD_Del_Statement delCommand;
-		public CMD_Dir_Statement dirCommand;
-		public CMD_Echo_Statement echoCommand;
-		public CMD_Exit_Statement exitCommand;
-		public CMD_For_Statement forCommand;
-		public CMD_GCC_Statement gccCommand;
-		public CMD_Goto_Statement gotoCommand;
-		public CMD_Grep_Statement grepCommand;
-		public CMD_If_Statement ifCommand;
-		public CMD_Mkdir_Statement mkdirCommand;
-		public CMD_NMake_Statement nmakeCommand;
-		public CMD_Perl_Statement perlCommand;
-		public CMD_Popd_Statement popdCommand;
-		public CMD_Pushd_Statement pushdCommand;
-		public CMD_Rem_Statement remCommand;
-		public CMD_Rmdir_Statement rmdirCommand;
-		public CMD_Set_Statement setCommand;
-		public CMD_SetLocal_Statement setLocalCommand;
-		public CMD_Shift_Statement shiftCommand;
+		public @CHOICE CMD_Awk_Statement awkCommand;
+		public @CHOICE CMD_Call_Statement callCommand;
+		public @CHOICE CMD_CD_Statement cdCommand;
+		public @CHOICE CMD_Copy_Statement copyCommand;
+		public @CHOICE CMD_Del_Statement delCommand;
+		public @CHOICE CMD_Dir_Statement dirCommand;
+		public @CHOICE CMD_Echo_Statement echoCommand;
+		public @CHOICE CMD_Exit_Statement exitCommand;
+		public @CHOICE CMD_For_Statement forCommand;
+		public @CHOICE CMD_GCC_Statement gccCommand;
+		public @CHOICE CMD_Goto_Statement gotoCommand;
+		public @CHOICE CMD_Grep_Statement grepCommand;
+		public @CHOICE CMD_If_Statement ifCommand;
+		public @CHOICE CMD_Mkdir_Statement mkdirCommand;
+		public @CHOICE CMD_NMake_Statement nmakeCommand;
+		public @CHOICE CMD_Perl_Statement perlCommand;
+		public @CHOICE CMD_Popd_Statement popdCommand;
+		public @CHOICE CMD_Pushd_Statement pushdCommand;
+		public @CHOICE CMD_Rem_Statement remCommand;
+		public @CHOICE CMD_Rmdir_Statement rmdirCommand;
+		public @CHOICE CMD_Set_Statement setCommand;
+		public @CHOICE CMD_SetLocal_Statement setLocalCommand;
+		public @CHOICE CMD_Shift_Statement shiftCommand;
 	}
 	
 	public static class CMD_Redirect_Input extends TokenSequence
@@ -155,7 +155,7 @@ public class CMD_Command extends TokenSequence
 		
 		public static class CMD_Statement_Separator extends TokenChooser
 		{
-			public CMD_PunctuationChoice separator = new CMD_PunctuationChoice("|", "&&");
+			public @CHOICE CMD_PunctuationChoice separator = new CMD_PunctuationChoice("|", "&&");
 		}
 	}
 }

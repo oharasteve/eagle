@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Sun Jan 31 05:09:24 EST 2016" Elapsed="15" Language="AWK" Steps="3370" Tokens="668">
+<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Mon Nov 07 10:58:08 EST 2016" Elapsed="10" Language="AWK" Steps="3445" Tokens="673">
   <T EC="0" EL="39" File="" SC="1" SL="1" TT=".AWK.AWK_Program">
     <T EC="0" EL="39" N="elements" SC="1" SL="1" TT="List">
       <T EC="0" EL="23" N="elements[0]" SC="1" SL="1" TT=".AWK.AWK_Program$AWK_Element">
@@ -615,29 +615,39 @@
                           <T EC="16" EL="23" N="left" SC="1" SL="23" TT=".AWK.AWK_Expression">
                             <T EC="16" EL="23" N="left" SC="1" SL="23" TT=".AWK.AWK_Expression$AWK_OrExpression">
                               <T EC="6" EL="23" N="left" SC="1" SL="23" TT=".AWK.AWK_Expression">
-                                <T EC="6" EL="23" N="left" SC="1" SL="23" TT=".AWK.Terminals.AWK_Pattern" V="/.avi/"/>
+                                <T EC="6" EL="23" N="left" SC="1" SL="23" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                                  <T EC="6" EL="23" N="pattern" SC="1" SL="23" TT=".AWK.Terminals.AWK_Pattern" V="/.avi/"/>
+                                </T>
                               </T>
                               <T EC="9" EL="23" N="orOperator" SC="8" SL="23" TT=".AWK.Terminals.AWK_Punctuation" V="||"/>
                               <T EC="16" EL="23" N="right" SC="10" SL="23" TT=".AWK.AWK_Expression">
-                                <T EC="16" EL="23" N="right" SC="11" SL="23" TT=".AWK.Terminals.AWK_Pattern" V="/.wmv/"/>
+                                <T EC="16" EL="23" N="right" SC="10" SL="23" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                                  <T EC="16" EL="23" N="pattern" SC="11" SL="23" TT=".AWK.Terminals.AWK_Pattern" V="/.wmv/"/>
+                                </T>
                               </T>
                             </T>
                           </T>
                           <T EC="19" EL="23" N="orOperator" SC="18" SL="23" TT=".AWK.Terminals.AWK_Punctuation" V="||"/>
                           <T EC="26" EL="23" N="right" SC="20" SL="23" TT=".AWK.AWK_Expression">
-                            <T EC="26" EL="23" N="right" SC="21" SL="23" TT=".AWK.Terminals.AWK_Pattern" V="/.mpg/"/>
+                            <T EC="26" EL="23" N="right" SC="20" SL="23" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                              <T EC="26" EL="23" N="pattern" SC="21" SL="23" TT=".AWK.Terminals.AWK_Pattern" V="/.mpg/"/>
+                            </T>
                           </T>
                         </T>
                       </T>
                       <T EC="29" EL="23" N="orOperator" SC="28" SL="23" TT=".AWK.Terminals.AWK_Punctuation" V="||"/>
                       <T EC="36" EL="23" N="right" SC="30" SL="23" TT=".AWK.AWK_Expression">
-                        <T EC="36" EL="23" N="right" SC="31" SL="23" TT=".AWK.Terminals.AWK_Pattern" V="/.mp4/"/>
+                        <T EC="36" EL="23" N="right" SC="30" SL="23" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                          <T EC="36" EL="23" N="pattern" SC="31" SL="23" TT=".AWK.Terminals.AWK_Pattern" V="/.mp4/"/>
+                        </T>
                       </T>
                     </T>
                   </T>
                   <T EC="39" EL="23" N="orOperator" SC="38" SL="23" TT=".AWK.Terminals.AWK_Punctuation" V="||"/>
                   <T EC="46" EL="23" N="right" SC="40" SL="23" TT=".AWK.AWK_Expression">
-                    <T EC="46" EL="23" N="right" SC="41" SL="23" TT=".AWK.Terminals.AWK_Pattern" V="/.3gp/"/>
+                    <T EC="46" EL="23" N="right" SC="40" SL="23" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                      <T EC="46" EL="23" N="pattern" SC="41" SL="23" TT=".AWK.Terminals.AWK_Pattern" V="/.3gp/"/>
+                    </T>
                   </T>
                 </T>
               </T>

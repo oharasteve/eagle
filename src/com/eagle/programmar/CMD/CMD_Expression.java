@@ -17,7 +17,7 @@ public class CMD_Expression extends TokenSequence
 	
 	public static class CMD_Expr_Item extends TokenChooser
 	{
-		public CMD_Number number;
-		public CMD_Identifier_Reference var;
+		public @CHOICE CMD_Number number;
+		public @CHOICE CMD_Identifier_Reference var;
 	}
 }

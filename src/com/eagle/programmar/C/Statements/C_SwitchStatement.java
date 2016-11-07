@@ -29,9 +29,9 @@ public class C_SwitchStatement extends TokenSequence
 	
 	public static class C_SwitchClause extends TokenChooser
 	{
-		public C_Comment comment;
-		public C_CaseClause caseClause;
-		public C_DefaultClause defaultClause;
+		public @CHOICE C_Comment comment;
+		public @CHOICE C_CaseClause caseClause;
+		public @CHOICE C_DefaultClause defaultClause;
 	}
 	
 	public static class C_CaseClause extends TokenSequence

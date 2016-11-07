@@ -13,13 +13,13 @@ import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class Natural_Variable extends TokenChooser
 {
-	public static class Natural_BuiltinVariable extends TokenSequence
+	public @CHOICE static class Natural_BuiltinVariable extends TokenSequence
 	{
 		public @OPT PunctuationStar star;
 		public Natural_KeywordChoice builtins = new Natural_KeywordChoice("PAGE-NUMBER");
 	}
 	
-	public static class Natural_UserVariable extends TokenSequence
+	public @CHOICE static class Natural_UserVariable extends TokenSequence
 	{
 		public Natural_Identifier_Reference id;
 		public @OPT TokenList<Natural_Field> fields;

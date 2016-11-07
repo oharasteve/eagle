@@ -25,7 +25,7 @@ public class JavaP_CodeLocalValues extends TokenSequence
 	
 	public static class JavaP_CodeLocalHeaderChoice extends TokenChooser
 	{
-		public static class JavaP_CodeLocalHeader extends TokenSequence
+		public @CHOICE static class JavaP_CodeLocalHeader extends TokenSequence
 		{
 			public JavaP_EndOfLine eoln1;
 			public JavaP_Keyword START = new JavaP_Keyword("Start");
@@ -48,7 +48,7 @@ public class JavaP_CodeLocalValues extends TokenSequence
 			}
 		}
 		
-		public static class JavaP_CodeLocalLength extends TokenSequence
+		public @CHOICE static class JavaP_CodeLocalLength extends TokenSequence
 		{
 			public JavaP_Keyword LENGTH = new JavaP_Keyword("length");
 			public PunctuationEquals equals;
@@ -57,8 +57,8 @@ public class JavaP_CodeLocalValues extends TokenSequence
 			
 			public static class JavaP_CodeLocalHexes extends TokenChooser
 			{
-				public JavaP_HexNoPrefix hex;
-				public JavaP_EndOfLine eoln;
+				public @CHOICE JavaP_HexNoPrefix hex;
+				public @CHOICE JavaP_EndOfLine eoln;
 			}
 		}
 	}

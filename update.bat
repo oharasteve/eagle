@@ -18,7 +18,7 @@
 @xcopy %XOPTS% "%SVN%\Samples\Dave\src" "%GIT%\samples\www\" | %FILTER%
 
 @%ECHOREM% Copying src\com\eagle\io
-@for %%i in ( EagleReadXML EagleReader AbbreviateClassName ) do @(
+@for %%i in ( EagleReadXML EagleReader EaglePrinter AbbreviateClassName DumpTree ) do @(
     @xcopy %XOPTS% "%SVN%\Tools\src\com\eagle\io\%%i.java" "%GIT%\src\com\eagle\io\" | %FILTER%
 )
 
@@ -45,13 +45,18 @@
     @xcopy %XOPTS% "%SVN%\Tools\src\com\eagle\project\%%i.java" "%GIT%\src\com\eagle\project\" | %FILTER%
 )
 
+@%ECHOREM% Copying src\com\eagle\softwarehouse
+@for %%i in ( FileInventory PercentComplete ) do @(
+    @xcopy %XOPTS% "%SVN%\Tools\src\com\eagle\softwarehouse\%%i.java" "%GIT%\src\com\eagle\softwarehouse\" | %FILTER%
+)
+
 @%ECHOREM% Copying src\com\eagle\tests
 @for %%i in ( EagleInterpreter EagleRunnable EagleTestable EagleTests ) do @(
     @xcopy %XOPTS% "%SVN%\Tools\src\com\eagle\tests\%%i.java" "%GIT%\src\com\eagle\tests\" | %FILTER%
 )
 
 @%ECHOREM% Copying src\com\eagle\utils
-@for %%i in ( EagleFile EaglePath EagleUtilities ) do @(
+@for %%i in ( EaglePath EagleUtilities ) do @(
     @xcopy %XOPTS% "%SVN%\Tools\src\com\eagle\utils\%%i.java" "%GIT%\src\com\eagle\utils\" | %FILTER%
 )
 

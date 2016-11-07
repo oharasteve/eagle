@@ -12,9 +12,9 @@ import com.eagle.tokens.TokenChooser;
 
 public class Lisp_Function extends TokenChooser
 {
-	public Lisp_DefmacroFunction defMacro;
-	public Lisp_DefparameterFunction defParameter;
-	public Lisp_DefunFunction defFunction;
-	public Lisp_IfFunction ifFunction;
-	public Lisp_LoopFunction loopFunction;
+	public @CHOICE Lisp_DefmacroFunction defMacro;
+	public @CHOICE Lisp_DefparameterFunction defParameter;
+	public @CHOICE Lisp_DefunFunction defFunction;
+	public @CHOICE Lisp_IfFunction ifFunction;
+	public @CHOICE Lisp_LoopFunction loopFunction;
 }

@@ -19,14 +19,14 @@ public class Natural_Subscript extends TokenSequence
 
 	public static class Natural_Subscript_Contents extends TokenChooser
 	{
-		public PunctuationStar star;
+		public @CHOICE PunctuationStar star;
 
-		public static class Natural_Subscript_Contents_Label extends TokenSequence
+		public @CHOICE static class Natural_Subscript_Contents_Label extends TokenSequence
 		{
 			public Natural_Label label;
 		}
 		
-		public static class Natural_Subscript_Contents_Normal extends TokenSequence
+		public @CHOICE static class Natural_Subscript_Contents_Normal extends TokenSequence
 		{
 			public Natural_Expression subscript;
 			public @OPT Natural_Subscript_Range subscriptRange;

@@ -27,12 +27,12 @@ public class CMacro_StatementOrComment extends TokenSequence
 	{
 		public @FIRST CMacro_IfDefCPlusPlus ifdefCPlusPlus;
 		
-		public CMacro_Define_Statement defineStatement;
-		public CMacro_Error_Statement errorStatement;
-		public CMacro_If_Statement ifStatement;
-		public CMacro_IfDef_Statement ifdefStatement;
-		public CMacro_Include_Statement includeStatement;
-		public CMacro_Pragma_Statement pragmaStatement;
-		public CMacro_Undef_Statement undefStatement;
+		public @CHOICE CMacro_Define_Statement defineStatement;
+		public @CHOICE CMacro_Error_Statement errorStatement;
+		public @CHOICE CMacro_If_Statement ifStatement;
+		public @CHOICE CMacro_IfDef_Statement ifdefStatement;
+		public @CHOICE CMacro_Include_Statement includeStatement;
+		public @CHOICE CMacro_Pragma_Statement pragmaStatement;
+		public @CHOICE CMacro_Undef_Statement undefStatement;
 	}
 }

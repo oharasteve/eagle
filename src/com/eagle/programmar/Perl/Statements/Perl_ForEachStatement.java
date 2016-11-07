@@ -16,7 +16,7 @@ import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Perl_ForEachStatement extends TokenChooser
 {
-	public static class Perl_ForEachAsStatement extends TokenSequence
+	public @CHOICE static class Perl_ForEachAsStatement extends TokenSequence
 	{
 		public @DOC("control-structures.foreach.php") Perl_Keyword FOREACH = new Perl_Keyword("foreach");
 		public PunctuationLeftParen leftParen;
@@ -35,7 +35,7 @@ public class Perl_ForEachStatement extends TokenChooser
 		}
 	}
 	
-	public static class Perl_ForEachNoAsStatement extends TokenSequence
+	public @CHOICE static class Perl_ForEachNoAsStatement extends TokenSequence
 	{
 		public @DOC("control-structures.foreach.php") Perl_Keyword FOREACH = new Perl_Keyword("foreach");
 		public @OPT Perl_ForEachVariable var;

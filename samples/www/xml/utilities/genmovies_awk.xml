@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Sun Jan 31 05:09:22 EST 2016" Elapsed="16" Language="AWK" Steps="2351" Tokens="474">
+<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Mon Nov 07 10:58:05 EST 2016" Elapsed="9" Language="AWK" Steps="2399" Tokens="475">
   <T EC="0" EL="23" File="" SC="1" SL="1" TT=".AWK.AWK_Program">
     <T EC="0" EL="23" N="elements" SC="1" SL="1" TT="List">
       <T EC="0" EL="12" N="elements[0]" SC="1" SL="1" TT=".AWK.AWK_Program$AWK_Element">
@@ -266,13 +266,15 @@
             <T EC="68" EL="12" N="condition[0]" SC="1" SL="12" TT=".AWK.AWK_Condition">
               <T EC="68" EL="12" N="condition[0]" SC="1" SL="12" TT=".AWK.AWK_Expression">
                 <T EC="68" EL="12" N="condition[0]" SC="1" SL="12" TT=".AWK.AWK_Expression$AWK_NotExpression">
-                  <T EC="1" EL="12" N="notOperator" SC="1" SL="12" TT=".AWK.Terminals.AWK_Punctuation" V="!"/>
+                  <T EC="1" EL="12" N="operator" SC="1" SL="12" TT=".AWK.Terminals.AWK_Punctuation" V="!"/>
                   <T EC="68" EL="12" N="expr" SC="2" SL="12" TT=".AWK.AWK_Expression">
                     <T EC="68" EL="12" N="expr" SC="2" SL="12" TT=".AWK.AWK_Expression$AWK_AndExpression">
                       <T EC="40" EL="12" N="left" SC="2" SL="12" TT=".AWK.AWK_Expression">
                         <T EC="40" EL="12" N="left" SC="2" SL="12" TT=".AWK.AWK_Expression$AWK_AndExpression">
                           <T EC="13" EL="12" N="left" SC="2" SL="12" TT=".AWK.AWK_Expression">
-                            <T EC="13" EL="12" N="left" SC="2" SL="12" TT=".AWK.Terminals.AWK_Pattern" V="/index.html/"/>
+                            <T EC="13" EL="12" N="left" SC="2" SL="12" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                              <T EC="13" EL="12" N="pattern" SC="2" SL="12" TT=".AWK.Terminals.AWK_Pattern" V="/index.html/"/>
+                            </T>
                           </T>
                           <T EC="16" EL="12" N="andOperator" SC="15" SL="12" TT=".AWK.Terminals.AWK_Punctuation" V="&amp;&amp;"/>
                           <T EC="40" EL="12" N="right" SC="17" SL="12" TT=".AWK.AWK_Expression">

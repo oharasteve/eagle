@@ -19,9 +19,9 @@ public class COBOL_SetStatement extends COBOL_AbstractStatement
 	
 	public static class COBOL_SetHow extends TokenChooser
 	{
-		public COBOL_Keyword TO = new COBOL_Keyword("TO");
+		public @CHOICE COBOL_Keyword TO = new COBOL_Keyword("TO");
 
-		public static class COBOL_SetBy extends TokenSequence
+		public @CHOICE static class COBOL_SetBy extends TokenSequence
 		{
 			public COBOL_Keyword UP = new COBOL_Keyword("UP");
 			public COBOL_Keyword BY = new COBOL_Keyword("BY");

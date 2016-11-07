@@ -29,10 +29,10 @@ public class JSON_Program extends EagleLanguage
 	
 	public static class JSON_Element extends TokenChooser
 	{
-		public JSON_Literal literal;
-		public JSON_Number number;
-		public JSON_Object object;
-		public JSON_Dictionary dictionary;
-		public JSON_KeywordChoice builtIn = new JSON_KeywordChoice("null", "true", "false");
+		public @CHOICE JSON_Literal literal;
+		public @CHOICE JSON_Number number;
+		public @CHOICE JSON_Object object;
+		public @CHOICE JSON_Dictionary dictionary;
+		public @CHOICE JSON_KeywordChoice builtIn = new JSON_KeywordChoice("null", "true", "false");
 	}
 }

@@ -8,6 +8,6 @@ import com.eagle.tokens.TokenChooser;
 
 public class VB_Type extends TokenChooser
 {
-	public VB_KeywordChoice base = new VB_KeywordChoice(
+	public @CHOICE VB_KeywordChoice base = new VB_KeywordChoice(
 			"boolean", "integer", "long", "range", "string", "worksheet");
 }

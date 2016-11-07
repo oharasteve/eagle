@@ -28,7 +28,7 @@ public class Java_Class extends TokenSequence implements EagleRunnable, EagleSco
 {
 	private EagleScope _scope = new EagleScope(true);
 	
-	public @OPT @NEWLINE TokenList<Java_ClassModifier> modifiers;
+	public @OPT @BLANKLINE Java_ClassModifierList modifierList;
 	public @OPT @CURIOUS("Extra at sign") Java_Punctuation atSign = new Java_Punctuation('@');
 	public Java_KeywordChoice classOrInterface = new Java_KeywordChoice("class", "interface");
 	public Java_Class_Definition className;
@@ -42,11 +42,16 @@ public class Java_Class extends TokenSequence implements EagleRunnable, EagleSco
 	public @OPT @NEWLINE TokenList<Java_Comment> comments3;
 	public @CURIOUS("Extra semicolon") @OPT PunctuationSemicolon semicolon;
 	
+	public static class Java_ClassModifierList extends TokenSequence
+	{
+		public TokenList<Java_ClassModifier> modifiers;
+	}
+	
 	public static class Java_ClassModifier extends TokenChooser
 	{
 		public @FIRST @NEWLINE Java_Comment comment;
-		public Java_Annotation annotation;
-		public Java_KeywordChoice modifier = new Java_KeywordChoice(Java_Program.MODIFIERS);
+		public @CHOICE Java_Annotation annotation;
+		public @CHOICE Java_KeywordChoice modifier = new Java_KeywordChoice(Java_Program.MODIFIERS);
 	}
 
 	public static class Java_ClassExtends extends TokenSequence
@@ -83,11 +88,11 @@ public class Java_Class extends TokenSequence implements EagleRunnable, EagleSco
 	public static class Java_ClassElement extends TokenChooser
 	{
 		public @FIRST @NEWLINE Java_Comment comment;
-		public @NEWLINE Java_Method jmethod;
-		public @NEWLINE @FIRST Java_Method.Java_Constructor jconstructor;
-		public @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon;
+		public @CHOICE @NEWLINE Java_Method jmethod;
+		public @FIRST @NEWLINE Java_Method.Java_Constructor jconstructor;
+		public @CHOICE @CURIOUS(value = "Extra semicolon") PunctuationSemicolon semicolon;
 		
-		public static class Java_StaticStatement extends TokenSequence implements EagleRunnable
+		public @CHOICE static class Java_StaticStatement extends TokenSequence implements EagleRunnable
 		{
 			public @OPT Java_Keyword STATIC = new Java_Keyword("static");
 			public Java_Statement statement;
@@ -95,7 +100,7 @@ public class Java_Class extends TokenSequence implements EagleRunnable, EagleSco
 			@Override
 			public void interpret(EagleInterpreter interpreter)
 			{
-				interpreter.tryToInterpret(statement._whichToken);
+				interpreter.tryToInterpret(statement.getWhich());
 			}
 		}
 	}
@@ -105,7 +110,7 @@ public class Java_Class extends TokenSequence implements EagleRunnable, EagleSco
 	{
 		for (Java_ClassElement element : elements._elements)
 		{
-			interpreter.tryToInterpret(element._whichToken);
+			interpreter.tryToInterpret(element.getWhich());
 		}
 	}
 	

@@ -11,6 +11,6 @@ public class Template_Number extends TerminalNumberToken
 	@Override
 	public boolean parse(EagleFileReader lines)
 	{
-		return genericNumber(lines, null, "Ee", null, true);
+		return genericNumber(lines, "Ee", null, true);
 	}
 }

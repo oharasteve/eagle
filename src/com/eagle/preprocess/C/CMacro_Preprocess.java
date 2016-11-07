@@ -29,6 +29,8 @@ import com.eagle.tokens.punctuation.PunctuationComma;
 
 public class CMacro_Preprocess extends EagleInclude
 {
+	private static final boolean DEBUG = false;
+	
 	public FindIncludeFile _findInclude;
 	
 	public CMacro_Preprocess(EagleProject project, FindIncludeFile findInclude, EagleSymbolTable symbolTable, EagleTracer tracer)
@@ -45,9 +47,12 @@ public class CMacro_Preprocess extends EagleInclude
 	@Override
 	public EagleFileReader preprocessFile(EagleFileReader lines)
 	{
-		System.out.println("===================================================");
-		System.out.println("================ Pre-processing " + lines.getFileName() + " lines=" + lines.size());
-		System.out.println();
+		if (DEBUG)
+		{
+			System.out.println("===================================================");
+			System.out.println("================ Pre-processing " + lines.getFileName() + " lines=" + lines.size());
+			System.out.println();
+		}
 
 		if (_depth > 0)
 		{
@@ -95,7 +100,7 @@ public class CMacro_Preprocess extends EagleInclude
 			}
 			catch (Exception ex)
 			{
-				StringBuffer msg = new StringBuffer("Failed preprocessing ").append(element._whichToken).append('\n');
+				StringBuffer msg = new StringBuffer("Failed preprocessing ").append(element.getWhich()).append('\n');
 				msg.append("File ").append(lines.getFileName());
 				msg.append(", line ").append(Integer.toString(element._currentLine+1)).append('\n');
 				msg.append(lines.get(element._currentLine).toString()).append('\n');
@@ -163,11 +168,11 @@ public class CMacro_Preprocess extends EagleInclude
 	public boolean preprocessCMacroElement(CMacro_Element element)
 	{
 		// Ignore all the rest of the stuff
-		AbstractToken whichStatement = element._whichToken;
+		AbstractToken whichStatement = element.getWhich();
 		if (whichStatement instanceof CMacro_StatementOrComment)
 		{
 			CMacro_StatementOrComment statementContainer = (CMacro_StatementOrComment) whichStatement;
-			if (letMacroHandleIt(statementContainer.stmt._whichToken))
+			if (letMacroHandleIt(statementContainer.stmt.getWhich()))
 			{
 				return true;
 			}
@@ -181,11 +186,11 @@ public class CMacro_Preprocess extends EagleInclude
 	// Returns true iff something was changed in the file (not including the symbol table)
 	public boolean preprocessCStatement(C_StatementOrComment element)
 	{
-		AbstractToken whichStatement = element._whichToken;
+		AbstractToken whichStatement = element.getWhich();
 		if (whichStatement instanceof C_Statement)
 		{
 			C_Statement cStatement = (C_Statement) whichStatement;
-			if (letMacroHandleIt(cStatement._whichToken))
+			if (letMacroHandleIt(cStatement.getWhich()))
 			{
 				return true;
 			}

@@ -56,10 +56,11 @@ public class COBOL_Level extends TerminalLevelToken
 		{
 			// Context-sensitive check. Level must be = to a sister level
 			COBOL_CopyOrDataDeclaration otherDeclParent = (COBOL_CopyOrDataDeclaration) sibling;
-			if (otherDeclParent._whichToken instanceof COBOL_DataDeclaration)
+			AbstractToken which = otherDeclParent.getWhich();
+			if (which instanceof COBOL_DataDeclaration)
 			{
 				if (DEBUG) System.out.println((_currentLine+1) + " found a sibling");
-				COBOL_DataDeclaration otherDecl = (COBOL_DataDeclaration) otherDeclParent._whichToken;
+				COBOL_DataDeclaration otherDecl = (COBOL_DataDeclaration) which;
 				if (DEBUG) System.out.println((_currentLine+1) + " same: if " + _level + " != " + otherDecl.level._level + " -> fail");
 				if (_level != otherDecl.level._level) return false;
 				break;	// Only need to check one -- all siblings have the same level
@@ -81,9 +82,10 @@ public class COBOL_Level extends TerminalLevelToken
 				
 				// Context-sensitive check. Level cannot be <= a parent level
 				COBOL_CopyOrDataDeclaration otherCopyDecl = (COBOL_CopyOrDataDeclaration) parent;
-				if (otherCopyDecl._whichToken instanceof COBOL_DataDeclaration)
+				AbstractToken which = otherCopyDecl.getWhich();
+				if (which instanceof COBOL_DataDeclaration)
 				{
-					COBOL_DataDeclaration otherDecl = (COBOL_DataDeclaration) otherCopyDecl._whichToken;
+					COBOL_DataDeclaration otherDecl = (COBOL_DataDeclaration) which;
 					if (otherDecl.level._level != 77 && otherDecl.level._level != 78)	// 77 can be followed by an 01
 					{
 						if (otherDecl.level._level == 88) return true;	// Always match an 88
@@ -91,7 +93,7 @@ public class COBOL_Level extends TerminalLevelToken
 						if (_level <= otherDecl.level._level) return false;
 					}
 				}
-				else throw new RuntimeException("Expected COBOL_DataDeclaration, not " + otherCopyDecl._whichToken);
+				else throw new RuntimeException("Expected COBOL_DataDeclaration, not " + which);
 				break;
 			}
 			parent = parent.getParent();

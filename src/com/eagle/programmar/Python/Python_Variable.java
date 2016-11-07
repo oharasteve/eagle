@@ -22,15 +22,16 @@ public class Python_Variable extends TokenSequence
 {
 	public Python_SelfOrVariable var;
 	public @OPT TokenList<Python_Subscript> subscript1;
-	public @OPT TokenList<Python_DotVariable> moreFields;
+	public @OPT TokenList<Python_DotVariable> moreFields1;
 	public @OPT TokenList<Python_Subscript> subscript2;
+	public @OPT TokenList<Python_DotVariable> moreFields2;
 	
 	public static class Python_SelfOrVariable extends TokenChooser
 	{
-		public Python_Keyword SELF = new Python_Keyword("self");
-		public Python_Identifier_Reference id;
-		public Python_DotVariable dotVariable;
-		public Python_PunctuationChoice dotDot = new Python_PunctuationChoice("..", ".", "_", "__", "_$");
+		public @CHOICE Python_Keyword SELF = new Python_Keyword("self");
+		public @CHOICE Python_Identifier_Reference id;
+		public @CHOICE Python_DotVariable dotVariable;
+		public @CHOICE Python_PunctuationChoice dotDot = new Python_PunctuationChoice("..", ".", "_1", "_2", "__", "_$", "_");
 	}
 	
 	public static class Python_DotVariable extends TokenSequence
@@ -55,10 +56,10 @@ public class Python_Variable extends TokenSequence
 		public static class Python_Subscript_Dimension extends TokenSequence
 		{
 			public @OPT Python_Expression subscr;
-			public @OPT Python_ColonSubscript colonStop;
-			public @OPT Python_ColonSubscript colonIncrement;
+			public @OPT Python_ColonSubscr colonStop;
+			public @OPT Python_ColonSubscr colonIncrement;
 
-			public static class Python_ColonSubscript extends TokenSequence
+			public static class Python_ColonSubscr extends TokenSequence
 			{
 				public PunctuationColon colon;
 				public @OPT Python_EndOfLine eoln;

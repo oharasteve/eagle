@@ -45,8 +45,8 @@ public class Python_Statement extends TokenSequence
 	
 	public static class Python_StatementOrComment extends TokenChooser
 	{
-		public Python_Statement_List statements;
-		public Python_EndOfLine eoln;
+		public @CHOICE Python_Statement_List statements;
+		public @CHOICE Python_EndOfLine eoln;
 		
 		public @FIRST static class Python_CommentList extends TokenSequence
 		{
@@ -62,47 +62,47 @@ public class Python_Statement extends TokenSequence
 	
 	public static class Python_Statement_Separator extends TokenChooser
 	{
-		public PunctuationSemicolon semicolon;
-		public @CURIOUS("Comma instead of a semicolon") PunctuationComma comma;
+		public @CHOICE PunctuationSemicolon semicolon;
+		public @CHOICE @CURIOUS(value = "Comma instead of a semicolon") PunctuationComma comma;
 	}
 	
 	public static class Python_Simple_Statement extends TokenChooser
 	{
-		public Python_Assignment assignment;
-		public Python_AssertStatement assertStatement;
-		public Python_BreakStatement breakStatement;
-		public Python_ClassDeclaration classDeclaration;
-		public Python_ContinueStatement continueStatement;
-		public Python_DeleteStatement delStatement;
-		public Python_ExecStatement execStatement;
-		public Python_ForStatement forStatement;
-		public Python_FromStatement fromStatement;
-		public Python_FunctionDefinition functionDefinition;
-		public Python_GlobalStatement globalStatement;
-		public Python_IfStatement ifStatement;
-		public Python_ImportStatement importStatement;
-		public Python_PassStatement passStatement;
-		public Python_RaiseStatement raiseStatement;
-		public Python_PrintStatement printStatement;
-		public Python_ReturnStatement returnStatement;
-		public Python_TryStatement tryStatement;
-		public Python_WhileStatement whileStatement;
-		public Python_WithStatement withStatement;
-		public Python_YieldStatement yieldStatement;
+		public @CHOICE Python_Assignment assignment;
+		public @CHOICE Python_AssertStatement assertStatement;
+		public @CHOICE Python_BreakStatement breakStatement;
+		public @CHOICE Python_ClassDeclaration classDeclaration;
+		public @CHOICE Python_ContinueStatement continueStatement;
+		public @CHOICE Python_DeleteStatement delStatement;
+		public @CHOICE Python_ExecStatement execStatement;
+		public @CHOICE Python_ForStatement forStatement;
+		public @CHOICE Python_FromStatement fromStatement;
+		public @CHOICE Python_FunctionDefinition functionDefinition;
+		public @CHOICE Python_GlobalStatement globalStatement;
+		public @CHOICE Python_IfStatement ifStatement;
+		public @CHOICE Python_ImportStatement importStatement;
+		public @CHOICE Python_PassStatement passStatement;
+		public @CHOICE Python_RaiseStatement raiseStatement;
+		public @CHOICE Python_PrintStatement printStatement;
+		public @CHOICE Python_ReturnStatement returnStatement;
+		public @CHOICE Python_TryStatement tryStatement;
+		public @CHOICE Python_WhileStatement whileStatement;
+		public @CHOICE Python_WithStatement withStatement;
+		public @CHOICE Python_YieldStatement yieldStatement;
 		
 		public @LAST Python_ExpressionStatement expression;		// Avoid conflict with 'for' statement
 	}
 	
 	public static class Python_SingleOrMultiLineStatement extends TokenChooser
 	{
-		public static class Python_SingleLineStatement extends TokenSequence
+		public @CHOICE static class Python_SingleLineStatement extends TokenSequence
 		{
 			public SeparatedList<Python_Simple_Statement,PunctuationSemicolon> statements;
 			public @OPT Python_Comment comment;
 			public @OPT Python_EndOfLine eoln;
 		}
 
-		public static class Python_MultlineStatement extends TokenSequence
+		public @CHOICE static class Python_MultlineStatement extends TokenSequence
 		{
 			public @OPT Python_Comment comment;
 			public Python_EndOfLine eoln;

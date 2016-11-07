@@ -29,7 +29,7 @@ public abstract class EagleTests extends TestCase
 			}
 			catch (Exception ex)
 			{
-				throw new RuntimeException("Unable to create a testable statement of type " + cls.getName());
+				throw new RuntimeException("Unable to create a testable statement of type " + cls.getName(), ex);
 			}
 		}
 	}

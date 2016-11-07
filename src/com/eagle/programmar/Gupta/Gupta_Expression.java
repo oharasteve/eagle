@@ -10,66 +10,51 @@ import com.eagle.programmar.Gupta.Terminals.Gupta_Punctuation;
 import com.eagle.programmar.Gupta.Terminals.Gupta_PunctuationChoice;
 import com.eagle.tokens.PrecedenceChooser;
 import com.eagle.tokens.PrecedenceChooser.PrecedenceOperator.AllowedPrecedence;
-import com.eagle.tokens.TokenList;
-import com.eagle.tokens.TokenSequence;
-import com.eagle.tokens.punctuation.PunctuationComma;
 import com.eagle.tokens.punctuation.PunctuationLeftParen;
 import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Gupta_Expression extends PrecedenceChooser
 {
+	private static OperatorList _operators = new OperatorList();
+
+	public @P(10) Gupta_Number number;
+	public @P(20) Gupta_Literal literal;
+
+	//
+	// Note: All operators should stay in @P(#) order. This determines operator precedence.
+	//
+
 	public Gupta_Expression()
 	{
+	    super(_operators);
 	}
-	
-	public Gupta_Expression(PrecedenceOperator token, AllowedPrecedence allowed)
-	{ 
-		super(allowed, token.getClass());
-	}
-	
-	@Override
-	protected void establishChoices() 
-	{
-		// Order doesn't matter
-		super.addTerm(Gupta_Parens.class);
-		super.addTerm(Gupta_Number.class);
-		super.addTerm(Gupta_Literal.class);
-		super.addTerm(Gupta_Function_Call.class);
-		super.addTerm(Gupta_Identifier_Reference.class);
-		super.addTerm(Gupta_UnarySign.class);
 
-		// Highest precedence first
-		super.addOperator(Gupta_Multiplicative_Expression.class);
-		super.addOperator(Gupta_Additive_Expression.class);
-		super.addOperator(Gupta_StrCat_Expression.class);
-	}		
+	public Gupta_Expression(PrecedenceOperator token, AllowedPrecedence allowed)
+	{
+	    super(_operators, allowed, token.getClass());
+	}
 
 	///////////////////////////////////////////////////////////////////////////
 	// Primary Expressions
 	
-	public static class Gupta_Parens extends ExpressionTerm
+	public static @P(100) class Gupta_Parens extends PrimaryOperator
 	{
 		public PunctuationLeftParen leftParen;
 		public Gupta_Expression expr;
 		public PunctuationRightParen rightParen;		
 	}
 	
-	public static class Gupta_Function_Call extends ExpressionTerm
+	public static @P(110) class Gupta_FunctionCall extends PrimaryOperator
 	{
-		public Gupta_Identifier_Reference fnName;
-		public PunctuationLeftParen leftParen;
-		public @OPT Gupta_Expression expr;
-		public @OPT TokenList<Gupta_More_Arguments> moreArgs;
-		public PunctuationRightParen rightParen;
-		
-		public static class Gupta_More_Arguments extends TokenSequence
-		{
-			public @OPT PunctuationComma comma;
-			public Gupta_Expression expr;
-		}
+		public Gupta_Function_Call fnCall;
 	}
 	
-	public static class Gupta_UnarySign extends ExpressionTerm
+	public static @P(120) class Gupta_IdentifierExpression extends PrimaryOperator
+	{
+		public Gupta_Identifier_Reference identifier;
+	}
+	
+	public static @P(130) class Gupta_UnarySign extends PrimaryOperator
 	{
 		public Gupta_PunctuationChoice sign = new Gupta_PunctuationChoice("-", "+");
 		public Gupta_Expression exp;
@@ -78,21 +63,21 @@ public class Gupta_Expression extends PrecedenceChooser
 	///////////////////////////////////////////////////////////////////////////
 	// Binary Expressions
 	
-	public static class Gupta_Multiplicative_Expression extends PrecedenceOperator 
+	public static @P(140) class Gupta_Multiplicative_Expression extends PrecedenceOperator 
 	{
 		public Gupta_Expression left = new Gupta_Expression(this, AllowedPrecedence.ATLEAST);
 		public Gupta_PunctuationChoice timesDivide = new Gupta_PunctuationChoice("*", "/");
 		public Gupta_Expression right = new Gupta_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class Gupta_Additive_Expression extends PrecedenceOperator 
+	public static @P(150) class Gupta_Additive_Expression extends PrecedenceOperator 
 	{
 		public Gupta_Expression left = new Gupta_Expression(this, AllowedPrecedence.ATLEAST);
 		public Gupta_PunctuationChoice timesDivide = new Gupta_PunctuationChoice("+", "-");
 		public Gupta_Expression right = new Gupta_Expression(this, AllowedPrecedence.HIGHER);
 	}
 	
-	public static class Gupta_StrCat_Expression extends PrecedenceOperator 
+	public static @P(160) class Gupta_StrCat_Expression extends PrecedenceOperator 
 	{
 		public Gupta_Expression left = new Gupta_Expression(this, AllowedPrecedence.ATLEAST);
 		public Gupta_Punctuation strCat = new Gupta_Punctuation("||");

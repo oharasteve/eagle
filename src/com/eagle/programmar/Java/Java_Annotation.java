@@ -16,7 +16,7 @@ import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Java_Annotation extends TokenChooser
 {
-	public static class Java_AnnotationCall extends TokenSequence
+	public @CHOICE static class Java_AnnotationCall extends TokenSequence
 	{
 		public Java_Punctuation atSign = new Java_Punctuation('@');
 		public @NOSPACE Java_Variable var;
@@ -25,7 +25,7 @@ public class Java_Annotation extends TokenChooser
 		public @NOSPACE PunctuationRightParen rightParen;
 	}
 	
-	public static class Java_AnnotationCall2 extends TokenSequence
+	public @CHOICE static class Java_AnnotationCall2 extends TokenSequence
 	{
 		public Java_Punctuation atSign = new Java_Punctuation('@');
 		public @NOSPACE Java_Identifier id;

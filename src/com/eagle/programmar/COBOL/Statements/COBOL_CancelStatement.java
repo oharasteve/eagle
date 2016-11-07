@@ -16,7 +16,7 @@ public class COBOL_CancelStatement extends COBOL_AbstractStatement
 	
 	public static class COBOL_CancelWhat extends TokenChooser
 	{
-		public COBOL_Literal literal;
-		public COBOL_Identifier_Reference var;
+		public @CHOICE COBOL_Literal literal;
+		public @CHOICE COBOL_Identifier_Reference var;
 	}
 }

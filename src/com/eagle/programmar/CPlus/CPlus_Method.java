@@ -23,14 +23,14 @@ public class CPlus_Method extends TokenSequence
 
 	public static class CPlus_MethodTypeAndName extends TokenChooser
 	{
-		public static class CPlus_MethodWithType extends TokenSequence
+		public @CHOICE static class CPlus_MethodWithType extends TokenSequence
 		{
 			public C_Type type;
 			public TokenList<CPlus_NamespaceQualifier> nameSpaces;
 			public C_Identifier_Reference methodName;
 		}
 		
-		public static class CPlus_MethodConstructor extends TokenSequence
+		public @CHOICE static class CPlus_MethodConstructor extends TokenSequence
 		{
 			public TokenList<CPlus_NamespaceQualifier> nameSpaces;
 			public @OPT C_Punctuation tilde = new C_Punctuation('~');

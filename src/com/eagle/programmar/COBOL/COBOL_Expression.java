@@ -24,50 +24,30 @@ import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class COBOL_Expression extends PrecedenceChooser
 {
+	private static OperatorList _operators = new OperatorList();
+
+	public @P(10) COBOL_Literal literal;
+	public @P(20) COBOL_Number number;
+	public @P(30) COBOL_HexNumber hex;
+
+	//
+	// Note: All operators should stay in @P(#) order. This determines operator precedence.
+	//
+
 	public COBOL_Expression()
 	{
+	    super(_operators);
 	}
-	
+
 	public COBOL_Expression(PrecedenceOperator token, AllowedPrecedence allowed)
-	{ 
-		super(allowed, token.getClass());
+	{
+	    super(_operators, allowed, token.getClass());
 	}
 
-	@Override
-	protected void establishChoices() 
-	{
-		// Order matters a little bit ...
-		super.addTerm(COBOL_Literal.class);	
-		super.addTerm(COBOL_Number.class);
-		super.addTerm(COBOL_HexNumber.class);
-		super.addTerm(COBOL_BuiltIn.class);
-		super.addTerm(COBOL_ParenthesizedExpression.class);
-		super.addTerm(COBOL_ExpressionFunction.class);
-		super.addTerm(COBOL_ClassCondition.class);
-		super.addTerm(COBOL_NotCondition.class);
-		super.addTerm(COBOL_Variable.class);
-
-		// Order is critical ...
-		super.addOperator(COBOL_ThroughExpression.class);
-		super.addOperator(COBOL_ConcatenateExpression.class);
-		super.addOperator(COBOL_MultiplicativeExpression.class);
-		super.addOperator(COBOL_AdditiveExpression.class);
-		super.addOperator(COBOL_RelationCondition.class);
-		super.addOperator(COBOL_AndCondition.class);
-		super.addOperator(COBOL_OrCondition.class);
-	}		
-	
 	///////////////////////////////////////////////
 	// Primary expressions
 	
-	public static class COBOL_ParenthesizedExpression extends ExpressionTerm
-	{
-		public PunctuationLeftParen leftParen;
-		public COBOL_Expression expression;
-		public PunctuationRightParen rightParen;
-	}
-
-	public static class COBOL_BuiltIn extends ExpressionTerm implements EagleTestable, EagleRunnable
+	public static @P(100) class COBOL_BuiltIn extends PrimaryOperator implements EagleTestable, EagleRunnable
 	{
 		public COBOL_KeywordChoice logicalConstant = new COBOL_KeywordChoice("FALSE", "TRUE", "ANY",
 				"ZERO", "ZEROS", "LOW-VALUES", "HIGH-VALUES", "SPACE", "SPACES");
@@ -97,7 +77,14 @@ public class COBOL_Expression extends PrecedenceChooser
 		}
 	}
 	
-	public static class COBOL_ExpressionFunction extends ExpressionTerm
+	public static @P(110) class COBOL_ParenthesizedExpression extends PrimaryOperator
+	{
+		public PunctuationLeftParen leftParen;
+		public COBOL_Expression expression;
+		public PunctuationRightParen rightParen;
+	}
+
+	public static @P(120) class COBOL_ExpressionFunction extends PrimaryOperator
 	{
 		public COBOL_Keyword FUNCTION = new COBOL_Keyword("FUNCTION");
 		public COBOL_Identifier_Reference func;
@@ -105,14 +92,8 @@ public class COBOL_Expression extends PrecedenceChooser
 		public COBOL_Expression parameter;
 		public PunctuationRightParen rightParen;
 	}
-	
-	public static class COBOL_NotCondition extends ExpressionTerm
-	{
-		public COBOL_Keyword NOT = new COBOL_Keyword("NOT");
-		public COBOL_Expression cond;
-	}
 
-	public static class COBOL_ClassCondition extends ExpressionTerm
+	public static @P(130) class COBOL_ClassCondition extends PrimaryOperator
 	{
 		public COBOL_Variable var;
 		public @OPT COBOL_Keyword IS = new COBOL_Keyword("IS");
@@ -121,11 +102,50 @@ public class COBOL_Expression extends PrecedenceChooser
 				"POSITIVE", "NEGATIVE", "ZERO", "NUMERIC", 
 				"ALPHABETIC", "ALPHABETIC-LOWER", "ALPHABETIC-UPPER");
 	}
+	
+	public static @P(140) class COBOL_NotCondition extends PrimaryOperator
+	{
+		public COBOL_Keyword NOT = new COBOL_Keyword("NOT");
+		public COBOL_Expression cond;
+	}
+	
+	public static @P(150) class COBOL_VariableExpression extends PrimaryOperator
+	{
+		public COBOL_Variable variable;
+	}
 
 	///////////////////////////////////////////////
 	// Binary expressions
 	
-	public static class COBOL_RelationCondition extends PrecedenceOperator
+	public static @P(160) class COBOL_ThroughExpression extends PrecedenceOperator
+	{
+		public COBOL_Expression left = new COBOL_Expression(this, AllowedPrecedence.ATLEAST);
+		public COBOL_Keyword THRU = new COBOL_Keyword("THRU");
+		public COBOL_Expression right = new COBOL_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(170) class COBOL_ConcatenateExpression extends PrecedenceOperator
+	{
+		public COBOL_Expression left = new COBOL_Expression(this, AllowedPrecedence.ATLEAST);
+		public COBOL_Punctuation ampersand = new COBOL_Punctuation('&');
+		public COBOL_Expression right = new COBOL_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static @P(180) class COBOL_MultiplicativeExpression extends PrecedenceOperator
+	{
+		public COBOL_Expression left = new COBOL_Expression(this, AllowedPrecedence.ATLEAST);
+		public COBOL_PunctuationChoice timesDivide = new COBOL_PunctuationChoice("*", "/");
+		public COBOL_Expression right = new COBOL_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static @P(190) class COBOL_AdditiveExpression extends PrecedenceOperator
+	{
+		public COBOL_Expression left = new COBOL_Expression(this, AllowedPrecedence.ATLEAST);
+		public COBOL_PunctuationChoice plusMinus = new COBOL_PunctuationChoice("+", "-");
+		public COBOL_Expression right = new COBOL_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(200) class COBOL_RelationCondition extends PrecedenceOperator
 	{
 		public COBOL_Expression left = new COBOL_Expression(this, AllowedPrecedence.ATLEAST);
 		public @OPT COBOL_Keyword IS = new COBOL_Keyword("IS");
@@ -135,29 +155,29 @@ public class COBOL_Expression extends PrecedenceChooser
 
 		public static class COBOL_RelationalOperator extends TokenChooser
 		{
-			public COBOL_PunctuationChoice operator = new COBOL_PunctuationChoice("<=", "<", "=", ">=", ">");
+			public @CHOICE COBOL_PunctuationChoice operator = new COBOL_PunctuationChoice("<=", "<", "=", ">=", ">");
 			
-			public static class COBOL_Greater extends TokenSequence
+			public @CHOICE static class COBOL_Greater extends TokenSequence
 			{
 				public COBOL_Keyword GREATER = new COBOL_Keyword("GREATER");
 				public @OPT COBOL_Keyword THAN = new COBOL_Keyword("THAN");
 				public @OPT COBOL_OrEqual orEqual;
 			}
 			
-			public static class COBOL_Equal extends TokenSequence
+			public @CHOICE static class COBOL_Equal extends TokenSequence
 			{
 				public COBOL_Keyword EQUAL = new COBOL_Keyword("EQUAL");
 				public @OPT COBOL_Keyword TO = new COBOL_Keyword("TO");
 			}
 			
-			public static class COBOL_Less extends TokenSequence
+			public @CHOICE static class COBOL_Less extends TokenSequence
 			{
 				public COBOL_Keyword LESS = new COBOL_Keyword("LESS");
 				public @OPT COBOL_Keyword THAN = new COBOL_Keyword("THAN");
 				public @OPT COBOL_OrEqual orEqual;
 			}
 
-			public static class COBOL_OrEqual extends TokenSequence
+			public @CHOICE static class COBOL_OrEqual extends TokenSequence
 			{
 				public COBOL_Keyword OR = new COBOL_Keyword("OR");
 				public COBOL_Keyword EQUAL = new COBOL_Keyword("EQUAL");
@@ -166,23 +186,7 @@ public class COBOL_Expression extends PrecedenceChooser
 		}
 	}
 
-	public static class COBOL_OrCondition extends PrecedenceOperator implements EagleRunnable
-	{
-		public COBOL_Expression left = new COBOL_Expression(this, AllowedPrecedence.ATLEAST);
-		public COBOL_Keyword OR = new COBOL_Keyword("OR");
-		public @OPT COBOL_RelationalOperator relationalOperator;
-		public COBOL_Expression right = new COBOL_Expression(this, AllowedPrecedence.HIGHER);
-
-		@Override
-		public void interpret(EagleInterpreter interpreter)
-		{
-			boolean leftValue = interpreter.getBoolValue(left);
-			boolean rightValue = interpreter.getBoolValue(right);
-			interpreter.pushBool(leftValue || rightValue);
-		}
-	}
-
-	public static class COBOL_AndCondition extends PrecedenceOperator implements EagleRunnable
+	public static @P(210) class COBOL_AndCondition extends PrecedenceOperator implements EagleRunnable
 	{
 		public COBOL_Expression left = new COBOL_Expression(this, AllowedPrecedence.ATLEAST);
 		public COBOL_Keyword AND = new COBOL_Keyword("AND");
@@ -198,31 +202,19 @@ public class COBOL_Expression extends PrecedenceChooser
 		}
 	}
 
-	public static class COBOL_AdditiveExpression extends PrecedenceOperator
+	public static @P(220) class COBOL_OrCondition extends PrecedenceOperator implements EagleRunnable
 	{
 		public COBOL_Expression left = new COBOL_Expression(this, AllowedPrecedence.ATLEAST);
-		public COBOL_PunctuationChoice plusMinus = new COBOL_PunctuationChoice("+", "-");
+		public COBOL_Keyword OR = new COBOL_Keyword("OR");
+		public @OPT COBOL_RelationalOperator relationalOperator;
 		public COBOL_Expression right = new COBOL_Expression(this, AllowedPrecedence.HIGHER);
-	}
 
-	public static class COBOL_MultiplicativeExpression extends PrecedenceOperator
-	{
-		public COBOL_Expression left = new COBOL_Expression(this, AllowedPrecedence.ATLEAST);
-		public COBOL_PunctuationChoice timesDivide = new COBOL_PunctuationChoice("*", "/");
-		public COBOL_Expression right = new COBOL_Expression(this, AllowedPrecedence.HIGHER);
-	}
-	
-	public static class COBOL_ConcatenateExpression extends PrecedenceOperator
-	{
-		public COBOL_Expression left = new COBOL_Expression(this, AllowedPrecedence.ATLEAST);
-		public COBOL_Punctuation ampersand = new COBOL_Punctuation('&');
-		public COBOL_Expression right = new COBOL_Expression(this, AllowedPrecedence.HIGHER);
-	}
-	
-	public static class COBOL_ThroughExpression extends PrecedenceOperator
-	{
-		public COBOL_Expression left = new COBOL_Expression(this, AllowedPrecedence.ATLEAST);
-		public COBOL_Keyword THRU = new COBOL_Keyword("THRU");
-		public COBOL_Expression right = new COBOL_Expression(this, AllowedPrecedence.HIGHER);
+		@Override
+		public void interpret(EagleInterpreter interpreter)
+		{
+			boolean leftValue = interpreter.getBoolValue(left);
+			boolean rightValue = interpreter.getBoolValue(right);
+			interpreter.pushBool(leftValue || rightValue);
+		}
 	}
 }

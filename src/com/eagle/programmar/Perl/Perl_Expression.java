@@ -35,111 +35,31 @@ import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class Perl_Expression extends PrecedenceChooser
 {
+	private static OperatorList _operators = new OperatorList();
+
+	public @P(10) Perl_OctalNumber octal;
+	public @P(20) Perl_HexNumber hex;
+	public @P(30) Perl_Number number;
+	public @P(40) Perl_Literal literal;
+
+	//
+	// Note: All operators should stay in @P(#) order. This determines operator precedence.
+	//
+
 	public Perl_Expression()
 	{
-	}
-	
-	public Perl_Expression(PrecedenceOperator token, AllowedPrecedence allowed)
-	{ 
-		super(allowed, token.getClass());
-	}
-		
-	@Override
-	protected void establishChoices() 
-	{
-		// Order matters a little bit ...
-		super.addTerm(Perl_OctalNumber.class);
-		super.addTerm(Perl_HexNumber.class);
-		super.addTerm(Perl_Number.class);			
-		super.addTerm(Perl_Literal.class);
-		super.addTerm(Perl_ClassCastExpression.class);
-		super.addTerm(Perl_ExpressionList.class);
-		super.addTerm(Perl_ClassCreationExpression.class);
-		super.addTerm(Perl_CloneExpression.class);
-		super.addTerm(Perl_MethodInvocation.class);
-		super.addTerm(Perl_DollarEnvExpression.class);
-		super.addTerm(Perl_PreIncrementExpression.class);
-		super.addTerm(Perl_PreDecrementExpression.class);
-		super.addTerm(Perl_PostIncrementExpression.class);
-		super.addTerm(Perl_PostDecrementExpression.class);
-		super.addTerm(Perl_ExistsExpression.class);
-		super.addTerm(Perl_NegativeExpression.class);
-		super.addTerm(Perl_LogicalNotExpression.class);
-		super.addTerm(Perl_NotExpression.class);
-		super.addTerm(Perl_StarExpression.class);
-		super.addTerm(Perl_GrepExpression.class);
-		super.addTerm(Perl_BuiltIn.class);
-		super.addTerm(Perl_FunctionCall.class);
-		super.addTerm(Perl_Variable.class);
-		super.addTerm(Perl_ParenthesizedExpression.class);
-		super.addTerm(Perl_BracketedExpression.class);
-		super.addTerm(Perl_EachExpression.class);
-		super.addTerm(Perl_ExistsExpression.class);
-		super.addTerm(Perl_DieExpression.class);
-		super.addTerm(Perl_AddressOfExpression.class);
-		super.addTerm(Perl_FunctionExpression.class);
-		super.addTerm(Perl_RegularExpression.class);
-		super.addTerm(Perl_FileIO.class);
-		
-		// Order is critical ...
-		super.addOperator(Perl_SubscriptExpression.class);
-		super.addOperator(Perl_DotExpression.class);
-		super.addOperator(Perl_ArrowExpression.class);
-		super.addOperator(Perl_MapExpression.class);
-		super.addOperator(Perl_MultiplicativeExpression.class);
-		super.addOperator(Perl_AdditiveExpression.class);
-		super.addOperator(Perl_ShiftExpression.class);
-		super.addOperator(Perl_RelationalExpression.class);
-		super.addOperator(Perl_RegExTest.class);
-		super.addOperator(Perl_InstanceOfExpression.class);
-		super.addOperator(Perl_EqualityExpression.class);
-		super.addOperator(Perl_AndExpression.class);
-		super.addOperator(Perl_ExclusiveOrExpression.class);
-		super.addOperator(Perl_InclusiveOrExpression.class);
-		super.addOperator(Perl_ConditionalAndExpression.class);
-		super.addOperator(Perl_ConditionalOrExpression.class);
-		super.addOperator(Perl_TrueFalseExpression.class);
-		super.addOperator(Perl_AssignmentExpression.class);
+	    super(_operators);
 	}
 
+	public Perl_Expression(PrecedenceOperator token, AllowedPrecedence allowed)
+	{
+	    super(_operators, allowed, token.getClass());
+	}
+		
 	///////////////////////////////////////////////
 	// Primary expressions
 	
-	public static class Perl_BuiltIn extends TokenChooser
-	{
-		public Perl_KeywordChoice builtIn = new Perl_KeywordChoice(
-				"FALSE", "False", "false",
-				"TRUE", "True", "true",
-				"NULL", "null",
-				"T_CLASS",
-				"T_FUNCTION",
-                "T_INCLUDE",
-                "T_INCLUDE_ONCE",
-                "T_REQUIRE",
-                "T_REQUIRE_ONCE",
-                "T_USE",
-                "namespace",
-                "shift");
-	}
-	
-	public static class Perl_ParenthesizedExpression extends ExpressionTerm
-	{
-		public PunctuationLeftParen leftParen;
-		public Perl_ArgumentList valueList;
-		public PunctuationRightParen rightParen;
-	}
-	
-	public static class Perl_BracketedExpression extends ExpressionTerm
-	{
-		public PunctuationLeftBracket leftBracket;
-		public @OPT TokenList<Perl_Comment> comment1;
-		public @OPT Perl_ArgumentList valueList;
-		public @OPT PunctuationComma comma;
-		public @OPT TokenList<Perl_Comment> comment2;
-		public PunctuationRightBracket rightBracket;
-	}
-
-	public static class Perl_ClassCastExpression extends ExpressionTerm
+	public static @P(100) class Perl_ClassCastExpression extends PrimaryOperator
 	{
 		public PunctuationLeftParen leftParen;
 		public Perl_Variable ptype;
@@ -147,29 +67,12 @@ public class Perl_Expression extends PrecedenceChooser
 		public Perl_Expression expr;
 	}
 
-	public static class Perl_ExpressionList extends ExpressionTerm
+	public static @P(110) class Perl_Expression_List extends PrimaryOperator
 	{
-		public PunctuationLeftBrace leftBrace;
-		public @OPT TokenList<Perl_Comment> comment;
-		public Perl_ArgumentList valueList;
-		public PunctuationRightBrace rightBrace;
+		public Perl_ExpressionList expressionList;
 	}
 	
-	public static class Perl_CloneExpression extends ExpressionTerm
-	{
-		public Perl_Keyword CLONE = new Perl_Keyword("clone");
-		public Perl_Expression expr;
-	}
-	
-	public static class Perl_GrepExpression extends ExpressionTerm
-	{
-		public Perl_Keyword GREP = new Perl_Keyword("grep");
-		public Perl_RegularExpression regex;
-		public PunctuationComma comma;
-		public Perl_Expression expr;
-	}
-	
-	public static class Perl_ClassCreationExpression extends ExpressionTerm
+	public static @P(120) class Perl_ClassCreationExpression extends PrimaryOperator
 	{
 		public Perl_Keyword NEW = new Perl_Keyword("new");
 		public @OPT Perl_Punctuation dollar = new Perl_Punctuation('$');
@@ -186,7 +89,13 @@ public class Perl_Expression extends PrecedenceChooser
 		}
 	}
 	
-	public static class Perl_MethodInvocation extends ExpressionTerm
+	public static @P(130) class Perl_CloneExpression extends PrimaryOperator
+	{
+		public Perl_Keyword CLONE = new Perl_Keyword("clone");
+		public Perl_Expression expr;
+	}
+	
+	public static @P(140) class Perl_MethodInvocation extends PrimaryOperator
 	{
 		public Perl_Variable methodName;
 		public PunctuationLeftParen leftParen;
@@ -194,7 +103,7 @@ public class Perl_Expression extends PrecedenceChooser
 		public PunctuationRightParen rightParen;
 	}
 	
-	public static class Perl_DollarEnvExpression extends ExpressionTerm
+	public static @P(150) class Perl_DollarEnvExpression extends PrimaryOperator
 	{
 		public Perl_Punctuation dollar = new Perl_Punctuation('$');
 		public Perl_Keyword ENV = new Perl_Keyword("ENV");
@@ -203,91 +112,151 @@ public class Perl_Expression extends PrecedenceChooser
 		public PunctuationRightBrace rightBrace;
 	}
 	
-	public static class Perl_ArgumentList extends ExpressionTerm
-	{
-		public Perl_Expression arg;
-		public @OPT TokenList<Perl_Comment> comments1;
-		public @OPT TokenList<Perl_MoreArguments> moreArgs;
-		public @OPT PunctuationComma comma;
-		public @OPT TokenList<Perl_Comment> comments2;
-		
-		public static class Perl_MoreArguments extends TokenSequence
-		{
-			public PunctuationComma comma;
-			public @OPT TokenList<Perl_Comment> comments1;
-			public Perl_Expression arg;
-			public @OPT TokenList<Perl_Comment> comments2;
-		}
-	}
-
-	public static class Perl_PreIncrementExpression extends ExpressionTerm
+	public static @P(160) class Perl_PreIncrementExpression extends PrimaryOperator
 	{
 		public Perl_Punctuation preIncrementOperator = new Perl_Punctuation("++");
 		public Perl_Variable var;
 	}
 
-	public static class Perl_PreDecrementExpression extends ExpressionTerm
+	public static @P(170) class Perl_PreDecrementExpression extends PrimaryOperator
 	{
 		public Perl_Punctuation preDecrementOperator = new Perl_Punctuation("--");
 		public Perl_Variable var;
 	}
 	
-	public static class Perl_PostIncrementExpression extends ExpressionTerm
+	public static @P(180) class Perl_PostIncrementExpression extends PrimaryOperator
 	{
 		public Perl_Variable var;
 		public Perl_Punctuation postIncrementOperator = new Perl_Punctuation("++");
 	}
 
-	public static class Perl_PostDecrementExpression extends ExpressionTerm
+	public static @P(190) class Perl_PostDecrementExpression extends PrimaryOperator
 	{
 		public Perl_Variable var;
 		public Perl_Punctuation postDecrementOperator = new Perl_Punctuation("--");
 	}
 	
-	public static class Perl_NegativeExpression extends ExpressionTerm
-	{
-		public Perl_PunctuationChoice operator = new Perl_PunctuationChoice("-", "+");
-		public Perl_Expression expr;
-	}
-
-	public static class Perl_LogicalNotExpression extends ExpressionTerm
-	{
-		public Perl_Punctuation logicalNotOperator = new Perl_Punctuation('~');
-		public Perl_Expression expr;
-	}
-	
-	public static class Perl_NotExpression extends ExpressionTerm
-	{
-		public Perl_NotOperator oper;
-		public Perl_Expression expr;
-		
-		public static class Perl_NotOperator extends TokenChooser
-		{
-			public Perl_Punctuation notOperator = new Perl_Punctuation('!');
-			public Perl_Keyword NOT = new Perl_Keyword("not");
-		}
-	}
-	
-	public static class Perl_StarExpression extends ExpressionTerm
-	{
-		public PunctuationStar starOperator;
-		public Perl_Expression expr;
-	}
-	
-	public static class Perl_ExistsExpression extends ExpressionTerm
+	public static @P(200) class Perl_ExistsExpression extends PrimaryOperator
 	{
 		public PunctuationHyphen minus;
 		public Perl_KeywordChoice XE = new Perl_KeywordChoice("e", "x");
 		public Perl_Expression file;
 	}
 
-	public static class Perl_DieExpression extends ExpressionTerm
+	public static @P(210) class Perl_NegativeExpression extends PrimaryOperator
 	{
-		public Perl_Keyword DIE = new Perl_Keyword("die");
-		public Perl_Expression expr = new Perl_Expression();
+		public Perl_PunctuationChoice operator = new Perl_PunctuationChoice("-", "+");
+		public Perl_Expression expr;
 	}
 
-	public static class Perl_EachExpression extends ExpressionTerm
+	public static @P(220) class Perl_LogicalNotExpression extends PrimaryOperator
+	{
+		public Perl_Punctuation logicalNotOperator = new Perl_Punctuation('~');
+		public Perl_Expression expr;
+	}
+	
+	public static @P(230) class Perl_NotExpression extends PrimaryOperator
+	{
+		public Perl_NotOperator oper;
+		public Perl_Expression expr;
+		
+		public static class Perl_NotOperator extends TokenChooser
+		{
+			public @CHOICE Perl_Punctuation notOperator = new Perl_Punctuation('!');
+			public @CHOICE Perl_Keyword NOT = new Perl_Keyword("not");
+		}
+	}
+	
+	public static @P(240) class Perl_StarExpression extends PrimaryOperator
+	{
+		public PunctuationStar starOperator;
+		public Perl_Expression expr;
+	}
+	
+	public static @P(250) class Perl_GrepExpression extends PrimaryOperator
+	{
+		public Perl_Keyword GREP = new Perl_Keyword("grep");
+		public Perl_RegularExpression regex;
+		public PunctuationComma comma;
+		public Perl_Expression expr;
+	}
+	
+	public static @P(260) class Perl_BuiltIn extends PrimaryOperator
+	{
+		public Perl_KeywordChoice builtIn = new Perl_KeywordChoice(
+				"FALSE", "False", "false",
+				"TRUE", "True", "true",
+				"NULL", "null",
+				"T_CLASS",
+				"T_FUNCTION",
+                "T_INCLUDE",
+                "T_INCLUDE_ONCE",
+                "T_REQUIRE",
+                "T_REQUIRE_ONCE",
+                "T_USE",
+                "namespace",
+                "shift");
+	}
+	
+	public static @P(270) class Perl_RegExExpression extends PrimaryOperator
+	{
+		public Perl_RegularExpression regex;
+	}
+	
+	public static @P(280) class Perl_FunctionCall extends PrimaryOperator
+	{
+		public Perl_Identifier_Reference fnName;
+		public @OPT TokenList<Perl_MoreFunctionName> more;
+		public @OPT TokenList<Perl_Method> perlMethods;
+		public PunctuationLeftParen leftParen;
+		public @OPT Perl_Punctuation at = new Perl_Punctuation('@');
+		public @OPT Perl_Expression parameter;
+		public @OPT TokenList<Perl_MoreParameters> moreExpr;
+		public PunctuationRightParen rightParen;
+		
+		public static class Perl_MoreFunctionName extends TokenSequence
+		{
+			public Perl_Punctuation backSlash = new Perl_Punctuation('\\');
+			public Perl_Identifier_Reference fnName;
+		}
+		public static class Perl_Method extends TokenSequence
+		{
+			public Perl_Punctuation colonColon = new Perl_Punctuation("::");
+			public Perl_Identifier_Reference fnName;
+		}
+		
+		public static class Perl_MoreParameters extends TokenSequence
+		{
+			public PunctuationComma comma;
+			public @OPT Perl_Comment comment;
+			public @OPT Perl_Punctuation at = new Perl_Punctuation('@');
+			public Perl_Expression parameter;
+		}
+	}
+	
+	public static @P(290) class Perl_VariableExpression extends PrimaryOperator
+	{
+		public Perl_Variable variable;
+	}
+	
+	public static @P(300) class Perl_ParenthesizedExpression extends PrimaryOperator
+	{
+		public PunctuationLeftParen leftParen;
+		public Perl_ArgumentList valueList;
+		public PunctuationRightParen rightParen;
+	}
+	
+	public static @P(310) class Perl_BracketedExpression extends PrimaryOperator
+	{
+		public PunctuationLeftBracket leftBracket;
+		public @OPT TokenList<Perl_Comment> comment1;
+		public @OPT Perl_ArgumentList valueList;
+		public @OPT PunctuationComma comma;
+		public @OPT TokenList<Perl_Comment> comment2;
+		public PunctuationRightBracket rightBracket;
+	}
+
+	public static @P(320) class Perl_EachExpression extends PrimaryOperator
 	{
 		public Perl_Keyword EACH = new Perl_Keyword("each");
 		public PunctuationLeftParen leftParen;
@@ -295,13 +264,19 @@ public class Perl_Expression extends PrecedenceChooser
 		public @NOSPACE PunctuationRightParen rightParen;
 	}
 	
-	public static class Perl_AddressOfExpression extends ExpressionTerm
+	public static @P(330) class Perl_DieExpression extends PrimaryOperator
+	{
+		public Perl_Keyword DIE = new Perl_Keyword("die");
+		public Perl_Expression expr = new Perl_Expression();
+	}
+
+	public static @P(340) class Perl_AddressOfExpression extends PrimaryOperator
 	{
 		public Perl_Punctuation backSlash = new Perl_Punctuation('\\');
 		public Perl_Expression expr;
 	}
 	
-	public static class Perl_FunctionExpression extends ExpressionTerm
+	public static @P(350) class Perl_FunctionExpression extends PrimaryOperator
 	{
 		public Perl_Keyword FUNCTION = new Perl_Keyword("function");
 		public Perl_Function_Parameters params;
@@ -318,7 +293,7 @@ public class Perl_Expression extends PrecedenceChooser
 		}
 	}
 	
-	public static class Perl_FileIO extends ExpressionTerm
+	public static @P(360) class Perl_FileIO extends PrimaryOperator
 	{
 		public Perl_Punctuation lessThan = new Perl_Punctuation('<');
 		public @OPT Perl_Identifier_Reference channel;
@@ -328,15 +303,147 @@ public class Perl_Expression extends PrecedenceChooser
 	///////////////////////////////////////////////
 	// Binary expressions
 
-	public static class Perl_AssignmentExpression extends PrecedenceOperator
+	public static @P(370) class Perl_SubscriptExpression extends PrecedenceOperator
 	{
-		public Perl_Expression var = new Perl_Expression(this, AllowedPrecedence.HIGHER);
-		public Perl_PunctuationChoice operator = new Perl_PunctuationChoice(
-				"=", "*=", "/=", "%=", "+=", "-=", "<<=", ">>=", ">>>=", "&=", "^=", "|=", ".=");
-		public Perl_Expression expr;
+		public Perl_Expression expr = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
+		public PunctuationLeftBracket leftBracket;
+		public @OPT Perl_Expression subscr = new Perl_Expression(this, AllowedPrecedence.HIGHER);
+		public PunctuationRightBracket rightBracket;
+	}
+	
+	public static @P(380) class Perl_DotExpression extends PrecedenceOperator
+	{
+		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
+		public PunctuationPeriod dot;
+		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class Perl_TrueFalseExpression extends PrecedenceOperator
+	public static @P(390) class Perl_ColonColonExpression extends PrecedenceOperator
+	{
+		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
+		public Perl_Punctuation colonColon = new Perl_Punctuation("::");
+		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(400) class Perl_ArrowExpression extends PrecedenceOperator
+	{
+		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
+		public Perl_Punctuation arrow = new Perl_Punctuation("->");
+		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(410) class Perl_MapExpression extends PrecedenceOperator
+	{
+		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
+		public Perl_Punctuation arrow = new Perl_Punctuation("=>");
+		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(420) class Perl_MultiplicativeExpression extends PrecedenceOperator
+	{
+		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
+		public Perl_PunctuationChoice operator = new Perl_PunctuationChoice("*", "/", "%");
+		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(430) class Perl_AdditiveExpression extends PrecedenceOperator
+	{
+		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
+		public Perl_PunctuationChoice operator = new Perl_PunctuationChoice("+", "-");
+		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(440) class Perl_ShiftExpression extends PrecedenceOperator
+	{
+		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
+		// "<<" gets confused with <<SENTINEL for multi-line literals.
+		public Perl_PunctuationChoice operator = new Perl_PunctuationChoice(">>", ">>>");
+		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(450) class Perl_RelationalExpression extends PrecedenceOperator
+	{
+		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
+		public Perl_PunctuationChoice operator = new Perl_PunctuationChoice("<=", ">=", "<", ">");
+		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(460) class Perl_RegExTest extends PrecedenceOperator
+	{
+		public Perl_Expression var = new Perl_Expression(this, AllowedPrecedence.HIGHER);
+		public Perl_PunctuationChoice operator = new Perl_PunctuationChoice("=~", "!~");
+		public Perl_RegularExpression expr;
+	}
+
+	public static @P(470) class Perl_InstanceOfExpression extends PrecedenceOperator
+	{
+		public Perl_Expression expr = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
+		public Perl_Keyword instanceOperator = new Perl_Keyword("instanceof");
+		public @OPT Perl_Punctuation backSlash = new Perl_Punctuation('\\');
+		public Perl_Identifier_Reference type;
+	}
+	
+	public static @P(480) class Perl_EqualityExpression extends PrecedenceOperator
+	{
+		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
+		public Perl_EqualityOperator equalityOperator;
+		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
+
+		public static class Perl_EqualityOperator extends TokenChooser
+		{
+			public @CHOICE Perl_KeywordChoice EQ = new Perl_KeywordChoice("eq", "ne");
+			public @CHOICE Perl_PunctuationChoice operator = new Perl_PunctuationChoice("===", "!==", "==", "!=");
+		}
+	}
+	
+	public static @P(490) class Perl_AndExpression extends PrecedenceOperator
+	{
+		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
+		public Perl_Punctuation bitwiseAndOperator = new Perl_Punctuation('&');
+		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(500) class Perl_ExclusiveOrExpression extends PrecedenceOperator
+	{
+		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
+		public Perl_Punctuation bitwiseXOrOperator = new Perl_Punctuation('^');
+		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(510) class Perl_InclusiveOrExpression extends PrecedenceOperator
+	{
+		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
+		public Perl_Punctuation bitwiseOrOperator = new Perl_Punctuation('|');
+		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(520) class Perl_ConditionalAndExpression extends PrecedenceOperator
+	{
+		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
+		public Perl_AndOperator oper;
+		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
+		
+		public static class Perl_AndOperator extends TokenChooser
+		{
+			public @CHOICE Perl_Punctuation andOperator = new Perl_Punctuation("&&");
+			public @CHOICE Perl_Keyword AND = new Perl_Keyword("and");
+		}
+	}
+	
+	public static @P(530) class Perl_ConditionalOrExpression extends PrecedenceOperator
+	{
+		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
+		public Perl_OrOperator oper;
+		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
+		
+		public static class Perl_OrOperator extends TokenChooser
+		{
+			public @CHOICE Perl_Punctuation orOperator = new Perl_Punctuation("||");
+			public @CHOICE Perl_Keyword OR = new Perl_Keyword("or");
+		}
+	}
+	
+	public static @P(540) class Perl_TrueFalseExpression extends PrecedenceOperator
 	{
 		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.HIGHER);
 		public Perl_Punctuation questionMark = new Perl_Punctuation('?');
@@ -345,136 +452,11 @@ public class Perl_Expression extends PrecedenceChooser
 		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
 	}
 	
-	public static class Perl_ConditionalOrExpression extends PrecedenceOperator
-	{
-		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
-		public Perl_OrOperator oper;
-		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
-		
-		public static class Perl_OrOperator extends TokenChooser
-		{
-			public Perl_Punctuation orOperator = new Perl_Punctuation("||");
-			public Perl_Keyword OR = new Perl_Keyword("or");
-		}
-	}
-	
-	public static class Perl_ConditionalAndExpression extends PrecedenceOperator
-	{
-		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
-		public Perl_AndOperator oper;
-		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
-		
-		public static class Perl_AndOperator extends TokenChooser
-		{
-			public Perl_Punctuation andOperator = new Perl_Punctuation("&&");
-			public Perl_Keyword AND = new Perl_Keyword("and");
-		}
-	}
-	
-	public static class Perl_InclusiveOrExpression extends PrecedenceOperator
-	{
-		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
-		public Perl_Punctuation bitwiseOrOperator = new Perl_Punctuation('|');
-		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class Perl_ExclusiveOrExpression extends PrecedenceOperator
-	{
-		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
-		public Perl_Punctuation bitwiseXOrOperator = new Perl_Punctuation('^');
-		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class Perl_AndExpression extends PrecedenceOperator
-	{
-		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
-		public Perl_Punctuation bitwiseAndOperator = new Perl_Punctuation('&');
-		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class Perl_EqualityExpression extends PrecedenceOperator
-	{
-		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
-		public Perl_EqualityOperator equalityOperator;
-		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
-
-		public static class Perl_EqualityOperator extends TokenChooser
-		{
-			public Perl_KeywordChoice EQ = new Perl_KeywordChoice("eq", "ne");
-			public Perl_PunctuationChoice operator = new Perl_PunctuationChoice("===", "!==", "==", "!=");
-		}
-	}
-	
-	public static class Perl_RegExTest extends PrecedenceOperator
+	public static @P(550) class Perl_AssignmentExpression extends PrecedenceOperator
 	{
 		public Perl_Expression var = new Perl_Expression(this, AllowedPrecedence.HIGHER);
-		public Perl_PunctuationChoice operator = new Perl_PunctuationChoice("=~", "!~");
-		public Perl_RegularExpression expr;
-	}
-
-	public static class Perl_InstanceOfExpression extends PrecedenceOperator
-	{
-		public Perl_Expression expr = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
-		public Perl_Keyword instanceOperator = new Perl_Keyword("instanceof");
-		public @OPT Perl_Punctuation backSlash = new Perl_Punctuation('\\');
-		public Perl_Identifier_Reference type;
-	}
-
-	public static class Perl_RelationalExpression extends PrecedenceOperator
-	{
-		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
-		public Perl_PunctuationChoice operator = new Perl_PunctuationChoice("<=", ">=", "<", ">");
-		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class Perl_ShiftExpression extends PrecedenceOperator
-	{
-		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
-		// "<<" gets confused with <<SENTINEL for multi-line literals.
-		public Perl_PunctuationChoice operator = new Perl_PunctuationChoice(">>", ">>>");
-		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class Perl_AdditiveExpression extends PrecedenceOperator
-	{
-		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
-		public Perl_PunctuationChoice operator = new Perl_PunctuationChoice("+", "-");
-		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class Perl_MultiplicativeExpression extends PrecedenceOperator
-	{
-		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
-		public Perl_PunctuationChoice operator = new Perl_PunctuationChoice("*", "/", "%");
-		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class Perl_MapExpression extends PrecedenceOperator
-	{
-		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
-		public Perl_Punctuation arrow = new Perl_Punctuation("=>");
-		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class Perl_ArrowExpression extends PrecedenceOperator
-	{
-		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
-		public Perl_Punctuation arrow = new Perl_Punctuation("->");
-		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class Perl_DotExpression extends PrecedenceOperator
-	{
-		public Perl_Expression left = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
-		public PunctuationPeriod dot;
-		public Perl_Expression right = new Perl_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class Perl_SubscriptExpression extends PrecedenceOperator
-	{
-		public Perl_Expression expr = new Perl_Expression(this, AllowedPrecedence.ATLEAST);
-		public PunctuationLeftBracket leftBracket;
-		public @OPT Perl_Expression subscr = new Perl_Expression(this, AllowedPrecedence.HIGHER);
-		public PunctuationRightBracket rightBracket;
+		public Perl_PunctuationChoice operator = new Perl_PunctuationChoice(
+				"=", "*=", "/=", "%=", "+=", "-=", "<<=", ">>=", ">>>=", "&=", "^=", "|=", ".=");
+		public Perl_Expression expr;
 	}
 }

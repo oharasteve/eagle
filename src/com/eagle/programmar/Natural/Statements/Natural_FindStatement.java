@@ -27,7 +27,7 @@ public class Natural_FindStatement extends TokenSequence
 	
 	public static class Natural_FindType extends TokenChooser
 	{
-		public static class Natural_FindNoBlock extends TokenSequence
+		public @CHOICE static class Natural_FindNoBlock extends TokenSequence
 		{
 			public Natural_KeywordChoice howMany = new Natural_KeywordChoice(
 					"FIRST", "NUMBER", "UNIQUE");
@@ -38,7 +38,7 @@ public class Natural_FindStatement extends TokenSequence
 			public TokenList<Natural_Find_Clause> clauses;
 		}
 
-		public static class Natural_FindWithBlock extends TokenSequence
+		public @CHOICE static class Natural_FindWithBlock extends TokenSequence
 		{
 			public @OPT Natural_Find_Number_Records numberRecords;
 			public Natural_Identifier_Reference viewName;
@@ -52,12 +52,12 @@ public class Natural_FindStatement extends TokenSequence
 	
 	public static class Natural_Find_Clause extends TokenChooser
 	{
-		public Natural_Find_By_Condition findByCond;
-		public Natural_Find_By_ISN findByISN;
-		public Natural_Find_From findFrom;
-		public Natural_Find_Coupled coupled;
-		public Natural_Find_Sorted_By sortedBy;
-		public Natural_Find_Where findWhere;
+		public @CHOICE Natural_Find_By_Condition findByCond;
+		public @CHOICE Natural_Find_By_ISN findByISN;
+		public @CHOICE Natural_Find_From findFrom;
+		public @CHOICE Natural_Find_Coupled coupled;
+		public @CHOICE Natural_Find_Sorted_By sortedBy;
+		public @CHOICE Natural_Find_Where findWhere;
 	}
 	
 	public static class Natural_Find_Number_Records extends TokenSequence
@@ -93,8 +93,8 @@ public class Natural_FindStatement extends TokenSequence
 			
 			public static class Natural_Find_Via_Equals extends TokenChooser
 			{
-				public PunctuationEquals equals;
-				public Natural_KeywordChoice EQUALS = new Natural_KeywordChoice(
+				public @CHOICE PunctuationEquals equals;
+				public @CHOICE Natural_KeywordChoice EQUALS = new Natural_KeywordChoice(
 						"EQ", "EQUAL");
 			}
 		}

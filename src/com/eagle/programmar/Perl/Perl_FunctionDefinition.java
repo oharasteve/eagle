@@ -33,22 +33,22 @@ public class Perl_FunctionDefinition extends TokenSequence
 
 	public static class Perl_FunctionBlock extends TokenChooser
 	{
-		public PunctuationSemicolon semicolon;
-		public Perl_StatementBlock block;
+		public @CHOICE PunctuationSemicolon semicolon;
+		public @CHOICE Perl_StatementBlock block;
 	}
 	
 	public static class Perl_Function_Parameters extends TokenSequence
 	{
 		public PunctuationLeftParen leftParen;
 		public @OPT Perl_FunctionVariableOrTypeVariable var;
-		public @OPT TokenList<Perl_MoreParameters> moreParams;
+		public @OPT TokenList<Perl_MoreFuncParameters> moreParams;
 		public PunctuationRightParen rightParen;
 
 		public static class Perl_FunctionVariableOrTypeVariable extends TokenChooser
 		{
 			public @LAST Perl_FunctionVariable var;
 			
-			public static class Perl_FunctionTypeAndVariable extends TokenSequence
+			public @CHOICE static class Perl_FunctionTypeAndVariable extends TokenSequence
 			{
 				public Perl_Type type;
 				public Perl_FunctionVariable var;
@@ -58,7 +58,6 @@ public class Perl_FunctionDefinition extends TokenSequence
 		public static class Perl_FunctionVariable extends TokenSequence
 		{
 			public @OPT Perl_Punctuation amp = new Perl_Punctuation('&');
-			public @OPT Perl_Punctuation dollar = new Perl_Punctuation('$');
 			public Perl_Variable_Definition param;
 			public @OPT Perl_Variable_Initializer init;
 			
@@ -69,7 +68,7 @@ public class Perl_FunctionDefinition extends TokenSequence
 			}
 		}
 		
-		public static class Perl_MoreParameters extends TokenSequence
+		public static class Perl_MoreFuncParameters extends TokenSequence
 		{
 			public PunctuationComma comma;
 			public Perl_FunctionVariableOrTypeVariable var;

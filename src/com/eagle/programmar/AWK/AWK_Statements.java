@@ -26,14 +26,14 @@ public class AWK_Statements extends TokenSequence
 	
 	public static class AWK_Statement extends TokenChooser
 	{
-		public PunctuationSemicolon semicolon;	// Empty statement
+		public @CHOICE PunctuationSemicolon semicolon;	// Empty statement
 
-		public AWK_ForStatement forStatement;
-		public AWK_IfStatement ifStatement;
-		public AWK_NextStatement nextStatement;
-		public AWK_PrintStatement printStatement;
-		public AWK_SplitStatement splitStatement;
-		public AWK_SubStatement subStatement;
+		public @CHOICE AWK_ForStatement forStatement;
+		public @CHOICE AWK_IfStatement ifStatement;
+		public @CHOICE AWK_NextStatement nextStatement;
+		public @CHOICE AWK_PrintStatement printStatement;
+		public @CHOICE AWK_SplitStatement splitStatement;
+		public @CHOICE AWK_SubStatement subStatement;
 		
 		public @LAST AWK_Expression assignment;
 	}

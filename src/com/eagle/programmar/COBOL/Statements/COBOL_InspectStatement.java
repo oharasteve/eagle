@@ -21,7 +21,7 @@ public class COBOL_InspectStatement extends COBOL_AbstractStatement
 	
 	public static class COBOL_InspectType extends TokenChooser
 	{
-		public static class COBOL_InspectReplacing extends TokenSequence
+		public @CHOICE static class COBOL_InspectReplacing extends TokenSequence
 		{
 			public COBOL_Keyword REPLACING = new COBOL_Keyword("REPLACING");
 			public TokenList<COBOL_InspectReplacePattern> patterns;
@@ -35,7 +35,7 @@ public class COBOL_InspectStatement extends COBOL_AbstractStatement
 			}
 		}
 		
-		public static class COBOL_InspectConverting extends TokenSequence
+		public @CHOICE static class COBOL_InspectConverting extends TokenSequence
 		{
 			public COBOL_Keyword CONVERTING = new COBOL_Keyword("CONVERTING");
 			public COBOL_InspectConvert convertFrom;
@@ -44,12 +44,12 @@ public class COBOL_InspectStatement extends COBOL_AbstractStatement
 			
 			public static class COBOL_InspectConvert extends TokenChooser
 			{
-				public COBOL_Literal literal;
-				public COBOL_KeywordChoice cases = new COBOL_KeywordChoice("LOWER-CASE", "UPPER-CASE");
+				public @CHOICE COBOL_Literal literal;
+				public @CHOICE COBOL_KeywordChoice cases = new COBOL_KeywordChoice("LOWER-CASE", "UPPER-CASE");
 			}
 		}
 		
-		public static class COBOL_InspectTallying extends TokenSequence
+		public @CHOICE static class COBOL_InspectTallying extends TokenSequence
 		{
 			public COBOL_Keyword TALLYING = new COBOL_Keyword("TALLYING");
 			public COBOL_Identifier_Reference var;
@@ -58,19 +58,19 @@ public class COBOL_InspectStatement extends COBOL_AbstractStatement
 			
 			public static class COBOL_InpsectTallyingWhat extends TokenChooser
 			{
-				public static class COBOL_InspectTallyingAll extends TokenSequence
+				public @CHOICE static class COBOL_InspectTallyingAll extends TokenSequence
 				{
 					public COBOL_Keyword ALL = new COBOL_Keyword("ALL");
 					public COBOL_Literal literal;
 				}
 				
-				public static class COBOL_InspectTallyingSpaces extends TokenSequence
+				public @CHOICE static class COBOL_InspectTallyingSpaces extends TokenSequence
 				{
 					public COBOL_Keyword LEADING = new COBOL_Keyword("LEADING");
 					public COBOL_Keyword SPACES = new COBOL_Keyword("SPACES");
 				}
 				
-				public static class COBOL_InspectTallyingCharacters extends TokenSequence
+				public @CHOICE static class COBOL_InspectTallyingCharacters extends TokenSequence
 				{
 					public COBOL_Keyword CHARACTERS = new COBOL_Keyword("CHARACTERS");
 					public COBOL_Keyword BEFORE = new COBOL_Keyword("BEFORE");

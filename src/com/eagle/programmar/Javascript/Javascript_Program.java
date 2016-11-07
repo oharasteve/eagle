@@ -27,8 +27,8 @@ public class Javascript_Program extends EagleLanguage
 	
 	public static class Javascript_Element extends TokenChooser
 	{
-		public Javascript_Comment comment;
-		public Javascript_Function function;
-		public Javascript_Statement statement;
+		public @CHOICE Javascript_Comment comment;
+		public @CHOICE Javascript_Function function;
+		public @CHOICE Javascript_Statement statement;
 	}
 }

@@ -13,7 +13,7 @@ import com.eagle.tokens.TokenSequence;
 
 public class RPG_I_Input_Specification extends TokenChooser
 {
-	public static class RPG_I_Input_Program_Record_Id extends TokenSequence
+	public @CHOICE static class RPG_I_Input_Program_Record_Id extends TokenSequence
 	{
 		public RPG_Keyword I = new RPG_Keyword(6, 6, "I");
 		public RPG_I_Input_Program_Record_Id_Piece piece;
@@ -40,13 +40,13 @@ public class RPG_I_Input_Specification extends TokenChooser
 		
 		public static class RPG_I_Input_Program_Record_Id_Piece extends TokenChooser
 		{
-			public static class RPG_I_Input_Program_Record_Id_Piece1 extends TokenSequence
+			public @CHOICE static class RPG_I_Input_Program_Record_Id_Piece1 extends TokenSequence
 			{
 				public RPG_Literal filename = new RPG_Literal(7, 14);
 				public RPG_Literal sequence = new RPG_Literal(15, 16);
 			}
 
-			public static class RPG_I_Input_Program_Record_Id_Piece2 extends TokenSequence
+			public @CHOICE static class RPG_I_Input_Program_Record_Id_Piece2 extends TokenSequence
 			{
 				public RPG_Blanks blank1 = new RPG_Blanks(7, 13);
 				public RPG_KeywordChoice logicalRelation = new RPG_KeywordChoice(14, 16,
@@ -55,7 +55,7 @@ public class RPG_I_Input_Specification extends TokenChooser
 		}
 	}
 
-	public static class RPG_I_Input_Program_Field_Descr extends TokenSequence
+	public @CHOICE static class RPG_I_Input_Program_Field_Descr extends TokenSequence
 	{
 		public RPG_Keyword I = new RPG_Keyword(6, 6, "I");
 		public RPG_Blanks blank1 = new RPG_Blanks(7, 42);
@@ -72,7 +72,7 @@ public class RPG_I_Input_Specification extends TokenChooser
 		public RPG_Blanks blank2 = new RPG_Blanks(71, 74);
 	}
 
-	public static class RPG_I_Input_External_Record_Id extends TokenSequence
+	public @CHOICE static class RPG_I_Input_External_Record_Id extends TokenSequence
 	{
 		public RPG_Keyword I = new RPG_Keyword(6, 6, "I");
 		public RPG_Literal filename = new RPG_Literal(7, 14);
@@ -82,7 +82,7 @@ public class RPG_I_Input_Specification extends TokenChooser
 		public RPG_Blanks blank3 = new RPG_Blanks(42, 74);
 	}
 
-	public static class RPG_I_Input_External_Field_Descr extends TokenSequence
+	public @CHOICE static class RPG_I_Input_External_Field_Descr extends TokenSequence
 	{
 		public RPG_Keyword I = new RPG_Keyword(6, 6, "I");
 		public RPG_Blanks blank1 = new RPG_Blanks(7, 20);
@@ -96,7 +96,7 @@ public class RPG_I_Input_Specification extends TokenChooser
 		public RPG_Blanks blank4 = new RPG_Blanks(71, 74);
 	}
 
-	public static class RPG_I_Input_Data_Structure extends TokenSequence
+	public @CHOICE static class RPG_I_Input_Data_Structure extends TokenSequence
 	{
 		public RPG_Keyword I = new RPG_Keyword(6, 6, "I");
 		public RPG_Literal name = new RPG_Literal(7, 12);
@@ -111,7 +111,7 @@ public class RPG_I_Input_Specification extends TokenChooser
 		public RPG_Blanks blank3 = new RPG_Blanks(52, 74);
 	}
 
-	public static class RPG_I_Input_Data_Subfield extends TokenSequence
+	public @CHOICE static class RPG_I_Input_Data_Subfield extends TokenSequence
 	{
 		public RPG_Keyword I = new RPG_Keyword(6, 6, "I");
 		public RPG_Blanks blank1 = new RPG_Blanks(7, 7);
@@ -124,14 +124,14 @@ public class RPG_I_Input_Specification extends TokenChooser
 		
 		public static class RPG_I_Input_Data_Subfield_Init extends TokenChooser
 		{
-			public static class RPG_I_Input_Data_Subfield_Init1 extends TokenSequence
+			public @CHOICE static class RPG_I_Input_Data_Subfield_Init1 extends TokenSequence
 			{
 				public @OPT RPG_Keyword initialization = new RPG_Keyword(8, 8, "I");
 				public RPG_Blanks blank2 = new RPG_Blanks(9, 20);
 				public RPG_Literal initialValue = new RPG_Literal(21, 42);
 			}
 
-			public static class RPG_I_Input_Data_Subfield_Init2 extends TokenSequence
+			public @CHOICE static class RPG_I_Input_Data_Subfield_Init2 extends TokenSequence
 			{
 				public RPG_Blanks blank2 = new RPG_Blanks(8, 20);
 				public RPG_Literal externalName = new RPG_Literal(21, 30);
@@ -141,13 +141,13 @@ public class RPG_I_Input_Specification extends TokenChooser
 
 		public static class RPG_I_Input_Data_Subfield_Position extends TokenChooser
 		{
-			public static class RPG_I_Input_Data_Subfield_Position1 extends TokenSequence
+			public @CHOICE static class RPG_I_Input_Data_Subfield_Position1 extends TokenSequence
 			{
 				public RPG_Number from = new RPG_Number(44, 47);
 				public RPG_Number to = new RPG_Number(48, 51);
 			}
 
-			public static class RPG_I_Input_Data_Subfield_Position2 extends TokenSequence
+			public @CHOICE static class RPG_I_Input_Data_Subfield_Position2 extends TokenSequence
 			{
 				public RPG_KeywordChoice keyword = new RPG_KeywordChoice(44, 51,
 						"*STATUS", "*PROGRAM", "*PARMS", "*ROUTINE",
@@ -156,7 +156,7 @@ public class RPG_I_Input_Specification extends TokenChooser
 		}
 	}
 
-	public static class RPG_I_Input_Named_Constant extends TokenSequence
+	public @CHOICE static class RPG_I_Input_Named_Constant extends TokenSequence
 	{
 		public RPG_Keyword I = new RPG_Keyword(6, 6, "I");
 		public RPG_Blanks blank1 = new RPG_Blanks(7, 20);
@@ -167,7 +167,7 @@ public class RPG_I_Input_Specification extends TokenChooser
 		public RPG_Blanks blank3 = new RPG_Blanks(59, 74);
 	}
 
-	public static class RPG_I_Input_Constant_Continued extends TokenSequence
+	public @CHOICE static class RPG_I_Input_Constant_Continued extends TokenSequence
 	{
 		public RPG_Keyword I = new RPG_Keyword(6, 6, "I");
 		public RPG_Blanks blank1 = new RPG_Blanks(7, 20);

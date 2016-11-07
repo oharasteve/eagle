@@ -8,5 +8,5 @@ import com.eagle.tokens.TokenChooser;
 
 public class Template_Variable extends TokenChooser
 {
-	public Template_Identifier_Reference id;
+	public @CHOICE Template_Identifier_Reference id;
 }

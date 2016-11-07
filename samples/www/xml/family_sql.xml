@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Sun Jan 31 05:08:52 EST 2016" Elapsed="2312" Language="SQL" Steps="7280" Tokens="2170">
+<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Mon Nov 07 10:56:45 EST 2016" Elapsed="3476" Language="SQL" Steps="7284" Tokens="2171">
   <T EC="0" EL="143" File="" SC="1" SL="1" TT=".SQL.SQL_Program">
     <T EC="0" EL="143" N="statements" SC="1" SL="1" TT="List">
       <T EC="43" EL="1" N="statements[0]" SC="1" SL="1" TT=".SQL.SQL_Program$SQL_StatementOrComment">
@@ -745,9 +745,11 @@
                       <T EC="36" EL="32" N="fieldOptions[0]" SC="24" SL="32" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption$SQL_FieldDefault">
                         <T EC="30" EL="32" N="DEFAULT" SC="24" SL="32" TT=".SQL.Terminals.SQL_Keyword" V="DEFAULT"/>
                         <T EC="36" EL="32" N="value" SC="32" SL="32" TT=".SQL.SQL_Expression">
-                          <T EC="36" EL="32" N="value" SC="32" SL="32" TT=".SQL.SQL_Variable">
-                            <T EC="36" EL="32" N="field" SC="32" SL="32" TT="List">
-                              <T EC="35" EL="32" N="field[0]" SC="32" SL="32" TT=".SQL.Symbols.SQL_Identifier_Reference" V="NULL"/>
+                          <T EC="36" EL="32" N="value" SC="32" SL="32" TT=".SQL.SQL_Expression$SQL_VariableExpression">
+                            <T EC="36" EL="32" N="variable" SC="32" SL="32" TT=".SQL.SQL_Variable">
+                              <T EC="36" EL="32" N="field" SC="32" SL="32" TT="List">
+                                <T EC="35" EL="32" N="field[0]" SC="32" SL="32" TT=".SQL.Symbols.SQL_Identifier_Reference" V="NULL"/>
+                              </T>
                             </T>
                           </T>
                         </T>
@@ -2295,23 +2297,23 @@
                         <T EC="27" EL="102" N="NULL" SC="24" SL="102" TT=".SQL.Terminals.SQL_Keyword" V="NULL"/>
                       </T>
                     </T>
-                    <T EC="53" EL="102" N="fieldOptions[1]" SC="29" SL="102" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption">
-                      <T EC="53" EL="102" N="fieldOptions[1]" SC="29" SL="102" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption$SQL_FieldDefault">
+                    <T EC="54" EL="102" N="fieldOptions[1]" SC="29" SL="102" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption">
+                      <T EC="54" EL="102" N="fieldOptions[1]" SC="29" SL="102" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption$SQL_FieldDefault">
                         <T EC="35" EL="102" N="DEFAULT" SC="29" SL="102" TT=".SQL.Terminals.SQL_Keyword" V="DEFAULT"/>
-                        <T EC="53" EL="102" N="value" SC="37" SL="102" TT=".SQL.SQL_Expression">
-                          <T EC="53" EL="102" N="value" SC="37" SL="102" TT=".SQL.SQL_Expression$SQL_Builtin">
-                            <T EC="53" EL="102" N="value" SC="37" SL="102" TT=".SQL.Terminals.SQL_KeywordChoice" V="CURRENT_TIMESTAMP"/>
+                        <T EC="54" EL="102" N="value" SC="37" SL="102" TT=".SQL.SQL_Expression">
+                          <T EC="54" EL="102" N="value" SC="37" SL="102" TT=".SQL.SQL_Expression$SQL_Builtin">
+                            <T EC="53" EL="102" N="TIMESTAMP" SC="37" SL="102" TT=".SQL.Terminals.SQL_KeywordChoice" V="CURRENT_TIMESTAMP"/>
                           </T>
                         </T>
                       </T>
                     </T>
-                    <T EC="81" EL="102" N="fieldOptions[2]" SC="54" SL="102" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption">
-                      <T EC="81" EL="102" N="fieldOptions[2]" SC="54" SL="102" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption$SQL_FieldOnUpdate">
+                    <T EC="81" EL="102" N="fieldOptions[2]" SC="55" SL="102" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption">
+                      <T EC="81" EL="102" N="fieldOptions[2]" SC="55" SL="102" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption$SQL_FieldOnUpdate">
                         <T EC="56" EL="102" N="ON" SC="55" SL="102" TT=".SQL.Terminals.SQL_Keyword" V="ON"/>
                         <T EC="63" EL="102" N="UPDATE" SC="58" SL="102" TT=".SQL.Terminals.SQL_Keyword" V="UPDATE"/>
                         <T EC="81" EL="102" N="value" SC="65" SL="102" TT=".SQL.SQL_Expression">
                           <T EC="81" EL="102" N="value" SC="65" SL="102" TT=".SQL.SQL_Expression$SQL_Builtin">
-                            <T EC="81" EL="102" N="value" SC="65" SL="102" TT=".SQL.Terminals.SQL_KeywordChoice" V="CURRENT_TIMESTAMP"/>
+                            <T EC="81" EL="102" N="TIMESTAMP" SC="65" SL="102" TT=".SQL.Terminals.SQL_KeywordChoice" V="CURRENT_TIMESTAMP"/>
                           </T>
                         </T>
                       </T>
@@ -2767,18 +2769,18 @@
                         <T EC="32" EL="121" N="NULL" SC="29" SL="121" TT=".SQL.Terminals.SQL_Keyword" V="NULL"/>
                       </T>
                     </T>
-                    <T EC="58" EL="121" N="fieldOptions[1]" SC="34" SL="121" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption">
-                      <T EC="58" EL="121" N="fieldOptions[1]" SC="34" SL="121" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption$SQL_FieldDefault">
+                    <T EC="59" EL="121" N="fieldOptions[1]" SC="34" SL="121" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption">
+                      <T EC="59" EL="121" N="fieldOptions[1]" SC="34" SL="121" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption$SQL_FieldDefault">
                         <T EC="40" EL="121" N="DEFAULT" SC="34" SL="121" TT=".SQL.Terminals.SQL_Keyword" V="DEFAULT"/>
-                        <T EC="58" EL="121" N="value" SC="42" SL="121" TT=".SQL.SQL_Expression">
-                          <T EC="58" EL="121" N="value" SC="42" SL="121" TT=".SQL.SQL_Expression$SQL_Builtin">
-                            <T EC="58" EL="121" N="value" SC="42" SL="121" TT=".SQL.Terminals.SQL_KeywordChoice" V="CURRENT_TIMESTAMP"/>
+                        <T EC="59" EL="121" N="value" SC="42" SL="121" TT=".SQL.SQL_Expression">
+                          <T EC="59" EL="121" N="value" SC="42" SL="121" TT=".SQL.SQL_Expression$SQL_Builtin">
+                            <T EC="58" EL="121" N="TIMESTAMP" SC="42" SL="121" TT=".SQL.Terminals.SQL_KeywordChoice" V="CURRENT_TIMESTAMP"/>
                           </T>
                         </T>
                       </T>
                     </T>
-                    <T EC="89" EL="121" N="fieldOptions[2]" SC="59" SL="121" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption">
-                      <T EC="89" EL="121" N="fieldOptions[2]" SC="59" SL="121" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption$SQL_FieldComment">
+                    <T EC="89" EL="121" N="fieldOptions[2]" SC="60" SL="121" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption">
+                      <T EC="89" EL="121" N="fieldOptions[2]" SC="60" SL="121" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption$SQL_FieldComment">
                         <T EC="66" EL="121" N="COMMENT" SC="60" SL="121" TT=".SQL.Terminals.SQL_Keyword" V="COMMENT"/>
                         <T EC="89" EL="121" N="comment" SC="68" SL="121" TT=".SQL.Terminals.SQL_Literal" V="'When photo was added'"/>
                       </T>
@@ -3063,37 +3065,37 @@
                   </T>
                 </T>
                 <T EC="45" EL="134" N="createFields[13]" SC="45" SL="134" TT="com.eagle.tokens.punctuation.PunctuationComma" V=","/>
-                <T EC="81" EL="135" N="createFields[14]" SC="3" SL="135" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField">
+                <T EC="0" EL="136" N="createFields[14]" SC="3" SL="135" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField">
                   <T EC="8" EL="135" N="fieldName" SC="3" SL="135" TT=".SQL.Symbols.SQL_Field_Definition" V="`When`"/>
                   <T EC="19" EL="135" N="fieldType" SC="10" SL="135" TT=".SQL.SQL_Type">
                     <T EC="19" EL="135" N="fieldType" SC="10" SL="135" TT=".SQL.SQL_Type$SQL_TypeTimeStamp">
                       <T EC="18" EL="135" N="TIMESTAMP" SC="10" SL="135" TT=".SQL.Terminals.SQL_Keyword" V="TIMESTAMP"/>
                     </T>
                   </T>
-                  <T EC="81" EL="135" N="fieldOptions" SC="3" SL="135" TT="List">
+                  <T EC="0" EL="136" N="fieldOptions" SC="3" SL="135" TT="List">
                     <T EC="28" EL="135" N="fieldOptions[0]" SC="20" SL="135" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption">
                       <T EC="28" EL="135" N="fieldOptions[0]" SC="20" SL="135" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption$SQL_FieldNotNull">
                         <T EC="22" EL="135" N="NOT" SC="20" SL="135" TT=".SQL.Terminals.SQL_KeywordChoice" V="NOT"/>
                         <T EC="27" EL="135" N="NULL" SC="24" SL="135" TT=".SQL.Terminals.SQL_Keyword" V="NULL"/>
                       </T>
                     </T>
-                    <T EC="53" EL="135" N="fieldOptions[1]" SC="29" SL="135" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption">
-                      <T EC="53" EL="135" N="fieldOptions[1]" SC="29" SL="135" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption$SQL_FieldDefault">
+                    <T EC="54" EL="135" N="fieldOptions[1]" SC="29" SL="135" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption">
+                      <T EC="54" EL="135" N="fieldOptions[1]" SC="29" SL="135" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption$SQL_FieldDefault">
                         <T EC="35" EL="135" N="DEFAULT" SC="29" SL="135" TT=".SQL.Terminals.SQL_Keyword" V="DEFAULT"/>
-                        <T EC="53" EL="135" N="value" SC="37" SL="135" TT=".SQL.SQL_Expression">
-                          <T EC="53" EL="135" N="value" SC="37" SL="135" TT=".SQL.SQL_Expression$SQL_Builtin">
-                            <T EC="53" EL="135" N="value" SC="37" SL="135" TT=".SQL.Terminals.SQL_KeywordChoice" V="CURRENT_TIMESTAMP"/>
+                        <T EC="54" EL="135" N="value" SC="37" SL="135" TT=".SQL.SQL_Expression">
+                          <T EC="54" EL="135" N="value" SC="37" SL="135" TT=".SQL.SQL_Expression$SQL_Builtin">
+                            <T EC="53" EL="135" N="TIMESTAMP" SC="37" SL="135" TT=".SQL.Terminals.SQL_KeywordChoice" V="CURRENT_TIMESTAMP"/>
                           </T>
                         </T>
                       </T>
                     </T>
-                    <T EC="81" EL="135" N="fieldOptions[2]" SC="54" SL="135" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption">
-                      <T EC="81" EL="135" N="fieldOptions[2]" SC="54" SL="135" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption$SQL_FieldOnUpdate">
+                    <T EC="0" EL="136" N="fieldOptions[2]" SC="55" SL="135" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption">
+                      <T EC="0" EL="136" N="fieldOptions[2]" SC="55" SL="135" TT=".SQL.Statements.SQL_CreateStatement$SQL_CreateTableStatement$SQL_CreateField$SQL_FieldOption$SQL_FieldOnUpdate">
                         <T EC="56" EL="135" N="ON" SC="55" SL="135" TT=".SQL.Terminals.SQL_Keyword" V="ON"/>
                         <T EC="63" EL="135" N="UPDATE" SC="58" SL="135" TT=".SQL.Terminals.SQL_Keyword" V="UPDATE"/>
-                        <T EC="81" EL="135" N="value" SC="65" SL="135" TT=".SQL.SQL_Expression">
-                          <T EC="81" EL="135" N="value" SC="65" SL="135" TT=".SQL.SQL_Expression$SQL_Builtin">
-                            <T EC="81" EL="135" N="value" SC="65" SL="135" TT=".SQL.Terminals.SQL_KeywordChoice" V="CURRENT_TIMESTAMP"/>
+                        <T EC="0" EL="136" N="value" SC="65" SL="135" TT=".SQL.SQL_Expression">
+                          <T EC="0" EL="136" N="value" SC="65" SL="135" TT=".SQL.SQL_Expression$SQL_Builtin">
+                            <T EC="81" EL="135" N="TIMESTAMP" SC="65" SL="135" TT=".SQL.Terminals.SQL_KeywordChoice" V="CURRENT_TIMESTAMP"/>
                           </T>
                         </T>
                       </T>

@@ -19,7 +19,7 @@ public class COBOL_Picture_Value extends TokenChooser
 {
 	public @LAST COBOL_Expression expression;
 	
-	public static class COBOL_Picture_Value_Keyword extends TokenSequence
+	public @CHOICE static class COBOL_Picture_Value_Keyword extends TokenSequence
 	{
 		public @OPT PunctuationComma comma;
 		public COBOL_KeywordChoice constants = new COBOL_KeywordChoice(
@@ -27,7 +27,7 @@ public class COBOL_Picture_Value extends TokenChooser
 				"LOW-VALUE", "LOW-VALUES", "HIGH-VALUE", "HIGH-VALUES");
 	}
 
-	public static class COBOL_Picture_Value_Literal extends TokenSequence
+	public @CHOICE static class COBOL_Picture_Value_Literal extends TokenSequence
 	{
 		public @OPT PunctuationComma comma;
 		public COBOL_Literal literal;
@@ -40,20 +40,20 @@ public class COBOL_Picture_Value extends TokenChooser
 		}
 	}
 
-	public static class COBOL_Picture_Value_Number extends TokenSequence
+	public @CHOICE static class COBOL_Picture_Value_Number extends TokenSequence
 	{
 		public @OPT PunctuationComma comma;
 		public COBOL_Number number;
 	}
 
-	public static class COBOL_Picture_Value_HexNumber extends TokenSequence
+	public @CHOICE static class COBOL_Picture_Value_HexNumber extends TokenSequence
 	{
 		public @OPT PunctuationComma comma;
 		public @OPT COBOL_Punctuation ampersand = new COBOL_Punctuation('&');
 		public COBOL_HexNumber hex;
 	}
 	
-	public static class COBOL_PictureNext extends TokenSequence
+	public @CHOICE static class COBOL_PictureNext extends TokenSequence
 	{
 		public COBOL_Keyword NEXT = new COBOL_Keyword("NEXT");
 		public @OPT COBOL_PictureNextMinus minus;

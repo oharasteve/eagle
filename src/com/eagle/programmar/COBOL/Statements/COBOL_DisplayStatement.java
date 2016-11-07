@@ -6,6 +6,8 @@ package com.eagle.programmar.COBOL.Statements;
 import com.eagle.math.EagleValue;
 import com.eagle.programmar.COBOL.COBOL_AbstractStatement;
 import com.eagle.programmar.COBOL.COBOL_Expression;
+import com.eagle.programmar.COBOL.Statements.COBOL_DisplayStatement.COBOL_DisplayClause.COBOL_DisplayOptions.COBOL_DisplayAt.COBOL_DisplayColumn;
+import com.eagle.programmar.COBOL.Statements.COBOL_DisplayStatement.COBOL_DisplayClause.COBOL_DisplayOptions.COBOL_DisplayAt.COBOL_DisplayLine;
 import com.eagle.programmar.COBOL.Symbols.COBOL_Identifier_Reference;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
 import com.eagle.programmar.COBOL.Terminals.COBOL_KeywordChoice;
@@ -43,32 +45,74 @@ public class COBOL_DisplayStatement extends COBOL_AbstractStatement implements E
 		
 		public static class COBOL_DisplayOptions extends TokenChooser
 		{
-			public COBOL_DisplayUpon upon;
-			public COBOL_DisplayAt at;
-			public COBOL_DisplayWith with;
-			public COBOL_DisplayWithControl withControl;
-			public COBOL_DisplayWithNoAdvancing withNoAdv;
+			public @CHOICE COBOL_DisplayLine line;
+			public @CHOICE COBOL_DisplayColumn column;
+			public @CHOICE PunctuationComma comma;
+
+			public @CHOICE static class COBOL_DisplayUpon extends TokenSequence
+			{
+				public COBOL_Keyword UPON = new COBOL_Keyword("UPON");
+				public COBOL_Identifier_Reference upon;
+			}
+			
+			public @FIRST static class COBOL_DisplayAt extends TokenSequence
+			{
+				public COBOL_Keyword AT = new COBOL_Keyword("AT");
+				public @OPT COBOL_DisplayLine line;
+				public @OPT COBOL_DisplayColumn column;
+				
+				public static class COBOL_DisplayLine extends TokenSequence
+				{
+					public COBOL_Keyword LINE = new COBOL_Keyword("LINE");
+					public COBOL_Expression line;
+				}
+				
+				public static class COBOL_DisplayColumn extends TokenSequence
+				{
+					public COBOL_Keyword COLUMN = new COBOL_Keyword("COLUMN");
+					public COBOL_Expression column;
+				}
+			}
+
+			public @CHOICE static class COBOL_DisplayWith extends TokenSequence
+			{
+				public COBOL_Keyword WITH = new COBOL_Keyword("WITH");
+				public TokenList<COBOL_DisplayColor> colors;
+				
+				public static class COBOL_DisplayColor extends TokenSequence
+				{
+					public COBOL_KeywordChoice color = new COBOL_KeywordChoice(
+							"FOREGROUND-COLOR", "BACKGROUND-COLOR", "HBCKGROUND-COLOR", "HIGHLIGHT", "REVERSE-VIDEO");
+					public @OPT COBOL_Number fg;
+				}
+			}
+
+			public @CHOICE static class COBOL_DisplayWithNoAdvancing extends TokenSequence
+			{
+				public @OPT COBOL_Keyword WITH = new COBOL_Keyword("WITH");
+				public COBOL_Keyword NO = new COBOL_Keyword("NO");
+				public COBOL_Keyword ADVANCING = new COBOL_Keyword("ADVANCING");
+			}
+			
+			public @CHOICE static class COBOL_DisplayWithControl extends TokenSequence
+			{
+				public COBOL_Keyword WITH = new COBOL_Keyword("WITH");
+				public COBOL_Keyword CONTROL = new COBOL_Keyword("CONTROL");
+				public COBOL_Identifier_Reference control;
+			}
+			
+			public @CHOICE static class COBOL_DisplayLines extends TokenSequence
+			{
+				public COBOL_Keyword LINES = new COBOL_Keyword("LINES");
+				public COBOL_Expression lines;
+			}
+			
+			public @CHOICE static class COBOL_DisplaySize extends TokenSequence
+			{
+				public COBOL_Keyword SIZE = new COBOL_Keyword("SIZE");
+				public COBOL_Expression size;
+			}
 		}
-	}
-	
-	public static class COBOL_DisplayWithNoAdvancing extends TokenSequence
-	{
-		public @OPT COBOL_Keyword WITH = new COBOL_Keyword("WITH");
-		public COBOL_Keyword NO = new COBOL_Keyword("NO");
-		public COBOL_Keyword ADVANCING = new COBOL_Keyword("ADVANCING");
-	}
-	
-	public static class COBOL_DisplayWithControl extends TokenSequence
-	{
-		public COBOL_Keyword WITH = new COBOL_Keyword("WITH");
-		public COBOL_Keyword CONTROL = new COBOL_Keyword("CONTROL");
-		public COBOL_Identifier_Reference control;
-	}
-	
-	public static class COBOL_DisplayUpon extends TokenSequence
-	{
-		public COBOL_Keyword UPON = new COBOL_Keyword("UPON");
-		public COBOL_Identifier_Reference upon;
 	}
 	
 	public static class COBOL_DisplayWhat extends TokenSequence implements EagleRunnable
@@ -90,33 +134,6 @@ public class COBOL_DisplayStatement extends COBOL_AbstractStatement implements E
 		}
 	}
 	
-	public static class COBOL_DisplayAt extends TokenSequence
-	{
-		public COBOL_Keyword AT = new COBOL_Keyword("AT");
-		public @OPT COBOL_Keyword LINE = new COBOL_Keyword("LINE");
-		public @OPT COBOL_Expression location;
-		public @OPT COBOL_DisplayColumn column;
-		
-		public static class COBOL_DisplayColumn extends TokenSequence
-		{
-			public COBOL_Keyword COLUMN = new COBOL_Keyword("COLUMN");
-			public COBOL_Expression column;
-		}
-	}
-	
-	public static class COBOL_DisplayWith extends TokenSequence
-	{
-		public COBOL_Keyword WITH = new COBOL_Keyword("WITH");
-		public TokenList<COBOL_DisplayColor> colors;
-		
-		public static class COBOL_DisplayColor extends TokenSequence
-		{
-			public COBOL_KeywordChoice color = new COBOL_KeywordChoice(
-					"FOREGROUND-COLOR", "BACKGROUND-COLOR", "HBCKGROUND-COLOR", "HIGHLIGHT", "REVERSE-VIDEO");
-			public @OPT COBOL_Number fg;
-		}
-	}
-
 	@Override
 	public void interpret(EagleInterpreter interpreter)
 	{

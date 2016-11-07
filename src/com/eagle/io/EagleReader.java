@@ -7,5 +7,7 @@ import com.eagle.programmar.EagleLanguage;
 
 public abstract class EagleReader
 {
+	public boolean DEBUG = false;
+
 	public abstract EagleLanguage readFrom(String xmlFile) throws Exception;
 }

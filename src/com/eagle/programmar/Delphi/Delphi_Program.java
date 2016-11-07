@@ -7,6 +7,7 @@ import com.eagle.programmar.EagleLanguage;
 import com.eagle.programmar.Delphi.Statements.Delphi_BeginEnd;
 import com.eagle.programmar.Delphi.Symbols.Delphi_Program_Definition;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Comment;
+import com.eagle.programmar.Delphi.Terminals.Delphi_Include;
 import com.eagle.programmar.Delphi.Terminals.Delphi_Keyword;
 import com.eagle.programmar.Delphi.Terminals.Delphi_KeywordChoice;
 import com.eagle.tokens.TokenChooser;
@@ -34,7 +35,7 @@ public class Delphi_Program extends EagleLanguage
 	
 	public static class Delphi_Full_or_Partial extends TokenChooser
 	{
-		public static class Delphi_Full extends TokenSequence
+		public @CHOICE static class Delphi_Full extends TokenSequence
 		{
 			public Delphi_KeywordChoice programOrUnit = new Delphi_KeywordChoice("Program", "Unit");
 			public Delphi_Program_Definition id;
@@ -45,7 +46,7 @@ public class Delphi_Program extends EagleLanguage
 			public PunctuationPeriod dot;
 		}
 		
-		public static class Delphi_Partial extends TokenSequence
+		public @CHOICE static class Delphi_Partial extends TokenSequence
 		{
 			public TokenList<Delphi_Header> headers;
 		}
@@ -53,18 +54,19 @@ public class Delphi_Program extends EagleLanguage
 	
 	public static class Delphi_Header extends TokenChooser
 	{
-		public Delphi_KeywordChoice INTERFACE = new Delphi_KeywordChoice("Interface", "Implementation");
+		public @CHOICE Delphi_KeywordChoice INTERFACE = new Delphi_KeywordChoice("Interface", "Implementation");
 		
-		public Delphi_Comment comment;
+		public @CHOICE Delphi_Comment comment;
 		
-		public Delphi_Uses uses;
-		public Delphi_Types types;
-		public Delphi_Consts consts;
-		public Delphi_Vars vars;
-		public Delphi_Procedure proc;
-		public Delphi_Function func;
+		public @CHOICE Delphi_Uses uses;
+		public @CHOICE Delphi_Types types;
+		public @CHOICE Delphi_Consts consts;
+		public @CHOICE Delphi_Vars vars;
+		public @CHOICE Delphi_Procedure proc;
+		public @CHOICE Delphi_Function func;
+		public @CHOICE Delphi_Include include;
 		
-		public static class Delphi_Initialization extends TokenSequence
+		public @CHOICE static class Delphi_Initialization extends TokenSequence
 		{
 			public Delphi_KeywordChoice INITIALIZATION = new Delphi_KeywordChoice("Initialization", "Finalization");
 			public Delphi_Statement stmt;

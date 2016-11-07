@@ -12,6 +12,7 @@ import com.eagle.tokens.TokenSequence;
 public class Perl_ThrowStatement extends TokenSequence
 {
 	public Perl_Keyword THROW = new Perl_Keyword("throw");
+	public @OPT Perl_Keyword NEW = new Perl_Keyword("new");
 	public Perl_Expression expr;
 
 	public static class Perl_MoreException extends TokenSequence

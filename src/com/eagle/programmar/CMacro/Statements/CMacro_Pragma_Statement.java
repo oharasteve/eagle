@@ -23,9 +23,9 @@ public class CMacro_Pragma_Statement extends TokenSequence implements CMacro_Pro
 	
 	public static class CMacro_Pragma_Type extends TokenChooser
 	{
-		public C_Keyword ONCE = new C_Keyword("once");
+		public @CHOICE C_Keyword ONCE = new C_Keyword("once");
 		
-		public static class CMacro_Pragma_Warning extends TokenSequence
+		public @CHOICE static class CMacro_Pragma_Warning extends TokenSequence
 		{
 			public C_Keyword WARNING = new C_Keyword("warning");
 			public PunctuationLeftParen leftParen;
@@ -35,7 +35,7 @@ public class CMacro_Pragma_Statement extends TokenSequence implements CMacro_Pro
 			public PunctuationRightParen rightParen;
 		}
 		
-		public static class CMacro_Pragma_Pack extends TokenSequence
+		public @CHOICE static class CMacro_Pragma_Pack extends TokenSequence
 		{
 			public C_Keyword PACK = new C_Keyword("pack");
 			public PunctuationLeftParen leftParen;

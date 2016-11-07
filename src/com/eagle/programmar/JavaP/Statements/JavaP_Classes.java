@@ -9,8 +9,8 @@ import com.eagle.programmar.JavaP.JavaP_Value;
 import com.eagle.programmar.JavaP.Blocks.JavaP_CodeLineNumbers;
 import com.eagle.programmar.JavaP.Blocks.JavaP_CodeLocalValues;
 import com.eagle.programmar.JavaP.Statements.JavaP_Classes.JavaP_OneClass.JavaP_MethodArgument.JavaP_MethodArg.JavaP_EmptySubscript;
-import com.eagle.programmar.JavaP.Symbols.JavaP_Symbol_Definition;
 import com.eagle.programmar.JavaP.Terminals.JavaP_EndOfLine;
+import com.eagle.programmar.JavaP.Terminals.JavaP_Identifier;
 import com.eagle.programmar.JavaP.Terminals.JavaP_Keyword;
 import com.eagle.programmar.JavaP.Terminals.JavaP_KeywordChoice;
 import com.eagle.programmar.JavaP.Terminals.JavaP_Punctuation;
@@ -49,7 +49,7 @@ public class JavaP_Classes extends TokenSequence
 
 		public static class JavaP_OneClassHeader extends TokenChooser
 		{
-			public static class JavaP_OneClassRegularHeader extends TokenSequence
+			public @CHOICE static class JavaP_OneClassRegularHeader extends TokenSequence
 			{
 				public JavaP_QualifiedName type;
 				public @OPT JavaP_OneClassGeneric generic;
@@ -57,7 +57,7 @@ public class JavaP_Classes extends TokenSequence
 				public JavaP_OneClassWhat what;
 			}
 
-			public static class JavaP_OneClassStaticHeader extends TokenSequence
+			public @CHOICE static class JavaP_OneClassStaticHeader extends TokenSequence
 			{
 				public PunctuationLeftBrace leftBrace;
 				public PunctuationRightBrace rightBrace;
@@ -72,7 +72,8 @@ public class JavaP_Classes extends TokenSequence
 					"private",
 					"protected",
 					"public",
-					"static"
+					"static",
+					"synchronized"
 			);
 		}
 		
@@ -80,7 +81,7 @@ public class JavaP_Classes extends TokenSequence
 		{
 			public @LAST JavaP_QualifiedName data;
 			
-			public static class JavaP_OneClassMethod extends TokenSequence
+			public @CHOICE static class JavaP_OneClassMethod extends TokenSequence
 			{
 				public @OPT JavaP_QualifiedName name;
 				public PunctuationLeftParen leftParen;
@@ -99,9 +100,9 @@ public class JavaP_Classes extends TokenSequence
 		
 		public static class JavaP_MethodArgument extends TokenChooser
 		{
-			public JavaP_Punctuation question = new JavaP_Punctuation('?');
+			public @CHOICE JavaP_Punctuation question = new JavaP_Punctuation('?');
 			
-			public static class JavaP_MethodArg extends TokenSequence
+			public @CHOICE static class JavaP_MethodArg extends TokenSequence
 			{
 				public @OPT JavaP_QuestionExtends question;
 				public @OPT JavaP_TypeExtends type;
@@ -117,7 +118,7 @@ public class JavaP_Classes extends TokenSequence
 	
 				public static class JavaP_TypeExtends extends TokenSequence
 				{
-					public JavaP_Symbol_Definition typeName;
+					public JavaP_Identifier typeName;
 					public JavaP_Keyword EXTENDS = new JavaP_Keyword("extends");
 				}
 	
@@ -138,13 +139,13 @@ public class JavaP_Classes extends TokenSequence
 		
 		public static class JavaP_OneClassParameter extends TokenChooser
 		{
-			public JavaP_CodeBlock code;
-			public JavaP_Signature signature;
-			public JavaP_RuntimeVisibleAnnotations runtimeAnnotation;
-			public JavaP_CodeLineNumbers lineNumbers;
-			public JavaP_CodeLocalValues localValues;
+			public @CHOICE JavaP_CodeBlock code;
+			public @CHOICE JavaP_Signature signature;
+			public @CHOICE JavaP_RuntimeVisibleAnnotations runtimeAnnotation;
+			public @CHOICE JavaP_CodeLineNumbers lineNumbers;
+			public @CHOICE JavaP_CodeLocalValues localValues;
 
-			public static class JavaP_OneClassDescriptor extends TokenSequence
+			public @CHOICE static class JavaP_OneClassDescriptor extends TokenSequence
 			{
 				public JavaP_Keyword DESCRIPTOR = new JavaP_Keyword("descriptor");
 				public PunctuationColon colon;
@@ -152,7 +153,7 @@ public class JavaP_Classes extends TokenSequence
 				public JavaP_EndOfLine eoln;
 			}
 			
-			public static class JavaP_OneClassFlags extends TokenSequence
+			public @CHOICE static class JavaP_OneClassFlags extends TokenSequence
 			{
 				public JavaP_Keyword FLAGS = new JavaP_Keyword("flags");
 				public PunctuationColon colon;
@@ -161,11 +162,11 @@ public class JavaP_Classes extends TokenSequence
 				
 				public static class JavaP_OneClassFlag extends TokenChooser
 				{
-					public JavaP_KeywordChoice ACC = new JavaP_KeywordChoice(JavaP_Syntax.ACC_CODES);
+					public @CHOICE JavaP_KeywordChoice ACC = new JavaP_KeywordChoice(JavaP_Syntax.ACC_CODES);
 				}
 			}
 			
-			public static class JavaP_OneClassConstantValue extends TokenSequence
+			public @CHOICE static class JavaP_OneClassConstantValue extends TokenSequence
 			{
 				public JavaP_KeywordChoice CONSTANTVALUE = new JavaP_KeywordChoice("Constant", "ConstantValue");
 				public @OPT JavaP_Keyword VALUE = new JavaP_Keyword("value");
@@ -175,7 +176,7 @@ public class JavaP_Classes extends TokenSequence
 				public JavaP_EndOfLine eoln;
 			}
 			
-			public static class JavaP_OneClassExceptions extends TokenSequence
+			public @CHOICE static class JavaP_OneClassExceptions extends TokenSequence
 			{
 				public JavaP_Keyword EXCEPTIONS = new JavaP_Keyword("Exceptions");
 				public PunctuationColon colon1;
@@ -186,7 +187,7 @@ public class JavaP_Classes extends TokenSequence
 				public @OPT JavaP_EndOfLine eoln2;
 			}
 			
-			public static class JavaP_OneClassMethodParameters extends TokenSequence
+			public @CHOICE static class JavaP_OneClassMethodParameters extends TokenSequence
 			{
 				public JavaP_Keyword METHODPARAMETERS = new JavaP_Keyword("MethodParameters");
 				public PunctuationColon colon;

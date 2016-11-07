@@ -3,10 +3,10 @@
 
 package com.eagle.programmar.JavaP.Symbols;
 
-import com.eagle.programmar.JavaP.Terminals.JavaP_Identifier;
+import com.eagle.programmar.JavaP.Terminals.JavaP_HashNumber;
 import com.eagle.tokens.DefinitionInterface;
 
-public class JavaP_Symbol_Definition extends JavaP_Identifier implements DefinitionInterface
+public class JavaP_Symbol_Definition extends JavaP_HashNumber implements DefinitionInterface
 {
 	@Override
 	public String typeName()

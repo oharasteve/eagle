@@ -23,11 +23,11 @@ public class IBMASM_Address extends TokenSequence
 	
 	public static class IBMASM_Label_or_Star extends TokenChooser
 	{
-		public IBMASM_Label label;
-		public IBMASM_Number number;
-		public PunctuationStar star;
+		public @CHOICE IBMASM_Label label;
+		public @CHOICE IBMASM_Number number;
+		public @CHOICE PunctuationStar star;
 		
-		public static class IBMASM_Address_Equals extends TokenSequence
+		public @CHOICE static class IBMASM_Address_Equals extends TokenSequence
 		{
 			public PunctuationEquals equals;
 			public IBMASM_Keyword X = new IBMASM_Keyword("X");

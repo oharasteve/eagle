@@ -29,8 +29,8 @@ public class COBOL_WriteStatement extends COBOL_AbstractStatement
 		
 		public static class COBOL_WriteFromWhat extends TokenChooser
 		{
-			public COBOL_Identifier_Reference id;
-			public COBOL_Keyword SPACES = new COBOL_Keyword("SPACES");
+			public @CHOICE COBOL_Identifier_Reference id;
+			public @CHOICE COBOL_Keyword SPACES = new COBOL_Keyword("SPACES");
 		}
 	}
 	

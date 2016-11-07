@@ -29,7 +29,7 @@ public abstract class EagleInterpreter
 		}
 		else if (TokenChooser.class.isAssignableFrom(token.getClass()))
 		{
-			tryToInterpret(((TokenChooser) token)._whichToken);
+			tryToInterpret(((TokenChooser) token).getWhich());
 		}
 		else if (!TerminalCommentToken.class.isAssignableFrom(token.getClass()))
 		{

@@ -30,7 +30,7 @@ import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class SQL_CreateStatement extends TokenChooser
 {
-	public static class SQL_CreateTableStatement extends TokenSequence
+	public @CHOICE static class SQL_CreateTableStatement extends TokenSequence
 	{
 		public @DOC("sql_create_table.asp") SQL_Keyword CREATE = new SQL_Keyword("CREATE");
 		public SQL_Keyword TABLE = new SQL_Keyword("TABLE");
@@ -50,34 +50,34 @@ public class SQL_CreateStatement extends TokenChooser
 			
 			public static class SQL_FieldOption extends TokenChooser
 			{
-				public SQL_Keyword UNIQUE = new SQL_Keyword("UNIQUE");
+				public @CHOICE SQL_Keyword UNIQUE = new SQL_Keyword("UNIQUE");
 				
-				public static class SQL_FieldNotNull extends TokenSequence
+				public @CHOICE static class SQL_FieldNotNull extends TokenSequence
 				{
 					public @OPT SQL_KeywordChoice NOT = new SQL_KeywordChoice("NON", "NOT");
 					public SQL_Keyword NULL = new SQL_Keyword("NULL");
 				}
 				
-				public static class SQL_FieldDefault extends TokenSequence
+				public @CHOICE static class SQL_FieldDefault extends TokenSequence
 				{
 					public SQL_Keyword DEFAULT = new SQL_Keyword("DEFAULT");
 					public SQL_Expression value;
 				}
 				
-				public static class SQL_FieldOnUpdate extends TokenSequence
+				public @CHOICE static class SQL_FieldOnUpdate extends TokenSequence
 				{
 					public SQL_Keyword ON = new SQL_Keyword("ON");
 					public SQL_Keyword UPDATE = new SQL_Keyword("UPDATE");
 					public SQL_Expression value;
 				}
 				
-				public static class SQL_FieldComment extends TokenSequence
+				public @CHOICE static class SQL_FieldComment extends TokenSequence
 				{
 					public SQL_Keyword COMMENT = new SQL_Keyword("COMMENT");
 					public SQL_Literal comment;
 				}
 				
-				public static class SQL_FieldKey extends TokenSequence
+				public @CHOICE static class SQL_FieldKey extends TokenSequence
 				{
 					public SQL_Keyword PRIMARY = new SQL_Keyword("PRIMARY");
 					public SQL_Keyword KEY = new SQL_Keyword("KEY");
@@ -87,7 +87,7 @@ public class SQL_CreateStatement extends TokenChooser
 		
 		public static class SQL_CreateFieldKey extends TokenChooser
 		{
-			public static class SQL_CreateFieldPrimaryKey extends TokenSequence
+			public @CHOICE static class SQL_CreateFieldPrimaryKey extends TokenSequence
 			{
 				public PunctuationComma comma;
 				public SQL_Keyword PRIMARY = new SQL_Keyword("PRIMARY");
@@ -97,7 +97,7 @@ public class SQL_CreateStatement extends TokenChooser
 				public PunctuationRightParen rightParen;
 			}
 	
-			public static class SQL_CreateFieldPlainKey extends TokenSequence
+			public @CHOICE static class SQL_CreateFieldPlainKey extends TokenSequence
 			{
 				public PunctuationComma comma;
 				public SQL_Keyword KEY = new SQL_Keyword("KEY");
@@ -107,7 +107,7 @@ public class SQL_CreateStatement extends TokenChooser
 				public PunctuationRightParen rightParen;
 			}
 	
-			public static class SQL_CreateFieldUniqueKey extends TokenSequence
+			public @CHOICE static class SQL_CreateFieldUniqueKey extends TokenSequence
 			{
 				public PunctuationComma comma;
 				public SQL_Keyword UNIQUE = new SQL_Keyword("UNIQUE");
@@ -123,7 +123,7 @@ public class SQL_CreateStatement extends TokenChooser
 				}
 			}
 			
-			public static class SQL_CreateFieldConstraint extends TokenSequence
+			public @CHOICE static class SQL_CreateFieldConstraint extends TokenSequence
 			{
 				public PunctuationComma comma;
 				public SQL_Constraint constraint;
@@ -132,23 +132,23 @@ public class SQL_CreateStatement extends TokenChooser
 	
 		public static class SQL_CreateOption extends TokenChooser
 		{
-			public SQL_Keyword DEFAULT = new SQL_Keyword("DEFAULT");
+			public @CHOICE SQL_Keyword DEFAULT = new SQL_Keyword("DEFAULT");
 	
-			public static class SQL_CreateEngine extends TokenSequence
+			public @CHOICE static class SQL_CreateEngine extends TokenSequence
 			{
 				public SQL_Keyword ENGINE = new SQL_Keyword("ENGINE");
 				public PunctuationEquals equals;
 				public SQL_Keyword MYIASM = new SQL_Keyword("MyISAM");
 			}
 	
-			public static class SQL_CreateCharset extends TokenSequence
+			public @CHOICE static class SQL_CreateCharset extends TokenSequence
 			{
 				public SQL_Keyword CHARSET = new SQL_Keyword("CHARSET");
 				public PunctuationEquals equals;
 				public SQL_KeywordChoice charset = new SQL_KeywordChoice("latin1", "utf8");
 			}
 	
-			public static class SQL_CreateComment extends TokenSequence
+			public @CHOICE static class SQL_CreateComment extends TokenSequence
 			{
 				public SQL_Keyword COMMENT = new SQL_Keyword("COMMENT");
 				public PunctuationEquals equals;
@@ -157,7 +157,7 @@ public class SQL_CreateStatement extends TokenChooser
 		}
 	}
 	
-	public static class SQL_CreateIndexStatement extends TokenSequence
+	public @CHOICE static class SQL_CreateIndexStatement extends TokenSequence
 	{
 		public SQL_Keyword CREATE = new SQL_Keyword("CREATE");
 		public @OPT SQL_Keyword UNIQUE = new SQL_Keyword("UNIQUE");
@@ -171,7 +171,7 @@ public class SQL_CreateStatement extends TokenChooser
 		public PunctuationSemicolon semicolon;
 	}
 	
-	public static class SQL_CreateViewStatement extends TokenSequence
+	public @CHOICE static class SQL_CreateViewStatement extends TokenSequence
 	{
 		public SQL_Keyword CREATE = new SQL_Keyword("CREATE");
 		public @OPT SQL_Keyword OR = new SQL_Keyword("OR");
@@ -182,7 +182,7 @@ public class SQL_CreateStatement extends TokenChooser
 		public SQL_SelectStatement select;
 	}
 	
-	public static class SQL_CreateRoleStatement extends TokenSequence
+	public @CHOICE static class SQL_CreateRoleStatement extends TokenSequence
 	{
 		public SQL_Keyword CREATE = new SQL_Keyword("CREATE");
 		public SQL_Keyword ROLE = new SQL_Keyword("ROLE");
@@ -190,7 +190,7 @@ public class SQL_CreateStatement extends TokenChooser
 		public PunctuationSemicolon semicolon;
 	}
 	
-	public static class SQL_CreateSynonymStatement extends TokenSequence
+	public @CHOICE static class SQL_CreateSynonymStatement extends TokenSequence
 	{
 		public SQL_Keyword CREATE = new SQL_Keyword("CREATE");
 		public SQL_Keyword PUBLIC = new SQL_Keyword("PUBLIC");

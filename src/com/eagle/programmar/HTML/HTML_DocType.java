@@ -32,18 +32,18 @@ public class HTML_DocType extends TokenSequence
 	
 	public static class HTML_DocValue extends TokenChooser
 	{
-		public HTML_Value value;
-		public HTML_DocType docType;
-		public HTML_Comment comment;
+		public @CHOICE HTML_Value value;
+		public @CHOICE HTML_DocType docType;
+		public @CHOICE HTML_Comment comment;
 		
-		public static class HTML_DocBrackets extends TokenSequence
+		public @CHOICE static class HTML_DocBrackets extends TokenSequence
 		{
 			public PunctuationLeftBracket leftBracket;
 			public TokenList<HTML_DocValue> values; 
 			public PunctuationRightBracket rightBracket;
 		}
 		
-		public static class HTML_DocParens extends TokenSequence
+		public @CHOICE static class HTML_DocParens extends TokenSequence
 		{
 			public PunctuationLeftParen leftParen;
 			public HTML_DocValue value;

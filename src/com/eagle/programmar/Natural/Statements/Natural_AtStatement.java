@@ -17,7 +17,7 @@ public class Natural_AtStatement extends TokenSequence
 	
 	public static class Natural_AtWhat extends TokenChooser
 	{
-		public static class Natural_AtEndOfData extends TokenSequence
+		public @CHOICE static class Natural_AtEndOfData extends TokenSequence
 		{
 			public @DOC("sm/atenddat.htm") Natural_Keyword END = new Natural_Keyword("END");
 			public @OPT Natural_Keyword OF = new Natural_Keyword("OF");
@@ -26,7 +26,7 @@ public class Natural_AtStatement extends TokenSequence
 			public @OPT Natural_Keyword ENDENDDATA = new Natural_Keyword("END-ENDDATA");
 		}
 		
-		public static class Natural_AtEndOfPage extends TokenSequence
+		public @CHOICE static class Natural_AtEndOfPage extends TokenSequence
 		{
 			public @DOC("sm/atendpag.htm") Natural_Keyword END = new Natural_Keyword("END");
 			public @OPT Natural_Keyword OF = new Natural_Keyword("OF");
@@ -35,7 +35,7 @@ public class Natural_AtStatement extends TokenSequence
 			public Natural_Keyword ENDENDPAGE = new Natural_Keyword("END-ENDPAGE");
 		}
 		
-		public static class Natural_AtBreakOfVariable extends TokenSequence
+		public @CHOICE static class Natural_AtBreakOfVariable extends TokenSequence
 		{
 			public @DOC("sm/atbreak.htm") Natural_Keyword BREAK = new Natural_Keyword("BREAK");
 			public @OPT Natural_Keyword OF = new Natural_Keyword("OF");
@@ -44,7 +44,7 @@ public class Natural_AtStatement extends TokenSequence
 			public Natural_Keyword ENDBREAK = new Natural_Keyword("END-BREAK");
 		}
 
-		public static class Natural_AtStartOfData extends TokenSequence
+		public @CHOICE static class Natural_AtStartOfData extends TokenSequence
 		{
 			public @DOC("sm/atstart.htm") Natural_Keyword START = new Natural_Keyword("START");
 			public @OPT Natural_Keyword OF = new Natural_Keyword("OF");

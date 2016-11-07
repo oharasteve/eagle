@@ -18,17 +18,17 @@ public class Javascript_Assignment extends TokenSequence
 
 	public static class Javascript_AssignmentOperator extends TokenChooser
 	{
-		public PunctuationEquals equals;
-		public Javascript_Punctuation timesEquals = new Javascript_Punctuation("*=");
-		public Javascript_Punctuation divideEquals = new Javascript_Punctuation("/=");
-		public Javascript_Punctuation modulusEquals = new Javascript_Punctuation("%=");
-		public Javascript_Punctuation plusEquals = new Javascript_Punctuation("+=");
-		public Javascript_Punctuation minusEquals = new Javascript_Punctuation("-=");
-		public Javascript_Punctuation shiftLeftEquals = new Javascript_Punctuation("<<=");
-		public Javascript_Punctuation shiftRightEquals = new Javascript_Punctuation(">>=");
-		public Javascript_Punctuation logicalShiftRightEquals = new Javascript_Punctuation(">>>=");
-		public Javascript_Punctuation bitwiseAndEquals = new Javascript_Punctuation("&=");
-		public Javascript_Punctuation bitwiseXOrEquals = new Javascript_Punctuation("^=");
-		public Javascript_Punctuation bitwiseOrEquals = new Javascript_Punctuation("|=");
+		public @CHOICE PunctuationEquals equals;
+		public @CHOICE Javascript_Punctuation timesEquals = new Javascript_Punctuation("*=");
+		public @CHOICE Javascript_Punctuation divideEquals = new Javascript_Punctuation("/=");
+		public @CHOICE Javascript_Punctuation modulusEquals = new Javascript_Punctuation("%=");
+		public @CHOICE Javascript_Punctuation plusEquals = new Javascript_Punctuation("+=");
+		public @CHOICE Javascript_Punctuation minusEquals = new Javascript_Punctuation("-=");
+		public @CHOICE Javascript_Punctuation shiftLeftEquals = new Javascript_Punctuation("<<=");
+		public @CHOICE Javascript_Punctuation shiftRightEquals = new Javascript_Punctuation(">>=");
+		public @CHOICE Javascript_Punctuation logicalShiftRightEquals = new Javascript_Punctuation(">>>=");
+		public @CHOICE Javascript_Punctuation bitwiseAndEquals = new Javascript_Punctuation("&=");
+		public @CHOICE Javascript_Punctuation bitwiseXOrEquals = new Javascript_Punctuation("^=");
+		public @CHOICE Javascript_Punctuation bitwiseOrEquals = new Javascript_Punctuation("|=");
 	}
 }

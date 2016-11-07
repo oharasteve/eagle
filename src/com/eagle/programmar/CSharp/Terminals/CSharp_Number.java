@@ -11,6 +11,6 @@ public class CSharp_Number extends TerminalNumberToken
 	@Override
 	public boolean parse(EagleFileReader lines)
 	{
-		return genericNumber(lines, "x", "Ee", "LlFf", true);
+		return genericNumber(lines, "Ee", "LlFf", true);
 	}
 }

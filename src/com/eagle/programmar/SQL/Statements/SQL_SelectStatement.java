@@ -28,7 +28,7 @@ public class SQL_SelectStatement extends TokenSequence
 	{
 		public @LAST SQL_Expression expr;
 		
-		public static class SQL_SelectExpression extends TokenSequence
+		public @CHOICE static class SQL_SelectExpression extends TokenSequence
 		{
 			public SQL_Expression what;
 			public SQL_Identifier_Reference name;

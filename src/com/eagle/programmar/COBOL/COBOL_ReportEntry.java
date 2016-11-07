@@ -31,7 +31,7 @@ public class COBOL_ReportEntry extends TokenSequence
 		
 		public static class COBOL_ReportDescriptionEntry extends TokenChooser
 		{
-			public static class COBOL_ReportDescriptionControls extends TokenSequence
+			public @CHOICE static class COBOL_ReportDescriptionControls extends TokenSequence
 			{
 				public COBOL_Keyword CONTROLS = new COBOL_Keyword("CONTROLS");
 				public COBOL_Keyword ARE = new COBOL_Keyword("ARE");
@@ -39,31 +39,35 @@ public class COBOL_ReportEntry extends TokenSequence
 				public TokenList<COBOL_Identifier_Reference> ids;
 			}
 
-			public static class COBOL_ReportDescriptionPageLimit extends TokenSequence
+			public @CHOICE static class COBOL_ReportDescriptionPageLimit extends TokenSequence
 			{
 				public COBOL_Keyword PAGE = new COBOL_Keyword("PAGE");
 				public COBOL_Keyword LIMIT = new COBOL_Keyword("LIMIT");
 				public COBOL_Keyword IS = new COBOL_Keyword("IS");
 				public COBOL_Number count;
 			}
-			public static class COBOL_ReportDescriptionHeading extends TokenSequence
+			
+			public @CHOICE static class COBOL_ReportDescriptionHeading extends TokenSequence
 			{
 				public COBOL_Keyword HEADING = new COBOL_Keyword("HEADING");
 				public COBOL_Number count;
 			}
-			public static class COBOL_ReportDescriptionFirstDetail extends TokenSequence
+			
+			public @CHOICE static class COBOL_ReportDescriptionFirstDetail extends TokenSequence
 			{
 				public COBOL_Keyword FIRST = new COBOL_Keyword("FIRST");
 				public COBOL_Keyword DETAIL = new COBOL_Keyword("DETAIL");
 				public COBOL_Number count;
 			}
-			public static class COBOL_ReportDescriptionLastDetail extends TokenSequence
+			
+			public @CHOICE static class COBOL_ReportDescriptionLastDetail extends TokenSequence
 			{
 				public COBOL_Keyword LAST = new COBOL_Keyword("LAST");
 				public COBOL_Keyword DETAIL = new COBOL_Keyword("DETAIL");
 				public COBOL_Number count;
 			}
-			public static class COBOL_ReportDescriptionFooting extends TokenSequence
+			
+			public @CHOICE static class COBOL_ReportDescriptionFooting extends TokenSequence
 			{
 				public COBOL_Keyword FOOTING = new COBOL_Keyword("FOOTING");
 				public COBOL_Number count;
@@ -84,36 +88,36 @@ public class COBOL_ReportEntry extends TokenSequence
 		
  		public static class COBOL_ReportDataLineType extends TokenChooser
 		{
-			public static class COBOL_ReportDataLineTypeReportHeading extends TokenSequence
+			public @CHOICE static class COBOL_ReportDataLineTypeReportHeading extends TokenSequence
 			{
 				public COBOL_Keyword REPORT = new COBOL_Keyword("REPORT");
 				public COBOL_Keyword HEADING = new COBOL_Keyword("HEADING");
 			}
 			
-			public static class COBOL_ReportDataLineTypeReportFooting extends TokenSequence
+			public @CHOICE static class COBOL_ReportDataLineTypeReportFooting extends TokenSequence
 			{
 				public COBOL_Keyword REPORT = new COBOL_Keyword("REPORT");
 				public COBOL_Keyword FOOTING = new COBOL_Keyword("FOOTING");
 			}
 
-			public static class COBOL_ReportDataLineTypePageHeading extends TokenSequence
+			public @CHOICE static class COBOL_ReportDataLineTypePageHeading extends TokenSequence
 			{
 				public COBOL_Keyword PAGE = new COBOL_Keyword("PAGE");
 				public COBOL_Keyword HEADING = new COBOL_Keyword("HEADING");
 			}
 			
-			public static class COBOL_ReportDataLineTypeDetail extends TokenSequence
+			public @CHOICE static class COBOL_ReportDataLineTypeDetail extends TokenSequence
 			{
 				public COBOL_Keyword DETAIL = new COBOL_Keyword("DETAIL");
 			}
 
-			public static class COBOL_ReportDataLineTypePageFooting extends TokenSequence
+			public @CHOICE static class COBOL_ReportDataLineTypePageFooting extends TokenSequence
 			{
 				public COBOL_Keyword PAGE = new COBOL_Keyword("PAGE");
 				public COBOL_Keyword FOOTING = new COBOL_Keyword("FOOTING");
 			}
 
-			public static class COBOL_ReportDataLineTypeControlFooting extends TokenSequence
+			public @CHOICE static class COBOL_ReportDataLineTypeControlFooting extends TokenSequence
 			{
 				public COBOL_Keyword CONTROL = new COBOL_Keyword("CONTROL");
 				public COBOL_Keyword FOOTING = new COBOL_Keyword("FOOTING");
@@ -151,33 +155,33 @@ public class COBOL_ReportEntry extends TokenSequence
  	 			
  	 			public static class COBOL_ColumnLineClause extends TokenChooser
  	 			{
- 	 				public static class COBOL_ColumnLineSource extends TokenSequence
+ 	 				public @CHOICE static class COBOL_ColumnLineSource extends TokenSequence
  	 				{
 	 	 				public COBOL_Keyword SOURCE = new COBOL_Keyword("SOURCE");
 	 					public COBOL_Identifier_Reference id;
 	 					public @OPT COBOL_Subscript subscript;
  	 				}
 
- 	 				public static class COBOL_SourceClause extends TokenSequence
+ 	 				public @CHOICE static class COBOL_SourceClause extends TokenSequence
  	 				{
  	 					public COBOL_Keyword SOURCE = new COBOL_Keyword("SOURCE");
  	 					public COBOL_Keyword PAGECOUNTER = new COBOL_Keyword("PAGE-COUNTER");
  	 				}
 
- 	 				public static class COBOL_ColumnLineGroup extends TokenSequence
+ 	 				public @CHOICE static class COBOL_ColumnLineGroup extends TokenSequence
  	 				{
 	 	 				public COBOL_Keyword GROUP = new COBOL_Keyword("GROUP");
 	 	 				public COBOL_Keyword INDICATE = new COBOL_Keyword("INDICATE");
  	 				}
  	 				
- 	 				public static class COBOL_ColumnLineValue extends TokenSequence
+ 	 				public @CHOICE static class COBOL_ColumnLineValue extends TokenSequence
  	 				{
 	 	 				public COBOL_Keyword VALUE = new COBOL_Keyword("VALUE");
 	 	 				public @OPT COBOL_Keyword ALL = new COBOL_Keyword("ALL");
 	 	 				public COBOL_Literal val;
  	 				}
  	 				
- 	 				public static class COBOL_ColumnLineSum extends TokenSequence
+ 	 				public @CHOICE static class COBOL_ColumnLineSum extends TokenSequence
  	 				{
 	 	 				public COBOL_Keyword SUM = new COBOL_Keyword("SUM");
 	 					public COBOL_Identifier_Reference id;

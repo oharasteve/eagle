@@ -17,19 +17,19 @@ public class VB_OnStatement extends TokenSequence
 	
 	public static class VB_OnWhat extends TokenChooser
 	{
-		public static class VB_OnResume extends TokenSequence
+		public @CHOICE static class VB_OnResume extends TokenSequence
 		{
 			public VB_Keyword RESUME = new VB_Keyword("resume");
 			public VB_Keyword NEXT = new VB_Keyword("next");
 		}
 		
-		public static class VB_OnGotoZero extends TokenSequence
+		public @CHOICE static class VB_OnGotoZero extends TokenSequence
 		{
 			public VB_Keyword GOTO = new VB_Keyword("goto");
 			public VB_Number zero;
 		}
 		
-		public static class VB_OnGotoLabel extends TokenSequence
+		public @CHOICE static class VB_OnGotoLabel extends TokenSequence
 		{
 			public VB_Keyword GOTO = new VB_Keyword("goto");
 			public VB_Identifier_Reference lbl;

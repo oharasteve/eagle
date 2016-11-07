@@ -19,7 +19,7 @@ public class SQL_AlterStatement extends TokenSequence
 	
 	public static class SQL_AlterWhat extends TokenChooser
 	{
-		public static class SQL_AlterTable extends TokenSequence
+		public @CHOICE static class SQL_AlterTable extends TokenSequence
 		{
 			public SQL_Keyword TABLE = new SQL_Keyword("TABLE");
 			public SQL_Identifier_Reference table;

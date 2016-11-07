@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Sun Jan 31 05:09:27 EST 2016" Elapsed="16" Language="AWK" Steps="5905" Tokens="1008">
+<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Mon Nov 07 10:58:12 EST 2016" Elapsed="26" Language="AWK" Steps="6028" Tokens="1010">
   <T EC="0" EL="39" File="" SC="1" SL="1" TT=".AWK.AWK_Program">
     <T EC="0" EL="39" N="elements" SC="1" SL="1" TT="List">
       <T EC="0" EL="5" N="elements[0]" SC="1" SL="1" TT=".AWK.AWK_Program$AWK_Element">
@@ -52,7 +52,9 @@
           <T EC="0" EL="14" N="condition" SC="1" SL="5" TT="List">
             <T EC="7" EL="5" N="condition[0]" SC="1" SL="5" TT=".AWK.AWK_Condition">
               <T EC="7" EL="5" N="condition[0]" SC="1" SL="5" TT=".AWK.AWK_Expression">
-                <T EC="7" EL="5" N="condition[0]" SC="1" SL="5" TT=".AWK.Terminals.AWK_Pattern" V="/bytes/"/>
+                <T EC="7" EL="5" N="condition[0]" SC="1" SL="5" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                  <T EC="7" EL="5" N="pattern" SC="1" SL="5" TT=".AWK.Terminals.AWK_Pattern" V="/bytes/"/>
+                </T>
               </T>
             </T>
           </T>
@@ -216,7 +218,9 @@
                         <T EC="20" EL="9" N="argList" SC="8" SL="9" TT=".AWK.AWK_ArgumentList">
                           <T EC="20" EL="9" N="exprs" SC="8" SL="9" TT="List">
                             <T EC="10" EL="9" N="exprs[0]" SC="8" SL="9" TT=".AWK.AWK_Expression">
-                              <T EC="10" EL="9" N="exprs[0]" SC="8" SL="9" TT=".AWK.Terminals.AWK_Pattern" V="/,/"/>
+                              <T EC="10" EL="9" N="exprs[0]" SC="8" SL="9" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                                <T EC="10" EL="9" N="pattern" SC="8" SL="9" TT=".AWK.Terminals.AWK_Pattern" V="/,/"/>
+                              </T>
                             </T>
                             <T EC="11" EL="9" N="exprs[1]" SC="11" SL="9" TT="com.eagle.tokens.punctuation.PunctuationComma" V=","/>
                             <T EC="14" EL="9" N="exprs[2]" SC="12" SL="9" TT=".AWK.AWK_Expression">
@@ -371,7 +375,7 @@
                           <T EC="3" EL="11" N="var" SC="1" SL="11" TT=".AWK.AWK_Variable">
                             <T EC="3" EL="11" N="id" SC="3" SL="11" TT=".AWK.Symbols.AWK_Identifier_Reference" V="i"/>
                           </T>
-                          <T EC="5" EL="11" N="postIncrementOperator" SC="4" SL="11" TT=".AWK.Terminals.AWK_Punctuation" V="++"/>
+                          <T EC="5" EL="11" N="operator" SC="4" SL="11" TT=".AWK.Terminals.AWK_Punctuation" V="++"/>
                         </T>
                       </T>
                     </T>

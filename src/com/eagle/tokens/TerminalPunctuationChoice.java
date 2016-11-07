@@ -70,6 +70,8 @@ public abstract class TerminalPunctuationChoice extends TerminalToken
 	@Override
 	public void setValue(String val)
 	{
+		_present = (val != null);
+
 		if (_puncts == null || _puncts.length == 0) // Must be coming from XML reader ...
 		{
 			_puncts = new TerminalPunctuationToken[1];

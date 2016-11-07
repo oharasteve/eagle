@@ -12,9 +12,9 @@ import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Lisp_Variable extends TokenChooser
 {
-	public Lisp_Identifier_Reference var;
+	public @CHOICE Lisp_Identifier_Reference var;
 	
-	public static class Lisp_VariableWithDot extends TokenSequence
+	public @CHOICE static class Lisp_VariableWithDot extends TokenSequence
 	{
 		public PunctuationLeftParen leftParen;
 		public Lisp_Identifier_Reference var1;

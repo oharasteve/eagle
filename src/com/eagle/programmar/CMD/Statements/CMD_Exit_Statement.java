@@ -13,12 +13,12 @@ import com.eagle.tokens.punctuation.PunctuationSlash;
 public class CMD_Exit_Statement extends TokenSequence
 {
 	public @DOC("exit.mspx") CMD_Keyword EXIT = new CMD_Keyword("exit");
-	public @OPT TokenList<CMD_Del_Option> opts;
+	public @OPT TokenList<CMD_Exit_Option> opts;
 	public @OPT CMD_Number exitValue;
 	
-	public static class CMD_Del_Option extends TokenChooser
+	public static class CMD_Exit_Option extends TokenChooser
 	{
-		public static class CMD_Del_Option_B extends TokenSequence
+		public @CHOICE static class CMD_Exit_Option_B extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword B = new CMD_Keyword("b");

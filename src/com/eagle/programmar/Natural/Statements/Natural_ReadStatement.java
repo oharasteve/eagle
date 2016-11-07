@@ -31,11 +31,11 @@ public class Natural_ReadStatement extends TokenSequence
 	
 	public static class Natural_ReadClause extends TokenChooser
 	{
-		public Natural_Read_By readBy;
-		public Natural_Read_Starting readStarting;
-		public Natural_Read_Where readWhere;
-		public Natural_Read_Ending readEnding;
-		public Natural_Read_With readWith;
+		public @CHOICE Natural_Read_By readBy;
+		public @CHOICE Natural_Read_Starting readStarting;
+		public @CHOICE Natural_Read_Where readWhere;
+		public @CHOICE Natural_Read_Ending readEnding;
+		public @CHOICE Natural_Read_With readWith;
 	}
 	
 	public static class Natural_PhysicalLogical extends TokenSequence

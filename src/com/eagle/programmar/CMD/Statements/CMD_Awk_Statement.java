@@ -18,14 +18,14 @@ public class CMD_Awk_Statement extends TokenSequence
 	
 	public static class CMD_Awk_Option extends TokenChooser
 	{
-		public static class CMD_Awk_Option_F extends TokenSequence
+		public @CHOICE static class CMD_Awk_Option_F extends TokenSequence
 		{
 			public PunctuationHyphen minus;
 			public CMD_Keyword F = new CMD_Keyword("f");
 			public CMD_Argument arg;
 		}
 
-		public static class CMD_Awk_Option_V extends TokenSequence
+		public @CHOICE static class CMD_Awk_Option_V extends TokenSequence
 		{
 			public PunctuationHyphen minus;
 			public CMD_Keyword V = new CMD_Keyword("v");

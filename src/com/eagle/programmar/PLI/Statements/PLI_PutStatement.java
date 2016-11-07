@@ -68,37 +68,37 @@ public class PLI_PutStatement extends TokenSequence
 		
 		public static class PLI_PutEditFormat extends TokenChooser
 		{
-			public PLI_Keyword SKIP = new PLI_Keyword("SKIP");
-			public PLI_Literal literal;
+			public @CHOICE PLI_Keyword SKIP = new PLI_Keyword("SKIP");
+			public @CHOICE PLI_Literal literal;
 			
-			public static class PLI_PutMultipleFormats extends TokenSequence
+			public @CHOICE static class PLI_PutMultipleFormats extends TokenSequence
 			{
 				public PLI_Number number;
 				public PLI_PutFormat format;
 			}
 			
-			public static class PLI_PutFormat_A extends TokenSequence
+			public @CHOICE static class PLI_PutFormat_A extends TokenSequence
 			{
 				public @OPT PLI_Number number;
 				public PLI_Keyword A = new PLI_Keyword("A");
 				public @OPT PLI_PutFormat_Count formatCount;
 			}
 
-			public static class PLI_PutFormat_E extends TokenSequence
+			public @CHOICE static class PLI_PutFormat_E extends TokenSequence
 			{
 				public @OPT PLI_Number number;
 				public PLI_Keyword E = new PLI_Keyword("E");
 				public PLI_PutFormat_Count formatCount;
 			}
 
-			public static class PLI_PutFormat_F extends TokenSequence
+			public @CHOICE static class PLI_PutFormat_F extends TokenSequence
 			{
 				public @OPT PLI_Number number;
 				public PLI_Keyword F = new PLI_Keyword("F");
 				public PLI_PutFormat_Count formatCount;
 			}
 
-			public static class PLI_PutFormat_R extends TokenSequence
+			public @CHOICE static class PLI_PutFormat_R extends TokenSequence
 			{
 				public PLI_Keyword R = new PLI_Keyword("R");
 				public PunctuationLeftParen leftParen;
@@ -106,7 +106,7 @@ public class PLI_PutStatement extends TokenSequence
 				public PunctuationRightParen rightParen;
 			}
 
-			public static class PLI_PutFormat_X extends TokenSequence
+			public @CHOICE static class PLI_PutFormat_X extends TokenSequence
 			{
 				public @OPT PLI_Number number;
 				public PLI_Keyword X = new PLI_Keyword("X");

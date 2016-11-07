@@ -181,6 +181,8 @@ public class TerminalPunctuationToken extends TerminalToken
 	@Override
 	public void setValue(String val0)
 	{
+		_present = (val0 != null);
+
 		String val = val0;
 		if (val.startsWith("'") && val.endsWith("'") && val.length() > 1)
 		{

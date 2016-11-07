@@ -25,7 +25,7 @@ public class IBMASM_WTO_Macro extends TokenSequence
 	
 	public static class IBMASM_WTO_Value extends TokenChooser
 	{
-		public static class IBMASM_WTO_E extends TokenSequence
+		public @CHOICE static class IBMASM_WTO_E extends TokenSequence
 		{
 			public IBMASM_Keyword MF = new IBMASM_Keyword("MF");
 			public PunctuationEquals equals;

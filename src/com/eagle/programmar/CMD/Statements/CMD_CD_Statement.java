@@ -18,7 +18,7 @@ public class CMD_CD_Statement extends TokenSequence
 	
 	public static class CMD_CD_Option extends TokenChooser
 	{
-		public static class CMD_CD_Option_D extends TokenSequence
+		public @CHOICE static class CMD_CD_Option_D extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword D = new CMD_Keyword("d");

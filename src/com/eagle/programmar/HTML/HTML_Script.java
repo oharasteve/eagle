@@ -14,7 +14,7 @@ import com.eagle.tokens.TokenSequence;
 
 public class HTML_Script extends TokenChooser
 {
-	public static class HTML_ScriptWithBody extends TokenSequence
+	public @CHOICE static class HTML_ScriptWithBody extends TokenSequence
 	{
 		public @INDENT HTML_StartScript startScript;
 		public HTML_ScriptBody body;
@@ -30,8 +30,8 @@ public class HTML_Script extends TokenChooser
 		
 		public static class HTML_ScriptBody extends TokenChooser
 		{
-			public @NOSPACE @OPT Django_Control django;
-			public @SYNTAX(Javascript_Syntax.class) @OPT Javascript_Program javascript;
+			public @CHOICE @NOSPACE @OPT Django_Control django;
+			public @CHOICE @SYNTAX(Javascript_Syntax.class) @OPT Javascript_Program javascript;
 		}
 
 		public static class HTML_EndScript extends TokenSequence
@@ -42,7 +42,7 @@ public class HTML_Script extends TokenChooser
 		}
 	}
 	
-	public static class HTMLScriptNoBody extends TokenSequence
+	public @CHOICE static class HTMLScriptNoBody extends TokenSequence
 	{
 		public HTML_Punctuation startTag = new HTML_Punctuation('<');
 		public @NOSPACE @DOC("html_scripts.asp") HTML_Keyword script = new HTML_Keyword("script");

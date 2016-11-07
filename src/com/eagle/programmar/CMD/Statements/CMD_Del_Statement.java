@@ -18,19 +18,19 @@ public class CMD_Del_Statement extends TokenSequence
 	
 	public static class CMD_Del_Option extends TokenChooser
 	{
-		public static class CMD_Del_Option_F extends TokenSequence
+		public @CHOICE static class CMD_Del_Option_F extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword F = new CMD_Keyword("f");
 		}
 
-		public static class CMD_Del_Option_Q extends TokenSequence
+		public @CHOICE static class CMD_Del_Option_Q extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword Q = new CMD_Keyword("q");
 		}
 
-		public static class CMD_Del_Option_S extends TokenSequence
+		public @CHOICE static class CMD_Del_Option_S extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword S = new CMD_Keyword("s");

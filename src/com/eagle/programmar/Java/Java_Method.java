@@ -3,7 +3,7 @@
 
 package com.eagle.programmar.Java;
 
-import com.eagle.programmar.Java.Java_Statement.Java_StatementBlock.Java_StatementOrComment;
+import com.eagle.programmar.Java.Java_Statement.Java_StatementBlock;
 import com.eagle.programmar.Java.Java_Type.Java_GenericType;
 import com.eagle.programmar.Java.Symbols.Java_Current_Class_Reference;
 import com.eagle.programmar.Java.Symbols.Java_Method_Definition;
@@ -20,9 +20,7 @@ import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.punctuation.PunctuationComma;
-import com.eagle.tokens.punctuation.PunctuationLeftBrace;
 import com.eagle.tokens.punctuation.PunctuationLeftParen;
-import com.eagle.tokens.punctuation.PunctuationRightBrace;
 import com.eagle.tokens.punctuation.PunctuationRightParen;
 import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
@@ -53,8 +51,8 @@ public class Java_Method extends TokenSequence implements EagleScopeInterface
 	public static class Java_MethodModifiers extends TokenChooser
 	{
 		public @FIRST Java_Comment comment;
-		public Java_KeywordChoice modifier = new Java_KeywordChoice(Java_Program.MODIFIERS);
-		public Java_Annotation annotation;
+		public @CHOICE Java_KeywordChoice modifier = new Java_KeywordChoice(Java_Program.MODIFIERS);
+		public @CHOICE Java_Annotation annotation;
 	}
 	
 	public static class Java_MethodParameter extends TokenSequence
@@ -67,15 +65,15 @@ public class Java_Method extends TokenSequence implements EagleScopeInterface
 		
 		public static class Java_MethodParameterPrefix extends TokenChooser
 		{
-			public Java_Keyword FINAL = new Java_Keyword("final");
+			public @CHOICE Java_Keyword FINAL = new Java_Keyword("final");
 
-			public static class Java_MethodNullable extends TokenSequence
+			public @CHOICE static class Java_MethodNullable extends TokenSequence
 			{
 				public Java_Punctuation atSign = new Java_Punctuation('@');
 				public Java_Keyword NULLABLE = new Java_Keyword("Nullable");
 			}
 
-			public static class Java_MethodSuppress extends TokenSequence
+			public @CHOICE static class Java_MethodSuppress extends TokenSequence
 			{
 				public Java_Punctuation atSign = new Java_Punctuation('@');
 				public @NOSPACE Java_Keyword SUPPRESS = new Java_Keyword("SuppressWarnings");
@@ -100,15 +98,12 @@ public class Java_Method extends TokenSequence implements EagleScopeInterface
 	
 	public static class Java_MethodBody extends TokenChooser
 	{
-		public PunctuationSemicolon semicolon;
+		public @CHOICE PunctuationSemicolon semicolon;
 		
-		public static class Java_MethodImplementation extends TokenSequence
+		public @CHOICE static class Java_MethodImplementation extends TokenSequence
 		{
 			public @OPT TokenList<Java_Comment> comment1;
-			public @INDENT PunctuationLeftBrace leftBrace;
-			public @OPT TokenList<Java_StatementOrComment> elements;
-			public @OPT @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon1;
-			public @OUTDENT PunctuationRightBrace rightBrace;
+			public Java_StatementBlock block;
 			public @OPT TokenList<Java_Comment> comment2;
 			public @OPT @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon2;
 		}
@@ -116,7 +111,7 @@ public class Java_Method extends TokenSequence implements EagleScopeInterface
 	
 	public static class Java_Constructor extends TokenSequence
 	{
-		public @OPT @NEWLINE2 TokenList<Java_Annotation> annotation;
+		public @OPT @BLANKLINE TokenList<Java_Annotation> annotation;
 		public @OPT TokenList<Java_MethodModifiers> modifiers;
 		public Java_Current_Class_Reference constructorName;
 		public @NOSPACE PunctuationLeftParen leftParen;

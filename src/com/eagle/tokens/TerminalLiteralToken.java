@@ -235,6 +235,7 @@ public abstract class TerminalLiteralToken extends TerminalToken
 	public void setValue(String val)
 	{
 		_txt = val;
+		_present = (val != null);
 	}
 	
 	@Override

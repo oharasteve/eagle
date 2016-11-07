@@ -20,6 +20,7 @@ import com.eagle.tokens.punctuation.PunctuationComma;
 public class COBOL_CallStatement extends COBOL_AbstractStatement
 {
 	public @DOC("rlpscall.htm") COBOL_Keyword CALL = new COBOL_Keyword("CALL");
+	public @OPT COBOL_KeywordChoice how = new COBOL_KeywordChoice("STATICCOBOL", "WINAPI");
 	public COBOL_CallWhat callWhat;
 	public @OPT COBOL_Keyword USING = new COBOL_Keyword("USING");
 	public @OPT TokenList<COBOL_CallParameter> parameters;
@@ -28,9 +29,9 @@ public class COBOL_CallStatement extends COBOL_AbstractStatement
 	
 	public static class COBOL_CallWhat extends TokenChooser
 	{
-		public COBOL_Literal callFunction;
-		public COBOL_HexNumber callHex;
-		public COBOL_Identifier_Reference callVariable;
+		public @CHOICE COBOL_Literal callFunction;
+		public @CHOICE COBOL_HexNumber callHex;
+		public @CHOICE COBOL_Identifier_Reference callVariable;
 	}
 	
 	public static class COBOL_CallParameter extends TokenSequence

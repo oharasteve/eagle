@@ -14,7 +14,7 @@ public class Django_Expression extends TokenChooser
 {
 	public @LAST Django_Variable var;
 	
-	public static class Django_ExpressionRange extends TokenSequence
+	public @CHOICE static class Django_ExpressionRange extends TokenSequence
 	{
 		public Django_Keyword RANGE = new Django_Keyword("range");
 		public PunctuationLeftParen leftParen;

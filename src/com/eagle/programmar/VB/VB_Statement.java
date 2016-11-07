@@ -37,31 +37,31 @@ public class VB_Statement extends TokenSequence
 	
 	public static class VB_BaseStatement extends TokenChooser
 	{
-		public VB_Comment comment;
+		public @CHOICE VB_Comment comment;
 		
-		public VB_AssignmentStatement assignmentStatement;
-		public VB_AttributeStatement attributeStatement;
-		public VB_BeginStatement beginStatement;
-		public VB_CallStatement callStatement;
-		public VB_CloseStatement closeStatement;
-		public VB_DataDeclaration dataDeclaration;
-		public VB_ExitStatement exitStatement;
-		public VB_ForStatement forStatement;
-		public VB_FunctionDeclaration functionDefinition;
-		public VB_GotoStatement gotoStatement;
-		public VB_IfStatement ifStatement;
-		public VB_MessageBoxStatment messageBoxStatment;
-		public VB_OnStatement onStatement;
-		public VB_OpenStatement openStatement;
-		public VB_OptionStatement optionStatement;
-		public VB_PrintStatement printStatement;
-		public VB_SetStatement setStatement;
-		public VB_SubDeclaration subDefinition;
-		public VB_VersionStatement versionStatement;
+		public @CHOICE VB_AssignmentStatement assignmentStatement;
+		public @CHOICE VB_AttributeStatement attributeStatement;
+		public @CHOICE VB_BeginStatement beginStatement;
+		public @CHOICE VB_CallStatement callStatement;
+		public @CHOICE VB_CloseStatement closeStatement;
+		public @CHOICE VB_DataDeclaration dataDeclaration;
+		public @CHOICE VB_ExitStatement exitStatement;
+		public @CHOICE VB_ForStatement forStatement;
+		public @CHOICE VB_FunctionDeclaration functionDefinition;
+		public @CHOICE VB_GotoStatement gotoStatement;
+		public @CHOICE VB_IfStatement ifStatement;
+		public @CHOICE VB_MessageBoxStatment messageBoxStatment;
+		public @CHOICE VB_OnStatement onStatement;
+		public @CHOICE VB_OpenStatement openStatement;
+		public @CHOICE VB_OptionStatement optionStatement;
+		public @CHOICE VB_PrintStatement printStatement;
+		public @CHOICE VB_SetStatement setStatement;
+		public @CHOICE VB_SubDeclaration subDefinition;
+		public @CHOICE VB_VersionStatement versionStatement;
 		
-		public VB_Variable functionCall;	// Not really right ...
+		public @CHOICE VB_Variable functionCall;	// Not really right ...
 		
-		public static class VB_Label extends TokenSequence
+		public @CHOICE static class VB_Label extends TokenSequence
 		{
 			public VB_Label_Definition lbl;
 			public PunctuationColon colon;

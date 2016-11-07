@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Sun Jan 31 05:09:17 EST 2016" Elapsed="16" Language="AWK" Steps="1208" Tokens="191">
+<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Mon Nov 07 10:58:02 EST 2016" Elapsed="46" Language="AWK" Steps="1241" Tokens="200">
   <T EC="0" EL="21" File="" SC="1" SL="1" TT=".AWK.AWK_Program">
     <T EC="0" EL="21" N="elements" SC="1" SL="1" TT="List">
       <T EC="0" EL="6" N="elements[0]" SC="1" SL="1" TT=".AWK.AWK_Program$AWK_Element">
@@ -80,9 +80,11 @@
             <T EC="7" EL="6" N="condition[0]" SC="1" SL="6" TT=".AWK.AWK_Condition">
               <T EC="7" EL="6" N="condition[0]" SC="1" SL="6" TT=".AWK.AWK_Expression">
                 <T EC="7" EL="6" N="condition[0]" SC="1" SL="6" TT=".AWK.AWK_Expression$AWK_NotExpression">
-                  <T EC="1" EL="6" N="notOperator" SC="1" SL="6" TT=".AWK.Terminals.AWK_Punctuation" V="!"/>
+                  <T EC="1" EL="6" N="operator" SC="1" SL="6" TT=".AWK.Terminals.AWK_Punctuation" V="!"/>
                   <T EC="7" EL="6" N="expr" SC="2" SL="6" TT=".AWK.AWK_Expression">
-                    <T EC="7" EL="6" N="expr" SC="2" SL="6" TT=".AWK.Terminals.AWK_Pattern" V="/href/"/>
+                    <T EC="7" EL="6" N="expr" SC="2" SL="6" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                      <T EC="7" EL="6" N="pattern" SC="2" SL="6" TT=".AWK.Terminals.AWK_Pattern" V="/href/"/>
+                    </T>
                   </T>
                 </T>
               </T>
@@ -120,11 +122,15 @@
               <T EC="18" EL="10" N="condition[0]" SC="1" SL="10" TT=".AWK.AWK_Expression">
                 <T EC="18" EL="10" N="condition[0]" SC="1" SL="10" TT=".AWK.AWK_Expression$AWK_OrExpression">
                   <T EC="7" EL="10" N="left" SC="1" SL="10" TT=".AWK.AWK_Expression">
-                    <T EC="7" EL="10" N="left" SC="1" SL="10" TT=".AWK.Terminals.AWK_Pattern" V="/\.jpg/"/>
+                    <T EC="7" EL="10" N="left" SC="1" SL="10" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                      <T EC="7" EL="10" N="pattern" SC="1" SL="10" TT=".AWK.Terminals.AWK_Pattern" V="/\.jpg/"/>
+                    </T>
                   </T>
                   <T EC="10" EL="10" N="orOperator" SC="9" SL="10" TT=".AWK.Terminals.AWK_Punctuation" V="||"/>
                   <T EC="18" EL="10" N="right" SC="11" SL="10" TT=".AWK.AWK_Expression">
-                    <T EC="18" EL="10" N="right" SC="12" SL="10" TT=".AWK.Terminals.AWK_Pattern" V="/\.JPG/"/>
+                    <T EC="18" EL="10" N="right" SC="11" SL="10" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                      <T EC="18" EL="10" N="pattern" SC="12" SL="10" TT=".AWK.Terminals.AWK_Pattern" V="/\.JPG/"/>
+                    </T>
                   </T>
                 </T>
               </T>
@@ -145,7 +151,7 @@
                           <T EC="5" EL="11" N="var" SC="1" SL="11" TT=".AWK.AWK_Variable">
                             <T EC="5" EL="11" N="id" SC="3" SL="11" TT=".AWK.Symbols.AWK_Identifier_Reference" V="jpg"/>
                           </T>
-                          <T EC="7" EL="11" N="postIncrementOperator" SC="6" SL="11" TT=".AWK.Terminals.AWK_Punctuation" V="++"/>
+                          <T EC="7" EL="11" N="operator" SC="6" SL="11" TT=".AWK.Terminals.AWK_Punctuation" V="++"/>
                         </T>
                       </T>
                     </T>
@@ -175,35 +181,47 @@
                               <T EC="18" EL="14" N="left" SC="1" SL="14" TT=".AWK.AWK_Expression">
                                 <T EC="18" EL="14" N="left" SC="1" SL="14" TT=".AWK.AWK_Expression$AWK_OrExpression">
                                   <T EC="7" EL="14" N="left" SC="1" SL="14" TT=".AWK.AWK_Expression">
-                                    <T EC="7" EL="14" N="left" SC="1" SL="14" TT=".AWK.Terminals.AWK_Pattern" V="/\.mpg/"/>
+                                    <T EC="7" EL="14" N="left" SC="1" SL="14" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                                      <T EC="7" EL="14" N="pattern" SC="1" SL="14" TT=".AWK.Terminals.AWK_Pattern" V="/\.mpg/"/>
+                                    </T>
                                   </T>
                                   <T EC="10" EL="14" N="orOperator" SC="9" SL="14" TT=".AWK.Terminals.AWK_Punctuation" V="||"/>
                                   <T EC="18" EL="14" N="right" SC="11" SL="14" TT=".AWK.AWK_Expression">
-                                    <T EC="18" EL="14" N="right" SC="12" SL="14" TT=".AWK.Terminals.AWK_Pattern" V="/\.MPG/"/>
+                                    <T EC="18" EL="14" N="right" SC="11" SL="14" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                                      <T EC="18" EL="14" N="pattern" SC="12" SL="14" TT=".AWK.Terminals.AWK_Pattern" V="/\.MPG/"/>
+                                    </T>
                                   </T>
                                 </T>
                               </T>
                               <T EC="21" EL="14" N="orOperator" SC="20" SL="14" TT=".AWK.Terminals.AWK_Punctuation" V="||"/>
                               <T EC="30" EL="14" N="right" SC="22" SL="14" TT=".AWK.AWK_Expression">
-                                <T EC="30" EL="14" N="right" SC="23" SL="14" TT=".AWK.Terminals.AWK_Pattern" V="/\.mpeg/"/>
+                                <T EC="30" EL="14" N="right" SC="22" SL="14" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                                  <T EC="30" EL="14" N="pattern" SC="23" SL="14" TT=".AWK.Terminals.AWK_Pattern" V="/\.mpeg/"/>
+                                </T>
                               </T>
                             </T>
                           </T>
                           <T EC="33" EL="14" N="orOperator" SC="32" SL="14" TT=".AWK.Terminals.AWK_Punctuation" V="||"/>
                           <T EC="42" EL="14" N="right" SC="34" SL="14" TT=".AWK.AWK_Expression">
-                            <T EC="42" EL="14" N="right" SC="35" SL="14" TT=".AWK.Terminals.AWK_Pattern" V="/\.MPEG/"/>
+                            <T EC="42" EL="14" N="right" SC="34" SL="14" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                              <T EC="42" EL="14" N="pattern" SC="35" SL="14" TT=".AWK.Terminals.AWK_Pattern" V="/\.MPEG/"/>
+                            </T>
                           </T>
                         </T>
                       </T>
                       <T EC="45" EL="14" N="orOperator" SC="44" SL="14" TT=".AWK.Terminals.AWK_Punctuation" V="||"/>
                       <T EC="53" EL="14" N="right" SC="46" SL="14" TT=".AWK.AWK_Expression">
-                        <T EC="53" EL="14" N="right" SC="47" SL="14" TT=".AWK.Terminals.AWK_Pattern" V="/\.mov/"/>
+                        <T EC="53" EL="14" N="right" SC="46" SL="14" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                          <T EC="53" EL="14" N="pattern" SC="47" SL="14" TT=".AWK.Terminals.AWK_Pattern" V="/\.mov/"/>
+                        </T>
                       </T>
                     </T>
                   </T>
                   <T EC="56" EL="14" N="orOperator" SC="55" SL="14" TT=".AWK.Terminals.AWK_Punctuation" V="||"/>
                   <T EC="64" EL="14" N="right" SC="57" SL="14" TT=".AWK.AWK_Expression">
-                    <T EC="64" EL="14" N="right" SC="58" SL="14" TT=".AWK.Terminals.AWK_Pattern" V="/\.MOV/"/>
+                    <T EC="64" EL="14" N="right" SC="57" SL="14" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                      <T EC="64" EL="14" N="pattern" SC="58" SL="14" TT=".AWK.Terminals.AWK_Pattern" V="/\.MOV/"/>
+                    </T>
                   </T>
                 </T>
               </T>
@@ -224,7 +242,7 @@
                           <T EC="6" EL="15" N="var" SC="1" SL="15" TT=".AWK.AWK_Variable">
                             <T EC="6" EL="15" N="id" SC="3" SL="15" TT=".AWK.Symbols.AWK_Identifier_Reference" V="mpeg"/>
                           </T>
-                          <T EC="8" EL="15" N="postIncrementOperator" SC="7" SL="15" TT=".AWK.Terminals.AWK_Punctuation" V="++"/>
+                          <T EC="8" EL="15" N="operator" SC="7" SL="15" TT=".AWK.Terminals.AWK_Punctuation" V="++"/>
                         </T>
                       </T>
                     </T>

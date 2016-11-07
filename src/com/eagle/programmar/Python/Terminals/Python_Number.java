@@ -11,6 +11,7 @@ public class Python_Number extends TerminalNumberToken
 	@Override
 	public boolean parse(EagleFileReader lines)
 	{
-		return genericNumber(lines, null, "Ee", "Ll", true);
+		// J is for complex ...
+		return genericNumber(lines, "Ee", "JjLl", true);
 	}
 }

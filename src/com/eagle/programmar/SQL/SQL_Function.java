@@ -25,9 +25,9 @@ public class SQL_Function extends TokenSequence
 	
 	public static class SQL_FunctionParam extends TokenChooser
 	{
-		public SQL_Expression arg;
+		public @CHOICE SQL_Expression arg;
 		
-		public static class SQL_FunctionColonParam extends TokenSequence
+		public @CHOICE static class SQL_FunctionColonParam extends TokenSequence
 		{
 			public PunctuationColon colon;
 			public SQL_Expression arg;
@@ -53,21 +53,21 @@ public class SQL_Function extends TokenSequence
 				"SYS_GUID"
 		);
 		
-		public static class SQL_FunctionSCHEDULER extends TokenSequence
+		public @CHOICE static class SQL_FunctionSCHEDULER extends TokenSequence
 		{
 			public SQL_Keyword DBMSSCHEDULER = new SQL_Keyword("DBMS_SCHEDULER");
 			public PunctuationPeriod dot;
 			public SQL_KeywordChoice DROPJOB = new SQL_KeywordChoice("CREATE_JOB", "DROP_JOB");
 		}
 		
-		public static class SQL_FunctionLOB extends TokenSequence
+		public @CHOICE static class SQL_FunctionLOB extends TokenSequence
 		{
 			public SQL_Keyword DBMSLOB = new SQL_Keyword("DBMS_LOB");
 			public PunctuationPeriod dot;
 			public SQL_Keyword GETLENGTH = new SQL_Keyword("GETLENGTH");
 		}
 		
-		public static class SQL_FunctionJOB extends TokenSequence
+		public @CHOICE static class SQL_FunctionJOB extends TokenSequence
 		{
 			public SQL_Keyword DBMSJOB = new SQL_Keyword("DBMS_JOB");
 			public PunctuationPeriod dot;

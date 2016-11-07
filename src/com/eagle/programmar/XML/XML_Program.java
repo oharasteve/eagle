@@ -56,22 +56,21 @@ public class XML_Program extends EagleLanguage
 	
 	public static class XML_Element extends TokenChooser
 	{
-		public XML_Header header;
+		public @CHOICE XML_Header header;
 		
-		public HTML_Comment comment;
-		public HTML_Text text;
-		public HTML_DocType docType;
-		public HTML_CData cdata;
+		public @CHOICE HTML_Comment comment;
+		public @CHOICE HTML_Text text;
+		public @CHOICE HTML_DocType docType;
+		public @CHOICE HTML_CData cdata;
 
-		public Django_AutoEscapeControl autoEscape;
-		
 		public @FIRST XML_CombinedTag tag;
 
 		// Django
+		public @LAST @SYNTAX(Django_Syntax.class) Django_AutoEscapeControl autoEscape;
 		public @LAST @SYNTAX(Django_Syntax.class) Django_Control dj_control;
 		public @LAST @SYNTAX(Django_Syntax.class) Django_Insert dj_insert;
 		
-		public static class XML_TagElement extends TokenSequence
+		public @CHOICE static class XML_TagElement extends TokenSequence
 		{
 			public XML_StartTag startTag;
 			public @OPT TokenList<XML_Element> elements;

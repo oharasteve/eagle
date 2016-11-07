@@ -22,7 +22,7 @@ import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class C_Data extends TokenChooser
 {
-	public static class C_RegularData extends TokenSequence
+	public @CHOICE static class C_RegularData extends TokenSequence
 	{
 		public @OPT C_KeywordChoice scope = new C_KeywordChoice(C_Program.getModifiers());
 		public C_Type jtype;
@@ -49,7 +49,7 @@ public class C_Data extends TokenChooser
 		}
 	}
 	
-	public static class C_FunctionPointer extends TokenSequence
+	public @CHOICE static class C_FunctionPointer extends TokenSequence
 	{
 		public @OPT C_KeywordChoice scope = new C_KeywordChoice(C_Program.getModifiers());
 		public C_Type jtype;

@@ -66,8 +66,8 @@ public class Python_Tests extends TestCase
 		assertEquals(8, getLine(stmt1.get(6), 0));
 		assertEquals(19, getLine(stmt1.get(7), 0));
 		
-		Python_Statement_List stmt2 = (Python_Statement_List) stmt1.get(6).statement._whichToken;
-		Python_WhileStatement whileStmt = (Python_WhileStatement) stmt2.statements.getPrimaryElement(0)._whichToken;
+		Python_Statement_List stmt2 = (Python_Statement_List) stmt1.get(6).statement.getWhich();
+		Python_WhileStatement whileStmt = (Python_WhileStatement) stmt2.statements.getPrimaryElement(0).getWhich();
 
 		assertEquals(9, getWhileLine(whileStmt, 0, 0));
 		assertEquals(10, getWhileLine(whileStmt, 1, 0));
@@ -106,8 +106,8 @@ public class Python_Tests extends TestCase
 		assertEquals(3, getLine(stmt1.get(2), 0));
 		assertEquals(7, getLine(stmt1.get(3), 0));
 		
-		Python_Statement_List stmt2 = (Python_Statement_List) stmt1.get(2).statement._whichToken;
-		Python_WhileStatement whileStmt = (Python_WhileStatement) stmt2.statements.getPrimaryElement(0)._whichToken;
+		Python_Statement_List stmt2 = (Python_Statement_List) stmt1.get(2).statement.getWhich();
+		Python_WhileStatement whileStmt = (Python_WhileStatement) stmt2.statements.getPrimaryElement(0).getWhich();
 
 		assertEquals(4, getWhileLine(whileStmt, 0, 0));
 		assertEquals(4, getWhileLine(whileStmt, 0, 1));
@@ -118,7 +118,7 @@ public class Python_Tests extends TestCase
 	
 	private static int getLine(Python_Statement stmt, int indexOnLine)
 	{
-		AbstractToken which = stmt.statement._whichToken;
+		AbstractToken which = stmt.statement.getWhich();
 		if (which instanceof Python_Statement_List)
 		{
 			Python_Statement_List list = (Python_Statement_List) which;
@@ -130,7 +130,7 @@ public class Python_Tests extends TestCase
 	
 	private static int getWhileLine(Python_WhileStatement stmt, int seq, int indexOnLine)
 	{
-		Python_MultlineStatement block = (Python_MultlineStatement) stmt.statements._whichToken;
+		Python_MultlineStatement block = (Python_MultlineStatement) stmt.statements.getWhich();
 		Python_Statement child = block.statements._elements.get(seq);
 		return getLine(child, indexOnLine);
 	}

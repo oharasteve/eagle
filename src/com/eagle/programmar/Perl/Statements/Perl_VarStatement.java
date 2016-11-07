@@ -18,14 +18,14 @@ public class Perl_VarStatement extends TokenSequence
 	public TokenList<Perl_VarPrefix> prefix;
 	public @OPT Perl_Punctuation dollar = new Perl_Punctuation('$');
 	public Perl_Variable_Definition var;
-	public @OPT Perl_Variable_Initializer init;
+	public @OPT Perl_Variable_Init init;
 	
 	public static class Perl_VarPrefix extends TokenChooser
 	{
-		public Perl_KeywordChoice modifier = new Perl_KeywordChoice(Perl_Program.MODIFIERS);
+		public @CHOICE Perl_KeywordChoice modifier = new Perl_KeywordChoice(Perl_Program.MODIFIERS);
 	}
 
-	public static class Perl_Variable_Initializer extends TokenSequence
+	public static class Perl_Variable_Init extends TokenSequence
 	{
 		public PunctuationEquals equals;
 		public Perl_Expression initVal;

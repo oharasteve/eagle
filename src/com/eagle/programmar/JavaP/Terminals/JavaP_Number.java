@@ -11,6 +11,6 @@ public class JavaP_Number extends TerminalNumberToken
 	@Override
 	public boolean parse(EagleFileReader lines)
 	{
-		return genericNumber(lines, "x", "", "ld", false);
+		return genericNumber(lines, "", "ld", false);
 	}
 }

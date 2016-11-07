@@ -11,7 +11,7 @@ package com.eagle.tokens;
  * @param <T> Token class
  * @param <P> Punctuation class, like a comma
  */
-public class SeparatedList<T extends AbstractToken, P extends AbstractToken> extends TokenList<T>
+public class SeparatedList<T extends AbstractToken, P extends AbstractToken> extends TokenList<AbstractToken>
 {
 	public int getPrimaryCount()
 	{
@@ -23,10 +23,11 @@ public class SeparatedList<T extends AbstractToken, P extends AbstractToken> ext
 		return (size()-1) / 2;	// 5 total elements means 2 primary elements
 	}
 	
+	@SuppressWarnings("unchecked")
 	public T getPrimaryElement(int index)
 	{
 		int i = 2 * index;	// third element, index=2 is actually fifth, i=4
-		return _elements.get(i);
+		return (T) _elements.get(i);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -34,5 +35,15 @@ public class SeparatedList<T extends AbstractToken, P extends AbstractToken> ext
 	{
 		int i = 2 * index + 1;		// third element. index=2 is actually sixth, i=5
 		return (P) _elements.get(i);
+	}
+
+	public void addPrimaryElement(T element)
+	{
+		_elements.add(element);
+	}
+	
+	public void addSecondaryElement(P element)
+	{
+		_elements.add(element);
 	}
 }

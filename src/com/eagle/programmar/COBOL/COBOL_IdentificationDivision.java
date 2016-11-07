@@ -8,7 +8,6 @@ import com.eagle.programmar.COBOL.Terminals.COBOL_Comment;
 import com.eagle.programmar.COBOL.Terminals.COBOL_CommentToEndOfLine;
 import com.eagle.programmar.COBOL.Terminals.COBOL_Keyword;
 import com.eagle.programmar.COBOL.Terminals.COBOL_KeywordChoice;
-import com.eagle.programmar.COBOL.Terminals.COBOL_Number;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
@@ -42,23 +41,14 @@ public class COBOL_IdentificationDivision extends TokenSequence
 	
 	public static class COBOL_IdentificationEntry extends TokenChooser
 	{
-		public static class COBOL_IdentificationSimple extends TokenSequence
+		public @CHOICE COBOL_SpecialNames specialNames;
+
+		public @CHOICE static class COBOL_IdentificationSimple extends TokenSequence
 		{
 			public COBOL_KeywordChoice entryWord = new COBOL_KeywordChoice(
 					"AUTHOR", "INSTALLATION", "DATE-WRITTEN", "DATE-COMPILED", "SECURITY");
 			public @OPT PunctuationPeriod dot;
 			public TokenList<COBOL_CommentToEndOfLine> comments;
-		}
-				
-		public static class COBOL_SpecialNames extends TokenSequence
-		{
-			public COBOL_Keyword SPECIALNAMES = new COBOL_Keyword("SPECIAL-NAMES");
-			public PunctuationPeriod dot1;
-			public COBOL_Keyword CALLCONVENTION = new COBOL_Keyword("CALL-CONVENTION");
-			public COBOL_Number code;
-			public COBOL_Keyword IS = new COBOL_Keyword("IS");
-			public COBOL_Keyword WINAPI = new COBOL_Keyword("WINAPI");
-			public PunctuationPeriod dot2;
 		}
 	}
 	

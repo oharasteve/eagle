@@ -14,7 +14,7 @@ import com.eagle.tokens.punctuation.PunctuationEquals;
 
 public class HTML_Anchor extends TokenChooser
 {
-	public static class HTML_AnchorHref extends TokenSequence
+	public @CHOICE static class HTML_AnchorHref extends TokenSequence
 	{
 		public @INDENT HTML_StartAnchor startTagA;
 		public @OPT TokenList<PHP_Entry> contents;

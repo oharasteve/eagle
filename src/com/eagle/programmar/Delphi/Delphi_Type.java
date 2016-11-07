@@ -24,13 +24,13 @@ import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Delphi_Type extends TokenChooser
 {
-	public Delphi_KeywordChoice base = new Delphi_KeywordChoice(
+	public @CHOICE Delphi_KeywordChoice base = new Delphi_KeywordChoice(
 			"Boolean", "Integer", "LongInt", "Int64", "Text");
 	
-	public Delphi_Identifier_Reference userType;
-	public Delphi_Class classDefinition;
+	public @CHOICE Delphi_Identifier_Reference userType;
+	public @CHOICE Delphi_Class classDefinition;
 	
-	public static class Delphi_Enum extends TokenSequence
+	public @CHOICE static class Delphi_Enum extends TokenSequence
 	{
 		public PunctuationLeftParen leftParen;
 		public SeparatedList<Delphi_EnumValue,PunctuationComma> enumValues;
@@ -44,7 +44,7 @@ public class Delphi_Type extends TokenChooser
 		}
 	}
 	
-	public static class Delphi_Array extends TokenSequence
+	public @CHOICE static class Delphi_Array extends TokenSequence
 	{
 		public Delphi_Keyword ARRAY = new Delphi_Keyword("Array");
 		public @OPT Delphi_ArraySize size;
@@ -59,14 +59,14 @@ public class Delphi_Type extends TokenChooser
 		}
 	}
 	
-	public static class Delphi_Range extends TokenSequence
+	public @CHOICE static class Delphi_Range extends TokenSequence
 	{
 		public Delphi_Number low;
 		public Delphi_Punctuation dotDot = new Delphi_Punctuation("..");
 		public Delphi_Number high;
 	}
 	
-	public static class Delphi_Type_Record extends TokenSequence
+	public @CHOICE static class Delphi_Type_Record extends TokenSequence
 	{
 		public Delphi_Keyword RECORD = new Delphi_Keyword("Record");
 		public TokenList<Delphi_RecordEntry> entries;

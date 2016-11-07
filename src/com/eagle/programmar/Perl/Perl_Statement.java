@@ -4,6 +4,7 @@
 package com.eagle.programmar.Perl;
 
 import com.eagle.programmar.Perl.Perl_FunctionDefinition.Perl_Function_Parameters;
+import com.eagle.programmar.Perl.Perl_Statement.Perl_ExpressionStatement.Perl_StatementSuffixModifier;
 import com.eagle.programmar.Perl.Perl_Statement.Perl_SimpleStatement.Perl_StatementOrComment;
 import com.eagle.programmar.Perl.Statements.Perl_BreakStatement;
 import com.eagle.programmar.Perl.Statements.Perl_ChdirStatement;
@@ -52,26 +53,41 @@ import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Perl_Statement extends TokenChooser
 {
-	public Perl_Include include;
-	public Perl_FunctionDefinition function;
+	public @CHOICE Perl_Include include;
+	public @CHOICE Perl_FunctionDefinition function;
+	public @CHOICE Perl_NamespaceStatement namespaceStatement;
+	public @CHOICE Perl_ClassStatement classStatement;
 	public @LAST Perl_Label label;
-	public @CURIOUS("Empty statement") PunctuationSemicolon semicolon;
+	public @CHOICE @CURIOUS("Empty statement") PunctuationSemicolon semicolon;
 	
-	public @LAST static class Perl_ExpressionCallStatement extends TokenSequence
+	public @LAST static class Perl_ExpressionStatement extends TokenSequence
 	{
 		public Perl_Expression expr;
-		public @OPT Perl_StatementModifier modifier;
+		public @OPT Perl_StatementSuffixModifier modifier;
 		public PunctuationSemicolon semicolon;
+
+		public static class Perl_StatementSuffixModifier extends TokenSequence
+		{
+			public Perl_KeywordChoice IfUnless = new Perl_KeywordChoice("if", "unless", "while");
+			public @OPT Perl_MinusF minusF;
+			public Perl_Expression condition;
+			
+			public static class Perl_MinusF extends TokenSequence
+			{
+				public PunctuationHyphen minus;
+				public Perl_KeywordChoice DF = new Perl_KeywordChoice("d", "f");
+			}
+		}
 	}
 
-	public static class Perl_StatementBlock extends TokenSequence
+	public @CHOICE static class Perl_StatementBlock extends TokenSequence
 	{
 		public @INDENT PunctuationLeftBrace leftBrace;
 		public @OPT TokenList<Perl_StatementOrComment> statements;
 		public @OUTDENT PunctuationRightBrace rightBrace;
 	}
 	
-	public static class Perl_SubDeclaration extends TokenSequence
+	public @CHOICE static class Perl_SubDeclaration extends TokenSequence
 	{
 		public Perl_Keyword SUB = new Perl_Keyword("sub");
 		public @OPT Perl_SubMain main;
@@ -86,71 +102,56 @@ public class Perl_Statement extends TokenChooser
 		}
 	}
 
-	public static class Perl_StatementModifier extends TokenSequence
-	{
-		public Perl_KeywordChoice IfUnless = new Perl_KeywordChoice("if", "unless", "while");
-		public @OPT Perl_MinusF minusF;
-		public Perl_Expression condition;
-		
-		public static class Perl_MinusF extends TokenSequence
-		{
-			public PunctuationHyphen minus;
-			public Perl_KeywordChoice DF = new Perl_KeywordChoice("d", "f");
-		}
-	}
-
-	public static class Perl_SimpleStatement extends TokenSequence
+	public @CHOICE static class Perl_SimpleStatement extends TokenSequence
 	{
 		public Perl_StatementList statement;
-		public @OPT Perl_StatementModifier modifier;
-		public @OPT PunctuationSemicolon semicolon;
+		public @OPT Perl_StatementSuffixModifier modifier;
+		public PunctuationSemicolon semicolon;
 
 		//
 		// Start actual statement list here
 		//
 		public static class Perl_StatementList extends TokenChooser
 		{
-			public Perl_BreakStatement breakStatement;
-			public Perl_ChdirStatement chdirStatement;
-			public Perl_ChmodStatement chmodStatement;
-			public Perl_ClassStatement classStatement;
-			public Perl_CloseStatement closeStatement;
-			public Perl_ContinueStatement continueStatement;
-			public Perl_DieStatement dieStatement;
-			public Perl_DoStatement doStatement;
-			public Perl_EchoStatement echoStatement;
-			public Perl_ExitStatement exitStatement;
-			public Perl_GlobalStatement globalStatement;
-			public Perl_IncludeStatement includeStatement;
-			public Perl_MyStatement myStatement;
-			public Perl_NamespaceStatement namespaceStatement;
-			public Perl_NextStatement nextStatement;
-			public Perl_PackageStatement packageStatement;
-			public Perl_PrintStatement printStatement;
-			public Perl_RequireStatement requireStatement;
-			public Perl_ReturnStatement returnStatement;
-			public Perl_SleepStatement sleepStatement;
-			public Perl_ThrowStatement throwStatement;
-			public Perl_UnlinkStatement unlinkStatement;
-			public Perl_UseStatement useStatement;
-			public Perl_VarStatement varStatement;
+			public @CHOICE Perl_BreakStatement breakStatement;
+			public @CHOICE Perl_ChdirStatement chdirStatement;
+			public @CHOICE Perl_ChmodStatement chmodStatement;
+			public @CHOICE Perl_CloseStatement closeStatement;
+			public @CHOICE Perl_ContinueStatement continueStatement;
+			public @CHOICE Perl_DieStatement dieStatement;
+			public @CHOICE Perl_DoStatement doStatement;
+			public @CHOICE Perl_EchoStatement echoStatement;
+			public @CHOICE Perl_ExitStatement exitStatement;
+			public @CHOICE Perl_GlobalStatement globalStatement;
+			public @CHOICE Perl_IncludeStatement includeStatement;
+			public @CHOICE Perl_MyStatement myStatement;
+			public @CHOICE Perl_NextStatement nextStatement;
+			public @CHOICE Perl_PackageStatement packageStatement;
+			public @CHOICE Perl_PrintStatement printStatement;
+			public @CHOICE Perl_RequireStatement requireStatement;
+			public @CHOICE Perl_ReturnStatement returnStatement;
+			public @CHOICE Perl_SleepStatement sleepStatement;
+			public @CHOICE Perl_ThrowStatement throwStatement;
+			public @CHOICE Perl_UnlinkStatement unlinkStatement;
+			public @CHOICE Perl_UseStatement useStatement;
+			public @CHOICE Perl_VarStatement varStatement;
 		}
 		
 		public static class Perl_StatementOrComment extends TokenChooser
 		{
-			public Perl_Statement statement;
-			public Perl_Comment comment;
+			public @CHOICE Perl_Statement statement;
+			public @CHOICE Perl_Comment comment;
 		}
 	}
 	
-	public static class Perl_CompundStatement extends TokenChooser
+	public @CHOICE static class Perl_CompundStatement extends TokenChooser
 	{
-		public Perl_ForStatement forStatement;
-		public Perl_ForEachStatement forEachStatement;
-		public Perl_IfStatement ifStatement;
-		public Perl_SwitchStatement switchStatement;
-		public Perl_TraitStatement traitStatement;
-		public Perl_TryStatement tryStatement;
-		public Perl_WhileStatement whileStatement;
+		public @CHOICE Perl_ForStatement forStatement;
+		public @CHOICE Perl_ForEachStatement forEachStatement;
+		public @CHOICE Perl_IfStatement ifStatement;
+		public @CHOICE Perl_SwitchStatement switchStatement;
+		public @CHOICE Perl_TraitStatement traitStatement;
+		public @CHOICE Perl_TryStatement tryStatement;
+		public @CHOICE Perl_WhileStatement whileStatement;
 	}
 }

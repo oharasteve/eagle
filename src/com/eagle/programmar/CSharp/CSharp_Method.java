@@ -3,7 +3,7 @@
 
 package com.eagle.programmar.CSharp;
 
-import com.eagle.programmar.CSharp.CSharp_Statement.CSharp_StatementBlock.CSharp_StatementOrComment;
+import com.eagle.programmar.CSharp.CSharp_Statement.CSharp_StatementBlock;
 import com.eagle.programmar.CSharp.Symbols.CSharp_Method_Definition;
 import com.eagle.programmar.CSharp.Symbols.CSharp_Variable_Definition;
 import com.eagle.programmar.CSharp.Terminals.CSharp_Comment;
@@ -14,9 +14,7 @@ import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.punctuation.PunctuationComma;
-import com.eagle.tokens.punctuation.PunctuationLeftBrace;
 import com.eagle.tokens.punctuation.PunctuationLeftParen;
-import com.eagle.tokens.punctuation.PunctuationRightBrace;
 import com.eagle.tokens.punctuation.PunctuationRightParen;
 import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
@@ -65,13 +63,14 @@ public class CSharp_Method extends TokenSequence
 	
 	public static class CSharp_MethodBody extends TokenChooser
 	{
-		public PunctuationSemicolon semicolon;
+		public @CHOICE PunctuationSemicolon semicolon;
 		
-		public static class CSharp_MethodImplementation extends TokenSequence
+		public @CHOICE static class CSharp_MethodImplementation extends TokenSequence
 		{
-			public @INDENT PunctuationLeftBrace leftBrace;
-			public @OPT TokenList<CSharp_StatementOrComment> elements;
-			public @OUTDENT PunctuationRightBrace rightBrace;
+			public @OPT TokenList<CSharp_Comment> comment1;
+			public CSharp_StatementBlock block;
+			public @OPT TokenList<CSharp_Comment> comment2;
+			public @OPT @CURIOUS(value = "Extra semicolon") PunctuationSemicolon semicolon2;
 		}
 	}
 }

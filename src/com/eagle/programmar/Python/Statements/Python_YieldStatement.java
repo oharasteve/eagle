@@ -16,9 +16,9 @@ public class Python_YieldStatement extends TokenSequence
 	
 	public static class Python_YieldWhat extends TokenChooser
 	{
-		public Python_ExpressionList expressionList;
+		public @CHOICE Python_ExpressionList expressionList;
 		
-		public static class Python_YieldFrom extends TokenSequence
+		public @CHOICE static class Python_YieldFrom extends TokenSequence
 		{
 			public Python_Keyword FROM = new Python_Keyword("from");
 			public Python_Expression condition;

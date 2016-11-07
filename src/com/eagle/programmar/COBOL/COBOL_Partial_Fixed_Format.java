@@ -26,13 +26,13 @@ public class COBOL_Partial_Fixed_Format extends COBOL_Program
 	
 	public static class COBOL_PartialWhat extends TokenChooser
 	{
-		public COBOL_Directive directive;
-		public COBOL_Comment comment;
-		public COBOL_Paragraph paragraph;
-		public COBOL_Section section;
-		public COBOL_ScreenDeclaration screenDeclaration;
-		public COBOL_DataDeclaration declarations;
-		public COBOL_FileDescriptor fileDescriptor;
-		public COBOL_FileSelect fileSelect;
+		public @CHOICE COBOL_Directive directive;
+		public @CHOICE COBOL_Comment comment;
+		public @CHOICE COBOL_Paragraph paragraph;
+		public @CHOICE COBOL_Section section;
+		public @CHOICE COBOL_ScreenDeclaration screenDeclaration;
+		public @CHOICE COBOL_DataDeclaration declarations;
+		public @CHOICE COBOL_FileDescriptor fileDescriptor;
+		public @CHOICE COBOL_FileSelect fileSelect;
 	}
 }

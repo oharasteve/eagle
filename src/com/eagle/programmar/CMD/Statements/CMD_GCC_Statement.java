@@ -17,9 +17,9 @@ public class CMD_GCC_Statement extends TokenSequence
 	
 	public static class CMD_GCC_Parameter extends TokenChooser
 	{
-		public CMD_Argument srcFile;
+		public @CHOICE CMD_Argument srcFile;
 		
-		public static class CMD_GCC_Option_O extends TokenSequence
+		public @CHOICE static class CMD_GCC_Option_O extends TokenSequence
 		{
 			public CMD_Punctuation hyphen = new CMD_Punctuation('-');
 			public CMD_Keyword O = new CMD_Keyword("o");

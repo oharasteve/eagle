@@ -12,6 +12,6 @@ public class Java_Number extends TerminalNumberToken implements EagleRunnable
 	@Override
 	public boolean parse(EagleFileReader lines)
 	{
-		return genericNumber(lines, "x", "Ee", "LlFfDd", true);
+		return genericNumber(lines, "Ee", "LlFfDd", true);
 	}
 }

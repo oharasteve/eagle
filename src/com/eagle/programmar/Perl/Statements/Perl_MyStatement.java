@@ -22,12 +22,12 @@ public class Perl_MyStatement extends TokenSequence
 	
 	public static class Perl_MyWhat extends TokenChooser
 	{
-		public static class Perl_MyOne extends TokenSequence
+		public @CHOICE static class Perl_MyOne extends TokenSequence
 		{
 			public Perl_Variable var;
 		}
 		
-		public static class Perl_MyMany extends TokenSequence
+		public @CHOICE static class Perl_MyMany extends TokenSequence
 		{
 			public PunctuationLeftParen leftParen;
 			public SeparatedList<Perl_Variable,PunctuationComma> vars;

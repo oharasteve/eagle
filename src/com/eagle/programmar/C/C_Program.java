@@ -96,14 +96,14 @@ public class C_Program extends EagleLanguage
 
 	public static class C_StatementOrComment extends TokenChooser
 	{
-		public C_Comment comment;
-		public C_TypeDef typeDef;
+		public @CHOICE C_Comment comment;
+		public @CHOICE C_TypeDef typeDef;
 		public @LAST C_Data data;
-		public C_Function function;
-		public C_Statement statement;
-		public C_Type type;
+		public @CHOICE C_Function function;
+		public @CHOICE C_Statement statement;
+		public @CHOICE C_Type type;
 		
-		public static class C_Enum extends TokenSequence
+		public @CHOICE static class C_Enum extends TokenSequence
 		{
 			public C_TypeEnum cenum;
 			public PunctuationSemicolon semicolon;

@@ -24,19 +24,19 @@ public class HTML_Table extends TokenSequence
 	
 	public static class HTML_TableBodyElement extends TokenChooser
 	{
-		public PHP_Section php;
-		public Django_Control control;
-		public HTML_TablePiece piece;
+		public @CHOICE PHP_Section php;
+		public @CHOICE Django_Control control;
+		public @CHOICE HTML_TablePiece piece;
 	}
 
 	public static class HTML_TablePiece extends TokenChooser
 	{
-		public HTML_Comment comment;
-		public HTML_TableRow row;
-		public HTML_Caption caption;
-		public @CURIOUS("Missing table row") HTML_TableData data;
+		public @CHOICE HTML_Comment comment;
+		public @CHOICE HTML_TableRow row;
+		public @CHOICE HTML_Caption caption;
+		public @CHOICE @CURIOUS("Missing table row") HTML_TableData data;
 		
-		public static class HTML_TableColGroup extends TokenSequence
+		public @CHOICE static class HTML_TableColGroup extends TokenSequence
 		{
 			public @INDENT HTML_Punctuation startTagColGroup = new HTML_Punctuation('<');
 			public @NOSPACE HTML_Keyword COLGROUP1 = new HTML_Keyword("colgroup");
@@ -58,7 +58,7 @@ public class HTML_Table extends TokenSequence
 			}
 		}
 		
-		public static class HTML_TableSection extends TokenSequence
+		public @CHOICE static class HTML_TableSection extends TokenSequence
 		{
 			public @INDENT HTML_Punctuation startTagSection = new HTML_Punctuation('<');
 			public @NOSPACE HTML_KeywordChoice tableType = new HTML_KeywordChoice("thead", "tbody", "tfoot");
@@ -69,9 +69,9 @@ public class HTML_Table extends TokenSequence
 
 			public static class HTML_TableSectionBody extends TokenChooser
 			{
-				public Django_Control control;
+				public @CHOICE Django_Control control;
 				
-				public static class HTML_Table_NormalBody extends TokenSequence
+				public @CHOICE static class HTML_Table_NormalBody extends TokenSequence
 				{
 					public TokenList<HTML_TableRow> rows;
 				}

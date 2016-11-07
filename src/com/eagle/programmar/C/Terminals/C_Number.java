@@ -11,6 +11,6 @@ public class C_Number extends TerminalNumberToken
 	@Override
 	public boolean parse(EagleFileReader lines)
 	{
-		return genericNumber(lines, "x", "Ee", "Lf", true);
+		return genericNumber(lines, "Ee", "Lf", true);
 	}
 }

@@ -20,7 +20,7 @@ public class Delphi_Writeln_Statement extends TokenSequence
 	public static class Delphi_WriteLn_Something extends TokenSequence
 	{
 		public PunctuationLeftParen leftParen;
-		public SeparatedList<Delphi_WriteLn_Piece,PunctuationComma> pieces;
+		public @OPT SeparatedList<Delphi_WriteLn_Piece,PunctuationComma> pieces;
 		public PunctuationRightParen rightParen;
 		
 		public static class Delphi_WriteLn_Piece extends TokenSequence

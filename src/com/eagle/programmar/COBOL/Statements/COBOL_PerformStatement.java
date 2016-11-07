@@ -35,7 +35,7 @@ public class COBOL_PerformStatement extends COBOL_AbstractStatement implements E
 	
 	public static class COBOL_PerformWhat extends TokenChooser
 	{
-		public static class COBOL_PerformParagraph extends TokenSequence
+		public @CHOICE static class COBOL_PerformParagraph extends TokenSequence
 		{
 			public COBOL_Identifier_Reference performStartParagraph;
 			public @OPT COBOL_Paragraph_or_Section_Thru performThrough;
@@ -49,18 +49,18 @@ public class COBOL_PerformStatement extends COBOL_AbstractStatement implements E
 			}
 		}
 		
-		public static class COBOL_PerformNothing extends TokenSequence
+		public @CHOICE static class COBOL_PerformNothing extends TokenSequence
 		{
 			public TokenList<COBOL_PerformClause> clauseList;
 		}
 		
-		public static class COBOL_PerformInline extends TokenSequence
+		public @CHOICE static class COBOL_PerformInline extends TokenSequence
 		{
 			public @OPT TokenList<COBOL_PerformClause> clauseList;
 			public TokenList<COBOL_StatementOrComment> statements;
 		}
 		
-		public static @FIRST class COBOL_PerformTimes extends TokenSequence
+		public @FIRST static class COBOL_PerformTimes extends TokenSequence
 		{
 			public COBOL_Identifier_Reference performStartParagraph;
 			public @OPT COBOL_Paragraph_or_Section_Thru performThrough;
@@ -68,7 +68,7 @@ public class COBOL_PerformStatement extends COBOL_AbstractStatement implements E
 			public COBOL_Keyword TIMES = new COBOL_Keyword("TIMES");
 		}
 		
-		public static class COBOL_PerformTimesInline extends TokenSequence implements EagleRunnable
+		public @CHOICE static class COBOL_PerformTimesInline extends TokenSequence implements EagleRunnable
 		{
 			public COBOL_Number times;
 			public COBOL_Keyword TIMES = new COBOL_Keyword("TIMES");
@@ -91,7 +91,7 @@ public class COBOL_PerformStatement extends COBOL_AbstractStatement implements E
 	
 	public static class COBOL_PerformClause extends TokenChooser
 	{
-		public static class COBOL_PerformVarying extends TokenSequence
+		public @CHOICE static class COBOL_PerformVarying extends TokenSequence
 		{
 			public COBOL_KeywordChoice varyingOrAfter = new COBOL_KeywordChoice("VARYING", "AFTER");
 			public COBOL_Identifier_Reference id;
@@ -102,7 +102,7 @@ public class COBOL_PerformStatement extends COBOL_AbstractStatement implements E
 			public @OPT COBOL_PerformUntil until;
 		}
 		
-		public static class COBOL_PerformUntil extends TokenSequence
+		public @CHOICE static class COBOL_PerformUntil extends TokenSequence
 		{
 			public COBOL_Keyword UNTIL = new COBOL_Keyword("UNTIL");
 			public COBOL_Expression condition;

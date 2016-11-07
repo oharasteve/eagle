@@ -31,13 +31,13 @@ public class CSharp_ForStatement extends TokenSequence
 
 	public static class CSharp_ForLoopVariable extends TokenChooser
 	{
-		public static class CSharp_ForLoopVariableWithType extends TokenSequence
+		public @CHOICE static class CSharp_ForLoopVariableWithType extends TokenSequence
 		{
 			public @NOSPACE CSharp_Type varType;
 			public CSharp_Variable forVar;
 		}
 
-		public static class CSharp_ForLoopVariableNoType extends TokenSequence
+		public @CHOICE static class CSharp_ForLoopVariableNoType extends TokenSequence
 		{
 			public @NOSPACE CSharp_Variable forVar;
 		}

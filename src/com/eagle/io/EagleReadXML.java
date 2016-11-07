@@ -101,7 +101,15 @@ public class EagleReadXML extends EagleReader implements ErrorHandler
 	@Override
 	public EagleLanguage readFrom(String xmlFile)
 	{
-		return collectStats(xmlFile, null);
+		EagleLanguage pgm = collectStats(xmlFile, null);
+		
+		if (DEBUG)
+		{
+			EaglePrinter prt = new EaglePrinter();
+			prt.writeToken(System.out, pgm);
+		}
+		
+		return pgm;
 	}
 	
 	public EagleLanguage collectStats(String xmlFile, ArrayList<XMLToken> xmlTokens)
@@ -352,7 +360,7 @@ public class EagleReadXML extends EagleReader implements ErrorHandler
 			{
 				Element elt = (Element) node;
 				AbstractToken child = extractToken(token, elt, xmlTokens);
-				((TokenChooser) token)._whichToken = child;
+				((TokenChooser) token).setWhich(child);
 				child.setParent(token);
 			}
 		}

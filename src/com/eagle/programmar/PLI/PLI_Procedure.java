@@ -74,9 +74,9 @@ public class PLI_Procedure extends TokenSequence
 	public static class PLI_StatementOrComment extends TokenChooser
 	{
 		public @FIRST PLI_Entry entry;
-		public PLI_Comment comment;
-		public PLI_Statement statement;
-		public PLI_Declaration declaration;
-		public PLI_Signals signals;
+		public @CHOICE PLI_Comment comment;
+		public @CHOICE PLI_Statement statement;
+		public @CHOICE PLI_Declaration declaration;
+		public @CHOICE PLI_Signals signals;
 	}
 }

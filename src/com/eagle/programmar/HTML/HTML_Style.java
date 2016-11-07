@@ -22,9 +22,9 @@ public class HTML_Style extends TokenSequence
 	public static class HTML_StyleBody extends TokenChooser
 	{
 		public @LAST @SYNTAX(CSS_Syntax.class) CSS_Program css;
-		public HTML_CData cdata;
+		public @CHOICE HTML_CData cdata;
 		
-		public static class HTML_StyleInclude extends TokenSequence
+		public @CHOICE static class HTML_StyleInclude extends TokenSequence
 		{
 			public HTML_Punctuation leftBrace = new HTML_Punctuation("{%");
 			public HTML_Keyword INCLUDE = new HTML_Keyword("include");

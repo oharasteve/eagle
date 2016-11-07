@@ -12,18 +12,19 @@ import com.eagle.tokens.TokenSequence;
 
 public class Perl_Type extends TokenChooser
 {
-	public Perl_KeywordChoice base = new Perl_KeywordChoice("array", "string");
+	public @CHOICE Perl_KeywordChoice base = new Perl_KeywordChoice("array", "string");
+	public @CHOICE Perl_Variable_Definition type;
 
-	public static class Perl_CompoundType extends TokenSequence
+	public @CHOICE static class Perl_CompoundType extends TokenSequence
 	{
-		public @OPT Perl_Punctuation backSlash = new Perl_Punctuation('\\');
+		public Perl_Punctuation backSlash = new Perl_Punctuation('\\');
 		public Perl_Variable_Definition type;
 		public @OPT TokenList<Perl_MoreTypeName> more;
 
 		public static class Perl_MoreTypeName extends TokenSequence
 		{
-			public @OPT Perl_Punctuation backSlash = new Perl_Punctuation('\\');
-			public Perl_Variable_Definition param;
+			public Perl_Punctuation backSlash = new Perl_Punctuation('\\');
+			public Perl_Variable_Definition type;
 		}
 	}
 }

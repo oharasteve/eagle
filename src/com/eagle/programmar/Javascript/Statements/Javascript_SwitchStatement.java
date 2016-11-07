@@ -27,7 +27,7 @@ public class Javascript_SwitchStatement extends TokenSequence
 	
 	public static class Javascript_CaseClause extends TokenSequence
 	{
-		public @NEWLINE2 Javascript_Keyword CASE = new Javascript_Keyword("case");
+		public @BLANKLINE Javascript_Keyword CASE = new Javascript_Keyword("case");
 		public Javascript_Expression expr;
 		public PunctuationColon colon;
 		public @OPT TokenList<Javascript_StatementOrComment> statements;

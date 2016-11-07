@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Sun Jan 31 05:09:19 EST 2016" Elapsed="0" Language="AWK" Steps="3784" Tokens="627">
+<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Mon Nov 07 10:58:03 EST 2016" Elapsed="17" Language="AWK" Steps="3872" Tokens="631">
   <T EC="0" EL="40" File="" SC="1" SL="1" TT=".AWK.AWK_Program">
     <T EC="0" EL="40" N="elements" SC="1" SL="1" TT="List">
       <T EC="0" EL="10" N="elements[0]" SC="1" SL="1" TT=".AWK.AWK_Program$AWK_Element">
@@ -277,7 +277,9 @@
           <T EC="0" EL="14" N="condition" SC="1" SL="10" TT="List">
             <T EC="9" EL="10" N="condition[0]" SC="1" SL="10" TT=".AWK.AWK_Condition">
               <T EC="9" EL="10" N="condition[0]" SC="1" SL="10" TT=".AWK.AWK_Expression">
-                <T EC="9" EL="10" N="condition[0]" SC="1" SL="10" TT=".AWK.Terminals.AWK_Pattern" V="/mailto:/"/>
+                <T EC="9" EL="10" N="condition[0]" SC="1" SL="10" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                  <T EC="9" EL="10" N="pattern" SC="1" SL="10" TT=".AWK.Terminals.AWK_Pattern" V="/mailto:/"/>
+                </T>
               </T>
             </T>
           </T>
@@ -311,7 +313,9 @@
           <T EC="0" EL="18" N="condition" SC="1" SL="14" TT="List">
             <T EC="12" EL="14" N="condition[0]" SC="1" SL="14" TT=".AWK.AWK_Condition">
               <T EC="12" EL="14" N="condition[0]" SC="1" SL="14" TT=".AWK.AWK_Expression">
-                <T EC="12" EL="14" N="condition[0]" SC="1" SL="14" TT=".AWK.Terminals.AWK_Pattern" V="/class=mult/"/>
+                <T EC="12" EL="14" N="condition[0]" SC="1" SL="14" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                  <T EC="12" EL="14" N="pattern" SC="1" SL="14" TT=".AWK.Terminals.AWK_Pattern" V="/class=mult/"/>
+                </T>
               </T>
             </T>
           </T>
@@ -351,7 +355,9 @@
           <T EC="0" EL="34" N="condition" SC="1" SL="18" TT="List">
             <T EC="15" EL="18" N="condition[0]" SC="1" SL="18" TT=".AWK.AWK_Condition">
               <T EC="15" EL="18" N="condition[0]" SC="1" SL="18" TT=".AWK.AWK_Expression">
-                <T EC="15" EL="18" N="condition[0]" SC="1" SL="18" TT=".AWK.Terminals.AWK_Pattern" V="/^&lt;td&gt;&lt;a href=/"/>
+                <T EC="15" EL="18" N="condition[0]" SC="1" SL="18" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                  <T EC="15" EL="18" N="pattern" SC="1" SL="18" TT=".AWK.Terminals.AWK_Pattern" V="/^&lt;td&gt;&lt;a href=/"/>
+                </T>
               </T>
             </T>
           </T>
@@ -746,7 +752,9 @@
               <T EC="27" EL="34" N="condition[0]" SC="1" SL="34" TT=".AWK.AWK_Expression">
                 <T EC="27" EL="34" N="condition[0]" SC="1" SL="34" TT=".AWK.AWK_Expression$AWK_AndExpression">
                   <T EC="13" EL="34" N="left" SC="1" SL="34" TT=".AWK.AWK_Expression">
-                    <T EC="13" EL="34" N="left" SC="1" SL="34" TT=".AWK.Terminals.AWK_Pattern" V="/&lt;br&gt;.*&lt;\/a&gt;/"/>
+                    <T EC="13" EL="34" N="left" SC="1" SL="34" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                      <T EC="13" EL="34" N="pattern" SC="1" SL="34" TT=".AWK.Terminals.AWK_Pattern" V="/&lt;br&gt;.*&lt;\/a&gt;/"/>
+                    </T>
                   </T>
                   <T EC="16" EL="34" N="andOperator" SC="15" SL="34" TT=".AWK.Terminals.AWK_Punctuation" V="&amp;&amp;"/>
                   <T EC="27" EL="34" N="right" SC="17" SL="34" TT=".AWK.AWK_Expression">

@@ -24,30 +24,30 @@ import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class C_Statement extends TokenChooser
 {
-	public C_Data jdata;
-	public C_Label label;
-	public PunctuationSemicolon semicolon;	// Empty for loop body is ok
+	public @CHOICE C_Data jdata;
+	public @CHOICE C_Label label;
+	public @CHOICE PunctuationSemicolon semicolon;	// Empty for loop body is ok
 	
-	public @SYNTAX(CMacro_Syntax.class) CMacro_StatementOrComment macro;
+	public @CHOICE @SYNTAX(CMacro_Syntax.class) CMacro_StatementOrComment macro;
 	
-	public static class C_StatementBlock extends TokenSequence
+	public @CHOICE static class C_StatementBlock extends TokenSequence
 	{
 		public @INDENT PunctuationLeftBrace leftBrace;
 		public @OPT TokenList<C_StatementOrComment> statements;
 		public @OUTDENT PunctuationRightBrace rightBrace;
 	}
 
-	public C_BreakStatement breakStatement;
-	public C_ContinueStatement continueStatement;
-	public C_DoStatement doStatement;
-	public C_ForStatement forStatement;
-	public C_IfStatement ifStatement;
-	public C_ReturnStatement returnStatement;
-	public C_SwitchStatement switchStatement;
-	public C_WhileStatement whileStatement;
+	public @CHOICE C_BreakStatement breakStatement;
+	public @CHOICE C_ContinueStatement continueStatement;
+	public @CHOICE C_DoStatement doStatement;
+	public @CHOICE C_ForStatement forStatement;
+	public @CHOICE C_IfStatement ifStatement;
+	public @CHOICE C_ReturnStatement returnStatement;
+	public @CHOICE C_SwitchStatement switchStatement;
+	public @CHOICE C_WhileStatement whileStatement;
 
 	// Do this one last, just because it is so slow
-	public C_ExpressionStatement assignmentStatement;
+	public @CHOICE C_ExpressionStatement assignmentStatement;
 	
 	//public @LAST C_UnparsedStatement unparsedStatement;
 }

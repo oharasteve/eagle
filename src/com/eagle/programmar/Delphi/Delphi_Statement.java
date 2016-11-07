@@ -25,24 +25,24 @@ import com.eagle.tokens.punctuation.PunctuationSemicolon;
 
 public class Delphi_Statement extends TokenChooser
 {
-	public PunctuationSemicolon semicolon;
+	public @CHOICE PunctuationSemicolon semicolon;
 	
-	public Delphi_Assignment assignment;
-	public Delphi_BeginEnd beginEnd;
-	public Delphi_Case_Statement caseStatement;
-	public Delphi_Close_Statement closeStatement;
-	public Delphi_For_Statement forStatement;
-	public Delphi_Halt_Statement haltStatement;
-	public Delphi_If_Statement ifStatement;
-	public Delphi_Inherited_Statement inheritedStatement;
-	public Delphi_Raise_Statement raiseStatement;
-	public Delphi_Readln_Statement readlnStatement;
-	public Delphi_Repeat_Statement repeat_Statement;
-	public Delphi_Rewrite_Statement rewriteStatement;
-	public Delphi_Try_Statement tryStatement;
-	public Delphi_While_Statement while_Statement;
-	public Delphi_With_Statement with_Statement;
-	public Delphi_Writeln_Statement writelnStatement;
+	public @CHOICE Delphi_Assignment assignment;
+	public @CHOICE Delphi_BeginEnd beginEnd;
+	public @CHOICE Delphi_Case_Statement caseStatement;
+	public @CHOICE Delphi_Close_Statement closeStatement;
+	public @CHOICE Delphi_For_Statement forStatement;
+	public @CHOICE Delphi_Halt_Statement haltStatement;
+	public @CHOICE Delphi_If_Statement ifStatement;
+	public @CHOICE Delphi_Inherited_Statement inheritedStatement;
+	public @CHOICE Delphi_Raise_Statement raiseStatement;
+	public @CHOICE Delphi_Readln_Statement readlnStatement;
+	public @CHOICE Delphi_Repeat_Statement repeat_Statement;
+	public @CHOICE Delphi_Rewrite_Statement rewriteStatement;
+	public @CHOICE Delphi_Try_Statement tryStatement;
+	public @CHOICE Delphi_While_Statement while_Statement;
+	public @CHOICE Delphi_With_Statement with_Statement;
+	public @CHOICE Delphi_Writeln_Statement writelnStatement;
 
 	// This guy has to be last
 	public @LAST Delphi_Procedure_Call procedureCall;

@@ -37,7 +37,6 @@ public class EaglePath
 		return result;
 	}
 	
-	
 	/**
 	 * Will return a path and filename with any \ changed to / in the path
 	 * @param filenameAndPath
@@ -47,7 +46,6 @@ public class EaglePath
 		if (filenameAndPath == null) return null;
 		return filenameAndPath.replaceAll("\\\\", "/");
 	}
-
 
 	/**
 	 * Will create a directory if it doesn't exist
@@ -61,6 +59,16 @@ public class EaglePath
 		return outFile.mkdirs();
 	}
 	
+	/**
+	 * Given a file name, find the directory and make sure it exists
+	 */
+	public static boolean createDirForFile(String fileName)
+	{
+		int slash = fileName.lastIndexOf('/');
+		if (slash < 0) return false;
+		String dirName = fileName.substring(0, slash);
+		return createDir(dirName);
+	}
 	
 	/**
 	 * Remove a whole directory, one file at a time :(

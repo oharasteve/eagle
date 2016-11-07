@@ -11,6 +11,6 @@ public class Lisp_Number extends TerminalNumberToken
 	@Override
 	public boolean parse(EagleFileReader lines)
 	{
-		return genericNumber(lines, null, null, null, true);
+		return genericNumber(lines, null, null, true);
 	}
 }

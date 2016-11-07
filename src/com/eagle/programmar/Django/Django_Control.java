@@ -17,14 +17,14 @@ import com.eagle.tokens.TokenChooser;
 
 public class Django_Control extends TokenChooser
 {
-	public Django_AutoEscapeControl autoescapeControl;
-	public Django_BlockControl blockControl;
-	public Django_BlockTransControl blockTransControl;
-	public Django_CommentControl commentControl;
-	public Django_ExtendsControl extendsControl;
-	public Django_ForControl forControl;
-	public Django_IfControl ifControl;
-	public Django_LoadControl loadControl;
-	public Django_SpacelessControl spacelessControl;
-	public Django_TransControl transControl;
+	public @CHOICE Django_AutoEscapeControl autoescapeControl;
+	public @CHOICE Django_BlockControl blockControl;
+	public @CHOICE Django_BlockTransControl blockTransControl;
+	public @CHOICE Django_CommentControl commentControl;
+	public @CHOICE Django_ExtendsControl extendsControl;
+	public @CHOICE Django_ForControl forControl;
+	public @CHOICE Django_IfControl ifControl;
+	public @CHOICE Django_LoadControl loadControl;
+	public @CHOICE Django_SpacelessControl spacelessControl;
+	public @CHOICE Django_TransControl transControl;
 }

@@ -24,9 +24,9 @@ public class PLI_AnswerStatement extends TokenSequence
 	
 	public static class PLI_AnswerClause extends TokenChooser
 	{
-		public PLI_KeywordChoice SKIP = new PLI_KeywordChoice("SKIP", "NOSCAN");
+		public @CHOICE PLI_KeywordChoice SKIP = new PLI_KeywordChoice("SKIP", "NOSCAN");
 
-		public static class PLI_AnswerCol extends TokenSequence
+		public @CHOICE static class PLI_AnswerCol extends TokenSequence
 		{
 			public PLI_Keyword COL = new PLI_Keyword("COL");
 			public PLI_Expression column;

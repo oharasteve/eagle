@@ -26,25 +26,25 @@ public class CMD_If_Statement extends TokenSequence
 	{
 		public @LAST CMD_Literal literal;
 		
-		public static class CMD_IfDefined extends TokenSequence
+		public @CHOICE static class CMD_IfDefined extends TokenSequence
 		{
 			public CMD_Keyword DEFINED = new CMD_Keyword("defined");
 			public CMD_Argument var;
 		}
 
-		public static class CMD_IfErrorLevel extends TokenSequence
+		public @CHOICE static class CMD_IfErrorLevel extends TokenSequence
 		{
 			public CMD_Keyword ERRORLEVEL = new CMD_Keyword("errorlevel");
 			public CMD_Number level;
 		}
 
-		public static class CMD_IfExist extends TokenSequence
+		public @CHOICE static class CMD_IfExist extends TokenSequence
 		{
 			public CMD_Keyword EXIST = new CMD_Keyword("exist");
 			public CMD_Argument file;
 		}
 		
-		public static class CMD_IfEqual extends TokenSequence
+		public @CHOICE static class CMD_IfEqual extends TokenSequence
 		{
 			public CMD_Argument expr1;
 			public CMD_IfOperator operator;
@@ -52,7 +52,7 @@ public class CMD_If_Statement extends TokenSequence
 			
 			public static class CMD_IfOperator extends TokenChooser
 			{
-				public CMD_KeywordChoice operator = new CMD_KeywordChoice(
+				public @CHOICE CMD_KeywordChoice operator = new CMD_KeywordChoice(
 						"equ",
 						"geq",
 						"gtr",
@@ -60,7 +60,7 @@ public class CMD_If_Statement extends TokenSequence
 						"lss",
 						"neq");
 				
-				public static class CMD_EqualsEquals extends TokenSequence
+				public @CHOICE static class CMD_EqualsEquals extends TokenSequence
 				{
 					public CMD_Punctuation equals = new CMD_Punctuation("==");
 					public @OPT PunctuationHyphen minus;
@@ -68,7 +68,7 @@ public class CMD_If_Statement extends TokenSequence
 			}
 		}
 
-		public static class CMD_ZZZIfCondition extends TokenSequence
+		public @LAST static class CMD_IfCondition extends TokenSequence
 		{
 			public CMD_Argument condition;
 		}

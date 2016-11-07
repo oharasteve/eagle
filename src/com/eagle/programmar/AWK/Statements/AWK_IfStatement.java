@@ -29,7 +29,7 @@ public class AWK_IfStatement extends TokenSequence
 	
 	public static class AWK_IfBlock extends TokenChooser
 	{
-		public AWK_Statement stmt;
-		public AWK_Action action;
+		public @CHOICE AWK_Statement stmt;
+		public @CHOICE AWK_Action action;
 	}
 }

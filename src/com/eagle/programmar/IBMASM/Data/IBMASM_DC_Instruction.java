@@ -28,7 +28,7 @@ public class IBMASM_DC_Instruction extends TokenSequence
 
 	public static class IBMASM_DC_Value extends TokenChooser
 	{
-		public static class IBMASM_DC_Address extends TokenSequence
+		public @CHOICE static class IBMASM_DC_Address extends TokenSequence
 		{
 			public IBMASM_Keyword A = new IBMASM_Keyword("A");
 			public PunctuationLeftParen leftParen;
@@ -36,7 +36,7 @@ public class IBMASM_DC_Instruction extends TokenSequence
 			public PunctuationRightParen rightParen;
 		}
 		
-		public static class IBMASM_DC_Length extends TokenSequence
+		public @CHOICE static class IBMASM_DC_Length extends TokenSequence
 		{
 			public @OPT IBMASM_Number replication;
 			public IBMASM_KeywordChoice code = new IBMASM_KeywordChoice("CL", "XL");
@@ -44,7 +44,7 @@ public class IBMASM_DC_Instruction extends TokenSequence
 			public IBMASM_Literal literal;
 		}
 		
-		public static class IBMASM_DC_Literal extends TokenSequence
+		public @CHOICE static class IBMASM_DC_Literal extends TokenSequence
 		{
 			public IBMASM_KeywordChoice code = new IBMASM_KeywordChoice(
 					"B", "C", "E", "F", "G", "H", "P", "X");

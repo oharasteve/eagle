@@ -33,9 +33,9 @@ public class C_Function extends TokenSequence
 	
 	public static class C_FunctionTypeName extends TokenChooser
 	{
-		public C_Keyword MAIN = new C_Keyword("main");
+		public @CHOICE C_Keyword MAIN = new C_Keyword("main");
 		
-		public static class C_Function_TypeAndName extends TokenSequence
+		public @CHOICE static class C_Function_TypeAndName extends TokenSequence
 		{
 			public C_Type ctype;
 			public @OPT TokenList<C_Comment> comments1;
@@ -57,7 +57,7 @@ public class C_Function extends TokenSequence
 	{
 		public @FIRST C_FunctionPointer functionPointer;
 		
-		public static class C_FunctionRegularParameter extends TokenSequence
+		public @CHOICE static class C_FunctionRegularParameter extends TokenSequence
 		{
 			public @NOSPACE @OPT C_Keyword CONST = new C_Keyword("const");
 			public C_Type ctype;
@@ -66,7 +66,7 @@ public class C_Function extends TokenSequence
 			public @OPT C_Comment comment;
 		}
 		
-		public static class C_FunctionDotDotDotParameter extends TokenSequence
+		public @CHOICE static class C_FunctionDotDotDotParameter extends TokenSequence
 		{
 			public C_Punctuation dotDotDot = new C_Punctuation("...");
 		}
@@ -81,9 +81,9 @@ public class C_Function extends TokenSequence
 	
 	public static class C_FunctionBody extends TokenChooser
 	{
-		public PunctuationSemicolon semicolon;
+		public @CHOICE PunctuationSemicolon semicolon;
 		
-		public static class C_FunctionImplementation extends TokenSequence
+		public @CHOICE static class C_FunctionImplementation extends TokenSequence
 		{
 			public @INDENT PunctuationLeftBrace leftBrace;
 			public @OPT TokenList<C_StatementOrComment> elements;

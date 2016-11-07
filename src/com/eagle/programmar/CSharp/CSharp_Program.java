@@ -52,15 +52,15 @@ public class CSharp_Program extends EagleLanguage
 		"virtual"
 	}; 
 
-	public @NEWLINE2 TokenList<CSharp_NamespaceOrClassList> myClasses;
+	public @BLANKLINE TokenList<CSharp_NamespaceOrClassEntry> myClasses;
 	
-	public static class CSharp_NamespaceOrClassList extends TokenChooser
+	public static class CSharp_NamespaceOrClassEntry extends TokenChooser
 	{
-		public @NEWLINE CSharp_Using importList;
-		public @NEWLINE CSharp_Comment comment;
-		public @NEWLINE CSharp_Namespace myNamespace;
-		public @NEWLINE CSharp_Class elems;
-		public @NEWLINE CSharp_Annotation annotation;
+		public @CHOICE @NEWLINE CSharp_Using importList;
+		public @CHOICE @NEWLINE CSharp_Comment comment;
+		public @CHOICE @NEWLINE CSharp_Namespace myNamespace;
+		public @CHOICE @NEWLINE CSharp_Class elems;
+		public @CHOICE @NEWLINE CSharp_Annotation annotation;
 	}
 
 	public static class CSharp_Using extends TokenSequence
@@ -80,7 +80,7 @@ public class CSharp_Program extends EagleLanguage
 	public static class CSharp_Namespace extends TokenSequence
 	{
 		public CSharp_Keyword NAMESPACE = new CSharp_Keyword("namespace");
-		public SeparatedList<CSharp_Identifier,PunctuationPeriod> id;
+		public SeparatedList<CSharp_Identifier,PunctuationPeriod> ids;
 		public PunctuationLeftBrace leftBrace;
 		public TokenList<CSharp_ProgramElems> elems; 
 		public PunctuationRightBrace rightBrace;
@@ -88,11 +88,11 @@ public class CSharp_Program extends EagleLanguage
 	
 	public static class CSharp_ProgramElems extends TokenChooser
 	{
-		public @NEWLINE CSharp_Namespace myNamespace;
-		public @NEWLINE CSharp_Using using;
-		public @NEWLINE CSharp_Comment comment;
-		public @NEWLINE CSharp_Class myClass;
-		public @NEWLINE CSharp_Enum enumeration;
-		public @NEWLINE CSharp_Method method;
+		public @CHOICE @NEWLINE CSharp_Namespace myNamespace;
+		public @CHOICE @NEWLINE CSharp_Using using;
+		public @CHOICE @NEWLINE CSharp_Comment comment;
+		public @CHOICE @NEWLINE CSharp_Class myClass;
+		public @CHOICE @NEWLINE CSharp_Enum enumeration;
+		public @CHOICE @NEWLINE CSharp_Method method;
 	}
 }

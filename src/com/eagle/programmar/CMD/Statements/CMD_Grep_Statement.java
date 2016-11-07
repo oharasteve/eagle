@@ -18,46 +18,46 @@ public class CMD_Grep_Statement extends TokenSequence
 	
 	public static class CMD_Grep_Parameter extends TokenChooser
 	{
-		public CMD_Argument srcFile;
+		public @CHOICE CMD_Argument srcFile;
 		
-		public static class CMD_Grep_Option_e extends TokenSequence
+		public @CHOICE static class CMD_Grep_Option_e extends TokenSequence
 		{
 			public CMD_Punctuation hyphen = new CMD_Punctuation('-');
 			public CMD_Keyword E = new CMD_Keyword("e");
 			public CMD_Argument pattern;
 		}
 
-		public static class CMD_Grep_Option_H extends TokenSequence
+		public @CHOICE static class CMD_Grep_Option_H extends TokenSequence
 		{
 			public CMD_Punctuation hyphen = new CMD_Punctuation('-');
 			public CMD_Keyword H = new CMD_Keyword("H");
 		}
 
-		public static class CMD_Grep_Option_i extends TokenSequence
+		public @CHOICE static class CMD_Grep_Option_i extends TokenSequence
 		{
 			public CMD_Punctuation hyphen = new CMD_Punctuation('-');
 			public CMD_Keyword I = new CMD_Keyword("i");
 		}
 
-		public static class CMD_Grep_Option_l extends TokenSequence
+		public @CHOICE static class CMD_Grep_Option_l extends TokenSequence
 		{
 			public CMD_Punctuation hyphen = new CMD_Punctuation('-');
 			public CMD_Keyword L = new CMD_Keyword("l");
 		}
 
-		public static class CMD_Grep_Option_n extends TokenSequence
+		public @CHOICE static class CMD_Grep_Option_n extends TokenSequence
 		{
 			public CMD_Punctuation hyphen = new CMD_Punctuation('-');
 			public CMD_Keyword N = new CMD_Keyword("n");
 		}
 
-		public static class CMD_Grep_Option_v extends TokenSequence
+		public @CHOICE static class CMD_Grep_Option_v extends TokenSequence
 		{
 			public CMD_Punctuation hyphen = new CMD_Punctuation('-');
 			public CMD_Keyword V = new CMD_Keyword("v");
 		}
 
-		public static class CMD_Grep_Option_w extends TokenSequence
+		public @CHOICE static class CMD_Grep_Option_w extends TokenSequence
 		{
 			public PunctuationHyphen minus;
 			public CMD_Keyword W = new CMD_Keyword("w");

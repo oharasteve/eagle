@@ -89,8 +89,8 @@ public class COBOL_ProcedureDivision extends TokenSequence
 
 		public static class COBOL_SentenceOrComment extends TokenChooser
 		{
-			public COBOL_Comment comment;
-			public COBOL_Sentence sentence;
+			public @CHOICE COBOL_Comment comment;
+			public @CHOICE COBOL_Sentence sentence;
 			public @LAST COBOL_ScreenDeclaration screen;
 
 			public @LAST static class COBOL_DataInParagraph extends TokenSequence
@@ -114,8 +114,8 @@ public class COBOL_ProcedureDivision extends TokenSequence
 		
 		public static class COBOL_StatementOrComment extends TokenChooser
 		{
-			public COBOL_Comment comment;
-			public COBOL_Statement statement;
+			public @CHOICE COBOL_Comment comment;
+			public @CHOICE COBOL_Statement statement;
 		}
 	}
 }

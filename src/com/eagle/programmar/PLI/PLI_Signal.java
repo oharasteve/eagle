@@ -13,9 +13,9 @@ import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class PLI_Signal extends TokenChooser
 {
-	public PLI_KeywordChoice which = new PLI_KeywordChoice(PLI_Signals.signals);
+	public @CHOICE PLI_KeywordChoice which = new PLI_KeywordChoice(PLI_Signals.signals);
 
-	public static class PLI_OnEndFile extends TokenSequence
+	public @CHOICE static class PLI_OnEndFile extends TokenSequence
 	{
 		public PLI_Keyword ENDFILE = new PLI_Keyword("ENDFILE");
 		public PunctuationLeftParen leftParen;

@@ -5,6 +5,7 @@ package com.eagle.programmar.Java;
 
 import com.eagle.math.EagleValue;
 import com.eagle.programmar.Java.Symbols.Java_Variable_Definition;
+import com.eagle.programmar.Java.Terminals.Java_Comment;
 import com.eagle.programmar.Java.Terminals.Java_KeywordChoice;
 import com.eagle.tests.EagleInterpreter;
 import com.eagle.tests.EagleRunnable;
@@ -27,6 +28,7 @@ public class Java_Data extends TokenSequence implements EagleRunnable
 	public @OPT Java_DataInitialValue initialValue;
 	public @OPT TokenList<Java_MoreIdentifiers> moreIds;
 	public @NOSPACE PunctuationSemicolon semicolon;
+	public @OPT TokenList<Java_Comment> comments;
 	
 	public static class Java_DataSubscript extends TokenSequence
 	{

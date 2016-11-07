@@ -24,7 +24,6 @@ import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenList;
 import com.eagle.tokens.TokenSequence;
 import com.eagle.tokens.punctuation.PunctuationColon;
-import com.eagle.tokens.punctuation.PunctuationComma;
 import com.eagle.tokens.punctuation.PunctuationLeftBrace;
 import com.eagle.tokens.punctuation.PunctuationLeftBracket;
 import com.eagle.tokens.punctuation.PunctuationLeftParen;
@@ -35,108 +34,38 @@ import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class Java_Expression extends PrecedenceChooser
 {
+	private static OperatorList _operators = new OperatorList();
+
+	public @P(10) Java_HexNumber hex;
+	public @P(20) Java_Number number;
+	public @P(30) Java_Literal literal;
+	public @P(40) Java_Character_Literal characters;
+
+	//
+	// Note: All operators should stay in @P(#) order. This determines operator precedence.
+	//
+
 	public Java_Expression()
 	{
-	}
-	
-	public Java_Expression(PrecedenceOperator token, AllowedPrecedence allowed)
-	{ 
-		super(allowed, token.getClass());
-	}
-		
-	@Override
-	protected void establishChoices() 
-	{
-		// Order matters a little bit ...
-		super.addTerm(Java_HexNumber.class);
-		super.addTerm(Java_Number.class);
-		super.addTerm(Java_Literal.class);
-		super.addTerm(Java_Character_Literal.class);
-		super.addTerm(Java_DotClass.class);
-		super.addTerm(Java_CastExpression.class);
-		super.addTerm(Java_ExpressionList.class);
-		super.addTerm(Java_InterfaceCreationWithMethod.class);
-		super.addTerm(Java_ClassCreationExpression.class);
-		super.addTerm(Java_ClassCreationWithInitializers.class);
-		super.addTerm(Java_ClassCreationWithSubscript.class);
-		super.addTerm(Java_MethodInvocation.class);
-		super.addTerm(Java_PreIncrementExpression.class);
-		super.addTerm(Java_PreDecrementExpression.class);
-		super.addTerm(Java_PostIncrementExpression.class);
-		super.addTerm(Java_PostDecrementExpression.class);
-		super.addTerm(Java_NegativeExpression.class);
-		super.addTerm(Java_LogicalNotExpression.class);
-		super.addTerm(Java_NotExpression.class);
-		super.addTerm(Java_BuiltIn.class);
-		super.addTerm(Java_Variable.class);
-		super.addTerm(Java_ParenthesizedExpression.class);
-		super.addTerm(Java_CommentExpression.class);
-		super.addOperator(Java_SubscriptExpression.class);
-		
-		// Order is critical ...
-		super.addOperator(Java_Subfield.class);
-		super.addOperator(Java_MultiplicativeExpression.class);
-		super.addOperator(Java_AdditiveExpression.class);
-		super.addOperator(Java_ShiftExpression.class);
-		super.addOperator(Java_RelationalExpression.class);
-		super.addOperator(Java_InstanceOfExpression.class);
-		super.addOperator(Java_EqualityExpression.class);
-		super.addOperator(Java_AndExpression.class);
-		super.addOperator(Java_ExclusiveOrExpression.class);
-		super.addOperator(Java_InclusiveOrExpression.class);
-		super.addOperator(Java_ConditionalAndExpression.class);
-		super.addOperator(Java_ConditionalOrExpression.class);
-		super.addOperator(Java_AssignmentExpression.class);
-		super.addOperator(Java_TrueFalseExpression.class);
+	    super(_operators);
 	}
 
+	public Java_Expression(PrecedenceOperator token, AllowedPrecedence allowed)
+	{
+	    super(_operators, allowed, token.getClass());
+	}
+		
 	///////////////////////////////////////////////
 	// Primary expressions
 	
-	public static class Java_BuiltIn extends TokenChooser implements EagleTestable, EagleRunnable
+	public static @P(100) class Java_DotClass extends PrimaryOperator
 	{
-		public Java_KeywordChoice builtinConstant = new Java_KeywordChoice("false", "true", "null", "this", "super");
-		
-		@Override
-		public void addTests()
-		{
-			Java_Tests.addTestExpr("TrueFalse1", "false || false", "false");
-			Java_Tests.addTestExpr("TrueFalse2", "false || true", "true");
-			Java_Tests.addTestExpr("TrueFalse3", "true && false", "false");
-			Java_Tests.addTestExpr("TrueFalse4", "false && true", "false");
-		}
-
-		@Override
-		public void interpret(EagleInterpreter interpreter)
-		{
-			Java_KeywordChoice kw = (Java_KeywordChoice) _whichToken;
-			String name = kw.toString();
-			if (name.equals("false"))
-			{
-				interpreter.pushBool(false);
-			}
-			else if (name.equals("true"))
-			{
-				interpreter.pushBool(true);
-			}
-			else throw new RuntimeException("Can't handle BuiltIn's other than true/false: " + name);
-		}
+		public Java_Type jtype;
+		public @NOSPACE PunctuationPeriod dot;
+		public @NOSPACE Java_Keyword CLASS = new Java_Keyword("class");
 	}
 	
-	public static class Java_ParenthesizedExpression extends ExpressionTerm implements EagleRunnable
-	{
-		public PunctuationLeftParen leftParen;
-		public Java_Expression expression;
-		public PunctuationRightParen rightParen;
-		
-		@Override
-		public void interpret(EagleInterpreter interpreter)
-		{
-			interpreter.tryToInterpret(expression);
-		}
-	}
-	
-	public static class Java_CastExpression extends ExpressionTerm
+	public static @P(110) class Java_CastExpression extends PrimaryOperator
 	{
 		public PunctuationLeftParen leftParen;
 		public Java_Type jtype;
@@ -144,7 +73,7 @@ public class Java_Expression extends PrecedenceChooser
 		public Java_Expression expr;
 	}
 
-	public static class Java_ExpressionList extends ExpressionTerm
+	public static @P(120) class Java_ExpressionList extends PrimaryOperator
 	{
 		public PunctuationLeftBrace leftBrace;
 		public @OPT TokenList<Java_Comment> comment;
@@ -152,7 +81,7 @@ public class Java_Expression extends PrecedenceChooser
 		public PunctuationRightBrace rightBrace;
 	}
 	
-	public static class Java_InterfaceCreationWithMethod extends ExpressionTerm
+	public static @P(130) class Java_InterfaceCreationWithMethod extends PrimaryOperator
 	{
 		public Java_Keyword NEW = new Java_Keyword("new");
 		public Java_KeywordChoice jinterface = new Java_KeywordChoice( 
@@ -164,7 +93,7 @@ public class Java_Expression extends PrecedenceChooser
 		public PunctuationRightBrace rightBrace;
 	}
 
-	public static class Java_ClassCreationExpression extends ExpressionTerm
+	public static @P(140) class Java_ClassCreationExpression extends PrimaryOperator
 	{
 		public Java_Keyword NEW = new Java_Keyword("new");
 		public Java_Type jtype;
@@ -182,7 +111,7 @@ public class Java_Expression extends PrecedenceChooser
 		}
 	}
 	
-	public static class Java_ClassCreationWithInitializers extends ExpressionTerm
+	public static @P(150) class Java_ClassCreationWithInitializers extends PrimaryOperator
 	{
 		public Java_Keyword NEW = new Java_Keyword("new");
 		public Java_Type jtype;
@@ -191,14 +120,14 @@ public class Java_Expression extends PrecedenceChooser
 		public PunctuationRightBrace rightBrace;
 	}
 	
-	public static class Java_ClassCreationWithSubscript extends ExpressionTerm
+	public static @P(160) class Java_ClassCreationWithSubscript extends PrimaryOperator
 	{
 		public Java_Keyword NEW = new Java_Keyword("new");
 		public Java_Type jtype;
 		public TokenList<Java_Subscript> subscripts;
 	}
 	
-	public static class Java_MethodInvocation extends ExpressionTerm implements EagleRunnable
+	public static @P(170) class Java_MethodInvocation extends PrimaryOperator implements EagleRunnable
 	{
 		public Java_Variable methodName;
 		public @NOSPACE PunctuationLeftParen leftParen;
@@ -214,82 +143,111 @@ public class Java_Expression extends PrecedenceChooser
 		}
 	}
 	
-	public static class Java_DotClass extends ExpressionTerm
-	{
-		public Java_Type jtype;
-		public @NOSPACE PunctuationPeriod dot;
-		public @NOSPACE Java_Keyword CLASS = new Java_Keyword("class");
-	}
-	
-	public static class Java_ArgumentList extends ExpressionTerm
-	{
-		public Java_Expression arg;
-		public @OPT TokenList<Java_Comment> comment;
-		public @OPT TokenList<Java_MoreArguments> moreArgs;
-		public @OPT @CURIOUS("Extra comma") PunctuationComma comma;
-		
-		public static class Java_MoreArguments extends TokenSequence
-		{
-			public @NOSPACE PunctuationComma comma;
-			public @OPT TokenList<Java_Comment> comment1;
-			public Java_Expression arg;
-			public @OPT TokenList<Java_Comment> comment2;
-		}
-	}
-
-	public static class Java_PreIncrementExpression extends ExpressionTerm
+	public static @P(180) class Java_PreIncrementExpression extends PrimaryOperator
 	{
 		public Java_Punctuation preIncrementOperator = new Java_Punctuation("++");
-		public Java_Variable var;
+		public @NOSPACE Java_Variable var;
 	}
 
-	public static class Java_PreDecrementExpression extends ExpressionTerm
+	public static @P(190) class Java_PreDecrementExpression extends PrimaryOperator
 	{
 		public Java_Punctuation preDecrementOperator = new Java_Punctuation("--");
-		public Java_Variable var;
+		public @NOSPACE Java_Variable var;
 	}
 	
-	public static class Java_PostIncrementExpression extends ExpressionTerm
+	public static @P(200) class Java_PostIncrementExpression extends PrimaryOperator
 	{
 		public Java_Variable var;
-		public Java_Punctuation postIncrementOperator = new Java_Punctuation("++");
+		public @NOSPACE Java_Punctuation postIncrementOperator = new Java_Punctuation("++");
 	}
 
-	public static class Java_PostDecrementExpression extends ExpressionTerm
+	public static @P(210) class Java_PostDecrementExpression extends PrimaryOperator
 	{
 		public Java_Variable var;
-		public Java_Punctuation postDecrementOperator = new Java_Punctuation("--");
+		public @NOSPACE Java_Punctuation postDecrementOperator = new Java_Punctuation("--");
 	}
 	
-	public static class Java_NegativeExpression extends ExpressionTerm
+	public static @P(220) class Java_NegativeExpression extends PrimaryOperator
 	{
 		public Java_PunctuationChoice operator = new Java_PunctuationChoice("-", "+");
 		public Java_Expression expr;
 	}
 
-	public static class Java_LogicalNotExpression extends ExpressionTerm
+	public static @P(230) class Java_LogicalNotExpression extends PrimaryOperator
 	{
 		public Java_Punctuation logicalNotOperator = new Java_Punctuation('~');
 		public Java_Expression expr;
 	}
 	
-	public static class Java_NotExpression extends ExpressionTerm
+	public static @P(240) class Java_NotExpression extends PrimaryOperator
 	{
 		public Java_Punctuation notOperator = new Java_Punctuation('!');
 		public Java_Expression expr;
 	}
 	
-	public static class Java_CommentExpression extends ExpressionTerm
+	public static @P(250) class Java_BuiltIn extends PrimaryOperator implements EagleTestable, EagleRunnable
+	{
+		public Java_KeywordChoice builtinConstant = new Java_KeywordChoice("false", "true", "null", "this", "super");
+		
+		@Override
+		public void addTests()
+		{
+			Java_Tests.addTestExpr("TrueFalse1", "false || false", "false");
+			Java_Tests.addTestExpr("TrueFalse2", "false || true", "true");
+			Java_Tests.addTestExpr("TrueFalse3", "true && false", "false");
+			Java_Tests.addTestExpr("TrueFalse4", "false && true", "false");
+		}
+
+		@Override
+		public void interpret(EagleInterpreter interpreter)
+		{
+			String name = builtinConstant.toString();
+			if (name.equals("false"))
+			{
+				interpreter.pushBool(false);
+			}
+			else if (name.equals("true"))
+			{
+				interpreter.pushBool(true);
+			}
+			else throw new RuntimeException("Can't handle BuiltIn's other than true/false: " + name);
+		}
+	}
+	
+	public static @P(260) class Java_VariableExpression extends PrimaryOperator implements EagleRunnable
+	{
+		public Java_Variable variable;
+		
+		@Override
+		public void interpret(EagleInterpreter interpreter)
+		{
+			interpreter.tryToInterpret(variable);
+		}
+	}
+	
+	public static @P(270) class Java_ParenthesizedExpression extends PrimaryOperator implements EagleRunnable
+	{
+		public PunctuationLeftParen leftParen;
+		public Java_Expression expression;
+		public PunctuationRightParen rightParen;
+		
+		@Override
+		public void interpret(EagleInterpreter interpreter)
+		{
+			interpreter.tryToInterpret(expression);
+		}
+	}
+	
+	public static @P(280) class Java_CommentExpression extends PrimaryOperator
 	{
 		public Java_Comment comment;
 		public Java_Expression expr;
 	}
 
-
 	///////////////////////////////////////////////
 	// Binary expressions
 
-	public static class Java_SubscriptExpression extends PrecedenceOperator
+	public static @P(290) class Java_SubscriptExpression extends PrecedenceOperator
 	{
 		public Java_Expression expr = new Java_Expression(this, AllowedPrecedence.HIGHER);
 		public PunctuationLeftBracket leftBracket;
@@ -297,157 +255,15 @@ public class Java_Expression extends PrecedenceChooser
 		public PunctuationRightBracket rightBracket;
 	}
 
-	public static class Java_AssignmentExpression extends PrecedenceOperator
-	{
-		public Java_Expression var = new Java_Expression(this, AllowedPrecedence.HIGHER);
-		public Java_AssignmentOperator assignmentOperator;
-		public Java_Expression expr;
-
-		public static class Java_AssignmentOperator extends TokenChooser
-		{
-			public Java_PunctuationChoice equals = new Java_PunctuationChoice(
-					"=",
-					"*=",
-					"/=",
-					"%=",
-					"+=",
-					"-=",
-					"<<=",
-					">>=",
-					">>>=",
-					"&=",
-					"^=",
-					"|=");
-		}
-	}
-
-	public static class Java_TrueFalseExpression extends PrecedenceOperator
-	{
-		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.HIGHER);
-		public Java_Punctuation questionMark = new Java_Punctuation('?');
-		public Java_Expression middle = new Java_Expression(this, AllowedPrecedence.ATLEAST);
-		public PunctuationColon colon;
-		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.ATLEAST);
-	}
-	
-	public static class Java_ConditionalOrExpression extends PrecedenceOperator implements EagleRunnable
+	public static @P(300) class Java_Subfield extends PrecedenceOperator
 	{
 		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
-		public Java_Punctuation orOperator = new Java_Punctuation("||");
-		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
-
-		@Override
-		public void interpret(EagleInterpreter interpreter)
-		{
-			boolean leftValue = interpreter.getBoolValue(left);
-			boolean rightValue = interpreter.getBoolValue(right);
-			interpreter.pushBool(leftValue || rightValue);
-		}
-	}
-	
-	public static class Java_ConditionalAndExpression extends PrecedenceOperator implements EagleRunnable
-	{
-		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
-		public Java_Punctuation andOperator = new Java_Punctuation("&&");
-		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
-
-		@Override
-		public void interpret(EagleInterpreter interpreter)
-		{
-			boolean leftValue = interpreter.getBoolValue(left);
-			boolean rightValue = interpreter.getBoolValue(right);
-			interpreter.pushBool(leftValue && rightValue);
-		}
-	}
-	
-	public static class Java_InclusiveOrExpression extends PrecedenceOperator
-	{
-		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
-		public Java_Punctuation bitwiseOrOperator = new Java_Punctuation('|');
+		public @NOSPACE PunctuationPeriod dot;
+		public @OPT @NOSPACE Java_GenericType genericType;
 		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
 	}
 
-	public static class Java_ExclusiveOrExpression extends PrecedenceOperator
-	{
-		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
-		public Java_Punctuation bitwiseXOrOperator = new Java_Punctuation('^');
-		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class Java_AndExpression extends PrecedenceOperator
-	{
-		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
-		public Java_Punctuation bitwiseAndOperator = new Java_Punctuation('&');
-		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class Java_EqualityExpression extends PrecedenceOperator
-	{
-		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
-		public Java_PunctuationChoice operator = new Java_PunctuationChoice("==", "!=");
-		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
-	}
-	
-	public static class Java_RelationalExpression extends PrecedenceOperator
-	{
-		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
-		public Java_PunctuationChoice operator = new Java_PunctuationChoice("<", ">", "<=", ">=");
-		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class Java_InstanceOfExpression extends PrecedenceOperator
-	{
-		public Java_Expression expr = new Java_Expression(this, AllowedPrecedence.ATLEAST);
-		public Java_Keyword instanceOperator = new Java_Keyword("instanceof");
-		public Java_Type type;
-	}
-
-	public static class Java_ShiftExpression extends PrecedenceOperator
-	{
-		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
-		public Java_ShiftOperator shiftOperator;
-		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
-
-		public static class Java_ShiftOperator extends TokenChooser
-		{
-			public @FIRST Java_PunctuationChoice operator = new Java_PunctuationChoice(">>>", "<<", ">>");
-		}
-	}
-
-	public static class Java_AdditiveExpression extends PrecedenceOperator implements EagleTestable, EagleRunnable
-	{
-		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
-		public Java_PunctuationChoice operator = new Java_PunctuationChoice("+", "-");
-		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
-
-		@Override
-		public void addTests()
-		{
-			Java_Tests.addTestExpr("Add1", "2 + 3 + 4", "9");
-			Java_Tests.addTestExpr("Add2", "2 + 3 * 4", "14");
-			Java_Tests.addTestExpr("Add3", "2 * 3 + 4", "10");
-			Java_Tests.addTestExpr("Subtract1", "27-10-1", "16");
-			Java_Tests.addTestExpr("Subtract2", "27-(10-1)", "18");
-			Java_Tests.addTestExpr("FiveSix", "five + six", "11");
-		}
-
-		@Override
-		public void interpret(EagleInterpreter interpreter)
-		{
-			int leftValue = interpreter.getIntValue(left);
-			int rightValue = interpreter.getIntValue(right);
-			if (operator.toString().equals("+"))
-			{
-				interpreter.pushInt(leftValue + rightValue);
-			}
-			else
-			{
-				interpreter.pushInt(leftValue - rightValue);
-			}
-		}
-	}
-
-	public static class Java_MultiplicativeExpression extends PrecedenceOperator implements EagleTestable, EagleRunnable
+	public static @P(310) class Java_MultiplicativeExpression extends PrecedenceOperator implements EagleTestable, EagleRunnable
 	{
 		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
 		public Java_PunctuationChoice operator = new Java_PunctuationChoice("*", "/", "%");
@@ -481,11 +297,148 @@ public class Java_Expression extends PrecedenceChooser
 		}
 	}
 
-	public static class Java_Subfield extends PrecedenceOperator
+	public static @P(320) class Java_AdditiveExpression extends PrecedenceOperator implements EagleTestable, EagleRunnable
 	{
 		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
-		public @NOSPACE PunctuationPeriod dot;
-		public @OPT @NOSPACE Java_GenericType genericType;
+		public Java_PunctuationChoice operator = new Java_PunctuationChoice("+", "-");
 		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
+
+		@Override
+		public void addTests()
+		{
+			Java_Tests.addTestExpr("Add1", "2 + 3 + 4", "9");
+			Java_Tests.addTestExpr("Add2", "2 + 3 * 4", "14");
+			Java_Tests.addTestExpr("Add3", "2 * 3 + 4", "10");
+			Java_Tests.addTestExpr("Subtract1", "27-10-1", "16");
+			Java_Tests.addTestExpr("Subtract2", "27-(10-1)", "18");
+			Java_Tests.addTestExpr("FiveSix", "five + six", "11");
+		}
+
+		@Override
+		public void interpret(EagleInterpreter interpreter)
+		{
+			int leftValue = interpreter.getIntValue(left);
+			int rightValue = interpreter.getIntValue(right);
+			if (operator.toString().equals("+"))
+			{
+				interpreter.pushInt(leftValue + rightValue);
+			}
+			else
+			{
+				interpreter.pushInt(leftValue - rightValue);
+			}
+		}
+	}
+
+	public static @P(330) class Java_ShiftExpression extends PrecedenceOperator
+	{
+		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
+		public Java_PunctuationChoice operator = new Java_PunctuationChoice(">>>", "<<", ">>");
+		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static @P(340) class Java_RelationalExpression extends PrecedenceOperator
+	{
+		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
+		public Java_PunctuationChoice operator = new Java_PunctuationChoice("<", ">", "<=", ">=");
+		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(350) class Java_InstanceOfExpression extends PrecedenceOperator
+	{
+		public Java_Expression expr = new Java_Expression(this, AllowedPrecedence.ATLEAST);
+		public Java_Keyword instanceOperator = new Java_Keyword("instanceof");
+		public Java_Type type;
+	}
+
+	public static @P(360) class Java_EqualityExpression extends PrecedenceOperator
+	{
+		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
+		public Java_PunctuationChoice operator = new Java_PunctuationChoice("==", "!=");
+		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static @P(370) class Java_AndExpression extends PrecedenceOperator
+	{
+		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
+		public Java_Punctuation bitwiseAndOperator = new Java_Punctuation('&');
+		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(380) class Java_ExclusiveOrExpression extends PrecedenceOperator
+	{
+		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
+		public Java_Punctuation bitwiseXOrOperator = new Java_Punctuation('^');
+		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(390) class Java_InclusiveOrExpression extends PrecedenceOperator
+	{
+		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
+		public Java_Punctuation bitwiseOrOperator = new Java_Punctuation('|');
+		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(400) class Java_ConditionalAndExpression extends PrecedenceOperator implements EagleRunnable
+	{
+		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
+		public Java_Punctuation andOperator = new Java_Punctuation("&&");
+		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
+
+		@Override
+		public void interpret(EagleInterpreter interpreter)
+		{
+			boolean leftValue = interpreter.getBoolValue(left);
+			boolean rightValue = interpreter.getBoolValue(right);
+			interpreter.pushBool(leftValue && rightValue);
+		}
+	}
+	
+	public static @P(410) class Java_ConditionalOrExpression extends PrecedenceOperator implements EagleRunnable
+	{
+		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.ATLEAST);
+		public Java_Punctuation orOperator = new Java_Punctuation("||");
+		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.HIGHER);
+
+		@Override
+		public void interpret(EagleInterpreter interpreter)
+		{
+			boolean leftValue = interpreter.getBoolValue(left);
+			boolean rightValue = interpreter.getBoolValue(right);
+			interpreter.pushBool(leftValue || rightValue);
+		}
+	}
+	
+	public static @P(420) class Java_AssignmentExpression extends PrecedenceOperator
+	{
+		public Java_Expression var = new Java_Expression(this, AllowedPrecedence.HIGHER);
+		public Java_AssignmentOperator assignmentOperator;
+		public Java_Expression expr;
+
+		public static class Java_AssignmentOperator extends TokenChooser
+		{
+			public @CHOICE Java_PunctuationChoice equals = new Java_PunctuationChoice(
+					"=",
+					"*=",
+					"/=",
+					"%=",
+					"+=",
+					"-=",
+					"<<=",
+					">>=",
+					">>>=",
+					"&=",
+					"^=",
+					"|=");
+		}
+	}
+
+	public static @P(430) class Java_TrueFalseExpression extends PrecedenceOperator
+	{
+		public Java_Expression left = new Java_Expression(this, AllowedPrecedence.HIGHER);
+		public Java_Punctuation questionMark = new Java_Punctuation('?');
+		public Java_Expression middle = new Java_Expression(this, AllowedPrecedence.ATLEAST);
+		public PunctuationColon colon;
+		public Java_Expression right = new Java_Expression(this, AllowedPrecedence.ATLEAST);
 	}
 }

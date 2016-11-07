@@ -4,8 +4,8 @@
 package com.eagle.programmar.PLI.Statements;
 
 import com.eagle.programmar.PLI.PLI_Expression;
-import com.eagle.programmar.PLI.PLI_Expression.PLI_VariableOrFunctionCall.PLI_Subscript;
 import com.eagle.programmar.PLI.PLI_Label;
+import com.eagle.programmar.PLI.PLI_Subscript;
 import com.eagle.programmar.PLI.Symbols.PLI_Identifier_Reference;
 import com.eagle.programmar.PLI.Terminals.PLI_Comment;
 import com.eagle.tokens.TokenSequence;

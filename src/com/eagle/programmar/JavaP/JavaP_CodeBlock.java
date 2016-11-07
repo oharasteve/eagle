@@ -25,10 +25,10 @@ public class JavaP_CodeBlock extends TokenSequence
 
 	public static class JavaP_CodeDetails extends TokenChooser
 	{
-		public JavaP_CodeLocalValues localValues; 
-		public JavaP_CodeStackInfo stackInfo; 
-		public JavaP_CodeLineNumbers lineNumbers; 
-		public JavaP_StackMapTable stackMap;
-		public JavaP_CodeExceptions codeExceptions;
+		public @CHOICE JavaP_CodeLocalValues localValues; 
+		public @CHOICE JavaP_CodeStackInfo stackInfo; 
+		public @CHOICE JavaP_CodeLineNumbers lineNumbers; 
+		public @CHOICE JavaP_StackMapTable stackMap;
+		public @CHOICE JavaP_CodeExceptions codeExceptions;
 	}
 }

@@ -44,14 +44,14 @@ public class JavaP_CodeStackInfo extends TokenSequence
 		
 		public static class JavaP_CodeStackValue extends TokenChooser
 		{
-			public static class JavaP_CodeValueRegular extends TokenSequence
+			public @CHOICE static class JavaP_CodeValueRegular extends TokenSequence
 			{
 				public @OPT SeparatedList<JavaP_Value,PunctuationComma> values;
 				public @OPT PunctuationSemicolon semicolon;
 				public @OPT JavaP_Comment comment;
 			}
 			
-			public static class JavaP_CodeValueBraces extends TokenSequence
+			public @CHOICE static class JavaP_CodeValueBraces extends TokenSequence
 			{
 				public PunctuationLeftBrace leftBrace;
 				public @OPT JavaP_Comment comment;
@@ -69,8 +69,8 @@ public class JavaP_CodeStackInfo extends TokenSequence
 					
 					public static class JavaP_CodeValueCase extends TokenChooser
 					{
-						public JavaP_Number number;
-						public JavaP_Keyword DEFAULT = new JavaP_Keyword("default");
+						public @CHOICE JavaP_Number number;
+						public @CHOICE JavaP_Keyword DEFAULT = new JavaP_Keyword("default");
 					}
 				}
 			}

@@ -10,7 +10,7 @@ import com.eagle.tokens.TokenChooser;
 
 public class Template_Statement extends TokenChooser
 {
-	public Template_AssignmentStatement assignmentStatement;
-	public Template_DataStatement dataStatement;
-	public Template_PrintStatement printStatement;
+	public @CHOICE Template_AssignmentStatement assignmentStatement;
+	public @CHOICE Template_DataStatement dataStatement;
+	public @CHOICE Template_PrintStatement printStatement;
 }

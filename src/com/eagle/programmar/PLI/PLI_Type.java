@@ -17,13 +17,13 @@ import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class PLI_Type extends TokenChooser
 {
-	public PunctuationStar star;
+	public @CHOICE PunctuationStar star;
 	
-	public static class PLI_BaseType extends TokenChooser
+	public @CHOICE static class PLI_BaseType extends TokenChooser
 	{
-		public PLI_KeywordChoice base = new PLI_KeywordChoice("COMPLEX", "FILE", "VARYING", "UNION");
+		public @CHOICE PLI_KeywordChoice base = new PLI_KeywordChoice("COMPLEX", "FILE", "VARYING", "UNION");
 
-		public static class PLI_TypeCharacter extends TokenSequence
+		public @CHOICE static class PLI_TypeCharacter extends TokenSequence
 		{
 			public @OPT PLI_TypeSize size1;
 			public PLI_KeywordChoice CHARACTER = new PLI_KeywordChoice("CHAR", "CHARACTER", "WIDECHAR");
@@ -41,7 +41,7 @@ public class PLI_Type extends TokenChooser
 			}
 		}
 
-		public static class PLI_TypeFixedBinary extends TokenSequence
+		public @CHOICE static class PLI_TypeFixedBinary extends TokenSequence
 		{
 			public PLI_KeywordChoice FIXED = new PLI_KeywordChoice("FIXED", "FLOAT");
 			public PLI_Keyword BINARY = new PLI_Keyword("BINARY");
@@ -49,7 +49,7 @@ public class PLI_Type extends TokenChooser
 			public @OPT PLI_Keyword COMPLEX = new PLI_Keyword("COMPLEX");
 		}
 
-		public static class PLI_TypeFloat extends TokenSequence
+		public @CHOICE static class PLI_TypeFloat extends TokenSequence
 		{
 			public PLI_KeywordChoice FIXED = new PLI_KeywordChoice("FIXED", "FLOAT");
 			public @OPT PLI_Keyword DECIMAL = new PLI_Keyword("DECIMAL");
@@ -57,7 +57,7 @@ public class PLI_Type extends TokenChooser
 			public @OPT PLI_Keyword COMPLEX = new PLI_Keyword("COMPLEX");
 		}
 		
-		public static class PLI_TypeBit extends TokenSequence
+		public @CHOICE static class PLI_TypeBit extends TokenSequence
 		{
 			public @OPT PLI_TypeSize size1;
 			public PLI_Keyword BIT = new PLI_Keyword("BIT");
@@ -76,7 +76,7 @@ public class PLI_Type extends TokenChooser
 			}
 		}
 		
-		public static class PLI_TypeGraphic extends TokenSequence
+		public @CHOICE static class PLI_TypeGraphic extends TokenSequence
 		{
 			public PLI_Keyword GRAPHIC = new PLI_Keyword("GRAPHIC");
 			public @OPT PLI_TypeSize size;
@@ -85,7 +85,7 @@ public class PLI_Type extends TokenChooser
 		}
 	}
 
-	public static class PLI_TypeSize extends TokenSequence
+	public @CHOICE static class PLI_TypeSize extends TokenSequence
 	{
 		public PunctuationLeftParen leftParen;
 		public SeparatedList<PLI_TypeSizeContents,PunctuationComma> typeSizeContents;
@@ -93,9 +93,9 @@ public class PLI_Type extends TokenChooser
 		
 		public static class PLI_TypeSizeContents extends TokenChooser
 		{
-			public PunctuationStar star;
+			public @CHOICE PunctuationStar star;
 			
-			public static class PLI_TypeSizeNormal extends TokenSequence
+			public @CHOICE static class PLI_TypeSizeNormal extends TokenSequence
 			{
 				public PLI_Expression size1;
 				public @OPT PunctuationComma comma;

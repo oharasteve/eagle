@@ -12,7 +12,7 @@ import com.eagle.tokens.punctuation.PunctuationRightParen;
 
 public class CSS_Color extends TokenChooser
 {
-	public CSS_KeywordChoice color = new CSS_KeywordChoice(
+	public @CHOICE CSS_KeywordChoice color = new CSS_KeywordChoice(
 			"black",
 			"blue",
 			"green",
@@ -20,7 +20,7 @@ public class CSS_Color extends TokenChooser
 			"white"
 	);
 
-	public static class CSS_QualifiedColor extends TokenSequence
+	public @CHOICE static class CSS_QualifiedColor extends TokenSequence
 	{
 		public @OPT CSS_KeywordChoice qualifyColor = new CSS_KeywordChoice(
 				"dark",
@@ -32,7 +32,7 @@ public class CSS_Color extends TokenChooser
 		);
 	}
 
-	public static class CSS_RGB_Value extends TokenSequence
+	public @CHOICE static class CSS_RGB_Value extends TokenSequence
 	{
 		public CSS_Keyword RGB = new CSS_Keyword("rgb");
 		public @NOSPACE PunctuationLeftParen leftParen;
@@ -44,7 +44,7 @@ public class CSS_Color extends TokenChooser
 		public @NOSPACE PunctuationRightParen rightParen;
 	}
 	
-	public static class CSS_RGBA_Value extends TokenSequence
+	public @CHOICE static class CSS_RGBA_Value extends TokenSequence
 	{
 		public CSS_Keyword RGBA = new CSS_Keyword("rgba");
 		public @NOSPACE PunctuationLeftParen leftParen;
@@ -59,7 +59,7 @@ public class CSS_Color extends TokenChooser
 		public @OPT CSS_NumericValue percentage;
 	}
 	
-	public static class CSS_HSL_Value extends TokenSequence
+	public @CHOICE static class CSS_HSL_Value extends TokenSequence
 	{
 		public CSS_Keyword HSL = new CSS_Keyword("hsl");
 		public @NOSPACE PunctuationLeftParen leftParen;
@@ -73,7 +73,7 @@ public class CSS_Color extends TokenChooser
 		public @NOSPACE PunctuationRightParen rightParen;
 	}
 	
-	public static class CSS_Transparent extends TokenSequence
+	public @CHOICE static class CSS_Transparent extends TokenSequence
 	{
 		public CSS_Keyword TRANSPARENT = new CSS_Keyword("transparent");
 		public CSS_NumericValue percentage;

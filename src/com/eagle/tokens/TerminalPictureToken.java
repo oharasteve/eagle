@@ -24,6 +24,7 @@ public abstract class TerminalPictureToken extends TerminalToken
 	public void setValue(String val)
 	{
 		_pic = val;
+		_present = (val != null);
 	}
 
 	@Override

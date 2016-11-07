@@ -18,15 +18,15 @@ import com.eagle.tokens.TokenChooser;
 
 public class JavaP_Statement extends TokenChooser
 {
-	public JavaP_Classes classes;
-	public JavaP_Classfile classfile;
-	public JavaP_CompiledFrom compiledFrom;
-	public JavaP_ConstantPool constantPool;
-	public JavaP_InnerClasses innerClasses;
-	public JavaP_MajorVersion majorVersion;
-	public JavaP_MinorVersion minorVersion;
-	public JavaP_PublicClass publicClass;
-	public JavaP_RuntimeVisibleAnnotations runtimeVisibleAnnotations;
-	public JavaP_Signature signature;
-	public JavaP_SourceFile sourceFile;
+	public @CHOICE JavaP_Classes classes;
+	public @CHOICE JavaP_Classfile classfile;
+	public @CHOICE JavaP_CompiledFrom compiledFrom;
+	public @CHOICE JavaP_ConstantPool constantPool;
+	public @CHOICE JavaP_InnerClasses innerClasses;
+	public @CHOICE JavaP_MajorVersion majorVersion;
+	public @CHOICE JavaP_MinorVersion minorVersion;
+	public @CHOICE JavaP_PublicClass publicClass;
+	public @CHOICE JavaP_RuntimeVisibleAnnotations runtimeVisibleAnnotations;
+	public @CHOICE JavaP_Signature signature;
+	public @CHOICE JavaP_SourceFile sourceFile;
 }

@@ -34,9 +34,9 @@ public class COBOL_UnstringStatement extends COBOL_AbstractStatement
 		
 		public static class COBOL_UnstringOrWhat extends TokenChooser
 		{
-			public COBOL_Literal delim;
+			public @CHOICE COBOL_Literal delim;
 			
-			public static class COBOL_UnstringOrSpaces extends TokenSequence
+			public @CHOICE static class COBOL_UnstringOrSpaces extends TokenSequence
 			{
 				public @OPT COBOL_Keyword ALL = new COBOL_Keyword("ALL");
 				public COBOL_Keyword SPACES = new COBOL_Keyword("SPACES");

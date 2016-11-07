@@ -38,10 +38,10 @@ public abstract class RPG_O_Output_Specification extends TokenSequence
 	
 	public static class RPG_O_Output_Spec extends TokenChooser
 	{
-		public RPG_O_Output_Program_Record_Id recordId;
-		public RPG_O_Output_Program_Field_Descr fieldDescr;
-		public RPG_O_Output_External_Record_Id externalRecordId;
-		public RPG_O_Output_External_Field_Descr externalFieldDescr;
+		public @CHOICE RPG_O_Output_Program_Record_Id recordId;
+		public @CHOICE RPG_O_Output_Program_Field_Descr fieldDescr;
+		public @CHOICE RPG_O_Output_External_Record_Id externalRecordId;
+		public @CHOICE RPG_O_Output_External_Field_Descr externalFieldDescr;
 	}
 		
 	public static class RPG_O_Output_Specification_III extends RPG_O_Output_Spec
@@ -106,9 +106,9 @@ public abstract class RPG_O_Output_Specification extends TokenSequence
 
 		public abstract static class RPG_O_Output_Program_Record_Id_Piece extends TokenChooser
 		{
-			public RPG_O_Output_Program_Record_Id_Piece1 piece1;
-			public RPG_O_Output_Program_Record_Id_Piece2 piece2;
-			public RPG_O_Output_Program_Record_Id_Piece3 piece3;
+			public @CHOICE RPG_O_Output_Program_Record_Id_Piece1 piece1;
+			public @CHOICE RPG_O_Output_Program_Record_Id_Piece2 piece2;
+			public @CHOICE RPG_O_Output_Program_Record_Id_Piece3 piece3;
 		}
 		
 		public static class RPG_O_Output_Program_Record_Id_Piece_III extends RPG_O_Output_Program_Record_Id_Piece
@@ -308,9 +308,9 @@ public abstract class RPG_O_Output_Specification extends TokenSequence
 		
 		public abstract static class RPG_O_Output_External_Record_Id_Piece extends TokenChooser
 		{
-			public RPG_O_Output_External_Record_Id_Piece1 piece1;
-			public RPG_O_Output_External_Record_Id_Piece2 piece2;
-			public RPG_O_Output_External_Record_Id_Piece3 piece3;
+			public @CHOICE RPG_O_Output_External_Record_Id_Piece1 piece1;
+			public @CHOICE RPG_O_Output_External_Record_Id_Piece2 piece2;
+			public @CHOICE RPG_O_Output_External_Record_Id_Piece3 piece3;
 		}
 		
 		public static class RPG_O_Output_External_Record_Id_Piece_III extends RPG_O_Output_External_Record_Id_Piece

@@ -18,19 +18,25 @@ public abstract class TerminalHexNumberToken extends TerminalNumberToken
 		int recLen = rec.length();
 		int prefixLen = hexPrefix.length();
 		if (_currentChar + prefixLen >= recLen) return false;	// Not long enough
+		int endChar = _currentChar;
+		
+		char ch = rec.charAt(endChar);
+		if (ch == '+' || ch == '-') endChar++;
+		
 		for (int i = 0; i < prefixLen; i++)
 		{
-			char ch = rec.charAt(_currentChar + i);
+			ch = rec.charAt(endChar + i);
 			if (ch != hexPrefix.charAt(i)) return false;
 		}
-		if (HEX.indexOf(rec.charAt(_currentChar + prefixLen)) < 0) return false;
+		if (HEX.indexOf(rec.charAt(endChar + prefixLen)) < 0) return false;
 			
-		int endChar = _currentChar + prefixLen;
+		endChar += prefixLen;
+		
 		while (true)
 		{
 			endChar++;
 			if (endChar >= recLen) break;
-			char ch = rec.charAt(endChar);
+			ch = rec.charAt(endChar);
 			if (HEX.indexOf(ch) < 0)
 			{
 				// Allow a "long" suffix

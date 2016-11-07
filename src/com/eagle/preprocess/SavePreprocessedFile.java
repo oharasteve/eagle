@@ -56,15 +56,7 @@ public class SavePreprocessedFile
 		String outName = EaglePath.combinePaths(prefix, "preprocessed", newName);
 		
 		// Make sure the directory exists
-		int lastSlash = outName.lastIndexOf('/');
-		if (lastSlash > 0)
-		{
-			String outDirName = outName.substring(0, lastSlash);
-			if (EaglePath.createDir(outDirName))
-			{
-				System.out.println("Creating directory " + outDirName);
-			}
-		}
+		EaglePath.createDirForFile(outName);
 		
 		PrintWriter prt = new PrintWriter(new FileWriter(outName));
 		prt.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">");

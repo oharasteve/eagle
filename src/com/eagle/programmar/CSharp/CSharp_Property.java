@@ -44,26 +44,26 @@ public class CSharp_Property extends TokenSequence
 	
 	public static class CSharp_GetterSetter extends TokenChooser
 	{
-		public static class CSharp_GetterNoBody extends TokenSequence
+		public @CHOICE static class CSharp_GetterNoBody extends TokenSequence
 		{
 			public CSharp_Keyword get = new CSharp_Keyword("get");
 			public PunctuationSemicolon semicolon;
 		}
 		
-		public static class CSharp_GetterBody extends TokenSequence
+		public @CHOICE static class CSharp_GetterBody extends TokenSequence
 		{
 			public CSharp_Keyword get = new CSharp_Keyword("get");
 			public CSharp_Statement getBody;
 		}
 
-		public static class CSharp_SetterNoBody extends TokenSequence
+		public @CHOICE static class CSharp_SetterNoBody extends TokenSequence
 		{
 			public @OPT CSharp_Keyword csPrivate = new CSharp_Keyword("private");
 			public CSharp_Keyword set = new CSharp_Keyword("set");
 			public PunctuationSemicolon semicolon;
 		}
 		
-		public static class CSharp_SetterBody extends TokenSequence
+		public @CHOICE static class CSharp_SetterBody extends TokenSequence
 		{
 			public CSharp_Keyword set = new CSharp_Keyword("set");
 			public CSharp_Statement setBody;

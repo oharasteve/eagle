@@ -9,7 +9,7 @@ import com.eagle.tokens.TerminalLiteralToken;
 
 public class JavaP_Primitives extends TerminalLiteralToken
 {
-	private static final String PRIMITIVES = "BCIJVZ";
+	private static final String PRIMITIVES = "BCDIJVZ";
 	
 	@Override
 	public boolean parse(EagleFileReader lines)
@@ -28,6 +28,7 @@ public class JavaP_Primitives extends TerminalLiteralToken
 			ch = rec.charAt(endChar);
 			if (PRIMITIVES.indexOf(ch) < 0)
 			{
+				if (Character.isLetterOrDigit(ch)) return false;
 				endChar--;
 				break;
 			}

@@ -28,13 +28,13 @@ public class COBOL_DataDivision extends TokenSequence
 
 	public static class COBOL_DataSection extends TokenChooser
 	{
-		public COBOL_Comment comment;
-		public COBOL_FileSection fileSection;
-		public COBOL_WorkingStorageSection workingStorageSection;
-		public COBOL_LocalStorageSection localStorageSection;
-		public COBOL_ScreenSection screenSection;
-		public COBOL_LinkageSection linkageSection;
-		public COBOL_ReportSection reportSection;
+		public @CHOICE COBOL_Comment comment;
+		public @CHOICE COBOL_FileSection fileSection;
+		public @CHOICE COBOL_WorkingStorageSection workingStorageSection;
+		public @CHOICE COBOL_LocalStorageSection localStorageSection;
+		public @CHOICE COBOL_ScreenSection screenSection;
+		public @CHOICE COBOL_LinkageSection linkageSection;
+		public @CHOICE COBOL_ReportSection reportSection;
 	}
 	
 	public static class COBOL_FileSection extends TokenSequence
@@ -47,10 +47,10 @@ public class COBOL_DataDivision extends TokenSequence
 	
 	public static class COBOL_Copy_or_FileDescriptor extends TokenChooser
 	{
-		public COBOL_Copy_Directive copyDirective;
-		public COBOL_Comment comment;
+		public @CHOICE COBOL_Copy_Directive copyDirective;
+		public @CHOICE COBOL_Comment comment;
 
-		public static class COBOL_FileDescriptor extends TokenSequence
+		public @CHOICE static class COBOL_FileDescriptor extends TokenSequence
 		{
 			public COBOL_KeywordChoice fd_sd = new COBOL_KeywordChoice("FD", "SD");
 			public COBOL_File_Definition id;
@@ -79,8 +79,8 @@ public class COBOL_DataDivision extends TokenSequence
 				
 				public static class COBOL_FileId extends TokenChooser
 				{
-					public COBOL_Identifier_Reference fileRef;
-					public COBOL_Literal fileName;
+					public @CHOICE COBOL_Identifier_Reference fileRef;
+					public @CHOICE COBOL_Literal fileName;
 				}
 			}
 			
@@ -144,7 +144,7 @@ public class COBOL_DataDivision extends TokenSequence
 	
 	public static class COBOL_CopyOrDataDeclaration extends TokenChooser
 	{
-		public COBOL_Copy_Directive copyBook;
-		public COBOL_DataDeclaration declaration;
+		public @CHOICE COBOL_Copy_Directive copyBook;
+		public @CHOICE COBOL_DataDeclaration declaration;
 	}
 }

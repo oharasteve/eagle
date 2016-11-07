@@ -20,13 +20,13 @@ public class Delphi_Variable extends TokenSequence
 
 	public static class Delphi_Extended_Variable extends TokenChooser
 	{
-		public static class Delphi_DotName extends TokenSequence
+		public @CHOICE static class Delphi_DotName extends TokenSequence
 		{
 			public PunctuationPeriod dot;
 			public Delphi_Identifier_Reference var;
 		}
 	
-		public static class Delphi_Subscript extends TokenSequence
+		public @CHOICE static class Delphi_Subscript extends TokenSequence
 		{
 			public PunctuationLeftBracket leftBracket;
 			public SeparatedList<Delphi_Expression,PunctuationComma> expr;

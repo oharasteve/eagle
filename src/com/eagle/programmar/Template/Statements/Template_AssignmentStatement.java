@@ -6,7 +6,7 @@ package com.eagle.programmar.Template.Statements;
 import com.eagle.math.EagleValue;
 import com.eagle.programmar.Template.Template_Expression;
 import com.eagle.programmar.Template.Template_Variable;
-import com.eagle.programmar.Template.Symbols.Template_Identifier_Definition;
+import com.eagle.programmar.Template.Symbols.Template_Identifier_Reference;
 import com.eagle.tests.EagleInterpreter;
 import com.eagle.tests.EagleRunnable;
 import com.eagle.tokens.TokenSequence;
@@ -24,7 +24,7 @@ public class Template_AssignmentStatement extends TokenSequence implements Eagle
 	public void interpret(EagleInterpreter interpreter)
 	{
 		EagleValue value = interpreter.getEagleValue(expr);
-		Template_Identifier_Definition id = (Template_Identifier_Definition) var._whichToken;
+		Template_Identifier_Reference id = (Template_Identifier_Reference) var.getWhich();
 		interpreter._symbolTable.setSymbol(id.getValue(), value);
 	}
 }

@@ -14,7 +14,7 @@ public class Sample
 		for (PHP_Entry entry : program.entry._elements)
 		{
 			i++;
-			AbstractToken which = entry._whichToken;
+			AbstractToken which = entry.getWhich();
 			System.out.println("** " + i + ": " + which.toString());
 		}
 	}

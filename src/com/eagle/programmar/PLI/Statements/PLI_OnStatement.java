@@ -23,9 +23,9 @@ public class PLI_OnStatement extends TokenSequence
 		
 	public static class PLI_OnAction extends TokenChooser
 	{
-		public PLI_Statement stmt;
+		public @CHOICE PLI_Statement stmt;
 
-		public static class PLI_On_Action_System extends TokenSequence
+		public @CHOICE static class PLI_On_Action_System extends TokenSequence
 		{
 			public PLI_Keyword SYSTEM = new PLI_Keyword("SYSTEM");
 			public PunctuationSemicolon semicolon;

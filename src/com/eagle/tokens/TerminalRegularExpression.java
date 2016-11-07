@@ -29,6 +29,7 @@ public abstract class TerminalRegularExpression extends TerminalToken
 	public void setValue(String val)
 	{
 		_expr = val;
+		_present = (val != null);
 	}
 
 	@Override

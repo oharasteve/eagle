@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Sun Jan 31 05:09:18 EST 2016" Elapsed="16" Language="AWK" Steps="2153" Tokens="319">
+<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Mon Nov 07 10:58:02 EST 2016" Elapsed="7" Language="AWK" Steps="2201" Tokens="322">
   <T EC="0" EL="34" File="" SC="1" SL="1" TT=".AWK.AWK_Program">
     <T EC="0" EL="34" N="elements" SC="1" SL="1" TT="List">
       <T EC="0" EL="8" N="elements[0]" SC="1" SL="1" TT=".AWK.AWK_Program$AWK_Element">
@@ -211,7 +211,9 @@
           <T EC="0" EL="19" N="condition" SC="1" SL="13" TT="List">
             <T EC="12" EL="13" N="condition[0]" SC="1" SL="13" TT=".AWK.AWK_Condition">
               <T EC="12" EL="13" N="condition[0]" SC="1" SL="13" TT=".AWK.AWK_Expression">
-                <T EC="12" EL="13" N="condition[0]" SC="1" SL="13" TT=".AWK.Terminals.AWK_Pattern" V="/Problem at/"/>
+                <T EC="12" EL="13" N="condition[0]" SC="1" SL="13" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                  <T EC="12" EL="13" N="pattern" SC="1" SL="13" TT=".AWK.Terminals.AWK_Pattern" V="/Problem at/"/>
+                </T>
               </T>
             </T>
           </T>
@@ -273,7 +275,7 @@
                           <T EC="12" EL="16" N="var" SC="1" SL="16" TT=".AWK.AWK_Variable">
                             <T EC="12" EL="16" N="id" SC="5" SL="16" TT=".AWK.Symbols.AWK_Identifier_Reference" V="problems"/>
                           </T>
-                          <T EC="14" EL="16" N="postIncrementOperator" SC="13" SL="16" TT=".AWK.Terminals.AWK_Punctuation" V="++"/>
+                          <T EC="14" EL="16" N="operator" SC="13" SL="16" TT=".AWK.Terminals.AWK_Punctuation" V="++"/>
                         </T>
                       </T>
                     </T>
@@ -293,7 +295,9 @@
           <T EC="0" EL="23" N="condition" SC="1" SL="19" TT="List">
             <T EC="15" EL="19" N="condition[0]" SC="1" SL="19" TT=".AWK.AWK_Condition">
               <T EC="15" EL="19" N="condition[0]" SC="1" SL="19" TT=".AWK.AWK_Expression">
-                <T EC="15" EL="19" N="condition[0]" SC="1" SL="19" TT=".AWK.Terminals.AWK_Pattern" V="/^*** Orphan: /"/>
+                <T EC="15" EL="19" N="condition[0]" SC="1" SL="19" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                  <T EC="15" EL="19" N="pattern" SC="1" SL="19" TT=".AWK.Terminals.AWK_Pattern" V="/^*** Orphan: /"/>
+                </T>
               </T>
             </T>
           </T>
@@ -312,7 +316,7 @@
                           <T EC="11" EL="20" N="var" SC="1" SL="20" TT=".AWK.AWK_Variable">
                             <T EC="11" EL="20" N="id" SC="5" SL="20" TT=".AWK.Symbols.AWK_Identifier_Reference" V="orphans"/>
                           </T>
-                          <T EC="13" EL="20" N="postIncrementOperator" SC="12" SL="20" TT=".AWK.Terminals.AWK_Punctuation" V="++"/>
+                          <T EC="13" EL="20" N="operator" SC="12" SL="20" TT=".AWK.Terminals.AWK_Punctuation" V="++"/>
                         </T>
                       </T>
                     </T>
@@ -332,7 +336,9 @@
           <T EC="0" EL="28" N="condition" SC="1" SL="23" TT="List">
             <T EC="14" EL="23" N="condition[0]" SC="1" SL="23" TT=".AWK.AWK_Condition">
               <T EC="14" EL="23" N="condition[0]" SC="1" SL="23" TT=".AWK.AWK_Expression">
-                <T EC="14" EL="23" N="condition[0]" SC="1" SL="23" TT=".AWK.Terminals.AWK_Pattern" V="/^*** Missing/"/>
+                <T EC="14" EL="23" N="condition[0]" SC="1" SL="23" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                  <T EC="14" EL="23" N="pattern" SC="1" SL="23" TT=".AWK.Terminals.AWK_Pattern" V="/^*** Missing/"/>
+                </T>
               </T>
             </T>
           </T>
@@ -351,7 +357,7 @@
                           <T EC="12" EL="24" N="var" SC="1" SL="24" TT=".AWK.AWK_Variable">
                             <T EC="12" EL="24" N="id" SC="5" SL="24" TT=".AWK.Symbols.AWK_Identifier_Reference" V="missings"/>
                           </T>
-                          <T EC="14" EL="24" N="postIncrementOperator" SC="13" SL="24" TT=".AWK.Terminals.AWK_Punctuation" V="++"/>
+                          <T EC="14" EL="24" N="operator" SC="13" SL="24" TT=".AWK.Terminals.AWK_Punctuation" V="++"/>
                         </T>
                       </T>
                     </T>

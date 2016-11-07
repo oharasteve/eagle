@@ -29,10 +29,10 @@ public class HTML_Attribute extends TokenSequence
 	
 	public static class HTML_IdentifierOrKeyword extends TokenChooser
 	{
-		public HTML_Identifier attribute;
-		public HTML_Keyword style = new HTML_Keyword("style");
+		public @CHOICE HTML_Identifier attribute;
+		public @CHOICE HTML_Keyword style = new HTML_Keyword("style");
 		
-		public static class HTML_Namespace extends TokenSequence
+		public @CHOICE static class HTML_Namespace extends TokenSequence
 		{
 			public HTML_Identifier id1;
 			public PunctuationColon colon;
@@ -42,11 +42,11 @@ public class HTML_Attribute extends TokenSequence
 	
 	public static class HTML_Value extends TokenChooser
 	{
-		public HTML_HexNumber hex;
-		public HTML_Number number;
-		public HTML_Literal literal;
+		public @CHOICE HTML_HexNumber hex;
+		public @CHOICE HTML_Number number;
+		public @CHOICE HTML_Literal literal;
 		
-		public static class HTML_Id_Value extends TokenSequence
+		public @CHOICE static class HTML_Id_Value extends TokenSequence
 		{
 			public HTML_Identifier id;
 			public @OPT HTML_Id_DotValue dotValue;
@@ -58,13 +58,13 @@ public class HTML_Attribute extends TokenSequence
 			}
 		}
 		
-		public static class HTML_Label extends TokenSequence
+		public @CHOICE static class HTML_Label extends TokenSequence
 		{
 			public HTML_Punctuation poundSign = new HTML_Punctuation('#');
 			public HTML_Identifier label;
 		}
 		
-		public static class HTML_Strange_Number extends TokenSequence
+		public @CHOICE static class HTML_Strange_Number extends TokenSequence
 		{
 			public HTML_Punctuation plus = new HTML_Punctuation('+');
 			public PunctuationPeriod point;

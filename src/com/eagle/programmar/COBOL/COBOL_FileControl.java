@@ -22,11 +22,11 @@ public class COBOL_FileControl extends TokenSequence
 	
 	public static class COBOL_Copy_or_FileSelect extends TokenChooser
 	{
-		public COBOL_Copy_Directive copyDirective;
-		public COBOL_Comment comment;
-		public COBOL_Directive directive;
+		public @CHOICE COBOL_Copy_Directive copyDirective;
+		public @CHOICE COBOL_Comment comment;
+		public @CHOICE COBOL_Directive directive;
 		
-		public static class COBOL_FileSelect extends TokenSequence
+		public @CHOICE static class COBOL_FileSelect extends TokenSequence
 		{
 			public COBOL_Keyword SELECT = new COBOL_Keyword("SELECT");
 			public @OPT COBOL_Keyword NOT = new COBOL_Keyword("NOT");
@@ -42,16 +42,16 @@ public class COBOL_FileControl extends TokenSequence
 	
 	public static class COBOL_AssignTo extends TokenChooser
 	{
-		public COBOL_Literal assignLiteral;
-		public COBOL_Keyword DISK = new COBOL_Keyword("DISK");
-		public COBOL_Identifier_Reference dataRef;
+		public @CHOICE COBOL_Literal assignLiteral;
+		public @CHOICE COBOL_Keyword DISK = new COBOL_Keyword("DISK");
+		public @CHOICE COBOL_Identifier_Reference dataRef;
 	}
 	
 	public static class COBOL_SelectClause extends TokenChooser
 	{
-		public COBOL_Comment comment;
+		public @CHOICE COBOL_Comment comment;
 		
-		public static class COBOL_SelectOrganization extends TokenSequence
+		public @CHOICE static class COBOL_SelectOrganization extends TokenSequence
 		{
 			public COBOL_Keyword ORGANIZATION = new COBOL_Keyword("ORGANIZATION");
 			public @OPT COBOL_Keyword IS = new COBOL_Keyword("IS");
@@ -60,7 +60,7 @@ public class COBOL_FileControl extends TokenSequence
 					"INDEXED", "SEQUENTIAL", "RELATIVE");
 		}
 		
-		public static class COBOL_SelectAccess extends TokenSequence
+		public @CHOICE static class COBOL_SelectAccess extends TokenSequence
 		{
 			public COBOL_Keyword ACCESS = new COBOL_Keyword("ACCESS");
 			public @OPT COBOL_Keyword MODE = new COBOL_Keyword("MODE");
@@ -68,7 +68,8 @@ public class COBOL_FileControl extends TokenSequence
 			public COBOL_KeywordChoice access = new COBOL_KeywordChoice(
 					"SEQUENTIAL", "DYNAMIC", "RANDOM");
 		}
-		public static class COBOL_SelectRecord extends TokenSequence
+		
+		public @CHOICE static class COBOL_SelectRecord extends TokenSequence
 		{
 			public COBOL_Keyword RECORD = new COBOL_Keyword("RECORD");
 			public @OPT COBOL_Keyword KEY = new COBOL_Keyword("KEY");
@@ -83,7 +84,7 @@ public class COBOL_FileControl extends TokenSequence
 			}
 		}
 		
-		public static class COBOL_SelectAlternate extends TokenSequence
+		public @CHOICE static class COBOL_SelectAlternate extends TokenSequence
 		{
 			public COBOL_Keyword ALTERNATE = new COBOL_Keyword("ALTERNATE");
 			public @OPT COBOL_Keyword RECORD = new COBOL_Keyword("RECORD");
@@ -101,7 +102,7 @@ public class COBOL_FileControl extends TokenSequence
 			}
 		}
 		
-		public static class COBOL_SelectFile extends TokenSequence
+		public @CHOICE static class COBOL_SelectFile extends TokenSequence
 		{
 			public @OPT COBOL_Keyword FILE = new COBOL_Keyword("FILE");
 			public COBOL_Keyword STATUS = new COBOL_Keyword("STATUS");
@@ -109,7 +110,7 @@ public class COBOL_FileControl extends TokenSequence
 			public COBOL_Identifier_Reference id;
 		}
 
-		public static class COBOL_SelectRelative extends TokenSequence
+		public @CHOICE static class COBOL_SelectRelative extends TokenSequence
 		{
 			public COBOL_Keyword RELATIVE = new COBOL_Keyword("RELATIVE");
 			public @OPT COBOL_Keyword KEY = new COBOL_Keyword("KEY");
@@ -118,7 +119,7 @@ public class COBOL_FileControl extends TokenSequence
 		}
 		
 		//LOCK MANUAL WITH LOCK ON MULTIPLE RECORDS
-		public static class COBOL_SelectLock extends TokenSequence
+		public @CHOICE static class COBOL_SelectLock extends TokenSequence
 		{
 			public COBOL_KeywordChoice LOCK = new COBOL_KeywordChoice("LOCK", "LOCKING");
 			public @OPT COBOL_Keyword IS = new COBOL_Keyword("IS");

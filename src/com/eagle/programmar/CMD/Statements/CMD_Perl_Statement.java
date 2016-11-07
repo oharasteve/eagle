@@ -32,7 +32,7 @@ public class CMD_Perl_Statement extends TokenSequence
 	
 	public static class CMD_Perl_Option extends TokenChooser
 	{
-		public static class CMD_Perl_Option_E extends TokenSequence
+		public @CHOICE static class CMD_Perl_Option_E extends TokenSequence
 		{
 			public CMD_Punctuation slash = new CMD_Punctuation('-');
 			public CMD_Keyword E = new CMD_Keyword("e");

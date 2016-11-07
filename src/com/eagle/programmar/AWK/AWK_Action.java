@@ -20,8 +20,8 @@ public class AWK_Action extends TokenSequence
 	
 	public static class AWK_StatementOrComment extends TokenChooser
 	{
-		public AWK_Statements statements;
-		public AWK_Comment comment;
-		public AWK_EndOfLine newline;
+		public @CHOICE AWK_Statements statements;
+		public @CHOICE AWK_Comment comment;
+		public @CHOICE AWK_EndOfLine newline;
 	}
 }

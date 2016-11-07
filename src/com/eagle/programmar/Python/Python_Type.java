@@ -12,16 +12,16 @@ import com.eagle.tokens.punctuation.PunctuationPeriod;
 
 public class Python_Type extends TokenChooser
 {
-	public Python_Keyword OBJECT = new Python_Keyword("object");
+	public @CHOICE Python_Keyword OBJECT = new Python_Keyword("object");
 	
-	public static class Python_Regular_Class extends TokenSequence
+	public @CHOICE static class Python_Regular_Class extends TokenSequence
 	{
 		public SeparatedList<Python_TypeName,PunctuationPeriod> superClass;
 		
 		public static class Python_TypeName extends TokenChooser
 		{
-			public Python_Keyword SELF = new Python_Keyword("self");
-			public Python_Identifier_Reference id;
+			public @CHOICE Python_Keyword SELF = new Python_Keyword("self");
+			public @CHOICE Python_Identifier_Reference id;
 		}
 	}
 }

@@ -34,22 +34,22 @@ public class Gupta_Condition extends TokenSequence
 			
 			public static class Gupta_Relational_Operator extends TokenChooser
 			{
-				public Gupta_PunctuationChoice operator = new Gupta_PunctuationChoice(">=", "<=", "<", ">", "=");
-				public Gupta_KeywordChoice GT = new Gupta_KeywordChoice("GT", "LT", "NE");
+				public @CHOICE Gupta_PunctuationChoice operator = new Gupta_PunctuationChoice(">=", "<=", "<", ">", "=");
+				public @CHOICE Gupta_KeywordChoice GT = new Gupta_KeywordChoice("GT", "LT", "NE");
 				
-				public static class Gupta_Not_Equals extends TokenSequence
+				public @CHOICE static class Gupta_Not_Equals extends TokenSequence
 				{
 					public Gupta_Keyword NOT = new Gupta_Keyword("NOT");
 					public PunctuationEquals equals;
 				}
 
-				public static class Gupta_Less_Than extends TokenSequence
+				public @CHOICE static class Gupta_Less_Than extends TokenSequence
 				{
 					public Gupta_Keyword LESS = new Gupta_Keyword("LESS");
 					public Gupta_Keyword THAN = new Gupta_Keyword("THAN");
 				}
 				
-				public static class Gupta_Greater_Than extends TokenSequence
+				public @CHOICE static class Gupta_Greater_Than extends TokenSequence
 				{
 					public Gupta_Keyword GREATER = new Gupta_Keyword("GREATER");
 					public Gupta_Keyword THAN = new Gupta_Keyword("THAN");

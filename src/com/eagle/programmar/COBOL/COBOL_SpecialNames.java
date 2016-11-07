@@ -21,21 +21,21 @@ public class COBOL_SpecialNames extends TokenSequence
 
 	public static class COBOL_SpecialName extends TokenChooser
 	{
-		public static class COBOL_SpecialNameCursor extends TokenSequence
+		public @CHOICE static class COBOL_SpecialNameCursor extends TokenSequence
 		{
 			public COBOL_Keyword CURSOR = new COBOL_Keyword("CURSOR");
 			public COBOL_Keyword IS = new COBOL_Keyword("IS");
 			public COBOL_Identifier_Reference var;
 		}
 
-		public static class COBOL_SpecialNameConsole extends TokenSequence
+		public @CHOICE static class COBOL_SpecialNameConsole extends TokenSequence
 		{
 			public COBOL_Keyword CONSOLE = new COBOL_Keyword("CONSOLE");
 			public COBOL_Keyword IS = new COBOL_Keyword("IS");
 			public COBOL_Keyword CRT = new COBOL_Keyword("CRT");
 		}
 
-		public static class COBOL_SpecialNameCrtStatus extends TokenSequence
+		public @CHOICE static class COBOL_SpecialNameCrtStatus extends TokenSequence
 		{
 			public COBOL_Keyword CRT = new COBOL_Keyword("CRT");
 			public COBOL_Keyword STATUS = new COBOL_Keyword("STATUS");
@@ -43,12 +43,12 @@ public class COBOL_SpecialNames extends TokenSequence
 			public COBOL_Identifier_Reference var;
 		}
 
-		public static class COBOL_SpecialNameCallConvention extends TokenSequence
+		public @CHOICE static class COBOL_SpecialNameCallConvention extends TokenSequence
 		{
 			public COBOL_Keyword CALL_CONVENTION = new COBOL_Keyword("CALL-CONVENTION");
 			public COBOL_Number number;
 			public COBOL_Keyword IS = new COBOL_Keyword("IS");
-			public COBOL_KeywordChoice convention = new COBOL_KeywordChoice("STATICCOBOL", "STATICW32API");
+			public COBOL_KeywordChoice convention = new COBOL_KeywordChoice("STATICCOBOL", "STATICW32API", "WINAPI");
 		}
 	}
 }

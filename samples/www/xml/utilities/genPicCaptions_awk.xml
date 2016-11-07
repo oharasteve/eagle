@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Sun Jan 31 05:09:22 EST 2016" Elapsed="16" Language="AWK" Steps="3440" Tokens="681">
+<?xml version="1.0" encoding="UTF-8"?><EagleProgram Created="Mon Nov 07 10:58:05 EST 2016" Elapsed="33" Language="AWK" Steps="3518" Tokens="689">
   <T EC="0" EL="39" File="" SC="1" SL="1" TT=".AWK.AWK_Program">
     <T EC="0" EL="39" N="elements" SC="1" SL="1" TT="List">
       <T EC="0" EL="16" N="elements[0]" SC="1" SL="1" TT=".AWK.AWK_Program$AWK_Element">
@@ -407,35 +407,47 @@
                               <T EC="16" EL="16" N="left" SC="1" SL="16" TT=".AWK.AWK_Expression">
                                 <T EC="16" EL="16" N="left" SC="1" SL="16" TT=".AWK.AWK_Expression$AWK_OrExpression">
                                   <T EC="6" EL="16" N="left" SC="1" SL="16" TT=".AWK.AWK_Expression">
-                                    <T EC="6" EL="16" N="left" SC="1" SL="16" TT=".AWK.Terminals.AWK_Pattern" V="/.jpg/"/>
+                                    <T EC="6" EL="16" N="left" SC="1" SL="16" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                                      <T EC="6" EL="16" N="pattern" SC="1" SL="16" TT=".AWK.Terminals.AWK_Pattern" V="/.jpg/"/>
+                                    </T>
                                   </T>
                                   <T EC="9" EL="16" N="orOperator" SC="8" SL="16" TT=".AWK.Terminals.AWK_Punctuation" V="||"/>
                                   <T EC="16" EL="16" N="right" SC="10" SL="16" TT=".AWK.AWK_Expression">
-                                    <T EC="16" EL="16" N="right" SC="11" SL="16" TT=".AWK.Terminals.AWK_Pattern" V="/.JPG/"/>
+                                    <T EC="16" EL="16" N="right" SC="10" SL="16" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                                      <T EC="16" EL="16" N="pattern" SC="11" SL="16" TT=".AWK.Terminals.AWK_Pattern" V="/.JPG/"/>
+                                    </T>
                                   </T>
                                 </T>
                               </T>
                               <T EC="19" EL="16" N="orOperator" SC="18" SL="16" TT=".AWK.Terminals.AWK_Punctuation" V="||"/>
                               <T EC="26" EL="16" N="right" SC="20" SL="16" TT=".AWK.AWK_Expression">
-                                <T EC="26" EL="16" N="right" SC="21" SL="16" TT=".AWK.Terminals.AWK_Pattern" V="/.png/"/>
+                                <T EC="26" EL="16" N="right" SC="20" SL="16" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                                  <T EC="26" EL="16" N="pattern" SC="21" SL="16" TT=".AWK.Terminals.AWK_Pattern" V="/.png/"/>
+                                </T>
                               </T>
                             </T>
                           </T>
                           <T EC="29" EL="16" N="orOperator" SC="28" SL="16" TT=".AWK.Terminals.AWK_Punctuation" V="||"/>
                           <T EC="36" EL="16" N="right" SC="30" SL="16" TT=".AWK.AWK_Expression">
-                            <T EC="36" EL="16" N="right" SC="31" SL="16" TT=".AWK.Terminals.AWK_Pattern" V="/.PNG/"/>
+                            <T EC="36" EL="16" N="right" SC="30" SL="16" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                              <T EC="36" EL="16" N="pattern" SC="31" SL="16" TT=".AWK.Terminals.AWK_Pattern" V="/.PNG/"/>
+                            </T>
                           </T>
                         </T>
                       </T>
                       <T EC="39" EL="16" N="orOperator" SC="38" SL="16" TT=".AWK.Terminals.AWK_Punctuation" V="||"/>
                       <T EC="46" EL="16" N="right" SC="40" SL="16" TT=".AWK.AWK_Expression">
-                        <T EC="46" EL="16" N="right" SC="41" SL="16" TT=".AWK.Terminals.AWK_Pattern" V="/.gif/"/>
+                        <T EC="46" EL="16" N="right" SC="40" SL="16" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                          <T EC="46" EL="16" N="pattern" SC="41" SL="16" TT=".AWK.Terminals.AWK_Pattern" V="/.gif/"/>
+                        </T>
                       </T>
                     </T>
                   </T>
                   <T EC="49" EL="16" N="orOperator" SC="48" SL="16" TT=".AWK.Terminals.AWK_Punctuation" V="||"/>
                   <T EC="56" EL="16" N="right" SC="50" SL="16" TT=".AWK.AWK_Expression">
-                    <T EC="56" EL="16" N="right" SC="51" SL="16" TT=".AWK.Terminals.AWK_Pattern" V="/.GIF/"/>
+                    <T EC="56" EL="16" N="right" SC="50" SL="16" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                      <T EC="56" EL="16" N="pattern" SC="51" SL="16" TT=".AWK.Terminals.AWK_Pattern" V="/.GIF/"/>
+                    </T>
                   </T>
                 </T>
               </T>
@@ -743,11 +755,15 @@
               <T EC="18" EL="25" N="condition[0]" SC="1" SL="25" TT=".AWK.AWK_Expression">
                 <T EC="18" EL="25" N="condition[0]" SC="1" SL="25" TT=".AWK.AWK_Expression$AWK_OrExpression">
                   <T EC="7" EL="25" N="left" SC="1" SL="25" TT=".AWK.AWK_Expression">
-                    <T EC="7" EL="25" N="left" SC="1" SL="25" TT=".AWK.Terminals.AWK_Pattern" V="/.jpeg/"/>
+                    <T EC="7" EL="25" N="left" SC="1" SL="25" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                      <T EC="7" EL="25" N="pattern" SC="1" SL="25" TT=".AWK.Terminals.AWK_Pattern" V="/.jpeg/"/>
+                    </T>
                   </T>
                   <T EC="10" EL="25" N="orOperator" SC="9" SL="25" TT=".AWK.Terminals.AWK_Punctuation" V="||"/>
                   <T EC="18" EL="25" N="right" SC="11" SL="25" TT=".AWK.AWK_Expression">
-                    <T EC="18" EL="25" N="right" SC="12" SL="25" TT=".AWK.Terminals.AWK_Pattern" V="/.JPEG/"/>
+                    <T EC="18" EL="25" N="right" SC="11" SL="25" TT=".AWK.AWK_Expression$AWK_PatternExpression">
+                      <T EC="18" EL="25" N="pattern" SC="12" SL="25" TT=".AWK.Terminals.AWK_Pattern" V="/.JPEG/"/>
+                    </T>
                   </T>
                 </T>
               </T>

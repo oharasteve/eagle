@@ -19,7 +19,7 @@ public class CMD_Copy_Statement extends TokenSequence
 	
 	public static class CMD_Copy_Option extends TokenChooser
 	{
-		public static class CMD_Copy_Option_Y extends TokenSequence
+		public @CHOICE static class CMD_Copy_Option_Y extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword Y = new CMD_Keyword("y");

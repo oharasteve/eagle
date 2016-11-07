@@ -19,8 +19,8 @@ public abstract class TerminalNumberToken extends TerminalToken implements Eagle
 		return "number";
 	}
 	
-	protected boolean genericNumber(EagleFileReader lines, String hexChars, String exponentChars,
-			String suffixChars, boolean allowTrailingPeriod)
+	protected boolean genericNumber(EagleFileReader lines, String exponentChars, String suffixChars,
+			boolean allowTrailingPeriod)
 	{
 		if (findStart(lines) == FOUND.EOF) return false;
 
@@ -29,19 +29,11 @@ public abstract class TerminalNumberToken extends TerminalToken implements Eagle
 		if (_currentChar >= recLen) return false;
 		char ch1 = rec.charAt(_currentChar);
 		char ch2 = '?';
-		char ch3 = '?';
 		if (_currentChar+1 < recLen) ch2 = rec.charAt(_currentChar+1);
-		if (_currentChar+2 < recLen) ch3 = rec.charAt(_currentChar+2);
 		
 		if (Character.isDigit(ch1) ||
 				((ch1 == '+' || ch1 == '-' || ch1 == '.') && Character.isDigit(ch2)))
 		{
-			if (hexChars != null)
-			{
-				if (ch1 == '0' && hexChars.indexOf(ch2) >= 0) return false;	// Hex
-				if (ch1 == '-' && ch2 == '0' && hexChars.indexOf(ch3) >= 0) return false;	// Hex
-			}
-			
 			int endChar = _currentChar;
 			boolean foundExponent = false;
 			boolean foundDecimalPoint = false;
@@ -105,6 +97,7 @@ public abstract class TerminalNumberToken extends TerminalToken implements Eagle
 	public void setValue(String val)
 	{
 		_numberAsText = val;
+		_present = (val != null);
 	}
 	
 	@Override

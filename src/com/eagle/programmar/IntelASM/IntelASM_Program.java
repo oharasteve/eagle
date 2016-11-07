@@ -28,9 +28,9 @@ public class IntelASM_Program extends EagleLanguage
 	
 	public static class IntelASM_Line extends TokenChooser
 	{
-		public IntelASM_EndOfLine blankLine;
-		public IntelASM_Comment comment;
-		public IntelASM_Directive directive;
-		public IntelASM_Instruction instruction;
+		public @CHOICE IntelASM_EndOfLine blankLine;
+		public @CHOICE IntelASM_Comment comment;
+		public @CHOICE IntelASM_Directive directive;
+		public @CHOICE IntelASM_Instruction instruction;
 	}
 }

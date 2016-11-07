@@ -24,12 +24,9 @@ public class COBOL_StartStatement extends COBOL_AbstractStatement
 	
 	public static class COBOL_StartRelOp extends TokenChooser
 	{
-		public static class COBOL_StartOper1 extends TokenChooser
-		{
-			public COBOL_PunctuationChoice operator = new COBOL_PunctuationChoice("<=", ">=", "<", ">");
-		}
+		public @CHOICE COBOL_PunctuationChoice operator = new COBOL_PunctuationChoice("<=", ">=", "<", ">");
 		
-		public static class COBOL_StartOper2 extends TokenSequence
+		public @CHOICE static class COBOL_StartOper2 extends TokenSequence
 		{
 			public COBOL_Keyword IS = new COBOL_Keyword("IS");
 			public COBOL_Keyword GREATER = new COBOL_Keyword("GREATER");

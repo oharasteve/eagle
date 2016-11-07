@@ -24,7 +24,7 @@ public class CMD_Argument extends TokenSequence
 	// Only need the wrapper to keep everything together in one file
 	public static class CMD_ArgumentWrapper extends TokenChooser
 	{
-		public static class CMD_RawArgument extends TerminalLiteralToken
+		public @CHOICE static class CMD_RawArgument extends TerminalLiteralToken
 		{
 			@Override
 			public boolean parse(EagleFileReader lines)
@@ -104,17 +104,17 @@ public class CMD_Argument extends TokenSequence
 	
 	public static class CMD_ArgumentPiece extends TokenChooser
 	{
-		public CMD_Punctuation quote = new CMD_Punctuation('"');
-		public CMD_RawArgument literal;
+		public @CHOICE CMD_Punctuation quote = new CMD_Punctuation('"');
+		public @CHOICE CMD_RawArgument literal;
 		
-		public static class CMD_ArgumentVariable extends TokenSequence
+		public @CHOICE static class CMD_ArgumentVariable extends TokenSequence
 		{
 			public CMD_Punctuation percent1 = new CMD_Punctuation('%');
 			public CMD_Identifier_Reference var;
 			public CMD_Punctuation percent2 = new CMD_Punctuation('%');
 		}
 		
-		public static class CMD_ArgumentParament extends TokenSequence
+		public @CHOICE static class CMD_ArgumentParament extends TokenSequence
 		{
 			public CMD_Punctuation percent = new CMD_Punctuation('%');
 			public CMD_Number num;

@@ -10,7 +10,7 @@ import com.eagle.tokens.TokenChooser;
 
 public class Perl_RegularExpression extends TokenChooser
 {
-	public static class Perl_RegularSubstitution extends TerminalRegularExpression
+	public @CHOICE static class Perl_RegularSubstitution extends TerminalRegularExpression
 	{
 		@Override
 		public boolean parse(EagleFileReader lines)
@@ -46,7 +46,7 @@ public class Perl_RegularExpression extends TokenChooser
 		}
 	}
 	
-	public static class Perl_RegularTranslation extends TerminalRegularExpression
+	public @CHOICE static class Perl_RegularTranslation extends TerminalRegularExpression
 	{
 		@Override
 		public boolean parse(EagleFileReader lines)
@@ -85,7 +85,7 @@ public class Perl_RegularExpression extends TokenChooser
 		}
 	}
 	
-	public static class Perl_RegularCondition extends TerminalRegularExpression
+	public @CHOICE static class Perl_RegularCondition extends TerminalRegularExpression
 	{
 		@Override
 		public boolean parse(EagleFileReader lines)

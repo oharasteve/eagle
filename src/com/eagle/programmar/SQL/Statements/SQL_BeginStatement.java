@@ -18,7 +18,7 @@ public class SQL_BeginStatement extends TokenSequence
 	
 	public static class SQL_BeginWhat extends TokenChooser
 	{
-		public static class SQL_BeginEnd extends TokenSequence
+		public @CHOICE static class SQL_BeginEnd extends TokenSequence
 		{
 			public TokenList<SQL_StatementOrComment> statements;
 			public @OPT SQL_CommitStatement commit;

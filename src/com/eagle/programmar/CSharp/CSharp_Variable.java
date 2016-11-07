@@ -20,10 +20,10 @@ public class CSharp_Variable extends TokenSequence
 	
 	public static class CSharp_VariableIdentifier extends TokenChooser
 	{
-		public CSharp_KeywordChoice builtIn = new CSharp_KeywordChoice("this", "base", "class");
-		public CSharp_Identifier_Reference id;
+		public @CHOICE CSharp_KeywordChoice builtIn = new CSharp_KeywordChoice("this", "base", "class");
+		public @CHOICE CSharp_Identifier_Reference id;
 		
-		public static class CSharp_CastedVariable extends TokenSequence
+		public @CHOICE static class CSharp_CastedVariable extends TokenSequence
 		{
 			public PunctuationLeftParen leftParen1;
 			public PunctuationLeftParen leftParen2;

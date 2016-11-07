@@ -24,7 +24,7 @@ public class JavaP_Signature extends TokenSequence
 	
 	public static class JavaP_SignatureChoice extends TokenChooser
 	{
-		public static class JavaP_SignatureLength extends TokenSequence
+		public @CHOICE static class JavaP_SignatureLength extends TokenSequence
 		{
 			public JavaP_Keyword LENGTH = new JavaP_Keyword("length");
 			public PunctuationEquals equals;
@@ -33,7 +33,7 @@ public class JavaP_Signature extends TokenSequence
 			public TokenList<JavaP_HexNoPrefix> numbers;
 		}
 		
-		public static class JavaP_SignatureNoLength extends TokenSequence
+		public @CHOICE static class JavaP_SignatureNoLength extends TokenSequence
 		{
 			public JavaP_Value value;
 			public @OPT JavaP_Comment comment;

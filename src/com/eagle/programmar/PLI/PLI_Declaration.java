@@ -48,9 +48,9 @@ public class PLI_Declaration extends TokenSequence
 	
 	public static class PLI_Declare_Variables extends TokenChooser
 	{
-		public PLI_Variable_Definition varDecl;
+		public @CHOICE PLI_Variable_Definition varDecl;
 		
-		public static class PLI_Identifier_List extends TokenSequence
+		public @CHOICE static class PLI_Identifier_List extends TokenSequence
 		{
 			public PunctuationLeftParen leftParen;
 			public PLI_Variable_Definition varDecl;
@@ -89,19 +89,19 @@ public class PLI_Declaration extends TokenSequence
 		
 		public static class PLI_Declare_Size_OneDimension extends TokenChooser
 		{
-			public static class PLI_ParenStar extends TokenSequence
+			public @CHOICE static class PLI_ParenStar extends TokenSequence
 			{
 				public PunctuationStar star;
 			}
 	
-			public static class PLI_Declare_Array extends TokenSequence
+			public @CHOICE static class PLI_Declare_Array extends TokenSequence
 			{
 				public PLI_Expression exprFrom;
 				public PunctuationColon colon;
 				public PLI_Expression exprTo;
 			}
 			
-			public static class PLI_Declare_Bounds_Array extends TokenSequence
+			public @CHOICE static class PLI_Declare_Bounds_Array extends TokenSequence
 			{
 				public PLI_Keyword LBOUND = new PLI_Keyword("LBOUND");
 				public PunctuationLeftParen leftParen1;

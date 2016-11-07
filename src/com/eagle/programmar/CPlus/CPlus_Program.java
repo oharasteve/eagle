@@ -27,9 +27,9 @@ public class CPlus_Program extends C_Program
 	public static class CPlus_Element extends TokenChooser
 	{
 		public @LAST C_StatementOrComment statementOrComment;
-		public CPlus_Class classDefinition;
-		public CPlus_Using using;
-		public CPlus_Namespace namespace;
-		public CPlus_Method method;
+		public @CHOICE CPlus_Class classDefinition;
+		public @CHOICE CPlus_Using using;
+		public @CHOICE CPlus_Namespace namespace;
+		public @CHOICE CPlus_Method method;
 	}
 }

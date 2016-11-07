@@ -33,7 +33,7 @@ public class Perl_IfStatement extends TokenSequence
 	{
 		public @LAST Perl_Expression condition;
 		
-		public static class Perl_IfExists extends TokenSequence
+		public @CHOICE static class Perl_IfExists extends TokenSequence
 		{
 			public PunctuationHyphen minus;
 			public Perl_Keyword F = new Perl_Keyword("f");

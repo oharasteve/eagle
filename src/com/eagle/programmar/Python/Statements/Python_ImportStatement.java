@@ -26,10 +26,10 @@ public class Python_ImportStatement extends TokenSequence
 
 	public static class Python_ImportWhat extends TokenChooser
 	{
-		public Python_Variable importName;
-		public PunctuationStar star;
+		public @CHOICE Python_Variable importName;
+		public @CHOICE PunctuationStar star;
 		
-		public static class Python_ImportList extends TokenSequence
+		public @CHOICE static class Python_ImportList extends TokenSequence
 		{
 			public PunctuationLeftParen leftParen;
 			public @SYNTAX(Python_Multiline_Syntax.class) Python_ImportListItem list;

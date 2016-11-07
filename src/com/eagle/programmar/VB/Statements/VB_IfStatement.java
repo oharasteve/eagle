@@ -22,12 +22,12 @@ public class VB_IfStatement extends TokenSequence
 	
 	public static class VB_IfType extends TokenChooser
 	{
-		public static class VB_IfOneLiner extends TokenSequence
+		public @CHOICE static class VB_IfOneLiner extends TokenSequence
 		{
 			public VB_BaseStatement thenStatement;
 		}
 		
-		public static class VB_IfMultiLiner extends TokenSequence
+		public @CHOICE static class VB_IfMultiLiner extends TokenSequence
 		{
 			public VB_EndOfLine eoln;
 			public TokenList<VB_Statement> thenStatement;

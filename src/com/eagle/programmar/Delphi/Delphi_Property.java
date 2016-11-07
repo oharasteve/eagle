@@ -27,13 +27,13 @@ public class Delphi_Property extends TokenSequence
 	
 	public static class Delphi_PropertyReadWrite extends TokenChooser
 	{
-		public static class Delphi_PropertyRead extends TokenSequence
+		public @CHOICE static class Delphi_PropertyRead extends TokenSequence
 		{
 			public Delphi_Keyword READ = new Delphi_Keyword("Read");
 			public Delphi_Identifier_Reference readVar;
 		}
 		
-		public static class Delphi_PropertyWrite extends TokenSequence
+		public @CHOICE static class Delphi_PropertyWrite extends TokenSequence
 		{
 			public Delphi_Keyword WRITE = new Delphi_Keyword("Write");
 			public Delphi_Identifier_Reference writeVar;

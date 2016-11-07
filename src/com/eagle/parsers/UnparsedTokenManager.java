@@ -33,7 +33,7 @@ public class UnparsedTokenManager
 				if (piece instanceof TokenChooser)
 				{
 					TokenChooser chooser = (TokenChooser) piece;
-					sb.append(chooser._whichToken.toString());
+					sb.append(chooser.getWhich().toString());
 					sb.append(' ');
 				}
 			}

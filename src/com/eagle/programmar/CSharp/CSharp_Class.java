@@ -40,8 +40,8 @@ public class CSharp_Class extends TokenSequence
 	
 	public static class CSharp_AnnotationOrComment extends TokenChooser
 	{
-		public CSharp_Annotation annotation;
-		public CSharp_Comment comment;
+		public @CHOICE CSharp_Annotation annotation;
+		public @CHOICE CSharp_Comment comment;
 	}
 	
 	public static class CSharp_ClassModifier extends TokenSequence
@@ -79,17 +79,17 @@ public class CSharp_Class extends TokenSequence
 	
 	public static class CSharp_ClassElement extends TokenChooser
 	{
-		public @NEWLINE CSharp_Comment comment;
+		public @CHOICE @NEWLINE CSharp_Comment comment;
 		
-		public @NEWLINE CSharp_Property property;
-		public @NEWLINE CSharp_Constructor constructor;
-		public @NEWLINE @FIRST CSharp_Method method;
-		public @NEWLINE @LAST CSharp_Statement statement;
-		public @NEWLINE CSharp_SubscriptOperator subscriptOperator;
+		public @CHOICE @NEWLINE CSharp_Property property;
+		public @CHOICE @NEWLINE CSharp_Constructor constructor;
+		public @FIRST @NEWLINE CSharp_Method method;
+		public @LAST @NEWLINE CSharp_Statement statement;
+		public @CHOICE @NEWLINE CSharp_SubscriptOperator subscriptOperator;
 				
-		public @NEWLINE CSharp_RegionDirective region;
+		public @CHOICE @NEWLINE CSharp_RegionDirective region;
 		
-		public static class CSharp_StaticStatement extends TokenSequence
+		public @CHOICE static class CSharp_StaticStatement extends TokenSequence
 		{
 			public @OPT CSharp_Keyword STATIC = new CSharp_Keyword("static");
 			public CSharp_Statement statement;

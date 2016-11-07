@@ -20,7 +20,7 @@ public class CMD_Dir_Statement extends TokenSequence
 	
 	public static class CMD_Dir_Option extends TokenChooser
 	{
-		public static class CMD_Dir_Option_A extends TokenSequence
+		public @CHOICE static class CMD_Dir_Option_A extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword A = new CMD_Keyword("a");
@@ -28,13 +28,13 @@ public class CMD_Dir_Statement extends TokenSequence
 			public CMD_KeywordChoice R = new CMD_KeywordChoice("h", "r");
 		}
 
-		public static class CMD_Dir_Option_B extends TokenSequence
+		public @CHOICE static class CMD_Dir_Option_B extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword B = new CMD_Keyword("b");
 		}
 
-		public static class CMD_Dir_Option_O extends TokenSequence
+		public @CHOICE static class CMD_Dir_Option_O extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword O = new CMD_Keyword("o");
@@ -42,7 +42,7 @@ public class CMD_Dir_Statement extends TokenSequence
 			public CMD_Keyword D = new CMD_Keyword("d");
 		}
 
-		public static class CMD_Dir_Option_S extends TokenSequence
+		public @CHOICE static class CMD_Dir_Option_S extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword S = new CMD_Keyword("s");

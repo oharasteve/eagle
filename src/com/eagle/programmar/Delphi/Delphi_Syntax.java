@@ -18,6 +18,7 @@ public class Delphi_Syntax extends EagleSyntax
 		_isCaseSensitive = false;
 		_continuationChar = null;
 		_extraCharacters = "";
+		//_commentInstance = new Delphi_Comment();
 		_punctuationExceptions = new String[] { "<>", "<=", ">=", ":=", ".." };
 		
 		addReservedWords(keywords);

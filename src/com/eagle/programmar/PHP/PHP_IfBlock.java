@@ -17,7 +17,7 @@ import com.eagle.tokens.punctuation.PunctuationLeftParen;
 import com.eagle.tokens.punctuation.PunctuationRightBrace;
 import com.eagle.tokens.punctuation.PunctuationRightParen;
 
-// <?php if(cond) { ?> xxx <?php } else { ?> xxx <?php } ?>
+// <?php stmts; if(cond) { ?> xxx <?php } else { ?> xxx <?php } ?>
 
 public class PHP_IfBlock extends TokenSequence
 {

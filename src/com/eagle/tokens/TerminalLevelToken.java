@@ -9,7 +9,7 @@ import com.eagle.parsers.EagleLineReader;
 public abstract class TerminalLevelToken extends TerminalToken
 {
 	public int _level;
-	public static boolean DEBUG = false;
+	public static final boolean DEBUG = false;
 
 	@Override
 	public boolean parse(EagleFileReader lines)

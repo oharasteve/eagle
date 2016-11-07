@@ -24,7 +24,7 @@ import com.eagle.programmar.RPG.Specifications.RPG_H_Header_Specification.RPG_H_
 import com.eagle.programmar.RPG.Specifications.RPG_H_Header_Specification.RPG_H_Header_Specification_IV;
 import com.eagle.programmar.RPG.Specifications.RPG_I_Input_Specification;
 import com.eagle.programmar.RPG.Specifications.RPG_L_LineCounter_Specification;
-import com.eagle.programmar.RPG.Specifications.RPG_O_Output_Specification;
+import com.eagle.programmar.RPG.Specifications.RPG_O_Output_Specification.RPG_O_Output_Spec;
 import com.eagle.programmar.RPG.Specifications.RPG_O_Output_Specification.RPG_O_Output_Specification_III;
 import com.eagle.programmar.RPG.Specifications.RPG_O_Output_Specification.RPG_O_Output_Specification_IV;
 import com.eagle.programmar.RPG.Specifications.RPG_U_AutoReport_Specification;
@@ -55,22 +55,22 @@ public abstract class RPG_Program extends EagleLanguage
 
 	public static class RPG_Spec_or_Directive extends TokenChooser
 	{
-		public RPG_Comment comment;
+		public @CHOICE RPG_Comment comment;
 		
-		public RPG_Title_Directive titleDirective;
-		public RPG_Eject_Directive ejectDirective;
-		public RPG_Space_Directive spaceDirective;
-		public RPG_Copy_Directive copyDirective;
+		public @CHOICE RPG_Title_Directive titleDirective;
+		public @CHOICE RPG_Eject_Directive ejectDirective;
+		public @CHOICE RPG_Space_Directive spaceDirective;
+		public @CHOICE RPG_Copy_Directive copyDirective;
 
-		public RPG_D_Data_Specification dSpec;
-		public RPG_U_AutoReport_Specification uSpec;
-		public RPG_H_Header_Specification hSpec;
-		public RPG_F_File_Specification fSpec;
-		public RPG_E_Extension_Specification eSpec;
-		public RPG_L_LineCounter_Specification lSpec;
-		public RPG_I_Input_Specification iSpec;
-		public RPG_C_Calculation_Specification cSpec;
-		public RPG_O_Output_Specification oSpec;
+		public @CHOICE RPG_D_Data_Specification dSpec;
+		public @CHOICE RPG_U_AutoReport_Specification uSpec;
+		public @CHOICE RPG_H_Header_Specification hSpec;
+		public @CHOICE RPG_F_File_Specification fSpec;
+		public @CHOICE RPG_E_Extension_Specification eSpec;
+		public @CHOICE RPG_L_LineCounter_Specification lSpec;
+		public @CHOICE RPG_I_Input_Specification iSpec;
+		public @CHOICE RPG_C_Calculation_Specification cSpec;
+		public @CHOICE RPG_O_Output_Spec oSpec;
 	}
 
 	// Components of an RPG Program
@@ -92,7 +92,7 @@ public abstract class RPG_Program extends EagleLanguage
 			overrider.override(RPG_D_Data_Specification.class, RPG_D_Data_Specification_III.class);	// Not available in RPG III
 			overrider.override(RPG_F_File_Specification.class, RPG_F_File_Specification_III.class);
 			overrider.override(RPG_H_Header_Specification.class, RPG_H_Header_Specification_III.class);
-			overrider.override(RPG_O_Output_Specification.class, RPG_O_Output_Specification_III.class);
+			overrider.override(RPG_O_Output_Spec.class, RPG_O_Output_Specification_III.class);
 		}
 	}
 	
@@ -112,7 +112,7 @@ public abstract class RPG_Program extends EagleLanguage
 			overrider.override(RPG_D_Data_Specification.class, RPG_D_Data_Specification_IV.class);
 			overrider.override(RPG_F_File_Specification.class, RPG_F_File_Specification_IV.class);
 			overrider.override(RPG_H_Header_Specification.class, RPG_H_Header_Specification_IV.class);
-			overrider.override(RPG_O_Output_Specification.class, RPG_O_Output_Specification_IV.class);
+			overrider.override(RPG_O_Output_Spec.class, RPG_O_Output_Specification_IV.class);
 		}
 	}
 }

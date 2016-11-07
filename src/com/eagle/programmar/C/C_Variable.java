@@ -27,9 +27,9 @@ public class C_Variable extends TokenSequence
 	
 	public static class C_VariableIdentifier extends TokenChooser
 	{
-		public C_Identifier_Reference id;
+		public @CHOICE C_Identifier_Reference id;
 		
-		public static class C_CastedVariable extends TokenSequence
+		public @CHOICE static class C_CastedVariable extends TokenSequence
 		{
 			public PunctuationLeftParen leftParen1;
 			public PunctuationLeftParen leftParen2;
@@ -39,7 +39,7 @@ public class C_Variable extends TokenSequence
 			public PunctuationRightParen rightParen2;
 		}
 
-		public static class C_IndirectVariable extends TokenSequence
+		public @CHOICE static class C_IndirectVariable extends TokenSequence
 		{
 			public PunctuationLeftParen leftParen;
 			public TokenList<C_VariableStar> stars;
@@ -47,7 +47,7 @@ public class C_Variable extends TokenSequence
 			public PunctuationRightParen rightParen;
 		}
 
-		public static class C_SubscriptedVariable extends TokenSequence
+		public @CHOICE static class C_SubscriptedVariable extends TokenSequence
 		{
 			public C_Identifier_Reference id;
 			public TokenList<C_Subscript> subscripts;
@@ -56,19 +56,19 @@ public class C_Variable extends TokenSequence
 
 	public static class C_ExtendedIdentifier extends TokenChooser
 	{
-		public static class C_DotIdentifier extends TokenSequence
+		public @CHOICE static class C_DotIdentifier extends TokenSequence
 		{
 			public @NOSPACE PunctuationPeriod dot;
 			public @NOSPACE C_Identifier_Reference id;
 		}
 		
-		public static class C_ArrowIdentifier extends TokenSequence
+		public @CHOICE static class C_ArrowIdentifier extends TokenSequence
 		{
 			public @NOSPACE C_Punctuation arrow = new C_Punctuation("->");
 			public @NOSPACE C_Identifier_Reference id;
 		}
 		
-		public static class C_ColonColonIdentifier extends TokenSequence
+		public @CHOICE static class C_ColonColonIdentifier extends TokenSequence
 		{
 			public @NOSPACE C_Punctuation colonColon = new C_Punctuation("::");
 			public @NOSPACE C_Identifier_Reference id;

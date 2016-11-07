@@ -8,11 +8,11 @@ import com.eagle.tokens.TokenChooser;
 
 public class Javascript_Type extends TokenChooser
 {
-	public Javascript_KeywordChoice buitinType = new Javascript_KeywordChoice(
+	public @CHOICE Javascript_KeywordChoice buitinType = new Javascript_KeywordChoice(
 			"var",
 			"Array",
 			"Date",
 			"Image",
 			"String");
-	public Javascript_Variable userType;
+	public @CHOICE Javascript_Variable userType;
 }

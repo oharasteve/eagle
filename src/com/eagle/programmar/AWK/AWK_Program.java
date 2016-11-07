@@ -28,8 +28,8 @@ public class AWK_Program extends EagleLanguage
 	
 	public static class AWK_Element extends TokenChooser
 	{
-		public AWK_Command command;
-		public AWK_Comment comment;
-		public AWK_EndOfLine eoln;
+		public @CHOICE AWK_Command command;
+		public @CHOICE AWK_Comment comment;
+		public @CHOICE AWK_EndOfLine eoln;
 	}
 }

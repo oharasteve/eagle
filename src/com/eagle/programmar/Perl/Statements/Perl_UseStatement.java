@@ -26,7 +26,7 @@ public class Perl_UseStatement extends TokenSequence
 			public @OPT Perl_Identifier_Reference id;
 		}
 
-		public static class Perl_UseLocal extends TokenSequence
+		public @CHOICE static class Perl_UseLocal extends TokenSequence
 		{
 			public @OPT Perl_Punctuation backSlash = new Perl_Punctuation('\\');
 			public Perl_Identifier_Reference id;

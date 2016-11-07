@@ -17,28 +17,28 @@ public class CMD_NMake_Statement extends TokenSequence
 	
 	public static class CMD_NMake_Parameter extends TokenChooser
 	{
-		public CMD_Argument target;
+		public @CHOICE CMD_Argument target;
 
-		public static class CMD_NMake_Option_I extends TokenSequence
+		public @CHOICE static class CMD_NMake_Option_I extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword I = new CMD_Keyword("i");
 		}
 
-		public static class CMD_NMake_Option_K extends TokenSequence
+		public @CHOICE static class CMD_NMake_Option_K extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword K = new CMD_Keyword("k");
 		}
 
-		public static class CMD_NMake_Option_E extends TokenSequence
+		public @CHOICE static class CMD_NMake_Option_E extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword E = new CMD_Keyword("e");
 		}
 
 
-		public static class CMD_NMake_Option_F extends TokenSequence
+		public @CHOICE static class CMD_NMake_Option_F extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Keyword F = new CMD_Keyword("f");

@@ -4,6 +4,7 @@
 package com.eagle.programmar.JavaP.Statements;
 
 import com.eagle.programmar.JavaP.JavaP_Syntax;
+import com.eagle.programmar.JavaP.Statements.JavaP_Classes.JavaP_OneClass.JavaP_OneClassGeneric;
 import com.eagle.programmar.JavaP.Terminals.JavaP_EndOfLine;
 import com.eagle.programmar.JavaP.Terminals.JavaP_Keyword;
 import com.eagle.programmar.JavaP.Terminals.JavaP_KeywordChoice;
@@ -22,6 +23,7 @@ public class JavaP_PublicClass extends TokenSequence
 	public @OPT JavaP_Keyword FINAL = new JavaP_Keyword("final");
 	public JavaP_KeywordChoice CLASS = new JavaP_KeywordChoice("class", "interface");
 	public JavaP_QualifiedName className;
+	public @OPT JavaP_OneClassGeneric generic;
 	public @OPT TokenList<JavaP_ClassExtends> extendsOrImplements;
 	public JavaP_EndOfLine eoln;
 

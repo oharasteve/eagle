@@ -25,7 +25,7 @@ public class SQL_InsertStatement extends TokenSequence
 	
 	public static class SQL_InsertClause extends TokenChooser
 	{
-		public static class SQL_InsertSet extends TokenSequence
+		public @CHOICE static class SQL_InsertSet extends TokenSequence
 		{
 			public SQL_Keyword SET = new SQL_Keyword("SET");
 			public SeparatedList<SQL_InsertAssignment,PunctuationComma> assignments;
@@ -38,7 +38,7 @@ public class SQL_InsertStatement extends TokenSequence
 			}
 		}
 		
-		public static class SQL_InsertValues extends TokenSequence
+		public @CHOICE static class SQL_InsertValues extends TokenSequence
 		{
 			public @OPT SQL_InsertNames insertNames;
 			public SQL_Keyword VALUES = new SQL_Keyword("VALUES");

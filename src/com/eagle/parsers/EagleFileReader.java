@@ -3,6 +3,9 @@
 
 package com.eagle.parsers;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -24,6 +27,20 @@ public class EagleFileReader
 		{
 			add(s);
 		}
+	}
+	
+	public int readFile(String fileName) throws IOException
+	{
+		BufferedReader reader = new BufferedReader(new FileReader(fileName));
+		String rec;
+		int lines = 0;
+		while ((rec = reader.readLine()) != null)
+		{
+			lines++;
+			add(rec);
+		}
+		reader.close();
+		return lines;
 	}
 	
 	public int getCurrentLine()

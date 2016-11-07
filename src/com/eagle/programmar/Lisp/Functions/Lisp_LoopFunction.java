@@ -24,9 +24,9 @@ public class Lisp_LoopFunction extends TokenSequence
 	
 	public static class Lisp_LoopType extends TokenChooser
 	{
-		public Lisp_SExpr simpleExpr;
+		public @CHOICE Lisp_SExpr simpleExpr;
 		
-		public static class Lisp_LoopFancy extends TokenSequence
+		public @CHOICE static class Lisp_LoopFancy extends TokenSequence
 		{
 			public @OPT Lisp_LoopNamed named;
 			public @OPT TokenList<Lisp_LoopVariableClause> variableClauses;
@@ -40,9 +40,9 @@ public class Lisp_LoopFunction extends TokenSequence
 			
 			public static class Lisp_LoopVariableClause extends TokenChooser
 			{
-				public Lisp_LoopInitialFinal initialFinal;
+				public @CHOICE Lisp_LoopInitialFinal initialFinal;
 		
-				public static class Lisp_LoopWith extends TokenSequence
+				public @CHOICE static class Lisp_LoopWith extends TokenSequence
 				{
 					public Lisp_LoopWithElement element;
 					public @OPT TokenList<Lisp_LoopMoreWith> more;
@@ -67,7 +67,7 @@ public class Lisp_LoopFunction extends TokenSequence
 					}
 				}
 				
-				public static class Lisp_LoopForAsClause extends TokenSequence
+				public @CHOICE static class Lisp_LoopForAsClause extends TokenSequence
 				{
 					public Lisp_KeywordChoice FOR = new Lisp_KeywordChoice("for", "as");
 					public Lisp_Variable var;
@@ -75,14 +75,14 @@ public class Lisp_LoopFunction extends TokenSequence
 					
 					public static class Lisp_LoopForClause extends TokenChooser
 					{
-						public static class Lisp_ForArithmetic extends TokenSequence
+						public @CHOICE static class Lisp_ForArithmetic extends TokenSequence
 						{
 							public Lisp_KeywordChoice direction = new Lisp_KeywordChoice(
 									"across", "below", "from", "in", "on", "to");
 							public Lisp_SExpr expr;
 						}
 		
-						public static class Lisp_ForEqualsThen extends TokenSequence
+						public @CHOICE static class Lisp_ForEqualsThen extends TokenSequence
 						{
 							public PunctuationEquals equals;
 							public Lisp_SExpr expr;
@@ -100,21 +100,21 @@ public class Lisp_LoopFunction extends TokenSequence
 			
 			public static class Lisp_LoopMainClause extends TokenChooser
 			{
-				public Lisp_LoopInitialFinal initialFinal;
+				public @CHOICE Lisp_LoopInitialFinal initialFinal;
 				
-				public static class Lisp_LoopUnconditionalDo extends TokenSequence
+				public @CHOICE static class Lisp_LoopUnconditionalDo extends TokenSequence
 				{
 					public Lisp_KeywordChoice DO = new Lisp_KeywordChoice("do", "doing");
 					public TokenList<Lisp_SExpr> actions;
 				}
 				
-				public static class Lisp_LoopUnconditionalReturn extends TokenSequence
+				public @CHOICE static class Lisp_LoopUnconditionalReturn extends TokenSequence
 				{
 					public Lisp_Keyword RETURN = new Lisp_Keyword("return");
 					public Lisp_SExpr value;
 				}
 				
-				public static class Lisp_LoopListAccumulation extends TokenSequence
+				public @CHOICE static class Lisp_LoopListAccumulation extends TokenSequence
 				{
 					public Lisp_KeywordChoice operation = new Lisp_KeywordChoice(
 							"append",
@@ -126,7 +126,7 @@ public class Lisp_LoopFunction extends TokenSequence
 					public Lisp_SExpr expr;
 				}
 				
-				public static class Lisp_LoopNumericAccumulation extends TokenSequence
+				public @CHOICE static class Lisp_LoopNumericAccumulation extends TokenSequence
 				{
 					public Lisp_KeywordChoice operation = new Lisp_KeywordChoice(
 							"count",
@@ -147,7 +147,7 @@ public class Lisp_LoopFunction extends TokenSequence
 					}
 				}
 		
-				public static class Lisp_LoopConditional extends TokenSequence
+				public @CHOICE static class Lisp_LoopConditional extends TokenSequence
 				{
 					public Lisp_KeywordChoice when = new Lisp_KeywordChoice("if", "when", "unless");
 					public Lisp_SExpr value;
@@ -169,7 +169,7 @@ public class Lisp_LoopFunction extends TokenSequence
 					}
 				}
 		
-				public static class Lisp_LoopTerminationTest extends TokenSequence
+				public @CHOICE static class Lisp_LoopTerminationTest extends TokenSequence
 				{
 					public Lisp_KeywordChoice when = new Lisp_KeywordChoice(
 							"while", "until", "repeat", "always", "never", "thereis");

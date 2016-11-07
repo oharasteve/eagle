@@ -44,7 +44,7 @@ public class C_Type extends TokenSequence
 			public C_TypeBase typebase;
 		}
 
-		public static class C_TypeUnion extends TokenSequence
+		public @CHOICE static class C_TypeUnion extends TokenSequence
 		{
 			public C_Keyword UNION = new C_Keyword("union");
 			public @OPT C_Type_Definition def1;
@@ -54,7 +54,7 @@ public class C_Type extends TokenSequence
 			public @OPT PunctuationSemicolon semicolon;
 		}
 		
-		public static class C_TypeStruct extends TokenSequence
+		public @CHOICE static class C_TypeStruct extends TokenSequence
 		{
 			public @OPT TokenList<C_Comment> comments;
 			public C_Keyword STRUCT = new C_Keyword("struct");
@@ -68,11 +68,11 @@ public class C_Type extends TokenSequence
 			
 			public static class C_FieldOrComment extends TokenChooser
 			{
-				public C_Comment comment;
-				public C_FunctionPointer functionPtr;
+				public @CHOICE C_Comment comment;
+				public @CHOICE C_FunctionPointer functionPtr;
 				public @LAST C_TypeUnion union;
 				
-				public static class C_Field extends TokenSequence
+				public @CHOICE static class C_Field extends TokenSequence
 				{
 					public C_Type jtype;
 					public C_Field_Definition id;
@@ -100,7 +100,7 @@ public class C_Type extends TokenSequence
 			}
 		}
 
-		public static class C_TypePrimitive extends TokenSequence
+		public @CHOICE static class C_TypePrimitive extends TokenSequence
 		{
 			public @OPT C_Keyword CONST = new C_Keyword("const");
 			public @OPT C_Keyword UNSIGNED = new C_Keyword("unsigned");
@@ -118,7 +118,7 @@ public class C_Type extends TokenSequence
 			public @OPT TokenList<C_TypeStar> stars;
 		}
 		
-		public static class C_TypeUserDefined extends TokenSequence
+		public @CHOICE static class C_TypeUserDefined extends TokenSequence
 		{
 			public @OPT C_Keyword STRUCT = new C_Keyword("struct");
 			public C_Identifier_Reference typeName;
@@ -130,7 +130,7 @@ public class C_Type extends TokenSequence
 			}
 		}
 		
-		public static class C_TypeEnum extends TokenSequence
+		public @CHOICE static class C_TypeEnum extends TokenSequence
 		{
 			public C_Keyword ENUM = new C_Keyword("enum");
 			public @OPT C_Identifier_Reference typeName;

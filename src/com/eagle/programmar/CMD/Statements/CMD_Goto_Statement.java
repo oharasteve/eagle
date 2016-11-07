@@ -17,7 +17,7 @@ public class CMD_Goto_Statement extends TokenSequence
 	
 	public static class CMD_Goto_What extends TokenChooser
 	{
-		public CMD_Identifier_Reference label;
-		public CMD_Keyword EOF = new CMD_Keyword("eof");
+		public @CHOICE CMD_Identifier_Reference label;
+		public @CHOICE CMD_Keyword EOF = new CMD_Keyword("eof");
 	}
 }

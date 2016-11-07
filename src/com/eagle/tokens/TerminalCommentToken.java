@@ -40,6 +40,7 @@ public abstract class TerminalCommentToken extends TerminalToken
 	public void setValue(String val)
 	{
 		_comment = val;
+		_present = (val != null);
 	}
 	
 	@Override
@@ -72,7 +73,7 @@ public abstract class TerminalCommentToken extends TerminalToken
 		{
 			// Yes! Whew!
 			foundIt(_currentLine, ec);
-			_comment = rec.substring(_currentChar, ec).trim();
+			_comment = rec.substring(_currentChar, ec+1);
 			return true;
 		}
 		
@@ -87,7 +88,7 @@ public abstract class TerminalCommentToken extends TerminalToken
 			if (ec >= 0)
 			{
 				foundIt(lastLine, ec);
-				_comment += rec.substring(0, ec).trim();
+				_comment += rec.substring(0, ec+1);
 				return true;
 			}
 			_comment += rec + "\n";

@@ -14,7 +14,6 @@ import com.eagle.preprocess.FindIncludeFile;
 import com.eagle.preprocess.C.CMacro_Preprocess;
 import com.eagle.programmar.DeTabber;
 import com.eagle.programmar.EagleLanguage;
-import com.eagle.programmar.EagleSyntax;
 import com.eagle.project.EagleProject;
 import com.eagle.tokens.AbstractToken;
 
@@ -24,6 +23,8 @@ public class ParserManager
 	public EagleSymbolTable _symbolTable = new EagleSymbolTable();
 
 	private static final char UTF8_BOM = '\uFEFF';
+	
+	private static final boolean DEBUG = false;
 	
 	public boolean _convertTabs = false;
 	public int _tabSize = 0;
@@ -105,12 +106,15 @@ public class ParserManager
 				CMacro_Preprocess preprocessor = new CMacro_Preprocess(project, (FindIncludeFile) project, _symbolTable, _parser._tracer);
 				lines = preprocessor.preprocessFile(lines);
 				
-				// DUMP IT (TEMPORARY)
-				int seq = 0;
-				for (EagleLineReader line : lines.lines())
+				if (DEBUG)
 				{
-					seq++;
-					System.out.println(seq + ": " + line.toString());
+					// DUMP IT (TEMPORARY)
+					int seq = 0;
+					for (EagleLineReader line : lines.lines())
+					{
+						seq++;
+						System.out.println(seq + ": " + line.toString());
+					}
 				}
 			}
 		}
@@ -122,9 +126,9 @@ public class ParserManager
 	 * Parse a single line
 	 */
 
-	public boolean parseLine(String line, EagleLanguage lang, AbstractToken token, EagleSyntax syntax)
+	public boolean parseLine(String line, EagleLanguage lang, AbstractToken token)
 	{
-		token.setSyntax(syntax);
+		token.setSyntax(lang.getSyntax());
 		EagleFileReader lines = new EagleFileReader();
 		lines.add(line);
 		try

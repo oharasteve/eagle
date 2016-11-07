@@ -22,9 +22,9 @@ public class COBOL_Directive extends TokenSequence
 	
 	public static class COBOL_WhichDirective extends TokenChooser
 	{
-		public COBOL_Keyword END = new COBOL_Keyword("END");
+		public @CHOICE COBOL_Keyword END = new COBOL_Keyword("END");
 
-		public static class COBOL_IfDefinedDirective extends TokenSequence
+		public @CHOICE static class COBOL_IfDefinedDirective extends TokenSequence
 		{
 			public COBOL_Keyword IF = new COBOL_Keyword("IF");
 			public COBOL_Identifier var;
@@ -38,16 +38,16 @@ public class COBOL_Directive extends TokenSequence
 			public COBOL_Expression expr;
 		}
 		
-		public static class COBOL_SetDirective extends TokenSequence
+		public @CHOICE static class COBOL_SetDirective extends TokenSequence
 		{
 			public COBOL_Keyword SET = new COBOL_Keyword("SET");
 			public TokenList<COBOL_SetWhat> sets;
 			
 			public static class COBOL_SetWhat extends TokenChooser
 			{
-				public COBOL_SetString setString;
-				public COBOL_SetParensPlus setParensPlus;
-				public COBOL_SetParensNumber setParensNumber;
+				public @CHOICE COBOL_SetString setString;
+				public @CHOICE COBOL_SetParensPlus setParensPlus;
+				public @CHOICE COBOL_SetParensNumber setParensNumber;
 			}
 			
 			public static class COBOL_SetString extends TokenSequence

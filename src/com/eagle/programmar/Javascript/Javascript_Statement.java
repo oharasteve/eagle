@@ -37,17 +37,17 @@ public class Javascript_Statement extends TokenSequence
 
 	public static class Javascript_RealStatement extends TokenChooser
 	{
-		public Javascript_Data data;
-		public @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon;
+		public @CHOICE Javascript_Data data;
+		public @CHOICE @CURIOUS("Extra semicolon") PunctuationSemicolon semicolon;
 		
-		public static @FIRST class Javascript_StatementBlock extends TokenSequence
+		public @FIRST static class Javascript_StatementBlock extends TokenSequence
 		{
 			public @INDENT PunctuationLeftBrace leftBrace;
 			public @OPT TokenList<Javascript_StatementOrComment> statements;
 			public @OUTDENT PunctuationRightBrace rightBrace;
 		}
 		
-		public static class Javascript_ExpressionStatement extends TokenSequence
+		public @CHOICE static class Javascript_ExpressionStmt extends TokenSequence
 		{
 			public @NEWLINE Javascript_Expression expression;
 			public @OPT TokenList<Javascript_MoreStatements> moreStatements;
@@ -60,23 +60,23 @@ public class Javascript_Statement extends TokenSequence
 			}
 		}
 		
-		public Javascript_BreakStatement breakStatement;
-		public Javascript_ContinueStatement continueStatement;
-		public Javascript_DoStatement doStatement;
-		public Javascript_ForStatement forStatement;
-		public Javascript_IfStatement ifStatement;
-		public Javascript_ReturnStatement returnStatement;
-		public Javascript_SwitchStatement switchStatement;
-		public Javascript_ThrowStatement throwStatement;
-		public Javascript_TryStatement tryStatement;
-		public Javascript_WhileStatement whileStatement;
+		public @CHOICE Javascript_BreakStatement breakStatement;
+		public @CHOICE Javascript_ContinueStatement continueStatement;
+		public @CHOICE Javascript_DoStatement doStatement;
+		public @CHOICE Javascript_ForStatement forStatement;
+		public @CHOICE Javascript_IfStatement ifStatement;
+		public @CHOICE Javascript_ReturnStatement returnStatement;
+		public @CHOICE Javascript_SwitchStatement switchStatement;
+		public @CHOICE Javascript_ThrowStatement throwStatement;
+		public @CHOICE Javascript_TryStatement tryStatement;
+		public @CHOICE Javascript_WhileStatement whileStatement;
 		
 		//public @LAST Javascript_UnparsedStatement unparsedStatement;
 	}
 	
 	public static class Javascript_StatementOrComment extends TokenChooser
 	{
-		public Javascript_Statement statement;
-		public Javascript_Comment comment;
+		public @CHOICE Javascript_Statement statement;
+		public @CHOICE Javascript_Comment comment;
 	}
 }

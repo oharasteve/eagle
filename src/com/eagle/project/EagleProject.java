@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -20,7 +21,7 @@ import com.eagle.parsers.EagleParser;
 import com.eagle.parsers.ParserManager;
 import com.eagle.programmar.EagleLanguage;
 import com.eagle.programmar.EagleLanguageLookup;
-import com.eagle.utils.EagleFile;
+import com.eagle.softwarehouse.FileInventory;
 import com.eagle.utils.EaglePath;
 
 @RunWith(Parameterized.class)
@@ -32,6 +33,13 @@ public abstract class EagleProject
 	public static final String SYMBOLS = "Symbols";
 	public static final String PARSED = "Parsed";
 	public static final String TOKENS = "Tokens";
+
+	private static final String HDR = "Top Dir,Directory,File Name,Suffix,Bytes,Date,Type,Lines,Parsed,Tokens,";
+	private static final int HDR_DIR = 1;
+	private static final int HDR_FILE = 2;
+	private static final int HDR_PARSED = 8;
+	private static final String HDR_NO = "No";
+	private HashSet<String> _previousFailures = null;
 	
 	public String _sourceBase;		    // Including the C: but no trailing backslash
 	public String _artifactBase;		// Including the C: but no trailing backslash
@@ -173,6 +181,8 @@ public abstract class EagleProject
 				}
 			}
 		}
+		
+		_entriesLoaded = true;
 	}
 	
 	// Called for javap file when the .class file exists, but the .javap file does not exist
@@ -181,15 +191,19 @@ public abstract class EagleProject
 		ProgramEntry entry = new ProgramEntry();
 		entry.languageName = languageName;
 
-		entry.sourceFile = EaglePath.combinePaths(sourceDir, fname);
-		EagleFile ef = new EagleFile(entry);
-		String baseNameAndPath = EaglePath.combinePaths(ef.getPath(), ef.getBaseName() + "_" + ef.getExtension());
+		String tempName = EaglePath.combinePaths(sourceDir, fname);
+		entry.sourceFile = tempName;
+		int dot = tempName.lastIndexOf('.');
+		if (dot > 0)
+		{
+			tempName = tempName.substring(0, dot) + '_' + tempName.substring(dot + 1);
+		}
 		
-		entry.parsedFile = EaglePath.combinePaths(PARSED, baseNameAndPath + ".xml");
-		entry.parseFailedFile = EaglePath.combinePaths(PARSED, baseNameAndPath + "_failed.html");
+		entry.parsedFile = EaglePath.combinePaths(PARSED, tempName + ".xml");
+		entry.parseFailedFile = EaglePath.combinePaths(PARSED, tempName + "_failed.html");
 
-		entry.programView = EaglePath.combinePaths(VIEWER, baseNameAndPath + ".html"); 
-		entry.symbolTable = EaglePath.combinePaths(SYMBOLS, baseNameAndPath + ".html");
+		entry.programView = EaglePath.combinePaths(VIEWER, tempName + ".html"); 
+		entry.symbolTable = EaglePath.combinePaths(SYMBOLS, tempName + ".html");
 
 		_entries.add(entry);
 	}
@@ -220,8 +234,7 @@ public abstract class EagleProject
 				else
 				{
 					// Make sure the directory exists
-					EagleFile ef = new EagleFile(parsedFileName);
-					EaglePath.createDir(ef.getPath());
+					EaglePath.createDirForFile(parsedFileName);
 				}
 			}
 			
@@ -423,7 +436,6 @@ public abstract class EagleProject
 			System.out.println("Deleted directory " + parsedDir);
 		}
 		
-		
 		String symbolsDir = EaglePath.combinePaths(_artifactBase, EagleProject.SYMBOLS);
 		File sdir = new File(symbolsDir);
 		if (sdir.exists() && EaglePath.deleteDir(sdir))
@@ -444,5 +456,128 @@ public abstract class EagleProject
 		{
 			System.out.println("Deleted directory " + tokenDir);
 		}
+	}
+	
+//	public EagleSymbolTable loadSymbolTable(ProgramEntry pgm)
+//	{
+//		EagleSymbolTable symbolTable = new EagleSymbolTable();
+//		return symbolTable;
+//	}
+	
+	protected boolean doTransformation(@SuppressWarnings("unused") ProgramEntry entry)
+	{
+		return true;
+	}
+
+	protected void setupTransformation()
+	{
+		// Don't wait to add the entries into the Project
+		addEntries("");
+		
+		// Set up Transformation files
+		for (ProjectEntry item : getEntries())
+		{
+			if (item instanceof ProgramEntry)
+			{
+				ProgramEntry entry = (ProgramEntry) item;
+				if (doTransformation(entry))
+				{
+					setupTransformation(entry);
+				}
+			}
+		}
+	}
+
+	private void setupTransformation(ProgramEntry entry)
+	{
+		String fname = entry.sourceFile;
+		int slash = fname.lastIndexOf('/');
+		if (slash > 0) fname = fname.substring(slash+1);
+		int lastDot = fname.lastIndexOf('.');
+		String piece = fname.substring(0, lastDot);
+	
+		
+		entry.javaFile = EaglePath.combinePaths("Transformed", piece + ".java");
+		entry.javaClassDir = EaglePath.combinePaths("Transformed", "classes");
+		entry.javaHtmlReport = EaglePath.combinePaths("Reports", piece + "_java.html");
+		
+		entry.csFile = EaglePath.combinePaths("Transformed", piece + ".cs");
+		entry.csExeFile = EaglePath.combinePaths("Transformed", "bin", piece + ".exe");
+		entry.csHtmlReport = EaglePath.combinePaths("Reports", piece + "_cs.html");
+	
+		entry.inputFile = EaglePath.combinePaths("Output", piece + ".in");
+		entry.outputFile = EaglePath.combinePaths("Output", piece + ".out");
+	
+		checkDir(EaglePath.combinePaths("Transformed", "classes"));
+		checkDir(EaglePath.combinePaths("Transformed", "bin"));
+		checkDir("Reports");
+		checkDir("Output");
+		
+		String os = System.getenv("OS");
+		boolean isDos = (os != null && os.equals("Windows_NT"));
+		entry.actualOutput = (isDos ? "C:\\temp\\" : "/private/tmp/") + piece + ".out";
+	}
+	
+	private void checkDir(String dirName)
+	{
+		String path = EaglePath.combinePaths(_artifactBase, dirName);
+		if (EaglePath.createDir(path))
+		{
+			System.out.println("Created directory " + path);
+		}
+	}
+	
+	// Did it fail parsing the last time we did a full test run?
+	// Can't just look at the existing of the html parse fail file because
+	// it gets deleted at the start of the nightly run. Have to look at
+	// the FileInventory.csv file instead.
+	private void collectPreviousFailures()
+	{
+		_previousFailures = new HashSet<String>();
+				
+		String csv = EaglePath.combinePaths(_artifactBase, FileInventory.FILEINVENTORY_CSV);
+		try
+		{
+			BufferedReader br = new BufferedReader(new FileReader(csv));
+			String rec = br.readLine();
+			if (! rec.startsWith(HDR))
+			{
+				br.close();
+				throw new RuntimeException("Expected " + HDR + " not " + rec);
+			}
+			
+			while ((rec = br.readLine()) != null)
+			{
+				String[] pieces = rec.split(",");
+				if (pieces.length >= HDR_PARSED && pieces[HDR_PARSED].equalsIgnoreCase(HDR_NO))
+				{
+					String dir = pieces[HDR_DIR];
+					String file = pieces[HDR_FILE];
+					String fullFilename;
+					if (dir.length() > 0)
+					{
+						fullFilename = dir + '/' + file;
+					}
+					else
+					{
+						fullFilename = file;
+					}
+					_previousFailures.add(fullFilename);
+					//System.out.println("*** Previous Parse failure: " + fullFilename);
+				}
+			}
+			br.close();
+		}
+		catch (Exception ex)
+		{
+			System.err.println("Problem reading " + csv);
+			ex.printStackTrace(System.err);
+		}
+	}
+	
+	public boolean previouslyFailedParsing(ProgramEntry entry)
+	{
+		if (_previousFailures == null) collectPreviousFailures();
+		return _previousFailures.contains(entry.sourceFile);
 	}
 }

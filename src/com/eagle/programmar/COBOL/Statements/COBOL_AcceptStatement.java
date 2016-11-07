@@ -36,7 +36,7 @@ public class COBOL_AcceptStatement extends COBOL_AbstractStatement
 	
 	public static class COBOL_AcceptOption extends TokenChooser
 	{
-		public COBOL_KeywordChoice option = new COBOL_KeywordChoice(
+		public @CHOICE COBOL_KeywordChoice option = new COBOL_KeywordChoice(
 				"AUTO",
 				"AUTO-SKIP",
 				"FULL",
@@ -46,33 +46,33 @@ public class COBOL_AcceptStatement extends COBOL_AbstractStatement
 				"UPDATE"
 				);
 
-		public static class COBOL_AcceptFrom extends TokenSequence
+		public @CHOICE static class COBOL_AcceptFrom extends TokenSequence
 		{
 			public COBOL_Keyword FROM = new COBOL_Keyword("FROM");
 			public COBOL_KeywordChoice time = new COBOL_KeywordChoice("DATE", "DAY", "TIME");
 			public @OPT COBOL_KeywordChoice format = new COBOL_KeywordChoice("YYYYMMDD", "YYYYDDD");
 		}
 
-		public static class COBOL_AcceptCommand extends TokenSequence
+		public @CHOICE static class COBOL_AcceptCommand extends TokenSequence
 		{
 			public COBOL_Keyword FROM = new COBOL_Keyword("FROM");
 			public COBOL_Keyword COMMANDLINE = new COBOL_Keyword("COMMAND-LINE");
 		}
 
-		public static class COBOL_AcceptAt extends TokenSequence
+		public @CHOICE static class COBOL_AcceptAt extends TokenSequence
 		{
 			public COBOL_Keyword AT = new COBOL_Keyword("AT");
 			public @OPT COBOL_Keyword LINE = new COBOL_Keyword("LINE");
 			public COBOL_Expression location;
 		}
 			
-		public static class COBOL_AcceptColumn extends TokenSequence
+		public @CHOICE static class COBOL_AcceptColumn extends TokenSequence
 		{
 			public COBOL_Keyword COLUMN = new COBOL_Keyword("COLUMN");
 			public COBOL_Expression column;
 		}
 		
-		public static class COBOL_AcceptWithColors extends TokenSequence
+		public @CHOICE static class COBOL_AcceptWithColors extends TokenSequence
 		{
 			public COBOL_Keyword WITH = new COBOL_Keyword("WITH");
 			public @OPT COBOL_Keyword UPDATE = new COBOL_Keyword("UPDATE");

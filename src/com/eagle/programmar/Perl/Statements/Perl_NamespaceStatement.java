@@ -16,16 +16,16 @@ public class Perl_NamespaceStatement extends TokenSequence
 {
 	public Perl_Keyword NAMESPACE = new Perl_Keyword("namespace");
 	public @OPT Perl_Identifier_Reference id;
-	public @OPT TokenList<Perl_MoreNamespace> more;
+	public @OPT TokenList<Perl_MoreSpace> more;
 	public Perl_NamespaceBody body;
 	
 	public static class Perl_NamespaceBody extends TokenChooser
 	{
-		public PunctuationSemicolon semicolon;
-		public Perl_StatementBlock block;
+		public @CHOICE PunctuationSemicolon semicolon;
+		public @CHOICE Perl_StatementBlock block;
 	}
 	
-	public static class Perl_MoreNamespace extends TokenSequence
+	public static class Perl_MoreSpace extends TokenSequence
 	{
 		public Perl_Punctuation backSlash = new Perl_Punctuation('\\');
 		public Perl_Identifier_Reference id;

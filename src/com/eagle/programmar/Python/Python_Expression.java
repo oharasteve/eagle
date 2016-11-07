@@ -3,7 +3,6 @@
 
 package com.eagle.programmar.Python;
 
-import com.eagle.programmar.PLI.Terminals.PLI_PunctuationChoice;
 import com.eagle.programmar.Python.Python_Expression.Python_Function_Call.Python_Function_Arguments;
 import com.eagle.programmar.Python.Python_Syntax.Python_Multiline_Syntax;
 import com.eagle.programmar.Python.Terminals.Python_BackQuote;
@@ -36,127 +35,55 @@ import com.eagle.tokens.punctuation.PunctuationStar;
 
 public class Python_Expression extends PrecedenceChooser
 {
+	private static OperatorList _operators = new OperatorList();
+
+	public @P(10) Python_OctalNumber octal;
+	public @P(20) Python_HexNumber hex;
+	public @P(30) Python_Number number;
+
+	//
+	// Note: All operators should stay in @P(#) order. This determines operator precedence.
+	//
+
 	public Python_Expression()
 	{
+	    super(_operators);
 	}
-	
-	public Python_Expression(PrecedenceOperator token, AllowedPrecedence allowed)
-	{ 
-		super(allowed, token.getClass());
-	}
-	
-	@Override
-	protected void establishChoices() 
-	{
-		// Order doesn't matter much
-		super.addTerm(Python_Parens.class);
-		super.addTerm(Python_Braces.class);
-		super.addTerm(Python_Brackets.class);
-		super.addTerm(Python_UnarySign.class);
-		super.addTerm(Python_Not_Expression.class);
-		super.addTerm(Python_OctalNumber.class);
-		super.addTerm(Python_HexNumber.class);
-		super.addTerm(Python_Number.class);
-		super.addTerm(Python_Literals.class);
-		super.addTerm(Python_BackQuotes.class);
-		super.addTerm(Python_Function_Call.class);
-		super.addTerm(Python_BuiltIn.class);
-		super.addTerm(Python_Variable.class);
-		super.addTerm(Python_Star_Expression.class);
-		super.addTerm(Python_StarStar_Expression.class);
-		super.addTerm(Python_Lambda_Expression.class);
-		super.addTerm(Python_Yield.class);
 
-		// Highest precedence first
-		super.addOperator(Python_SubscriptExpression.class);
-		super.addOperator(Python_Subfield.class);
-		super.addOperator(Python_Power_Expression.class);
-		super.addOperator(Python_Multiplicative_Expression.class);
-		super.addOperator(Python_Additive_Expression.class);
-		super.addOperator(Python_Shift_Expression.class);
-		super.addOperator(Python_Bitwise_And_Expression.class);
-		super.addOperator(Python_Bitwise_Xor_Expression.class);
-		super.addOperator(Python_Bitwise_Or_Expression.class);
-		super.addOperator(Python_Relational_Expression.class);
-		super.addOperator(Python_And_Expression.class);
-		super.addOperator(Python_Or_Expression.class);
-		super.addOperator(Python_If_Else_Expression.class);
-		super.addOperator(Python_For_In_Expression.class);
-		super.addOperator(Python_Assignment_Expression.class);
+	public Python_Expression(PrecedenceOperator token, AllowedPrecedence allowed)
+	{
+	    super(_operators, allowed, token.getClass());
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////
 	// Primary Expressions
 	
-	public static class Python_Literals extends ExpressionTerm
+	public static @P(100) class Python_Funny_Constructor extends PrimaryOperator
 	{
-		public TokenList<Python_Literal> literals;
+		public PunctuationLeftParen leftParen1;
+		public Python_Type type;
+		public PunctuationStar star;
+		public Python_Expression size;
+		public PunctuationRightParen rightParen1;
+		public PunctuationLeftParen leftParen2;
+		public PunctuationRightParen rightParen2;
 	}
 	
-	public static class Python_BackQuotes extends ExpressionTerm
-	{
-		// These are obsolete as of Python 3.
-		public @CURIOUS("Obsolete backquotes") TokenList<Python_BackQuote> quotes;
-	}
-	
-	public static class Python_Variable_List extends ExpressionTerm
-	{
-		public @OPT Python_PunctuationChoice star = new Python_PunctuationChoice("*", "**");
-		public Python_Variable var;
-		public @OPT Python_Variable_Default defaultValue;
-		public @OPT TokenList<Python_MoreVariablesInList> moreVars;
-
-		public static class Python_MoreVariablesInList extends TokenSequence
-		{
-			public PunctuationComma comma;
-			public @OPT TokenList<Python_Comment> comments;
-			public @OPT Python_PunctuationChoice star = new Python_PunctuationChoice("*", "**");
-			public Python_Variable var;
-			public @OPT Python_Variable_Default defaultValue;
-		}
-		
-		public static class Python_Variable_Default extends TokenSequence
-		{
-			public PunctuationEquals equals;
-			public Python_Expression defaultValue;
-		}
-	}
-	
-	public static class Python_List extends ExpressionTerm
-	{
-		public @OPT TokenList<Python_Comment> comment1;
-		public @OPT Python_Expression expr;
-		public @OPT TokenList<Python_MoreListItem> nextItem;
-		public @OPT PunctuationComma comma;
-		public @OPT TokenList<Python_Comment> comment2;
-		
-		public static class Python_MoreListItem extends TokenSequence
-		{
-			public PunctuationComma comma;
-			public @OPT TokenList<Python_Comment> comment;
-			public Python_Expression expr;
-		}
-	}
-	
-	public static class Python_Parens extends ExpressionTerm
+	public static @P(110) class Python_Parens extends PrimaryOperator
 	{
 		public PunctuationLeftParen leftParen;
-		public @OPT TokenList<Python_Comment> comment;
-		public @OPT Python_EndOfLine eoln;
+		public @OPT @SYNTAX(Python_Multiline_Syntax.class) TokenList<Python_CommentEoln> comments;
 		public @OPT @SYNTAX(Python_Multiline_Syntax.class) Python_List list;
 		public PunctuationRightParen rightParen;
+		
+		public static class Python_CommentEoln extends TokenSequence
+		{
+			public Python_Comment comment;
+			public @OPT Python_EndOfLine eoln;
+		}
 	}
 	
-	public static class Python_Brackets extends ExpressionTerm
-	{
-		public PunctuationLeftBracket leftBracket;
-		public @OPT TokenList<Python_Comment> comment;
-		public @OPT Python_EndOfLine eoln;
-		public @OPT @SYNTAX(Python_Multiline_Syntax.class) Python_List list;
-		public PunctuationRightBracket rightBracket;
-	}
-	
-	public static class Python_Braces extends ExpressionTerm
+	public static @P(120) class Python_Braces extends PrimaryOperator
 	{
 		public PunctuationLeftBrace leftBrace;
 		public @OPT Python_EndOfLine eoln1;
@@ -190,30 +117,39 @@ public class Python_Expression extends PrecedenceChooser
 		}
 	}
 	
-	public static class Python_UnarySign extends ExpressionTerm
+	public static @P(130) class Python_Brackets extends PrimaryOperator
+	{
+		public PunctuationLeftBracket leftBracket;
+		public @OPT TokenList<Python_Comment> comment;
+		public @OPT Python_EndOfLine eoln;
+		public @OPT @SYNTAX(Python_Multiline_Syntax.class) Python_List list;
+		public PunctuationRightBracket rightBracket;
+	}
+	
+	public static @P(140) class Python_UnarySign extends PrimaryOperator
 	{
 		public Python_PunctuationChoice sign = new Python_PunctuationChoice("*", "-", "+", "~");
 		public Python_Expression expr;
 	}
 
-	public static class Python_Star_Expression extends ExpressionTerm
+	public static @P(150) class Python_Not_Expression extends PrimaryOperator 
 	{
-		public PunctuationStar star;
+		public Python_Keyword NOT = new Python_Keyword("not");
 		public Python_Expression expr;
-	}
-
-	public static class Python_StarStar_Expression extends ExpressionTerm
-	{
-		public Python_Punctuation starStar = new Python_Punctuation("**");
-		public Python_Expression expr;
-	}
-
-	public static class Python_BuiltIn extends TokenChooser
-	{
-		public Python_KeywordChoice builtins = new Python_KeywordChoice("False", "True");
 	}
 	
-	public static class Python_Function_Call extends ExpressionTerm
+	public static @P(160) class Python_Literals extends PrimaryOperator
+	{
+		public TokenList<Python_Literal> literals;
+	}
+	
+	public static @P(170) class Python_BackQuotes extends PrimaryOperator
+	{
+		// These are obsolete as of Python 3.
+		public @CURIOUS("Obsolete backquotes") TokenList<Python_BackQuote> quotes;
+	}
+	
+	public static @P(180) class Python_Function_Call extends PrimaryOperator
 	{
 		public Python_Variable name;
 		public TokenList<Python_Function_Arguments> args;
@@ -259,8 +195,30 @@ public class Python_Expression extends PrecedenceChooser
 			}
 		}
 	}
+
+	public static @P(190) class Python_BuiltIn extends PrimaryOperator
+	{
+		public Python_KeywordChoice builtins = new Python_KeywordChoice("False", "True");
+	}
 	
-	public static class Python_Lambda_Expression extends ExpressionTerm 
+	public static @P(200) class Python_VariableExpression extends PrimaryOperator
+	{
+		public Python_Variable variable;
+	}
+	
+	public static @P(210) class Python_Star_Expression extends PrimaryOperator
+	{
+		public PunctuationStar star;
+		public Python_Expression expr;
+	}
+
+	public static @P(220) class Python_StarStar_Expression extends PrimaryOperator
+	{
+		public Python_Punctuation starStar = new Python_Punctuation("**");
+		public Python_Expression expr;
+	}
+	
+	public static @P(230) class Python_Lambda_Expression extends PrimaryOperator 
 	{
 		public Python_Keyword LAMBDA = new Python_Keyword("lambda");
 		public @OPT PunctuationLeftParen leftParen;
@@ -268,9 +226,33 @@ public class Python_Expression extends PrecedenceChooser
 		public @OPT PunctuationRightParen rightParen;
 		public PunctuationColon colon;
 		public Python_Expression expr;
+		
+		public static class Python_Variable_List extends TokenSequence
+		{
+			public @OPT Python_PunctuationChoice star = new Python_PunctuationChoice("*", "**");
+			public Python_Variable var;
+			public @OPT Python_Variable_Default defaultValue;
+			public @OPT TokenList<Python_MoreVariablesInList> moreVars;
+
+			public static class Python_MoreVariablesInList extends TokenSequence
+			{
+				public PunctuationComma comma;
+				public @OPT TokenList<Python_Comment> comments;
+				public @OPT Python_PunctuationChoice star = new Python_PunctuationChoice("*", "**");
+				public Python_Variable var;
+				public @OPT Python_Variable_Default defaultValue;
+			}
+			
+			public static class Python_Variable_Default extends TokenSequence
+			{
+				public PunctuationEquals equals;
+				public Python_Expression defaultValue;
+			}
+		}
+		
 	}
 	
-	public static class Python_Yield extends ExpressionTerm
+	public static @P(240) class Python_Yield extends PrimaryOperator
 	{
 		public Python_Keyword YIELD = new Python_Keyword("yield");
 		public Python_Expression expr;
@@ -279,135 +261,7 @@ public class Python_Expression extends PrecedenceChooser
 	///////////////////////////////////////////////////////////////////////////
 	// Binary Expressions
 	
-	public static class Python_Power_Expression extends PrecedenceOperator
-	{
-		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
-		public Python_Punctuation stars = new Python_Punctuation("**");
-		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
-	}
-	
-	public static class Python_Multiplicative_Expression extends PrecedenceOperator 
-	{
-		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
-		public Python_PunctuationChoice operator = new Python_PunctuationChoice("//", "*", "/", "%");
-		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
-	}
-	
-	public static class Python_Additive_Expression extends PrecedenceOperator 
-	{
-		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
-		public Python_PunctuationChoice operator = new Python_PunctuationChoice("+", "-");
-		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
-	}
-	
-	public static class Python_Shift_Expression extends PrecedenceOperator 
-	{
-		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
-		public Python_PunctuationChoice operator = new Python_PunctuationChoice("<<", ">>");
-		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
-	}
-	
-	public static class Python_Bitwise_And_Expression extends PrecedenceOperator 
-	{
-		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
-		public Python_Punctuation and = new Python_Punctuation('&');
-		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
-	}
-	
-	public static class Python_Bitwise_Xor_Expression extends PrecedenceOperator 
-	{
-		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
-		public Python_Punctuation xor = new Python_Punctuation('^');
-		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
-	}
-	
-	public static class Python_Bitwise_Or_Expression extends PrecedenceOperator 
-	{
-		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
-		public Python_Punctuation or = new Python_Punctuation('|');
-		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
-	}
-	
-	public static class Python_Relational_Expression extends PrecedenceOperator 
-	{
-		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
-		public Python_Relational_Operator relOp;
-		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
-
-		public static class Python_Relational_Operator extends TokenChooser
-		{
-			public PLI_PunctuationChoice operator = new PLI_PunctuationChoice(
-					"==", "!=", "<>", "<=", ">=", "<", ">");
-			
-			public static class Python_IN_Operator extends TokenSequence
-			{
-				public @OPT Python_Keyword NOT = new Python_Keyword("not");
-				public Python_Keyword IN = new Python_Keyword("in");
-			}
-			
-			public static class Python_IS_Operator extends TokenSequence
-			{
-				public Python_Keyword IS = new Python_Keyword("is");
-				public @OPT Python_Keyword NOT = new Python_Keyword("not");
-			}
-		}
-	}
-
-	public static class Python_Not_Expression extends PrecedenceOperator 
-	{
-		public Python_Keyword NOT = new Python_Keyword("not");
-		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
-	}
-	
-	public static class Python_And_Expression extends PrecedenceOperator 
-	{
-		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
-		public Python_Keyword AND = new Python_Keyword("and");
-		public @OPT TokenList<Python_Comment> comment;
-		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
-	}
-	
-	public static class Python_Or_Expression extends PrecedenceOperator 
-	{
-		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
-		public Python_Keyword OR = new Python_Keyword("or");
-		public @OPT TokenList<Python_Comment> comment;
-		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class Python_If_Else_Expression extends PrecedenceOperator 
-	{
-		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
-		public Python_Keyword IF = new Python_Keyword("if");
-		public Python_Expression middle = new Python_Expression(this, AllowedPrecedence.ATLEAST);
-		public Python_Keyword ELSE = new Python_Keyword("else");
-		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class Python_For_In_Expression extends PrecedenceOperator
-	{
-		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
-		public Python_Keyword FOR = new Python_Keyword("for");
-		public Python_VariableList varList;
-		public Python_Keyword IN = new Python_Keyword("in");
-		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
-		public @OPT Python_For_In_If_Expression ifExpression;
-		
-		public static class Python_For_In_If_Expression extends TokenSequence
-		{
-			public Python_Keyword IF = new Python_Keyword("if");
-			public Python_Expression condition = new Python_Expression();
-		}
-	}
-	
-	public static class Python_Subfield extends PrecedenceOperator
-	{
-		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
-		public PunctuationPeriod dot;
-		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
-	}
-
-	public static class Python_SubscriptExpression extends PrecedenceOperator
+	public static @P(250) class Python_SubscriptExpression extends PrecedenceOperator
 	{
 		public Python_Expression expr = new Python_Expression(this, AllowedPrecedence.ATLEAST);
 		public PunctuationLeftBracket leftBracket;
@@ -431,7 +285,129 @@ public class Python_Expression extends PrecedenceChooser
 		}
 	}
 	
-	public static class Python_Assignment_Expression extends PrecedenceOperator
+	public static @P(260) class Python_Subfield extends PrecedenceOperator
+	{
+		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
+		public PunctuationPeriod dot;
+		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(270) class Python_Power_Expression extends PrecedenceOperator
+	{
+		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
+		public Python_Punctuation stars = new Python_Punctuation("**");
+		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static @P(280) class Python_Multiplicative_Expression extends PrecedenceOperator 
+	{
+		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
+		public Python_PunctuationChoice operator = new Python_PunctuationChoice("//", "*", "/", "%");
+		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static @P(290) class Python_Additive_Expression extends PrecedenceOperator 
+	{
+		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
+		public Python_PunctuationChoice operator = new Python_PunctuationChoice("+", "-");
+		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static @P(300) class Python_Shift_Expression extends PrecedenceOperator 
+	{
+		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
+		public Python_PunctuationChoice operator = new Python_PunctuationChoice("<<", ">>");
+		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static @P(310) class Python_Bitwise_And_Expression extends PrecedenceOperator 
+	{
+		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
+		public Python_Punctuation and = new Python_Punctuation('&');
+		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static @P(320) class Python_Bitwise_Xor_Expression extends PrecedenceOperator 
+	{
+		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
+		public Python_Punctuation xor = new Python_Punctuation('^');
+		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static @P(330) class Python_Bitwise_Or_Expression extends PrecedenceOperator 
+	{
+		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
+		public Python_Punctuation or = new Python_Punctuation('|');
+		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static @P(340) class Python_Relational_Expression extends PrecedenceOperator 
+	{
+		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
+		public Python_Relational_Operator relOp;
+		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
+
+		public static class Python_Relational_Operator extends TokenChooser
+		{
+			public @CHOICE Python_PunctuationChoice operator = new Python_PunctuationChoice(
+					"==", "!=", "<>", "<=", ">=", "<", ">");
+			
+			public @CHOICE static class Python_IN_Operator extends TokenSequence
+			{
+				public @OPT Python_Keyword NOT = new Python_Keyword("not");
+				public Python_Keyword IN = new Python_Keyword("in");
+			}
+			
+			public @CHOICE static class Python_IS_Operator extends TokenSequence
+			{
+				public Python_Keyword IS = new Python_Keyword("is");
+				public @OPT Python_Keyword NOT = new Python_Keyword("not");
+			}
+		}
+	}
+
+	public static @P(350) class Python_And_Expression extends PrecedenceOperator 
+	{
+		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
+		public Python_Keyword AND = new Python_Keyword("and");
+		public @OPT TokenList<Python_Comment> comment;
+		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(360) class Python_Or_Expression extends PrecedenceOperator 
+	{
+		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
+		public Python_Keyword OR = new Python_Keyword("or");
+		public @OPT TokenList<Python_Comment> comment;
+		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static @P(370) class Python_For_In_Expression extends PrecedenceOperator
+	{
+		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
+		public Python_Keyword FOR = new Python_Keyword("for");
+		public Python_VariableList varList;
+		public Python_Keyword IN = new Python_Keyword("in");
+		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
+	}
+
+	public static @P(380) class Python_If_Else_Expression extends PrecedenceOperator 
+	{
+		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
+		public Python_Keyword IF = new Python_Keyword("if");
+		public Python_Expression middle = new Python_Expression(this, AllowedPrecedence.HIGHER);
+		public Python_Keyword ELSE = new Python_Keyword("else");
+		public Python_Expression right = new Python_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static @P(390) class Python_If_Expression extends PrecedenceOperator 
+	{
+		public Python_Expression left = new Python_Expression(this, AllowedPrecedence.ATLEAST);
+		public Python_Keyword IF = new Python_Keyword("if");
+		public Python_Expression middle = new Python_Expression(this, AllowedPrecedence.HIGHER);
+	}
+	
+	public static @P(400) class Python_Assignment_Expression extends PrecedenceOperator
 	{
 		public Python_Expression leftVar = new Python_Expression(this, AllowedPrecedence.ATLEAST);
 		public PunctuationEquals equals;

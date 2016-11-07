@@ -21,15 +21,15 @@ public class CMD_Call_Statement extends TokenSequence
 
 	public static class CMD_Call_Parameter extends TokenChooser
 	{
-		public CMD_Argument arg;
+		public @CHOICE CMD_Argument arg;
 		
-		public static class CMD_Call_Minus_Option extends TokenSequence
+		public @CHOICE static class CMD_Call_Minus_Option extends TokenSequence
 		{
 			public PunctuationHyphen minus;
 			public CMD_Argument option;
 		}
 		
-		public static class CMD_Call_Slash_Option extends TokenSequence
+		public @CHOICE static class CMD_Call_Slash_Option extends TokenSequence
 		{
 			public PunctuationSlash slash;
 			public CMD_Argument option;

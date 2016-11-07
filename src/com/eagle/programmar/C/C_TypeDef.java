@@ -27,9 +27,9 @@ public class C_TypeDef extends TokenSequence
 	
 	public static class C_TypeDef_What extends TokenChooser
 	{
-		public @SYNTAX(CMacro_Syntax.class) CMacro_Processable macro;
+		public @CHOICE @SYNTAX(CMacro_Syntax.class) CMacro_Processable macro;
 		
-		public static class C_TypeDef_Data extends TokenSequence
+		public @CHOICE static class C_TypeDef_Data extends TokenSequence
 		{
 			public C_Type type;
 			public @OPT PunctuationStar star;

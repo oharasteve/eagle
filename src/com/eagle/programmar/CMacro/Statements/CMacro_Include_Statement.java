@@ -13,6 +13,7 @@ import com.eagle.programmar.C.Terminals.C_Literal;
 import com.eagle.programmar.C.Terminals.C_Punctuation;
 import com.eagle.programmar.CMacro.CMacro_Processable;
 import com.eagle.programmar.CMacro.Terminals.CMacro_IncludeSys;
+import com.eagle.tokens.AbstractToken;
 import com.eagle.tokens.TokenChooser;
 import com.eagle.tokens.TokenSequence;
 
@@ -24,15 +25,16 @@ public class CMacro_Include_Statement extends TokenSequence implements CMacro_Pr
 	
 	public static class CMacro_IncludeWhat extends TokenChooser
 	{
-		public C_Literal filename;
-		public CMacro_IncludeSys sys;
+		public @CHOICE C_Literal filename;
+		public @CHOICE CMacro_IncludeSys sys;
 	}
 	
 	@Override
 	public boolean processMacro(CMacro_Preprocess preprocessor)
 	{
-		if (! (what._whichToken instanceof C_Literal)) return false;
-		String fileName = ((C_Literal) what._whichToken).getValue();
+		AbstractToken which = what.getWhich(); 
+		if (! (which instanceof C_Literal)) return false;
+		String fileName = ((C_Literal) which).getValue();
 		//System.out.println("#include " + macroName);
 		EagleFileReader macro;
 		try

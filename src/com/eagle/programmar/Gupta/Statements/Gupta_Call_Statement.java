@@ -3,7 +3,7 @@
 
 package com.eagle.programmar.Gupta.Statements;
 
-import com.eagle.programmar.Gupta.Gupta_Expression.Gupta_Function_Call;
+import com.eagle.programmar.Gupta.Gupta_Function_Call;
 import com.eagle.programmar.Gupta.Terminals.Gupta_Keyword;
 import com.eagle.tokens.TokenSequence;
 
